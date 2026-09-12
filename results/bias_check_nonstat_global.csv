@@ -1,0 +1,10 @@
+# script=02_bias_check.py tau=1 kind=gaussian redundancy=MMI n_windows=2000 burn_in=200 seed=20261120 git=e01c836-dirty n_runs=2000 n_boot=2000 m_decide=1338/742 threshold=0.8
+condition,atom,global_est_mean,global_est_sd,global_est_ci_lo,global_est_ci_hi,regime_pre,regime_peak,weighted_mean_of_bin_truths,mixture_cov_truth,n_pre_bins,n_post_bins
+nonstat_step_coupling,sts,0.046060,0.010843,0.045584,0.046535,0.094214,0.038026,0.054080,0.046313,8,20
+nonstat_step_coupling,rtr,0.062068,0.016994,0.061323,0.062813,0.013658,0.085980,0.065316,0.062769,8,20
+nonstat_step_noisecorr,sts,0.045895,0.011683,0.045383,0.046407,0.094214,0.039612,0.055213,0.045705,8,20
+nonstat_step_noisecorr,rtr,0.035837,0.011209,0.035346,0.036329,0.013658,0.046892,0.037397,0.035596,8,20
+nonstat_decay_coupling,sts,0.061906,0.019285,0.061061,0.062751,0.094214,0.038026,0.070447,0.057380,8,20
+nonstat_decay_coupling,rtr,0.028899,0.010915,0.028420,0.029377,0.013658,0.085980,0.030340,0.028628,8,20
+nonstat_decay_noisecorr,sts,0.066633,0.022501,0.065647,0.067619,0.094214,0.039612,0.072672,0.064574,8,20
+nonstat_decay_noisecorr,rtr,0.021976,0.008749,0.021593,0.022360,0.013658,0.046892,0.022454,0.021481,8,20
