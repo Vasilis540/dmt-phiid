@@ -162,6 +162,13 @@ Recorded here **before any results were inspected.**
     carry O(1/N) bias, so window-level atoms will be noisier and more biased
     than the global fit. That bias is common to both conditions and all
     windows, but it must be stated, not assumed harmless.
+  - **Window-length robustness at 60 TRs** (two rating bins per window,
+    stride 60, 14 windows; each rating pair averaged to match). This check is
+    **load-bearing, not optional**: at ~3 samples per parameter, Gaussian
+    entropy bias cannot be assumed equal across conditions if DMT shifts the
+    covariance structure — and a shift in covariance structure is precisely
+    the hypothesis under test. A 30-TR effect that does not survive at 60 TRs
+    is a bias artefact until shown otherwise.
 
 - **Robustness C (placebo-fitted model)**: fit the Gaussian on a subject's
   placebo data, then evaluate local atoms on **both** of that subject's runs
@@ -183,11 +190,45 @@ Recorded here **before any results were inspected.**
   comparison is symmetric. This halves the data available for the fit, which
   is a cost to be reported.
 
+- **Region exclusion: region 20 (0-based) dropped for all subjects and both
+  conditions → 115 regions, 6,555 pairs.** Recorded 12 Sep 2026, before any
+  115-region result existed.
+  - **Defect.** Subject index 7 (subject 8), DMT run, region 20 is exactly
+    constant (840 zeros) in every preprocessing variant *including raw `ts`*,
+    so the defect is upstream in the source data, not introduced by
+    preprocessing. The same subject's PCB run has full signal in that region.
+    No other region in any subject/condition/variant is zero-variance or
+    region-specifically non-finite (`01_synergy_timecourse.py` QC block).
+    Region 20 is Yeo network 3 (dorsal attention), left hemisphere
+    (`sch116_to_yeo.csv`; LH cortical parcels are indices 0–49).
+  - **Why global, not per-subject.** Dropping the region only for subject 8
+    DMT would make that subject's DMT synergy an average over a different
+    pair set than their own PCB synergy, contaminating the within-subject
+    contrast with a pair-set difference; with N=14 that moves the group mean.
+    Dropping the region for everyone costs 115 of 6,670 pairs (1.7%) and
+    keeps every comparison symmetric.
+  - **Undocumented in the source papers.** Neither Timmermann et al. 2023
+    (PNAS; n=16, 112-region Schaefer+AAL parcellation) nor Singleton et al.
+    2025 (Commun Biol; n=14, Schaefer-116, "all 116 parcels") mentions
+    excluded parcels, coverage dropout, or missing regional data — both
+    report only motion-based *subject* exclusion (searched full texts via
+    Europe PMC, PMC10068756 and PMC12008288, 12 Sep 2026). The original
+    MATLAB (`external/DMT_NCT/scripts/*.m`) uses `nanmean` throughout, which
+    would silently absorb a NaN produced from this region, but we have not
+    verified that this is what happened. Worth one line in the writeup as a
+    data-quality note; not a criticism of either paper.
+
 ## Open questions to resolve
 
 - Confirm reuse licence with Singleton / Timmermann before publishing.
 - ~~Decide sliding-window length for time-resolved ΦID~~ — **resolved**:
   30 TRs / 60 s, non-overlapping. See Primary B above for the justification.
+- **Quantify the finite-sample entropy bias directly** rather than reasoning
+  about it. Generate surrogate data with known covariance, at 30- and 60-TR
+  windows, and measure how far the estimated atoms sit from the analytic
+  values — including whether the bias differs between two conditions whose
+  covariance structure differs. `scripts/02_bias_check.py` does this. **Run
+  and read it before interpreting any windowed result.**
 - Decide whether whole-brain synergy is summarised as mean over all pairs or
   restricted to a defined subnetwork — pre-register the choice.
   `REGION_SELECTION` in `01_synergy_timecourse.py` is the knob; `"all"`
