@@ -42,6 +42,14 @@ SEED = 20261120
 N_REGIONS = 116            # ignored when REGION_SELECTION == "all"
 REGION_SELECTION = "all"   # "all" | "first" | "random"
 VARIANT = "ts_gsr"
+
+# Pre-registered region exclusion (CLAUDE.md, "Pre-registered analysis
+# choices"). Region 20 (0-based; Yeo network 3 / dorsal attention, left
+# hemisphere) is all-zero for subject index 7, DMT, in every preprocessing
+# variant including raw `ts` — an upstream defect in the source data. It is
+# dropped for ALL subjects and BOTH conditions so every comparison is over the
+# same pair set (115 regions, 6,555 pairs). Applied after REGION_SELECTION.
+EXCLUDE_REGIONS = (20,)
 TAU = 1
 KIND = "gaussian"
 REDUNDANCY = "MMI"
@@ -106,7 +114,52 @@ else:
         "REGION_SELECTION must be 'all', 'first', or 'random'; "
         f"got {REGION_SELECTION!r}"
     )
+# ---------------------------------------------------------------- region QC
+# Runs on ALL 116 regions before any ΦID call. A region is defective in a
+# given (subject, condition) if it is non-finite at TRs where other regions
+# are finite (whole-TR dropouts are handled per-TR in the compute loop), or
+# if it has zero variance over the finite TRs (phyid divides by std and would
+# fail deep inside the covariance fit). Every defect must be covered by the
+# pre-registered EXCLUDE_REGIONS rule; anything else stops the run here.
+def defective_regions(X):
+    fin = np.isfinite(X)
+    tr_dead = ~fin.any(axis=0)                 # TR non-finite for every region
+    partial = (~fin[:, ~tr_dead]).any(axis=1)  # region-specific non-finite
+    sd = X[:, fin.all(axis=0)].std(axis=1, ddof=1)
+    out = {}
+    for r in np.where(partial)[0]:
+        out[int(r)] = "non-finite where other regions are finite"
+    for r in np.where(sd == 0)[0]:
+        out.setdefault(int(r), "zero variance (constant timeseries)")
+    return out
+
+defects = {}
+for s in range(n_subjects):
+    for c in range(n_conditions):
+        d = defective_regions(ts_all[s, c])
+        if d:
+            defects[(s, c)] = d
+            for r, why in d.items():
+                print(f"  [qc] s={s} {CONDITIONS[c]} region {r}: {why}")
+
+uncovered = sorted({r for d in defects.values() for r in d} - set(EXCLUDE_REGIONS))
+if uncovered:
+    raise RuntimeError(
+        f"regions {uncovered} are defective in at least one (subject, "
+        f"condition) but are not in EXCLUDE_REGIONS={EXCLUDE_REGIONS}. Record "
+        "an exclusion rule in CLAUDE.md before running; do not let phyid "
+        "crash on them."
+    )
+for r in EXCLUDE_REGIONS:
+    where = [f"s={s} {CONDITIONS[c]}" for (s, c), d in defects.items() if r in d]
+    print(f"  [qc] excluding region {r} for ALL subjects and BOTH conditions "
+          f"(pre-registered rule; defective in: {', '.join(where) or 'none'})")
+
+n_selected = region_idx.size
+region_idx = region_idx[~np.isin(region_idx, EXCLUDE_REGIONS)]
 n_regions = region_idx.size
+print(f"  [qc] regions entering ΦID: {n_regions} (selected {n_selected}, "
+      f"excluded {n_selected - n_regions})")
 
 TAG = f"{n_regions}regions-{REGION_SELECTION}_{VARIANT}_{FIT_MODE}"
 OUT_NPY = RESULTS / f"synergy_bins_{TAG}.npy"
@@ -174,8 +227,15 @@ print(f"compute finished in {elapsed:.1f}s "
 # ---------------------------------------------------------------- provenance
 try:
     sha = subprocess.check_output(
-        ["git", "rev-parse", "--short", "HEAD"], text=True
+        ["git", "rev-parse", "--short", "HEAD"], text=True,
+        stderr=subprocess.DEVNULL,
     ).strip()
+    # flag if the code that produced this result is not what HEAD contains
+    if subprocess.check_output(
+        ["git", "status", "--porcelain", "--", "scripts", "CLAUDE.md"],
+        text=True, stderr=subprocess.DEVNULL,
+    ).strip():
+        sha += "-dirty"
 except (subprocess.CalledProcessError, FileNotFoundError):
     sha = "nogit"
 
@@ -185,7 +245,9 @@ np.save(OUT_NPY, synergy_bins)
 with open(OUT_CSV, "w") as fh:
     fh.write("# script=01_synergy_timecourse.py "
              f"variant={VARIANT} regions={n_regions} "
-             f"region_selection={REGION_SELECTION} atom={ATOM} "
+             f"region_selection={REGION_SELECTION} "
+             f"excluded_regions={','.join(map(str, EXCLUDE_REGIONS)) or 'none'} "
+             f"atom={ATOM} "
              f"tau={TAU} redundancy={REDUNDANCY} fit_mode={FIT_MODE} "
              f"seed={SEED} git={sha}\n")
     fh.write("subject,condition,bin,synergy_mean\n")
