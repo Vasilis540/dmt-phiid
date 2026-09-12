@@ -35,8 +35,11 @@ global fit, as reference).
 Reported per (condition, window, atom):
   analytic value, mean estimate, bias (= mean - analytic) with 95% CI,
   SD of the estimate across windows (the variance term), and the fraction of
-  windows in which the MMI double-redundancy min-selection picked a different
-  MI than the analytic min (a discrete source of error the CI does not see).
+  windows in which the MMI double-redundancy min-selection picked an MI whose
+  analytic value is NOT the analytic minimum (a discrete source of error the
+  CI does not see). Picks between analytically tied MIs — e.g. I(x->y') and
+  I(y->x') are identical under the symmetric A, Q used here — are not errors
+  and are not counted.
 And per (window, atom, shift): the DIFFERENTIAL bias, bias(shift) -
 bias(baseline), with 95% CI, next to the true between-condition difference
 in the atom — so bias magnitude can be read against effect magnitude.
@@ -147,11 +150,24 @@ def analytic_atoms(S4, redundancy):
     return {k: float(v[0]) for k, v in atoms.items()}, calc
 
 
+_RTR_MIS = ("I_xta", "I_xtb", "I_yta", "I_ytb")
+
+
 def rtr_selection(calc_res):
     """Which of the four single-target MIs the MMI double redundancy picked."""
     I = calc_res["I_res"]
-    means = [np.mean(I[k]) for k in ("I_xta", "I_xtb", "I_yta", "I_ytb")]
+    means = [np.mean(I[k]) for k in _RTR_MIS]
     return int(np.argmin(means))
+
+
+def rtr_wrong_pick(calc_res, true_mis, tol=1e-9):
+    """True if the window picked an MI whose ANALYTIC value is not minimal.
+
+    Picking between analytically tied MIs (e.g. I_xtb == I_yta under
+    symmetric A, Q) is not an error, so ties are not counted.
+    """
+    picked = rtr_selection(calc_res)
+    return (true_mis[picked] - min(true_mis)) > tol
 
 
 def simulate(A, Q, n_trs, n_series, rng):
@@ -178,12 +194,15 @@ def main():
         A, Q = var1_matrices(**p)
         S4 = joint_lag_cov(A, Q, TAU)
         true_atoms, true_calc = analytic_atoms(S4, REDUNDANCY)
-        sel_true[cond] = rtr_selection(true_calc)
+        true_mis = [float(true_calc["I_res"][k][0]) for k in _RTR_MIS]
+        n_tied = int(np.sum(np.abs(np.array(true_mis) - min(true_mis)) < 1e-9))
+        sel_true[cond] = true_mis
         for atom in ATOMS:
             true_store[(cond, atom)] = true_atoms[atom]
         print(f"[{cond}] a={p['a']} c={p['c']} q={p['q']}  "
               f"analytic sts={true_atoms['sts']:.4f} rtr={true_atoms['rtr']:.4f}  "
-              f"rtr picks MI #{sel_true[cond]}")
+              f"rtr analytic min = {min(true_mis):.4f} "
+              f"({n_tied} of 4 MIs tied at the min)")
 
         for W in WINDOWS:
             z = simulate(A, Q, W, N_WINDOWS, rng)   # (N_WINDOWS, 2, W)
@@ -194,7 +213,7 @@ def main():
                                          kind=KIND, redundancy=REDUNDANCY)
                 for atom in ATOMS:
                     est[atom][n] = np.mean(atoms[atom])   # window-mean local atom
-                flips += rtr_selection(calc) != sel_true[cond]
+                flips += rtr_wrong_pick(calc, sel_true[cond])
             flip_frac = flips / N_WINDOWS
 
             for atom in ATOMS:
