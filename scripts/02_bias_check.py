@@ -184,6 +184,24 @@ BASELINE_OF = {
 # asymmetric family); the run stops if any of them is tied
 MUST_BE_UNTIED = ("asym_baseline", "asym_shift_coupling", "asym_shift_noisecorr")
 
+# AR-shift family — added 13 Sep 2026 AFTER the Primary B ts_gsr W=60 and W=30
+# real-data results existed (recorded in CLAUDE.md), to test the shrinkage
+# model on the covariance-change type the real data showed. Kept out of
+# CONDITIONS so the stationary tables are unchanged. Parameters fixed before
+# the run: a = 0.87 is the measured regional lag-1 autocorrelation on ts_gsr
+# (pooled mean 0.867); c and q give pairwise corr(x,y) = 0.197 against the
+# measured mean |r| = 0.195; asymmetric so no MMI candidate ties; the shift is
+# a -> a - 0.0085 with c, q, s held fixed, chosen so the true sts step
+# (~ -0.056) is comparable to the asym coupling step (-0.0562). Implied
+# baseline: autocorr (0.877, 0.871), sts 1.384, rtr 0.016, spectral radius
+# 0.886 (the 0.75 transient bound does not hold here; see max_radius).
+AR_DELTA = 0.0085
+AR_CONDITIONS = {
+    "ar_baseline": dict(a=(0.87, 0.87), c=(0.025, 0.01), q=0.05, s=(1.0, 1.4)),
+    "ar_shift_a":  dict(a=(0.87 - AR_DELTA, 0.87 - AR_DELTA), c=(0.025, 0.01), q=0.05, s=(1.0, 1.4)),
+}
+ALL_PARAMS = {**CONDITIONS, **AR_CONDITIONS}
+
 # ---- non-stationary conditions (pre-registered; see module docstring) ----
 N_BINS, BIN_TRS = 28, 30                  # 28 rating bins x 30 TRs = 840
 N_RUNS = 2000                             # replicate 840-TR runs per condition
@@ -203,6 +221,9 @@ NONSTAT_CONDITIONS = {
     "nonstat_step_noisecorr":  dict(shift="asym_shift_noisecorr", param="q", f=STEP_SCALE),
     "nonstat_decay_coupling":  dict(shift="asym_shift_coupling",  param="c", f=INTENSITY_SCALE),
     "nonstat_decay_noisecorr": dict(shift="asym_shift_noisecorr", param="q", f=INTENSITY_SCALE),
+    # AR-shift step (13 Sep 2026): base and radius bound differ from the others
+    "nonstat_step_ar":         dict(shift="ar_shift_a", param="a", f=STEP_SCALE,
+                                    base="ar_baseline", max_radius=0.90),
 }
 NONSTAT_BASE = "asym_baseline"
 SWITCH_BIN = 8                            # bins 0..7 pre-switch (1-based 1-8)
@@ -358,9 +379,9 @@ def simulate(A, Q, n_trs, n_series, rng):
     return z[:, :, BURN_IN:]
 
 
-def staircase_params(shift, param, f):
+def staircase_params(shift, param, f, base_name=NONSTAT_BASE):
     """Per-bin VAR(1) parameter dicts, theta_b = base + f_b (shift - base)."""
-    base, top = CONDITIONS[NONSTAT_BASE], CONDITIONS[shift]
+    base, top = ALL_PARAMS[base_name], ALL_PARAMS[shift]
     out = []
     for fb in f:
         p = dict(base)
@@ -368,6 +389,8 @@ def staircase_params(shift, param, f):
             p["c"] = tuple(b + fb * (t - b) for b, t in zip(base["c"], top["c"]))
         elif param == "q":
             p["q"] = base["q"] + fb * (top["q"] - base["q"])
+        elif param == "a":
+            p["a"] = tuple(b + fb * (t - b) for b, t in zip(base["a"], top["a"]))
         else:
             raise ValueError(param)
         out.append(p)
@@ -442,11 +465,13 @@ def run_nonstat(rng, t0):
     """Non-stationary staircase conditions; returns four row lists."""
     ns_rows, glob_rows, track_rows, crit_rows = [], [], [], []
     for cond, spec in NONSTAT_CONDITIONS.items():
-        params = staircase_params(spec["shift"], spec["param"], spec["f"])
+        params = staircase_params(spec["shift"], spec["param"], spec["f"],
+                                  spec.get("base", NONSTAT_BASE))
         S4_bins = []
         for b, p in enumerate(params):
             A, Q = var1_matrices(**p)
-            assert np.max(np.abs(np.linalg.eigvals(A))) <= 0.76, "transient claim in CLAUDE.md"
+            assert np.max(np.abs(np.linalg.eigvals(A))) <= spec.get("max_radius", 0.76), \
+                "transient claim in CLAUDE.md (0.75 bound; AR family uses its own bound)"
             S4 = joint_lag_cov(A, Q, TAU)
             _, calc = analytic_atoms(S4, REDUNDANCY)
             mis = np.array([float(calc["I_res"][k][0]) for k in _RTR_MIS])
@@ -706,6 +731,9 @@ def main():
               f"threshold={PASS_THRESHOLD}\n")
 
     def write_csv(path, rows):
+        if not rows:
+            print(f"(nothing to write for {path.name})")
+            return
         with open(path, "w") as fh:
             fh.write(header)
             keys = list(rows[0].keys())
@@ -803,7 +831,16 @@ if __name__ == "__main__":
                     help="replicate runs per non-stationary condition "
                          f"(default {N_RUNS}; the pre-registered UNDETERMINED "
                          "rule repeats with 20000)")
+    ap.add_argument("--only-nonstat", default=None, choices=sorted(NONSTAT_CONDITIONS),
+                    help="run ONE non-stationary condition only, skipping the "
+                         "stationary block (requires --out so results/ tables are untouched)")
     args = ap.parse_args()
+    if args.only_nonstat is not None:
+        if args.out is None or args.out.resolve() == RESULTS.resolve():
+            ap.error("--only-nonstat must write outside results/ (pass --out DIR)")
+        NONSTAT_CONDITIONS = {args.only_nonstat: NONSTAT_CONDITIONS[args.only_nonstat]}
+        CONDITIONS = {}
+        BASELINE_OF = {}
     if args.quick:
         if args.out is None or args.out.resolve() == RESULTS.resolve():
             ap.error("--quick must write outside results/ (pass --out DIR)")
