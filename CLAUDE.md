@@ -918,6 +918,62 @@ Recorded here **before any results were inspected.**
         tables captured mid-run. Once the job finishes, the working
         tree holds the 20,000-run versions of all six tables and the
         verdict recorded from them must cite that commit.
+      - **VERDICT of the 20,000-run repeat (finished 13 Sep 2026 12:06
+        after 7,182 s; every table header reads `git=18ad8b4`, i.e. the
+        committed script ran unchanged; tables in `results/`, committed
+        with this entry).** Deciding cells, W = 60:
+
+        | condition | M | S_analytic [interval] | S_boot | R [range] |
+        |---|---|---|---|---|
+        | decay_coupling | 1,338 | **0.923** [0.851, 0.966] | 0.924 | 0.990 [0.964, 1.000] |
+        | decay_coupling | 742 | **0.887** [0.821, 0.935] | 0.890 | 0.984 [0.939, 1.000] |
+        | decay_noisecorr | 1,338 | **0.861** [0.763, 0.931] | 0.866 | 0.976 [0.927, 1.000] |
+        | decay_noisecorr | 742 | **0.823** [0.735, 0.892] | 0.826 | 0.964 [0.903, 1.000] |
+
+        **Tier 1: all four point estimates pass, but both
+        noise-correlation intervals straddle 0.80. Per the
+        pre-registered escalation rule, TIER 2 IS THE ASSIGNED TIER on
+        windows 5–14; tier 1 is reported as marginal** with the
+        intervals above and the M = 151 result (tier 1 fails in every
+        cell: S_analytic 0.760 [0.710, 0.806] coupling, 0.695 [0.637,
+        0.749] noise-corr). **Tier 2 passes cleanly at W = 60** in all
+        four deciding cells (R 0.964–0.990, bootstrap lower bounds
+        0.903–0.964; the parametric lower bounds from
+        `05_tier_check_decay_windows.py` on the same windows are
+        0.891–0.964). Bootstrap and analytic S agree to 0.005 in every
+        cell. M / N_RUNS is now 0.07 and 0.04, so the centring caveat
+        is largely resolved. W = 30 (report only): tier 1 fails
+        everywhere (S 0.59–0.71), tier 2 passes at M = 1,338 and 742
+        (R 0.88–0.96) and fails at M = 151 for noise-corr (0.68).
+        **The prediction recorded before the repeat was wrong**: it
+        expected coupling S_analytic ≤ 0.89 and plausibly < 0.80 with
+        two pairs wrong in expectation; at 20,000 runs every decay pair
+        in both conditions has the correct sign in expectation
+        (coupling 11→12 P = 0.84, 13→14 P = 0.69; noise-corr 12→13
+        P = 0.62, 13→14 P = 0.60), and coupling S rose to 0.923. The
+        2,000-run "wrong in expectation" reading was sampling error on
+        the sample-mean differences, not a bias, and the late-decay
+        pairs are low-P rather than reversed. The candidate-crossing
+        mechanism recorded from the 2,000-run tables is still a
+        property of the analytic truths, but its claimed effect on the
+        estimate was not confirmed.
+      - **6–14 check (`05_tier_check_decay_windows.py --tables-dir
+        results`, `results/tier_check_decay_windows.csv`, git b7e4595).**
+        **Tier 2 R passes cleanly on 6–14** in all four deciding cells
+        (point 1.000, parametric lower bounds 0.950 / 0.933 coupling,
+        0.900 / 0.850 noise-corr at M = 1,338 / 742). Tier 1 S on 6–14
+        is marginally *higher* than on 5–14 (0.925 / 0.894 coupling,
+        0.874 / 0.839 noise-corr), **reversing the 2,000-run dry run**,
+        which was noise (pair 5→6 is now P = 0.91 / 0.76, no longer a
+        best pair); noise-corr still straddles 0.80 ([0.785, 0.936],
+        [0.757, 0.901]). **Tier-disagreement rule: both window sets give
+        tier 2, so TIER 2 IS THE CLAIMED TIER ON THE PRIMARY WINDOWS
+        6–14.** **M = 151 limitation:** at M = 151 tier 2 straddles in
+        some cells (5–14: noise-corr R 0.904 [0.769, 0.988]; 6–14
+        parametric lower bounds 0.783 coupling, 0.683 noise-corr), so
+        **if the true effective N is nearer one unit per component
+        than one per pair, the full-decay claim is marginal**; this is
+        stated wherever tier 2 is claimed.
 
 - **Robustness C (placebo-fitted model)**: fit the Gaussian on a subject's
   placebo data, then evaluate local atoms on **both** of that subject's runs
