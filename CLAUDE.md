@@ -771,6 +771,41 @@ Recorded here **before any results were inspected.**
         onset; this is a cost of the design and is stated with the
         result, and it is one reason the primary post window starts at
         window 6.
+      - **Tier-2 threshold: corrected rule (13 Sep 2026, before any real
+        windowed result; the Primary B ts_gsr W = 60 run was in progress
+        and unread).** The pre-registration applied |ρ_S| ≥ 0.80 to "the
+        per-subject statistic", but the simulation validated R on the
+        pooled window means, which is the group-mean-series version;
+        per-subject ρ over 9 windows was never simulated, and averaging
+        noisy per-subject correlations attenuates (the LZ check showed
+        it: −0.24 per-subject mean against −0.83 group-mean series on the
+        same data). **Corrected rule:** |ρ_S| ≥ 0.80 applies to the
+        group-mean-series ρ (14-subject mean sts over the decay windows
+        vs the template f). The per-subject mean ρ (own ratings primary,
+        template sensitivity) is tested for existence against the
+        phase-randomised null with its subject-bootstrap CI and is **not**
+        thresholded. **A tier-2 claim requires the group-mean-series
+        threshold pass AND the per-subject mean significant against the
+        null in the same direction AND controls (a) and (b) as written**,
+        with (b) meaning that the same three conditions hold on the
+        FD-residualised sts. Implemented in `06_primary_b_analysis.py`
+        (`TIER2_DECIDES = "groupmean_series"`).
+      - **Residualisation domains (confirmed 13 Sep 2026).** Section A's
+        DiD spans all 14 windows, so its FD residualisation regresses over
+        all 14 windows per subject and condition; control (b) protects
+        decay-window tracking, so it regresses over the decay windows
+        only. Each regression covers the domain of the analysis it
+        protects. The asymmetry is intended.
+      - **Disclosed pre-run observation (13 Sep 2026).** While exercising
+        `06_primary_b_analysis.py` on random arrays in the scratchpad
+        (no windowed sts involved), the script read the real FD and
+        rating files, so one real-data number was seen: window-mean
+        framewise displacement on the DMT run correlates with the
+        intensity template over the decay windows at ρ_S ≈ 0.4–0.5
+        (group mean of per-subject Spearman, W = 60). It touches no
+        pre-registered decision and no synergy value; it is recorded so
+        the sequence is complete. It does foreshadow that control (b)
+        will remove template-shaped variance.
       - **(a) Time-in-scanner control.** The identical statistic on each
         subject's **placebo** run: ρ_S between window-mean synergy on
         the PCB run and the same template f over the same windows.
