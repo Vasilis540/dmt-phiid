@@ -1,0 +1,8 @@
+variant=ts_demean  atoms=results/atoms_bins_115regions-all_ts_demean_global.npy  surrogates=1000  boot=10000  git=33f0b33-dirty
+  total DMT: group-mean rho=-0.214 [-0.368, -0.064] (SD across subjects 0.304; 10/14 in predicted sign -1) null mean +0.000 sd 0.078  p_one=0.004 p_two=0.007 | group-mean-series rho=-0.723 p_two=0.049
+  total PCB: group-mean rho=-0.093 [-0.179, -0.008] (SD across subjects 0.170; 9/14 in predicted sign -1) null mean -0.002 sd 0.054  p_one=0.045 p_two=0.088 | group-mean-series rho=-0.115 p_two=0.616
+  sts   DMT: group-mean rho=-0.203 [-0.346, -0.067] (SD across subjects 0.277; 9/14 in predicted sign -1) null mean +0.001 sd 0.078  p_one=0.007 p_two=0.011 | group-mean-series rho=-0.669 p_two=0.071
+  sts   PCB: group-mean rho=-0.089 [-0.200, +0.018] (SD across subjects 0.216; 9/14 in predicted sign -1) null mean -0.002 sd 0.056  p_one=0.055 p_two=0.106 | group-mean-series rho=-0.095 p_two=0.681
+  rtr   DMT: group-mean rho=-0.023 [-0.110, +0.069] (SD across subjects 0.176; 5/14 in predicted sign +1) null mean -0.004 sd 0.064  p_one=0.628 p_two=0.714 | group-mean-series rho=+0.067 p_two=0.828
+  rtr   PCB: group-mean rho=-0.014 [-0.138, +0.101] (SD across subjects 0.237; 8/14 in predicted sign +1) null mean -0.002 sd 0.061  p_one=0.578 p_two=0.824 | group-mean-series rho=+0.407 p_two=0.052
+wrote results/lz_vs_tdmi_ts_demean.csv
