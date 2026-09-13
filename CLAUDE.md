@@ -318,10 +318,62 @@ Recorded here **before any results were inspected.**
       clause and the fallback (W = 60, uncorrected) is the expected
       branch. Step 2 is still run: if the prediction fails, the derivation
       is wrong, and that matters more than the branch.
-    - **Not yet decided; decide and record before the first real windowed
-      run:** what replaces the 60-TR window-length robustness check if the
+    - **Step 2 EXECUTED 13 Sep 2026 (`scripts/04_logdet_correction_check.py`,
+      `results/logdet_correction_check.csv`; applied post hoc to the
+      2,000-run tables at commit 18ad8b4 via `git show`, since the
+      working-tree tables were being overwritten by the 20,000-run job;
+      no real data touched).** The correction is a per-(k, N) constant per
+      entropy term, so each MI shifts by a constant fixed by the
+      dimensions of its two argument sets, every MMI candidate set
+      compares MIs of identical dimensions (checked against the candidate
+      list), and each window-mean atom shifts by a fixed constant per
+      (atom, N) obtained by pushing the MI constants through phyid's own
+      lattice inverse. **Constants (nats, added to the plug-in estimate):**
+      sts −0.02040 / −0.00917 / −0.00060 at N = 29 / 59 / 839, **equal to
+      the recorded prediction −0.5·[ψ((N−3)/2) − ψ((N−4)/2)] to 1e-12**;
+      rtr −0.01886 / −0.00885 / −0.00060; rts and str −0.01960 / −0.00901
+      / −0.00060; **the other twelve atoms shift by exactly zero.**
+      **Differential bias changes by exactly zero**: max |change| over all
+      24 differential rows 1e-6, which is the tables' 6-decimal rounding
+      (1e-17 when computed from unrounded values). **Empirical check of
+      the derivation, not just the algebra:** the correction implemented
+      *inside* the estimator (entropy terms corrected before MI, MMI
+      selection and the lattice solve) on 3,000 freshly simulated VAR(1)
+      windows (500 each: baseline, asym_baseline, asym_shift_coupling at
+      W = 30 and 60) changed **no selection in any window** and the
+      per-window (corrected − plug-in) equalled the analytic constant to
+      6e-16 for all 16 atoms. **The derivation stands.** Criterion at
+      W = 30, sts, corrected: clause 1 |bias| / analytic = 50–80 % in all
+      six conditions (the correction *worsens* the per-condition bias
+      because the dominant plug-in bias is the negative autocorrelation
+      component and the iid correction is also negative); clause 2
+      |differential bias| / true difference = 52–77 %, unchanged. **Both
+      clauses FAIL as predicted → Primary B = W = 60, uncorrected, the
+      fallback branch, carrying the 15–45 % shrinkage as a stated cost.**
+      The W = 60 constant in `01_synergy_timecourse.py` now rests on an
+      executed step 3, not on the prediction alone.
+    - ~~Not yet decided; decide and record before the first real windowed
+      run: what replaces the 60-TR window-length robustness check if the
       fallback branch is taken (candidates: W = 120, four rating bins per
-      window, 7 windows; or the global fit A alone).
+      window, 7 windows; or the global fit A alone).~~ **Resolved 13 Sep
+      2026, before any real windowed run, after step 2 put Primary B at
+      W = 60.** The robustness check is **W = 30 (28 windows, one per
+      rating bin, stride 30) run as a positive control for the shrinkage
+      model**, plus Robustness A (the global fit). **W = 120 is not
+      run.** Prediction for W = 30 on real data: **the same sign as
+      W = 60 and a smaller magnitude**, with the W = 30 / W = 60 ratio
+      of the whole-brain DMT-minus-PCB sts contrast consistent with the
+      measured absorption, roughly 52–77 % absorbed at W = 30 against
+      15–45 % at W = 60 (asymmetric family 52–66 % vs 15–31 %), i.e. the
+      W = 30 contrast is expected at about one-third to two-thirds of
+      the W = 60 contrast. A W = 30 result with the opposite sign, or
+      larger than W = 60, is inconsistent with the shrinkage model and
+      is reported as such; it does not change the W = 60 result's
+      status. The 30-TR windows use the same code path
+      (`01_synergy_timecourse.py --fit-mode window --window-trs 30`,
+      output `atoms_win30_<tag>`), with bins 10–28 / 11–28 as the
+      sensitivity / primary decay sets. Nothing at W = 30 is read at
+      the regional or edge level (SNR ≈ 1 per pair-window).
   - **Pre-registered addition (recorded 12 Sep 2026, before any windowed
     real-data run): why the windowed analysis is primary.** The primary
     justification for windowing is that the global fit **cannot detect
@@ -616,6 +668,56 @@ Recorded here **before any results were inspected.**
         Whether to start the decay at window 6 (bin 11) at W = 60 is a
         choice to fix before the first real windowed run; the
         pre-registered windows stand until then.
+      - **Decay windows on real data, FIXED 13 Sep 2026 before any real
+        windowed run and before the 20,000-run verdict.** **Real-data
+        primary at W = 60: windows 6–14 (bins 11–28)**, excluding
+        window 5 (bins 9–10) on the placebo onset response at bins 8–10,
+        which came from Robustness A (global fit) and not from any
+        windowed result. **Windows 5–14 are reported as the
+        sensitivity.** At W = 30 the corresponding sets are bins 11–28
+        (primary) and 10–28 (sensitivity). Mirrored in
+        `01_synergy_timecourse.py` (`DECAY_WINDOWS_PRIMARY`,
+        `DECAY_WINDOWS_SENSITIVITY`). **The tier is assigned from the
+        20,000-run bias check on the pre-registered windows 5–14 and
+        does not move.** When the 20,000-run tracking table lands, S and
+        R are recomputed on windows 6–14 from it as a check that the
+        tier survives the exclusion: `python3
+        scripts/05_tier_check_decay_windows.py --tables-dir results`
+        (S_analytic = mean per-pair analytic correct-sign probability
+        over the 8 remaining pairs with its interval; R from the
+        per-window pooled means with a parametric interval,
+        N(est_mean, est_sd/√M) per window, 2,000 draws — the analytic
+        counterpart of the bootstrap R, since the per-run arrays are not
+        saved). **Dry run on the 2,000-run tables at 18ad8b4
+        (`results/tier_check_decay_windows_n2000_18ad8b4.csv`; a check
+        of the script, not the check itself):** the script reproduces
+        the criterion table's S_analytic and intervals exactly on
+        windows 5–14, and its parametric R lower bounds coincide with
+        the bootstrap ones to three decimals. On windows 6–14, W = 60:
+        coupling S_analytic 0.788 [0.695, 0.928] at M = 1,338 and 0.797
+        [0.667, 0.916] at M = 742 (below 0.80, still straddling; pair
+        5→6 was one of the best-signed pairs, P ≈ 0.98), noise-corr
+        0.834 [0.486, 0.974] and 0.801 [0.487, 0.956]; **R 0.967–0.983
+        in all four cells, lower bounds 0.82–0.92, tier 2 unaffected.**
+        Consistent with the recorded expectation that tier 1 fails on
+        the repeat. If the 20,000-run check moves the assigned tier's
+        statistic below 0.80 on windows 6–14, the tier still stands as
+        assigned and the primary real-data analysis is reported with
+        that simulation result stated next to it.
+      - **Tier-disagreement rule (fixed 13 Sep 2026, before any
+        20,000-run table existed).** The tier assigned on the
+        pre-registered windows 5–14 and the tier supported by the 6–14
+        check can disagree. **The tier claimed on the real-data primary
+        windows (6–14) is the LOWER of the two.** A higher tier on 5–14
+        is reported as the sensitivity result, with the note that it
+        includes the onset-adjacent window (bins 9–10) and is therefore
+        weaker evidence. The 5–14 assignment itself is not revised: it
+        stays on record as what the pre-registered criterion produced.
+        The 2,000-run dry run already shows coupling tier 1 at
+        0.79–0.80 on 6–14 (S_analytic 0.788 and 0.797, both straddling
+        0.80), so under this rule a tier-1 assignment on 5–14 would not
+        carry to the primary windows unless the 20,000-run check clears
+        0.80 there in both decay conditions at both M.
       - **(a) Time-in-scanner control.** The identical statistic on each
         subject's **placebo** run: ρ_S between window-mean synergy on
         the PCB run and the same template f over the same windows.
