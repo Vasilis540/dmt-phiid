@@ -1395,6 +1395,121 @@ Recorded here **before any results were inspected.**
     descriptive level; the shared-drug-time-course caution applies in
     full.
 
+## Primary B result
+
+**ts_gsr, W = 60, 115 regions, windowed estimator (model refit per
+window), run 13 Sep 2026, git e46df8a; inference by
+`06_primary_b_analysis.py`, values verbatim from
+`results/primary_b_ts_gsr_win60.csv` (run log
+`results/run_06_ts_gsr_win60.log`).** Pre = windows 1–4; post/decay
+primary = windows 6–14, sensitivity = windows 5–14. Whole-brain mean sts
+in nats; N = 14; sign-flip test exact over 16,384 assignments,
+two-sided; CIs subject-bootstrap 95 %, 10,000 draws; temporal null
+phase-randomised, 1,000 surrogates; seed 20261120.
+
+**Step contrast (primary windows).**
+
+| quantity | value | 95 % CI | p |
+|---|---|---|---|
+| pre-injection DMT mean sts | 1.1554 | | |
+| pre-injection PCB mean sts | 1.1378 | | |
+| DMT post − pre | −0.0485 | [−0.0819, −0.0113] | 0.0267 |
+| PCB post − pre | +0.0324 | [+0.0053, +0.0606] | 0.0425 |
+| **DiD raw** | **−0.0809** | **[−0.1261, −0.0377]** | **0.0038** (sign-flip); **0.0020** (phase-randomised) |
+| FD DiD, same form | +0.0143 | [−0.0070, +0.0365] | 0.2452 |
+| **DiD FD-residualised** | **−0.0649** | **[−0.0966, −0.0289]** | **0.0048** |
+
+DiD raw is −7.0 % of the pre-injection DMT mean and negative in 13 of
+14 subjects; the FD-residualised DiD is negative in 13 of 14 and
+**survives motion control** under the pre-registered definition (same
+sign, CI excludes zero). Sensitivity windows 5–14: DiD raw −0.0733
+[−0.1180, −0.0291], p = 0.0070, phase-randomised p = 0.0020, negative
+in 12 of 14, −6.3 % of baseline; FD-residualised −0.0555 [−0.0864,
+−0.0210], p = 0.0100, survives; DMT post − pre −0.0491 [−0.0823,
+−0.0128], p = 0.0227; PCB post − pre +0.0242 [−0.0020, +0.0496],
+p = 0.1040.
+
+**Verdict on the directional hypothesis: REFUTATION.** The
+pre-registered direction is up-regulation (+1); the DiD is negative and
+significant on both nulls, on both window sets, raw and
+FD-residualised. Per the directional-failure rule this is reported as a
+refutation of the stated hypothesis, not as a confirmation of a
+reframed one.
+
+**Observation the global fit did not show:** on the placebo run,
+whole-brain sts *increases* from pre to post (+0.0324 [+0.0053,
++0.0606], p = 0.0425 on the primary windows; +0.0242, p = 0.1040 on
+the sensitivity windows). The 115-region global fit (Robustness A)
+had PCB flat (within-condition change −0.005). Under the windowed
+estimator, roughly 40 % of the DiD on the primary windows is the
+placebo rise rather than the DMT fall.
+
+**Tier-2 tracking, primary decay windows 6–14 (DMT run).**
+- Group-mean-series ρ_S vs template (thresholded statistic): **raw
+  −0.9833** (p = 0.0020), **FD-residualised −0.9500** (p = 0.0010);
+  **both PASS the |ρ| ≥ 0.80 threshold**, sign negative against the
+  pre-registered positive direction.
+- Per-subject existence test (not thresholded): raw group mean ρ_S vs
+  own ratings −0.4826 [−0.6291, −0.3362], p = 0.0010, 14 of 14 defined,
+  |ρ| ≥ 0.80 in 3 subjects; vs template −0.5333 [−0.6750, −0.3845],
+  p = 0.0010. FD-residualised: −0.3310 [−0.4761, −0.1592] and −0.3643
+  [−0.5179, −0.1810], both p = 0.0010, |ρ| ≥ 0.80 in 0 subjects.
+  **Significant against the null in the same (negative) direction as
+  the group-mean series** in every version.
+- Control (a), time in scanner, raw: PCB ρ_S vs template −0.1940
+  [−0.3143, −0.0785], p = 0.0809; within-subject ρ_DMT − ρ_PCB −0.3393
+  [−0.5179, −0.1619]: **clears control (a)** (CI excludes zero; PCB not
+  ≥ half of DMT).
+- Control (b), motion: window-mean FD (DMT) vs template ρ_S +0.4060
+  [+0.1774, +0.6000]. **Control (a) on the FD-residualised data:** PCB
+  ρ_S −0.1571 [−0.3155, −0.0190], p = 0.0500; within-subject
+  ρ_DMT − ρ_PCB −0.2071 [−0.4345, +0.0345]: **VOID** (CI includes zero).
+- **Tier-2 claim on the primary windows: VOID**, for both the
+  per-subject-ratings and the template version, because control (a)
+  fails on the FD-residualised data. Raw: gm_pass = True, subj_sig =
+  True, same_dir = True, (a) void = False. Residualised: gm_pass = True,
+  subj_sig = True, same_dir = True, **(a) void = True**.
+
+**Tier-2 tracking, sensitivity windows 5–14.** Raw group-mean-series
+ρ_S −0.8667 (p = 0.0300, PASS); per-subject −0.4267 [−0.5949, −0.2473]
+and −0.4658 [−0.6294, −0.2840], both p = 0.0010. Control (a) raw: PCB
+ρ_S −0.3307 [−0.4494, −0.2087], p = 0.0050; ρ_DMT − ρ_PCB −0.1351
+[−0.2935, +0.0338]: **VOID on the raw data as well** (CI includes zero
+and PCB is the same sign and ≥ half of DMT). FD (DMT) vs template
++0.5117 [+0.3489, +0.6632]. FD-residualised: group-mean-series ρ_S
+−0.5152 (p = 0.2168, **fails** the threshold); per-subject −0.2358
+[−0.3757, −0.0903], p = 0.0130, and −0.2797 [−0.4277, −0.1203],
+p = 0.0050; control (a) ρ_DMT − ρ_PCB +0.0052 [−0.2017, +0.2026], VOID.
+**Tier-2 claim on the sensitivity windows: VOID.**
+
+**Reading of the control (a) numbers (recorded 13 Sep 2026; a reading,
+not a reframing of the verdict).** After FD residualisation the DMT
+per-subject mean remains significant (−0.331, p = 0.001) and the
+DMT-minus-PCB difference remains negative (−0.207), but its CI
+[−0.435, +0.035] includes zero. FD tracks the template at +0.406
+[+0.177, +0.600], so residualisation removed roughly a third of the
+DMT tracking (−0.483 → −0.331 own ratings; −0.533 → −0.364 template),
+the over-removal cost recorded before the run. PCB tracks the template
+at −0.194 on the primary windows and −0.331 on the sensitivity windows
+(71 % of DMT's −0.466 there), which is the time-in-scanner effect the
+control was designed to detect and which validates excluding window 5.
+The void on the primary windows reflects attenuation plus a wide CI at
+N = 14, not a placebo trend comparable to DMT's on those windows; the
+void stands as written.
+
+**Tier assignment for the paper's primary empirical claim: TIER 3.**
+Per the pre-registered ordering of outcomes, with the tier-2 claim void
+on both window sets, the primary result is the step-change contrast
+(above, reported as a refutation of the directional hypothesis) plus
+the methods contribution (bias characterisation, the global fit's
+smearing of non-stationarity, and the tier-2 controls as applied). The
+tier-2 statistics are reported in full with the void verdict and the
+control that voided them; they are not claimed.
+
+Still to come under Primary B, queued 13 Sep 2026: the W = 30 positive
+control on ts_gsr (prediction: same sign, smaller magnitude), and the
+ts_demean variant at W = 60 (rule 6), each through the same script.
+
 ## Open questions to resolve
 
 - Confirm reuse licence with Singleton / Timmermann before publishing.
