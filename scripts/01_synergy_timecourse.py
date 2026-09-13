@@ -287,6 +287,11 @@ TAG = f"{n_regions}regions-{REGION_SELECTION}_{VARIANT}_{FIT_MODE}"
 PREFIX = f"atoms_win{WINDOW_TRS}" if FIT_MODE == "window" else "atoms_bins"
 OUT_NPY = RESULTS / f"{PREFIX}_{TAG}.npy"
 OUT_CSV = RESULTS / f"{PREFIX}_{TAG}.csv"
+# TR-resolution pair-mean local atoms, (14, 2, 840, 16): sample p of a run is
+# stored at its start TR; NaN where no sample is attributed (dropped TRs and,
+# in window mode, the last TR of every window). The pre-registered temporal
+# null (CLAUDE.md, step-contrast test) phase-randomises this series.
+OUT_LOCAL_NPY = RESULTS / f"{PREFIX}_local_{TAG}.npy"
 # time axis of the output: rating bins (global, placebo) or windows (window)
 N_T, T_LEN, T_NAME = ((N_WINDOWS, WINDOW_TRS, "window") if FIT_MODE == "window"
                       else (N_BINS, TRS_PER_BIN, "bin"))
@@ -306,6 +311,7 @@ print(f"TRs={n_trs}  {T_NAME}s={N_T}  TRs/{T_NAME}={T_LEN}  tau={TAU}  "
 # attribute each atom sample to its ORIGINAL TR index so the 30-TR bins stay
 # aligned with the intensity ratings.
 atoms_bins = np.full((n_subjects, n_conditions, N_T, N_ATOMS), np.nan)
+atoms_local = np.full((n_subjects, n_conditions, n_trs, N_ATOMS), np.nan)
 bin_counts = np.zeros((n_subjects, n_conditions, N_T), dtype=int)
 
 
@@ -335,7 +341,9 @@ def pair_mean_atoms_native(X_clean):
 def accumulate(s, c, atom_mean, start_tr):
     """Attribute atom sample p (transition start_tr[p] -> +TAU) to its
     time slot; slot t covers TRs t*T_LEN .. (t+1)*T_LEN-1."""
-    slot_of = start_tr[:atom_mean.shape[1]] // T_LEN
+    n_samples = atom_mean.shape[1]
+    atoms_local[s, c, start_tr[:n_samples], :] = atom_mean.T
+    slot_of = start_tr[:n_samples] // T_LEN
     for t in range(N_T):
         m = slot_of == t
         if m.any():
@@ -412,6 +420,7 @@ except (subprocess.CalledProcessError, FileNotFoundError):
 
 # ---------------------------------------------------------------- save
 np.save(OUT_NPY, atoms_bins)
+np.save(OUT_LOCAL_NPY, atoms_local)
 
 with open(OUT_CSV, "w") as fh:
     fh.write("# script=01_synergy_timecourse.py "
@@ -448,4 +457,5 @@ for c, cond_name in enumerate(CONDITIONS):
     print(f"  {cond_name}:", np.array2string(np.nanmean(synergy_bins[:, c], axis=0),
                                              precision=3, suppress_small=True))
 print(f"\nwrote {OUT_NPY}")
+print(f"wrote {OUT_LOCAL_NPY}")
 print(f"wrote {OUT_CSV}")
