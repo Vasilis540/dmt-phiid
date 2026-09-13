@@ -1,4 +1,4 @@
-# script=07_windowed_atoms_did.py variant=ts_gsr window_trs=60 n_boot=10000 seed=20261120 windowed_file=atoms_win60_115regions-all_ts_gsr_window.npy global_file=atoms_bins_115regions-all_ts_gsr_global.npy git=f3b435d-dirty
+# script=07_windowed_atoms_did.py variant=ts_gsr window_trs=60 n_boot=10000 seed=20261120 windowed_file=atoms_win60_115regions-all_ts_gsr_window.npy global_file=atoms_bins_115regions-all_ts_gsr_global.npy git=553e919
 estimator,window_set,atom,pre_dmt,pre_pcb,change_dmt,change_pcb,did_mean,ci_lo,ci_hi,p_signflip,n_negative,did_over_pre_dmt
 windowed,primary,sts,1.155376719125973,1.1377895407727243,-0.04847102940570617,0.03239517991611775,-0.08086620932182391,-0.12532941231764907,-0.036546928396967854,0.0037841796875,13,-0.06999120545115199
 windowed,primary,rtr,0.03880994079744514,0.03747418929352509,-0.007226547750595937,0.000544212827898598,-0.007770760578494537,-0.01346383155153973,-0.0016167613879309432,0.03125,10,-0.20022603536169492

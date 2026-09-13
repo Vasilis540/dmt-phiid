@@ -1,4 +1,4 @@
-variant=ts_gsr W=60  windowed=atoms_win60_115regions-all_ts_gsr_window.npy  global=atoms_bins_115regions-all_ts_gsr_global.npy  git=f3b435d-dirty
+variant=ts_gsr W=60  windowed=atoms_win60_115regions-all_ts_gsr_window.npy  global=atoms_bins_115regions-all_ts_gsr_global.npy  git=553e919
 
 [windowed, primary]  atom    pre DMT  pre PCB   DMT ch   PCB ch      DiD    CI lo    CI hi       p  neg/14
                         sts      1.1554   1.1378  -0.0485  +0.0324  -0.0809  -0.1253  -0.0365  0.0038  13
