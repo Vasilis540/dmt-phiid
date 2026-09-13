@@ -2159,6 +2159,163 @@ Seed 20261120; git SHA in every header. Run order: ts_gsr, then ts_demean.
 The script is written after this entry is committed and is not run until
 instructed.
 
+**Outcome (both variants run 13 Sep 2026; every table header reads
+`git=4f7437b`, the commit of the script; results committed at d76d758;
+values verbatim from `results/regional_analysis_<variant>.csv`,
+`results/regional_did_map_<variant>.csv` and the logs
+`results/run_11_<variant>.log`). EXPLORATORY, Robustness A status: global
+fit, no temporal null, no motion handling, 14-subject group means of the
+per-region pair-mean; DiD in nats, pre bins 1–8, post bins 11–28; exact
+sign-flip over 2^14 assignments, two-sided; BH FDR at q = 0.05 across
+the 115 regions; spin test on the 99 cortical parcels, 10,000 rotations,
+two-sided p reported; subject-bootstrap 95 % CI, 10,000 draws, seed
+20261120.**
+
+- **Consistency check.** Max |mean over regions − saved whole-brain
+  pair-mean| per subject, condition and bin: sts **2.22e-15** on both
+  variants, rtr 1.11e-16 (ts_gsr) / 3.05e-16 (ts_demean) (from the log;
+  the CSV rounds these to 0.000000). Mean over the 115 regional DiDs:
+  −0.080081 (ts_gsr) and −0.103471 (ts_demean), equal to the whole-brain
+  pair-mean DiDs on the same bins recorded under `09_global_fc_per_bin.py`
+  (−0.0801, −0.1035).
+
+- **Per-region DiD.** Group-mean DiD negative in **114 of 115** regions on
+  both variants; the one positive region is subcortical parcel index 104
+  on both (`SUB_5`, +0.028, p = 0.495, 7 of 14 negative on ts_gsr;
+  +0.019, p = 0.566, 6 of 14 on ts_demean). **BH FDR survivors: 7 on
+  ts_gsr (p threshold 0.00304), 19 on ts_demean (0.00826), all negative,
+  all cortical, 0 subcortical.** Minimum uncorrected p is
+  `LH_Default_Par_1` on both variants (0.000244 / 0.000854).
+
+  ts_gsr, 7 regions (index, Yeo network, DiD, p, negative subjects of 14):
+
+  | region | idx | net | DiD | p | neg |
+  |---|---|---|---|---|---|
+  | LH_DorsAttn_Post_2 | 16 | 3 | −0.147383 | 0.00073 | 13 |
+  | LH_DorsAttn_PrCv_1 | 21 | 3 | −0.143504 | 0.00269 | 12 |
+  | LH_Default_Par_1 | 39 | 7 | −0.168352 | 0.00024 | 13 |
+  | RH_SomMot_3 | 60 | 2 | −0.103882 | 0.00195 | 12 |
+  | RH_SomMot_8 | 65 | 2 | −0.116150 | 0.00256 | 11 |
+  | RH_SalVentAttn_TempOccPar_2 | 74 | 4 | −0.105710 | 0.00183 | 13 |
+  | RH_Default_Temp_3 | 92 | 7 | −0.152747 | 0.00085 | 13 |
+
+  ts_demean, 19 regions:
+
+  | region | idx | net | DiD | p | neg |
+  |---|---|---|---|---|---|
+  | LH_Vis_3 | 2 | 1 | −0.159528 | 0.00623 | 11 |
+  | LH_Vis_4 | 3 | 1 | −0.133486 | 0.00562 | 11 |
+  | LH_Vis_6 | 5 | 1 | −0.182763 | 0.00745 | 12 |
+  | LH_Vis_8 | 7 | 1 | −0.122007 | 0.00806 | 12 |
+  | LH_Vis_9 | 8 | 1 | −0.158145 | 0.00427 | 11 |
+  | LH_SomMot_4 | 12 | 2 | −0.107238 | 0.00598 | 11 |
+  | LH_DorsAttn_Post_2 | 16 | 3 | −0.151416 | 0.00293 | 12 |
+  | LH_DorsAttn_Post_4 | 18 | 3 | −0.135552 | 0.00134 | 12 |
+  | LH_DorsAttn_PrCv_1 | 21 | 3 | −0.164079 | 0.00220 | 12 |
+  | LH_DorsAttn_FEF_1 | 22 | 3 | −0.162117 | 0.00317 | 12 |
+  | LH_Cont_pCun_1 | 35 | 6 | −0.127629 | 0.00708 | 12 |
+  | LH_Default_Par_1 | 39 | 7 | −0.137965 | 0.00085 | 13 |
+  | LH_Default_pCunPCC_1 | 48 | 7 | −0.159728 | 0.00256 | 12 |
+  | RH_Vis_5 | 54 | 1 | −0.123981 | 0.00562 | 12 |
+  | RH_Vis_7 | 56 | 1 | −0.122318 | 0.00732 | 11 |
+  | RH_Vis_8 | 57 | 1 | −0.144144 | 0.00159 | 12 |
+  | RH_SalVentAttn_TempOccPar_2 | 74 | 4 | −0.105911 | 0.00818 | 12 |
+  | RH_Default_PFCv_2 | 94 | 7 | −0.133180 | 0.00525 | 12 |
+  | RH_Default_pCunPCC_1 | 98 | 7 | −0.114772 | 0.00781 | 12 |
+
+  **Four regions survive FDR on both variants: LH_DorsAttn_Post_2 (16),
+  LH_DorsAttn_PrCv_1 (21), LH_Default_Par_1 (39) and
+  RH_SalVentAttn_TempOccPar_2 (74).** Exploratory; not selected for any
+  further test (rule 3).
+
+- **Receptor maps: NULL. Nothing survives BH across the five maps on
+  either variant** (`bh_threshold_across_5_maps` = 0 on both). Spearman ρ
+  on the 99 cortical parcels, two-sided spin p (Váša one-sided-average p
+  in brackets); the 115-region ρ including subcortex is descriptive only,
+  no p:
+
+  | map | ts_gsr ρ (p) [Váša p] | 115-region ρ | ts_demean ρ (p) [Váša p] | 115-region ρ |
+  |---|---|---|---|---|
+  | 5-HT2A | **−0.160** (0.116) [0.070] | −0.230 | **−0.055** (0.677) [0.360] | −0.263 |
+  | 5-HT1A | +0.009 (0.929) [0.467] | −0.099 | **+0.265** (0.032) [0.012] | +0.038 |
+  | 5-HT1B | −0.094 (0.352) [0.185] | −0.144 | −0.263 (0.050) [0.033] | −0.314 |
+  | 5-HT4 | −0.084 (0.422) [0.228] | +0.008 | +0.182 (0.160) [0.066] | +0.231 |
+  | 5-HTT | +0.104 (0.324) [0.145] | +0.196 | +0.202 (0.096) [0.039] | +0.365 |
+
+  Spin-null SD 0.100–0.106 (ts_gsr), 0.122–0.135 (ts_demean). The
+  largest uncorrected value is 5-HT1A +0.265 (p = 0.032) on ts_demean,
+  which does not survive BH and is not replicated on ts_gsr (+0.009).
+  **The two variants disagree on the sign of the 5-HT1A, 5-HT4 and
+  5-HTT correlations and on the magnitude of 5-HT2A and 5-HT1B**;
+  none is significant after correction on either. Receptor
+  inter-correlations (Spearman, identical on both variants since the
+  maps are variant-independent): 1A–2A 0.532, 1B–2A 0.528, 2A–4 0.436,
+  2A–HTT −0.451, 1A–4 0.405, 1B–HTT −0.364, 1A–HTT −0.100, 4–HTT 0.068,
+  1B–4 0.056, 1A–1B −0.002; specificity is bounded by these and is not
+  claimed.
+
+- **Workspace comparison: the DMT synergy decrease is spatially uniform,
+  not workspace-concentrated, on both variants and both proxies.**
+  Per-subject workspace minus non-workspace mean regional DiD (negative =
+  larger decrease inside the proxy); non-workspace = remaining cortical
+  parcels (primary) or remaining cortical + 16 subcortical (sensitivity):
+
+  | proxy | non-workspace set | ts_gsr Δ [CI], p, neg | ts_demean Δ [CI], p, neg |
+  |---|---|---|---|
+  | primary (Default ∪ Control, 37) | cortical (62) | **−0.0095 [−0.0230, +0.0050], 0.216**, 9/14 | **−0.0050 [−0.0225, +0.0120], 0.590**, 7/14 |
+  | primary | + subcortex (78) | −0.0124 [−0.0264, +0.0024], 0.130, 10/14 | −0.0119 [−0.0300, +0.0063], 0.242, 8/14 |
+  | named subregion (26) | cortical (73) | −0.0108 [−0.0305, +0.0099], 0.325, 8/14 | −0.0070 [−0.0305, +0.0170], 0.583, 8/14 |
+  | named | + subcortex (89) | −0.0135 [−0.0337, +0.0074], 0.235, 9/14 | −0.0130 [−0.0363, +0.0110], 0.318, 9/14 |
+
+  Both sets are individually significant and of similar magnitude:
+  primary proxy vs cortical non-workspace, ts_gsr, workspace mean DiD
+  −0.0885 [−0.1457, −0.0329] p = 0.0078 and non-workspace −0.0791
+  [−0.1299, −0.0290] p = 0.0083; ts_demean −0.1115 [−0.1816, −0.0375]
+  p = 0.0131 and −0.1065 [−0.1722, −0.0392] p = 0.0118. Named proxy:
+  ts_gsr −0.0905 / −0.0798 (p 0.0087 / 0.0084); ts_demean −0.1135 /
+  −0.1066 (p 0.0137 / 0.0123). Gateway proxy minus non-workspace
+  (primary proxy, cortical): ts_gsr −0.0189 [−0.0356, −0.0012] p = 0.060
+  (10/14); with subcortex −0.0219 [−0.0399, −0.0028] p = 0.047 (9/14);
+  ts_demean −0.0094 [−0.0315, +0.0129] p = 0.442 and −0.0163 [−0.0392,
+  +0.0078] p = 0.211. Broadcaster proxy minus non-workspace: ts_gsr
+  +0.0079 p = 0.474, ts_demean +0.0030 p = 0.813. Gateway minus
+  broadcaster: ts_gsr −0.0268 [−0.0514, −0.0007] p = 0.072, ts_demean
+  −0.0124 [−0.0436, +0.0183] p = 0.459. Named proxy: gateway minus
+  non-workspace ts_gsr −0.0155 p = 0.202, ts_demean −0.0086 p = 0.525;
+  broadcaster minus non-workspace +0.0091 p = 0.598 and −0.0002
+  p = 0.993; gateway minus broadcaster −0.0246 p = 0.189 and −0.0084
+  p = 0.715. The proxy limitations recorded above apply in full: a
+  Yeo-network atlas standing in for a rank rule computed on other
+  subjects at 4× the resolution, with no participation coefficients.
+
+- **Rank-rule check on the placebo run (descriptive; not used for
+  selection).** Regions whose placebo synergy rank exceeds their
+  redundancy rank: **52 of 115 on ts_gsr** (45 cortical, 7 subcortical),
+  **58 on ts_demean** (51 cortical, 7 subcortical). Overlap with the
+  37-parcel primary proxy: 20 (Jaccard 0.323) on ts_gsr, 32 (Jaccard
+  0.571) on ts_demean. Spearman correlation between the sts rank and the
+  rtr rank across the 115 regions: 0.392 (ts_gsr), 0.115 (ts_demean).
+  Yeo composition of the rule set (count of network size): ts_gsr Vis
+  7/17, SomMot 2/14, DorsAttn 9/14, SalVentAttn 3/12, Limbic 4/5, Cont
+  8/13, Default 12/24, Subcortex 7/16; ts_demean Vis 4/17, SomMot 0/14,
+  DorsAttn 6/14, SalVentAttn 4/12, Limbic 5/5, Cont 12/13, Default
+  20/24, Subcortex 7/16. On the DMT run (reported alongside, descriptive):
+  45 rule regions on ts_gsr with 106 of 115 regions keeping their
+  placebo membership; 62 on ts_demean with 93 of 115 unchanged. The rule
+  set agrees with the network proxy more closely without GSR than with it.
+
+- **What this permits (recorded 13 Sep 2026).** The Luppi et al. eLife
+  2024 comparison can now be made as a **dissociation**: the synergy
+  reduction under propofol and in disorders of consciousness is
+  workspace-concentrated per Luppi et al. 2024, whereas the DMT synergy
+  decrease here is spatially uniform (114 of 115 regions negative, no
+  detectable workspace-vs-non-workspace difference on either variant or
+  proxy). This is qualified by the proxy limitation (a network-level
+  atlas proxy, not the rank-rule workspace) and by the exploratory status
+  of this section. It still does not license "synergy falls under DMT as
+  it does under propofol / in DoC": Luppi et al. report ΦR on workspace
+  regions, a different quantity, and the states differ.
+
 ## Open questions to resolve
 
 - Confirm reuse licence with Singleton / Timmermann before publishing.
