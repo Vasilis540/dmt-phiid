@@ -172,7 +172,7 @@ for s, c in product(range(N_SUBJ), range(2)):
     for t in range(N_BINS):
         m = slot == t
         if m.any():
-            regional[s, c, t] = acc[:, :, m].mean(axis=2).T if False else acc[:, :, m].mean(axis=2)
+            regional[s, c, t] = acc[:, :, m].mean(axis=2)
     print(f"  subject {s + 1:2d} {CONDITIONS[c]} done ({time.time() - t0:.0f}s)")
 assert np.isfinite(regional).all()
 np.save(RESULTS / f"regional_atoms_bins_115regions-all_{V}_global.npy", regional)
