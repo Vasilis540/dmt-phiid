@@ -1506,9 +1506,71 @@ smearing of non-stationarity, and the tier-2 controls as applied). The
 tier-2 statistics are reported in full with the void verdict and the
 control that voided them; they are not claimed.
 
-Still to come under Primary B, queued 13 Sep 2026: the W = 30 positive
-control on ts_gsr (prediction: same sign, smaller magnitude), and the
-ts_demean variant at W = 60 (rule 6), each through the same script.
+**W = 30 positive control (ts_gsr, 28 windows, git ac1fdc0;
+`results/primary_b_ts_gsr_win30.csv`, log `results/run_06_ts_gsr_win30.log`;
+recorded 13 Sep 2026).** Pre = bins 1–8, primary post = bins 11–28,
+sensitivity = bins 10–28.
+- DiD raw **−0.0686 [−0.1084, −0.0293]**, sign-flip p = 0.0042,
+  phase-randomised p = 0.0010, negative in 13 of 14, −6.7 % of the
+  pre-injection DMT mean (1.1554 at W = 60 → the W = 30 pre mean is in
+  the file). DMT post − pre −0.0390 [−0.0680, −0.0058], p = 0.0354; PCB
+  post − pre +0.0296 [+0.0076, +0.0531], p = 0.0269 (the placebo rise
+  is present at W = 30 too). **FD-residualised DiD −0.0545 [−0.0836,
+  −0.0215], p = 0.0065, survives**, negative in 13 of 14. Sensitivity
+  bins 10–28: DiD −0.0658 [−0.1072, −0.0261], p = 0.0067; residualised
+  −0.0514 [−0.0799, −0.0179], p = 0.0109, survives.
+- **Same sign as W = 60, smaller magnitude. Ratio W30 / W60 =
+  0.0686 / 0.0809 = 0.85**, against the pre-registered prediction of
+  one-third to two-thirds. Per the recorded criterion this is **not
+  inconsistent with the shrinkage model** (inconsistency required the
+  opposite sign or a larger magnitude), **but the ratio falls outside
+  the predicted range.**
+- **Where the prediction came from, and what the correct comparison
+  gives.** The predicted range was computed from the stationary
+  absorption table ((1 − absorb₃₀)/(1 − absorb₆₀) = 0.37–0.56 across
+  the four stationary cells). The relevant simulation is the
+  non-stationary step condition, which has the same pre/post form as
+  the real contrast. From the 20,000-run `bias_check_nonstat.csv`,
+  recovered step (estimated post − pre as a share of the true step,
+  sts, identical on the full and primary post sets): coupling 47.8 %
+  at W = 30, 84.2 % at W = 60 → **predicted ratio 0.57**; noise-corr
+  28.1 % / 66.6 % → **0.42**. The step table therefore predicts
+  0.42–0.57, in the same range as the stationary table, and **the
+  observed 0.85 is not near either. The shrinkage model over-predicts
+  attenuation on real data.**
+- **Reason, checked rather than assumed.** The candidate explanation
+  "real autocorrelation structure is milder than the VAR(1)
+  parameters" was tested and is **contradicted**: on ts_gsr the
+  regional lag-1 autocorrelation is 0.867 pooled (median 0.868, 5–95 %
+  0.833–0.900; DMT 0.864, PCB 0.870), against 0.53 in the simulated
+  baseline; real autocorrelation is far *stronger*. Real zero-lag
+  pairwise correlation is weaker than simulated (mean |r| 0.195,
+  median 0.161, signed mean −0.004, 5–95 % −0.375 to +0.451, against
+  0.33). The most likely reason consistent with these numbers: **the
+  real covariance change is of a type the bias check never
+  simulated.** The simulation shifted cross-coupling (c) or innovation
+  correlation (q) with the autoregressive a fixed, whereas on real
+  data the largest atom changes after sts are the within-region
+  self-transfer atoms xtx and yty (global fit: −0.046 and −0.037), i.e.
+  a change in autocorrelation, and the pairs sit in a regime (a ≈ 0.87,
+  weak cross-correlation) far from the simulated one. The shrinkage
+  factors measured for c- and q-shifts at a ≈ 0.5 do not transfer to
+  an a-shift at a ≈ 0.87. This is a limitation of the bias check to
+  state in the paper, not a reason to revise the W = 60 primary
+  result; an a-shift condition at realistic autocorrelation is the
+  obvious addition to `02_bias_check.py` if the shrinkage figures are
+  to be quoted as applying to these data.
+- Tier-2 lines at W = 30, reported as a check that decides nothing:
+  group-mean-series ρ_S −0.9752 raw, −0.8535 FD-residualised on bins
+  11–28 (both above 0.80, negative); per-subject means −0.388 / −0.408
+  raw, −0.267 / −0.279 residualised, all p ≤ 0.002; control (a) clears
+  on raw (ρ_DMT − ρ_PCB −0.223 [−0.415, −0.043]) and is **void on the
+  residualised data** (−0.146 [−0.337, +0.031]); sensitivity bins 10–28
+  void on raw as well (−0.164 [−0.334, +0.003]). Same pattern as W = 60.
+
+Still to come under Primary B, queued 13 Sep 2026: the ts_demean
+variant at W = 60 (rule 6) through the same script, then Robustness C
+(placebo-fitted model) and `07_windowed_atoms_did.py`.
 
 ## Open questions to resolve
 
