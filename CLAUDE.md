@@ -1560,6 +1560,33 @@ sensitivity = bins 10–28.
   result; an a-shift condition at realistic autocorrelation is the
   obvious addition to `02_bias_check.py` if the shrinkage figures are
   to be quoted as applying to these data.
+- **AR-shift step condition added to `02_bias_check.py` (13 Sep 2026,
+  parameters fixed and prediction recorded BEFORE the run).** Purpose:
+  test the shrinkage model on the covariance-change type the real data
+  showed. `nonstat_step_ar`: baseline a = (0.87, 0.87) (the measured
+  real lag-1 autocorrelation), c = (0.025, 0.01), q = 0.05,
+  s = (1.0, 1.4), giving pairwise corr(x, y) = 0.197 against the
+  measured mean |r| = 0.195, implied autocorrelation (0.877, 0.871),
+  analytic sts 1.384 (close to the real whole-brain ≈ 1.16–1.31),
+  rtr 0.016, no MMI candidate tied, spectral radius 0.886 (the 0.75
+  transient bound of the other conditions does not hold; transients
+  after the switch decay as 0.886^t, ≈ 30 % at 10 TRs, and are part of
+  what is measured, as for the other conditions). Shift: a → a − 0.0085
+  with c, q, s fixed, bins 9–28, true sts 1.3844 → 1.3284, step −0.0560
+  (asym coupling step: −0.0562). Kept in a separate parameter dict so
+  the stationary tables are unchanged; run with
+  `--only-nonstat nonstat_step_ar --out results/nonstat_ar_step
+  --n-runs 2000`, step condition only, no tracking criterion.
+  **Prediction, recorded before the run:** if the W = 30 / W = 60
+  step-recovery ratio for this condition is near the observed 0.85,
+  the shrinkage model is confirmed on the condition that actually
+  matches the data, and the pre-registered range (one-third to
+  two-thirds) was wrong because it came from the wrong shift type
+  (c- and q-shifts at a ≈ 0.5, ratios 0.42–0.57). If the ratio is again
+  ≈ 0.4–0.6, the shift type is not the explanation and the
+  over-attenuation on real data remains unexplained; if the recovery at
+  W = 60 itself is far from 84 %, the W = 60 shrinkage cost quoted for
+  the primary result must be restated from this condition.
 - Tier-2 lines at W = 30, reported as a check that decides nothing:
   group-mean-series ρ_S −0.9752 raw, −0.8535 FD-residualised on bins
   11–28 (both above 0.80, negative); per-subject means −0.388 / −0.408
