@@ -1,0 +1,27 @@
+(nothing to write for bias_check.csv)
+(nothing to write for bias_check_differential.csv)
+
+NON-STATIONARY conditions
+[nonstat_step_ar] true sts per bin: 1.384 1.384 1.384 1.384 1.384 1.384 1.384 1.384 1.328 1.328 1.328 1.328 1.328 1.328 1.328 1.328 1.328 1.328 1.328 1.328 1.328 1.328 1.328 1.328 1.328 1.328 1.328 1.328
+    simulated + estimated 2000 runs (100s)
+    W= 30 sts pre/post-switch means: true 1.3844->1.3284 (Δ -0.0560)  est 0.4869->0.4685 (Δ -0.0184, 33% of true)
+    W= 60 sts pre/post-switch means: true 1.3844->1.3284 (Δ -0.0560)  est 0.8084->0.7774 (Δ -0.0311, 55% of true)
+    global fit sts: est 1.2694  regimes pre 1.3844 / peak 1.3284  weighted-mean truth 1.3444  mixture-cov truth 1.3447
+(nothing to write for bias_check_nonstat_tracking.csv)
+(nothing to write for bias_check_nonstat_criterion.csv)
+
+BIAS (estimate - analytic), 95% CI, SD across windows; oracle-sel = bias with MMI selections forced to the analytic choice; flip = fraction of windows with a wrong rtr / any selection
+condition                W atom  analytic     bias               [CI]      sd   oracle flip-rtr flip-any
+
+DIFFERENTIAL BIAS  bias(shift) - bias(baseline)  vs  true effect
+shift                    W atom true_diff  est_diff  diff_bias               [CI]  bias/eff   oracle
+
+TRACKING CRITERIA  S = mean fraction of correctly signed adjacent decay pairs;  R = mean sign-corrected Spearman(pooled sts, intensity) over decay windows;  pooled mean of M runs
+
+wrote results/nonstat_ar_step/bias_check.csv
+wrote results/nonstat_ar_step/bias_check_differential.csv
+wrote results/nonstat_ar_step/bias_check_nonstat.csv
+wrote results/nonstat_ar_step/bias_check_nonstat_global.csv
+wrote results/nonstat_ar_step/bias_check_nonstat_tracking.csv
+wrote results/nonstat_ar_step/bias_check_nonstat_criterion.csv
+total 100.0s

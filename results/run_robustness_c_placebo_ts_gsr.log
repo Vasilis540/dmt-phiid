@@ -1,0 +1,40 @@
+  [qc] s=7 DMT region 20: zero variance (constant timeseries)
+  [qc] excluding region 20 for ALL subjects and BOTH conditions (pre-registered rule; defective in: s=7 DMT)
+  [qc] regions entering ΦID: 115 (selected 116, excluded 1)
+variant=ts_gsr  regions=115/116 (all)  pairs=6555  subjects=14  conditions=('DMT', 'PCB')
+TRs=840  bins=28  TRs/bin=30  tau=1  fit_mode=placebo
+  subject  1/14 done  (19.4s elapsed)
+  subject  2/14 done  (38.8s elapsed)
+  [warn] s=2 PCB: dropped 1 non-finite TR(s) (tail)
+  subject  3/14 done  (58.1s elapsed)
+  subject  4/14 done  (77.6s elapsed)
+  subject  5/14 done  (96.9s elapsed)
+  subject  6/14 done  (116.3s elapsed)
+  subject  7/14 done  (135.7s elapsed)
+  subject  8/14 done  (154.9s elapsed)
+  subject  9/14 done  (174.2s elapsed)
+  subject 10/14 done  (193.5s elapsed)
+  subject 11/14 done  (212.9s elapsed)
+  subject 12/14 done  (232.4s elapsed)
+  subject 13/14 done  (251.8s elapsed)
+  subject 14/14 done  (271.1s elapsed)
+compute finished in 271.1s (1.5 ms/pair)
+
+array shape: (14, 2, 28, 16)  (atoms: rtr, rtx, rty, rts, xtr, xtx, xty, xts, ytr, ytx, yty, yts, str, stx, sty, sts)
+finite fraction: 0.750
+samples/bin (evaluated slots): min=28 max=30 median=30; empty slots=196
+sts global mean=1.3580  std=0.1569  min=0.9237  max=2.3799
+
+mean synergy (sts) across subjects, per bin:
+  DMT: [1.368 1.294 1.343 1.385 1.328 1.342 1.378 1.4   1.404 1.265 1.23  1.241
+ 1.233 1.273 1.279 1.265 1.26  1.284 1.281 1.313 1.316 1.32  1.323 1.349
+ 1.349 1.394 1.389 1.375]
+/home/vilalius/dmt-phiid/scripts/01_synergy_timecourse.py:457: RuntimeWarning: Mean of empty slice
+  print(f"  {cond_name}:", np.array2string(np.nanmean(synergy_bins[:, c], axis=0),
+  PCB: [  nan   nan   nan   nan   nan   nan   nan   nan   nan   nan   nan   nan
+   nan   nan 1.349 1.404 1.416 1.413 1.43  1.421 1.402 1.462 1.441 1.405
+ 1.489 1.519 1.466 1.436]
+
+wrote results/atoms_bins_115regions-all_ts_gsr_placebo.npy
+wrote results/atoms_bins_local_115regions-all_ts_gsr_placebo.npy
+wrote results/atoms_bins_115regions-all_ts_gsr_placebo.csv
