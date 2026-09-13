@@ -764,6 +764,69 @@ Recorded here **before any results were inspected.**
     verified that this is what happened. Worth one line in the writeup as a
     data-quality note; not a criticism of either paper.
 
+- **Robustness A result, 115 regions (recorded 13 Sep 2026; ts_gsr,
+  global fit, 6,555 pairs, git 18ad8b4;
+  `results/synergy_bins_115regions-all_ts_gsr_global.csv`).** Whole-brain
+  mean sts per 30-TR bin, averaged over the 14 subjects:
+
+  | window | DMT | PCB |
+  |---|---|---|
+  | pre-injection, bins 1–8 | 1.308 | 1.289 |
+  | peak intensity, bins 9–14 | 1.228 | 1.284 |
+  | within-condition change | −0.080 | −0.005 |
+
+  Difference-in-differences −0.075 nats, ≈ 6 % of baseline. The DMT
+  minimum is ≈ 1.20 at bins 11–13, one to three bins after the mean
+  intensity peak at bin 10; DMT recovers to 1.34 by bins 27–28. PCB is
+  flat (range 1.23–1.35) apart from a single-bin dip at bin 10 (1.232),
+  coinciding with injection and recovered by bin 11; the DMT dip spans
+  ≈ 10 bins. **The direction is a DECREASE in synergy under DMT, opposite
+  to the stated hypothesis**, consistent with the earlier 20-region
+  observation and no longer attributable to one contiguous block of
+  cortex. This is a global-fit result (local values under one stationary
+  Gaussian fitted to the full run) and is descriptive only: no null, no
+  motion control, one preprocessing variant. It changes nothing about
+  Primary B or its criteria.
+  - **Pre-registered handling of a directional failure (recorded 13 Sep
+    2026, before any Primary B result).** The hypothesis is directional
+    (synergy is *up*-regulated under DMT). Primary B tests the sign. A
+    significant decrease **refutes the stated hypothesis and is reported
+    as a refutation**; it does not become a confirmation by reframing the
+    hypothesis after the fact (e.g. as "synergy changes under DMT" or
+    "synergy tracks intensity in either direction"). The tracking
+    statistics under Primary B (tiers 1–3, controls (a) and (b)) are
+    sign-agnostic by construction and are still run and reported, but a
+    negative tracking result is reported as tracking in the direction
+    opposite to the pre-registered one. The observation above comes from
+    Robustness A and does not pre-empt Primary B: a global-fit decrease
+    could still be a windowed null, or vice versa.
+  - **Pre-registered secondary prediction on redundancy (recorded 13 Sep
+    2026, BEFORE rtr was examined in any run).** Timmermann et al. 2023
+    report increased global functional connectivity under DMT. Higher
+    pairwise correlation implies more redundant information between
+    regions, so under a redundancy-dominance reading of the sts decrease
+    above, **rtr should increase under DMT while sts decreases, with a
+    mirrored time course** (rtr peak where sts troughs, bins ≈ 10–14;
+    return toward baseline by bins 27–28; placebo flat). **If rtr does
+    not increase, the redundancy-dominance interpretation is
+    unsupported** and the sts decrease is reported without it. Status:
+    **rtr has not been examined to date** — every result so far
+    (`synergy_bins_20regions_*`, `synergy_bins_115regions-all_*`) saved
+    sts alone. To make this testable from the same computation,
+    `01_synergy_timecourse.py` now saves all 16 atoms per bin, shape
+    (14, 2, 28, 16) in phyid order (rtr … sts, names in the CSV header,
+    outputs `atoms_bins_<tag>.npy/.csv`), so rtr and sts come from one
+    run. **Rerun done 13 Sep 2026** (git 18ad8b4-dirty: script and
+    CLAUDE.md edits uncommitted at run time; 6,555 pairs, 14 × 2 runs,
+    ≈ 530 s): `results/atoms_bins_115regions-all_ts_gsr_global.npy/.csv`.
+    Its sts column matches `synergy_bins_115regions-all_ts_gsr_global.npy`
+    to 7e-16, so the sts-only file is superseded, not contradicted.
+    **The rtr column of that file has not been read as of this entry**;
+    the prediction above was written and this rerun completed before
+    anyone opened it. The rtr prediction is assessed on Robustness A
+    first (descriptive, same caveats as above) and then under Primary B
+    with the same nulls and controls as sts.
+
 ## Open questions to resolve
 
 - Confirm reuse licence with Singleton / Timmermann before publishing.
@@ -803,9 +866,9 @@ Recorded here **before any results were inspected.**
 - Decide whether whole-brain synergy is summarised as mean over all pairs or
   restricted to a defined subnetwork — pre-register the choice.
   `REGION_SELECTION` in `01_synergy_timecourse.py` is the knob; `"all"`
-  (mean over all 6,670 pairs) is the current default and the only one used
-  for a reported result so far. Constraint from the bias check: at W = 30
-  the per-pair-window SNR is ≈ 1, so any windowed summary must average
-  over many pairs; regional or edge-level maps are only viable at the
-  global fit.
+  (mean over all pairs; 6,555 after the region-20 exclusion) is the
+  current default and the only one used for a reported result so far.
+  Constraint from the bias check: at W = 30 the per-pair-window SNR is
+  ≈ 1, so any windowed summary must average over many pairs; regional or
+  edge-level maps are only viable at the global fit.
 - Whether to email Stamatakis to collision-check before or after first results.

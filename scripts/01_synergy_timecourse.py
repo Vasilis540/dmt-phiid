@@ -1,9 +1,14 @@
 """
-01_synergy_timecourse.py — whole-brain mean synergy per 30-TR bin.
+01_synergy_timecourse.py — whole-brain mean ΦID atoms per 30-TR bin.
 
-Computes ΦID synergy ('sts' atom) on every pair of regions, averages across
-pairs, then averages within each of the 28 30-TR bins that align with the
-per-subject intensity ratings. Output: (14 subjects, 2 conditions, 28 bins).
+Computes all 16 ΦID atoms on every pair of regions, averages across pairs,
+then averages within each of the 28 30-TR bins that align with the
+per-subject intensity ratings. Output: (14 subjects, 2 conditions, 28 bins,
+16 atoms), atom order as phyid.utils.PhiID_atoms_abbr (rtr ... sts).
+Synergy is atoms[..., ATOMS.index("sts")]; redundancy is rtr. Saving every
+atom from the one run means any secondary atom (e.g. the pre-registered rtr
+prediction, CLAUDE.md) is read from the same computation as sts, never from
+a separate rerun.
 
 REGION_SELECTION chooses which regions enter the pairwise computation:
   "all"    — all 116 parcels (N_REGIONS ignored). The reportable setting.
@@ -36,6 +41,7 @@ import numpy as np
 import scipy.io as sio
 
 from phyid.calculate import calc_PhiID
+from phyid.utils import PhiID_atoms_abbr
 
 # ---------------------------------------------------------------- config
 SEED = 20261120
@@ -53,7 +59,9 @@ EXCLUDE_REGIONS = (20,)
 TAU = 1
 KIND = "gaussian"
 REDUNDANCY = "MMI"
-ATOM = "sts"               # synergy (unique higher-order)
+ATOMS = tuple(PhiID_atoms_abbr)   # all 16 atoms, phyid order; sts = synergy
+N_ATOMS = len(ATOMS)
+assert N_ATOMS == 16 and ATOMS[0] == "rtr" and ATOMS[-1] == "sts", ATOMS
 N_BINS = 28
 TRS_PER_BIN = 30           # 840 TRs / 28 ratings = exactly 30
 FIT_MODE = "global"        # "global" | "window" | "placebo"
@@ -162,8 +170,8 @@ print(f"  [qc] regions entering ΦID: {n_regions} (selected {n_selected}, "
       f"excluded {n_selected - n_regions})")
 
 TAG = f"{n_regions}regions-{REGION_SELECTION}_{VARIANT}_{FIT_MODE}"
-OUT_NPY = RESULTS / f"synergy_bins_{TAG}.npy"
-OUT_CSV = RESULTS / f"synergy_bins_{TAG}.csv"
+OUT_NPY = RESULTS / f"atoms_bins_{TAG}.npy"
+OUT_CSV = RESULTS / f"atoms_bins_{TAG}.csv"
 
 pairs = list(itertools.combinations(range(n_regions), 2))
 n_pairs = len(pairs)
@@ -177,9 +185,9 @@ print(f"TRs={n_trs}  bins={N_BINS}  TRs/bin={TRS_PER_BIN}  tau={TAU}  "
 # ---------------------------------------------------------------- compute
 # NOTE: at least one (subject, condition) has non-finite TRs (sub 2 PCB TR 839
 # is all-NaN across regions in every ts variant). We drop non-finite TRs, then
-# attribute each sts sample to its ORIGINAL TR index so the 30-TR bins stay
+# attribute each atom sample to its ORIGINAL TR index so the 30-TR bins stay
 # aligned with the intensity ratings.
-synergy_bins = np.full((n_subjects, n_conditions, N_BINS), np.nan)
+atoms_bins = np.full((n_subjects, n_conditions, N_BINS, N_ATOMS), np.nan)
 bin_counts = np.zeros((n_subjects, n_conditions, N_BINS), dtype=int)
 
 t0 = time.time()
@@ -199,22 +207,23 @@ for s in range(n_subjects):
                   f"non-finite TR(s) ({note})")
         X_clean = X[:, kept]
 
-        # accumulate mean-over-pairs of sts on the cleaned series
-        sts_sum = np.zeros(kept.size - TAU)
+        # accumulate mean-over-pairs of every atom on the cleaned series
+        atom_sum = np.zeros((N_ATOMS, kept.size - TAU))
         for i, j in pairs:
             atoms, _ = calc_PhiID(X_clean[i], X_clean[j], tau=TAU,
                                   kind=KIND, redundancy=REDUNDANCY)
-            sts_sum += np.asarray(atoms[ATOM])
-        sts_mean = sts_sum / n_pairs
+            for a, name in enumerate(ATOMS):
+                atom_sum[a] += np.asarray(atoms[name])
+        atom_mean = atom_sum / n_pairs
 
-        # sts sample p corresponds to transition kept[p] -> kept[p+TAU];
+        # atom sample p corresponds to transition kept[p] -> kept[p+TAU];
         # attribute it to start TR kept[p]. Bin b covers TRs b*30..(b+1)*30-1.
-        start_tr = kept[:sts_mean.size]
+        start_tr = kept[:atom_mean.shape[1]]
         bin_of = start_tr // TRS_PER_BIN
         for b in range(N_BINS):
             m = bin_of == b
             if m.any():
-                synergy_bins[s, c, b] = sts_mean[m].mean()
+                atoms_bins[s, c, b, :] = atom_mean[:, m].mean(axis=1)
                 bin_counts[s, c, b] = int(m.sum())
 
     print(f"  subject {s + 1:2d}/{n_subjects} done  "
@@ -240,34 +249,36 @@ except (subprocess.CalledProcessError, FileNotFoundError):
     sha = "nogit"
 
 # ---------------------------------------------------------------- save
-np.save(OUT_NPY, synergy_bins)
+np.save(OUT_NPY, atoms_bins)
 
 with open(OUT_CSV, "w") as fh:
     fh.write("# script=01_synergy_timecourse.py "
              f"variant={VARIANT} regions={n_regions} "
              f"region_selection={REGION_SELECTION} "
              f"excluded_regions={','.join(map(str, EXCLUDE_REGIONS)) or 'none'} "
-             f"atom={ATOM} "
+             f"atoms={','.join(ATOMS)} "
              f"tau={TAU} redundancy={REDUNDANCY} fit_mode={FIT_MODE} "
              f"seed={SEED} git={sha}\n")
-    fh.write("subject,condition,bin,synergy_mean\n")
+    fh.write("subject,condition,bin," + ",".join(ATOMS) + "\n")
     for s in range(n_subjects):
         for c, cond_name in enumerate(CONDITIONS):
             for b in range(N_BINS):
-                fh.write(f"{s},{cond_name},{b},{synergy_bins[s, c, b]:.6f}\n")
+                vals = ",".join(f"{v:.6f}" for v in atoms_bins[s, c, b])
+                fh.write(f"{s},{cond_name},{b},{vals}\n")
 
 # ---------------------------------------------------------------- summary
 print()
-print(f"array shape: {synergy_bins.shape}")
-print(f"finite fraction: {np.isfinite(synergy_bins).mean():.3f}")
+synergy_bins = atoms_bins[..., ATOMS.index("sts")]
+print(f"array shape: {atoms_bins.shape}  (atoms: {', '.join(ATOMS)})")
+print(f"finite fraction: {np.isfinite(atoms_bins).mean():.3f}")
 print(f"samples/bin: min={bin_counts.min()} max={bin_counts.max()} "
       f"median={int(np.median(bin_counts))}")
-print(f"global mean={np.nanmean(synergy_bins):.4f}  "
+print(f"sts global mean={np.nanmean(synergy_bins):.4f}  "
       f"std={np.nanstd(synergy_bins):.4f}  "
       f"min={np.nanmin(synergy_bins):.4f}  "
       f"max={np.nanmax(synergy_bins):.4f}")
 print()
-print("mean synergy across subjects, per bin:")
+print("mean synergy (sts) across subjects, per bin:")
 for c, cond_name in enumerate(CONDITIONS):
     print(f"  {cond_name}:", np.array2string(np.nanmean(synergy_bins[:, c], axis=0),
                                              precision=3, suppress_small=True))

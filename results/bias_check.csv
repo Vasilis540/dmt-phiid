@@ -1,4 +1,4 @@
-# script=02_bias_check.py tau=1 kind=gaussian redundancy=MMI n_windows=2000 burn_in=200 seed=20261120 git=e01c836-dirty n_runs=2000 n_boot=2000 m_decide=1338/742 threshold=0.8
+# script=02_bias_check.py tau=1 kind=gaussian redundancy=MMI n_windows=2000 burn_in=200 seed=20261120 git=18ad8b4 n_runs=20000 n_boot=2000 m_decide=1338/742 threshold=0.8
 condition,window,atom,n,analytic,est_mean,bias,bias_ci_lo,bias_ci_hi,est_sd,bias_oracle_sel,sel_bias,rtr_selection_flip_frac,any_selection_flip_frac
 baseline,30,sts,2000,0.261884,0.079298,-0.182587,-0.186456,-0.178717,0.088283,-0.083101,-0.099486,0.134500,0.467000
 baseline,30,rtr,2000,0.035883,0.026529,-0.009355,-0.011164,-0.007545,0.041295,0.017813,-0.027167,0.134500,0.467000

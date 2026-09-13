@@ -1,0 +1,39 @@
+nohup: ignoring input
+[baseline] a=(0.5, 0.5) c=(0.1, 0.1) q=0.2 s=(1.0, 1.0)  autocorr=(0.53,0.53) corr(x,y)=0.33
+    analytic sts=0.2619 rtr=0.0359  single-target MIs I_xta=0.1668 I_xtb=0.0359 I_yta=0.0359 I_ytb=0.1668  (2 of 4 tied at the min)
+    W= 30  sts: bias=-0.1826 (oracle-sel -0.0831) sd=0.0883  rtr: bias=-0.0094 (oracle-sel +0.0178) sd=0.0413  flip rtr=0.135 any=0.467  (5s)
+    W= 60  sts: bias=-0.1289 (oracle-sel -0.0413) sd=0.0897  rtr: bias=-0.0081 (oracle-sel +0.0079) sd=0.0322  flip rtr=0.028 any=0.152  (9s)
+    W=840  sts: bias=-0.0291 (oracle-sel -0.0032) sd=0.0311  rtr: bias=-0.0037 (oracle-sel +0.0006) sd=0.0104  flip rtr=0.000 any=0.000  (16s)
+[shift_coupling] a=(0.5, 0.5) c=(0.3, 0.3) q=0.2 s=(1.0, 1.0)  autocorr=(0.68,0.68) corr(x,y)=0.60
+    analytic sts=0.1948 rtr=0.2231  single-target MIs I_xta=0.3103 I_xtb=0.2231 I_yta=0.2231 I_ytb=0.3103  (2 of 4 tied at the min)
+    W= 30  sts: bias=-0.1359 (oracle-sel -0.0699) sd=0.0728  rtr: bias=-0.1132 (oracle-sel -0.0560) sd=0.1046  flip rtr=0.302 any=0.727  (20s)
+    W= 60  sts: bias=-0.1168 (oracle-sel -0.0338) sd=0.0723  rtr: bias=-0.0699 (oracle-sel -0.0273) sd=0.0967  flip rtr=0.170 any=0.566  (25s)
+    W=840  sts: bias=-0.0363 (oracle-sel -0.0026) sd=0.0330  rtr: bias=-0.0130 (oracle-sel -0.0039) sd=0.0316  flip rtr=0.000 any=0.001  (32s)
+[shift_noisecorr] a=(0.5, 0.5) c=(0.1, 0.1) q=0.6 s=(1.0, 1.0)  autocorr=(0.57,0.57) corr(x,y)=0.68
+    analytic sts=0.1948 rtr=0.1076  single-target MIs I_xta=0.1948 I_xtb=0.1076 I_yta=0.1076 I_ytb=0.1948  (2 of 4 tied at the min)
+    W= 30  sts: bias=-0.1309 (oracle-sel -0.0585) sd=0.0716  rtr: bias=-0.0406 (oracle-sel -0.0031) sd=0.0711  flip rtr=0.162 any=0.640  (36s)
+    W= 60  sts: bias=-0.0987 (oracle-sel -0.0294) sd=0.0746  rtr: bias=-0.0300 (oracle-sel -0.0061) sd=0.0565  flip rtr=0.051 any=0.361  (41s)
+    W=840  sts: bias=-0.0259 (oracle-sel -0.0022) sd=0.0265  rtr: bias=-0.0065 (oracle-sel +0.0004) sd=0.0184  flip rtr=0.000 any=0.000  (47s)
+[asym_baseline] a=(0.55, 0.4) c=(0.15, 0.05) q=0.2 s=(1.0, 1.4)  autocorr=(0.60,0.41) corr(x,y)=0.31
+    analytic sts=0.0942 rtr=0.0137  single-target MIs I_xta=0.2278 I_xtb=0.0137 I_yta=0.0644 I_ytb=0.0934  (1 of 4 tied at the min)
+    W= 30  sts: bias=-0.0354 (oracle-sel -0.0360) sd=0.0761  rtr: bias=+0.0075 (oracle-sel +0.0208) sd=0.0323  flip rtr=0.399 any=0.840  (52s)
+    W= 60  sts: bias=-0.0156 (oracle-sel -0.0227) sd=0.0736  rtr: bias=+0.0063 (oracle-sel +0.0099) sd=0.0265  flip rtr=0.193 any=0.653  (56s)
+    W=840  sts: bias=-0.0000 (oracle-sel -0.0003) sd=0.0282  rtr: bias=+0.0006 (oracle-sel +0.0006) sd=0.0072  flip rtr=0.000 any=0.042  (63s)
+[asym_shift_coupling] a=(0.55, 0.4) c=(0.35, 0.2) q=0.2 s=(1.0, 1.4)  autocorr=(0.73,0.50) corr(x,y)=0.50
+    analytic sts=0.0380 rtr=0.0860  single-target MIs I_xta=0.3759 I_xtb=0.0860 I_yta=0.2518 I_ytb=0.1430  (1 of 4 tied at the min)
+    W= 30  sts: bias=-0.0061 (oracle-sel +0.0019) sd=0.0463  rtr: bias=-0.0319 (oracle-sel -0.0177) sd=0.0664  flip rtr=0.324 any=0.716  (67s)
+    W= 60  sts: bias=-0.0071 (oracle-sel -0.0005) sd=0.0367  rtr: bias=-0.0189 (oracle-sel -0.0112) sd=0.0578  flip rtr=0.218 any=0.546  (72s)
+    W=840  sts: bias=-0.0001 (oracle-sel -0.0001) sd=0.0096  rtr: bias=-0.0014 (oracle-sel -0.0014) sd=0.0196  flip rtr=0.000 any=0.003  (78s)
+[asym_shift_noisecorr] a=(0.55, 0.4) c=(0.15, 0.05) q=0.6 s=(1.0, 1.4)  autocorr=(0.66,0.43) corr(x,y)=0.64
+    analytic sts=0.0396 rtr=0.0469  single-target MIs I_xta=0.2859 I_xtb=0.0469 I_yta=0.1601 I_ytb=0.1011  (1 of 4 tied at the min)
+    W= 30  sts: bias=+0.0007 (oracle-sel -0.0034) sd=0.0503  rtr: bias=-0.0058 (oracle-sel +0.0031) sd=0.0527  flip rtr=0.303 any=0.636  (83s)
+    W= 60  sts: bias=+0.0016 (oracle-sel -0.0015) sd=0.0386  rtr: bias=-0.0028 (oracle-sel -0.0002) sd=0.0407  flip rtr=0.141 any=0.351  (87s)
+    W=840  sts: bias=-0.0003 (oracle-sel -0.0003) sd=0.0099  rtr: bias=+0.0003 (oracle-sel +0.0003) sd=0.0127  flip rtr=0.000 any=0.000  (94s)
+
+NON-STATIONARY conditions
+[nonstat_step_coupling] true sts per bin: 0.094 0.094 0.094 0.094 0.094 0.094 0.094 0.094 0.038 0.038 0.038 0.038 0.038 0.038 0.038 0.038 0.038 0.038 0.038 0.038 0.038 0.038 0.038 0.038 0.038 0.038 0.038 0.038
+    simulated + estimated 20000 runs (1827s)
+    W= 30 sts pre/post-switch means: true 0.0942->0.0380 (Δ -0.0562)  est 0.0584->0.0316 (Δ -0.0268, 48% of true)
+    W= 60 sts pre/post-switch means: true 0.0942->0.0380 (Δ -0.0562)  est 0.0775->0.0302 (Δ -0.0473, 84% of true)
+    global fit sts: est 0.0459  regimes pre 0.0942 / peak 0.0380  weighted-mean truth 0.0541  mixture-cov truth 0.0463
+[nonstat_step_noisecorr] true sts per bin: 0.094 0.094 0.094 0.094 0.094 0.094 0.094 0.094 0.040 0.040 0.040 0.040 0.040 0.040 0.040 0.040 0.040 0.040 0.040 0.040 0.040 0.040 0.040 0.040 0.040 0.040 0.040 0.040
