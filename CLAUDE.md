@@ -1850,6 +1850,145 @@ motion handling.
   an independent model; magnitude and within-DMT significance do not
   transfer.**
 
+## Subject alignment across files (checked 13 Sep 2026)
+
+**Question.** The scripts assume the timeseries subject axis, the columns
+of `FDlong.mat`, the rows of `intensity_ratings.mat` and the rows of the
+EEG LZ regressor share one ordering. No numeric array carries subject IDs.
+Evidence collected by `scripts/10_subject_alignment_check.py` (report
+`results/subject_alignment_check.txt`, permutation table
+`results/subject_alignment_permtests.csv`, log
+`results/run_10_subject_alignment_check.log`; run at 66b570e-dirty, the
+script itself being the uncommitted file). Results recorded, no
+interpretation beyond the verdict.
+
+- **(a) MATLAB indexing.** One loop variable `i` in `1:nsub` indexes
+  `TS{i,1}` / `TS{i,2}` (`01_gen_time_resolved_ce.m:30-49`),
+  `dmt_intensity(i,:)` and `pcb_intensity(i,:)`
+  (`02_global_ce_analyses.m:545,560`), and `RegDMT2(i,:)` / `RegPCB2(i,:)`
+  (`:514,529`). FD is laid out as (TRs, subjects) and used only at the
+  group level (`:444,461,479`: mean over subjects), so FD-to-subject
+  alignment is asserted by the layout, not exercised per subject, in the
+  original code.
+- **(b) Subject index 2, PCB, TR 839.** The timeseries is NaN in all 116
+  regions in all four variants at that one (subject, condition, TR).
+  **`FDPCB[839, 2] = 0.0 exactly**; it is the only exact zero beyond TR 0
+  in any of the 28 FD columns (TR 0 is 0 for every column), and it is the
+  0th percentile of its own column (median 0.091). `FDDMT[839, 2]` is
+  0.058, normal. Verdict for that cell: **anomalous, co-located with the
+  timeseries defect** (an FD of 0 is what a missing displacement
+  computation yields). LZ shows nothing at that TR (interpolated,
+  HRF-convolved EEG series).
+- **(c) Other cross-file evidence.**
+  - **Subject IDs recovered from `intensity_ratings.mat`.** The file also
+    holds two opaque MATLAB `table` objects (`DMT_intensity`,
+    `PCB_intensity`), decodable from scipy's `__function_workspace__`:
+    23 rows (20 subject codes + SD/SEM/average) × 28 rating columns. The
+    14-row `dmt_intensity` array matches, row by row and uniquely, table
+    subjects **S02WT, S03CT, S06JB, S07MN, S10RM, S11AE, S12AP, S13HK,
+    S15LP, S17CS, S18CS, S19SG, S23LPJ, S25MM** in that order, i.e. the
+    table order with **S01TW, S08RS, S09SR, S14LL, S16JM, S22EK** removed
+    (14 of 20; Timmermann et al. recruited 20, Singleton et al. analyse
+    14). The two placebo rows with non-zero ratings (indices 5 and 7)
+    match S11AE and S13HK, the same subjects as their DMT rows, so the
+    DMT and PCB rating arrays share one ordering. No other file carries
+    IDs, so this fixes the ratings order as ascending subject code but
+    cannot by itself tie it to the timeseries.
+  - **Matched vs mismatched pairings** (per-subject 28-bin series with
+    the group-mean curve removed; mean matched Spearman ρ against 20,000
+    permutations of the subject assignment, two-sided about the
+    mismatched mean). Timeseries-derived sts and total TDMI (ts_gsr
+    global-fit atoms) vs EEG LZ on DMT: matched **−0.173 / −0.165**
+    against mismatched +0.005 / +0.001, **p = 0.008 / 0.009**. TDMI vs
+    FD on PCB: −0.111 vs +0.008, p = 0.043; LZ vs FD on PCB: +0.102 vs
+    −0.010, p = 0.047. Ratings vs FD on DMT: +0.186 vs +0.014,
+    p = 0.076. Ratings vs LZ, sts, TDMI: p = 0.24–0.56 (the ratings
+    carry little subject-specific shape once the group curve is removed:
+    every subject's first rating ≥ half-max is bin 9). All other cells
+    null; full table in the CSV.
+  - **TR-level FD vs DVARS** (frame-to-frame RMS change of raw `ts`):
+    diagonal mean +0.05 / +0.06, off-diagonal −0.02 / +0.01, argmax on
+    self in 4/14 rows for both conditions. Uninformative on these
+    denoised, band-passed, scrub-interpolated timeseries; not evidence
+    against alignment.
+  - File creation dates differ (ratings Aug 2022, LZ Feb 2023,
+    timeseries May 2023, FD Dec 2023); the submodule has a single
+    squashed commit, so git history gives no provenance.
+- **Verdict.** Timeseries ↔ FD: **verified at one subject** (the
+  co-located defect), weakly supported statistically; a single co-located
+  row does not exclude a permutation of the other 13, which the
+  statistical tests lack power to detect. Timeseries ↔ EEG LZ:
+  **verified** statistically (p < 0.01) and by the MATLAB per-subject
+  loop. Ratings ↔ timeseries and ratings ↔ FD: **plausible, not
+  verified** (MATLAB per-subject loop; ratings in ascending subject-code
+  order; ratings-vs-FD in the expected direction at p = 0.08). Overall:
+  **plausible with two pairs verified; nothing found contradicts a single
+  shared ordering.** Full verification needs the authors' subject list.
+
+## Global functional connectivity per bin (`09_global_fc_per_bin.py`, 13 Sep 2026)
+
+Mean Pearson r over all 6,555 pairs (115 regions, region 20 excluded) per
+subject, condition and 30-TR bin, each bin correlated on its own TRs
+(subject index 2 PCB bin 28 uses 29 TRs). Arrays
+`results/global_fc_bins_115regions-all_<variant>.npy` (14, 2, 28);
+contrasts `results/global_fc_did_<variant>.csv`; logs
+`results/run_09_<variant>.log`; run at 66b570e-dirty (the script was the
+uncommitted file). DiD = (post − pre) DMT − (post − pre) PCB, pre = bins
+1–8, post = bins 11–28 (primary) / 9–28 (sensitivity) / 9–14 (peak);
+exact sign-flip test over 2^14 assignments, two-sided; subject-bootstrap
+95 % CI, 10,000 draws, seed 20261120; no temporal null, no motion
+handling. The whole-brain sts DiD from the global-fit atoms file on the
+identical bins is placed alongside; the two numbers are reported side by
+side and their relationship is not interpreted here.
+
+**ts_gsr.** Group-mean r is ≈ −0.002 in every bin of both conditions
+(DMT range −0.0058 to −0.0008, PCB −0.0053 to −0.0010): global signal
+regression pins the pair-mean correlation near zero by construction, so
+any contrast on this variant is a shift within that constraint and the
+"share of baseline" figure is not meaningful (negative baseline).
+
+| set | quantity | DMT post − pre | PCB post − pre | DiD [95 % CI] | p | neg/pos |
+|---|---|---|---|---|---|---|
+| primary 11–28 | mean r | −0.0020 (p 0.006) | +0.0013 (p 0.020) | **−0.0034 [−0.0051, −0.0017]** | **0.0024** | 11/3 |
+| primary 11–28 | sts, global fit (nats) | −0.0521 (p 0.045) | +0.0280 (p 0.047) | −0.0801 [−0.1303, −0.0310] | 0.0071 | 12/2 |
+| sensitivity 9–28 | mean r | −0.0020 (p 0.005) | +0.0012 (p 0.022) | −0.0032 [−0.0047, −0.0017] | 0.0017 | 11/3 |
+| sensitivity 9–28 | sts (nats) | −0.0515 | +0.0220 | −0.0735 [−0.1237, −0.0236] | 0.0112 | 12/2 |
+| peak 9–14 | mean r | −0.0025 (p 0.0002) | +0.0007 (p 0.28) | −0.0032 [−0.0050, −0.0015] | 0.0023 | 12/2 |
+| peak 9–14 | sts (nats) | −0.0808 | −0.0056 | −0.0752 [−0.1114, −0.0335] | 0.0044 | 13/1 |
+
+Pre-injection mean r: DMT −0.0020, PCB −0.0039. **On ts_gsr, mean
+pairwise r does not rise under DMT; the DiD is negative** (DMT falls by
+0.002, PCB rises by 0.001, within a quantity held near zero by GSR).
+
+**ts_demean (no GSR).** Group-mean r per bin, DMT: 0.201 0.183 0.191
+0.181 0.205 0.196 0.184 0.184 **0.326** 0.287 0.226 0.269 0.252 0.254
+0.204 0.204 0.218 0.259 0.205 0.227 0.238 0.230 0.250 0.260 0.241 0.229
+0.213 0.220; PCB: 0.210 0.201 0.153 0.149 0.154 0.155 0.151 **0.278
+0.336** 0.142 0.155 0.152 0.154 0.171 0.189 0.174 0.195 0.161 0.162
+0.183 0.159 0.195 0.168 0.170 0.170 0.180 0.172 0.172. Both conditions
+show an injection-locked jump at bins 8–9 (PCB 0.278 / 0.336 against a
+≈ 0.15 baseline; DMT 0.326 at bin 9), the same bins as the placebo rtr
+bump recorded under Robustness A; DMT stays elevated afterwards
+(0.20–0.27) while PCB returns to 0.14–0.20 by bin 10.
+
+| set | quantity | DMT post − pre | PCB post − pre | DiD [95 % CI] | p | neg/pos |
+|---|---|---|---|---|---|---|
+| primary 11–28 | mean r | +0.0426 [+0.0006, +0.0872] (p 0.093) | −0.0100 (p 0.59) | **+0.0526 [+0.0073, +0.0976]** | **0.0470** | 4/10 |
+| primary 11–28 | sts, global fit (nats) | −0.0684 (p 0.064) | +0.0351 (p 0.054) | −0.1035 [−0.1678, −0.0357] | 0.0132 | 11/3 |
+| sensitivity 9–28 | mean r | +0.0500 (p 0.047) | −0.0032 (p 0.87) | +0.0532 [+0.0113, +0.0930] | 0.0322 | 4/10 |
+| sensitivity 9–28 | sts (nats) | −0.0613 | +0.0297 | −0.0909 [−0.1536, −0.0254] | 0.0175 | 11/3 |
+| peak 9–14 | mean r | +0.0783 (p 0.003) | +0.0037 (p 0.81) | +0.0746 [+0.0293, +0.1282] | 0.0046 | 3/11 |
+| peak 9–14 | sts (nats) | −0.0887 | −0.0077 | −0.0810 [−0.1446, −0.0176] | 0.0348 | 11/3 |
+
+Pre-injection mean r: DMT 0.1905, PCB 0.1813; primary DiD is +28 % of the
+DMT pre-injection mean, positive in 10 of 14 subjects. **On ts_demean,
+mean pairwise r rises under DMT** (DiD positive and significant on all
+three post sets), which is the direction Timmermann et al. 2023 reported
+for global functional connectivity. **It does not do so on ts_gsr.** The
+sts DiD is negative on both variants on the same bins (ts_gsr −0.0801,
+ts_demean −0.1035, primary set). The relationship between the two
+quantities is not interpreted here.
+
 ## Open questions to resolve
 
 - Confirm reuse licence with Singleton / Timmermann before publishing.

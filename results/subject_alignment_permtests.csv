@@ -1,0 +1,16 @@
+# 10_subject_alignment_check.py git=66b570e-dirty seed=20261120 n_perm=20000
+a,b,label,matched_mean_rho,mismatched_mean_rho,p_perm_two_sided,n_argmax_self
+ratings_DMT,LZ_DMT,ratings vs EEG-LZ,0.0801,0.0063,0.5636,2
+ratings_DMT,FD_DMT,ratings vs FD,0.1857,0.0140,0.0763,3
+ratings_DMT,sts_gsrglobal_DMT,ratings vs timeseries-derived sts,-0.0651,-0.0029,0.3360,1
+ratings_DMT,TDMI_gsrglobal_DMT,ratings vs timeseries-derived TDMI,-0.0876,-0.0092,0.2384,2
+LZ_DMT,FD_DMT,EEG-LZ vs FD,0.0861,0.0059,0.4008,2
+LZ_PCB,FD_PCB,EEG-LZ vs FD,0.1020,-0.0095,0.0465,3
+sts_gsrglobal_DMT,LZ_DMT,timeseries-derived sts vs EEG-LZ,-0.1733,0.0053,0.0078,1
+TDMI_gsrglobal_DMT,LZ_DMT,timeseries-derived TDMI vs EEG-LZ,-0.1655,0.0010,0.0092,1
+sts_gsrglobal_PCB,LZ_PCB,timeseries-derived sts vs EEG-LZ,-0.0127,0.0074,0.7333,0
+TDMI_gsrglobal_PCB,LZ_PCB,timeseries-derived TDMI vs EEG-LZ,-0.0246,0.0136,0.5069,0
+sts_gsrglobal_DMT,FD_DMT,timeseries-derived sts vs FD,-0.0330,-0.0031,0.6291,0
+sts_gsrglobal_PCB,FD_PCB,timeseries-derived sts vs FD,-0.0904,0.0080,0.0885,1
+TDMI_gsrglobal_DMT,FD_DMT,timeseries-derived TDMI vs FD,-0.1049,-0.0030,0.0887,0
+TDMI_gsrglobal_PCB,FD_PCB,timeseries-derived TDMI vs FD,-0.1109,0.0084,0.0434,0
