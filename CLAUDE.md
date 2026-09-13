@@ -2001,6 +2001,164 @@ the mean correlation near zero by construction. Both conditions show an
 injection-locked jump in mean r at bins 8–9 on ts_demean, consistent
 with the placebo rtr bump already recorded under Robustness A.
 
+## Exploratory: regional analysis (pre-specified 13 Sep 2026, before any code)
+
+**Status: EXPLORATORY.** Specified after the primary result (Primary B,
+whole-brain DiD negative, tier 3) and the global-fit Robustness A results
+existed, so it is not a pre-registration in the sense of the sections
+above. It is fixed here before any regional number is computed and before
+`scripts/11_regional_analysis.py` is written, and **every part of it is
+reported regardless of outcome**, labelled exploratory in every table and
+figure. No prediction is recorded: none is made. Script is numbered 11
+because 10 is the subject-alignment check.
+
+**Data and estimator.** Robustness A global fit (one Gaussian per pair per
+run, `calc_PhiID(kind='gaussian', redundancy='MMI', tau=1)`, non-finite TRs
+dropped), ts_gsr primary, ts_demean sensitivity (rule 6). The saved atoms
+files hold only the pair mean, so the per-pair local atoms are recomputed
+with the identical code path and settings as `01_synergy_timecourse.py`
+(≈ 9 min per variant). **Per-region synergy** = mean sts over the 114
+pairs containing that region, per 30-TR bin, per subject, per condition
+(115 regions, region 20 dropped as everywhere); rtr is kept alongside for
+the descriptive rank check below. Saved as
+`results/regional_atoms_bins_115regions-all_<variant>_global.npy`, shape
+(14, 2, 28, 115, 2) for (sts, rtr). No motion handling (Robustness A
+status; FD is not regressed at the regional level).
+
+**Per-region contrast.** Per region and subject, DiD = (post bins 11–28
+− pre bins 1–8) on DMT minus the same on PCB. Test per region: exact
+sign-flip across the 14 subjects, all 2^14 assignments, two-sided.
+**Multiple comparisons: Benjamini–Hochberg FDR at q = 0.05 across the 115
+regions** (rule 7). Reported: the number of regions surviving FDR and their
+sign, the group-mean DiD map (115 values), the per-region p and BH
+threshold, and the sign count (how many of 115 group-mean DiDs are
+negative). The whole-brain mean of the 115 regional DiDs equals the
+whole-brain pair-mean DiD already recorded (each pair enters two regions),
+which is checked as an internal consistency test.
+
+**Spatial correlation with 5-HT2A (rule 1).** Spearman ρ between the
+group-mean DiD map and `mean5HT2A_sch116` (`5HTvecs_sch116.mat`), region 20
+dropped from both.
+- **What `external/DMT_NCT/fxns/SpinTests` provides (checked 13 Sep
+  2026).** `perm_sphere_p_al857.m` (Váša 2018) takes a precomputed
+  `perm_id` array and correlates each permuted map with the unpermuted
+  other map in both directions, averaging the two one-sided p-values (in
+  the direction of the empirical sign). `rotated_maps/rotated_Schaefer_100.mat`
+  (v7.3, read with h5py) holds `perm_id` of shape (10,000, 100), 1-based,
+  each row a permutation of the 100 **cortical** Schaefer parcels; the
+  rotations map left-hemisphere parcels (indices 0–49) to the left
+  hemisphere in 98 % of entries (observed, not assumed). **There is no
+  rotated map for the 16 subcortical parcels (indices 100–115, network 8
+  in `sch116_to_yeo.csv`) and none can exist**: spin tests rotate points
+  on the cortical sphere, and subcortical nuclei have no spherical
+  coordinates. `quick_SpinTest.m` says so ("NB must be cortical only").
+  Singleton et al. handled it the same way (`03_regional_ce_analyses.m:66`:
+  "no subcortex so can spin", `rec_nosub = receptor_vec(1:100)`).
+- **Handling fixed here.** (i) **Primary: the spin test is run on the 99
+  cortical parcels** (100 minus region 20). Region 20 is set to NaN in
+  both maps; each rotation is applied to the 100-parcel vectors and any
+  position whose rotated source or target is NaN is dropped from that
+  rotation's correlation (the `'rows','complete'` semantics of the MATLAB
+  function). All 10,000 rotations, both directions, p as the MATLAB
+  function computes it (mean of the two one-sided p in the empirical
+  direction) and also the two-sided version (fraction of |ρ_null| ≥ |ρ|),
+  which is the one reported as the test. (ii) **The 115-region ρ
+  including subcortex is reported as a descriptive number without a p**:
+  no spatial null is available for it, and a naive permutation of parcel
+  labels ignores spatial autocorrelation, which rule 1 forbids. (iii)
+  **Specificity: the same cortical spin test against 5-HT1A, 5-HT1B,
+  5-HT4 and 5-HTT** from the same file, five correlations in one table,
+  **BH FDR across the five** stated explicitly; the receptor maps are
+  inter-correlated (their Spearman correlation matrix is printed), so
+  specificity is bounded by that and is described, not claimed.
+- Parcel names for the 100 cortical parcels come from
+  `data/Schaefer2018_100Parcels_7Networks_order.lut`, downloaded 13 Sep
+  2026 from the CBIG repository
+  (`stable_projects/brain_parcellation/Schaefer2018_LocalGlobal/Parcellations/MNI/fsleyes_lut/`);
+  its network sequence equals the first 100 entries of `sch116_to_yeo.csv`
+  exactly (checked), which fixes the parcel order as Schaefer-100
+  7-network, LH 0–49, RH 50–99. Region 20 is `LH_DorsAttn_Post_6`. The 16
+  subcortical parcel identities are not documented in the source repo and
+  are not needed below.
+
+**Workspace comparison (Luppi et al. eLife 2024).**
+- **What Luppi et al. define (from the paper, PMC11257694, read 13 Sep
+  2026).** The synergistic global workspace is the set of regions "whose
+  rank, in terms of strength of synergy with the rest of the brain, is
+  greater than the corresponding strength rank for redundancy", computed
+  on 100 HCP subjects in the Schaefer-400 + Tian-54 parcellation (454
+  ROIs; Schaefer-200 + Tian-32 as robustness). Within the workspace,
+  **gateways** have a highly ranked participation coefficient for
+  synergistic interactions and **broadcasters** for redundant ones.
+  Anatomically: gateways "primarily in the brain's default mode
+  network" (bilateral precuneus, medial prefrontal cortex, bilateral
+  inferior parietal cortex, left temporal cortex); broadcasters "mainly
+  located in the executive control network, especially lateral
+  prefrontal cortex". The regions with reduced integrated information
+  under propofol and in DoC were DMN gateways (bilateral precuneus, mPFC,
+  bilateral inferior parietal). **No region list or count is published**;
+  the map exists only as figures.
+- **Mapping onto Schaefer-116, fixed here.** Because the workspace is a
+  data-driven rank rule on a different parcellation and is available only
+  as a figure, it is mapped at the network level using the Yeo-7 labels
+  the parcellation carries:
+  - **Workspace proxy (primary): Yeo Default ∪ Control = 24 + 13 = 37
+    cortical parcels.** Gateway proxy = the 24 Default parcels;
+    broadcaster proxy = the 13 Control parcels.
+  - **Named-subregion proxy (sensitivity), closest to the text:** gateways
+    = Default `pCunPCC` (4), Default `PFC` / `PFCv` / `PFCdPFCm` (12),
+    Default `Par` (3), and left-hemisphere Default `Temp` (2) = 21
+    parcels; broadcasters = Control `PFCl` (5 parcels). Workspace = 26.
+  - **Non-workspace = the remaining cortical parcels** (62 for the
+    primary proxy, 73 for the named proxy). The 16 subcortical parcels
+    are excluded from the comparison in the primary form and included in
+    the non-workspace set as a sensitivity, because Luppi et al.'s named
+    workspace regions are all cortical while their parcellation did
+    include subcortex.
+  - **Limitations, recorded now:** (1) a network atlas is a proxy for a
+    rank rule computed on other subjects at 4× the resolution; (2)
+    Schaefer-100 parcels are large, so precuneus, PCC, mPFC and IPL are
+    each one or two parcels and "inferior parietal" vs "Control Par"
+    boundaries are atlas conventions; (3) the gateway / broadcaster split
+    depends on participation coefficients we do not compute; (4) the
+    proxy is fixed by atlas labels, not by any quantity from these data,
+    so it involves no selection on the tested effect (rule 3).
+- **Statistic.** Per subject: mean regional DiD over workspace parcels
+  minus mean over non-workspace parcels; exact sign-flip test across 14
+  subjects, two-sided; subject-bootstrap 95 % CI (10,000 draws, seed
+  20261120). Reported for the primary proxy, the named proxy, and each of
+  gateway proxy vs non-workspace and broadcaster proxy vs non-workspace;
+  also the workspace and non-workspace group means with CIs. **Sign
+  convention: a negative difference means the DMT synergy decrease is
+  larger (more negative) in the workspace proxy than outside it.**
+- **Descriptive check of whether these data reproduce the rank rule at
+  all (no test, no selection).** Per region, mean sts strength and mean
+  rtr strength over the **placebo run, all 28 bins, 14-subject mean**;
+  rank each across the 115 regions; a region is "rank-rule workspace" if
+  its synergy rank exceeds its redundancy rank. Reported: the count, the
+  overlap with the network proxy (count and Jaccard index), and the
+  Yeo-network composition of the rank-rule set. This is reported to show
+  how far the proxy and the rule agree on these data; it is **not** used
+  to define the workspace for the test above (it would share subjects
+  with the tested contrast).
+- **What this permits.** Only a sentence of the form "the DMT decrease in
+  whole-brain synergy is / is not concentrated in a network-level proxy of
+  the Luppi et al. synergistic workspace", with the proxy's limitations
+  stated. It does **not** permit "synergy falls under DMT as it does under
+  propofol / in DoC": Luppi et al. report integrated information (ΦR) on
+  workspace regions, a different quantity, and the states differ. The
+  caution recorded under Robustness A stands.
+
+**Predictions recorded before running: none** (exploratory).
+
+**Outputs.** `results/regional_analysis_<variant>.csv` (all tables),
+`results/regional_atoms_bins_115regions-all_<variant>_global.npy`,
+`results/regional_did_map_<variant>.csv` (115 rows: index, name, network,
+group-mean DiD, p, BH-significant), log `results/run_11_<variant>.log`.
+Seed 20261120; git SHA in every header. Run order: ts_gsr, then ts_demean.
+The script is written after this entry is committed and is not run until
+instructed.
+
 ## Open questions to resolve
 
 - Confirm reuse licence with Singleton / Timmermann before publishing.
