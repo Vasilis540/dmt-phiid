@@ -1803,7 +1803,52 @@ not apply, and the script reports (i) the within-DMT step, bins 11–28
 minus 1–8 (9–28 sensitivity), and (ii) DMT minus PCB on the matched
 out-of-sample bins 15–28, each with the sign-flip test and bootstrap CI,
 alongside the same contrasts from the native global fit on the identical
-bins. Its numbers are NOT yet recorded here: to be added once reviewed.**
+bins.**
+
+**Robustness C result (ts_gsr, 115 regions; inference git 2af901c,
+`results/robustness_c_ts_gsr.csv`, log
+`results/run_08_robustness_c_ts_gsr.log`; recorded 13 Sep 2026).**
+Whole-brain pair-mean atoms in nats, N = 14; sign-flip test exact over
+16,384 assignments, two-sided; subject-bootstrap 95 % CI, 10,000 draws,
+seed 20261120. **Both evaluations are out-of-sample under a model
+fitted to a segment neither evaluation touches** (PCB TRs 0–419): DMT
+bins 1–28 and the held-out PCB half, bins 15–28. No temporal null, no
+motion handling.
+
+- **Contrast (ii), DMT minus PCB on matched out-of-sample bins 15–28:
+  sts −0.1110 [−0.1803, −0.0593], p = 0.0005, negative in 13 of 14
+  (DMT 1.3213, PCB 1.4323; −7.8 % of PCB); total TDMI −0.0817
+  [−0.1438, −0.0332], p = 0.0031, 13 of 14; rtr +0.0028 [−0.0020,
+  +0.0075], p = 0.2781, 7 of 14.** Native global fit on the same bins:
+  sts −0.0536 [−0.0941, −0.0241], p = 0.0010, 12 of 14 (DMT 1.2696,
+  PCB 1.3232); total −0.0748, p = 0.0024; rtr −0.0024, p = 0.3341.
+  **Sign and significance of the DMT-below-PCB result are confirmed
+  under the independent model. The magnitude is not comparable to the
+  native fit**: out-of-sample inflation relative to the native fit is
+  +0.109 on PCB (1.323 → 1.432) and +0.052 on DMT (1.270 → 1.321), and
+  the asymmetry, −0.057, is by construction identical to the
+  difference between the placebo-fitted and native contrasts
+  (−0.111 − (−0.054) = −0.057), so the doubling of the contrast is
+  entirely the unequal inflation.
+- **Contrast (i), within-DMT step, bins 11–28 minus bins 1–8 under the
+  placebo-fitted model: sts −0.0508 [−0.1047, +0.0137], p = 0.1338,
+  negative in 11 of 14** (pre 1.3549, post 1.3041; −3.7 %); rtr
+  −0.0034 [−0.0075, +0.0005], p = 0.1359; total −0.0505 [−0.1103,
+  +0.0198], p = 0.1741. Sensitivity bins 9–28: sts −0.0477 [−0.1001,
+  +0.0148], p = 0.1467. Native global fit, same bins: sts −0.0521
+  [−0.0947, −0.0068], p = 0.0450, 11 of 14. **Same point estimate as
+  the native fit; the CI includes zero. Direction preserved,
+  significance not.**
+- **Reading of the inflation asymmetry (a reading, not a claim).** The
+  native DMT model spans a drug peak and a decay and fits the decay
+  phase as a compromise between regimes, so a placebo-fitted model is
+  nearly as good there (+0.052). The placebo run is homogeneous, so its
+  native model fits its own held-out half well and a model from half
+  the run costs more (+0.109). Consistent with the DMT run being
+  non-stationary and the placebo run not; not a test of it.
+- **Summary: Robustness C supports the sign of the primary result under
+  an independent model; magnitude and within-DMT significance do not
+  transfer.**
 
 ## Open questions to resolve
 
