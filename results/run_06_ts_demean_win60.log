@@ -1,0 +1,84 @@
+variant=ts_demean W=60 windows=14 sts from atoms_win60_115regions-all_ts_demean_window.npy; local from atoms_win60_local_115regions-all_ts_demean_window.npy; git=f3b435d
+pre=[1 2 3 4] primary post/decay=[ 6  7  8  9 10 11 12 13 14] sensitivity=[ 5  6  7  8  9 10 11 12 13 14]
+
+generating 1000 phase-randomised surrogates per subject and condition ...
+
+SECTION A — step contrast on whole-brain mean sts
+  A          pre-injection DMT mean sts (windows 1-4)                   +1.1004  
+  A          pre-injection PCB mean sts (windows 1-4)                   +1.0819  
+  A.fd       window-mean FD DMT window 1 (group mean; note = subject SD) +0.1307  sd=0.0350
+  A.fd       window-mean FD DMT window 2 (group mean; note = subject SD) +0.1318  sd=0.0469
+  A.fd       window-mean FD DMT window 3 (group mean; note = subject SD) +0.1247  sd=0.0377
+  A.fd       window-mean FD DMT window 4 (group mean; note = subject SD) +0.1169  sd=0.0389
+  A.fd       window-mean FD DMT window 5 (group mean; note = subject SD) +0.2029  sd=0.0646
+  A.fd       window-mean FD DMT window 6 (group mean; note = subject SD) +0.1729  sd=0.0650
+  A.fd       window-mean FD DMT window 7 (group mean; note = subject SD) +0.1614  sd=0.0583
+  A.fd       window-mean FD DMT window 8 (group mean; note = subject SD) +0.1328  sd=0.0535
+  A.fd       window-mean FD DMT window 9 (group mean; note = subject SD) +0.1367  sd=0.0793
+  A.fd       window-mean FD DMT window 10 (group mean; note = subject SD) +0.1209  sd=0.0558
+  A.fd       window-mean FD DMT window 11 (group mean; note = subject SD) +0.1321  sd=0.0745
+  A.fd       window-mean FD DMT window 12 (group mean; note = subject SD) +0.1161  sd=0.0420
+  A.fd       window-mean FD DMT window 13 (group mean; note = subject SD) +0.1176  sd=0.0458
+  A.fd       window-mean FD DMT window 14 (group mean; note = subject SD) +0.1151  sd=0.0436
+  A.fd       window-mean FD PCB window 1 (group mean; note = subject SD) +0.1367  sd=0.0411
+  A.fd       window-mean FD PCB window 2 (group mean; note = subject SD) +0.1307  sd=0.0474
+  A.fd       window-mean FD PCB window 3 (group mean; note = subject SD) +0.1268  sd=0.0429
+  A.fd       window-mean FD PCB window 4 (group mean; note = subject SD) +0.1208  sd=0.0379
+  A.fd       window-mean FD PCB window 5 (group mean; note = subject SD) +0.1437  sd=0.0459
+  A.fd       window-mean FD PCB window 6 (group mean; note = subject SD) +0.1147  sd=0.0338
+  A.fd       window-mean FD PCB window 7 (group mean; note = subject SD) +0.1178  sd=0.0296
+  A.fd       window-mean FD PCB window 8 (group mean; note = subject SD) +0.1155  sd=0.0274
+  A.fd       window-mean FD PCB window 9 (group mean; note = subject SD) +0.1205  sd=0.0437
+  A.fd       window-mean FD PCB window 10 (group mean; note = subject SD) +0.1231  sd=0.0454
+  A.fd       window-mean FD PCB window 11 (group mean; note = subject SD) +0.1239  sd=0.0445
+  A.fd       window-mean FD PCB window 12 (group mean; note = subject SD) +0.1236  sd=0.0436
+  A.fd       window-mean FD PCB window 13 (group mean; note = subject SD) +0.1249  sd=0.0485
+  A.fd       window-mean FD PCB window 14 (group mean; note = subject SD) +0.1372  sd=0.0581
+  A.primary  DMT post-pre sts                                           -0.0633 [-0.1088, -0.0123]  p=0.0333  
+  A.primary  PCB post-pre sts                                           +0.0398 [+0.0089, +0.0692]  p=0.0306  
+  A.primary  DiD raw: mean                                              -0.1031 [-0.1558, -0.0522]  p=0.0026  share of pre-injection DMT mean = -9.4 %; negative in 12/14
+  A.primary  DiD raw: phase-randomised null p (two-sided)               +0.0010  null mean -0.0003 sd 0.0264
+  A.primary  DiD raw: sign vs PREREG_DIRECTION (+1 = up)                -1.0000  REFUTATION of up-regulation (directional-failure rule)
+  A.primary  FD DiD (same form)                                         +0.0143 [-0.0070, +0.0365]  p=0.2452  
+  A.primary  DiD FD-residualised (all windows, per subject x condition): mean -0.0824 [-0.1224, -0.0372]  p=0.0048  SURVIVES motion control; negative in 13/14
+  A.sensitivity DMT post-pre sts                                           -0.0621 [-0.1055, -0.0130]  p=0.0300  
+  A.sensitivity PCB post-pre sts                                           +0.0314 [+0.0013, +0.0585]  p=0.0637  
+  A.sensitivity DiD raw: mean                                              -0.0935 [-0.1431, -0.0426]  p=0.0039  share of pre-injection DMT mean = -8.5 %; negative in 12/14
+  A.sensitivity DiD raw: phase-randomised null p (two-sided)               +0.0010  null mean -0.0004 sd 0.0254
+  A.sensitivity DiD raw: sign vs PREREG_DIRECTION (+1 = up)                -1.0000  REFUTATION of up-regulation (directional-failure rule)
+  A.sensitivity FD DiD (same form)                                         +0.0191 [-0.0008, +0.0402]  p=0.1083  
+  A.sensitivity DiD FD-residualised (all windows, per subject x condition): mean -0.0714 [-0.1106, -0.0298]  p=0.0073  SURVIVES motion control; negative in 12/14
+
+SECTION B — tier-2 tracking on the decay windows (DMT run)
+
+  [primary: decay windows [ 6  7  8  9 10 11 12 13 14]]
+  B.primary  raw rho_S DMT vs per-subject ratings [PRIMARY]: group mean (existence test, not thresholded) -0.3041 [-0.4882, -0.1027]  p=0.0210  n_defined=14/14; |rho|>=0.80 in 1 subjects (report only); p_one(prereg dir)=0.9930; sign - vs prereg +; significant vs null: yes
+  B.primary  raw rho_S DMT vs group template f [SENSITIVITY]: group mean (existence test, not thresholded) -0.3667 [-0.5476, -0.1548]  p=0.0090  n_defined=14/14; |rho|>=0.80 in 2 subjects (report only); p_one(prereg dir)=0.9980; sign - vs prereg +; significant vs null: yes
+  B.primary  raw rho_S group-mean sts series vs template [THRESHOLDED]  -0.9333  p=0.0120  |rho|>=0.80: PASS; sign - vs prereg +
+  B.primary  raw control (a): rho_S PCB vs template, group mean         -0.2345 [-0.3786, -0.0893]  p=0.0330  
+  B.primary  raw control (a): within-subject rho_DMT - rho_PCB (template) -0.1321 [-0.3655, +0.1084]  VOID (CI includes 0: True; PCB same sign & >= half: True)
+  B.primary  control (b): rho_S window-mean FD (DMT) vs template, group mean +0.4060 [+0.1774, +0.6000]  
+  B.primary  FD-resid rho_S DMT vs per-subject ratings [PRIMARY]: group mean (existence test, not thresholded) -0.1874 [-0.3608, -0.0026]  p=0.0689  n_defined=14/14; |rho|>=0.80 in 0 subjects (report only); p_one(prereg dir)=0.9700; sign - vs prereg +; significant vs null: no
+  B.primary  FD-resid rho_S DMT vs group template f [SENSITIVITY]: group mean (existence test, not thresholded) -0.2429 [-0.4333, -0.0500]  p=0.0210  n_defined=14/14; |rho|>=0.80 in 1 subjects (report only); p_one(prereg dir)=0.9930; sign - vs prereg +; significant vs null: yes
+  B.primary  FD-resid rho_S group-mean sts series vs template [THRESHOLDED] -0.8833  p=0.0060  |rho|>=0.80: PASS; sign - vs prereg +
+  B.primary  FD-resid control (a): rho_S PCB vs template, group mean    -0.1000 [-0.2036, +0.0071]  p=0.2208  
+  B.primary  FD-resid control (a): within-subject rho_DMT - rho_PCB (template) -0.1429 [-0.3357, +0.0667]  VOID (CI includes 0: True; PCB same sign & >= half: False)
+  B.primary  TIER-2 CLAIM (per-subject ratings [PRIMARY]): gm threshold & subject existence & (a) & (b) +0.0000  raw: gm_pass=True, subj_sig=True, same_dir=True, (a) void=True | resid: gm_pass=True, subj_sig=False, same_dir=True, (a) void=True; sign of raw gm: - (prereg +)
+  B.primary  TIER-2 CLAIM (group template f [SENSITIVITY]): gm threshold & subject existence & (a) & (b) +0.0000  raw: gm_pass=True, subj_sig=True, same_dir=True, (a) void=True | resid: gm_pass=True, subj_sig=True, same_dir=True, (a) void=True; sign of raw gm: - (prereg +)
+
+  [sensitivity: decay windows [ 5  6  7  8  9 10 11 12 13 14]]
+  B.sensitivity raw rho_S DMT vs per-subject ratings [PRIMARY]: group mean (existence test, not thresholded) -0.2403 [-0.4233, -0.0366]  p=0.0639  n_defined=14/14; |rho|>=0.80 in 1 subjects (report only); p_one(prereg dir)=0.9730; sign - vs prereg +; significant vs null: no
+  B.sensitivity raw rho_S DMT vs group template f [SENSITIVITY]: group mean (existence test, not thresholded) -0.2883 [-0.4874, -0.0675]  p=0.0260  n_defined=14/14; |rho|>=0.80 in 2 subjects (report only); p_one(prereg dir)=0.9920; sign - vs prereg +; significant vs null: yes
+  B.sensitivity raw rho_S group-mean sts series vs template [THRESHOLDED]  -0.6727  p=0.1968  |rho|>=0.80: fail; sign - vs prereg +
+  B.sensitivity raw control (a): rho_S PCB vs template, group mean         -0.3550 [-0.4909, -0.1931]  p=0.0020  
+  B.sensitivity raw control (a): within-subject rho_DMT - rho_PCB (template) +0.0667 [-0.1195, +0.2658]  VOID (CI includes 0: True; PCB same sign & >= half: True)
+  B.sensitivity control (b): rho_S window-mean FD (DMT) vs template, group mean +0.5117 [+0.3489, +0.6632]  
+  B.sensitivity FD-resid rho_S DMT vs per-subject ratings [PRIMARY]: group mean (existence test, not thresholded) -0.1243 [-0.3226, +0.0836]  p=0.2068  n_defined=14/14; |rho|>=0.80 in 0 subjects (report only); p_one(prereg dir)=0.9011; sign - vs prereg +; significant vs null: no
+  B.sensitivity FD-resid rho_S DMT vs group template f [SENSITIVITY]: group mean (existence test, not thresholded) -0.1766 [-0.3827, +0.0545]  p=0.0799  n_defined=14/14; |rho|>=0.80 in 1 subjects (report only); p_one(prereg dir)=0.9630; sign - vs prereg +; significant vs null: no
+  B.sensitivity FD-resid rho_S group-mean sts series vs template [THRESHOLDED] -0.4545  p=0.3167  |rho|>=0.80: fail; sign - vs prereg +
+  B.sensitivity FD-resid control (a): rho_S PCB vs template, group mean    -0.2831 [-0.4017, -0.1532]  p=0.0010  
+  B.sensitivity FD-resid control (a): within-subject rho_DMT - rho_PCB (template) +0.1065 [-0.0918, +0.3126]  VOID (CI includes 0: True; PCB same sign & >= half: True)
+  B.sensitivity TIER-2 CLAIM (per-subject ratings [PRIMARY]): gm threshold & subject existence & (a) & (b) +0.0000  raw: gm_pass=False, subj_sig=False, same_dir=True, (a) void=True | resid: gm_pass=False, subj_sig=False, same_dir=True, (a) void=True; sign of raw gm: - (prereg +)
+  B.sensitivity TIER-2 CLAIM (group template f [SENSITIVITY]): gm threshold & subject existence & (a) & (b) +0.0000  raw: gm_pass=False, subj_sig=True, same_dir=True, (a) void=True | resid: gm_pass=False, subj_sig=False, same_dir=True, (a) void=True; sign of raw gm: - (prereg +)
+
+wrote results/primary_b_ts_demean_win60.csv

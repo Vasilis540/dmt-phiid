@@ -1,0 +1,4 @@
+# script=02_bias_check.py tau=1 kind=gaussian redundancy=MMI n_windows=2000 burn_in=200 seed=20261120 git=f3b435d n_runs=2000 n_boot=2000 m_decide=1338/742 threshold=0.8
+condition,atom,global_est_mean,global_est_sd,global_est_ci_lo,global_est_ci_hi,regime_pre,regime_peak,weighted_mean_of_bin_truths,mixture_cov_truth,n_pre_bins,n_post_bins
+nonstat_step_ar,sts,1.269355,0.098552,1.265036,1.273674,1.384438,1.328420,1.344425,1.344706,8,20
+nonstat_step_ar,rtr,0.017911,0.015645,0.017226,0.018597,0.016268,0.014496,0.015002,0.015014,8,20

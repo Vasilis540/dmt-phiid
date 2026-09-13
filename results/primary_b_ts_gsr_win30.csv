@@ -1,0 +1,100 @@
+# script=06_primary_b_analysis.py variant=ts_gsr window_trs=30 pre=[np.int64(1), np.int64(2), np.int64(3), np.int64(4), np.int64(5), np.int64(6), np.int64(7), np.int64(8)] primary=[np.int64(11), np.int64(12), np.int64(13), np.int64(14), np.int64(15), np.int64(16), np.int64(17), np.int64(18), np.int64(19), np.int64(20), np.int64(21), np.int64(22), np.int64(23), np.int64(24), np.int64(25), np.int64(26), np.int64(27), np.int64(28)] sensitivity=[np.int64(10), np.int64(11), np.int64(12), np.int64(13), np.int64(14), np.int64(15), np.int64(16), np.int64(17), np.int64(18), np.int64(19), np.int64(20), np.int64(21), np.int64(22), np.int64(23), np.int64(24), np.int64(25), np.int64(26), np.int64(27), np.int64(28)] n_boot=10000 n_surr=1000 tier2_abs_rho=0.8 prereg_direction=1 tier2_decides=groupmean_series seed=20261120 git=ac1fdc0
+section,statistic,value,ci_lo,ci_hi,p,note
+A,pre-injection DMT mean sts (windows 1-4),1.0223423007520995,nan,nan,nan,
+A,pre-injection PCB mean sts (windows 1-4),1.006317647377219,nan,nan,nan,
+A.fd,window-mean FD DMT window 1 (group mean; note = subject SD),0.13373036283333334,nan,nan,nan,sd=0.0448
+A.fd,window-mean FD DMT window 2 (group mean; note = subject SD),0.12767034904761904,nan,nan,nan,sd=0.0300
+A.fd,window-mean FD DMT window 3 (group mean; note = subject SD),0.14029220833333333,nan,nan,nan,sd=0.0583
+A.fd,window-mean FD DMT window 4 (group mean; note = subject SD),0.12338188071428573,nan,nan,nan,sd=0.0407
+A.fd,window-mean FD DMT window 5 (group mean; note = subject SD),0.13568296880952382,nan,nan,nan,sd=0.0459
+A.fd,window-mean FD DMT window 6 (group mean; note = subject SD),0.11372385833333334,nan,nan,nan,sd=0.0355
+A.fd,window-mean FD DMT window 7 (group mean; note = subject SD),0.11615691473809522,nan,nan,nan,sd=0.0395
+A.fd,window-mean FD DMT window 8 (group mean; note = subject SD),0.11760594690476192,nan,nan,nan,sd=0.0435
+A.fd,window-mean FD DMT window 9 (group mean; note = subject SD),0.2155896392857143,nan,nan,nan,sd=0.0774
+A.fd,window-mean FD DMT window 10 (group mean; note = subject SD),0.19031025190476192,nan,nan,nan,sd=0.0655
+A.fd,window-mean FD DMT window 11 (group mean; note = subject SD),0.1714634007142857,nan,nan,nan,sd=0.0550
+A.fd,window-mean FD DMT window 12 (group mean; note = subject SD),0.1742424035714286,nan,nan,nan,sd=0.0831
+A.fd,window-mean FD DMT window 13 (group mean; note = subject SD),0.1675249357142857,nan,nan,nan,sd=0.0635
+A.fd,window-mean FD DMT window 14 (group mean; note = subject SD),0.1552973057142857,nan,nan,nan,sd=0.0694
+A.fd,window-mean FD DMT window 15 (group mean; note = subject SD),0.1334362988095238,nan,nan,nan,sd=0.0554
+A.fd,window-mean FD DMT window 16 (group mean; note = subject SD),0.13206636,nan,nan,nan,sd=0.0579
+A.fd,window-mean FD DMT window 17 (group mean; note = subject SD),0.1308651142857143,nan,nan,nan,sd=0.0712
+A.fd,window-mean FD DMT window 18 (group mean; note = subject SD),0.1426160145238095,nan,nan,nan,sd=0.0913
+A.fd,window-mean FD DMT window 19 (group mean; note = subject SD),0.11878168285714286,nan,nan,nan,sd=0.0679
+A.fd,window-mean FD DMT window 20 (group mean; note = subject SD),0.1231014219047619,nan,nan,nan,sd=0.0476
+A.fd,window-mean FD DMT window 21 (group mean; note = subject SD),0.12992040738095237,nan,nan,nan,sd=0.0776
+A.fd,window-mean FD DMT window 22 (group mean; note = subject SD),0.13435144142857142,nan,nan,nan,sd=0.0743
+A.fd,window-mean FD DMT window 23 (group mean; note = subject SD),0.11481240809523809,nan,nan,nan,sd=0.0549
+A.fd,window-mean FD DMT window 24 (group mean; note = subject SD),0.1173989642857143,nan,nan,nan,sd=0.0347
+A.fd,window-mean FD DMT window 25 (group mean; note = subject SD),0.11901699095238095,nan,nan,nan,sd=0.0412
+A.fd,window-mean FD DMT window 26 (group mean; note = subject SD),0.11611384959523807,nan,nan,nan,sd=0.0512
+A.fd,window-mean FD DMT window 27 (group mean; note = subject SD),0.12347638673809525,nan,nan,nan,sd=0.0444
+A.fd,window-mean FD DMT window 28 (group mean; note = subject SD),0.10668982666666667,nan,nan,nan,sd=0.0458
+A.fd,window-mean FD PCB window 1 (group mean; note = subject SD),0.14382420095238094,nan,nan,nan,sd=0.0497
+A.fd,window-mean FD PCB window 2 (group mean; note = subject SD),0.1295878619047619,nan,nan,nan,sd=0.0369
+A.fd,window-mean FD PCB window 3 (group mean; note = subject SD),0.1313558869047619,nan,nan,nan,sd=0.0482
+A.fd,window-mean FD PCB window 4 (group mean; note = subject SD),0.1300690966666667,nan,nan,nan,sd=0.0474
+A.fd,window-mean FD PCB window 5 (group mean; note = subject SD),0.12702573738095238,nan,nan,nan,sd=0.0446
+A.fd,window-mean FD PCB window 6 (group mean; note = subject SD),0.12666557023809524,nan,nan,nan,sd=0.0435
+A.fd,window-mean FD PCB window 7 (group mean; note = subject SD),0.12025574380952384,nan,nan,nan,sd=0.0386
+A.fd,window-mean FD PCB window 8 (group mean; note = subject SD),0.12141599738095239,nan,nan,nan,sd=0.0456
+A.fd,window-mean FD PCB window 9 (group mean; note = subject SD),0.16658973285714285,nan,nan,nan,sd=0.0521
+A.fd,window-mean FD PCB window 10 (group mean; note = subject SD),0.1207453338095238,nan,nan,nan,sd=0.0457
+A.fd,window-mean FD PCB window 11 (group mean; note = subject SD),0.113882783,nan,nan,nan,sd=0.0358
+A.fd,window-mean FD PCB window 12 (group mean; note = subject SD),0.11546076142857142,nan,nan,nan,sd=0.0325
+A.fd,window-mean FD PCB window 13 (group mean; note = subject SD),0.11688634857142859,nan,nan,nan,sd=0.0319
+A.fd,window-mean FD PCB window 14 (group mean; note = subject SD),0.11868459642857143,nan,nan,nan,sd=0.0315
+A.fd,window-mean FD PCB window 15 (group mean; note = subject SD),0.12028515261904763,nan,nan,nan,sd=0.0294
+A.fd,window-mean FD PCB window 16 (group mean; note = subject SD),0.11062490023809522,nan,nan,nan,sd=0.0280
+A.fd,window-mean FD PCB window 17 (group mean; note = subject SD),0.12237791023809523,nan,nan,nan,sd=0.0376
+A.fd,window-mean FD PCB window 18 (group mean; note = subject SD),0.11864169833333335,nan,nan,nan,sd=0.0529
+A.fd,window-mean FD PCB window 19 (group mean; note = subject SD),0.12282579928571428,nan,nan,nan,sd=0.0440
+A.fd,window-mean FD PCB window 20 (group mean; note = subject SD),0.12347164809523811,nan,nan,nan,sd=0.0516
+A.fd,window-mean FD PCB window 21 (group mean; note = subject SD),0.13185479571428574,nan,nan,nan,sd=0.0562
+A.fd,window-mean FD PCB window 22 (group mean; note = subject SD),0.11595532642857143,nan,nan,nan,sd=0.0394
+A.fd,window-mean FD PCB window 23 (group mean; note = subject SD),0.11212948571428571,nan,nan,nan,sd=0.0432
+A.fd,window-mean FD PCB window 24 (group mean; note = subject SD),0.13509920761904762,nan,nan,nan,sd=0.0519
+A.fd,window-mean FD PCB window 25 (group mean; note = subject SD),0.12344183499999997,nan,nan,nan,sd=0.0481
+A.fd,window-mean FD PCB window 26 (group mean; note = subject SD),0.12627646404761905,nan,nan,nan,sd=0.0534
+A.fd,window-mean FD PCB window 27 (group mean; note = subject SD),0.1314207864285714,nan,nan,nan,sd=0.0591
+A.fd,window-mean FD PCB window 28 (group mean; note = subject SD),0.14301451404761906,nan,nan,nan,sd=0.0639
+A.primary,DMT post-pre sts,-0.03901842484685597,-0.06800261832937615,-0.005839826499168169,0.035400390625,
+A.primary,PCB post-pre sts,0.029607294407409352,0.007602138148985033,0.05314034756586316,0.02685546875,
+A.primary,DiD raw: mean,-0.06862571925426532,-0.10835987566843117,-0.029308000958747762,0.004150390625,share of pre-injection DMT mean = -6.7 %; negative in 13/14
+A.primary,DiD raw: phase-randomised null p (two-sided),0.000999000999000999,nan,nan,nan,null mean +0.0008 sd 0.0199
+A.primary,DiD raw: sign vs PREREG_DIRECTION (+1 = up),-1.0,nan,nan,nan,REFUTATION of up-regulation (directional-failure rule)
+A.primary,FD DiD (same form),0.014346739579365081,-0.006960127706795631,0.03683391050170303,0.2452392578125,
+A.primary,"DiD FD-residualised (all windows, per subject x condition): mean",-0.05447880130814443,-0.08363129688188625,-0.02152965963837962,0.0064697265625,SURVIVES motion control; negative in 13/14
+A.sensitivity,DMT post-pre sts,-0.040685457578845355,-0.06977295917516292,-0.008433123980120508,0.0311279296875,
+A.sensitivity,PCB post-pre sts,0.02516101333601873,0.0034757475794077335,0.04762720896907345,0.0489501953125,
+A.sensitivity,DiD raw: mean,-0.06584647091486409,-0.10715435493291493,-0.026121393728674364,0.0067138671875,share of pre-injection DMT mean = -6.4 %; negative in 12/14
+A.sensitivity,DiD raw: phase-randomised null p (two-sided),0.000999000999000999,nan,nan,nan,null mean +0.0009 sd 0.0195
+A.sensitivity,DiD raw: sign vs PREREG_DIRECTION (+1 = up),-1.0,nan,nan,nan,REFUTATION of up-regulation (directional-failure rule)
+A.sensitivity,FD DiD (same form),0.01739740427443608,-0.003764680665922632,0.03932980495497726,0.155029296875,
+A.sensitivity,"DiD FD-residualised (all windows, per subject x condition): mean",-0.051355872652373714,-0.07992415881364072,-0.01793359049033752,0.0108642578125,SURVIVES motion control; negative in 12/14
+B.primary,"raw rho_S DMT vs per-subject ratings [PRIMARY]: group mean (existence test, not thresholded)",-0.3876195320307946,-0.520124864651743,-0.26157945685068207,0.000999000999000999,n_defined=14/14; |rho|>=0.80 in 2 subjects (report only); p_one(prereg dir)=1.0000; sign - vs prereg +; significant vs null: yes
+B.primary,"raw rho_S DMT vs group template f [SENSITIVITY]: group mean (existence test, not thresholded)",-0.40748931151407936,-0.5485810113519091,-0.2712627156125609,0.000999000999000999,n_defined=14/14; |rho|>=0.80 in 1 subjects (report only); p_one(prereg dir)=1.0000; sign - vs prereg +; significant vs null: yes
+B.primary,raw rho_S group-mean sts series vs template [THRESHOLDED],-0.9752321981424149,nan,nan,0.000999000999000999,|rho|>=0.80: PASS; sign - vs prereg +
+B.primary,"raw control (a): rho_S PCB vs template, group mean",-0.18457909479581303,-0.31121922453191797,-0.06339377856405722,0.029970029970029972,
+B.primary,raw control (a): within-subject rho_DMT - rho_PCB (template),-0.2229102167182662,-0.41456951201533243,-0.043041427097154764,nan,clears control (a) (CI includes 0: False; PCB same sign & >= half: False)
+B.primary,"control (b): rho_S window-mean FD (DMT) vs template, group mean",0.3533834586466166,0.14919283502874836,0.5319180303700428,nan,
+B.primary,"FD-resid rho_S DMT vs per-subject ratings [PRIMARY]: group mean (existence test, not thresholded)",-0.266522584603418,-0.37147864640417955,-0.16817746303221093,0.001998001998001998,n_defined=14/14; |rho|>=0.80 in 0 subjects (report only); p_one(prereg dir)=0.9990; sign - vs prereg +; significant vs null: yes
+B.primary,"FD-resid rho_S DMT vs group template f [SENSITIVITY]: group mean (existence test, not thresholded)",-0.2790800530738611,-0.3982087571870853,-0.16143299425033172,0.000999000999000999,n_defined=14/14; |rho|>=0.80 in 0 subjects (report only); p_one(prereg dir)=1.0000; sign - vs prereg +; significant vs null: yes
+B.primary,FD-resid rho_S group-mean sts series vs template [THRESHOLDED],-0.8534571723426212,nan,nan,0.001998001998001998,|rho|>=0.80: PASS; sign - vs prereg +
+B.primary,"FD-resid control (a): rho_S PCB vs template, group mean",-0.13297950759251068,-0.24915597818074595,-0.01754017396432261,0.04795204795204795,
+B.primary,FD-resid control (a): within-subject rho_DMT - rho_PCB (template),-0.14610054548135046,-0.3368752764263601,0.03081232492997196,nan,VOID (CI includes 0: True; PCB same sign & >= half: False)
+B.primary,TIER-2 CLAIM (per-subject ratings [PRIMARY]): gm threshold & subject existence & (a) & (b),0.0,nan,nan,nan,"raw: gm_pass=True, subj_sig=True, same_dir=True, (a) void=False | resid: gm_pass=True, subj_sig=True, same_dir=True, (a) void=True; sign of raw gm: - (prereg +)"
+B.primary,TIER-2 CLAIM (group template f [SENSITIVITY]): gm threshold & subject existence & (a) & (b),0.0,nan,nan,nan,"raw: gm_pass=True, subj_sig=True, same_dir=True, (a) void=False | resid: gm_pass=True, subj_sig=True, same_dir=True, (a) void=True; sign of raw gm: - (prereg +)"
+B.sensitivity,"raw rho_S DMT vs per-subject ratings [PRIMARY]: group mean (existence test, not thresholded)",-0.3966531267147607,-0.5282880480878578,-0.261788287185385,0.000999000999000999,n_defined=14/14; |rho|>=0.80 in 2 subjects (report only); p_one(prereg dir)=1.0000; sign - vs prereg +; significant vs null: yes
+B.sensitivity,"raw rho_S DMT vs group template f [SENSITIVITY]: group mean (existence test, not thresholded)",-0.41967418546365914,-0.5532581453634084,-0.2845833333333334,0.000999000999000999,n_defined=14/14; |rho|>=0.80 in 1 subjects (report only); p_one(prereg dir)=1.0000; sign - vs prereg +; significant vs null: yes
+B.sensitivity,raw rho_S group-mean sts series vs template [THRESHOLDED],-0.9684210526315788,nan,nan,0.000999000999000999,|rho|>=0.80: PASS; sign - vs prereg +
+B.sensitivity,"raw control (a): rho_S PCB vs template, group mean",-0.2558897243107769,-0.38998120300751876,-0.12957393483709273,0.000999000999000999,
+B.sensitivity,raw control (a): within-subject rho_DMT - rho_PCB (template),-0.16378446115288223,-0.33408521303258143,0.0027568922305763943,nan,VOID (CI includes 0: True; PCB same sign & >= half: True)
+B.sensitivity,"control (b): rho_S window-mean FD (DMT) vs template, group mean",0.4053884711779449,0.23608395989974942,0.5599028822055139,nan,
+B.sensitivity,"FD-resid rho_S DMT vs per-subject ratings [PRIMARY]: group mean (existence test, not thresholded)",-0.2602067704186468,-0.367666309073099,-0.1594617888128,0.002997002997002997,n_defined=14/14; |rho|>=0.80 in 0 subjects (report only); p_one(prereg dir)=0.9980; sign - vs prereg +; significant vs null: yes
+B.sensitivity,"FD-resid rho_S DMT vs group template f [SENSITIVITY]: group mean (existence test, not thresholded)",-0.27807017543859647,-0.39248120300751876,-0.16553884711779449,0.001998001998001998,n_defined=14/14; |rho|>=0.80 in 0 subjects (report only); p_one(prereg dir)=0.9990; sign - vs prereg +; significant vs null: yes
+B.sensitivity,FD-resid rho_S group-mean sts series vs template [THRESHOLDED],-0.8,nan,nan,0.002997002997002997,|rho|>=0.80: PASS; sign - vs prereg +
+B.sensitivity,"FD-resid control (a): rho_S PCB vs template, group mean",-0.1680451127819549,-0.29849624060150376,-0.04060150375939849,0.007992007992007992,
+B.sensitivity,FD-resid control (a): within-subject rho_DMT - rho_PCB (template),-0.1100250626566416,-0.29072994987468675,0.07294172932330813,nan,VOID (CI includes 0: True; PCB same sign & >= half: True)
+B.sensitivity,TIER-2 CLAIM (per-subject ratings [PRIMARY]): gm threshold & subject existence & (a) & (b),0.0,nan,nan,nan,"raw: gm_pass=True, subj_sig=True, same_dir=True, (a) void=True | resid: gm_pass=True, subj_sig=True, same_dir=True, (a) void=True; sign of raw gm: - (prereg +)"
+B.sensitivity,TIER-2 CLAIM (group template f [SENSITIVITY]): gm threshold & subject existence & (a) & (b),0.0,nan,nan,nan,"raw: gm_pass=True, subj_sig=True, same_dir=True, (a) void=True | resid: gm_pass=True, subj_sig=True, same_dir=True, (a) void=True; sign of raw gm: - (prereg +)"

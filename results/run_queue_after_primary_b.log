@@ -1,0 +1,12 @@
+[13:06:08] primary B ts_gsr W=60 process exited
+[13:06:08] START 06 ts_gsr W60
+[13:06:49] DONE  06 ts_gsr W60 (exit 0)
+[13:06:49] START 01 ts_gsr W30
+[14:43:54] DONE  01 ts_gsr W30 (exit 0)
+[14:43:54] START 06 ts_gsr W30
+[14:44:38] DONE  06 ts_gsr W30 (exit 0)
+[14:44:38] START 01 ts_demean W60
+[15:34:58] DONE  01 ts_demean W60 (exit 0)
+[15:34:58] START 06 ts_demean W60
+[15:35:38] DONE  06 ts_demean W60 (exit 0)
+[15:35:38] QUEUE COMPLETE

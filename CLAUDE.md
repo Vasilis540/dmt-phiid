@@ -1538,9 +1538,12 @@ sensitivity = bins 10–28.
   0.42–0.57, in the same range as the stationary table, and **the
   observed 0.85 is not near either. The shrinkage model over-predicts
   attenuation on real data.**
-- **Reason, checked rather than assumed.** The candidate explanation
-  "real autocorrelation structure is milder than the VAR(1)
-  parameters" was tested and is **contradicted**: on ts_gsr the
+- **Reason, checked rather than assumed (SUPERSEDED by the AR-shift
+  outcome and diagnostic below: the lag-1 test used here was the wrong
+  test, and the milder-structure explanation stands).** The candidate
+  explanation "real autocorrelation structure is milder than the
+  VAR(1) parameters" was tested on lag-1 autocorrelation and appeared
+  **contradicted**: on ts_gsr the
   regional lag-1 autocorrelation is 0.867 pooled (median 0.868, 5–95 %
   0.833–0.900; DMT 0.864, PCB 0.870), against 0.53 in the simulated
   baseline; real autocorrelation is far *stronger*. Real zero-lag
@@ -1587,6 +1590,72 @@ sensitivity = bins 10–28.
   over-attenuation on real data remains unexplained; if the recovery at
   W = 60 itself is far from 84 %, the W = 60 shrinkage cost quoted for
   the primary result must be restated from this condition.
+  - **Outcome (2,000 runs, 100 s, git f3b435d;
+    `results/nonstat_ar_step/bias_check_nonstat*.csv`).** Recovered
+    step, sts (estimated post − pre as a share of the true −0.0560):
+    **W = 30 32.9 % (full post) / 34.4 % (primary post); W = 60 55.4 %
+    / 57.3 %; ratio W30 / W60 = 0.59 / 0.60.** Per-window bias in the
+    pre regime −0.898 at W = 30 and −0.576 at W = 60 on a true value
+    of 1.384 (65 % and 42 %); SD per window 0.30 / 0.28; global-fit
+    estimate 1.269 against the mixture truth 1.344. **The prediction's
+    first branch fails: the ratio is 0.60, not 0.85, so the shift type
+    is not the explanation.** The third clause is also triggered (W = 60
+    recovery 57 % against the 84 % quoted for the coupling step), but
+    see the diagnostic below before restating any cost from this
+    condition.
+  - **Diagnostic, run after the outcome and recorded with it: this
+    condition does not match the real data either, and the reason
+    corrects the record above.** (i) Real windowed-vs-global gap in
+    pre-injection whole-brain sts on ts_gsr: global fit 1.3085 (DMT) /
+    1.2893 (PCB); W = 60 1.1554 / 1.1378 (gap −0.153 / −0.152); W = 30
+    1.0223 / 1.0063 (gap −0.286 / −0.283). The simulated per-window
+    bias at a = 0.87 is −0.576 (W = 60) and −0.898 (W = 30): **3.8 and
+    3.1 times the real gap.** (ii) Real autocorrelation function of the
+    regional series (ts_gsr, pooled over regions, subjects, conditions)
+    against AR(1) with a = 0.87:
+
+    | lag | 1 | 2 | 3 | 5 | 8 | 10 | 15 | 20 |
+    |---|---|---|---|---|---|---|---|---|
+    | real ACF | 0.867 | 0.534 | 0.161 | −0.187 | −0.089 | −0.219 | −0.127 | −0.062 |
+    | AR(1) 0.87 | 0.870 | 0.757 | 0.659 | 0.498 | 0.328 | 0.248 | 0.124 | 0.062 |
+
+    The real ACF matches at lag 1 and nothing else: it falls to 0.16 by
+    lag 3 and is negative from lag 5 (the signature of band-pass
+    filtered fMRI), whereas AR(1) at 0.87 is still 0.66 and 0.50 at
+    those lags. Integrated autocorrelation time, crude (1 + 2·Σ over
+    the lags above): **≈ 2.8 real against 14.4 for the AR(1)**, i.e.
+    the real 60-TR window carries several times more effective samples
+    than the simulated one. The finite-window log-det bias is governed
+    by the effective sample size, which is why the simulated per-window
+    bias is 3–4 × the real gap and why the simulated shrinkage of a
+    step is larger than observed. **Correction to the entry above:**
+    the explanation "real autocorrelation structure is milder than the
+    VAR(1) parameters" was recorded as *contradicted* on the basis of
+    lag-1 autocorrelation alone (0.87 real vs 0.53 simulated). Lag-1
+    autocorrelation was the wrong test. In the quantity that governs
+    the bias, the integrated autocorrelation time, **the real structure
+    is far milder than every simulated family** (0.53-AR(1): 3.3;
+    0.87-AR(1): 14.4; real ≈ 2.8), and that explanation stands as the
+    most likely one. The "shift type" explanation is withdrawn as the
+    primary reason; it may still contribute but is not needed.
+  - **Consequences.** No simulated family reproduces the real
+    dependence structure, so **no simulated shrinkage figure (49 / 84 %,
+    28 / 67 %, or 34 / 57 %) is quoted as the cost of the W = 60 primary
+    result.** What can be said: the W = 30 / W = 60 ratio observed on
+    real data is 0.85, both estimators agree in sign, and the real
+    windowed-vs-global gaps (−0.15 at W = 60, −0.29 at W = 30) bound the
+    per-window bias on these data directly. The paper states the
+    windowed estimates as biased low by an amount of that order, common
+    to both conditions, with the DiD's shrinkage on real data unknown
+    from simulation but bounded by the two window lengths agreeing to
+    within 15 %. The obvious addition to `02_bias_check.py`, not run:
+    a process matching the real ACF (band-passed noise or an AR(2) with
+    a negative lobe, matched on integrated autocorrelation time ≈ 3),
+    which is the condition that would actually test the shrinkage on
+    these data. All four simulated shift conditions remain valid as
+    what they are: bias characterisation at longer correlation times
+    than the data have, i.e. conservative for the level bias and
+    pessimistic for the step shrinkage.
 - Tier-2 lines at W = 30, reported as a check that decides nothing:
   group-mean-series ρ_S −0.9752 raw, −0.8535 FD-residualised on bins
   11–28 (both above 0.80, negative); per-subject means −0.388 / −0.408
