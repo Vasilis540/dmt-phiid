@@ -17,7 +17,9 @@ REGION_SELECTION chooses which regions enter the pairwise computation:
              cortex, not a sample of the brain. Never report from this.
   "random" — a seeded random subsample of N_REGIONS parcels.
 
-Preprocessing variant fixed to ts_gsr (matches CLAUDE.md primary variant).
+Preprocessing variant: ts_gsr by default (CLAUDE.md primary stream);
+`--variant ts_demean` runs the rule-6 sensitivity stream. The variant is in
+the output filename, so the streams never overwrite each other.
 Condition axis: index 0 = DMT, index 1 = PCB (confirmed against
 external/DMT_NCT/scripts/01_gen_time_resolved_ce.m — TS{i,1}=DMT, TS{i,2}=PCB).
 
@@ -31,6 +33,7 @@ FIT_MODE selects how the Gaussian is fitted for the local-atom evaluation:
                run, so both are out-of-sample (robustness variant C).
 """
 
+import argparse
 import itertools
 import subprocess
 import sys
@@ -47,7 +50,11 @@ from phyid.utils import PhiID_atoms_abbr
 SEED = 20261120
 N_REGIONS = 116            # ignored when REGION_SELECTION == "all"
 REGION_SELECTION = "all"   # "all" | "first" | "random"
-VARIANT = "ts_gsr"
+_ap = argparse.ArgumentParser(description="whole-brain mean ΦID atoms per bin")
+_ap.add_argument("--variant", default="ts_gsr",
+                 choices=("ts_gsr", "ts_demean", "ts_z", "ts"),
+                 help="preprocessing variant in the .mat (default ts_gsr)")
+VARIANT = _ap.parse_args().variant
 
 # Pre-registered region exclusion (CLAUDE.md, "Pre-registered analysis
 # choices"). Region 20 (0-based; Yeo network 3 / dorsal attention, left
@@ -73,6 +80,19 @@ FIT_MODE = "global"        # "global" | "window" | "placebo"
 # one per rating. Fixed before any windowed run; do not tune on results.
 WINDOW_TRS = 30
 WINDOW_STRIDE = 30
+
+# Pre-registered tier-2 sign handling on real data (CLAUDE.md, "Sign handling
+# on real data", fixed 13 Sep 2026 before any real windowed run). Tracking
+# across the decay windows is assessed on |rho_S| >= TIER2_ABS_RHO, where
+# rho_S is each subject's Spearman correlation between window-mean whole-brain
+# sts and intensity, group-tested against the phase-randomised temporal null.
+# The SIGN is reported separately against PREREG_DIRECTION (+1: the hypothesis
+# is that synergy is UP-regulated, so a positive rho_S is the pre-registered
+# direction). A strong negative correlation is tracking in the opposite
+# direction and is reported as a refutation of the directional hypothesis,
+# NOT as a failed tracking criterion. Do not fold the sign into the threshold.
+TIER2_ABS_RHO = 0.80
+PREREG_DIRECTION = +1
 
 # Condition axis of ts_gsr — confirmed from the original MATLAB
 # (external/DMT_NCT/scripts/01_gen_time_resolved_ce.m: TS{i,1}=DMT, TS{i,2}=PCB).

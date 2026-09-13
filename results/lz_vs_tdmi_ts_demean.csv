@@ -1,0 +1,8 @@
+# script=03_lz_vs_tdmi.py variant=ts_demean atoms_file=atoms_bins_115regions-all_ts_demean_global.npy n_surr=1000 n_boot=10000 seed=20261120 git=33f0b33-dirty
+quantity,condition,rho_mean,ci_lo,ci_hi,rho_sd,n_subjects_predicted_sign,predicted_sign,p_one_sided,p_two_sided,null_mean,null_sd,rho_groupmean_series,p_two_sided_groupmean_series
+total,DMT,-0.2143,-0.3679,-0.0644,0.3037,10,-1,0.0040,0.0070,0.0004,0.0779,-0.7230,0.0490
+total,PCB,-0.0926,-0.1795,-0.0076,0.1702,9,-1,0.0450,0.0879,-0.0025,0.0545,-0.1149,0.6164
+sts,DMT,-0.2026,-0.3457,-0.0674,0.2768,9,-1,0.0070,0.0110,0.0012,0.0777,-0.6694,0.0709
+sts,PCB,-0.0894,-0.2002,0.0180,0.2161,9,-1,0.0549,0.1059,-0.0019,0.0559,-0.0952,0.6813
+rtr,DMT,-0.0229,-0.1101,0.0685,0.1764,5,1,0.6284,0.7143,-0.0036,0.0644,0.0668,0.8282
+rtr,PCB,-0.0135,-0.1376,0.1014,0.2371,8,1,0.5784,0.8242,-0.0019,0.0610,0.4067,0.0519

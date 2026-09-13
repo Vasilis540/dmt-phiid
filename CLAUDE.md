@@ -582,6 +582,22 @@ Recorded here **before any results were inspected.**
         no per-subject intensity variation to correlate with; the primary
         per-subject claim must still clear both controls as written, and
         the FD-residualised recomputation in (b) is run on both versions.
+      - **Sign handling on real data (fixed 13 Sep 2026, before any real
+        windowed run).** The pre-registered direction is positive: the
+        hypothesis is that synergy is up-regulated, so ρ_S between
+        window-mean sts and intensity is predicted > 0. On real data
+        **tracking is assessed on |ρ_S| ≥ 0.80** (the per-subject
+        statistic, group-tested against the phase-randomised null), and
+        **the sign is reported separately against the pre-registered
+        direction**. A strong negative correlation is tracking in the
+        opposite direction, reported as a refutation of the directional
+        hypothesis (see the directional-failure rule below), **not as a
+        failed tracking criterion**. Controls (a) and (b) apply to the
+        magnitude whichever sign it carries. Motivation on record: the
+        115-region global fit shows a synergy *decrease* under DMT, so
+        a sign-blind criterion could otherwise be gamed either way; fixing
+        it now removes that freedom. Mirrored in
+        `01_synergy_timecourse.py` (`TIER2_ABS_RHO`, `PREREG_DIRECTION`).
       - **(a) Time-in-scanner control.** The identical statistic on each
         subject's **placebo** run: ρ_S between window-mean synergy on
         the PCB run and the same template f over the same windows.
@@ -715,6 +731,20 @@ Recorded here **before any results were inspected.**
         values. If the repeat resolves cleanly in either direction (all
         four deciding intervals on one side of 0.80), the pre-registered
         tiers apply as written and this rule is moot.
+      - **Provenance of the bias-check tables (recorded 13 Sep 2026).**
+        The 20,000-run repeat that is actually running was launched on
+        13 Sep 2026 at 10:06 as `python3 -u scripts/02_bias_check.py
+        --n-runs 20000` **without `--out`**, so it writes every
+        `results/bias_check*.csv` in place (stationary tables first,
+        the four `bias_check_nonstat*` tables when it finishes); the
+        12 Sep launch into `results/nonstat_n20000/` did not complete
+        and that directory holds only its stationary tables. **The
+        2,000-run tables and the UNDETERMINED verdict above are read
+        from commit 18ad8b4** (`git show 18ad8b4:results/bias_check.csv`
+        etc.); commit 33f0b33 already carries the 20,000-run stationary
+        tables captured mid-run. Once the job finishes, the working
+        tree holds the 20,000-run versions of all six tables and the
+        verdict recorded from them must cite that commit.
 
 - **Robustness C (placebo-fitted model)**: fit the Gaussian on a subject's
   placebo data, then evaluate local atoms on **both** of that subject's runs
@@ -826,6 +856,235 @@ Recorded here **before any results were inspected.**
     anyone opened it. The rtr prediction is assessed on Robustness A
     first (descriptive, same caveats as above) and then under Primary B
     with the same nulls and controls as sts.
+  - **Outcome: rtr, total TDMI and per-atom change on the 115-region
+    global fit (read 13 Sep 2026 from
+    `results/atoms_bins_115regions-all_ts_gsr_global.npy`, after the
+    prediction above was committed at 33f0b33).** Same status as the sts
+    result: Robustness A, descriptive only, no null, no motion control,
+    one preprocessing variant, 14-subject means of the whole-brain
+    pair-mean. Values in nats.
+
+    | quantity | window | DMT | PCB |
+    |---|---|---|---|
+    | rtr | pre-injection, bins 1–8 | 0.0248 | 0.0225 |
+    | rtr | peak intensity, bins 9–14 | 0.0152 | 0.0221 |
+    | rtr | within-condition change | −0.0096 | −0.0004 |
+    | total (Σ 16 atoms = TDMI) | pre-injection, bins 1–8 | 1.442 | 1.405 |
+    | total | peak intensity, bins 9–14 | 1.316 | 1.397 |
+    | total | within-condition change | −0.126 | −0.008 |
+
+    Difference-in-differences: rtr −0.0091 (37 % of the DMT baseline;
+    per-subject DiD positive in 4 of 14), total −0.118 (8.1 % of the DMT
+    baseline; per-subject DiD negative in 13 of 14). Per-bin rtr means,
+    bins 1–28: DMT 0.017 0.019 0.026 0.023 0.024 0.032 0.029 0.029 0.021
+    0.013 0.013 0.015 0.016 0.013 0.016 0.014 0.017 0.017 0.017 0.023
+    0.017 0.021 0.021 0.022 0.021 0.028 0.025 0.020; PCB 0.017 0.021
+    0.017 0.025 0.026 0.025 0.025 0.023 0.021 0.019 0.023 0.027 0.023
+    0.019 0.021 0.025 0.023 0.024 0.024 0.024 0.023 0.022 0.021 0.018
+    0.021 0.022 0.021 0.021. Per-bin totals: DMT 1.432 1.366 1.433 1.457
+    1.404 1.444 1.482 1.518 1.403 1.309 1.282 1.298 1.284 1.323 1.324
+    1.320 1.324 1.342 1.346 1.382 1.359 1.374 1.370 1.391 1.405 1.416
+    1.449 1.434; PCB 1.380 1.360 1.352 1.412 1.476 1.419 1.449 1.389
+    1.381 1.342 1.416 1.449 1.406 1.385 1.420 1.474 1.444 1.429 1.446
+    1.442 1.430 1.489 1.455 1.400 1.481 1.487 1.441 1.444.
+    - **The rtr prediction does not hold.** rtr *falls* under DMT over
+      the same window in which sts falls: the DMT-minus-PCB rtr
+      difference is negative in every bin 10–19 (−0.006 to −0.013),
+      the DMT rtr minimum (bins 10–11, 14) coincides with the sts trough
+      rather than mirroring it, and the two time courses co-vary
+      (Pearson r across the 28 bins: 0.66 between DMT rtr and DMT sts,
+      0.68 between their per-bin DMT-minus-PCB differences). The
+      pre-registered mirrored time course is absent. **The
+      redundancy-dominance interpretation is therefore unsupported and
+      the sts decrease is reported without it.** Under this estimator
+      the whole-brain rtr is two orders of magnitude smaller than sts
+      (0.02 vs 1.3 nats), so the "more correlation → more redundancy"
+      step does not translate into the MMI rtr atom at the whole-brain
+      mean; whether that reflects the MMI redundancy function or the
+      Gaussian model is not resolved here.
+    - **DMT reduces the total, it does not redistribute it.** The total
+      TDMI falls by 0.118 nats (DiD), of which sts carries 0.075 (64 %),
+      rtr 0.009 (8 %), and the within-region self-transfer atoms xtx
+      and yty (lag-1 information a region carries about itself) 0.046
+      and 0.037. No atom of consequence rises under DMT.
+    - **Largest DMT-minus-PCB change in the peak window (|DiD|):** sts
+      −0.075, xtx −0.046, yty −0.037, rts and str −0.035 each, xts, yts,
+      stx and sty +0.032 each, rtr −0.009; the remaining six atoms
+      (rtx, rty, xtr, xty, ytr, ytx) are within ±0.004. **Structural
+      note for reading that list:** the whole-brain means obey lattice
+      identities under MMI — xtr = rty, ytr = rtx, xty = −xtr,
+      ytx = −ytr exactly, and rts ≈ str, xts ≈ yts ≈ stx ≈ sty ≈ −rts to
+      three decimals — so the +0.032 changes are the mirror of the
+      −0.035 in rts/str and cancel in the total. The independently
+      moving atoms are sts, xtx, yty and rtr, all downward.
+  - **Verdict on the pre-registered rtr prediction: FAILED (recorded
+    13 Sep 2026).** rtr falls with sts (DiD −0.0091, 37 % of baseline),
+    co-varies rather than mirrors (r = 0.66 across bins), positive DiD in
+    only 4 of 14 subjects. The redundancy-dominance interpretation is
+    unsupported on ts_gsr. Total TDMI: −0.118 DiD (8.1 %), dropping in
+    13 of 14 subjects, sts carrying 64 %, xtx and yty most of the rest,
+    rtr 8 %; a reduction of total information, not a redistribution.
+  - **Pre-registered GSR confound and ts_demean prediction (recorded
+    13 Sep 2026, before any computation on ts_demean).** Global signal
+    regression removes the global component, which is where an increase
+    in *global* functional connectivity (Timmermann et al. 2023) would
+    live. The failed rtr prediction on ts_gsr therefore does not rule
+    out the redundancy increase: GSR may have removed the very signal
+    the prediction was about. **Prediction on ts_demean (no GSR):**
+    (i) rtr rises under DMT (positive rtr DiD over bins 9–14 vs 1–8) if
+    the Timmermann global-connectivity effect is real and GSR removed
+    it; (ii) the sts decrease survives the variant change (negative sts
+    DiD on ts_demean). Outcomes: both hold → the ts_gsr rtr failure is
+    attributed to GSR and rtr is reported per variant; (i) fails on
+    ts_demean too → the redundancy increase is unsupported in either
+    stream and the interpretation is dropped; (ii) fails → the sts
+    decrease is GSR-dependent and is reported as such under rule 6, not
+    as a DMT effect. Run: 115-region global fit, all 16 atoms,
+    `01_synergy_timecourse.py --variant ts_demean` (flag added for this
+    purpose; default unchanged at ts_gsr), output
+    `atoms_bins_115regions-all_ts_demean_global.*`. Same descriptive
+    status as every Robustness A result.
+    - **Outcome on ts_demean (run 13 Sep 2026, git 33f0b33-dirty; the
+      uncommitted edits are the pre-registration text above, the
+      `--variant` flag and `03_lz_vs_tdmi.py`;
+      `results/atoms_bins_115regions-all_ts_demean_global.*`).** Values
+      in nats, 14-subject means of the whole-brain pair-mean.
+
+      | quantity | pre, bins 1–8 DMT / PCB | peak, bins 9–14 DMT / PCB | change DMT / PCB | DiD |
+      |---|---|---|---|---|
+      | rtr | 0.0301 / 0.0301 | 0.0452 / 0.0315 | +0.0151 / +0.0014 | **+0.0137** (46 % of baseline) |
+      | sts | 1.240 / 1.224 | 1.152 / 1.216 | −0.089 / −0.008 | **−0.081** (6.5 %) |
+      | total TDMI | 1.384 / 1.346 | 1.293 / 1.345 | −0.091 / −0.001 | **−0.090** (6.5 %) |
+
+      **(ii) holds:** the sts decrease survives the variant change
+      (DiD −0.081 on ts_demean vs −0.075 on ts_gsr; per-subject DiD
+      positive in 3 of 14 vs 1 of 14). **(i) holds at the group mean
+      only:** the rtr DiD flips sign from ts_gsr (−0.0091 → +0.0137)
+      and the DMT-minus-PCB rtr difference is positive in every bin
+      9–14 (+0.007 to +0.023), but the per-subject DiD is positive in
+      **7 of 14** (SD 0.038, so the group mean rests on a few
+      subjects), the DMT rtr maximum is the injection bin 9 (0.072)
+      rather than the intensity peak, and **PCB shows the same
+      injection-locked rtr bump at bins 8–9** (0.042, 0.049 against a
+      0.028 baseline), so part of the DMT rise is an injection event
+      present in both conditions. rtr and sts time courses are neither
+      mirrored nor co-varying on this variant (r = 0.18 across bins;
+      rtr max bin 9, sts min bin 13). Per the pre-registered outcome
+      mapping this is the "both hold" branch: **the ts_gsr rtr failure
+      is attributed to GSR and rtr is reported per variant**, with the
+      three caveats just stated attached wherever it is reported and
+      with the explicit statement that a 7-of-14 split is not a
+      within-subject effect. The redundancy-dominance interpretation is
+      therefore *not ruled out* on ts_demean; it is not supported
+      either, since rtr does not mirror sts. Total TDMI again falls
+      (2 of 14 subjects positive): sts −0.081, xtx −0.064, yty −0.048
+      against rtr +0.014, so the reduction of total information is
+      GSR-independent; ranked |DiD| in the peak window: sts, xtx, str /
+      rts (−0.050), the four mirrored +0.048 atoms, yty, then rtr.
+      Per-bin rtr, DMT: 0.026 0.027 0.029 0.031 0.031 0.035 0.031
+      0.031 0.072 0.043 0.035 0.042 0.038 0.041 0.030 0.033 0.035 0.037
+      0.026 0.045 0.041 0.037 0.038 0.056 0.036 0.048 0.045 0.037; PCB:
+      0.029 0.029 0.025 0.029 0.032 0.027 0.028 0.042 0.049 0.023 0.028
+      0.029 0.030 0.030 0.034 0.034 0.037 0.031 0.033 0.033 0.030 0.034
+      0.034 0.024 0.027 0.029 0.028 0.037. Per-bin sts, DMT: 1.281
+      1.192 1.221 1.299 1.216 1.221 1.246 1.247 1.316 1.171 1.136 1.109
+      1.053 1.125 1.157 1.151 1.170 1.158 1.141 1.210 1.204 1.184 1.193
+      1.202 1.161 1.195 1.264 1.281; PCB: 1.232 1.179 1.201 1.255 1.270
+      1.234 1.269 1.148 1.218 1.191 1.239 1.239 1.211 1.196 1.254 1.280
+      1.240 1.265 1.256 1.261 1.272 1.298 1.302 1.239 1.279 1.281 1.242
+      1.300. Per-bin total, DMT: 1.390 1.320 1.348 1.425 1.344 1.388
+      1.426 1.430 1.477 1.299 1.262 1.266 1.201 1.254 1.265 1.269 1.284
+      1.279 1.270 1.338 1.310 1.304 1.314 1.367 1.290 1.358 1.414 1.388;
+      PCB: 1.323 1.287 1.307 1.366 1.415 1.375 1.387 1.306 1.352 1.308
+      1.358 1.372 1.343 1.334 1.387 1.415 1.391 1.402 1.390 1.398 1.404
+      1.451 1.454 1.367 1.407 1.426 1.408 1.405.
+  - **Caution on comparison with Luppi et al. eLife 2024 (recorded
+    13 Sep 2026).** The "synergistic workspace" collapse under propofol
+    and in disorders of consciousness is defined on a **workspace of
+    regions** selected by their synergy-rank (gateway / broadcaster
+    nodes), not on a whole-brain mean over all pairs. The whole-brain
+    pair-mean reported here is a different quantity over a different
+    region set. **No comparison across the two states (anaesthesia /
+    DoC vs DMT), in either direction, is to be made until the regional
+    definition is matched** — i.e. until synergy is computed on the same
+    workspace definition, with the region selection fixed on independent
+    data (rule 3). "Synergy falls under DMT as it does under propofol" is
+    not a licensed sentence at this point.
+
+- **EEG Lempel-Ziv complexity regressor (inspected 13 Sep 2026, before
+  any correlation was computed).**
+  `external/DMT_NCT/data/RegressorLZInterpscrubbedConvolvedAvg.mat`
+  holds `RegDMT2`, `RegPCB2`, `Regdiff`, each **(14 subjects, 840 TRs)
+  float64**, no non-finite values, per-subject and per-TR, zero-mean
+  arbitrary units (DMT range −9.2 to 10.1). Same subject × TR grid as
+  the fMRI. By the filename and its use in the original scripts it is
+  the simultaneous-EEG Lempel-Ziv complexity (LZc) time course,
+  interpolated over scrubbed frames, HRF-convolved and averaged (over
+  channels), built as an fMRI regressor. The original MATLAB
+  (`02_global_ce_analyses.m` lines 265–350, 497–520;
+  `03_regional_ce_analyses.m:123`; `SI_regional_ce_placebo.m:119`)
+  baseline-corrects each subject by the mean of TRs 1–240, drops the
+  first and last TR (`2:839`) to match their CE series, and correlates
+  the group-mean LZc with group-mean control energy (Spearman, shuffle
+  permutation null) and per subject, plus a DMT-vs-PCB cluster test and
+  a regional CE-vs-LZc map against 5-HT2A density. Group-mean DMT LZc
+  per 30-TR bin: ≈ −1.0 to −1.2 for bins 1–8, jumps to +0.9 at bin 9,
+  **peaks at bin 16 (2.45)**, i.e. later than the mean intensity peak
+  (bin 10), and returns below baseline by bin 23. PCB is flat apart
+  from a single-bin excursion at bin 9 (1.3). **Recorded before any
+  correlation: whole-brain total TDMI (Σ 16 atoms, global fit) under
+  DMT anti-correlates with LZc across the 28 bins.** Rationale: LZc
+  indexes signal diversity / unpredictability, and TDMI is the
+  predictability of the next sample from the current one, so a rise in
+  LZc should coincide with the fall in total TDMI recorded above.
+  Statistic: per-subject Spearman ρ across the 28 bins between
+  bin-mean total TDMI and bin-mean LZc on the DMT run, group mean with
+  a subject-level bootstrap CI (10,000 resamples), tested against a
+  phase-randomised surrogate null of the LZc series (rule 2; 1,000
+  surrogates per subject, seed 20261120), one-sided in the predicted
+  direction with the two-sided value also reported; the PCB run and
+  the sts and rtr atoms are reported alongside as controls / secondary.
+  Script `03_lz_vs_tdmi.py`, output `results/lz_vs_tdmi_<variant>.csv`.
+  Run on ts_gsr first (the file exists) and on ts_demean once its
+  atoms file exists. Descriptive, Robustness A status; it is not a
+  test of the intensity-tracking hypothesis and no motion control is
+  applied here.
+  - **Outcome on ts_gsr (13 Sep 2026, git 33f0b33-dirty — the
+    uncommitted edits are this record, the `--variant` flag and
+    `03_lz_vs_tdmi.py` itself; `results/lz_vs_tdmi_ts_gsr.csv`).**
+    **Prediction holds descriptively.** Total TDMI vs LZc on the DMT
+    run: group-mean per-subject ρ_S = **−0.242** [−0.401, −0.076]
+    (subject bootstrap), 10 of 14 subjects negative, one-sided
+    p = 0.002 and two-sided p = 0.003 against the phase-randomised
+    LZc null (null mean 0.00, SD 0.08). PCB run: ρ_S = −0.047
+    [−0.137, +0.039], p = 0.42, i.e. nothing. Group-mean-series
+    version (as the original MATLAB computes it): ρ_S = −0.83 on DMT
+    (p = 0.003), −0.10 on PCB. sts behaves the same (DMT −0.239
+    [−0.380, −0.093], p = 0.001; PCB −0.03). rtr on DMT is also
+    *negative* (−0.162 [−0.274, −0.049], two-sided p = 0.024; 3 of 14
+    positive), consistent with the failed rtr prediction above.
+    **Interpretive caution, recorded with the result:** LZc and every
+    ΦID atom share the DMT onset step and the slow return, so a
+    negative ρ_S across 28 bins is largely guaranteed for any two
+    quantities that are drug-locked in opposite directions; the
+    within-DMT correlation does not by itself show that TDMI tracks
+    complexity beyond both tracking the drug. The stronger reading
+    requires the decay-phase-only version with the tier-2 controls (a)
+    and (b), which is not computed here. The PCB null shows the
+    relationship is not a property of the scanner session alone.
+  - **Outcome on ts_demean (13 Sep 2026, same git state;
+    `results/lz_vs_tdmi_ts_demean.csv`).** Total TDMI vs LZc on DMT:
+    ρ_S = **−0.214** [−0.368, −0.064], 10 of 14 negative, one-sided
+    p = 0.004, two-sided 0.007; group-mean-series ρ_S = −0.72
+    (p = 0.049). sts: −0.203 [−0.346, −0.067], p = 0.007. rtr: −0.023
+    [−0.110, +0.069], nothing. **PCB on this variant shows a weak
+    negative trend for total TDMI** (−0.093 [−0.179, −0.008], one-sided
+    p = 0.045, two-sided 0.088; sts −0.089, two-sided 0.106) that was
+    absent on ts_gsr, so the "not a session property" line above is
+    weaker without GSR: the DMT effect is ≈ 2.3 × the PCB one on
+    ts_demean, not ≫ it. Prediction holds on both variants at the
+    descriptive level; the shared-drug-time-course caution applies in
+    full.
 
 ## Open questions to resolve
 
