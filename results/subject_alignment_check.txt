@@ -1,0 +1,109 @@
+# subject alignment check — 10_subject_alignment_check.py, git=66b570e-dirty, seed=20261120
+
+## A. How the original MATLAB indexes each file
+  01_gen_time_resolved_ce.m:30: for i = 1:nsub
+  01_gen_time_resolved_ce.m:47: for i = 1:nsub
+  01_gen_time_resolved_ce.m:32: ts = TS{i,1};
+  01_gen_time_resolved_ce.m:78: ts = TS{i,1};
+  01_gen_time_resolved_ce.m:49: ts = TS{i,2};
+  01_gen_time_resolved_ce.m:110: ts = TS{i,2};
+  02_global_ce_analyses.m:545: [r,p] = corr(win_dmt_ce_global(i,:)',dmt_intensity(i,:)','type','Spearman');
+  02_global_ce_analyses.m:634: [r,p] = corr(win_dmt_ce_global(i,:)',dmt_intensity(i,:)','type','Spearman');
+  02_global_ce_analyses.m:560: [r,p] = corr(win_pcb_ce_global(i,:)',pcb_intensity(i,:)','type','Spearman');
+  02_global_ce_analyses.m:655: [r,p] = corr(win_pcb_ce_global(i,:)',pcb_intensity(i,:)','type','Spearman');
+  02_global_ce_analyses.m:514: [r,p] = corr(global_CE_dmt(i,:)',RegDMT2(i,:)','type','Spearman');
+  02_global_ce_analyses.m:592: [r,p] = corr(global_CE_dmt(i,:)',RegDMT2(i,:)','type','Spearman');
+  02_global_ce_analyses.m:529: [r,p] = corr(global_CE_pcb(i,:)',RegPCB2(i,:)','type','Spearman','rows','complete');
+  02_global_ce_analyses.m:617: [r,p] = corr(global_CE_pcb(i,:)',RegPCB2(i,:)','type','Spearman','rows','complete');
+  02_global_ce_analyses.m:444: m_dmt_fd = mean(FDDMT(2:839,:)');
+  02_global_ce_analyses.m:461: win_dmt_fd(:,i) = mean(FDDMT(k:k+window,:)',2);
+  02_global_ce_analyses.m:479: m_win_fd_diff = mean(win_dmt_fd-win_pcb_fd);
+  Reading: TS{i,cond}, dmt_intensity(i,:), pcb_intensity(i,:), RegDMT2(i,:), RegPCB2(i,:) are all
+  indexed by the same loop variable i in 1:nsub, i.e. the authors treat the timeseries subject axis,
+  the ratings rows and the LZ rows as one ordering. FD is indexed as columns = subjects
+  (FDDMT(TRs, subjects)); its transpose gives one row per subject, but the MATLAB uses FD only at the
+  group level (mean over subjects of window FD, and a group-mean partial correlation), so FD-to-subject
+  alignment is asserted by the layout, not exercised per subject, in the original code.
+
+## B. File metadata
+  DMT_clean_mni_continuous_fullPreprocsch116.mat: created Wed May 10 11:39:12 2023; [('ts', (14, 2), 'object'), ('ts_demean', (14, 2), 'object'), ('ts_gsr', (14, 2), 'object'), ('ts_z', (14, 2), 'object')]
+  FDlong.mat: created Mon Dec 11 16:00:42 2023; [('FDDMT', (840, 14), 'float64'), ('FDPCB', (840, 14), 'float64')]
+  intensity_ratings.mat: created Tue Aug 16 16:38:55 2022; [('DMT_intensity', (1,), "[('_TypeSystem', 'O'), ('_Class', 'O'), ('_ObjectMetadata', 'O')]"), ('PCB_intensity', (1,), "[('_TypeSystem', 'O'), ('_Class', 'O'), ('_ObjectMetadata', 'O')]"), ('dmt_intensity', (14, 28), 'uint8'), ('pcb_intensity', (14, 28), 'uint8')]
+  RegressorLZInterpscrubbedConvolvedAvg.mat: created Wed Feb  1 02:13:36 2023; [('RegDMT2', (14, 840), 'float64'), ('RegPCB2', (14, 840), 'float64'), ('Regdiff', (14, 840), 'float64')]
+  Every per-subject array has 14 subjects; timeseries (14,2) cell of (116,840); FD (840,14); ratings (14,28); LZ (14,840).
+
+## C. The subject-index-2 PCB TR-839 defect across files
+  ts: non-finite TRs (subject, cond, TRs) = [(2, 1, [839])]; regions non-finite at those TRs = [116]
+  ts_demean: non-finite TRs (subject, cond, TRs) = [(2, 1, [839])]; regions non-finite at those TRs = [116]
+  ts_gsr: non-finite TRs (subject, cond, TRs) = [(2, 1, [839])]; regions non-finite at those TRs = [116]
+  ts_z: non-finite TRs (subject, cond, TRs) = [(2, 1, [839])]; regions non-finite at those TRs = [116]
+  FDPCB[839, 2] = np.float64(0.0); FDDMT[839, 2] = 0.0585
+  FDPCB[830:840, 2] = [0.0756, 0.0356, 0.0593, 0.1288, 0.0824, 0.0714, 0.1036, 0.0797, 0.0948, 0.0]
+  FDPCB[839, :] (all subjects) = [0.289, 0.174, 0.0, 0.09, 0.108, 0.054, 0.123, 0.029, 0.041, 0.222, 0.188, 0.237, 0.101, 0.125]
+  FD non-finite: DMT 0, PCB 0
+  FD == 0 count per subject, DMT [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], PCB [1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] (TR 0 is 0 for every column; the only other exact zero in all 28 columns is FDPCB[839, 2])
+  FDPCB[839, 2] percentile within its own column: 0.0 % (column median 0.091, 5th pct 0.042)
+  LZ RegPCB2[2, 835:840] = [1.082, 1.247, 1.478, 1.901, 2.401]; RegPCB2[:, 839] range -4.29..7.37; LZ non-finite: 0
+  Reading: the timeseries has a missing final volume for exactly one (subject, condition); the FD file
+  has an exact 0 (the value FD takes when no displacement can be computed) at exactly the same
+  (subject, condition, TR) and nowhere else beyond TR 0. The FD subject axis and the timeseries
+  subject axis agree at subject index 2. LZ shows nothing at that TR (it is an interpolated,
+  HRF-convolved EEG series, so a single missing fMRI volume need not appear in it).
+  Region-20 defect (subject index 7, DMT, constant zero): FDDMT[:, 7] mean 0.120, nothing abnormal expected or seen in FD or LZ for a single-parcel dropout.
+
+## D. Subject IDs inside intensity_ratings.mat (MATLAB table objects DMT_intensity / PCB_intensity)
+  table row names (both tables identical: True): ['S01TW', 'S02WT', 'S03CT', 'S06JB', 'S07MN', 'S08RS', 'S09SR', 'S10RM', 'S11AE', 'S12AP', 'S13HK', 'S14LL', 'S15LP', 'S16JM', 'S17CS', 'S18CS', 'S19SG', 'S22EK', 'S23LPJ', 'S25MM', 'SD', 'SEM', 'average']
+  table variables: Subject + 28 rating columns (VarName2..VarName29); 20 subjects + SD/SEM/average rows
+  dmt_intensity row -> table subject(s) with identical 28 ratings: [(0, ['S02WT']), (1, ['S03CT']), (2, ['S06JB']), (3, ['S07MN']), (4, ['S10RM']), (5, ['S11AE']), (6, ['S12AP']), (7, ['S13HK']), (8, ['S15LP']), (9, ['S17CS']), (10, ['S18CS']), (11, ['S19SG']), (12, ['S23LPJ']), (13, ['S25MM'])]
+  every DMT row matches exactly one table subject: True; table indices [1, 2, 3, 4, 7, 8, 9, 10, 12, 14, 15, 16, 18, 19]; monotone (14 rows are the table order with 6 subjects removed): True
+  subjects in the 20-row table absent from the 14-row array: ['S01TW', 'S08RS', 'S09SR', 'S14LL', 'S16JM', 'S22EK']
+  pcb_intensity row 5 (non-zero ratings) -> table subject ['S11AE']; same subject as DMT row 5: True
+  pcb_intensity row 7 (non-zero ratings) -> table subject ['S13HK']; same subject as DMT row 7: True
+  pcb rows that are all zero match every all-zero table subject and carry no ordering information: [0, 1, 2, 3, 4, 6, 8, 9, 10, 11, 12, 13]
+  Reading: the ratings arrays are the table rows in table order with S01TW, S08RS, S09SR, S14LL, S16JM,
+  S22EK removed (14 of 20; Singleton et al. report 14 subjects after motion exclusion, Timmermann et al.
+  recruited 20). The DMT and PCB arrays share one ordering. No other file carries IDs, so this fixes
+  the ratings ordering (ascending subject code) but cannot by itself tie it to the timeseries.
+
+## E. Matched versus mismatched subject pairings (28-bin series, group-mean shape removed)
+  Statistic: mean over the 14 matched pairs of Spearman rho between series A_i and B_i, against the
+  distribution of the same mean under 20000 random permutations of the B subject labels.
+  p is two-sided about the mismatched mean. Alignment predicts matched != mismatched; a null result
+  means the two series carry too little subject-specific shape to discriminate, not misalignment.
+  A                      B                       matched mismatch       p argmax==self
+  ratings_DMT            LZ_DMT                   +0.080   +0.006  0.5636  2/14
+  ratings_DMT            FD_DMT                   +0.186   +0.014  0.0763  3/14
+  ratings_DMT            sts_gsrglobal_DMT        -0.065   -0.003  0.3360  1/14
+  ratings_DMT            TDMI_gsrglobal_DMT       -0.088   -0.009  0.2384  2/14
+  LZ_DMT                 FD_DMT                   +0.086   +0.006  0.4008  2/14
+  LZ_PCB                 FD_PCB                   +0.102   -0.010  0.0465  3/14
+  sts_gsrglobal_DMT      LZ_DMT                   -0.173   +0.005  0.0078  1/14
+  TDMI_gsrglobal_DMT     LZ_DMT                   -0.165   +0.001  0.0092  1/14
+  sts_gsrglobal_PCB      LZ_PCB                   -0.013   +0.007  0.7333  0/14
+  TDMI_gsrglobal_PCB     LZ_PCB                   -0.025   +0.014  0.5069  0/14
+  sts_gsrglobal_DMT      FD_DMT                   -0.033   -0.003  0.6291  0/14
+  sts_gsrglobal_PCB      FD_PCB                   -0.090   +0.008  0.0885  1/14
+  TDMI_gsrglobal_DMT     FD_DMT                   -0.105   -0.003  0.0887  0/14
+  TDMI_gsrglobal_PCB     FD_PCB                   -0.111   +0.008  0.0434  0/14
+
+## F. TR-level FD versus DVARS (raw `ts`), matched vs mismatched
+  DMT: diag mean +0.045 (min -0.104), off-diag mean -0.023 (max +0.228); argmax==self 4/14
+  PCB: diag mean +0.060 (min -0.160), off-diag mean +0.006 (max +0.195); argmax==self 4/14
+  Reading: the distributed timeseries are denoised and band-passed (motion regressors, scrubbing with
+  interpolation per the LZ filename), so frame-to-frame signal change no longer tracks FD in any
+  subject, matched or not. This test is uninformative on these data; it is not evidence against alignment.
+
+## Verdict (plain, per file pair)
+  timeseries <-> FD:      VERIFIED at one subject (co-located defect at subject index 2, PCB, TR 839; C),
+                          supported by the layout in the MATLAB (A); weak statistical support (E: TDMI vs FD on
+                          PCB p ~ 0.04, others null). A single co-located defect fixes one row; it does not by
+                          itself exclude a permutation of the other 13, which the E tests do not have power to detect.
+  timeseries <-> EEG LZ:  VERIFIED statistically (E: sts and TDMI vs LZ on DMT, matched clearly more negative than
+                          mismatched, p < 0.01, 20,000 permutations) and by the MATLAB per-subject loop (A).
+  ratings <-> timeseries: PLAUSIBLE. Asserted by the MATLAB per-subject loop (A); the ratings arrays are in
+                          ascending subject-code order (D); no statistical test discriminates (E: p 0.24-0.56)
+                          because after removing the group-mean curve the ratings carry little subject-specific shape.
+  ratings <-> FD:         PLAUSIBLE (E: p ~ 0.08, matched +0.19 vs mismatched +0.01, in the expected direction).
+  Overall: alignment VERIFIED for timeseries-FD (one subject) and timeseries-LZ; PLAUSIBLE, not verified, for
+  the ratings. Nothing found contradicts a single shared ordering. No file carries subject IDs on the
+  numeric arrays except the ratings tables, so a full verification would need the authors' subject list.
