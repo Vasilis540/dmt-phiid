@@ -32,8 +32,11 @@ fitted for the local-atom evaluation:
                window is an independent calc_PhiID call on that window's
                samples alone: covariance, mean AND the MMI min-selections are
                all per window, exactly what 02_bias_check.py simulates.
-               WINDOW_TRS = 60, stride 60 => 14 windows, two rating bins each.
-               Output per window, (14, 2, 14, 16), file prefix atoms_win60.
+               Default WINDOW_TRS = 60, stride 60 => 14 windows, two rating
+               bins each; output per window, (14, 2, 14, 16), prefix
+               atoms_win60. `--window-trs 30` (28 windows, one per bin,
+               prefix atoms_win30) is the pre-registered positive control for
+               the shrinkage model (CLAUDE.md), not a primary analysis.
   "placebo"  — robustness variant C, split-half design (CLAUDE.md): fit mean
                and covariance of the four-vector on the FIRST HALF of this
                subject's placebo run (TRs 0-419), fix the MMI selections from
@@ -71,6 +74,8 @@ _ap.add_argument("--variant", default="ts_gsr",
                  help="preprocessing variant in the .mat (default ts_gsr)")
 _ap.add_argument("--fit-mode", default=None, choices=("global", "window", "placebo"),
                  help="override FIT_MODE (default: the constant below)")
+_ap.add_argument("--window-trs", type=int, default=60, choices=(30, 60),
+                 help="window length for --fit-mode window (default 60; 30 = positive control)")
 _args = _ap.parse_args()
 VARIANT = _args.variant
 
@@ -99,10 +104,11 @@ FIT_MODE = _args.fit_mode or "global"   # "global" | "window" | "placebo"
 # rating pair averaged to match — when the W = 30 differential-bias criterion
 # fails, which the bias check predicted and which the 13 Sep 2026 instruction
 # adopts. Non-overlapping. Fixed before any windowed run; do not tune on
-# results. Only 60/60 is implemented: WINDOW_TRS must divide 840 and equal the
-# stride.
-WINDOW_TRS = 60
-WINDOW_STRIDE = 60
+# results. W = 30 is retained as the pre-registered positive control for the
+# shrinkage model (same sign, smaller magnitude expected). WINDOW_TRS must
+# divide 840 and equal the stride (non-overlapping).
+WINDOW_TRS = _args.window_trs
+WINDOW_STRIDE = WINDOW_TRS
 assert WINDOW_STRIDE == WINDOW_TRS and 840 % WINDOW_TRS == 0, (WINDOW_TRS, WINDOW_STRIDE)
 N_WINDOWS = 840 // WINDOW_TRS
 PLACEBO_FIT_TRS = 420      # FIT_MODE="placebo": fit on PCB TRs [0, 420), evaluate on [420, 840)
@@ -119,6 +125,13 @@ PLACEBO_FIT_TRS = 420      # FIT_MODE="placebo": fit on PCB TRs [0, 420), evalua
 # NOT as a failed tracking criterion. Do not fold the sign into the threshold.
 TIER2_ABS_RHO = 0.80
 PREREG_DIRECTION = +1
+# Decay windows on real data (CLAUDE.md, "Decay windows on real data", fixed
+# 13 Sep 2026 before any real windowed run): 1-based inclusive window ranges at
+# W = 60. Primary excludes window 5 (bins 9-10) on the placebo injection
+# response at bins 8-10 seen in the global fit; the pre-registered set 5-14 is
+# the sensitivity analysis and the set on which the simulation tier is assigned.
+DECAY_WINDOWS_PRIMARY = (6, 14)
+DECAY_WINDOWS_SENSITIVITY = (5, 14)
 
 # Condition axis of ts_gsr — confirmed from the original MATLAB
 # (external/DMT_NCT/scripts/01_gen_time_resolved_ce.m: TS{i,1}=DMT, TS{i,2}=PCB).
