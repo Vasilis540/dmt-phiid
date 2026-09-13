@@ -1989,9 +1989,28 @@ sts DiD is negative on both variants on the same bins (ts_gsr −0.0801,
 ts_demean −0.1035, primary set). The relationship between the two
 quantities is not interpreted here.
 
+**Reconciliation with Timmermann et al. 2023 (recorded 13 Sep 2026).**
+On ts_demean, mean pairwise correlation rises under DMT (DiD +0.053
+[+0.007, +0.098], p = 0.047, positive in 10 of 14; peak bins 9–14
++0.075, p = 0.005), replicating the global-connectivity increase
+Timmermann et al. 2023 reported, while whole-brain synergy on the
+identical bins falls (sts DiD −0.104). Zero-lag correlation and lag-1
+predictable information move in opposite directions on the same data
+and bins. On ts_gsr the comparison is uninformative because GSR pins
+the mean correlation near zero by construction. Both conditions show an
+injection-locked jump in mean r at bins 8–9 on ts_demean, consistent
+with the placebo rtr bump already recorded under Robustness A.
+
 ## Open questions to resolve
 
 - Confirm reuse licence with Singleton / Timmermann before publishing.
+- Ask the data authors to confirm that the timeseries subject order (rows
+  of the (14, 2) cell) matches the 14 ratings IDs recovered from
+  `intensity_ratings.mat` (S02WT, S03CT, S06JB, S07MN, S10RM, S11AE,
+  S12AP, S13HK, S15LP, S17CS, S18CS, S19SG, S23LPJ, S25MM, in that order),
+  and that the FD and LZ files share it. See the subject-alignment
+  section: verified for timeseries–FD (one subject) and timeseries–LZ,
+  plausible only for the ratings.
 - ~~Decide sliding-window length for time-resolved ΦID~~ — **resolved**:
   30 TRs / 60 s, non-overlapping. See Primary B above for the justification.
 - ~~Quantify the finite-sample entropy bias directly~~ — **done 12 Sep
