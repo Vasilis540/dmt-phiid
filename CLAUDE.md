@@ -1664,9 +1664,146 @@ sensitivity = bins 10–28.
   residualised data** (−0.146 [−0.337, +0.031]); sensitivity bins 10–28
   void on raw as well (−0.164 [−0.334, +0.003]). Same pattern as W = 60.
 
-Still to come under Primary B, queued 13 Sep 2026: the ts_demean
-variant at W = 60 (rule 6) through the same script, then Robustness C
-(placebo-fitted model) and `07_windowed_atoms_did.py`.
+**Rule-6 variant check: ts_demean, W = 60, 115 regions, windowed
+estimator, run 13 Sep 2026, git f3b435d (both the atoms file and the
+inference); values verbatim from `results/primary_b_ts_demean_win60.csv`
+(log `results/run_06_ts_demean_win60.log`). Same windows, tests, seeds
+and surrogate counts as the ts_gsr result above.**
+
+Step contrast (primary windows 6–14):
+
+| quantity | value | 95 % CI | p |
+|---|---|---|---|
+| pre-injection DMT mean sts | 1.1004 | | |
+| pre-injection PCB mean sts | 1.0819 | | |
+| DMT post − pre | −0.0633 | [−0.1088, −0.0123] | 0.0333 |
+| PCB post − pre | +0.0398 | [+0.0089, +0.0692] | 0.0306 |
+| **DiD raw** | **−0.1031** | **[−0.1558, −0.0522]** | **0.0026** (sign-flip); **0.0010** (phase-randomised; null mean −0.0003, SD 0.0264) |
+| FD DiD, same form | +0.0143 | [−0.0070, +0.0365] | 0.2452 |
+| **DiD FD-residualised** | **−0.0824** | **[−0.1224, −0.0372]** | **0.0048** |
+
+DiD raw is −9.4 % of the pre-injection DMT mean, negative in 12 of 14;
+FD-residualised negative in 13 of 14, survives motion control under the
+pre-registered definition. Sign −1 against the pre-registered +1:
+refutation, as on ts_gsr. Sensitivity windows 5–14: DMT post − pre
+−0.0621 [−0.1055, −0.0130], p = 0.0300; PCB post − pre +0.0314
+[+0.0013, +0.0585], p = 0.0637; DiD raw −0.0935 [−0.1431, −0.0426],
+p = 0.0039, phase-randomised p = 0.0010, −8.5 % of baseline, negative
+in 12 of 14; FD DiD +0.0191 [−0.0008, +0.0402], p = 0.1083;
+FD-residualised −0.0714 [−0.1106, −0.0298], p = 0.0073, survives,
+negative in 12 of 14.
+
+**The ts_demean step contrast replicates the ts_gsr one**: DiD negative
+and significant on both nulls, on both window sets, raw and
+FD-residualised (ts_gsr primary: −0.0809; ts_demean primary: −0.1031).
+
+Tier-2 tracking, primary windows 6–14, ts_demean, verbatim:
+- Group-mean-series ρ_S vs template (thresholded): raw −0.9333
+  (p = 0.0120), FD-residualised −0.8833 (p = 0.0060); both PASS
+  |ρ| ≥ 0.80, sign negative.
+- Per-subject existence test: raw vs own ratings −0.3041 [−0.4882,
+  −0.1027], p = 0.0210, 14 of 14 defined, |ρ| ≥ 0.80 in 1; vs template
+  −0.3667 [−0.5476, −0.1548], p = 0.0090. FD-residualised: vs own
+  ratings −0.1874 [−0.3608, −0.0026], p = 0.0689, **not significant**;
+  vs template −0.2429 [−0.4333, −0.0500], p = 0.0210.
+- Control (a) raw: PCB ρ_S vs template −0.2345 [−0.3786, −0.0893],
+  p = 0.0330; ρ_DMT − ρ_PCB −0.1321 [−0.3655, +0.1084]: **VOID on the
+  raw data** (CI includes zero; PCB same sign and ≥ half of DMT), which
+  differs from ts_gsr, where raw cleared (a) on the primary windows.
+- Control (b): FD (DMT) vs template +0.4060 [+0.1774, +0.6000] (FD is
+  variant-independent). FD-residualised control (a): PCB −0.1000
+  [−0.2036, +0.0071], p = 0.2208; ρ_DMT − ρ_PCB −0.1429 [−0.3357,
+  +0.0667]: VOID.
+- **Tier-2 claim on the primary windows: VOID** (own ratings: raw
+  gm_pass = True, subj_sig = True, same_dir = True, (a) void = True;
+  resid gm_pass = True, subj_sig = False, (a) void = True. Template:
+  raw and resid gm_pass = True, subj_sig = True, (a) void = True).
+
+Tier-2, sensitivity windows 5–14, ts_demean: raw group-mean-series ρ_S
+−0.6727 (p = 0.1968, fails the threshold); per-subject vs own ratings
+−0.2403 [−0.4233, −0.0366], p = 0.0639 (not significant), vs template
+−0.2883 [−0.4874, −0.0675], p = 0.0260; control (a) raw: PCB −0.3550
+[−0.4909, −0.1931], p = 0.0020, ρ_DMT − ρ_PCB +0.0667 [−0.1195,
++0.2658], VOID; FD (DMT) vs template +0.5117 [+0.3489, +0.6632].
+FD-residualised: group-mean-series −0.4545 (p = 0.3167, fails);
+per-subject −0.1243 [−0.3226, +0.0836], p = 0.2068, and −0.1766
+[−0.3827, +0.0545], p = 0.0799; control (a): PCB −0.2831 [−0.4017,
+−0.1532], p = 0.0010, ρ_DMT − ρ_PCB +0.1065 [−0.0918, +0.3126], VOID.
+**Tier-2 claim on the sensitivity windows: VOID.** Tier 3 on this
+variant as on ts_gsr.
+
+**Estimator comparison: rtr, total TDMI and the self-transfer atoms
+under the windowed W = 60 estimator against the global fit
+(`07_windowed_atoms_did.py`, ts_gsr, git 553e919;
+`results/windowed_atoms_did_ts_gsr_win60.csv`, log
+`results/run_07_ts_gsr_win60.log`).** Per-subject DiD = (post − pre)
+DMT − (post − pre) PCB, exact sign-flip p (two-sided), subject-bootstrap
+95 % CI (10,000 draws, seed 20261120); no temporal null, no motion
+handling. The global-fit atoms are re-summarised on the identical bin
+sets (pre bins 1–8; primary bins 11–28; sensitivity bins 9–28; peak
+bins 9–14), so the two estimators are compared like for like. Values
+in nats; "neg" = subjects with negative DiD out of 14.
+
+Primary (pre windows 1–4 / bins 1–8; post windows 6–14 / bins 11–28):
+
+| atom | windowed DiD [CI], p, neg | global DiD [CI], p, neg |
+|---|---|---|
+| sts | −0.0809 [−0.1253, −0.0365], 0.0038, 13 | −0.0801 [−0.1302, −0.0310], 0.0071, 12 |
+| rtr | −0.0078 [−0.0135, −0.0016], 0.0312, 10 | −0.0060 [−0.0131, +0.0014], 0.1378, 10 |
+| total | −0.1037 [−0.1600, −0.0479], 0.0034, 12 | −0.1216 [−0.1917, −0.0526], 0.0051, 13 |
+| xtx | −0.0523 [−0.0839, −0.0221], 0.0065, 12 | −0.0544 [−0.0885, −0.0216], 0.0081, 12 |
+| yty | −0.0396 [−0.0673, −0.0130], 0.0131, 13 | −0.0431 [−0.0767, −0.0128], 0.0137, 13 |
+| rts | −0.0407 [−0.0645, −0.0178], 0.0051, 12 | −0.0396 [−0.0661, −0.0141], 0.0090, 12 |
+
+Pre-injection levels, windowed / global: sts 1.1554 / 1.3085 (DMT),
+1.1378 / 1.2893 (PCB); rtr 0.0388 / 0.0248, 0.0375 / 0.0225; total
+1.4772 / 1.4421, 1.4597 / 1.4046; xtx 0.6273 / 0.6897; yty 0.6125 /
+0.6719; rts 0.5669 / 0.6435. Sensitivity (post windows 5–14 / bins
+9–28), windowed: sts −0.0733 [−0.1179, −0.0298], p = 0.0070, 12; rtr
+−0.0071 [−0.0127, −0.0010], p = 0.0424, 10; total −0.0930 [−0.1495,
+−0.0370], p = 0.0072, 12; xtx −0.0467, p = 0.0137; yty −0.0351,
+p = 0.0239; rts −0.0371, p = 0.0079. Global: sts −0.0735 [−0.1242,
+−0.0251], p = 0.0112, 12; rtr −0.0060 [−0.0127, +0.0012], p = 0.1285,
+10; total −0.1138 [−0.1835, −0.0441], p = 0.0079, 11; xtx −0.0503,
+p = 0.0121; yty −0.0393, p = 0.0210; rts −0.0362, p = 0.0131. Peak
+(post windows 5–7 / bins 9–14), windowed: sts −0.0700 [−0.1065,
+−0.0301], p = 0.0055, 13; rtr −0.0103 [−0.0164, −0.0036], p = 0.0120,
+11; total −0.0929 [−0.1414, −0.0417], p = 0.0051, 12; xtx −0.0396,
+p = 0.0363; yty −0.0313, p = 0.0361; rts −0.0345, p = 0.0096. Global:
+sts −0.0752 [−0.1108, −0.0336], p = 0.0044, 13; rtr −0.0091 [−0.0152,
+−0.0027], p = 0.0203, 10; total −0.1175 [−0.1701, −0.0603],
+p = 0.0018, 13; xtx −0.0460, p = 0.0128; yty −0.0373, p = 0.0155; rts
+−0.0353, p = 0.0082. (The global peak-window rtr and total DiDs here,
+−0.0091 and −0.1175, are the figures recorded under Robustness A as
+−0.0091 and −0.118.)
+
+**Under the windowed estimator rtr and total TDMI move in the same
+direction as under the global fit**: every DiD in the table is
+negative for both estimators on all three window sets. The windowed
+rtr DiD is significant on the primary windows (p = 0.0312) where the
+global-fit one is not (p = 0.1378); the total's DiD is smaller under
+the windowed estimator (−0.1037 vs −0.1216, primary).
+
+**Provenance note (13 Sep 2026).** The Robustness C atoms files
+(`atoms_bins_115regions-all_ts_gsr_placebo.npy/.csv`,
+`atoms_bins_local_115regions-all_ts_gsr_placebo.npy`) and the 07
+comparison (`windowed_atoms_did_ts_gsr_win60.csv`) were first produced
+at f3b435d-dirty and rerun at 553e919 with the committed scripts. The
+rerun is bitwise identical to the dirty-tagged versions: both `.npy`
+files equal with max |difference| 0 and the same NaN pattern, and both
+CSV bodies and the 07 log body identical line for line; only the git tag
+in the header changed.
+
+**Robustness C (placebo-fitted model): atoms computed at 553e919
+(`01_synergy_timecourse.py --fit-mode placebo --variant ts_gsr`,
+115 regions, 6,555 pairs, 271 s). Inference script
+`08_robustness_c_analysis.py` written 13 Sep 2026; because PCB is
+scored only on its out-of-sample half (bins 15–28), the DiD form does
+not apply, and the script reports (i) the within-DMT step, bins 11–28
+minus 1–8 (9–28 sensitivity), and (ii) DMT minus PCB on the matched
+out-of-sample bins 15–28, each with the sign-flip test and bootstrap CI,
+alongside the same contrasts from the native global fit on the identical
+bins. Its numbers are NOT yet recorded here: to be added once reviewed.**
 
 ## Open questions to resolve
 
