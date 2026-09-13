@@ -718,6 +718,59 @@ Recorded here **before any results were inspected.**
         0.80), so under this rule a tier-1 assignment on 5–14 would not
         carry to the primary windows unless the 20,000-run check clears
         0.80 there in both decay conditions at both M.
+      - **Primary step contrast at W = 60: inferential test (pre-registered
+        13 Sep 2026, before any real windowed run).** The step contrast
+        had no test on record. **Statistic, per subject:** (post − pre)
+        on DMT minus (post − pre) on PCB, on the whole-brain mean sts
+        from the windowed estimator, with **pre = windows 1–4** (bins
+        1–8) and **post = windows 6–14 primary** (bins 11–28), **5–14
+        sensitivity**. **Test:** exact sign-flip permutation across the
+        14 subjects, all 2^14 = 16,384 assignments enumerated,
+        two-sided p = fraction of assignments with |mean DiD| ≥ the
+        observed |mean DiD|. **Effect size:** mean DiD with a
+        subject-bootstrap 95 % CI, 10,000 draws, seed 20261120, in nats
+        and as a share of the pre-injection DMT mean. **Second null
+        (rule 2):** the phase-randomised temporal null for the same
+        statistic, 1,000 surrogates. Surrogates are generated per
+        subject and condition by phase-randomising the whole-brain
+        mean sts local-value series at TR resolution (the concatenated
+        per-window local atoms, each window's values under its own
+        fit), then re-averaging into the same windows and recomputing
+        the DiD; two-sided p = fraction of surrogates with |DiD| ≥
+        observed. Randomising the 14-point window series instead was
+        considered and rejected because 14 points give too coarse a
+        phase spectrum; the TR-resolution version treats the
+        concatenated local series as one process without window-locked
+        structure, which is exactly the null being tested. **The
+        directional-failure rule applies: a significant negative DiD is
+        a refutation of the up-regulation hypothesis, reported as
+        such.** Both preprocessing variants (rule 6), FDR not required
+        (one whole-brain statistic per variant and window set; the
+        primary/sensitivity and gsr/demean versions are reported
+        together, not selected among).
+      - **Primary step contrast at W = 60: motion handling (rule 4;
+        pre-registered 13 Sep 2026, before any real windowed run).**
+        Framewise displacement is from `FDlong.mat` (`FDDMT`, `FDPCB`,
+        each (840 TRs, 14 subjects)). **Report window-mean FD per
+        condition** (14 windows × 2 conditions, group mean with subject
+        SD, and the pre/post FD contrast with the same DiD form as the
+        synergy statistic). **Recompute the DiD on FD-residualised
+        sts**: within each subject and condition, regress window-mean
+        sts on window-mean FD across all 14 windows (ordinary least
+        squares, intercept included, one slope per subject × condition;
+        linear, per subject) and take the residuals; then form the
+        same pre/post DiD from the residuals and run the same sign-flip
+        test and bootstrap CI. **Report raw and residualised side by
+        side.** **"Survives motion control" means the residualised DiD
+        has the same sign as the raw DiD and its bootstrap 95 % CI
+        excludes zero.** Any other outcome is reported as "does not
+        survive motion control", with both estimates shown; it is not
+        rescued by a different residualisation. A 14-window
+        within-subject regression is crude and can over-remove signal
+        when FD and drug effect share a time course, which they do at
+        onset; this is a cost of the design and is stated with the
+        result, and it is one reason the primary post window starts at
+        window 6.
       - **(a) Time-in-scanner control.** The identical statistic on each
         subject's **placebo** run: ρ_S between window-mean synergy on
         the PCB run and the same template f over the same windows.
