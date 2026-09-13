@@ -23,14 +23,27 @@ the output filename, so the streams never overwrite each other.
 Condition axis: index 0 = DMT, index 1 = PCB (confirmed against
 external/DMT_NCT/scripts/01_gen_time_resolved_ce.m — TS{i,1}=DMT, TS{i,2}=PCB).
 
-FIT_MODE selects how the Gaussian is fitted for the local-atom evaluation:
+FIT_MODE (constant, overridable with --fit-mode) selects how the Gaussian is
+fitted for the local-atom evaluation:
   "global"   — single fit on the full 840-TR series (phyid's native behaviour;
-               currently the only implemented mode; used as robustness variant A).
-  "window"   — refit per sliding window (pre-registered primary analysis B;
-               30-TR non-overlapping windows, see WINDOW_TRS/WINDOW_STRIDE).
-  "placebo"  — fit on the first half of this subject's placebo run, evaluate
-               local atoms on the held-out placebo half and on the full DMT
-               run, so both are out-of-sample (robustness variant C).
+               robustness variant A). Output per 30-TR rating bin,
+               (14, 2, 28, 16).
+  "window"   — refit per non-overlapping window (primary analysis B). Every
+               window is an independent calc_PhiID call on that window's
+               samples alone: covariance, mean AND the MMI min-selections are
+               all per window, exactly what 02_bias_check.py simulates.
+               WINDOW_TRS = 60, stride 60 => 14 windows, two rating bins each.
+               Output per window, (14, 2, 14, 16), file prefix atoms_win60.
+  "placebo"  — robustness variant C, split-half design (CLAUDE.md): fit mean
+               and covariance of the four-vector on the FIRST HALF of this
+               subject's placebo run (TRs 0-419), fix the MMI selections from
+               that model's analytic Gaussian MIs, and evaluate local atoms
+               under that one model on the held-out placebo half (TRs 420-839)
+               and on the full DMT run. Both evaluations are out-of-sample.
+               Output per 30-TR bin, (14, 2, 28, 16); PCB bins 0-13 are NaN
+               (in-sample, not evaluated).
+Neither "window" nor "placebo" is to be run on the full real data until the
+20,000-run bias check assigns a tier (CLAUDE.md); both are smoke-tested only.
 """
 
 import argparse
@@ -43,7 +56,9 @@ from pathlib import Path
 import numpy as np
 import scipy.io as sio
 
-from phyid.calculate import calc_PhiID
+from phyid.calculate import (_get_atoms_four_vec, _get_coinfo_four_vec,
+                             calc_PhiID)
+from phyid.measures import local_entropy_mvn
 from phyid.utils import PhiID_atoms_abbr
 
 # ---------------------------------------------------------------- config
@@ -54,7 +69,10 @@ _ap = argparse.ArgumentParser(description="whole-brain mean ΦID atoms per bin")
 _ap.add_argument("--variant", default="ts_gsr",
                  choices=("ts_gsr", "ts_demean", "ts_z", "ts"),
                  help="preprocessing variant in the .mat (default ts_gsr)")
-VARIANT = _ap.parse_args().variant
+_ap.add_argument("--fit-mode", default=None, choices=("global", "window", "placebo"),
+                 help="override FIT_MODE (default: the constant below)")
+_args = _ap.parse_args()
+VARIANT = _args.variant
 
 # Pre-registered region exclusion (CLAUDE.md, "Pre-registered analysis
 # choices"). Region 20 (0-based; Yeo network 3 / dorsal attention, left
@@ -71,15 +89,23 @@ N_ATOMS = len(ATOMS)
 assert N_ATOMS == 16 and ATOMS[0] == "rtr" and ATOMS[-1] == "sts", ATOMS
 N_BINS = 28
 TRS_PER_BIN = 30           # 840 TRs / 28 ratings = exactly 30
-FIT_MODE = "global"        # "global" | "window" | "placebo"
+FIT_MODE = _args.fit_mode or "global"   # "global" | "window" | "placebo"
 
-# Pre-registered window for FIT_MODE="window" (primary analysis B). TR = 2 s
-# (external/DMT_NCT/scripts/02_global_ce_analyses.m:179 — TR=2; window=60/TR),
-# so 30 TRs = 60 s = exactly one intensity-rating bin, and matches the window
-# Singleton et al. 2025 used on this dataset. Non-overlapping => 28 windows,
-# one per rating. Fixed before any windowed run; do not tune on results.
-WINDOW_TRS = 30
-WINDOW_STRIDE = 30
+# Window for FIT_MODE="window" (primary analysis B). TR = 2 s
+# (external/DMT_NCT/scripts/02_global_ce_analyses.m:179 — TR=2; window=60/TR).
+# The original pre-registration was 30 TRs (one rating bin, the Singleton et
+# al. 2025 window); the pre-registered decision tree (CLAUDE.md, Primary B)
+# moves to W = 60, stride 60 — two rating bins per window, 14 windows, each
+# rating pair averaged to match — when the W = 30 differential-bias criterion
+# fails, which the bias check predicted and which the 13 Sep 2026 instruction
+# adopts. Non-overlapping. Fixed before any windowed run; do not tune on
+# results. Only 60/60 is implemented: WINDOW_TRS must divide 840 and equal the
+# stride.
+WINDOW_TRS = 60
+WINDOW_STRIDE = 60
+assert WINDOW_STRIDE == WINDOW_TRS and 840 % WINDOW_TRS == 0, (WINDOW_TRS, WINDOW_STRIDE)
+N_WINDOWS = 840 // WINDOW_TRS
+PLACEBO_FIT_TRS = 420      # FIT_MODE="placebo": fit on PCB TRs [0, 420), evaluate on [420, 840)
 
 # Pre-registered tier-2 sign handling on real data (CLAUDE.md, "Sign handling
 # on real data", fixed 13 Sep 2026 before any real windowed run). Tracking
@@ -104,21 +130,76 @@ RESULTS.mkdir(exist_ok=True)
 
 rng = np.random.default_rng(SEED)
 
-if FIT_MODE == "window":
-    raise NotImplementedError(
-        "FIT_MODE='window' (sliding-window ΦID, primary analysis B) not "
-        f"implemented yet. Window is pre-registered: {WINDOW_TRS}-TR windows, "
-        f"stride {WINDOW_STRIDE}, non-overlapping."
-    )
-if FIT_MODE == "placebo":
-    raise NotImplementedError(
-        "FIT_MODE='placebo' (robustness C) not implemented yet. Design is "
-        "pre-registered: fit on the first half of PCB, evaluate local atoms "
-        "on the held-out PCB half and on the full DMT run, so both are "
-        "out-of-sample."
-    )
-if FIT_MODE != "global":
+if FIT_MODE not in ("global", "window", "placebo"):
     raise ValueError(f"FIT_MODE must be 'global', 'window', or 'placebo'; got {FIT_MODE!r}")
+
+
+# ---------------------------------------------------------------- fixed-model ΦID
+# Used by FIT_MODE="placebo". phyid's calc_PhiID fits and evaluates on the same
+# samples; here the Gaussian (mu, cov of the four-vector [x_past, y_past,
+# x_future, y_future]) comes from one dataset and the local atoms are evaluated
+# on another. No per-variable standardisation is applied: local MIs, and hence
+# every atom, are invariant to a fixed per-variable rescaling applied to model
+# and data alike, so this equals phyid's standardised computation whenever the
+# fit and evaluation data coincide (checked in the smoke test to ~1e-10).
+_IDX = {  # entropy term -> variable subset, in phyid's four-vector order
+    "h_p1": [0], "h_p2": [1], "h_t1": [2], "h_t2": [3],
+    "h_p1p2": [0, 1], "h_t1t2": [2, 3], "h_p1t1": [0, 2], "h_p1t2": [0, 3],
+    "h_p2t1": [1, 2], "h_p2t2": [1, 3], "h_p1p2t1": [0, 1, 2],
+    "h_p1p2t2": [0, 1, 3], "h_p1t1t2": [0, 2, 3], "h_p2t1t2": [1, 2, 3],
+    "h_p1p2t1t2": [0, 1, 2, 3],
+}
+
+
+def four_vec(x, y, tau):
+    """(4, T-tau) array [x_past, y_past, x_future, y_future], phyid's order."""
+    return np.c_[x[:-tau], y[:-tau], x[tau:], y[tau:]].T
+
+
+def fit_gaussian(X):
+    """mu (4,), cov (4,4) of a four-vector sample (4, N); ddof=1 as np.cov."""
+    return np.mean(X, axis=1), np.cov(X)
+
+
+def analytic_mi(cov, a, b):
+    """Gaussian MI between variable sets a and b under cov, in nats."""
+    ld = lambda idx: np.linalg.slogdet(cov[np.ix_(idx, idx)])[1]
+    return 0.5 * (ld(a) + ld(b) - ld(a + b))
+
+
+def mmi_selections(cov):
+    """MMI min-selections fixed from the model, not from evaluation samples.
+
+    Returns the six redundancy choices as 0/1 (first/second candidate) and the
+    rtr choice as an index into [I_xta, I_xtb, I_yta, I_ytb], all decided on
+    the analytic Gaussian MIs of the fitted covariance. phyid decides the same
+    choices on the mean local MI of the fit samples, which under a Gaussian fit
+    to those same samples is the plug-in MI, i.e. the same number.
+    """
+    I = {
+        "I_xta": analytic_mi(cov, [0], [2]), "I_xtb": analytic_mi(cov, [0], [3]),
+        "I_yta": analytic_mi(cov, [1], [2]), "I_ytb": analytic_mi(cov, [1], [3]),
+        "I_xyta": analytic_mi(cov, [0, 1], [2]), "I_xytb": analytic_mi(cov, [0, 1], [3]),
+        "I_xtab": analytic_mi(cov, [0], [2, 3]), "I_ytab": analytic_mi(cov, [1], [2, 3]),
+    }
+    pairs = {
+        "R_xyta": ("I_xta", "I_yta"), "R_xytb": ("I_xtb", "I_ytb"),
+        "R_xytab": ("I_xtab", "I_ytab"), "R_abtx": ("I_xta", "I_xtb"),
+        "R_abty": ("I_yta", "I_ytb"), "R_abtxy": ("I_xyta", "I_xytb"),
+    }
+    sel = {k: (0 if I[a] < I[b] else 1) for k, (a, b) in pairs.items()}
+    sel["rtr"] = int(np.argmin([I["I_xta"], I["I_xtb"], I["I_yta"], I["I_ytb"]]))
+    return sel, pairs
+
+
+def local_atoms_under_model(X_eval, mu, cov, sel, pairs):
+    """Local ΦID atoms (dict of (N,) arrays) of X_eval (4, N) under (mu, cov)."""
+    h = {k: local_entropy_mvn(X_eval[idx].T, mu[idx], cov[np.ix_(idx, idx)])
+         for k, idx in _IDX.items()}
+    I = _get_coinfo_four_vec(h)
+    R = {k: I[pairs[k][sel[k]]] for k in pairs}
+    rtr = I[["I_xta", "I_xtb", "I_yta", "I_ytb"][sel["rtr"]]]
+    return _get_atoms_four_vec({"h_res": h, "I_res": I, "R_res": R, "rtr": rtr})
 
 # ---------------------------------------------------------------- load
 ts_all = sio.loadmat(DATA / "DMT_clean_mni_continuous_fullPreprocsch116.mat")[VARIANT]
@@ -190,8 +271,12 @@ print(f"  [qc] regions entering ΦID: {n_regions} (selected {n_selected}, "
       f"excluded {n_selected - n_regions})")
 
 TAG = f"{n_regions}regions-{REGION_SELECTION}_{VARIANT}_{FIT_MODE}"
-OUT_NPY = RESULTS / f"atoms_bins_{TAG}.npy"
-OUT_CSV = RESULTS / f"atoms_bins_{TAG}.csv"
+PREFIX = f"atoms_win{WINDOW_TRS}" if FIT_MODE == "window" else "atoms_bins"
+OUT_NPY = RESULTS / f"{PREFIX}_{TAG}.npy"
+OUT_CSV = RESULTS / f"{PREFIX}_{TAG}.csv"
+# time axis of the output: rating bins (global, placebo) or windows (window)
+N_T, T_LEN, T_NAME = ((N_WINDOWS, WINDOW_TRS, "window") if FIT_MODE == "window"
+                      else (N_BINS, TRS_PER_BIN, "bin"))
 
 pairs = list(itertools.combinations(range(n_regions), 2))
 n_pairs = len(pairs)
@@ -199,7 +284,7 @@ n_pairs = len(pairs)
 print(f"variant={VARIANT}  regions={n_regions}/{n_regions_total} "
       f"({REGION_SELECTION})  pairs={n_pairs}  subjects={n_subjects}  "
       f"conditions={CONDITIONS}")
-print(f"TRs={n_trs}  bins={N_BINS}  TRs/bin={TRS_PER_BIN}  tau={TAU}  "
+print(f"TRs={n_trs}  {T_NAME}s={N_T}  TRs/{T_NAME}={T_LEN}  tau={TAU}  "
       f"fit_mode={FIT_MODE}")
 
 # ---------------------------------------------------------------- compute
@@ -207,44 +292,88 @@ print(f"TRs={n_trs}  bins={N_BINS}  TRs/bin={TRS_PER_BIN}  tau={TAU}  "
 # is all-NaN across regions in every ts variant). We drop non-finite TRs, then
 # attribute each atom sample to its ORIGINAL TR index so the 30-TR bins stay
 # aligned with the intensity ratings.
-atoms_bins = np.full((n_subjects, n_conditions, N_BINS, N_ATOMS), np.nan)
-bin_counts = np.zeros((n_subjects, n_conditions, N_BINS), dtype=int)
+atoms_bins = np.full((n_subjects, n_conditions, N_T, N_ATOMS), np.nan)
+bin_counts = np.zeros((n_subjects, n_conditions, N_T), dtype=int)
+
+
+def finite_trs(X, label):
+    """Indices of TRs finite in every region; warn if the drop is not a tail."""
+    kept = np.where(np.all(np.isfinite(X), axis=0))[0]
+    n_dropped = X.shape[1] - kept.size
+    if n_dropped:
+        is_tail = np.array_equal(kept, np.arange(kept.size))
+        print(f"  [warn] {label}: dropped {n_dropped} non-finite TR(s) "
+              f"({'tail' if is_tail else 'MIDDLE-GAP'})")
+    return kept
+
+
+def pair_mean_atoms_native(X_clean):
+    """(N_ATOMS, T-tau) mean over pairs of phyid's native local atoms
+    (fit and evaluation on the same samples)."""
+    acc = np.zeros((N_ATOMS, X_clean.shape[1] - TAU))
+    for i, j in pairs:
+        atoms, _ = calc_PhiID(X_clean[i], X_clean[j], tau=TAU,
+                              kind=KIND, redundancy=REDUNDANCY)
+        for a, name in enumerate(ATOMS):
+            acc[a] += np.asarray(atoms[name])
+    return acc / n_pairs
+
+
+def accumulate(s, c, atom_mean, start_tr):
+    """Attribute atom sample p (transition start_tr[p] -> +TAU) to its
+    time slot; slot t covers TRs t*T_LEN .. (t+1)*T_LEN-1."""
+    slot_of = start_tr[:atom_mean.shape[1]] // T_LEN
+    for t in range(N_T):
+        m = slot_of == t
+        if m.any():
+            atoms_bins[s, c, t, :] = atom_mean[:, m].mean(axis=1)
+            bin_counts[s, c, t] = int(m.sum())
+
 
 t0 = time.time()
 for s in range(n_subjects):
-    for c in range(n_conditions):
-        X = ts_all[s, c][region_idx, :]  # (n_regions, n_trs)
+    if FIT_MODE == "global":
+        for c in range(n_conditions):
+            X = ts_all[s, c][region_idx, :]
+            kept = finite_trs(X, f"s={s} {CONDITIONS[c]}")
+            accumulate(s, c, pair_mean_atoms_native(X[:, kept]), kept)
 
-        finite = np.all(np.isfinite(X), axis=0)
-        kept = np.where(finite)[0]
-        n_dropped = n_trs - kept.size
-        if n_dropped:
-            # Warn if drops are not purely at the tail — a middle gap would let
-            # phyid treat non-adjacent TRs as adjacent, which is a real problem.
-            is_tail = np.array_equal(kept, np.arange(kept.size))
-            note = "tail" if is_tail else "MIDDLE-GAP"
-            print(f"  [warn] s={s} {CONDITIONS[c]}: dropped {n_dropped} "
-                  f"non-finite TR(s) ({note})")
-        X_clean = X[:, kept]
+    elif FIT_MODE == "window":
+        # Each window is fitted and evaluated on its own samples only, so the
+        # first window sample is transition (w*W) -> (w*W+tau) and the last is
+        # (w*W+W-1-tau) -> (w*W+W-1): no sample straddles a window boundary.
+        for c in range(n_conditions):
+            X = ts_all[s, c][region_idx, :]
+            kept = finite_trs(X, f"s={s} {CONDITIONS[c]}")
+            for w in range(N_WINDOWS):
+                in_w = kept[(kept >= w * WINDOW_TRS) & (kept < (w + 1) * WINDOW_TRS)]
+                if in_w.size <= TAU + 4:      # cannot fit a 4x4 covariance
+                    continue
+                accumulate(s, c, pair_mean_atoms_native(X[:, in_w]), in_w)
 
-        # accumulate mean-over-pairs of every atom on the cleaned series
-        atom_sum = np.zeros((N_ATOMS, kept.size - TAU))
+    elif FIT_MODE == "placebo":
+        c_pcb = CONDITIONS.index("PCB")
+        c_dmt = CONDITIONS.index("DMT")
+        X_pcb = ts_all[s, c_pcb][region_idx, :]
+        X_dmt = ts_all[s, c_dmt][region_idx, :]
+        kept_pcb = finite_trs(X_pcb, f"s={s} PCB")
+        kept_dmt = finite_trs(X_dmt, f"s={s} DMT")
+        fit_trs = kept_pcb[kept_pcb < PLACEBO_FIT_TRS]
+        eval_trs = kept_pcb[kept_pcb >= PLACEBO_FIT_TRS]
+        assert np.array_equal(fit_trs, np.arange(PLACEBO_FIT_TRS)), \
+            f"s={s}: PCB fit half must be complete and contiguous"
+        acc_pcb = np.zeros((N_ATOMS, eval_trs.size - TAU))
+        acc_dmt = np.zeros((N_ATOMS, kept_dmt.size - TAU))
         for i, j in pairs:
-            atoms, _ = calc_PhiID(X_clean[i], X_clean[j], tau=TAU,
-                                  kind=KIND, redundancy=REDUNDANCY)
-            for a, name in enumerate(ATOMS):
-                atom_sum[a] += np.asarray(atoms[name])
-        atom_mean = atom_sum / n_pairs
-
-        # atom sample p corresponds to transition kept[p] -> kept[p+TAU];
-        # attribute it to start TR kept[p]. Bin b covers TRs b*30..(b+1)*30-1.
-        start_tr = kept[:atom_mean.shape[1]]
-        bin_of = start_tr // TRS_PER_BIN
-        for b in range(N_BINS):
-            m = bin_of == b
-            if m.any():
-                atoms_bins[s, c, b, :] = atom_mean[:, m].mean(axis=1)
-                bin_counts[s, c, b] = int(m.sum())
+            mu, cov = fit_gaussian(four_vec(X_pcb[i, fit_trs], X_pcb[j, fit_trs], TAU))
+            sel, prs = mmi_selections(cov)
+            for acc, X, trs in ((acc_pcb, X_pcb, eval_trs), (acc_dmt, X_dmt, kept_dmt)):
+                atoms = local_atoms_under_model(four_vec(X[i, trs], X[j, trs], TAU),
+                                                mu, cov, sel, prs)
+                for a, name in enumerate(ATOMS):
+                    acc[a] += np.asarray(atoms[name])
+        accumulate(s, c_pcb, acc_pcb / n_pairs, eval_trs)
+        accumulate(s, c_dmt, acc_dmt / n_pairs, kept_dmt)
 
     print(f"  subject {s + 1:2d}/{n_subjects} done  "
           f"({time.time() - t0:.1f}s elapsed)")
@@ -278,11 +407,13 @@ with open(OUT_CSV, "w") as fh:
              f"excluded_regions={','.join(map(str, EXCLUDE_REGIONS)) or 'none'} "
              f"atoms={','.join(ATOMS)} "
              f"tau={TAU} redundancy={REDUNDANCY} fit_mode={FIT_MODE} "
+             f"window_trs={WINDOW_TRS if FIT_MODE == 'window' else 'na'} "
+             f"placebo_fit_trs={PLACEBO_FIT_TRS if FIT_MODE == 'placebo' else 'na'} "
              f"seed={SEED} git={sha}\n")
-    fh.write("subject,condition,bin," + ",".join(ATOMS) + "\n")
+    fh.write(f"subject,condition,{T_NAME}," + ",".join(ATOMS) + "\n")
     for s in range(n_subjects):
         for c, cond_name in enumerate(CONDITIONS):
-            for b in range(N_BINS):
+            for b in range(N_T):
                 vals = ",".join(f"{v:.6f}" for v in atoms_bins[s, c, b])
                 fh.write(f"{s},{cond_name},{b},{vals}\n")
 
@@ -291,14 +422,15 @@ print()
 synergy_bins = atoms_bins[..., ATOMS.index("sts")]
 print(f"array shape: {atoms_bins.shape}  (atoms: {', '.join(ATOMS)})")
 print(f"finite fraction: {np.isfinite(atoms_bins).mean():.3f}")
-print(f"samples/bin: min={bin_counts.min()} max={bin_counts.max()} "
-      f"median={int(np.median(bin_counts))}")
+_bc = bin_counts[bin_counts > 0]
+print(f"samples/{T_NAME} (evaluated slots): min={_bc.min()} max={_bc.max()} "
+      f"median={int(np.median(_bc))}; empty slots={(bin_counts == 0).sum()}")
 print(f"sts global mean={np.nanmean(synergy_bins):.4f}  "
       f"std={np.nanstd(synergy_bins):.4f}  "
       f"min={np.nanmin(synergy_bins):.4f}  "
       f"max={np.nanmax(synergy_bins):.4f}")
 print()
-print("mean synergy (sts) across subjects, per bin:")
+print(f"mean synergy (sts) across subjects, per {T_NAME}:")
 for c, cond_name in enumerate(CONDITIONS):
     print(f"  {cond_name}:", np.array2string(np.nanmean(synergy_bins[:, c], axis=0),
                                              precision=3, suppress_small=True))

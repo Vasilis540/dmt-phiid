@@ -1,4 +1,4 @@
-# script=01_synergy_timecourse.py variant=ts_demean regions=115 region_selection=all excluded_regions=20 atoms=rtr,rtx,rty,rts,xtr,xtx,xty,xts,ytr,ytx,yty,yts,str,stx,sty,sts tau=1 redundancy=MMI fit_mode=global seed=20261120 git=33f0b33-dirty
+# script=01_synergy_timecourse.py variant=ts_demean regions=115 region_selection=all excluded_regions=20 atoms=rtr,rtx,rty,rts,xtr,xtx,xty,xts,ytr,ytx,yty,yts,str,stx,sty,sts tau=1 redundancy=MMI fit_mode=global seed=20261120 git=84ea657
 subject,condition,bin,rtr,rtx,rty,rts,xtr,xtx,xty,xts,ytr,ytx,yty,yts,str,stx,sty,sts
 0,DMT,0,0.022489,0.010741,0.018413,0.487813,0.018413,0.492931,-0.018413,-0.479159,0.010741,-0.010741,0.505517,-0.481336,0.489723,-0.485150,-0.483215,1.060228
 0,DMT,1,0.025490,0.000440,-0.001031,0.518685,-0.001031,0.550790,0.001031,-0.518820,0.000440,-0.000440,0.545598,-0.519530,0.519846,-0.520877,-0.519615,1.105244

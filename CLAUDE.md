@@ -598,6 +598,24 @@ Recorded here **before any results were inspected.**
         a sign-blind criterion could otherwise be gamed either way; fixing
         it now removes that freedom. Mirrored in
         `01_synergy_timecourse.py` (`TIER2_ABS_RHO`, `PREREG_DIRECTION`).
+      - **Direct evidence that bins 8–10 are onset-contaminated
+        (recorded 13 Sep 2026, from the ts_demean global fit).** On the
+        no-GSR data the whole-brain rtr shows a bump at bins 8–9 **in
+        placebo** (0.042, 0.049 against a 0.028 baseline), the same
+        bins in which DMT rtr peaks (0.072 at bin 9). Placebo has no
+        drug, so the no-GSR data carry an injection response that is
+        independent of drug (the injection itself, and whatever
+        co-occurs with it: motion, arousal, the global signal that GSR
+        would have removed). The sts series shows the matching
+        single-bin placebo dip at bin 10 on ts_gsr. **This supports the
+        decay-phase-only design**: any DMT-vs-PCB contrast that
+        includes bins 8–10 mixes a drug effect with an injection event
+        present in both arms, and the tier-2 decay windows (W = 60:
+        windows 5–14, i.e. bins 9–28; W = 30: bins 10–28) should be
+        read with the first decay window treated as onset-adjacent.
+        Whether to start the decay at window 6 (bin 11) at W = 60 is a
+        choice to fix before the first real windowed run; the
+        pre-registered windows stand until then.
       - **(a) Time-in-scanner control.** The identical statistic on each
         subject's **placebo** run: ρ_S between window-mean synergy on
         the PCB run and the same template f over the same windows.
@@ -766,6 +784,47 @@ Recorded here **before any results were inspected.**
   comparison is symmetric. This halves the data available for the fit, which
   is a cost to be reported.
 
+- **Implementation status of Primary B (window) and Robustness C
+  (placebo) — code exists, smoke-tested, NOT run on real data (recorded
+  13 Sep 2026).** `01_synergy_timecourse.py --fit-mode window|placebo`.
+  - **Window mode**: `WINDOW_TRS = WINDOW_STRIDE = 60`, 14 non-overlapping
+    windows, each an independent `calc_PhiID` call on that window's
+    samples alone (covariance, mean and MMI selections all per window,
+    matching what `02_bias_check.py` simulates; no sample straddles a
+    boundary). Output `atoms_win60_<tag>.npy`, shape (14, 2, 14, 16).
+    W = 60 is the decision tree's fallback branch; it was set on the
+    13 Sep 2026 instruction and the recorded prediction that the W = 30
+    criterion fails on its differential-bias clause. This file does not
+    record a completed step-2 validation of the analytic log-det
+    correction, so the branch rests on the prediction and the
+    instruction, not on a recorded step-3 evaluation; if step 2 is run
+    later and contradicts the prediction, that takes precedence.
+  - **Placebo mode**: per subject and pair, mean and covariance of the
+    four-vector fitted on PCB TRs 0–419, MMI selections fixed from that
+    model's analytic Gaussian MIs, local atoms evaluated under that one
+    model on PCB TRs 420–839 and on the full DMT run (both
+    out-of-sample). Output `atoms_bins_<tag>_placebo.npy`, (14, 2, 28,
+    16), PCB bins 0–13 NaN. The fixed-model code path reproduces
+    `calc_PhiID` to 1e-13 on real pairs when fit and evaluation data
+    coincide.
+  - **Smoke tests (6 contiguous regions, `REGION_SELECTION="first"`,
+    scratch directory, never a reportable setting):** global mode is
+    bit-identical to the pre-patch script; window mode matches an
+    independent per-window recomputation to 3e-16, including the 59-TR
+    final window of subject 2 PCB; placebo mode gives the expected NaN
+    pattern. Observation from the placebo smoke, 6 regions only and not
+    a result: the held-out PCB half scores *higher* sts under the
+    placebo-fitted model than the same TRs under the native global fit
+    (1.49 vs 1.28), i.e. the out-of-sample inflation the corrected
+    design anticipated is real even placebo-on-placebo, which is why
+    both arms must be out-of-sample.
+  - **No real windowed or placebo-fitted result will be produced until
+    the 20,000-run bias check assigns a tier** (see "Decision on a
+    still-straddling repeat"). The remaining pre-run decisions listed
+    under Primary B (what replaces the 60-TR robustness check on the
+    fallback branch; whether the decay starts at window 6) are still
+    open.
+
 - **Region exclusion: region 20 (0-based) dropped for all subjects and both
   conditions → 115 regions, 6,555 pairs.** Recorded 12 Sep 2026, before any
   115-region result existed.
@@ -875,7 +934,9 @@ Recorded here **before any results were inspected.**
 
     Difference-in-differences: rtr −0.0091 (37 % of the DMT baseline;
     per-subject DiD positive in 4 of 14), total −0.118 (8.1 % of the DMT
-    baseline; per-subject DiD negative in 13 of 14). Per-bin rtr means,
+    baseline; per-subject DiD negative in 13 of 14). **sts per-subject
+    DiD (recorded 13 Sep 2026): negative in 13 of 14** (mean −0.075,
+    SD 0.077; the one positive subject is index 13, +0.13). Per-bin rtr means,
     bins 1–28: DMT 0.017 0.019 0.026 0.023 0.024 0.032 0.029 0.029 0.021
     0.013 0.013 0.015 0.016 0.013 0.016 0.014 0.017 0.017 0.017 0.023
     0.017 0.021 0.021 0.022 0.021 0.028 0.025 0.020; PCB 0.017 0.021
@@ -976,8 +1037,10 @@ Recorded here **before any results were inspected.**
       with the explicit statement that a 7-of-14 split is not a
       within-subject effect. The redundancy-dominance interpretation is
       therefore *not ruled out* on ts_demean; it is not supported
-      either, since rtr does not mirror sts. Total TDMI again falls
-      (2 of 14 subjects positive): sts −0.081, xtx −0.064, yty −0.048
+      either, since rtr does not mirror sts. **sts per-subject DiD:
+      negative in 11 of 14** (mean −0.081, SD 0.127; positive: subject
+      indices 0, 1, 13 at +0.07, +0.01, +0.18), against 13 of 14 on
+      ts_gsr. Total TDMI again falls (2 of 14 subjects positive): sts −0.081, xtx −0.064, yty −0.048
       against rtr +0.014, so the reduction of total information is
       GSR-independent; ranked |DiD| in the peak window: sts, xtx, str /
       rts (−0.050), the four mirrored +0.048 atoms, yty, then rtr.
