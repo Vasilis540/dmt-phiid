@@ -138,3 +138,16 @@ Source: `results/global_fc_did_<variant>.csv` (git 66b570e-dirty). Mean Pearson 
 | ts_gsr | peak 9–14 | −0.0032 [−0.0050, −0.0015], 0.0023, 12/2 | −0.0752 [−0.1114, −0.0335], 0.0044, 13/1 |
 
 Pre-injection mean r: ts_demean DMT 0.1905, PCB 0.1813; ts_gsr DMT −0.0020, PCB −0.0039 (GSR pins the mean near zero by construction; every ts_gsr bin lies within −0.0058 to −0.0008).
+
+## Table S8. Post-hoc proportionality: sts / TDMI ratio DiD, four cells
+
+Source: `results/proportionality.csv` (script `14_proportionality.py` at git dbf2311; interpretation rule recorded in the script docstring and in the project orientation file before the run). Post-hoc, specified after the primary result, reported regardless of outcome. Ratio = sts / TDMI (TDMI = Σ 16 atoms) per subject, condition and window (W = 60) or bin (global fit); DiD = (post − pre)_DMT − (post − pre)_PCB on the mean ratio over the window set; exact sign-flip p over 2^14 assignments, two-sided; subject-bootstrap 95 % CI, 10,000 draws, seed 20261120. Windows: W = 60, pre 1–4, post 6–14; global fit, pre bins 1–8, post 11–28. Verdict by the pre-recorded rule: CI includes zero → proportional; significantly negative → more than proportional; significantly positive → less than proportional. (i) = sts share of TDMI at pre-injection baseline on the DMT run (subject mean, with CI); (ii) = sts DiD / TDMI DiD on the group means, with a subject-bootstrap CI of the ratio of means. (i) and (ii) are comparable within a cell, not across estimators: the windowed and global fits give different baseline shares because per-window finite-sample bias falls on sts and on the self-transfer atoms. No temporal null, no motion handling.
+
+| estimator | variant | ratio DiD [CI], p, neg/14 | verdict | (i) baseline share [CI] | (ii) share of TDMI DiD [CI] | sts DiD (nats) | TDMI DiD (nats) |
+|---|---|---|---|---|---|---|---|
+| windowed W = 60 | ts_gsr | +0.0005 [−0.0081, +0.0083], 0.9138, 6 | proportional | 0.7820 [0.7779, 0.7857] | 0.7797 [0.6531, 0.9362] | −0.0809 [−0.1266, −0.0371] | −0.1037 [−0.1597, −0.0481] |
+| windowed W = 60 | ts_demean | −0.0095 [−0.0235, +0.0049], 0.2195, 9 | proportional | 0.7670 [0.7590, 0.7748] | 0.8697 [0.6909, 1.0063] | −0.1031 [−0.1540, −0.0516] | −0.1186 [−0.1704, −0.0675] |
+| global fit | ts_gsr | +0.0204 [+0.0048, +0.0340], 0.0248, 4 | less than proportional | 0.9082 [0.8994, 0.9167] | 0.6584 [0.4864, 0.8174] | −0.0801 [−0.1320, −0.0316] | −0.1216 [−0.1914, −0.0519] |
+| global fit | ts_demean | +0.0071 [−0.0167, +0.0292], 0.5623, 5 | proportional | 0.8967 [0.8856, 0.9074] | 0.7867 [0.5004, 1.0127] | −0.1035 [−0.1678, −0.0359] | −0.1315 [−0.2001, −0.0610] |
+
+Within-condition ratio changes (post − pre): windowed ts_gsr DMT +0.0034 [−0.0004, +0.0070], p = 0.1097, PCB +0.0028 [−0.0030, +0.0090], p = 0.3990; windowed ts_demean DMT −0.0093 [−0.0215, +0.0019], p = 0.1621, PCB +0.0001 [−0.0071, +0.0074], p = 0.9712; global ts_gsr DMT +0.0167 [+0.0052, +0.0279], p = 0.0183, PCB −0.0037 [−0.0116, +0.0044], p = 0.3949; global ts_demean DMT +0.0015 [−0.0183, +0.0203], p = 0.8799, PCB −0.0056 [−0.0143, +0.0042], p = 0.2753. The sts and TDMI DiDs reproduce Table 2 and `results/windowed_atoms_did_ts_gsr_win60.csv` (bootstrap CIs differ in the third decimal from the main-text values because the draw order differs; point estimates are identical).

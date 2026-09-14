@@ -70,7 +70,7 @@ named CSVs.
   a more-than-proportional (selective) synergy reduction.** The
   windowed and global estimators put sts at different shares of TDMI
   (0.78 vs 0.90) because the per-window bias falls on sts and the
-  self-transfer atoms differently. Not yet in the draft.
+  self-transfer atoms differently. In the draft (Results, Discussion, Table S8).
 
 ## The record: `manuscript/analysis_record.md`
 
