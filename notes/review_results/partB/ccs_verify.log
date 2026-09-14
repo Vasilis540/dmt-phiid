@@ -1,0 +1,26 @@
+== (A) reference MATLAB toolbox pinned by phyid
+   /root/.cache/uv/git-v0/checkouts/4228d0f5f134f3b9/6c5f2e9/matlab
+   PhiIDFull.m: RedFun = @RedundancyMMI;
+   PhiIDFull.m: RedFun = @DoubleRedundancyMMI;
+   PhiIDFull.m: DoubleRedFun = @DoubleRedundancyMMI;
+   private/: ['DoubleRedundancyMMI.m', 'DoubleRedundancyMMIDiscrete.m', 'infodynamics.jar', 'isdiscrete.m', 'octaveToJavaDoubleMatrix.m', 'octaveToJavaIntArray.m', 'octaveToJavaIntMatrix.m']
+   occurrences of 'ccs' (case-insensitive) in the toolbox: 0
+   README: using Barrett's Minimum Mutual Info (MMI) redundancy function. This code implements
+   .gitmodules: [submodule "matlab"] path = matlab url = https://github.com/pmediano/PhiID
+   phyid.measures.redundancy_ccs docstring: To be implemented.
+   phyid.measures.double_redundacy_ccs docstring: To be implemented.
+
+== (B) D ≡ rtr − sts on the lattice; pointwise exclusivity under phyid's CCS
+   max |D − (rtr − sts)| over 1,000 random consistent atom vectors: 3.2e-15
+
+== (C1) independent Gaussian CCS vs phyid.calc_PhiID(redundancy='CCS'), 200 random real-data draws (W = 60 windows, ts_gsr)
+   max |atom difference| over 200 draws × 16 atoms × all samples: 2.1e-13
+   max |single-target CCS redundancy difference| (Ince definition vs phyid), six redundancies: 2.1e-13
+   pointwise exclusivity in phyid's output (sts = 0 where signs agree, sts = −D elsewhere): max deviation 2.0e-13
+   share of samples with all five signs agreeing: mean 0.283, range 0.017–0.661
+
+== (C2) binary hand case: tabulated joint distribution of (x_t, y_t, x_{t+1}, y_{t+1}), every local MI = log2 of a ratio of table probabilities
+   56 samples over 16 cells; local MIs (bits) from the table vs phyid: max |diff| 7.2e-16; six CCS redundancies: 1.8e-15; double redundancy: 1.0e-15; all 16 atoms: 3.3e-15
+   sign-agreeing samples: 20/56; mean atoms (bits): rtr +0.0284, sts -0.0706, xtx +0.1401, yty +0.1467; mean D +0.0990
+   hand check of the exclusivity: max |sts| at agreeing samples 2.2e-16; max |sts + D| elsewhere 4.4e-16
+   sample 0 = (np.int64(0), np.int64(0), np.int64(0), np.int64(0)): p(x_t,x_t+1) = 0.3750, p(x_t) = 0.5179, p(x_t+1) = 0.4821 → i(x_t; x_t+1) = +0.5868 bits (phyid +0.5868)
