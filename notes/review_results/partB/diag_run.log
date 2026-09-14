@@ -1,0 +1,183 @@
+   ts_gsr W60: subject 1/14 done (7s)
+   ts_gsr W60: subject 2/14 done (13s)
+   ts_gsr W60: subject 3/14 done (19s)
+   ts_gsr W60: subject 4/14 done (25s)
+   ts_gsr W60: subject 5/14 done (30s)
+   ts_gsr W60: subject 6/14 done (36s)
+   ts_gsr W60: subject 7/14 done (42s)
+   ts_gsr W60: subject 8/14 done (48s)
+   ts_gsr W60: subject 9/14 done (54s)
+   ts_gsr W60: subject 10/14 done (61s)
+   ts_gsr W60: subject 11/14 done (66s)
+   ts_gsr W60: subject 12/14 done (73s)
+   ts_gsr W60: subject 13/14 done (79s)
+   ts_gsr W60: subject 14/14 done (85s)
+diag observed sts ts_gsr W60       primary                DiD -0.0809 [-0.1261, -0.0377] p=0.0038 neg 13/14 | phase p=0.0020 | DMT -0.0485 (p=0.027) PCB +0.0324 (p=0.042) placebo share 0.40 | FD DiD +0.0143 (p=0.245) | FD-resid -0.0649 [-0.0966, -0.0289] p=0.0048 13/14 SURVIVES
+diag observed sts ts_gsr W60       sensitivity            DiD -0.0733 [-0.1180, -0.0291] p=0.0070 neg 12/14 | phase p=0.0020 | DMT -0.0491 (p=0.023) PCB +0.0242 (p=0.104) placebo share 0.33 | FD DiD +0.0191 (p=0.108) | FD-resid -0.0555 [-0.0864, -0.0210] p=0.0100 13/14 SURVIVES
+diag observed sts ts_gsr W60       early                  DiD -0.1029 [-0.1464, -0.0601] p=0.0009 neg 13/14 | phase p=0.0010 | DMT -0.0842 (p=0.001) PCB +0.0187 (p=0.221) placebo share 0.18 | FD DiD +0.0366 (p=0.010) | FD-resid -0.0806 [-0.1151, -0.0455] p=0.0018 12/14 SURVIVES
+diag observed sts ts_gsr W60       late                   DiD -0.0633 [-0.1147, -0.0118] p=0.0337 neg 10/14 | phase p=0.0060 | DMT -0.0199 (p=0.388) PCB +0.0434 (p=0.014) placebo share 0.69 | FD DiD -0.0034 (p=0.807) | FD-resid -0.0523 [-0.0909, -0.0078] p=0.0345 11/14 SURVIVES
+diag observed sts ts_gsr W60       trend_a_placebo_line   DiD -0.0890 [-0.1347, -0.0461] p=0.0021 neg 13/14
+diag observed sts ts_gsr W60       trend_b_shared_slope   DiD -0.0995 [-0.1424, -0.0599] p=0.0007 neg 13/14
+diag predicted sts ts_gsr W60      primary                DiD -0.0924 [-0.1444, -0.0414] p=0.0037 neg 13/14 | DMT -0.0562 (p=0.030) PCB +0.0362 (p=0.043) placebo share 0.39 | FD DiD +0.0143 (p=0.245) | FD-resid -0.0749 [-0.1113, -0.0323] p=0.0055 13/14 SURVIVES
+diag predicted sts ts_gsr W60      sensitivity            DiD -0.0842 [-0.1358, -0.0337] p=0.0068 neg 12/14 | DMT -0.0568 (p=0.026) PCB +0.0274 (p=0.110) placebo share 0.33 | FD DiD +0.0191 (p=0.108) | FD-resid -0.0647 [-0.1015, -0.0217] p=0.0111 13/14 SURVIVES
+diag predicted sts ts_gsr W60      early                  DiD -0.1208 [-0.1698, -0.0726] p=0.0006 neg 13/14 | DMT -0.0972 (p=0.001) PCB +0.0236 (p=0.185) placebo share 0.20 | FD DiD +0.0366 (p=0.010) | FD-resid -0.0947 [-0.1321, -0.0551] p=0.0011 13/14 SURVIVES
+diag predicted sts ts_gsr W60      late                   DiD -0.0697 [-0.1313, -0.0102] p=0.0476 neg 11/14 | DMT -0.0234 (p=0.399) PCB +0.0463 (p=0.020) placebo share 0.66 | FD DiD -0.0034 (p=0.807) | FD-resid -0.0590 [-0.1055, -0.0061] p=0.0491 11/14 SURVIVES
+diag predicted sts ts_gsr W60      trend_a_placebo_line   DiD -0.0997 [-0.1508, -0.0498] p=0.0024 neg 13/14
+diag predicted sts ts_gsr W60      trend_b_shared_slope   DiD -0.1130 [-0.1599, -0.0683] p=0.0009 neg 13/14
+diag residual sts ts_gsr W60       primary                DiD +0.0115 [+0.0021, +0.0211] p=0.0422 neg 4/14 | phase p=0.0190 | DMT +0.0077 (p=0.080) PCB -0.0038 (p=0.193) placebo share 0.33 | FD DiD +0.0143 (p=0.245) | FD-resid +0.0100 [+0.0008, +0.0185] p=0.0580 3/14 SURVIVES
+diag residual sts ts_gsr W60       sensitivity            DiD +0.0108 [+0.0013, +0.0200] p=0.0491 neg 4/14 | phase p=0.0300 | DMT +0.0077 (p=0.081) PCB -0.0032 (p=0.252) placebo share 0.29 | FD DiD +0.0191 (p=0.108) | FD-resid +0.0092 [+0.0002, +0.0172] p=0.0674 4/14 SURVIVES
+diag residual sts ts_gsr W60       early                  DiD +0.0179 [+0.0099, +0.0260] p=0.0012 neg 2/14 | phase p=0.0030 | DMT +0.0130 (p=0.003) PCB -0.0049 (p=0.169) placebo share 0.27 | FD DiD +0.0366 (p=0.010) | FD-resid +0.0141 [+0.0063, +0.0212] p=0.0049 2/14 SURVIVES
+diag residual sts ts_gsr W60       late                   DiD +0.0064 [-0.0058, +0.0183] p=0.3243 neg 5/14 | phase p=0.2408 | DMT +0.0035 (p=0.484) PCB -0.0030 (p=0.347) placebo share 0.46 | FD DiD -0.0034 (p=0.807) | FD-resid +0.0067 [-0.0050, +0.0174] p=0.2733 4/14 does NOT survive
+diag residual sts ts_gsr W60       trend_a_placebo_line   DiD +0.0106 [+0.0015, +0.0200] p=0.0538 neg 5/14
+diag residual sts ts_gsr W60       trend_b_shared_slope   DiD +0.0134 [+0.0053, +0.0218] p=0.0089 neg 3/14
+   ts_gsr W30: subject 1/14 done (108s)
+   ts_gsr W30: subject 2/14 done (116s)
+   ts_gsr W30: subject 3/14 done (124s)
+   ts_gsr W30: subject 4/14 done (133s)
+   ts_gsr W30: subject 5/14 done (141s)
+   ts_gsr W30: subject 6/14 done (149s)
+   ts_gsr W30: subject 7/14 done (157s)
+   ts_gsr W30: subject 8/14 done (166s)
+   ts_gsr W30: subject 9/14 done (174s)
+   ts_gsr W30: subject 10/14 done (182s)
+   ts_gsr W30: subject 11/14 done (190s)
+   ts_gsr W30: subject 12/14 done (198s)
+   ts_gsr W30: subject 13/14 done (206s)
+   ts_gsr W30: subject 14/14 done (214s)
+diag observed sts ts_gsr W30       primary                DiD -0.0686 [-0.1084, -0.0293] p=0.0042 neg 13/14 | phase p=0.0010 | DMT -0.0390 (p=0.035) PCB +0.0296 (p=0.027) placebo share 0.43 | FD DiD +0.0143 (p=0.245) | FD-resid -0.0545 [-0.0836, -0.0215] p=0.0065 13/14 SURVIVES
+diag observed sts ts_gsr W30       sensitivity            DiD -0.0658 [-0.1072, -0.0261] p=0.0067 neg 12/14 | phase p=0.0010 | DMT -0.0407 (p=0.031) PCB +0.0252 (p=0.049) placebo share 0.38 | FD DiD +0.0174 (p=0.155) | FD-resid -0.0514 [-0.0799, -0.0179] p=0.0109 12/14 SURVIVES
+diag observed sts ts_gsr W30       early                  DiD -0.0839 [-0.1267, -0.0451] p=0.0012 neg 13/14 | phase p=0.0010 | DMT -0.0686 (p=0.002) PCB +0.0154 (p=0.236) placebo share 0.18 | FD DiD +0.0366 (p=0.010) | FD-resid -0.0678 [-0.0978, -0.0364] p=0.0020 12/14 SURVIVES
+diag observed sts ts_gsr W30       late                   DiD -0.0564 [-0.1024, -0.0118] p=0.0321 neg 11/14 | phase p=0.0080 | DMT -0.0154 (p=0.444) PCB +0.0410 (p=0.005) placebo share 0.73 | FD DiD -0.0034 (p=0.807) | FD-resid -0.0439 [-0.0783, -0.0035] p=0.0474 11/14 SURVIVES
+diag observed sts ts_gsr W30       trend_a_placebo_line   DiD -0.0766 [-0.1147, -0.0386] p=0.0021 neg 13/14
+diag observed sts ts_gsr W30       trend_b_shared_slope   DiD -0.0849 [-0.1225, -0.0495] p=0.0010 neg 13/14
+diag predicted sts ts_gsr W30      primary                DiD -0.0869 [-0.1368, -0.0373] p=0.0046 neg 12/14 | DMT -0.0513 (p=0.032) PCB +0.0356 (p=0.033) placebo share 0.41 | FD DiD +0.0143 (p=0.245) | FD-resid -0.0693 [-0.1062, -0.0262] p=0.0085 13/14 SURVIVES
+diag predicted sts ts_gsr W30      sensitivity            DiD -0.0846 [-0.1349, -0.0351] p=0.0062 neg 12/14 | DMT -0.0541 (p=0.025) PCB +0.0306 (p=0.054) placebo share 0.36 | FD DiD +0.0174 (p=0.155) | FD-resid -0.0666 [-0.1032, -0.0232] p=0.0116 12/14 SURVIVES
+diag predicted sts ts_gsr W30      early                  DiD -0.1102 [-0.1586, -0.0638] p=0.0007 neg 13/14 | DMT -0.0882 (p=0.002) PCB +0.0220 (p=0.182) placebo share 0.20 | FD DiD +0.0366 (p=0.010) | FD-resid -0.0880 [-0.1245, -0.0494] p=0.0016 12/14 SURVIVES
+diag predicted sts ts_gsr W30      late                   DiD -0.0682 [-0.1262, -0.0107] p=0.0424 neg 11/14 | DMT -0.0218 (p=0.403) PCB +0.0465 (p=0.010) placebo share 0.68 | FD DiD -0.0034 (p=0.807) | FD-resid -0.0543 [-0.0990, -0.0026] p=0.0594 11/14 SURVIVES
+diag predicted sts ts_gsr W30      trend_a_placebo_line   DiD -0.0939 [-0.1417, -0.0466] p=0.0026 neg 13/14
+diag predicted sts ts_gsr W30      trend_b_shared_slope   DiD -0.1058 [-0.1503, -0.0630] p=0.0007 neg 13/14
+diag residual sts ts_gsr W30       primary                DiD +0.0182 [+0.0066, +0.0299] p=0.0137 neg 2/14 | phase p=0.0040 | DMT +0.0123 (p=0.036) PCB -0.0060 (p=0.118) placebo share 0.33 | FD DiD +0.0143 (p=0.245) | FD-resid +0.0148 [+0.0028, +0.0258] p=0.0325 3/14 SURVIVES
+diag residual sts ts_gsr W30       sensitivity            DiD +0.0188 [+0.0071, +0.0305] p=0.0116 neg 2/14 | phase p=0.0020 | DMT +0.0134 (p=0.024) PCB -0.0054 (p=0.152) placebo share 0.29 | FD DiD +0.0174 (p=0.155) | FD-resid +0.0152 [+0.0035, +0.0259] p=0.0265 3/14 SURVIVES
+diag residual sts ts_gsr W30       early                  DiD +0.0263 [+0.0161, +0.0372] p=0.0005 neg 1/14 | phase p=0.0010 | DMT +0.0197 (p=0.001) PCB -0.0066 (p=0.161) placebo share 0.25 | FD DiD +0.0366 (p=0.010) | FD-resid +0.0202 [+0.0092, +0.0305] p=0.0045 2/14 SURVIVES
+diag residual sts ts_gsr W30       late                   DiD +0.0118 [-0.0022, +0.0257] p=0.1385 neg 5/14 | phase p=0.0839 | DMT +0.0064 (p=0.317) PCB -0.0055 (p=0.157) placebo share 0.46 | FD DiD -0.0034 (p=0.807) | FD-resid +0.0104 [-0.0040, +0.0232] p=0.1654 4/14 does NOT survive
+diag residual sts ts_gsr W30       trend_a_placebo_line   DiD +0.0172 [+0.0057, +0.0285] p=0.0150 neg 3/14
+diag residual sts ts_gsr W30       trend_b_shared_slope   DiD +0.0208 [+0.0103, +0.0315] p=0.0031 neg 2/14
+   ts_demean W60: subject 1/14 done (245s)
+   ts_demean W60: subject 2/14 done (251s)
+   ts_demean W60: subject 3/14 done (257s)
+   ts_demean W60: subject 4/14 done (263s)
+   ts_demean W60: subject 5/14 done (268s)
+   ts_demean W60: subject 6/14 done (274s)
+   ts_demean W60: subject 7/14 done (280s)
+   ts_demean W60: subject 8/14 done (286s)
+   ts_demean W60: subject 9/14 done (292s)
+   ts_demean W60: subject 10/14 done (298s)
+   ts_demean W60: subject 11/14 done (304s)
+   ts_demean W60: subject 12/14 done (310s)
+   ts_demean W60: subject 13/14 done (316s)
+   ts_demean W60: subject 14/14 done (322s)
+diag observed sts ts_demean W60    primary                DiD -0.1031 [-0.1558, -0.0522] p=0.0026 neg 12/14 | phase p=0.0010 | DMT -0.0633 (p=0.033) PCB +0.0398 (p=0.031) placebo share 0.39 | FD DiD +0.0143 (p=0.245) | FD-resid -0.0824 [-0.1224, -0.0372] p=0.0048 13/14 SURVIVES
+diag observed sts ts_demean W60    sensitivity            DiD -0.0935 [-0.1431, -0.0426] p=0.0039 neg 12/14 | phase p=0.0010 | DMT -0.0621 (p=0.030) PCB +0.0314 (p=0.064) placebo share 0.34 | FD DiD +0.0191 (p=0.108) | FD-resid -0.0714 [-0.1106, -0.0298] p=0.0073 12/14 SURVIVES
+diag observed sts ts_demean W60    early                  DiD -0.1183 [-0.1673, -0.0679] p=0.0012 neg 13/14 | phase p=0.0010 | DMT -0.0975 (p=0.003) PCB +0.0208 (p=0.177) placebo share 0.18 | FD DiD +0.0366 (p=0.010) | FD-resid -0.0953 [-0.1394, -0.0518] p=0.0020 13/14 SURVIVES
+diag observed sts ts_demean W60    late                   DiD -0.0910 [-0.1522, -0.0319] p=0.0128 neg 11/14 | phase p=0.0030 | DMT -0.0360 (p=0.245) PCB +0.0550 (p=0.012) placebo share 0.60 | FD DiD -0.0034 (p=0.807) | FD-resid -0.0721 [-0.1229, -0.0177] p=0.0233 11/14 SURVIVES
+diag observed sts ts_demean W60    trend_a_placebo_line   DiD -0.1126 [-0.1690, -0.0595] p=0.0018 neg 13/14
+diag observed sts ts_demean W60    trend_b_shared_slope   DiD -0.1193 [-0.1736, -0.0683] p=0.0012 neg 13/14
+diag predicted sts ts_demean W60   primary                DiD -0.1213 [-0.1776, -0.0631] p=0.0022 neg 12/14 | DMT -0.0706 (p=0.039) PCB +0.0508 (p=0.021) placebo share 0.42 | FD DiD +0.0143 (p=0.245) | FD-resid -0.0990 [-0.1434, -0.0473] p=0.0033 13/14 SURVIVES
+diag predicted sts ts_demean W60   sensitivity            DiD -0.1071 [-0.1615, -0.0530] p=0.0035 neg 11/14 | DMT -0.0647 (p=0.043) PCB +0.0424 (p=0.038) placebo share 0.40 | FD DiD +0.0191 (p=0.108) | FD-resid -0.0847 [-0.1273, -0.0354] p=0.0065 12/14 SURVIVES
+diag predicted sts ts_demean W60   early                  DiD -0.1365 [-0.1865, -0.0847] p=0.0006 neg 13/14 | DMT -0.1050 (p=0.004) PCB +0.0315 (p=0.080) placebo share 0.23 | FD DiD +0.0366 (p=0.010) | FD-resid -0.1162 [-0.1624, -0.0689] p=0.0007 13/14 SURVIVES
+diag predicted sts ts_demean W60   late                   DiD -0.1092 [-0.1786, -0.0388] p=0.0118 neg 11/14 | DMT -0.0430 (p=0.235) PCB +0.0662 (p=0.011) placebo share 0.61 | FD DiD -0.0034 (p=0.807) | FD-resid -0.0853 [-0.1443, -0.0207] p=0.0253 11/14 SURVIVES
+diag predicted sts ts_demean W60   trend_a_placebo_line   DiD -0.1274 [-0.1889, -0.0671] p=0.0021 neg 12/14
+diag predicted sts ts_demean W60   trend_b_shared_slope   DiD -0.1335 [-0.1922, -0.0751] p=0.0013 neg 13/14
+diag residual sts ts_demean W60    primary                DiD +0.0182 [+0.0089, +0.0277] p=0.0040 neg 2/14 | phase p=0.0180 | DMT +0.0072 (p=0.243) PCB -0.0110 (p=0.027) placebo share 0.60 | FD DiD +0.0143 (p=0.245) | FD-resid +0.0166 [+0.0070, +0.0255] p=0.0070 2/14 SURVIVES
+diag residual sts ts_demean W60    sensitivity            DiD +0.0136 [+0.0041, +0.0231] p=0.0161 neg 2/14 | phase p=0.0939 | DMT +0.0026 (p=0.666) PCB -0.0109 (p=0.033) placebo share 0.81 | FD DiD +0.0191 (p=0.108) | FD-resid +0.0133 [+0.0042, +0.0221] p=0.0170 2/14 SURVIVES
+diag residual sts ts_demean W60    early                  DiD +0.0183 [+0.0128, +0.0234] p=0.0001 neg 0/14 | phase p=0.0509 | DMT +0.0075 (p=0.155) PCB -0.0107 (p=0.021) placebo share 0.59 | FD DiD +0.0366 (p=0.010) | FD-resid +0.0208 [+0.0147, +0.0275] p=0.0001 0/14 SURVIVES
+diag residual sts ts_demean W60    late                   DiD +0.0182 [+0.0036, +0.0329] p=0.0321 neg 4/14 | phase p=0.0320 | DMT +0.0070 (p=0.344) PCB -0.0112 (p=0.057) placebo share 0.62 | FD DiD -0.0034 (p=0.807) | FD-resid +0.0132 [-0.0008, +0.0270] p=0.0936 3/14 does NOT survive
+diag residual sts ts_demean W60    trend_a_placebo_line   DiD +0.0148 [+0.0049, +0.0249] p=0.0164 neg 3/14
+diag residual sts ts_demean W60    trend_b_shared_slope   DiD +0.0142 [+0.0049, +0.0238] p=0.0138 neg 3/14
+   ts_demean W30: subject 1/14 done (345s)
+   ts_demean W30: subject 2/14 done (353s)
+   ts_demean W30: subject 3/14 done (361s)
+   ts_demean W30: subject 4/14 done (369s)
+   ts_demean W30: subject 5/14 done (378s)
+   ts_demean W30: subject 6/14 done (386s)
+   ts_demean W30: subject 7/14 done (394s)
+   ts_demean W30: subject 8/14 done (403s)
+   ts_demean W30: subject 9/14 done (411s)
+   ts_demean W30: subject 10/14 done (419s)
+   ts_demean W30: subject 11/14 done (428s)
+   ts_demean W30: subject 12/14 done (436s)
+   ts_demean W30: subject 13/14 done (444s)
+   ts_demean W30: subject 14/14 done (453s)
+diag observed sts ts_demean W30    primary                DiD -0.0877 [-0.1310, -0.0427] p=0.0029 neg 13/14 | phase p=0.0010 | DMT -0.0519 (p=0.031) PCB +0.0358 (p=0.015) placebo share 0.41 | FD DiD +0.0143 (p=0.245) | FD-resid -0.0700 [-0.1060, -0.0294] p=0.0070 13/14 SURVIVES
+diag observed sts ts_demean W30    sensitivity            DiD -0.0855 [-0.1307, -0.0402] p=0.0037 neg 12/14 | phase p=0.0010 | DMT -0.0534 (p=0.026) PCB +0.0322 (p=0.024) placebo share 0.38 | FD DiD +0.0174 (p=0.155) | FD-resid -0.0677 [-0.1036, -0.0263] p=0.0078 13/14 SURVIVES
+diag observed sts ts_demean W30    early                  DiD -0.0985 [-0.1453, -0.0525] p=0.0018 neg 13/14 | phase p=0.0010 | DMT -0.0791 (p=0.003) PCB +0.0194 (p=0.143) placebo share 0.20 | FD DiD +0.0366 (p=0.010) | FD-resid -0.0793 [-0.1168, -0.0393] p=0.0028 13/14 SURVIVES
+diag observed sts ts_demean W30    late                   DiD -0.0790 [-0.1298, -0.0293] p=0.0114 neg 11/14 | phase p=0.0030 | DMT -0.0301 (p=0.237) PCB +0.0489 (p=0.005) placebo share 0.62 | FD DiD -0.0034 (p=0.807) | FD-resid -0.0626 [-0.1071, -0.0130] p=0.0282 11/14 SURVIVES
+diag observed sts ts_demean W30    trend_a_placebo_line   DiD -0.0951 [-0.1398, -0.0506] p=0.0016 neg 13/14
+diag observed sts ts_demean W30    trend_b_shared_slope   DiD -0.0992 [-0.1434, -0.0559] p=0.0011 neg 13/14
+diag predicted sts ts_demean W30   primary                DiD -0.1136 [-0.1648, -0.0596] p=0.0021 neg 12/14 | DMT -0.0653 (p=0.031) PCB +0.0482 (p=0.010) placebo share 0.42 | FD DiD +0.0143 (p=0.245) | FD-resid -0.0932 [-0.1358, -0.0415] p=0.0045 12/14 SURVIVES
+diag predicted sts ts_demean W30   sensitivity            DiD -0.1097 [-0.1614, -0.0570] p=0.0026 neg 12/14 | DMT -0.0657 (p=0.031) PCB +0.0440 (p=0.017) placebo share 0.40 | FD DiD +0.0174 (p=0.155) | FD-resid -0.0898 [-0.1325, -0.0382] p=0.0054 12/14 SURVIVES
+diag predicted sts ts_demean W30   early                  DiD -0.1257 [-0.1724, -0.0757] p=0.0007 neg 13/14 | DMT -0.0951 (p=0.004) PCB +0.0306 (p=0.051) placebo share 0.24 | FD DiD +0.0366 (p=0.010) | FD-resid -0.1066 [-0.1496, -0.0616] p=0.0011 13/14 SURVIVES
+diag predicted sts ts_demean W30   late                   DiD -0.1038 [-0.1659, -0.0393] p=0.0098 neg 11/14 | DMT -0.0415 (p=0.197) PCB +0.0623 (p=0.006) placebo share 0.60 | FD DiD -0.0034 (p=0.807) | FD-resid -0.0824 [-0.1383, -0.0193] p=0.0250 11/14 SURVIVES
+diag predicted sts ts_demean W30   trend_a_placebo_line   DiD -0.1183 [-0.1733, -0.0635] p=0.0018 neg 13/14
+diag predicted sts ts_demean W30   trend_b_shared_slope   DiD -0.1230 [-0.1751, -0.0701] p=0.0013 neg 13/14
+diag residual sts ts_demean W30    primary                DiD +0.0259 [+0.0135, +0.0383] p=0.0020 neg 3/14 | phase p=0.0090 | DMT +0.0134 (p=0.097) PCB -0.0124 (p=0.044) placebo share 0.48 | FD DiD +0.0143 (p=0.245) | FD-resid +0.0231 [+0.0109, +0.0336] p=0.0038 2/14 SURVIVES
+diag residual sts ts_demean W30    sensitivity            DiD +0.0242 [+0.0122, +0.0364] p=0.0023 neg 3/14 | phase p=0.0130 | DMT +0.0123 (p=0.122) PCB -0.0119 (p=0.056) placebo share 0.49 | FD DiD +0.0174 (p=0.155) | FD-resid +0.0221 [+0.0102, +0.0324] p=0.0043 2/14 SURVIVES
+diag residual sts ts_demean W30    early                  DiD +0.0272 [+0.0190, +0.0351] p=0.0002 neg 1/14 | phase p=0.0180 | DMT +0.0159 (p=0.030) PCB -0.0112 (p=0.063) placebo share 0.41 | FD DiD +0.0366 (p=0.010) | FD-resid +0.0273 [+0.0183, +0.0366] p=0.0004 1/14 SURVIVES
+diag residual sts ts_demean W30    late                   DiD +0.0248 [+0.0084, +0.0419] p=0.0171 neg 4/14 | phase p=0.0290 | DMT +0.0114 (p=0.226) PCB -0.0134 (p=0.052) placebo share 0.54 | FD DiD -0.0034 (p=0.807) | FD-resid +0.0198 [+0.0027, +0.0357] p=0.0430 3/14 SURVIVES
+diag residual sts ts_demean W30    trend_a_placebo_line   DiD +0.0232 [+0.0101, +0.0364] p=0.0054 neg 3/14
+diag residual sts ts_demean W30    trend_b_shared_slope   DiD +0.0238 [+0.0112, +0.0367] p=0.0045 neg 2/14
+# Diagnostic tables (partB4_diagnostic.py)
+
+## ts_gsr, W = 60
+
+Levels (all subjects, runs, windows): observed sts 1.1377, predicted (AR(1) from a_x, a_y, q) 1.1865, residual -0.0489 (-4.3 % of observed); SD of the residual across subject × run × window 0.0161 vs SD of observed 0.0790; symmetric-a prediction 1.3212.
+Per-pair R² of predicted vs observed sts within a window: mean 0.796 (min 0.553, max 0.887). AR(1) lag-1 cross-correlation check: mean |corr(x_t, y_(t+1)) − a_y q| = 0.0906; correlation across pairs between observed and model lag-1 cross-correlations, mean 0.933 (min 0.867).
+Subject 1 DMT window 2: pair-level r(obs, pred) = +0.885; obs mean 1.0807 SD 0.2250; pred mean 1.1443 SD 0.2037; residual mean -0.0635 SD 0.1050; r(residual, mean a) = -0.244, r(residual, |q|) = -0.522, r(residual, |a_x − a_y|) = +0.111
+Subject 1 DMT window 6: pair-level r(obs, pred) = +0.914; obs mean 1.0314 SD 0.2079; pred mean 1.0698 SD 0.1939; residual mean -0.0384 SD 0.0845; r(residual, mean a) = -0.151, r(residual, |q|) = -0.399, r(residual, |a_x − a_y|) = +0.038
+Subject 1 PCB window 2: pair-level r(obs, pred) = +0.903; obs mean 1.0669 SD 0.2121; pred mean 1.1047 SD 0.1947; residual mean -0.0378 SD 0.0914; r(residual, mean a) = -0.175, r(residual, |q|) = -0.376, r(residual, |a_x − a_y|) = +0.008
+Subject 1 PCB window 6: pair-level r(obs, pred) = +0.893; obs mean 1.0796 SD 0.1992; pred mean 1.1240 SD 0.1761; residual mean -0.0444 SD 0.0897; r(residual, mean a) = -0.133, r(residual, |q|) = -0.428, r(residual, |a_x − a_y|) = +0.010
+Primary DiD: observed -0.0809, predicted -0.0924 (114 % of observed), residual +0.0115. Per subject: r(residual DiD, autocorrelation contrast) = -0.780 (Spearman -0.635); r(predicted DiD, autocorrelation contrast) = +0.976; r(observed DiD, autocorrelation contrast) = +0.953; r(predicted DiD, observed DiD) = +0.989; r(residual DiD, observed DiD) = -0.632; residual DiD negative in 4/14.
+Per-subject residual DiDs: [ 0.0367 -0.0029  0.0178  0.0116 -0.0076  0.0284  0.0105  0.0474  0.0252 -0.0126  0.0099  0.0064  0.0127 -0.0222]
+Group-mean window series: observed DMT [1.163 1.145 1.139 1.176 1.100 1.047 1.069 1.079 1.090 1.101 1.130 1.127 1.140 1.179]; predicted DMT [1.207 1.200 1.192 1.235 1.146 1.081 1.108 1.122 1.134 1.151 1.176 1.175 1.191 1.232]; residual DMT [-0.045 -0.055 -0.053 -0.059 -0.046 -0.034 -0.039 -0.042 -0.045 -0.050 -0.046 -0.048 -0.051 -0.053]; residual PCB [-0.041 -0.043 -0.057 -0.051 -0.045 -0.056 -0.048 -0.051 -0.056 -0.054 -0.051 -0.046 -0.052 -0.050]
+
+## ts_gsr, W = 30
+
+Levels (all subjects, runs, windows): observed sts 1.0082, predicted (AR(1) from a_x, a_y, q) 1.1062, residual -0.0980 (-9.7 % of observed); SD of the residual across subject × run × window 0.0281 vs SD of observed 0.0811; symmetric-a prediction 1.2706.
+Per-pair R² of predicted vs observed sts within a window: mean 0.622 (min 0.289, max 0.762). AR(1) lag-1 cross-correlation check: mean |corr(x_t, y_(t+1)) − a_y q| = 0.1283; correlation across pairs between observed and model lag-1 cross-correlations, mean 0.912 (min 0.817).
+Subject 1 DMT window 2: pair-level r(obs, pred) = +0.785; obs mean 0.9474 SD 0.2851; pred mean 1.0294 SD 0.2373; residual mean -0.0820 SD 0.1773; r(residual, mean a) = -0.209, r(residual, |q|) = -0.372, r(residual, |a_x − a_y|) = +0.032
+Subject 1 DMT window 6: pair-level r(obs, pred) = +0.782; obs mean 0.9852 SD 0.3115; pred mean 1.1143 SD 0.2446; residual mean -0.1290 SD 0.1940; r(residual, mean a) = -0.182, r(residual, |q|) = -0.467, r(residual, |a_x − a_y|) = +0.062
+Subject 1 PCB window 2: pair-level r(obs, pred) = +0.806; obs mean 1.0301 SD 0.2952; pred mean 1.0922 SD 0.2495; residual mean -0.0621 SD 0.1753; r(residual, mean a) = -0.174, r(residual, |q|) = -0.352, r(residual, |a_x − a_y|) = +0.058
+Subject 1 PCB window 6: pair-level r(obs, pred) = +0.848; obs mean 0.9596 SD 0.3044; pred mean 1.0285 SD 0.2741; residual mean -0.0689 SD 0.1620; r(residual, mean a) = -0.160, r(residual, |q|) = -0.362, r(residual, |a_x − a_y|) = +0.085
+Primary DiD: observed -0.0686, predicted -0.0869 (127 % of observed), residual +0.0182. Per subject: r(residual DiD, autocorrelation contrast) = -0.825 (Spearman -0.767); r(predicted DiD, autocorrelation contrast) = +0.975; r(observed DiD, autocorrelation contrast) = +0.958; r(predicted DiD, observed DiD) = +0.987; r(residual DiD, observed DiD) = -0.729; residual DiD negative in 2/14.
+Per-subject residual DiDs: [ 0.0516  0.0019  0.0324  0.0230 -0.0122  0.0334  0.0155  0.0569  0.0424  0.0020  0.0148  0.0027  0.0152 -0.0241]
+Group-mean window series: observed DMT [1.057 1.001 1.014 1.019 1.008 1.007 1.026 1.046 1.002 0.952 0.917 0.942 0.945 0.958 0.962 0.964 0.960 0.982 0.966 0.988 0.990 1.004 0.998 1.001 1.024 1.005 1.054 1.039]; predicted DMT [1.156 1.090 1.120 1.126 1.101 1.115 1.140 1.159 1.104 1.022 0.988 1.023 1.029 1.042 1.052 1.047 1.050 1.070 1.056 1.091 1.079 1.100 1.093 1.096 1.121 1.106 1.157 1.142]; residual DMT [-0.099 -0.089 -0.106 -0.107 -0.093 -0.109 -0.113 -0.113 -0.102 -0.071 -0.071 -0.081 -0.084 -0.084 -0.089 -0.083 -0.090 -0.088 -0.091 -0.103 -0.088 -0.096 -0.095 -0.095 -0.097 -0.101 -0.103 -0.102]; residual PCB [-0.089 -0.092 -0.085 -0.097 -0.112 -0.106 -0.109 -0.096 -0.092 -0.094 -0.102 -0.106 -0.106 -0.096 -0.103 -0.104 -0.110 -0.111 -0.108 -0.114 -0.105 -0.107 -0.103 -0.095 -0.101 -0.103 -0.096 -0.105]
+
+## ts_demean, W = 60
+
+Levels (all subjects, runs, windows): observed sts 1.0802, predicted (AR(1) from a_x, a_y, q) 1.1181, residual -0.0378 (-3.5 % of observed); SD of the residual across subject × run × window 0.0329 vs SD of observed 0.0987; symmetric-a prediction 1.2484.
+Per-pair R² of predicted vs observed sts within a window: mean 0.741 (min 0.263, max 0.874). AR(1) lag-1 cross-correlation check: mean |corr(x_t, y_(t+1)) − a_y q| = 0.0933; correlation across pairs between observed and model lag-1 cross-correlations, mean 0.913 (min 0.730).
+Subject 1 DMT window 2: pair-level r(obs, pred) = +0.856; obs mean 0.9927 SD 0.2075; pred mean 1.0099 SD 0.1748; residual mean -0.0172 SD 0.1074; r(residual, mean a) = -0.115, r(residual, |q|) = -0.214, r(residual, |a_x − a_y|) = +0.042
+Subject 1 DMT window 6: pair-level r(obs, pred) = +0.817; obs mean 1.0562 SD 0.2167; pred mean 1.1440 SD 0.2037; residual mean -0.0879 SD 0.1277; r(residual, mean a) = -0.431, r(residual, |q|) = -0.615, r(residual, |a_x − a_y|) = +0.092
+Subject 1 PCB window 2: pair-level r(obs, pred) = +0.848; obs mean 1.0116 SD 0.1894; pred mean 1.0193 SD 0.1619; residual mean -0.0078 SD 0.1005; r(residual, mean a) = -0.120, r(residual, |q|) = -0.111, r(residual, |a_x − a_y|) = -0.024
+Subject 1 PCB window 6: pair-level r(obs, pred) = +0.890; obs mean 1.0333 SD 0.2019; pred mean 1.0689 SD 0.1853; residual mean -0.0357 SD 0.0920; r(residual, mean a) = -0.162, r(residual, |q|) = -0.326, r(residual, |a_x − a_y|) = +0.051
+Primary DiD: observed -0.1031, predicted -0.1213 (118 % of observed), residual +0.0182. Per subject: r(residual DiD, autocorrelation contrast) = -0.597 (Spearman -0.525); r(predicted DiD, autocorrelation contrast) = +0.965; r(observed DiD, autocorrelation contrast) = +0.958; r(predicted DiD, observed DiD) = +0.990; r(residual DiD, observed DiD) = -0.513; residual DiD negative in 2/14.
+Per-subject residual DiDs: [ 0.0216  0.0025  0.0088  0.0033 -0.0123  0.0257  0.0290  0.0315  0.0207  0.0255  0.0153  0.0399  0.0561 -0.0123]
+Group-mean window series: observed DMT [1.109 1.101 1.084 1.107 1.050 0.996 0.981 1.014 1.020 1.039 1.055 1.057 1.050 1.121]; predicted DMT [1.147 1.142 1.121 1.151 1.128 1.037 1.002 1.046 1.056 1.072 1.084 1.091 1.077 1.163]; residual DMT [-0.038 -0.041 -0.037 -0.044 -0.078 -0.041 -0.020 -0.032 -0.036 -0.033 -0.029 -0.034 -0.027 -0.042]; residual PCB [-0.023 -0.031 -0.037 -0.028 -0.040 -0.038 -0.040 -0.043 -0.041 -0.042 -0.045 -0.044 -0.033 -0.042]
+
+## ts_demean, W = 30
+
+Levels (all subjects, runs, windows): observed sts 0.9636, predicted (AR(1) from a_x, a_y, q) 1.0471, residual -0.0835 (-8.7 % of observed); SD of the residual across subject × run × window 0.0509 vs SD of observed 0.0954; symmetric-a prediction 1.2055.
+Per-pair R² of predicted vs observed sts within a window: mean 0.571 (min 0.035, max 0.769). AR(1) lag-1 cross-correlation check: mean |corr(x_t, y_(t+1)) − a_y q| = 0.1299; correlation across pairs between observed and model lag-1 cross-correlations, mean 0.892 (min 0.678).
+Subject 1 DMT window 2: pair-level r(obs, pred) = +0.711; obs mean 0.8905 SD 0.2522; pred mean 0.9190 SD 0.1974; residual mean -0.0285 SD 0.1783; r(residual, mean a) = -0.154, r(residual, |q|) = -0.097, r(residual, |a_x − a_y|) = +0.004
+Subject 1 DMT window 6: pair-level r(obs, pred) = +0.795; obs mean 0.9485 SD 0.2800; pred mean 1.0161 SD 0.2269; residual mean -0.0675 SD 0.1700; r(residual, mean a) = -0.157, r(residual, |q|) = -0.273, r(residual, |a_x − a_y|) = +0.113
+Subject 1 PCB window 2: pair-level r(obs, pred) = +0.745; obs mean 0.9606 SD 0.2737; pred mean 1.0349 SD 0.2166; residual mean -0.0743 SD 0.1829; r(residual, mean a) = -0.193, r(residual, |q|) = -0.307, r(residual, |a_x − a_y|) = +0.065
+Subject 1 PCB window 6: pair-level r(obs, pred) = +0.754; obs mean 0.8663 SD 0.2764; pred mean 0.8769 SD 0.2384; residual mean -0.0105 SD 0.1842; r(residual, mean a) = -0.227, r(residual, |q|) = -0.107, r(residual, |a_x − a_y|) = +0.005
+Primary DiD: observed -0.0877, predicted -0.1136 (129 % of observed), residual +0.0259. Per subject: r(residual DiD, autocorrelation contrast) = -0.604 (Spearman -0.631); r(predicted DiD, autocorrelation contrast) = +0.968; r(observed DiD, autocorrelation contrast) = +0.976; r(predicted DiD, observed DiD) = +0.981; r(residual DiD, observed DiD) = -0.570; residual DiD negative in 3/14.
+Per-subject residual DiDs: [ 0.0304 -0.0006  0.0292  0.0009 -0.0104  0.0310  0.0380  0.0394  0.0377  0.0337  0.0254  0.0463  0.0763 -0.0152]
+Group-mean window series: observed DMT [1.010 0.965 0.960 1.005 0.967 0.970 0.980 0.990 0.961 0.901 0.888 0.895 0.890 0.873 0.921 0.906 0.925 0.916 0.920 0.949 0.930 0.959 0.936 0.939 0.941 0.946 1.004 0.982]; predicted DMT [1.098 1.044 1.038 1.107 1.046 1.057 1.077 1.081 1.115 0.996 0.963 0.980 0.941 0.942 0.987 0.980 1.015 0.981 0.977 1.042 1.003 1.026 0.999 1.025 0.992 1.030 1.100 1.077]; residual DMT [-0.088 -0.080 -0.078 -0.102 -0.080 -0.087 -0.097 -0.092 -0.154 -0.096 -0.076 -0.084 -0.051 -0.069 -0.066 -0.074 -0.090 -0.066 -0.057 -0.093 -0.073 -0.067 -0.063 -0.087 -0.051 -0.084 -0.096 -0.094]; residual PCB [-0.072 -0.063 -0.074 -0.081 -0.088 -0.085 -0.086 -0.066 -0.083 -0.079 -0.086 -0.077 -0.091 -0.078 -0.097 -0.084 -0.091 -0.101 -0.093 -0.092 -0.096 -0.097 -0.110 -0.084 -0.077 -0.078 -0.082 -0.093]
+
+## Global fit (run-level r1 and q)
+
+ts_gsr: run-level observed sts (whole run, plug-in) 1.2883 vs AR(1) prediction from run-level (a_x, a_y, q) 1.3021 (residual -0.0137, -1.1 %); the prediction is constant across the run's bins, so the bin-level residual DiD equals the observed global-fit DiD (-0.0801); no decomposition is possible at this estimator.
+ts_demean: run-level observed sts (whole run, plug-in) 1.2205 vs AR(1) prediction from run-level (a_x, a_y, q) 1.2197 (residual +0.0008, +0.1 %); the prediction is constant across the run's bins, so the bin-level residual DiD equals the observed global-fit DiD (-0.1035); no decomposition is possible at this estimator.
+done (482s)
