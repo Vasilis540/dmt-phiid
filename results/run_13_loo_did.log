@@ -1,0 +1,39 @@
+13_loo_did.py git=17dbfcb seed=20261120 W=60 pre=[np.int64(1), np.int64(2), np.int64(3), np.int64(4)] post=[np.int64(6), np.int64(7), np.int64(8), np.int64(9), np.int64(10), np.int64(11), np.int64(12), np.int64(13), np.int64(14)]
+
+ts_gsr: full 14-subject DiD -0.0809 [-0.1253, -0.0365] p=0.0038; negative in 13/14
+  per-subject DiD: -0.081 -0.045 -0.157 -0.138 -0.012 -0.054 -0.065 -0.280 -0.132 -0.153 -0.041 -0.068 -0.003 +0.095
+  drop subject  1 (DiD -0.081): mean -0.0808 [-0.1295, -0.0331] p=0.0068 neg 12/13
+  drop subject  2 (DiD -0.045): mean -0.0837 [-0.1323, -0.0358] p=0.0061 neg 12/13
+  drop subject  3 (DiD -0.157): mean -0.0750 [-0.1238, -0.0303] p=0.0076 neg 12/13
+  drop subject  4 (DiD -0.138): mean -0.0765 [-0.1250, -0.0304] p=0.0076 neg 12/13
+  drop subject  5 (DiD -0.012): mean -0.0862 [-0.1340, -0.0389] p=0.0044 neg 12/13
+  drop subject  6 (DiD -0.054): mean -0.0830 [-0.1314, -0.0350] p=0.0063 neg 12/13
+  drop subject  7 (DiD -0.065): mean -0.0821 [-0.1308, -0.0345] p=0.0066 neg 12/13
+  drop subject  8 (DiD -0.280): mean -0.0656 [-0.1013, -0.0271] p=0.0076 neg 12/13
+  drop subject  9 (DiD -0.132): mean -0.0770 [-0.1255, -0.0308] p=0.0076 neg 12/13
+  drop subject 10 (DiD -0.153): mean -0.0753 [-0.1251, -0.0306] p=0.0076 neg 12/13
+  drop subject 11 (DiD -0.041): mean -0.0840 [-0.1327, -0.0372] p=0.0059 neg 12/13
+  drop subject 12 (DiD -0.068): mean -0.0819 [-0.1304, -0.0340] p=0.0066 neg 12/13
+  drop subject 13 (DiD -0.003): mean -0.0869 [-0.1340, -0.0404] p=0.0042 neg 12/13
+  drop subject 14 (DiD +0.095): mean -0.0944 [-0.1374, -0.0574] p=0.0002 neg 13/13
+  leave-one-out mean range: [-0.0944, -0.0656] (least negative when dropping subject 8, most negative when dropping subject 14); CIs including zero: 0/14
+
+ts_demean: full 14-subject DiD -0.1031 [-0.1544, -0.0523] p=0.0026; negative in 12/14
+  per-subject DiD: -0.034 +0.004 -0.158 -0.146 -0.029 -0.031 -0.086 -0.311 -0.212 -0.197 -0.068 -0.154 -0.114 +0.094
+  drop subject  1 (DiD -0.034): mean -0.1084 [-0.1634, -0.0529] p=0.0034 neg 11/13
+  drop subject  2 (DiD +0.004): mean -0.1113 [-0.1647, -0.0572] p=0.0024 neg 12/13
+  drop subject  3 (DiD -0.158): mean -0.0989 [-0.1546, -0.0453] p=0.0051 neg 11/13
+  drop subject  4 (DiD -0.146): mean -0.0998 [-0.1556, -0.0455] p=0.0051 neg 11/13
+  drop subject  5 (DiD -0.029): mean -0.1088 [-0.1639, -0.0529] p=0.0034 neg 11/13
+  drop subject  6 (DiD -0.031): mean -0.1087 [-0.1634, -0.0525] p=0.0034 neg 11/13
+  drop subject  7 (DiD -0.086): mean -0.1044 [-0.1619, -0.0490] p=0.0046 neg 11/13
+  drop subject  8 (DiD -0.311): mean -0.0871 [-0.1310, -0.0408] p=0.0051 neg 11/13
+  drop subject  9 (DiD -0.212): mean -0.0947 [-0.1495, -0.0419] p=0.0051 neg 11/13
+  drop subject 10 (DiD -0.197): mean -0.0959 [-0.1510, -0.0435] p=0.0051 neg 11/13
+  drop subject 11 (DiD -0.068): mean -0.1058 [-0.1625, -0.0498] p=0.0046 neg 11/13
+  drop subject 12 (DiD -0.154): mean -0.0992 [-0.1558, -0.0453] p=0.0051 neg 11/13
+  drop subject 13 (DiD -0.114): mean -0.1023 [-0.1592, -0.0475] p=0.0051 neg 11/13
+  drop subject 14 (DiD +0.094): mean -0.1182 [-0.1675, -0.0730] p=0.0005 neg 12/13
+  leave-one-out mean range: [-0.1182, -0.0871] (least negative when dropping subject 8, most negative when dropping subject 14); CIs including zero: 0/14
+
+wrote results/loo_did_win60.csv
