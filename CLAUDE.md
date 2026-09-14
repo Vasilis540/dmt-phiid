@@ -58,6 +58,23 @@ post-hoc wherever they are reported. They decide nothing.
   does not depend on any single subject. Reported in the draft's Results
   in one sentence.
 
+- **Proportionality of the synergy decrease (specified 14 Sep 2026,
+  rule recorded BEFORE the run; `scripts/14_proportionality.py`,
+  `results/proportionality.csv`).** Question: does DMT reduce synergy
+  selectively or in proportion to the total TDMI reduction? Ratio
+  sts / TDMI (TDMI = Σ 16 atoms) per subject, condition and window/bin;
+  DiD of the ratio in the primary form (exact sign-flip, subject-bootstrap
+  CI); four cells: windowed W = 60 (windows 6–14 vs 1–4) and global fit
+  (bins 11–28 vs 1–8), each on ts_gsr and ts_demean. Also (i) sts share
+  of TDMI at pre-injection baseline on DMT and (ii) sts share of the TDMI
+  DiD, for direct comparison. **Rule:** ratio-DiD CI includes zero →
+  synergy falls in proportion to total predictable information, no
+  evidence of a selective effect; significantly negative → falls more
+  than proportionally; significantly positive → less. **The directional
+  refutation of the up-regulation hypothesis stands under all three
+  outcomes; it concerns sign, not selectivity.** Outcome: see below once
+  run.
+
 ## The record: `manuscript/analysis_record.md`
 
 **`manuscript/analysis_record.md` is the full pre-specification and results
