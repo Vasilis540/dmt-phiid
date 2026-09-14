@@ -1,7 +1,7 @@
 """
 08_robustness_c_analysis.py — inference for Robustness C (placebo-fitted model).
 
-Robustness C (CLAUDE.md, "Robustness C (placebo-fitted model)"): per subject
+Robustness C (manuscript/analysis_record.md, "Robustness C (placebo-fitted model)"): per subject
 and pair, the Gaussian is fitted on the FIRST HALF of that subject's placebo run
 (PCB TRs 0-419), the MMI selections are fixed from that model, and local atoms
 are evaluated under that one model on the held-out placebo half (TRs 420-839,
@@ -32,7 +32,7 @@ like-for-like reference: under the native fit each run is scored in-sample
 under its own model. Atoms: sts, rtr, total (sum of 16 atoms = TDMI).
 No temporal null and no motion handling: Robustness C is a check on the
 estimator's model dependence, not a new claim. Nothing here is interpreted;
-CLAUDE.md records the numbers.
+manuscript/analysis_record.md records the numbers.
 Output: results/robustness_c_{variant}.csv.
 """
 
@@ -88,7 +88,7 @@ def signflip_p(v):
 
 try:
     sha = subprocess.check_output(["git", "rev-parse", "--short", "HEAD"], text=True).strip()
-    if subprocess.check_output(["git", "status", "--porcelain", "--", "scripts", "CLAUDE.md"], text=True).strip():
+    if subprocess.check_output(["git", "status", "--porcelain", "--", "scripts", "manuscript/analysis_record.md"], text=True).strip():
         sha += "-dirty"
 except Exception:
     sha = "nogit"

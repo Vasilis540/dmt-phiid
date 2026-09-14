@@ -7,7 +7,7 @@ per-subject intensity ratings. Output: (14 subjects, 2 conditions, 28 bins,
 16 atoms), atom order as phyid.utils.PhiID_atoms_abbr (rtr ... sts).
 Synergy is atoms[..., ATOMS.index("sts")]; redundancy is rtr. Saving every
 atom from the one run means any secondary atom (e.g. the pre-registered rtr
-prediction, CLAUDE.md) is read from the same computation as sts, never from
+prediction, manuscript/analysis_record.md) is read from the same computation as sts, never from
 a separate rerun.
 
 REGION_SELECTION chooses which regions enter the pairwise computation:
@@ -17,7 +17,7 @@ REGION_SELECTION chooses which regions enter the pairwise computation:
              cortex, not a sample of the brain. Never report from this.
   "random" — a seeded random subsample of N_REGIONS parcels.
 
-Preprocessing variant: ts_gsr by default (CLAUDE.md primary stream);
+Preprocessing variant: ts_gsr by default (manuscript/analysis_record.md primary stream);
 `--variant ts_demean` runs the rule-6 sensitivity stream. The variant is in
 the output filename, so the streams never overwrite each other.
 Condition axis: index 0 = DMT, index 1 = PCB (confirmed against
@@ -36,8 +36,8 @@ fitted for the local-atom evaluation:
                bins each; output per window, (14, 2, 14, 16), prefix
                atoms_win60. `--window-trs 30` (28 windows, one per bin,
                prefix atoms_win30) is the pre-registered positive control for
-               the shrinkage model (CLAUDE.md), not a primary analysis.
-  "placebo"  — robustness variant C, split-half design (CLAUDE.md): fit mean
+               the shrinkage model (manuscript/analysis_record.md), not a primary analysis.
+  "placebo"  — robustness variant C, split-half design (manuscript/analysis_record.md): fit mean
                and covariance of the four-vector on the FIRST HALF of this
                subject's placebo run (TRs 0-419), fix the MMI selections from
                that model's analytic Gaussian MIs, and evaluate local atoms
@@ -46,7 +46,7 @@ fitted for the local-atom evaluation:
                Output per 30-TR bin, (14, 2, 28, 16); PCB bins 0-13 are NaN
                (in-sample, not evaluated).
 Neither "window" nor "placebo" is to be run on the full real data until the
-20,000-run bias check assigns a tier (CLAUDE.md); both are smoke-tested only.
+20,000-run bias check assigns a tier (manuscript/analysis_record.md); both are smoke-tested only.
 """
 
 import argparse
@@ -79,7 +79,7 @@ _ap.add_argument("--window-trs", type=int, default=60, choices=(30, 60),
 _args = _ap.parse_args()
 VARIANT = _args.variant
 
-# Pre-registered region exclusion (CLAUDE.md, "Pre-registered analysis
+# Pre-registered region exclusion (manuscript/analysis_record.md, "Pre-registered analysis
 # choices"). Region 20 (0-based; Yeo network 3 / dorsal attention, left
 # hemisphere) is all-zero for subject index 7, DMT, in every preprocessing
 # variant including raw `ts` — an upstream defect in the source data. It is
@@ -99,7 +99,7 @@ FIT_MODE = _args.fit_mode or "global"   # "global" | "window" | "placebo"
 # Window for FIT_MODE="window" (primary analysis B). TR = 2 s
 # (external/DMT_NCT/scripts/02_global_ce_analyses.m:179 — TR=2; window=60/TR).
 # The original pre-registration was 30 TRs (one rating bin, the Singleton et
-# al. 2025 window); the pre-registered decision tree (CLAUDE.md, Primary B)
+# al. 2025 window); the pre-registered decision tree (manuscript/analysis_record.md, Primary B)
 # moves to W = 60, stride 60 — two rating bins per window, 14 windows, each
 # rating pair averaged to match — when the W = 30 differential-bias criterion
 # fails, which the bias check predicted and which the 13 Sep 2026 instruction
@@ -113,7 +113,7 @@ assert WINDOW_STRIDE == WINDOW_TRS and 840 % WINDOW_TRS == 0, (WINDOW_TRS, WINDO
 N_WINDOWS = 840 // WINDOW_TRS
 PLACEBO_FIT_TRS = 420      # FIT_MODE="placebo": fit on PCB TRs [0, 420), evaluate on [420, 840)
 
-# Pre-registered tier-2 sign handling on real data (CLAUDE.md, "Sign handling
+# Pre-registered tier-2 sign handling on real data (manuscript/analysis_record.md, "Sign handling
 # on real data", fixed 13 Sep 2026 before any real windowed run). Tracking
 # across the decay windows is assessed on |rho_S| >= TIER2_ABS_RHO, where
 # rho_S is each subject's Spearman correlation between window-mean whole-brain
@@ -125,7 +125,7 @@ PLACEBO_FIT_TRS = 420      # FIT_MODE="placebo": fit on PCB TRs [0, 420), evalua
 # NOT as a failed tracking criterion. Do not fold the sign into the threshold.
 TIER2_ABS_RHO = 0.80
 PREREG_DIRECTION = +1
-# Decay windows on real data (CLAUDE.md, "Decay windows on real data", fixed
+# Decay windows on real data (manuscript/analysis_record.md, "Decay windows on real data", fixed
 # 13 Sep 2026 before any real windowed run): 1-based inclusive window ranges at
 # W = 60. Primary excludes window 5 (bins 9-10) on the placebo injection
 # response at bins 8-10 seen in the global fit; the pre-registered set 5-14 is
@@ -269,7 +269,7 @@ if uncovered:
     raise RuntimeError(
         f"regions {uncovered} are defective in at least one (subject, "
         f"condition) but are not in EXCLUDE_REGIONS={EXCLUDE_REGIONS}. Record "
-        "an exclusion rule in CLAUDE.md before running; do not let phyid "
+        "an exclusion rule in manuscript/analysis_record.md before running; do not let phyid "
         "crash on them."
     )
 for r in EXCLUDE_REGIONS:
@@ -290,7 +290,7 @@ OUT_CSV = RESULTS / f"{PREFIX}_{TAG}.csv"
 # TR-resolution pair-mean local atoms, (14, 2, 840, 16): sample p of a run is
 # stored at its start TR; NaN where no sample is attributed (dropped TRs and,
 # in window mode, the last TR of every window). The pre-registered temporal
-# null (CLAUDE.md, step-contrast test) phase-randomises this series.
+# null (manuscript/analysis_record.md, step-contrast test) phase-randomises this series.
 OUT_LOCAL_NPY = RESULTS / f"{PREFIX}_local_{TAG}.npy"
 # time axis of the output: rating bins (global, placebo) or windows (window)
 N_T, T_LEN, T_NAME = ((N_WINDOWS, WINDOW_TRS, "window") if FIT_MODE == "window"
@@ -411,7 +411,7 @@ try:
     ).strip()
     # flag if the code that produced this result is not what HEAD contains
     if subprocess.check_output(
-        ["git", "status", "--porcelain", "--", "scripts", "CLAUDE.md"],
+        ["git", "status", "--porcelain", "--", "scripts", "manuscript/analysis_record.md"],
         text=True, stderr=subprocess.DEVNULL,
     ).strip():
         sha += "-dirty"

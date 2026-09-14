@@ -1,7 +1,7 @@
 """
 02_bias_check.py — finite-sample bias of windowed Gaussian ΦID atoms.
 
-Pre-registered diagnostic (CLAUDE.md, open questions). A 30-TR window leaves
+Pre-registered diagnostic (manuscript/analysis_record.md, open questions). A 30-TR window leaves
 29 lag-1 transitions to fit a 4x4 covariance (10 free parameters), so the
 plug-in Gaussian entropies — and therefore every ΦID atom — are biased. The
 question that matters for the DMT claim is not "is there bias?" (yes) but
@@ -46,7 +46,7 @@ Each shift is compared with the baseline of its own family.
 Window lengths: 30 (primary), 60 (load-bearing robustness), 840 (full-run
 global fit, as reference).
 
-Non-stationary conditions (pre-registered in CLAUDE.md, Primary B, revised
+Non-stationary conditions (pre-registered in manuscript/analysis_record.md, Primary B, revised
 12 Sep 2026 before implementation). Every stationary cell above measures
 recovery of a CONSTANT true value; the DMT case is a covariance change
 partway through the run, which the global fit cannot detect by
@@ -67,7 +67,7 @@ regime values, the sample-weighted mean of the per-bin analytic sts, and
 the analytic sts of the 28-bin mixture covariance (its N -> inf limit).
 Transients after a regime change are not burned in: they are estimator
 error and are reported as such.
-Tracking criteria (fixed before the run; CLAUDE.md, Primary B). The pooled
+Tracking criteria (fixed before the run; manuscript/analysis_record.md, Primary B). The pooled
 whole-brain mean is emulated by averaging M replicate runs drawn with
 replacement, M = 14 subjects x C(n_eff, 2) with n_eff the participation
 ratio of the placebo 115-region correlation matrix: M_DECIDE = (1338, 742)
@@ -84,7 +84,7 @@ sensitivity); a pass is required at both. M_SENS = (151,) is reported only.
 PASS at a tier requires the statistic >= PASS_THRESHOLD = 0.80 at W = 60
 for both decay conditions at both M_DECIDE values. The ordering of
 outcomes (tier 1, tier 2, then step contrast + methods) and the reasoning
-for 0.80 (raised from an initially proposed 0.75) are in CLAUDE.md.
+for 0.80 (raised from an initially proposed 0.75) are in manuscript/analysis_record.md.
 Bootstrap caveat (recorded before any verdict): M is drawn with
 replacement from N_RUNS = 2000, and M_DECIDE / N_RUNS = 0.67 and 0.37, so
 every draw is centred on the same N_RUNS-run sample mean, whose own SE is
@@ -109,7 +109,7 @@ Reported per (condition, window, atom):
   true MIs instead of the window's). bias - bias_oracle is the SELECTION
   component of the bias (the discrete min-over-noisy-candidates error); the
   remainder is the entropy-estimation (log-det) component. The analytic
-  log-det correction named in the pre-registered decision tree (CLAUDE.md,
+  log-det correction named in the pre-registered decision tree (manuscript/analysis_record.md,
   Primary B) can only address the second, so the split says how much of the
   bias is correctable in principle;
   the fraction of windows in which the rtr min-selection picked an MI whose
@@ -185,7 +185,7 @@ BASELINE_OF = {
 MUST_BE_UNTIED = ("asym_baseline", "asym_shift_coupling", "asym_shift_noisecorr")
 
 # AR-shift family — added 13 Sep 2026 AFTER the Primary B ts_gsr W=60 and W=30
-# real-data results existed (recorded in CLAUDE.md), to test the shrinkage
+# real-data results existed (recorded in manuscript/analysis_record.md), to test the shrinkage
 # model on the covariance-change type the real data showed. Kept out of
 # CONDITIONS so the stationary tables are unchanged. Parameters fixed before
 # the run: a = 0.87 is the measured regional lag-1 autocorrelation on ts_gsr
@@ -471,7 +471,7 @@ def run_nonstat(rng, t0):
         for b, p in enumerate(params):
             A, Q = var1_matrices(**p)
             assert np.max(np.abs(np.linalg.eigvals(A))) <= spec.get("max_radius", 0.76), \
-                "transient claim in CLAUDE.md (0.75 bound; AR family uses its own bound)"
+                "transient claim in manuscript/analysis_record.md (0.75 bound; AR family uses its own bound)"
             S4 = joint_lag_cov(A, Q, TAU)
             _, calc = analytic_atoms(S4, REDUNDANCY)
             mis = np.array([float(calc["I_res"][k][0]) for k in _RTR_MIS])
@@ -718,7 +718,7 @@ def main():
             stderr=subprocess.DEVNULL,
         ).strip()
         if subprocess.check_output(
-            ["git", "status", "--porcelain", "--", "scripts", "CLAUDE.md"],
+            ["git", "status", "--porcelain", "--", "scripts", "manuscript/analysis_record.md"],
             text=True, stderr=subprocess.DEVNULL,
         ).strip():
             sha += "-dirty"

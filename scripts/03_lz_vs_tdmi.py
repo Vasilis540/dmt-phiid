@@ -1,7 +1,7 @@
 """
 03_lz_vs_tdmi.py — whole-brain total TDMI vs EEG Lempel-Ziv complexity.
 
-Pre-registered (CLAUDE.md, "EEG Lempel-Ziv complexity regressor", 13 Sep
+Pre-registered (manuscript/analysis_record.md, "EEG Lempel-Ziv complexity regressor", 13 Sep
 2026, before any correlation was computed): whole-brain total TDMI (sum of
 the 16 ΦID atoms from the global fit) under DMT anti-correlates with LZc
 across the 28 30-TR bins.
@@ -88,7 +88,7 @@ surr_bins = np.stack([to_bins(phase_randomise(lz_tr)) for _ in range(N_SURR)])
 
 try:
     sha = subprocess.check_output(["git", "rev-parse", "--short", "HEAD"], text=True).strip()
-    if subprocess.check_output(["git", "status", "--porcelain", "--", "scripts", "CLAUDE.md"],
+    if subprocess.check_output(["git", "status", "--porcelain", "--", "scripts", "manuscript/analysis_record.md"],
                                text=True).strip():
         sha += "-dirty"
 except Exception:

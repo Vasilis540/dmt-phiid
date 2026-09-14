@@ -3,7 +3,7 @@
 decay windows (W = 60: windows 6-14; W = 30: windows 11-28), recomputed from
 the non-stationary bias-check tables.
 
-Pre-registered 13 Sep 2026 (CLAUDE.md, "Decay windows on real data"): the
+Pre-registered 13 Sep 2026 (manuscript/analysis_record.md, "Decay windows on real data"): the
 tier is ASSIGNED from the 20,000-run bias check on the pre-registered windows
 (W = 60: 5-14) and does not move. This script is the CHECK that the tier
 survives excluding the onset-adjacent window (window 5 = bins 9-10), decided
@@ -86,7 +86,7 @@ print(f"tables: {source}\n  {hdr_track}")
 rng = np.random.default_rng(SEED)
 try:
     sha = subprocess.check_output(["git", "rev-parse", "--short", "HEAD"], text=True).strip()
-    if subprocess.check_output(["git", "status", "--porcelain", "--", "scripts", "CLAUDE.md"], text=True).strip():
+    if subprocess.check_output(["git", "status", "--porcelain", "--", "scripts", "manuscript/analysis_record.md"], text=True).strip():
         sha += "-dirty"
 except Exception:
     sha = "nogit"
