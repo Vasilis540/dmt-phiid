@@ -1,0 +1,47 @@
+14_proportionality.py git=dbf2311 seed=20261120 n_boot=10000 signflip=exact 2^14 two-sided; POST-HOC
+
+== windowed_W60, ts_gsr: atoms_win60_115regions-all_ts_gsr_window.npy, windows 1-4 vs 6-14
+  ratio sts/TDMI: DiD                                  +0.0005 [-0.0081, +0.0083]  p=0.9138  negative in 6/14; proportional (CI includes zero)
+  ratio sts/TDMI: DMT post - pre                       +0.0034 [-0.0004, +0.0070]  p=0.1097  
+  ratio sts/TDMI: PCB post - pre                       +0.0028 [-0.0030, +0.0090]  p=0.3990  
+  (i) sts share of TDMI, pre-injection DMT (subject mean) +0.7820 [+0.7779, +0.7857]  ratio of group means 0.7822
+  sts share of TDMI, pre-injection PCB (subject mean)  +0.7795 [+0.7737, +0.7849]  
+  sts DiD (nats)                                       -0.0809 [-0.1266, -0.0371]  p=0.0038  negative in 13/14
+  TDMI DiD (nats)                                      -0.1037 [-0.1597, -0.0481]  p=0.0034  negative in 12/14
+  (ii) sts share of TDMI DiD (ratio of group means)    +0.7797 [+0.6531, +0.9362]  compare with (i) 0.7820; bootstrap ratio CI is unstable if TDMI DiD draws cross zero
+  (ii) - (i)                                           -0.0023  > 0: sts carries more of the TDMI drop than its baseline share
+
+== windowed_W60, ts_demean: atoms_win60_115regions-all_ts_demean_window.npy, windows 1-4 vs 6-14
+  ratio sts/TDMI: DiD                                  -0.0095 [-0.0235, +0.0049]  p=0.2195  negative in 9/14; proportional (CI includes zero)
+  ratio sts/TDMI: DMT post - pre                       -0.0093 [-0.0215, +0.0019]  p=0.1621  
+  ratio sts/TDMI: PCB post - pre                       +0.0001 [-0.0071, +0.0074]  p=0.9712  
+  (i) sts share of TDMI, pre-injection DMT (subject mean) +0.7670 [+0.7590, +0.7748]  ratio of group means 0.7673
+  sts share of TDMI, pre-injection PCB (subject mean)  +0.7688 [+0.7615, +0.7753]  
+  sts DiD (nats)                                       -0.1031 [-0.1540, -0.0516]  p=0.0026  negative in 12/14
+  TDMI DiD (nats)                                      -0.1186 [-0.1704, -0.0675]  p=0.0009  negative in 13/14
+  (ii) sts share of TDMI DiD (ratio of group means)    +0.8697 [+0.6909, +1.0063]  compare with (i) 0.7670; bootstrap ratio CI is unstable if TDMI DiD draws cross zero
+  (ii) - (i)                                           +0.1027  > 0: sts carries more of the TDMI drop than its baseline share
+
+== global_fit, ts_gsr: atoms_bins_115regions-all_ts_gsr_global.npy, bins 1-8 vs 11-28
+  ratio sts/TDMI: DiD                                  +0.0204 [+0.0048, +0.0340]  p=0.0248  negative in 4/14; LESS than proportional (ratio DiD > 0)
+  ratio sts/TDMI: DMT post - pre                       +0.0167 [+0.0052, +0.0279]  p=0.0183  
+  ratio sts/TDMI: PCB post - pre                       -0.0037 [-0.0116, +0.0044]  p=0.3949  
+  (i) sts share of TDMI, pre-injection DMT (subject mean) +0.9082 [+0.8994, +0.9167]  ratio of group means 0.9074
+  sts share of TDMI, pre-injection PCB (subject mean)  +0.9180 [+0.9126, +0.9234]  
+  sts DiD (nats)                                       -0.0801 [-0.1320, -0.0316]  p=0.0071  negative in 12/14
+  TDMI DiD (nats)                                      -0.1216 [-0.1914, -0.0519]  p=0.0051  negative in 13/14
+  (ii) sts share of TDMI DiD (ratio of group means)    +0.6584 [+0.4864, +0.8174]  compare with (i) 0.9082; bootstrap ratio CI is unstable if TDMI DiD draws cross zero
+  (ii) - (i)                                           -0.2498  > 0: sts carries more of the TDMI drop than its baseline share
+
+== global_fit, ts_demean: atoms_bins_115regions-all_ts_demean_global.npy, bins 1-8 vs 11-28
+  ratio sts/TDMI: DiD                                  +0.0071 [-0.0167, +0.0292]  p=0.5623  negative in 5/14; proportional (CI includes zero)
+  ratio sts/TDMI: DMT post - pre                       +0.0015 [-0.0183, +0.0203]  p=0.8799  
+  ratio sts/TDMI: PCB post - pre                       -0.0056 [-0.0143, +0.0042]  p=0.2753  
+  (i) sts share of TDMI, pre-injection DMT (subject mean) +0.8967 [+0.8856, +0.9074]  ratio of group means 0.8961
+  sts share of TDMI, pre-injection PCB (subject mean)  +0.9089 [+0.8994, +0.9163]  
+  sts DiD (nats)                                       -0.1035 [-0.1678, -0.0359]  p=0.0132  negative in 11/14
+  TDMI DiD (nats)                                      -0.1315 [-0.2001, -0.0610]  p=0.0039  negative in 12/14
+  (ii) sts share of TDMI DiD (ratio of group means)    +0.7867 [+0.5004, +1.0127]  compare with (i) 0.8967; bootstrap ratio CI is unstable if TDMI DiD draws cross zero
+  (ii) - (i)                                           -0.1100  > 0: sts carries more of the TDMI drop than its baseline share
+
+wrote results/proportionality.csv

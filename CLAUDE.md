@@ -33,47 +33,48 @@ Cambridge (Prof. Emmanuel Stamatakis).
   confirm data reuse terms, ask the data authors to confirm subject order
   (see the open questions at the end of the record).
 
-## Post-hoc robustness checks (NOT pre-specified; recorded here, not in the record)
+## Post-hoc checks (NOT pre-specified; recorded here, not in the record)
 
-These were specified after the primary result existed and are labelled
-post-hoc wherever they are reported. They decide nothing.
+Specified after the primary result, labelled post-hoc wherever reported,
+reported regardless of outcome. They decide nothing. Full numbers in the
+named CSVs.
 
-- **Leave-one-out on the primary DiD (14 Sep 2026; `scripts/13_loo_did.py`
-  at git 17dbfcb, `results/loo_did_win60.csv`, log
-  `results/run_13_loo_did.log`).** Raw whole-brain sts DiD, W = 60, primary
-  windows 6–14 vs 1–4, each subject dropped in turn (13-subject refits;
-  bootstrap CI 10,000 draws, exact sign-flip over 2^13, seed 20261120).
-  Motivation: subject 8 carries −0.280 (ts_gsr) / −0.311 (ts_demean)
-  against group means of −0.081 / −0.103, and subject 14 is the only
-  positive DiD on both variants. The full-sample refit reproduces the
-  recorded values (−0.0809, −0.1031). Range of the leave-one-out mean:
-  **ts_gsr −0.0944 to −0.0656, ts_demean −0.1182 to −0.0871** (least
-  negative when subject 8 is dropped, most negative when subject 14 is
-  dropped, on both variants). **No leave-one-out CI includes zero on
-  either variant (0 of 28)**; sign-flip p ≤ 0.0076 in every refit.
-  **Dropping subject 8: ts_gsr −0.0656 [−0.1013, −0.0271], p = 0.0076,
-  negative in 12 of 13; ts_demean −0.0871 [−0.1310, −0.0408], p = 0.0051,
-  negative in 11 of 13.** Dropping subject 14: −0.0944 [−0.1374, −0.0574],
-  p = 0.0002; −0.1182 [−0.1675, −0.0730], p = 0.0005. The primary result
-  does not depend on any single subject. Reported in the draft's Results
-  in one sentence.
+- **Leave-one-out on the primary DiD (14 Sep 2026; `13_loo_did.py` at
+  17dbfcb, `results/loo_did_win60.csv`).** Raw W = 60 primary DiD, each
+  subject dropped in turn. LOO mean range ts_gsr −0.0944 to −0.0656,
+  ts_demean −0.1182 to −0.0871; **no LOO CI includes zero (0 of 28)**,
+  p ≤ 0.0076 throughout. Subject 14 (only positive DiD) is the most
+  influential: dropping it strengthens the effect. Dropping subject 8
+  (largest magnitude): ts_gsr −0.0656 [−0.1013, −0.0271], p = 0.0076;
+  ts_demean −0.0871 [−0.1310, −0.0408], p = 0.0051. No single subject
+  carries the result. One sentence in the draft's Results.
+- **Proportionality of the synergy decrease (14 Sep 2026; rule recorded
+  at dbf2311 BEFORE the run; `14_proportionality.py`,
+  `results/proportionality.csv`).** Ratio sts / TDMI (Σ 16 atoms) per
+  subject, condition, window/bin; DiD of the ratio in the primary form.
+  **Rule (fixed before running):** ratio-DiD CI includes zero →
+  proportional, no evidence of a selective synergy effect; significantly
+  negative → more than proportional; positive → less. The directional
+  refutation stands under all three outcomes (sign, not selectivity).
+  **Outcome:**
 
-- **Proportionality of the synergy decrease (specified 14 Sep 2026,
-  rule recorded BEFORE the run; `scripts/14_proportionality.py`,
-  `results/proportionality.csv`).** Question: does DMT reduce synergy
-  selectively or in proportion to the total TDMI reduction? Ratio
-  sts / TDMI (TDMI = Σ 16 atoms) per subject, condition and window/bin;
-  DiD of the ratio in the primary form (exact sign-flip, subject-bootstrap
-  CI); four cells: windowed W = 60 (windows 6–14 vs 1–4) and global fit
-  (bins 11–28 vs 1–8), each on ts_gsr and ts_demean. Also (i) sts share
-  of TDMI at pre-injection baseline on DMT and (ii) sts share of the TDMI
-  DiD, for direct comparison. **Rule:** ratio-DiD CI includes zero →
-  synergy falls in proportion to total predictable information, no
-  evidence of a selective effect; significantly negative → falls more
-  than proportionally; significantly positive → less. **The directional
-  refutation of the up-regulation hypothesis stands under all three
-  outcomes; it concerns sign, not selectivity.** Outcome: see below once
-  run.
+  | cell | ratio DiD [CI], p | verdict | (i) baseline share | (ii) share of TDMI DiD |
+  |---|---|---|---|---|
+  | W = 60, ts_gsr | +0.0005 [−0.0081, +0.0083], 0.91 | proportional | 0.782 | 0.780 [0.653, 0.936] |
+  | W = 60, ts_demean | −0.0095 [−0.0235, +0.0049], 0.22 | proportional | 0.767 | 0.870 [0.691, 1.006] |
+  | global, ts_gsr | **+0.0204 [+0.0048, +0.0340], 0.025** | **less than proportional** | 0.908 | 0.658 [0.486, 0.817] |
+  | global, ts_demean | +0.0071 [−0.0167, +0.0292], 0.56 | proportional | 0.897 | 0.787 [0.500, 1.013] |
+
+  Under the primary estimator (W = 60) on both variants, synergy falls in
+  proportion to total predictable information: sts is ~78 % of TDMI at
+  baseline and carries ~78–87 % of the TDMI drop. The global fit on
+  ts_gsr is the one cell with a significant ratio DiD, positive, i.e.
+  sts falls *less* than proportionally there (DMT post − pre +0.0167,
+  p = 0.018; PCB −0.0037), not replicated on ts_demean. **No cell shows
+  a more-than-proportional (selective) synergy reduction.** The
+  windowed and global estimators put sts at different shares of TDMI
+  (0.78 vs 0.90) because the per-window bias falls on sts and the
+  self-transfer atoms differently. Not yet in the draft.
 
 ## The record: `manuscript/analysis_record.md`
 
