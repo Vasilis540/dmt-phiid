@@ -2382,3 +2382,47 @@ upstream commit 77af7aa. The upstream clone has 1 commit on its
 history, so the "single squashed commit" statement stands. Both
 lines are left as written because they sit inside dated entries; nothing
 else in either entry changes.
+
+## Closure entry, 14 Sep 2026 (appended; nothing above edited): the search for a positive DMT finding is closed
+
+Written after the 14 Sep 2026 adversarial review (`notes/adversarial_review_2026-09-14.md`),
+the review computations (`notes/review_computations_2026-09-14.md`) and the pre-specified
+regional ΦR check (`notes/prespec_regional_phir_deconv_2026-09-14.md`,
+`notes/regional_phir_deconv_2026-09-14.md`). Every number below is quoted from those files
+and their CSVs.
+
+1. Regional ΦR against the recorded prediction. Prediction (fixed 11:37 UTC, before any
+   regional number): if the deconvolved ΦR increase reflected the workspace structure of
+   Luppi et al. (2024), the per-region increase would be larger inside the Default/Control
+   proxy than outside it. Observed (deconvolved, ts_gsr, W = 60): workspace minus
+   non-workspace cortex −0.0047 [−0.0079, −0.0013], exact sign-flip p = 0.023, positive in
+   4 of 14 subjects — opposite in sign to the prediction, and in neither recorded branch
+   (not the predicted positive difference; not "uniform or absent", since the difference is
+   distinguishable from zero and three regions survive FDR). 82 % of it comes from the
+   Control sub-proxy (−0.0109, p = 0.004; Default −0.0013, p = 0.53). It is present in the
+   placebo run's change (inside − outside +0.0054 [+0.0020, +0.0090], p = 0.014) and absent
+   from the DMT run's (+0.0007 [−0.0012, +0.0026], p = 0.49).
+
+2. Why the whole-brain deconvolved ΦR increase (+0.0178 [+0.0069, +0.0293], p = 0.0099,
+   W = 60, ts_gsr) supports no claim:
+   (a) the pre-injection baseline gap runs in the direction that creates a positive DiD: DMT
+       0.1193 vs placebo 0.1317, −0.0124 [−0.0210, −0.0042], p = 0.014, DMT lower in
+       12 of 14 subjects;
+   (b) the placebo run declines across the session (linear slope −0.00115 per window,
+       p = 0.025, negative in 10 of 14; window 1 → 4: 0.1375, 0.1338, 0.1300, 0.1256, i.e.
+       already within the pre-injection windows, −0.0120, p = 0.067), while the DMT run has
+       no trend (slope −0.00003, p = 0.90);
+   (c) both the gap and the slope are absent on the raw series (gap −0.0042, p = 0.28;
+       slope −0.00036, p = 0.43): deconvolution creates them.
+   In addition: the two estimators disagree (global fit −0.0032 [−0.0100, +0.0046],
+   p = 0.41 on the same deconvolved ts_gsr series), and the placebo run's fall carries
+   56–64 % of the DiD (64 % at W = 60, 56 % at W = 30). Contrast with sts, where the
+   baseline imbalance runs against the finding: DMT pre-injection sts 1.1554 vs placebo
+   1.1378 (+0.0176 [−0.0106, +0.0421], p = 0.23, DMT higher in 10 of 14), against a DiD
+   of −0.0809.
+
+3. ΦR (in place of sts), HRF deconvolution and the W = 60 estimator for ΦR were each chosen
+   after seeing results. No confirmatory claim attaches to any of them, or to any outcome of
+   the regional check.
+
+4. No further specification will be run in search of a positive DMT result.
