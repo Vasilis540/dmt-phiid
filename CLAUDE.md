@@ -25,13 +25,9 @@ Cambridge (Prof. Emmanuel Stamatakis).
   refutation, never reframed. Tier-2 intensity tracking is **void** under
   the pre-specified controls; the claimed tier is **3** (step contrast +
   methods contribution).
-- Robustness A (global fit), C (placebo-fitted model), the W = 30 positive
-  control, the bias characterisation, the LZ comparison, global FC per
-  bin, subject-alignment check and the exploratory regional / receptor /
-  workspace analysis are all run and recorded.
-- Remaining work is writing, not analysis: finish `manuscript/draft.md`,
-  confirm data reuse terms, ask the data authors to confirm subject order
-  (see the open questions at the end of the record).
+- Every robustness, control, bias, alignment and exploratory analysis is
+  run and recorded. Remaining work is writing: finish the draft, confirm
+  data reuse terms, get the authors to confirm subject order.
 
 ## Post-hoc checks (NOT pre-specified; recorded here, not in the record)
 
@@ -81,16 +77,11 @@ named CSVs.
 **`manuscript/analysis_record.md` is the full pre-specification and results
 record.** It was the project `CLAUDE.md` until 14 Sep 2026, when it was
 moved with `git mv` (byte-identical; `git log --follow` carries its
-history). Its value is that every decision, prediction and rule in it was
-committed before the result it governs existed, and the commit sequence is
-the audit trail (`manuscript/prespecification_summary.md` lists the
-decisions by SHA).
-
-**It must never be retroactively edited, reorganised or condensed.** New
-decisions, results or corrections are appended as new dated entries, never
-written into existing ones. If something in it is wrong, append a dated
-correction that says so and leaves the original in place. Read the relevant
-section of it before touching any script or result.
+history). Every decision, prediction and rule in it was committed before the
+result it governs existed; `manuscript/prespecification_summary.md` lists
+them by SHA. **Never retroactively edit, reorganise or condense it.**
+Corrections and new entries are appended, dated, with the original left in
+place. Read the relevant section before touching a script or result.
 
 ## Repository layout
 
@@ -120,16 +111,14 @@ results/                         every table/array with script + git SHA in its 
                                  run_*.log are the run logs; nonstat_*/ are bias-check sub-runs
 data/                            Schaefer-100 parcel LUT only (all fMRI data is in external/)
 external/DMT_NCT/                git clone of singlesp/DMT_NCT (git-ignored, not a submodule): data + original MATLAB
-figs/                            empty; figures live in manuscript/figures/
 requirements.lock.txt            pinned environment (.venv/bin/python)
 ```
 
-Data facts (shapes, indexing, TR, condition axis, defects, region-20
-exclusion) are in the record under "Data" and "Region exclusion"; do not
-re-derive them. Key ones: `external/DMT_NCT/data/`; 14 subjects × 2
-conditions, **index 0 = DMT, 1 = placebo**; (116 regions, 840 TRs), TR 2 s;
-28 ratings = 30 TRs per bin; **region 20 (0-based) dropped everywhere →
-115 regions, 6,555 pairs**; subject index 2 PCB TR 839 is NaN.
+Data facts are in the record ("Data", "Region exclusion"); do not
+re-derive them. Key ones: 14 subjects × 2 conditions, **index 0 = DMT,
+1 = placebo**; (116 regions, 840 TRs), TR 2 s; 28 ratings = 30 TRs per
+bin; **region 20 (0-based) dropped everywhere → 115 regions, 6,555
+pairs**; subject index 2 PCB TR 839 is NaN.
 
 ## Standing methodological rules
 
@@ -172,17 +161,13 @@ first.
 ## Working conventions
 
 - Python only (`scipy.io.loadmat` for the `.mat` files); no MATLAB.
-- `phyid` is not on PyPI: `pip install
-  git+https://github.com/Imperial-MIND-lab/integrated-info-decomp.git`.
-- Full pairwise run ≈ 9 min single-core per variant and fit mode.
+- `phyid` is not on PyPI; `requirements.lock.txt` pins its git commit.
 - Commit scripts before running them for a reportable result so the
   output header carries a clean SHA; record the SHA with the result.
-- Results written to `results/` and never hand-edited; the record and the
-  manuscript quote them verbatim from the named file.
+- `results/` is never hand-edited; the record and manuscript quote it
+  verbatim. `run_all.sh` regenerates everything (≈ 6 h).
 
 ## Open questions
 
-Listed at the end of `manuscript/analysis_record.md`. The two that block
-the preprint: reuse licence (no LICENSE in the source repo; cite Singleton
-et al. 2025 and Zenodo 10.5281/zenodo.15177511) and author confirmation of
-the subject ordering across files.
+At the end of the record. Blocking the preprint: the data reuse licence
+(none in the source repo) and author confirmation of the subject order.
