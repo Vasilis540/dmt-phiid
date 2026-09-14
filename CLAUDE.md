@@ -101,7 +101,7 @@ scripts/                         numbered by execution order, each independently
 results/                         every table/array with script + git SHA in its header;
                                  run_*.log are the run logs; nonstat_*/ are bias-check sub-runs
 data/                            Schaefer-100 parcel LUT only (all fMRI data is in external/)
-external/DMT_NCT/                git submodule, the source data + original MATLAB (not tracked here)
+external/DMT_NCT/                git clone of singlesp/DMT_NCT (git-ignored, not a submodule): data + original MATLAB
 figs/                            empty; figures live in manuscript/figures/
 requirements.lock.txt            pinned environment (.venv/bin/python)
 ```

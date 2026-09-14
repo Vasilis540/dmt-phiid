@@ -2368,3 +2368,17 @@ two-sided p reported; subject-bootstrap 95 % CI, 10,000 draws, seed
   ≈ 1, so any windowed summary must average over many pairs; regional or
   edge-level maps are only viable at the global fit.
 - Whether to email Stamatakis to collision-check before or after first results.
+
+## Correction note, 14 Sep 2026 (appended; nothing above edited)
+
+Two lines above call `external/DMT_NCT/` a "submodule": the "Data" section
+dated 11 Sep 2026 ("the submodule checkout") and the file-creation-dates
+bullet of "Subject alignment across files (checked 13 Sep 2026)" ("the
+submodule has a single squashed commit"). It is not a git submodule: this
+repository has no `.gitmodules`, and `external/` is git-ignored. It is a
+plain clone, `git clone https://github.com/singlesp/DMT_NCT.git
+external/DMT_NCT`, as `run_all.sh` and `README.md` describe, checked at
+upstream commit 77af7aa. The upstream clone has 1 commit on its
+history, so the "single squashed commit" statement stands. Both
+lines are left as written because they sit inside dated entries; nothing
+else in either entry changes.
