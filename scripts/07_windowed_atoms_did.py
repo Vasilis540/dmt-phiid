@@ -2,7 +2,7 @@
 07_windowed_atoms_did.py — rtr, total TDMI and the other independently moving
 atoms under the windowed W = 60 estimator, same DiD form and tests as sts.
 
-Purpose: the global-fit results recorded in CLAUDE.md (Robustness A, ts_gsr)
+Purpose: the global-fit results recorded in manuscript/analysis_record.md (Robustness A, ts_gsr)
 were rtr DiD −0.0091 (peak bins 9–14 vs pre bins 1–8) and total TDMI DiD
 −0.118. This script reports the same quantities under the windowed estimator
 (atoms_win60_*_window.npy) with the Primary B inference machinery: per-subject
@@ -83,7 +83,7 @@ def signflip_p(v):
 
 try:
     sha = subprocess.check_output(["git", "rev-parse", "--short", "HEAD"], text=True).strip()
-    if subprocess.check_output(["git", "status", "--porcelain", "--", "scripts", "CLAUDE.md"], text=True).strip():
+    if subprocess.check_output(["git", "status", "--porcelain", "--", "scripts", "manuscript/analysis_record.md"], text=True).strip():
         sha += "-dirty"
 except Exception:
     sha = "nogit"

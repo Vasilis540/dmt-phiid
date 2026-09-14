@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-11_regional_analysis.py — EXPLORATORY regional analysis (CLAUDE.md,
+11_regional_analysis.py — EXPLORATORY regional analysis (manuscript/analysis_record.md,
 "Exploratory: regional analysis", pre-specified 13 Sep 2026 before this file
 was written). Not pre-registered before the primary result existed; every
 part is reported regardless of outcome. No predictions.
@@ -22,7 +22,7 @@ Steps, exactly as recorded:
      be spun, so the 115-region rho is descriptive only. Same test against
      5-HT1A, 5-HT1B, 5-HT4, 5-HTT; BH FDR across the five.
   4. Workspace comparison (Luppi et al. eLife 2024) via the network-level
-     proxies fixed in CLAUDE.md: primary = Yeo Default (gateway proxy) +
+     proxies fixed in manuscript/analysis_record.md: primary = Yeo Default (gateway proxy) +
      Control (broadcaster proxy); named-subregion proxy as sensitivity;
      non-workspace = remaining cortical parcels (subcortex added as a
      sensitivity). Per subject: mean DiD(workspace) - mean DiD(non-workspace);
@@ -84,7 +84,7 @@ RESULTS.mkdir(exist_ok=True)
 rng = np.random.default_rng(SEED)
 try:
     sha = subprocess.check_output(["git", "rev-parse", "--short", "HEAD"], text=True).strip()
-    if subprocess.check_output(["git", "status", "--porcelain", "--", "scripts", "CLAUDE.md"], text=True).strip():
+    if subprocess.check_output(["git", "status", "--porcelain", "--", "scripts", "manuscript/analysis_record.md"], text=True).strip():
         sha += "-dirty"
 except Exception:
     sha = "nogit"
@@ -126,7 +126,7 @@ def positions(orig_indices):
     return np.array(sorted(pos_of[int(r)] for r in orig_indices if int(r) in pos_of), int)
 
 
-# workspace proxies (CLAUDE.md), in original 0-99 indices, then positions
+# workspace proxies (manuscript/analysis_record.md), in original 0-99 indices, then positions
 def cort_where(pred):
     return [i for i, n in enumerate(cort_names) if pred(n)]
 

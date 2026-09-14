@@ -1,7 +1,7 @@
 """
 06_primary_b_analysis.py — Primary B inference on the windowed ΦID atoms.
 
-Implements everything pre-registered in CLAUDE.md for the real-data windowed
+Implements everything pre-registered in manuscript/analysis_record.md for the real-data windowed
 analysis (13 Sep 2026 entries: "Primary step contrast at W = 60: inferential
 test" and "motion handling", "Decay windows on real data", "Sign handling on
 real data", "Which intensity", controls (a) and (b)). Run per variant:
@@ -50,7 +50,7 @@ SECTION B — tier-2 tracking on the decay windows
     no rho_S, are excluded and counted; (ii) the group template f (14-subject
     mean DMT rating per bin / its max, per window) — SENSITIVITY.
     Threshold rule (corrected 13 Sep 2026 before any real windowed result;
-    CLAUDE.md "Tier-2 threshold: corrected rule"): |rho_S| >= TIER2_ABS_RHO
+    manuscript/analysis_record.md "Tier-2 threshold: corrected rule"): |rho_S| >= TIER2_ABS_RHO
     applies to the GROUP-MEAN-SERIES rho — Spearman between the 14-subject
     mean sts series over the decay windows and the template f — because that
     is the pooled quantity the simulation validated (R on pooled window means);
@@ -159,7 +159,7 @@ template_win = template_bin.reshape(N_WIN, BINS_PER_WIN).mean(1)         # group
 
 try:
     sha = subprocess.check_output(["git", "rev-parse", "--short", "HEAD"], text=True).strip()
-    if subprocess.check_output(["git", "status", "--porcelain", "--", "scripts", "CLAUDE.md"], text=True).strip():
+    if subprocess.check_output(["git", "status", "--porcelain", "--", "scripts", "manuscript/analysis_record.md"], text=True).strip():
         sha += "-dirty"
 except Exception:
     sha = "nogit"

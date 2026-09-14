@@ -1,5 +1,5 @@
 """
-04_logdet_correction_check.py — decision-tree step 2 (CLAUDE.md, Primary B).
+04_logdet_correction_check.py — decision-tree step 2 (manuscript/analysis_record.md, Primary B).
 
 The analytic bias correction for the Gaussian plug-in log-det entropy replaces
 each log det S_k (k = 1..4 dims, N four-vector samples) by
@@ -110,7 +110,7 @@ def corrected_atoms(x, y, N):
 def main():
     try:
         sha = subprocess.check_output(["git", "rev-parse", "--short", "HEAD"], text=True).strip()
-        if subprocess.check_output(["git", "status", "--porcelain", "--", "scripts", "CLAUDE.md"],
+        if subprocess.check_output(["git", "status", "--porcelain", "--", "scripts", "manuscript/analysis_record.md"],
                                    text=True).strip():
             sha += "-dirty"
     except Exception:

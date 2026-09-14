@@ -1,6 +1,6 @@
 # Pre-specification summary
 
-Every SHA below is from `git log` of this repository; the date and time are the commit's. "Changed later" refers to the text of the decision in `CLAUDE.md`, the project record.
+Every SHA below is from `git log` of this repository; the date and time are the commit's. "Changed later" refers to the text of the decision in `manuscript/analysis_record.md`, the project record (at `CLAUDE.md` in every commit listed below; moved with `git mv`, byte-identical, on 14 Sep 2026).
 
 | decision | what was fixed | commit, date | changed later? |
 |---|---|---|---|
@@ -36,4 +36,4 @@ Every SHA below is from `git log` of this repository; the date and time are the 
 
 ## What this record is and is not
 
-The record is a git-tracked local file, `CLAUDE.md`, in the analysis repository; it is not an external pre-registration and was not deposited with any registry. What it establishes is ordering: each decision, prediction and rule is in a commit whose sequence in the history precedes the commit carrying the result it governs, and each results table carries the SHA of the code that produced it. It does not establish that the record could not have been rewritten before the repository was made public; the repository has been public since 13 Sep 2026, and commits before that date are attested only by their sequence and content. The record was written over two days.
+The record is a git-tracked local file, `manuscript/analysis_record.md` (named `CLAUDE.md` until 14 Sep 2026, when it was moved with `git mv` so that `git log --follow` carries its full history; the content was not changed), in the analysis repository; it is not an external pre-registration and was not deposited with any registry. What it establishes is ordering: each decision, prediction and rule is in a commit whose sequence in the history precedes the commit carrying the result it governs, and each results table carries the SHA of the code that produced it. It does not establish that the record could not have been rewritten before the repository was made public; the repository has been public since 13 Sep 2026, and commits before that date are attested only by their sequence and content. The record was written over two days.
