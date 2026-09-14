@@ -1,0 +1,14 @@
+# Residual source (partB4_residual_source.py; ts_gsr, W = 60, all subjects, both runs, 14 windows)
+
+Means over all cells: observed sts 1.1377; AR(1) prediction 1.1865 (residual -0.0489); cross-lag substitution only 1.1866 (residual -0.0489); lag-0 substitution only 1.1372 (residual +0.0005). max |prediction − cross-lag-only| over cells 0.00057.
+Cross-lag deviation corr(x_t, y_(t+1)) − a_y q (and the y→x mirror), pooled over pairs: mean signed +0.00014 (per-cell range -0.0004 to +0.0014); mean absolute 0.0906; SD across pairs within a window 0.1128. Mean |lag-0 correlation of the past block − of the future block| 0.0168. Mean pair a 0.860, mean pair |q| 0.277. For reference, 1/sqrt(60) = 0.129.
+residual: DMT pre -0.0530 post -0.0453; PCB pre -0.0479 post -0.0517; primary DiD +0.0115 (negative in 4/14)
+cross-lag |deviation|: DMT pre +0.0891 post +0.0926; PCB pre +0.0904 post +0.0887; primary DiD +0.0053 (negative in 5/14)
+cross-lag deviation SD: DMT pre +0.1110 post +0.1154; PCB pre +0.1127 post +0.1103; primary DiD +0.0068 (negative in 5/14)
+cross-lag signed deviation: DMT pre +0.0002 post +0.0001; PCB pre +0.0000 post +0.0002; primary DiD -0.0002 (negative in 9/14)
+pair a: DMT pre +0.8632 post +0.8532; PCB pre +0.8603 post +0.8657; primary DiD -0.0155 (negative in 12/14)
+pair |q|: DMT pre +0.2842 post +0.2662; PCB pre +0.2839 post +0.2824; primary DiD -0.0164 (negative in 10/14)
+Per subject: r(residual DiD, cross-lag |deviation| DiD) = +0.241; r(residual DiD, cross-lag deviation SD DiD) = +0.279; r(residual DiD, pair a DiD) = -0.777; r(residual DiD, pair |q| DiD) = -0.741
+Across all 392 subject × run × window cells: r(residual, cross-lag deviation SD) = +0.432; r(residual, pair a) = -0.736; r(residual, pair |q|) = -0.711; r(cross-lag deviation SD, pair a) = -0.789
+Joint regression of the cell residual on (pair a, pair |q|, cross-lag deviation SD), standardised: coefficients -0.743, -0.437, -0.262; partial correlations -0.629, -0.601, -0.296; R² 0.744
+Group-mean window series of the cross-lag deviation SD: DMT [0.1115 0.1104 0.1125 0.1095 0.1149 0.1196 0.1208 0.1191 0.1157 0.1165 0.1122 0.1125 0.1129 0.1091]; PCB [0.1173 0.1127 0.1113 0.1093 0.1188 0.1103 0.1138 0.1084 0.1087 0.1120 0.1090 0.1078 0.1079 0.1146]
