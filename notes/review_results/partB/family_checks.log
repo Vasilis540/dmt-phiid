@@ -1,0 +1,32 @@
+# Family checks (partB5_family_checks.py)
+
+(0.85, 0.25): levels sts 1.2588, xtx+yty 1.2357, TDMI 1.2819, rtr 0.0231, rts+str 1.2357, mirrors -2.4715, PhiR 0.0231
+   d/dr1: sts +6.071, xtx+yty +6.015, TDMI +6.126, rtr +0.056, rts+str +6.015, mirrors -12.030, PhiR +0.056
+   d/dq:  sts -0.189, xtx+yty -0.378, TDMI +0.000, rtr +0.189, rts+str -0.378, mirrors +0.757, PhiR +0.189
+   ratio |dsts/dr1| / |dsts/dq| = 32.1; rtr / sts level = 1.84 %
+(0.85, 0.5): levels sts 1.1823, xtx+yty 1.0827, TDMI 1.2819, rtr 0.0996, rts+str 1.0827, mirrors -2.1654, PhiR 0.0996
+   d/dr1: sts +5.867, xtx+yty +5.608, TDMI +6.126, rtr +0.259, rts+str +5.608, mirrors -11.215, PhiR +0.259
+   d/dq:  sts -0.441, xtx+yty -0.882, TDMI -0.000, rtr +0.441, rts+str -0.882, mirrors +1.764, PhiR +0.441
+   ratio |dsts/dr1| / |dsts/dq| = 13.3; rtr / sts level = 8.42 %
+(0.97, 0.25): levels sts 2.7982, xtx+yty 2.7679, TDMI 2.8285, rtr 0.0303, rts+str 2.7679, mirrors -5.5358, PhiR 0.0303
+   d/dr1: sts +32.774, xtx+yty +32.709, TDMI +32.838, rtr +0.064, rts+str +32.709, mirrors -65.418, PhiR +0.064
+   d/dq:  sts -0.250, xtx+yty -0.500, TDMI +0.000, rtr +0.250, rts+str -0.500, mirrors +1.000, PhiR +0.250
+   ratio |dsts/dr1| / |dsts/dq| = 131.1; rtr / sts level = 1.08 %
+
+Symmetric family, 2,000 draws a ~ U(0, 0.95), q ~ U(−0.9, 0.9), seed 20261120: max |TDMI + ln(1 − a²)| = 3.6e-15; max |rtr + sts − TDMI| = 1.8e-15; max |rtr + ½ ln(1 − a²q²)| = 1.4e-17; max |ΦR − rtr| = 3.6e-15
+Unequal a_x, a_y (2,000 draws, same seed stream): ΦR − rtr min -1.362, max +4.585, mean +0.091, share |ΦR − rtr| > 0.01: 0.57
+
+Ratio |dsts/dr1| / |dsts/dq| at the implied operating points:
+   r1 = 0.78: |q| = 0.25: 24.9; |q| = 0.6: 7.8
+   r1 = 0.85: |q| = 0.25: 32.1; |q| = 0.6: 9.8
+   r1 = 0.93: |q| = 0.25: 60.0; |q| = 0.6: 17.6
+   r1 = 0.97: |q| = 0.25: 131.1; |q| = 0.6: 37.8
+
+Lag-1 autocorrelation of ideal band-passed white noise, r1 = [sin(2π f_hi TR) − sin(2π f_lo TR)] / [2π (f_hi − f_lo) TR]:
+   0.008–0.09 Hz, TR 2 s: 0.781
+   0.008–0.09 Hz, TR 0.72 s: 0.970
+   0.0025–0.05 Hz, TR 2 s: 0.932
+   0.0025–0.05 Hz, TR 3 s: 0.851
+   0.01–0.08 Hz, TR 2 s (this repository): 0.817
+   0.01–0.08 Hz, TR 3 s: 0.614
+   0.01–0.1 Hz, TR 3 s: 0.450
