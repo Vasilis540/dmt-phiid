@@ -1,0 +1,38 @@
+# script=14_proportionality.py git=dbf2311 seed=20261120 n_boot=10000 signflip=exact 2^14 two-sided; POST-HOC analysis specified after the primary result; interpretation rule in the script docstring
+estimator,variant,statistic,value,ci_lo,ci_hi,p,note
+windowed_W60,ts_gsr,ratio sts/TDMI: DiD,0.0005340954855786451,-0.00814580723209913,0.008329151879620399,0.913818359375,negative in 6/14; proportional (CI includes zero)
+windowed_W60,ts_gsr,ratio sts/TDMI: DMT post - pre,0.0033833771040534533,-0.00037599927434291315,0.006984146619707663,0.1097412109375,
+windowed_W60,ts_gsr,ratio sts/TDMI: PCB post - pre,0.002849281618474808,-0.0029978112015094705,0.009020019254625792,0.3990478515625,
+windowed_W60,ts_gsr,"(i) sts share of TDMI, pre-injection DMT (subject mean)",0.7819629554128344,0.7779271461480123,0.7856904281369463,nan,ratio of group means 0.7822
+windowed_W60,ts_gsr,"sts share of TDMI, pre-injection PCB (subject mean)",0.7795100864577272,0.7736903251172617,0.7848835870548834,nan,
+windowed_W60,ts_gsr,sts DiD (nats),-0.08086620932182391,-0.12657685161547705,-0.03714649677267141,0.0037841796875,negative in 13/14
+windowed_W60,ts_gsr,TDMI DiD (nats),-0.10371790101971512,-0.15974051059490071,-0.04811026412870665,0.00341796875,negative in 12/14
+windowed_W60,ts_gsr,(ii) sts share of TDMI DiD (ratio of group means),0.7796745646294224,0.6530604757731383,0.9361647870513331,nan,compare with (i) 0.7820; bootstrap ratio CI is unstable if TDMI DiD draws cross zero
+windowed_W60,ts_gsr,(ii) - (i),-0.002288390783412031,nan,nan,nan,> 0: sts carries more of the TDMI drop than its baseline share
+windowed_W60,ts_demean,ratio sts/TDMI: DiD,-0.0094667086793745,-0.023501785584566663,0.0048926162531934,0.219482421875,negative in 9/14; proportional (CI includes zero)
+windowed_W60,ts_demean,ratio sts/TDMI: DMT post - pre,-0.00934467567553708,-0.02150266514703521,0.0019233212051948032,0.162109375,
+windowed_W60,ts_demean,ratio sts/TDMI: PCB post - pre,0.00012203300383742002,-0.007059396249802961,0.007415273088575623,0.97119140625,
+windowed_W60,ts_demean,"(i) sts share of TDMI, pre-injection DMT (subject mean)",0.7669934919909965,0.7590446669566484,0.7748488320446414,nan,ratio of group means 0.7673
+windowed_W60,ts_demean,"sts share of TDMI, pre-injection PCB (subject mean)",0.7688479531411947,0.7614863094105112,0.7752578266561473,nan,
+windowed_W60,ts_demean,sts DiD (nats),-0.10311246510896124,-0.15404021651754676,-0.051553184156783755,0.0025634765625,negative in 12/14
+windowed_W60,ts_demean,TDMI DiD (nats),-0.11856362566234462,-0.17043370733364477,-0.06753863960745798,0.0008544921875,negative in 13/14
+windowed_W60,ts_demean,(ii) sts share of TDMI DiD (ratio of group means),0.8696804313543306,0.6909140362535815,1.006305536113395,nan,compare with (i) 0.7670; bootstrap ratio CI is unstable if TDMI DiD draws cross zero
+windowed_W60,ts_demean,(ii) - (i),0.10268693936333406,nan,nan,nan,> 0: sts carries more of the TDMI drop than its baseline share
+global_fit,ts_gsr,ratio sts/TDMI: DiD,0.0203859178263812,0.004808066651488997,0.034037530619666974,0.0247802734375,negative in 4/14; LESS than proportional (ratio DiD > 0)
+global_fit,ts_gsr,ratio sts/TDMI: DMT post - pre,0.01672251715159882,0.005216634885158357,0.027851734363141183,0.018310546875,
+global_fit,ts_gsr,ratio sts/TDMI: PCB post - pre,-0.00366340067478238,-0.011621288311210298,0.004350415961723403,0.3948974609375,
+global_fit,ts_gsr,"(i) sts share of TDMI, pre-injection DMT (subject mean)",0.9081928989669806,0.8994413728237612,0.9166930425996016,nan,ratio of group means 0.9074
+global_fit,ts_gsr,"sts share of TDMI, pre-injection PCB (subject mean)",0.9180110670299405,0.9126080178104666,0.9233659981787612,nan,
+global_fit,ts_gsr,sts DiD (nats),-0.08008106904246186,-0.1319760417650841,-0.031580552874901774,0.007080078125,negative in 12/14
+global_fit,ts_gsr,TDMI DiD (nats),-0.12163717700499177,-0.1914140301740428,-0.051915397378619346,0.005126953125,negative in 13/14
+global_fit,ts_gsr,(ii) sts share of TDMI DiD (ratio of group means),0.6583601413174484,0.48635927937092127,0.8174009516300949,nan,compare with (i) 0.9082; bootstrap ratio CI is unstable if TDMI DiD draws cross zero
+global_fit,ts_gsr,(ii) - (i),-0.24983275764953228,nan,nan,nan,> 0: sts carries more of the TDMI drop than its baseline share
+global_fit,ts_demean,ratio sts/TDMI: DiD,0.007124822639388509,-0.01672003215571682,0.029164632400342776,0.562255859375,negative in 5/14; proportional (CI includes zero)
+global_fit,ts_demean,ratio sts/TDMI: DMT post - pre,0.0015462337216733085,-0.018313941356852777,0.020292349867256625,0.8798828125,
+global_fit,ts_demean,ratio sts/TDMI: PCB post - pre,-0.0055785889177152005,-0.014301308310865724,0.004166680377228761,0.2752685546875,
+global_fit,ts_demean,"(i) sts share of TDMI, pre-injection DMT (subject mean)",0.8966855321468289,0.8856032733429853,0.9074187022327366,nan,ratio of group means 0.8961
+global_fit,ts_demean,"sts share of TDMI, pre-injection PCB (subject mean)",0.9088753047425618,0.8994313844683096,0.9163278035222896,nan,
+global_fit,ts_demean,sts DiD (nats),-0.10347081924166268,-0.16780011994911576,-0.035941780081045246,0.01318359375,negative in 11/14
+global_fit,ts_demean,TDMI DiD (nats),-0.1315312895966212,-0.20014375247269725,-0.0610194418634868,0.00390625,negative in 12/14
+global_fit,ts_demean,(ii) sts share of TDMI DiD (ratio of group means),0.7866631548963439,0.5003832667631001,1.0126783348155755,nan,compare with (i) 0.8967; bootstrap ratio CI is unstable if TDMI DiD draws cross zero
+global_fit,ts_demean,(ii) - (i),-0.11002237725048503,nan,nan,nan,> 0: sts carries more of the TDMI drop than its baseline share
