@@ -33,6 +33,31 @@ Cambridge (Prof. Emmanuel Stamatakis).
   confirm data reuse terms, ask the data authors to confirm subject order
   (see the open questions at the end of the record).
 
+## Post-hoc robustness checks (NOT pre-specified; recorded here, not in the record)
+
+These were specified after the primary result existed and are labelled
+post-hoc wherever they are reported. They decide nothing.
+
+- **Leave-one-out on the primary DiD (14 Sep 2026; `scripts/13_loo_did.py`
+  at git 17dbfcb, `results/loo_did_win60.csv`, log
+  `results/run_13_loo_did.log`).** Raw whole-brain sts DiD, W = 60, primary
+  windows 6–14 vs 1–4, each subject dropped in turn (13-subject refits;
+  bootstrap CI 10,000 draws, exact sign-flip over 2^13, seed 20261120).
+  Motivation: subject 8 carries −0.280 (ts_gsr) / −0.311 (ts_demean)
+  against group means of −0.081 / −0.103, and subject 14 is the only
+  positive DiD on both variants. The full-sample refit reproduces the
+  recorded values (−0.0809, −0.1031). Range of the leave-one-out mean:
+  **ts_gsr −0.0944 to −0.0656, ts_demean −0.1182 to −0.0871** (least
+  negative when subject 8 is dropped, most negative when subject 14 is
+  dropped, on both variants). **No leave-one-out CI includes zero on
+  either variant (0 of 28)**; sign-flip p ≤ 0.0076 in every refit.
+  **Dropping subject 8: ts_gsr −0.0656 [−0.1013, −0.0271], p = 0.0076,
+  negative in 12 of 13; ts_demean −0.0871 [−0.1310, −0.0408], p = 0.0051,
+  negative in 11 of 13.** Dropping subject 14: −0.0944 [−0.1374, −0.0574],
+  p = 0.0002; −0.1182 [−0.1675, −0.0730], p = 0.0005. The primary result
+  does not depend on any single subject. Reported in the draft's Results
+  in one sentence.
+
 ## The record: `manuscript/analysis_record.md`
 
 **`manuscript/analysis_record.md` is the full pre-specification and results
