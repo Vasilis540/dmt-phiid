@@ -177,29 +177,87 @@ class PairPhiID:
         return out
 
 
-    def atoms_local_pairmean(self):
-        """(n_samples, 16) mean over pairs of phyid's LOCAL atoms at every sample of the fit
-        (what 01 stores per TR in atoms_*_local_*.npy); the time-mean of this equals atoms_mean().mean(0)."""
-        n_pairs, n = len(self.pairs), self.n
-        Z = np.empty((n_pairs, 4, n))
-        Z[:, 0] = self.P[self.I]; Z[:, 1] = self.P[self.J]; Z[:, 2] = self.F[self.I]; Z[:, 3] = self.F[self.J]
+    def _local_mis(self, sel_pairs):
+        """local MIs (dict of (n_sel, n) arrays) for the selected pair indices, under the fit on all samples."""
+        I, J = self.I[sel_pairs], self.J[sel_pairs]
+        n = self.n
+        Z = np.empty((sel_pairs.size, 4, n))
+        Z[:, 0] = self.P[I]; Z[:, 1] = self.P[J]; Z[:, 2] = self.F[I]; Z[:, 3] = self.F[J]
+        C = self.C[sel_pairs]
         q = {}
         for A in _SUBSETS:
             idx = np.array(A)
-            inv = np.linalg.inv(self.C[:, idx[:, None], idx[None, :]])
+            inv = np.linalg.inv(C[:, idx[:, None], idx[None, :]])
             q[A] = np.einsum("nkl,nkt,nlt->nt", inv, Z[:, idx], Z[:, idx])
+        mi = {k: self.mi[k][sel_pairs][:, None] + 0.5 * (q[A] + q[B] - q[tuple(sorted(A + B))]) for k, (A, B) in _MI_SETS.items()}
+        return mi
+
+    def atoms_ccs(self, slot=None, n_slots=None, chunk=800):
+        """CCS atoms (phyid's definitions, verified in partB2_ccs_verify.py) from the local MIs.
+        Returns (atoms_mean (n_pairs, 16) over all samples, atoms_slot (n_slots, n_pairs, 16) or None,
+        local_pairmean (n, 16), agree_share (n_pairs,))."""
+        n_pairs, n = len(self.pairs), self.n
+        atoms_mean = np.empty((n_pairs, 16))
+        atoms_slot = None if slot is None else np.full((n_slots, n_pairs, 16), np.nan)
+        local_sum = np.zeros((n, 16))
+        agree_share = np.empty(n_pairs)
+        for start in range(0, n_pairs, chunk):
+            sel = np.arange(start, min(start + chunk, n_pairs))
+            K, D, agree = ccs_local_knowns(self._local_mis(sel))          # (n_sel, n, 16)
+            A = K @ _MINV_T
+            atoms_mean[sel] = A.mean(1)
+            local_sum += A.sum(0)
+            agree_share[sel] = agree.mean(1)
+            if slot is not None:
+                for t in range(n_slots):
+                    m = slot == t
+                    if m.any():
+                        atoms_slot[t, sel] = A[:, m].mean(1)
+        return atoms_mean, atoms_slot, local_sum / n_pairs, agree_share
+
+    def atoms_local_pairmean(self, chunk=800):
+        """(n_samples, 16) mean over pairs of phyid's LOCAL atoms at every sample of the fit
+        (what 01 stores per TR in atoms_*_local_*.npy); the time-mean of this equals atoms_mean().mean(0).
+        Pairs are processed in chunks to bound memory."""
+        n_pairs, n = len(self.pairs), self.n
         acc = np.zeros((n, 16))
-        # local knowns per pair: plug-in MI + ½ [q(A) + q(B) − q(AB)]; assemble with the global selections
-        mi_loc = {k: self.mi[k][:, None] + 0.5 * (q[A] + q[B] - q[tuple(sorted(A + B))]) for k, (A, B) in _MI_SETS.items()}
-        K = np.empty((n_pairs, n, 16))
-        for c, name in enumerate(KNOWNS):
-            if name in mi_loc:
-                K[:, :, c] = mi_loc[name]
-            else:
-                cands, which = self.sel[name]
-                stack = np.stack([mi_loc[k] for k in cands], 0)         # (n_cands, n_pairs, n)
-                K[:, :, c] = stack[which, np.arange(n_pairs)]
-        return (K.mean(0)) @ _MINV_T
+        for start in range(0, n_pairs, chunk):
+            sel = np.arange(start, min(start + chunk, n_pairs))
+            mi_loc = self._local_mis(sel)
+            K = np.empty((sel.size, n, 16))
+            for c, name in enumerate(KNOWNS):
+                if name in mi_loc:
+                    K[:, :, c] = mi_loc[name]
+                else:
+                    cands, which = self.sel[name]
+                    stack = np.stack([mi_loc[k] for k in cands], 0)         # (n_cands, n_sel, n)
+                    K[:, :, c] = stack[which[sel], np.arange(sel.size)]
+            acc += K.sum(0)
+        return (acc / n_pairs) @ _MINV_T
+
+def _ccs_red(mi1, mi2, mi12):
+    """Ince (2017) CCS redundancy, pointwise: co-information where sign(mi1) = sign(mi2) = sign(mi12) = sign(coI), else 0."""
+    coI = mi1 + mi2 - mi12
+    agree = (np.sign(mi1) == np.sign(mi2)) & (np.sign(mi1) == np.sign(mi12)) & (np.sign(mi1) == np.sign(coI))
+    return np.where(agree, coI, 0.0)
+
+
+def ccs_local_knowns(mi_loc):
+    """CCS knowns (..., 16) from local MIs (dict of (...,) arrays), phyid's definitions: six single-target
+    CCS redundancies (Ince 2017) and the double redundancy = double co-information D where the signs of
+    I_xta, I_xtb, I_yta, I_ytb and D agree, else 0 (D ≡ rtr − sts on the lattice)."""
+    R = {"R_xyta": _ccs_red(mi_loc["I_xta"], mi_loc["I_yta"], mi_loc["I_xyta"]), "R_xytb": _ccs_red(mi_loc["I_xtb"], mi_loc["I_ytb"], mi_loc["I_xytb"]),
+         "R_xytab": _ccs_red(mi_loc["I_xtab"], mi_loc["I_ytab"], mi_loc["I_xytab"]), "R_abtx": _ccs_red(mi_loc["I_xta"], mi_loc["I_xtb"], mi_loc["I_xtab"]),
+         "R_abty": _ccs_red(mi_loc["I_yta"], mi_loc["I_ytb"], mi_loc["I_ytab"]), "R_abtxy": _ccs_red(mi_loc["I_xyta"], mi_loc["I_xytb"], mi_loc["I_xytab"])}
+    D = (-mi_loc["I_xta"] - mi_loc["I_xtb"] - mi_loc["I_yta"] - mi_loc["I_ytb"] + mi_loc["I_xtab"] + mi_loc["I_ytab"] + mi_loc["I_xyta"] + mi_loc["I_xytb"] - mi_loc["I_xytab"]
+         + R["R_xyta"] + R["R_xytb"] - R["R_xytab"] + R["R_abtx"] + R["R_abty"] - R["R_abtxy"])
+    s0 = np.sign(mi_loc["I_xta"])
+    agree = (s0 == np.sign(mi_loc["I_xtb"])) & (s0 == np.sign(mi_loc["I_yta"])) & (s0 == np.sign(mi_loc["I_ytb"])) & (s0 == np.sign(D))
+    K = np.empty(mi_loc["I_xta"].shape + (16,))
+    K[..., 0] = np.where(agree, D, 0.0)
+    for c, name in enumerate(KNOWNS[1:], start=1):
+        K[..., c] = mi_loc[name] if name in mi_loc else R[name]
+    return K, D, agree
 
 
 def atoms_from_corr(C):

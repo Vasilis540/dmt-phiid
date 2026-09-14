@@ -1,0 +1,213 @@
+   ts_gsr: subject 1/14 done (21s)
+   ts_gsr: subject 2/14 done (37s)
+   ts_gsr: subject 3/14 done (54s)
+   ts_gsr: subject 4/14 done (71s)
+   ts_gsr: subject 5/14 done (89s)
+   ts_gsr: subject 6/14 done (107s)
+   ts_gsr: subject 7/14 done (124s)
+   ts_gsr: subject 8/14 done (141s)
+   ts_gsr: subject 9/14 done (157s)
+   ts_gsr: subject 10/14 done (173s)
+   ts_gsr: subject 11/14 done (191s)
+   ts_gsr: subject 12/14 done (209s)
+   ts_gsr: subject 13/14 done (225s)
+   ts_gsr: subject 14/14 done (241s)
+CCS sts ts_gsr W60                 primary                DiD +0.0036 [-0.0001, +0.0072] p=0.0844 neg 4/14 | phase p=0.0160 | DMT +0.0012 (p=0.388) PCB -0.0024 (p=0.063) placebo share 0.67 | FD DiD +0.0143 (p=0.245) | FD-resid +0.0032 [+0.0001, +0.0064] p=0.0841 3/14 SURVIVES
+CCS sts ts_gsr W60                 sensitivity            DiD +0.0038 [+0.0005, +0.0071] p=0.0516 neg 4/14 | phase p=0.0110 | DMT +0.0015 (p=0.268) PCB -0.0023 (p=0.062) placebo share 0.61 | FD DiD +0.0191 (p=0.108) | FD-resid +0.0034 [+0.0005, +0.0063] p=0.0481 3/14 SURVIVES
+CCS sts ts_gsr W60                 early                  DiD +0.0038 [-0.0002, +0.0080] p=0.0967 neg 5/14 | phase p=0.0290 | DMT +0.0016 (p=0.148) PCB -0.0022 (p=0.169) placebo share 0.57 | FD DiD +0.0366 (p=0.010) | FD-resid +0.0031 [-0.0004, +0.0069] p=0.1270 6/14 does NOT survive
+CCS sts ts_gsr W60                 late                   DiD +0.0035 [-0.0008, +0.0075] p=0.1367 neg 3/14 | phase p=0.0360 | DMT +0.0008 (p=0.624) PCB -0.0026 (p=0.065) placebo share 0.76 | FD DiD -0.0034 (p=0.807) | FD-resid +0.0033 [-0.0003, +0.0067] p=0.0995 4/14 does NOT survive
+CCS sts ts_gsr W60                 trend_a_placebo_line   DiD +0.0033 [+0.0003, +0.0065] p=0.0684 neg 3/14
+CCS sts ts_gsr W60                 trend_b_shared_slope   DiD +0.0033 [+0.0008, +0.0060] p=0.0300 neg 4/14
+CCS xtx+yty ts_gsr W60             primary                DiD -0.0909 [-0.1441, -0.0400] p=0.0049 neg 12/14 | phase p=0.0020 | DMT -0.0532 (p=0.030) PCB +0.0377 (p=0.037) placebo share 0.41 | FD DiD +0.0143 (p=0.245) | FD-resid -0.0711 [-0.1087, -0.0293] p=0.0068 13/14 SURVIVES
+CCS xtx+yty ts_gsr W60             sensitivity            DiD -0.0811 [-0.1337, -0.0293] p=0.0095 neg 12/14 | phase p=0.0020 | DMT -0.0527 (p=0.028) PCB +0.0284 (p=0.093) placebo share 0.35 | FD DiD +0.0191 (p=0.108) | FD-resid -0.0596 [-0.0962, -0.0193] p=0.0148 13/14 SURVIVES
+CCS xtx+yty ts_gsr W60             early                  DiD -0.1129 [-0.1651, -0.0629] p=0.0012 neg 12/14 | phase p=0.0010 | DMT -0.0914 (p=0.001) PCB +0.0214 (p=0.226) placebo share 0.19 | FD DiD +0.0366 (p=0.010) | FD-resid -0.0865 [-0.1279, -0.0454] p=0.0023 11/14 SURVIVES
+CCS xtx+yty ts_gsr W60             late                   DiD -0.0734 [-0.1326, -0.0137] p=0.0333 neg 10/14 | phase p=0.0040 | DMT -0.0226 (p=0.388) PCB +0.0508 (p=0.010) placebo share 0.69 | FD DiD -0.0034 (p=0.807) | FD-resid -0.0589 [-0.1033, -0.0068] p=0.0388 11/14 SURVIVES
+CCS xtx+yty ts_gsr W60             trend_a_placebo_line   DiD -0.1005 [-0.1530, -0.0514] p=0.0022 neg 13/14
+CCS xtx+yty ts_gsr W60             trend_b_shared_slope   DiD -0.1108 [-0.1609, -0.0650] p=0.0009 neg 13/14
+CCS rtr ts_gsr W60                 primary                DiD -0.0124 [-0.0215, -0.0028] p=0.0326 neg 10/14 | phase p=0.0050 | DMT -0.0116 (p=0.011) PCB +0.0008 (p=0.781) placebo share 0.06 | FD DiD +0.0143 (p=0.245) | FD-resid -0.0114 [-0.0207, -0.0014] p=0.0452 10/14 SURVIVES
+CCS rtr ts_gsr W60                 sensitivity            DiD -0.0115 [-0.0205, -0.0019] p=0.0413 neg 10/14 | phase p=0.0060 | DMT -0.0112 (p=0.014) PCB +0.0003 (p=0.921) placebo share 0.03 | FD DiD +0.0191 (p=0.108) | FD-resid -0.0102 [-0.0190, -0.0011] p=0.0576 10/14 SURVIVES
+CCS rtr ts_gsr W60                 early                  DiD -0.0207 [-0.0289, -0.0123] p=0.0010 neg 12/14 | phase p=0.0010 | DMT -0.0184 (p=0.000) PCB +0.0023 (p=0.466) placebo share 0.11 | FD DiD +0.0366 (p=0.010) | FD-resid -0.0177 [-0.0258, -0.0095] p=0.0024 11/14 SURVIVES
+CCS rtr ts_gsr W60                 late                   DiD -0.0058 [-0.0168, +0.0063] p=0.3501 neg 9/14 | phase p=0.2617 | DMT -0.0062 (p=0.191) PCB -0.0004 (p=0.896) placebo share -0.08 | FD DiD -0.0034 (p=0.807) | FD-resid -0.0063 [-0.0172, +0.0054] p=0.3065 10/14 does NOT survive
+CCS rtr ts_gsr W60                 trend_a_placebo_line   DiD -0.0120 [-0.0215, -0.0022] p=0.0386 neg 9/14
+CCS rtr ts_gsr W60                 trend_b_shared_slope   DiD -0.0161 [-0.0247, -0.0071] p=0.0054 neg 12/14
+CCS sts ts_gsr global-bins         primary                DiD +0.0210 [+0.0154, +0.0270] p=0.0001 neg 0/14 | phase p=0.0010 | DMT +0.0135 (p=0.000) PCB -0.0076 (p=0.001) placebo share 0.36 | FD DiD +0.0143 (p=0.245) | FD-resid +0.0164 [+0.0119, +0.0213] p=0.0001 0/14 SURVIVES
+CCS sts ts_gsr global-bins         sensitivity            DiD +0.0205 [+0.0150, +0.0264] p=0.0001 neg 0/14 | phase p=0.0010 | DMT +0.0137 (p=0.000) PCB -0.0068 (p=0.001) placebo share 0.33 | FD DiD +0.0174 (p=0.155) | FD-resid +0.0161 [+0.0116, +0.0209] p=0.0001 0/14 SURVIVES
+CCS sts ts_gsr global-bins         early                  DiD +0.0199 [+0.0144, +0.0258] p=0.0001 neg 0/14 | phase p=0.0010 | DMT +0.0176 (p=0.000) PCB -0.0023 (p=0.118) placebo share 0.11 | FD DiD +0.0366 (p=0.010) | FD-resid +0.0169 [+0.0120, +0.0220] p=0.0001 0/14 SURVIVES
+CCS sts ts_gsr global-bins         late                   DiD +0.0219 [+0.0152, +0.0287] p=0.0002 neg 1/14 | phase p=0.0010 | DMT +0.0101 (p=0.003) PCB -0.0118 (p=0.000) placebo share 0.54 | FD DiD -0.0034 (p=0.807) | FD-resid +0.0161 [+0.0111, +0.0209] p=0.0001 0/14 SURVIVES
+CCS sts ts_gsr global-bins         trend_a_placebo_line   DiD +0.0242 [+0.0180, +0.0303] p=0.0001 neg 0/14
+CCS sts ts_gsr global-bins         trend_b_shared_slope   DiD +0.0242 [+0.0182, +0.0302] p=0.0001 neg 0/14
+CCS xtx+yty ts_gsr global-bins     primary                DiD -0.0807 [-0.1424, -0.0215] p=0.0201 neg 13/14 | phase p=0.0010 | DMT -0.0521 (p=0.079) PCB +0.0287 (p=0.072) placebo share 0.36 | FD DiD +0.0143 (p=0.245) | FD-resid -0.0645 [-0.1120, -0.0115] p=0.0315 13/14 SURVIVES
+CCS xtx+yty ts_gsr global-bins     sensitivity            DiD -0.0782 [-0.1401, -0.0193] p=0.0232 neg 13/14 | phase p=0.0010 | DMT -0.0535 (p=0.070) PCB +0.0247 (p=0.112) placebo share 0.32 | FD DiD +0.0174 (p=0.155) | FD-resid -0.0610 [-0.1068, -0.0087] p=0.0360 11/14 SURVIVES
+CCS xtx+yty ts_gsr global-bins     early                  DiD -0.1038 [-0.1602, -0.0523] p=0.0018 neg 13/14 | phase p=0.0010 | DMT -0.0830 (p=0.005) PCB +0.0208 (p=0.208) placebo share 0.20 | FD DiD +0.0366 (p=0.010) | FD-resid -0.0789 [-0.1221, -0.0338] p=0.0065 11/14 SURVIVES
+CCS xtx+yty ts_gsr global-bins     late                   DiD -0.0622 [-0.1343, +0.0102] p=0.1208 neg 11/14 | phase p=0.0330 | DMT -0.0273 (p=0.408) PCB +0.0349 (p=0.052) placebo share 0.56 | FD DiD -0.0034 (p=0.807) | FD-resid -0.0530 [-0.1107, +0.0114] p=0.1284 11/14 does NOT survive
+CCS xtx+yty ts_gsr global-bins     trend_a_placebo_line   DiD -0.0829 [-0.1430, -0.0232] p=0.0188 neg 12/14
+CCS xtx+yty ts_gsr global-bins     trend_b_shared_slope   DiD -0.0963 [-0.1542, -0.0414] p=0.0050 neg 13/14
+CCS rtr ts_gsr global-bins         primary                DiD -0.0223 [-0.0318, -0.0128] p=0.0006 neg 13/14 | phase p=0.0010 | DMT -0.0176 (p=0.002) PCB +0.0047 (p=0.051) placebo share 0.21 | FD DiD +0.0143 (p=0.245) | FD-resid -0.0183 [-0.0272, -0.0094] p=0.0023 12/14 SURVIVES
+CCS rtr ts_gsr global-bins         sensitivity            DiD -0.0222 [-0.0316, -0.0130] p=0.0006 neg 13/14 | phase p=0.0010 | DMT -0.0182 (p=0.001) PCB +0.0039 (p=0.092) placebo share 0.18 | FD DiD +0.0174 (p=0.155) | FD-resid -0.0182 [-0.0268, -0.0096] p=0.0021 12/14 SURVIVES
+CCS rtr ts_gsr global-bins         early                  DiD -0.0270 [-0.0343, -0.0196] p=0.0002 neg 13/14 | phase p=0.0010 | DMT -0.0250 (p=0.000) PCB +0.0019 (p=0.336) placebo share 0.07 | FD DiD +0.0366 (p=0.010) | FD-resid -0.0227 [-0.0303, -0.0154] p=0.0002 13/14 SURVIVES
+CCS rtr ts_gsr global-bins         late                   DiD -0.0186 [-0.0300, -0.0071] p=0.0120 neg 11/14 | phase p=0.0020 | DMT -0.0117 (p=0.049) PCB +0.0069 (p=0.030) placebo share 0.37 | FD DiD -0.0034 (p=0.807) | FD-resid -0.0148 [-0.0252, -0.0042] p=0.0223 11/14 SURVIVES
+CCS rtr ts_gsr global-bins         trend_a_placebo_line   DiD -0.0246 [-0.0349, -0.0147] p=0.0007 neg 12/14
+CCS rtr ts_gsr global-bins         trend_b_shared_slope   DiD -0.0278 [-0.0373, -0.0185] p=0.0004 neg 13/14
+   ts_demean: subject 1/14 done (325s)
+   ts_demean: subject 2/14 done (341s)
+   ts_demean: subject 3/14 done (359s)
+   ts_demean: subject 4/14 done (376s)
+   ts_demean: subject 5/14 done (393s)
+   ts_demean: subject 6/14 done (410s)
+   ts_demean: subject 7/14 done (427s)
+   ts_demean: subject 8/14 done (444s)
+   ts_demean: subject 9/14 done (463s)
+   ts_demean: subject 10/14 done (479s)
+   ts_demean: subject 11/14 done (495s)
+   ts_demean: subject 12/14 done (512s)
+   ts_demean: subject 13/14 done (530s)
+   ts_demean: subject 14/14 done (549s)
+CCS sts ts_demean W60              primary                DiD +0.0134 [+0.0056, +0.0221] p=0.0052 neg 3/14 | phase p=0.0030 | DMT +0.0063 (p=0.090) PCB -0.0070 (p=0.003) placebo share 0.53 | FD DiD +0.0143 (p=0.245) | FD-resid +0.0128 [+0.0056, +0.0207] p=0.0044 3/14 SURVIVES
+CCS sts ts_demean W60              sensitivity            DiD +0.0120 [+0.0046, +0.0204] p=0.0065 neg 3/14 | phase p=0.0050 | DMT +0.0054 (p=0.107) PCB -0.0066 (p=0.004) placebo share 0.55 | FD DiD +0.0191 (p=0.108) | FD-resid +0.0115 [+0.0046, +0.0191] p=0.0068 3/14 SURVIVES
+CCS sts ts_demean W60              early                  DiD +0.0102 [+0.0031, +0.0174] p=0.0159 neg 2/14 | phase p=0.0539 | DMT +0.0036 (p=0.285) PCB -0.0066 (p=0.002) placebo share 0.65 | FD DiD +0.0366 (p=0.010) | FD-resid +0.0106 [+0.0054, +0.0165] p=0.0013 1/14 SURVIVES
+CCS sts ts_demean W60              late                   DiD +0.0159 [+0.0058, +0.0274] p=0.0100 neg 3/14 | phase p=0.0010 | DMT +0.0085 (p=0.075) PCB -0.0074 (p=0.010) placebo share 0.46 | FD DiD -0.0034 (p=0.807) | FD-resid +0.0145 [+0.0049, +0.0252] p=0.0137 4/14 SURVIVES
+CCS sts ts_demean W60              trend_a_placebo_line   DiD +0.0115 [+0.0043, +0.0194] p=0.0093 neg 3/14
+CCS sts ts_demean W60              trend_b_shared_slope   DiD +0.0090 [+0.0026, +0.0160] p=0.0219 neg 2/14
+CCS xtx+yty ts_demean W60          primary                DiD -0.1305 [-0.1876, -0.0728] p=0.0018 neg 13/14 | phase p=0.0010 | DMT -0.0806 (p=0.022) PCB +0.0499 (p=0.011) placebo share 0.38 | FD DiD +0.0143 (p=0.245) | FD-resid -0.1077 [-0.1549, -0.0566] p=0.0022 13/14 SURVIVES
+CCS xtx+yty ts_demean W60          sensitivity            DiD -0.1157 [-0.1698, -0.0581] p=0.0024 neg 12/14 | phase p=0.0010 | DMT -0.0764 (p=0.023) PCB +0.0392 (p=0.029) placebo share 0.34 | FD DiD +0.0191 (p=0.108) | FD-resid -0.0918 [-0.1369, -0.0437] p=0.0040 13/14 SURVIVES
+CCS xtx+yty ts_demean W60          early                  DiD -0.1392 [-0.1899, -0.0867] p=0.0006 neg 13/14 | phase p=0.0010 | DMT -0.1113 (p=0.003) PCB +0.0279 (p=0.094) placebo share 0.20 | FD DiD +0.0366 (p=0.010) | FD-resid -0.1147 [-0.1646, -0.0666] p=0.0010 13/14 SURVIVES
+CCS xtx+yty ts_demean W60          late                   DiD -0.1235 [-0.1933, -0.0523] p=0.0066 neg 11/14 | phase p=0.0010 | DMT -0.0561 (p=0.124) PCB +0.0674 (p=0.004) placebo share 0.55 | FD DiD -0.0034 (p=0.807) | FD-resid -0.1021 [-0.1632, -0.0374] p=0.0104 11/14 SURVIVES
+CCS xtx+yty ts_demean W60          trend_a_placebo_line   DiD -0.1400 [-0.2027, -0.0783] p=0.0013 neg 13/14
+CCS xtx+yty ts_demean W60          trend_b_shared_slope   DiD -0.1420 [-0.2023, -0.0829] p=0.0012 neg 13/14
+CCS rtr ts_demean W60              primary                DiD +0.0050 [-0.0079, +0.0194] p=0.4977 neg 8/14 | phase p=0.4276 | DMT +0.0085 (p=0.316) PCB +0.0035 (p=0.370) placebo share -0.70 | FD DiD +0.0143 (p=0.245) | FD-resid +0.0071 [-0.0073, +0.0242] p=0.4414 8/14 does NOT survive
+CCS rtr ts_demean W60              sensitivity            DiD +0.0070 [-0.0053, +0.0225] p=0.3916 neg 8/14 | phase p=0.2917 | DMT +0.0119 (p=0.233) PCB +0.0050 (p=0.266) placebo share -0.71 | FD DiD +0.0191 (p=0.108) | FD-resid +0.0074 [-0.0060, +0.0246] p=0.4407 8/14 does NOT survive
+CCS rtr ts_demean W60              early                  DiD -0.0006 [-0.0153, +0.0170] p=0.9523 neg 8/14 | phase p=0.9471 | DMT +0.0038 (p=0.636) PCB +0.0044 (p=0.361) placebo share 7.40 | FD DiD +0.0366 (p=0.010) | FD-resid -0.0038 [-0.0149, +0.0094] p=0.5969 9/14 does NOT survive
+CCS rtr ts_demean W60              late                   DiD +0.0095 [-0.0048, +0.0245] p=0.2526 neg 5/14 | phase p=0.1898 | DMT +0.0123 (p=0.201) PCB +0.0028 (p=0.518) placebo share -0.30 | FD DiD -0.0034 (p=0.807) | FD-resid +0.0158 [-0.0028, +0.0364] p=0.1630 6/14 does NOT survive
+CCS rtr ts_demean W60              trend_a_placebo_line   DiD +0.0065 [-0.0053, +0.0206] p=0.3965 neg 6/14
+CCS rtr ts_demean W60              trend_b_shared_slope   DiD +0.0030 [-0.0082, +0.0160] p=0.6584 neg 10/14
+CCS sts ts_demean global-bins      primary                DiD +0.0321 [+0.0216, +0.0431] p=0.0001 neg 0/14 | phase p=0.0010 | DMT +0.0225 (p=0.001) PCB -0.0096 (p=0.000) placebo share 0.30 | FD DiD +0.0143 (p=0.245) | FD-resid +0.0262 [+0.0164, +0.0374] p=0.0001 0/14 SURVIVES
+CCS sts ts_demean global-bins      sensitivity            DiD +0.0317 [+0.0215, +0.0428] p=0.0001 neg 0/14 | phase p=0.0010 | DMT +0.0228 (p=0.000) PCB -0.0089 (p=0.000) placebo share 0.28 | FD DiD +0.0174 (p=0.155) | FD-resid +0.0262 [+0.0163, +0.0373] p=0.0001 0/14 SURVIVES
+CCS sts ts_demean global-bins      early                  DiD +0.0294 [+0.0208, +0.0386] p=0.0001 neg 0/14 | phase p=0.0010 | DMT +0.0256 (p=0.000) PCB -0.0038 (p=0.060) placebo share 0.13 | FD DiD +0.0366 (p=0.010) | FD-resid +0.0264 [+0.0172, +0.0369] p=0.0001 0/14 SURVIVES
+CCS sts ts_demean global-bins      late                   DiD +0.0343 [+0.0213, +0.0477] p=0.0004 neg 1/14 | phase p=0.0010 | DMT +0.0200 (p=0.004) PCB -0.0143 (p=0.000) placebo share 0.42 | FD DiD -0.0034 (p=0.807) | FD-resid +0.0261 [+0.0152, +0.0381] p=0.0001 0/14 SURVIVES
+CCS sts ts_demean global-bins      trend_a_placebo_line   DiD +0.0362 [+0.0248, +0.0485] p=0.0001 neg 0/14
+CCS sts ts_demean global-bins      trend_b_shared_slope   DiD +0.0350 [+0.0245, +0.0464] p=0.0001 neg 0/14
+CCS xtx+yty ts_demean global-bins  primary                DiD -0.1133 [-0.1810, -0.0422] p=0.0106 neg 12/14 | phase p=0.0010 | DMT -0.0721 (p=0.070) PCB +0.0412 (p=0.033) placebo share 0.36 | FD DiD +0.0143 (p=0.245) | FD-resid -0.0981 [-0.1597, -0.0292] p=0.0178 11/14 SURVIVES
+CCS xtx+yty ts_demean global-bins  sensitivity            DiD -0.1100 [-0.1779, -0.0389] p=0.0126 neg 11/14 | phase p=0.0010 | DMT -0.0713 (p=0.069) PCB +0.0386 (p=0.042) placebo share 0.35 | FD DiD +0.0174 (p=0.155) | FD-resid -0.0942 [-0.1543, -0.0250] p=0.0193 11/14 SURVIVES
+CCS xtx+yty ts_demean global-bins  early                  DiD -0.1257 [-0.1848, -0.0645] p=0.0024 neg 12/14 | phase p=0.0020 | DMT -0.1008 (p=0.013) PCB +0.0249 (p=0.157) placebo share 0.20 | FD DiD +0.0366 (p=0.010) | FD-resid -0.1063 [-0.1641, -0.0487] p=0.0055 12/14 SURVIVES
+CCS xtx+yty ts_demean global-bins  late                   DiD -0.1033 [-0.1866, -0.0157] p=0.0405 neg 11/14 | phase p=0.0040 | DMT -0.0491 (p=0.252) PCB +0.0541 (p=0.018) placebo share 0.52 | FD DiD -0.0034 (p=0.807) | FD-resid -0.0914 [-0.1675, -0.0109] p=0.0549 10/14 SURVIVES
+CCS xtx+yty ts_demean global-bins  trend_a_placebo_line   DiD -0.1152 [-0.1864, -0.0411] p=0.0122 neg 12/14
+CCS xtx+yty ts_demean global-bins  trend_b_shared_slope   DiD -0.1240 [-0.1956, -0.0511] p=0.0066 neg 12/14
+CCS rtr ts_demean global-bins      primary                DiD -0.0183 [-0.0313, -0.0072] p=0.0082 neg 11/14 | phase p=0.0060 | DMT -0.0104 (p=0.112) PCB +0.0078 (p=0.035) placebo share 0.43 | FD DiD +0.0143 (p=0.245) | FD-resid -0.0128 [-0.0245, -0.0015] p=0.0533 11/14 SURVIVES
+CCS rtr ts_demean global-bins      sensitivity            DiD -0.0172 [-0.0304, -0.0059] p=0.0128 neg 10/14 | phase p=0.0070 | DMT -0.0106 (p=0.106) PCB +0.0066 (p=0.061) placebo share 0.39 | FD DiD +0.0174 (p=0.155) | FD-resid -0.0127 [-0.0241, -0.0013] p=0.0544 11/14 SURVIVES
+CCS rtr ts_demean global-bins      early                  DiD -0.0223 [-0.0338, -0.0106] p=0.0046 neg 10/14 | phase p=0.0030 | DMT -0.0187 (p=0.004) PCB +0.0036 (p=0.276) placebo share 0.16 | FD DiD +0.0366 (p=0.010) | FD-resid -0.0221 [-0.0310, -0.0135] p=0.0005 12/14 SURVIVES
+CCS rtr ts_demean global-bins      late                   DiD -0.0151 [-0.0310, -0.0013] p=0.0732 neg 10/14 | phase p=0.0340 | DMT -0.0039 (p=0.604) PCB +0.0112 (p=0.018) placebo share 0.74 | FD DiD -0.0034 (p=0.807) | FD-resid -0.0055 [-0.0211, +0.0104] p=0.5178 9/14 does NOT survive
+CCS rtr ts_demean global-bins      trend_a_placebo_line   DiD -0.0209 [-0.0340, -0.0097] p=0.0022 neg 11/14
+CCS rtr ts_demean global-bins      trend_b_shared_slope   DiD -0.0244 [-0.0369, -0.0133] p=0.0006 neg 12/14
+# CCS tables (partB2_ccs_run.py)
+
+## ts_gsr W60: 16 atoms, DMT pre-injection level and primary DiD, CCS vs MMI (nats)
+
+| atom | CCS level | MMI level | CCS DiD (mean, neg/14) | MMI DiD |
+|---|---|---|---|---|
+| rtr | +0.0916 | +0.0388 | -0.0124 (10) | -0.0078 |
+| rtx | +0.0008 | +0.0258 | +0.0007 (5) | -0.0012 |
+| rty | +0.0001 | +0.0254 | +0.0011 (4) | -0.0012 |
+| rts | -0.0038 | +0.5669 | -0.0008 (10) | -0.0407 |
+| xtr | +0.0005 | +0.0254 | +0.0008 (4) | -0.0012 |
+| xtx | +0.6245 | +0.6273 | -0.0515 (12) | -0.0523 |
+| xty | -0.0279 | -0.0254 | +0.0016 (6) | +0.0012 |
+| xts | +0.0633 | -0.5352 | -0.0026 (9) | +0.0399 |
+| ytr | +0.0004 | +0.0258 | +0.0010 (4) | -0.0012 |
+| ytx | -0.0281 | -0.0258 | +0.0018 (7) | +0.0012 |
+| yty | +0.6105 | +0.6125 | -0.0394 (12) | -0.0396 |
+| yts | +0.0622 | -0.5358 | -0.0020 (10) | +0.0404 |
+| str | -0.0039 | +0.5667 | -0.0008 (10) | -0.0408 |
+| stx | +0.0634 | -0.5350 | -0.0027 (9) | +0.0401 |
+| sty | +0.0623 | -0.5357 | -0.0021 (9) | +0.0403 |
+| sts | -0.0387 | +1.1554 | +0.0036 (4) | -0.0809 |
+| TDMI (sum) | +1.4772 | +1.4772 | -0.1037 | -0.1037 |
+
+Per-subject CCS sts DiD vs the autocorrelation contrast (W60, window-standardised r1): Pearson r = -0.439 (p = 0.117), Spearman -0.336; vs the MMI sts DiD of the same estimator: r = -0.299; CCS (xtx+yty) DiD vs autocorrelation contrast: r = +0.955
+CCS sts level / CCS (xtx + yty) level (DMT pre): -0.0387 / +1.2350; MMI: +1.1554 / +1.2398
+share of samples with all five signs agreeing (mean over runs): 0.294
+Group-mean window series, CCS sts vs mean r1 (28 condition-windows): r = -0.433; MMI sts vs r1: +0.977; CCS sts vs MMI sts: -0.395
+Per-pair, subject 1 DMT window 6: CCS sts vs pair r1 r = -0.011, vs |q| +0.014, vs MMI sts +0.216; MMI sts vs r1 +0.742; CCS sts pair mean -0.0354 (SD 0.0698), CCS xtx+yty +1.1113, MMI sts +1.0314; agree share 0.269
+Per-pair, subject 1 PCB window 2: CCS sts vs pair r1 r = +0.003, vs |q| +0.110, vs MMI sts +0.223; MMI sts vs r1 +0.697; CCS sts pair mean -0.0367 (SD 0.0744), CCS xtx+yty +1.1407, MMI sts +1.0669; agree share 0.278
+
+## ts_gsr global-bins: 16 atoms, DMT pre-injection level and primary DiD, CCS vs MMI (nats)
+
+| atom | CCS level | MMI level | CCS DiD (mean, neg/14) | MMI DiD |
+|---|---|---|---|---|
+| rtr | +0.0665 | +0.0248 | -0.0223 (13) | -0.0060 |
+| rtx | +0.0001 | +0.0076 | +0.0013 (4) | -0.0031 |
+| rty | -0.0001 | +0.0074 | +0.0008 (3) | -0.0028 |
+| rts | -0.0065 | +0.6435 | +0.0027 (5) | -0.0396 |
+| xtr | +0.0000 | +0.0074 | +0.0014 (2) | -0.0028 |
+| xtx | +0.6629 | +0.6897 | -0.0468 (12) | -0.0544 |
+| xty | -0.0342 | -0.0074 | +0.0112 (1) | +0.0028 |
+| xts | +0.0456 | -0.6386 | -0.0176 (14) | +0.0367 |
+| ytr | +0.0003 | +0.0076 | +0.0004 (6) | -0.0031 |
+| ytx | -0.0346 | -0.0076 | +0.0115 (1) | +0.0031 |
+| yty | +0.6450 | +0.6719 | -0.0339 (12) | -0.0431 |
+| yts | +0.0456 | -0.6388 | -0.0182 (14) | +0.0368 |
+| str | -0.0068 | +0.6435 | +0.0029 (5) | -0.0397 |
+| stx | +0.0459 | -0.6387 | -0.0177 (14) | +0.0368 |
+| sty | +0.0457 | -0.6388 | -0.0184 (14) | +0.0368 |
+| sts | -0.0335 | +1.3085 | +0.0210 (0) | -0.0801 |
+| TDMI (sum) | +1.4421 | +1.4421 | -0.1216 | -0.1216 |
+
+Per-subject CCS sts DiD vs the autocorrelation contrast (W60, window-standardised r1): Pearson r = -0.253 (p = 0.383), Spearman -0.486; vs the MMI sts DiD of the same estimator: r = -0.250; CCS (xtx+yty) DiD vs autocorrelation contrast: r = +0.961
+CCS sts level / CCS (xtx + yty) level (DMT pre): -0.0335 / +1.3078; MMI: +1.3085 / +1.3616
+share of samples with all five signs agreeing (mean over runs): 0.304
+
+## ts_demean W60: 16 atoms, DMT pre-injection level and primary DiD, CCS vs MMI (nats)
+
+| atom | CCS level | MMI level | CCS DiD (mean, neg/14) | MMI DiD |
+|---|---|---|---|---|
+| rtr | +0.1047 | +0.0444 | +0.0050 (8) | +0.0005 |
+| rtx | -0.0042 | +0.0293 | -0.0024 (9) | +0.0040 |
+| rty | -0.0053 | +0.0288 | -0.0043 (8) | +0.0003 |
+| rts | -0.0064 | +0.5265 | -0.0040 (11) | -0.0643 |
+| xtr | -0.0046 | +0.0287 | -0.0050 (10) | +0.0003 |
+| xtx | +0.5935 | +0.5871 | -0.0751 (13) | -0.0823 |
+| xty | -0.0215 | -0.0286 | +0.0051 (4) | -0.0002 |
+| xts | +0.0665 | -0.4933 | +0.0010 (7) | +0.0621 |
+| ytr | -0.0049 | +0.0292 | -0.0015 (7) | +0.0040 |
+| ytx | -0.0219 | -0.0291 | +0.0035 (4) | -0.0039 |
+| yty | +0.5738 | +0.5658 | -0.0554 (12) | -0.0610 |
+| yts | +0.0648 | -0.4942 | +0.0022 (6) | +0.0635 |
+| str | -0.0064 | +0.5264 | -0.0040 (12) | -0.0646 |
+| stx | +0.0668 | -0.4929 | +0.0002 (7) | +0.0627 |
+| sty | +0.0647 | -0.4943 | +0.0028 (7) | +0.0636 |
+| sts | -0.0255 | +1.1004 | +0.0134 (3) | -0.1031 |
+| TDMI (sum) | +1.4341 | +1.4341 | -0.1186 | -0.1186 |
+
+Per-subject CCS sts DiD vs the autocorrelation contrast (W60, window-standardised r1): Pearson r = -0.390 (p = 0.168), Spearman -0.398; vs the MMI sts DiD of the same estimator: r = -0.350; CCS (xtx+yty) DiD vs autocorrelation contrast: r = +0.932
+CCS sts level / CCS (xtx + yty) level (DMT pre): -0.0255 / +1.1673; MMI: +1.1004 / +1.1529
+share of samples with all five signs agreeing (mean over runs): 0.303
+Group-mean window series, CCS sts vs mean r1 (28 condition-windows): r = -0.623; MMI sts vs r1: +0.938; CCS sts vs MMI sts: -0.546
+Per-pair, subject 1 DMT window 6: CCS sts vs pair r1 r = -0.154, vs |q| +0.019, vs MMI sts +0.109; MMI sts vs r1 +0.518; CCS sts pair mean -0.0452 (SD 0.0700), CCS xtx+yty +1.1647, MMI sts +1.0562; agree share 0.331
+Per-pair, subject 1 PCB window 2: CCS sts vs pair r1 r = -0.012, vs |q| +0.276, vs MMI sts +0.259; MMI sts vs r1 +0.628; CCS sts pair mean -0.0128 (SD 0.0885), CCS xtx+yty +1.0240, MMI sts +1.0116; agree share 0.279
+
+## ts_demean global-bins: 16 atoms, DMT pre-injection level and primary DiD, CCS vs MMI (nats)
+
+| atom | CCS level | MMI level | CCS DiD (mean, neg/14) | MMI DiD |
+|---|---|---|---|---|
+| rtr | +0.0938 | +0.0301 | -0.0183 (11) | +0.0078 |
+| rtx | -0.0088 | +0.0074 | +0.0031 (2) | +0.0017 |
+| rty | -0.0095 | +0.0085 | +0.0010 (5) | -0.0022 |
+| rts | -0.0052 | +0.5979 | -0.0100 (9) | -0.0644 |
+| xtr | -0.0094 | +0.0085 | +0.0016 (5) | -0.0022 |
+| xtx | +0.6226 | +0.6522 | -0.0692 (12) | -0.0901 |
+| xty | -0.0363 | -0.0085 | +0.0213 (0) | +0.0022 |
+| xts | +0.0555 | -0.5933 | -0.0144 (12) | +0.0624 |
+| ytr | -0.0088 | +0.0074 | +0.0024 (4) | +0.0017 |
+| ytx | -0.0387 | -0.0074 | +0.0223 (0) | -0.0017 |
+| yty | +0.5941 | +0.6236 | -0.0441 (11) | -0.0664 |
+| yts | +0.0571 | -0.5934 | -0.0174 (13) | +0.0625 |
+| str | -0.0053 | +0.5979 | -0.0098 (9) | -0.0648 |
+| stx | +0.0574 | -0.5934 | -0.0172 (13) | +0.0626 |
+| sty | +0.0553 | -0.5937 | -0.0152 (12) | +0.0628 |
+| sts | -0.0297 | +1.2403 | +0.0321 (0) | -0.1035 |
+| TDMI (sum) | +1.3841 | +1.3841 | -0.1315 | -0.1315 |
+
+Per-subject CCS sts DiD vs the autocorrelation contrast (W60, window-standardised r1): Pearson r = -0.207 (p = 0.477), Spearman -0.301; vs the MMI sts DiD of the same estimator: r = -0.263; CCS (xtx+yty) DiD vs autocorrelation contrast: r = +0.911
+CCS sts level / CCS (xtx + yty) level (DMT pre): -0.0297 / +1.2167; MMI: +1.2403 / +1.2758
+share of samples with all five signs agreeing (mean over runs): 0.310
+
+done (615s)
