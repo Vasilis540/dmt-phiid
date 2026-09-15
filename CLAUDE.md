@@ -14,9 +14,9 @@ Cambridge (Prof. Emmanuel Stamatakis).
 - **20 Nov 2026** — public preprint + documented repo
 - **8 Dec 2026** — Cambridge application (Gates Cambridge / Cambridge Trust)
 
-## Current state (14 Sep 2026)
+## Current state (15 Sep 2026)
 
-**Analysis complete. Draft written. Figures built.**
+**Analysis complete. The paper is `manuscript/draft_v2.md` (revised 15 Sep after the second and third adversarial reviews); `manuscript/draft.md` is the superseded first draft, kept as a record. Figures `fig1_v2`–`fig4_v2` built by `scripts/15_figures_v2.py`.**
 
 - Primary result (Primary B, windowed W = 60 estimator, ts_gsr, replicated
   on ts_demean): whole-brain synergy **decreases** under DMT, DiD negative
@@ -25,9 +25,22 @@ Cambridge (Prof. Emmanuel Stamatakis).
   refutation, never reframed. Tier-2 intensity tracking is **void** under
   the pre-specified controls; the claimed tier is **3** (step contrast +
   methods contribution).
-- Every robustness, control, bias, alignment and exploratory analysis is
-  run and recorded. Remaining work is writing: finish the draft, confirm
-  data reuse terms, get the authors to confirm subject order.
+- The two adversarial reviews of 14 and 15 Sep and the Part B analyses
+  (dated entries in the record; `notes/partB_prespec_2026-09-14.md`)
+  reframed the paper as an account of the estimator: the sts decrease is
+  reproduced by the lag-1 autocorrelation change (per-subject r = 0.95),
+  with a residual not accounted for by a stationary finite-sample null and
+  a CCS-sts increase that stays exploratory (record, "Closure entry" and
+  "Correction note, 15 Sep 2026"). The third review's findings and the
+  changes made in response are in the correction note.
+- Data reuse: agreed with the data collectors and the derivative authors by
+  email in September 2026, with attribution [TK: attach the written
+  confirmation]. Subject order across files verified at one subject
+  (record, "Subject alignment across files"); author confirmation still
+  requested.
+- Remaining work: the [TK] items in `draft_v2.md` (affiliations, co-authors,
+  reference details, journal wording); delete `manuscript/draft_v2-1.md`,
+  an earlier variant with a different author list and abstract.
 
 ## Post-hoc checks (NOT pre-specified; recorded here, not in the record)
 
@@ -89,9 +102,11 @@ place. Read the relevant section before touching a script or result.
 CLAUDE.md                        this file: orientation and standing rules
 manuscript/analysis_record.md    pre-specification + results record (append-only)
 manuscript/prespecification_summary.md  decisions by commit, changed-later audit
-manuscript/draft.md              the paper
+manuscript/draft_v2.md           the paper (15 Sep 2026)
+manuscript/draft.md              superseded first draft, kept as a record
 manuscript/supplementary.md      supplementary tables, values quoted from results/
-manuscript/figures/              fig1–3 (pdf/png) + captions.md, from 12_figures.py
+manuscript/figures/              fig1_v2–fig4_v2 (pdf/png) + captions_v2.md, from 15_figures_v2.py;
+                                 the draft.md figures + captions.md (12_figures.py) kept in place
 scripts/                         numbered by execution order, each independently runnable
   00_verify.py                   data + method integrity check; run after any env change
   01_synergy_timecourse.py       all 16 ΦID atoms per pair, whole-brain mean per bin/window
@@ -106,7 +121,13 @@ scripts/                         numbered by execution order, each independently
   09_global_fc_per_bin.py        mean pairwise r per bin, both variants
   10_subject_alignment_check.py  is the subject axis shared across data files?
   11_regional_analysis.py        EXPLORATORY: per-region DiD, spin tests, workspace proxy
-  12_figures.py                  manuscript figures, regenerable from results/
+  12_figures.py                  draft.md figures, regenerable from results/
+  13_loo_did.py                  POST-HOC: leave-one-subject-out on the primary DiD
+  14_proportionality.py          POST-HOC: sts / TDMI ratio DiD, four cells, rule in the docstring
+  15_figures_v2.py               draft_v2.md figures, from results/ and notes/review_results/
+notes/                           adversarial reviews, review computations (rev_*.py, review_*.py),
+                                 Part B plans/notes/scripts (partB*.md, partB*.py); outputs under
+                                 notes/review_results/ (tables, logs, inference rows, atom arrays)
 results/                         every table/array with script + git SHA in its header;
                                  run_*.log are the run logs; nonstat_*/ are bias-check sub-runs
 data/                            Schaefer-100 parcel LUT only (all fMRI data is in external/)
@@ -165,9 +186,13 @@ first.
 - Commit scripts before running them for a reportable result so the
   output header carries a clean SHA; record the SHA with the result.
 - `results/` is never hand-edited; the record and manuscript quote it
-  verbatim. `run_all.sh` regenerates everything (≈ 6 h).
+  verbatim. `run_all.sh` regenerates everything (≈ 6 h for the original
+  analysis; about an hour more for the review and Part B section).
 
 ## Open questions
 
-At the end of the record. Blocking the preprint: the data reuse licence
-(none in the source repo) and author confirmation of the subject order.
+At the end of the record ("Open questions"), with the later dated entries
+("Closure entry", "Part B, items 6–8", "Correction note, 15 Sep 2026")
+after it. The data reuse terms were confirmed by email in September 2026
+(README, "Licence"; the written confirmation is still to be attached);
+author confirmation of the subject order is still requested.
