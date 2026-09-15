@@ -53,9 +53,9 @@ Cambridge (Prof. Emmanuel Stamatakis).
   term, compressed a step or made a claim not reconstructible from its text;
   every one was addressed (record, "Text revision after the plain-language
   companion", 15:46 UTC; no number changed). Two of them were computations,
-  run under a pre-run entry (15:31 UTC): the run-level mean cross-lag
-  deviation (`notes/partB10_crosslag_deviation.py`; pooling does not account
-  for the `ts_gsr` run-level residual, which stays unaccounted for) and the
+  run under a pre-run entry (15:35 UTC; commit 152cc6d, 15:31 UTC): the
+  run-level cross-lag deviation (`notes/partB10_crosslag_deviation.py`;
+  first as a signed mean over pairs — see the next entry) and the
   regional sts–r₁ test (`notes/partB11_regional_sts_r1.py`; regional sts
   follows regional r₁ at +0.86, spin p < 0.0001 — the spatial-map exposure
   is real on these data). Both are in `run_all.sh` section 6. Tables
@@ -65,12 +65,26 @@ Cambridge (Prof. Emmanuel Stamatakis).
 - Figures regenerated at 7c7809a (`captions_v2.md` header "at git
   7c7809a"; values unchanged) and committed; the companion's table numbers
   and units match the revised paper.
+- 15 Sep 2026, evening: a fifth review found that the run-level cross-lag
+  deviation, computed as a signed mean over pairs, could not test the
+  pooling mechanism on `ts_gsr` (the deviation that lowers sts has the sign
+  of q, and 54.5 % of the pairs have q < 0, so the two kinds of pair cancel).
+  `partB10` gained the sign(q)-weighted mean and the slope of the deviation
+  on q (pre-run entry 18:14 UTC, commit 13f1c6d; outcome 18:18 UTC):
+  `ts_gsr` +0.00340 [+0.00300, +0.00380], 14 of 14 subjects, the branch
+  recorded for pooling operating. Pooling is a candidate for part of the
+  run-level residual, not distinguished from lagged coupling that follows
+  the sign of q or from finite sampling; the finite-sample null's value of
+  the statistic and its within-window value are not computed. The paper's
+  Results 4, Discussion and Limitations and thirteen text items were revised
+  with it (record, "Text revision after the fifth review"); the companion
+  and the defence questions follow.
 - Remaining work: the [TK] items in `draft_v2.md` (affiliations, co-authors,
   the REC reference number, journal wording); run `run_all.sh` end-to-end
-  once before submission (started 15 Sep 2026, 10:25 UTC; in section 6 at
-  16:33 UTC, not finished — the pull of 7c7809a at 16:29 UTC replaced the
-  script while section 6 was executing, so check the log's tail for the
-  two added scripts and the "=== all done" line); choose the venue and
+  once before submission (the run started 15 Sep 2026, 10:25 UTC, stopped at
+  16:33 UTC in section 6: `notes/partB2_ccs_verify.py` raised a PermissionError
+  on the uv cache; d145e1c makes the script tolerate it; restart the run —
+  `partB10`, `partB11` and `15_figures_v2` have not run in it); choose the venue and
   preprint server (`notes/venue_options.md`).
 
 ## Post-hoc checks (NOT pre-specified; recorded here, not in the record)
