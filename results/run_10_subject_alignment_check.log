@@ -1,4 +1,5 @@
 # subject alignment check — 10_subject_alignment_check.py, git=66b570e-dirty, seed=20261120
+# participant codes removed from this report on 15 Sep 2026 (data governance; record, "Data-governance note, 15 Sep 2026"); the script now prints table row indices; every number is unchanged
 
 ## A. How the original MATLAB indexes each file
   01_gen_time_resolved_ce.m:30: for i = 1:nsub
@@ -52,16 +53,16 @@
   Region-20 defect (subject index 7, DMT, constant zero): FDDMT[:, 7] mean 0.120, nothing abnormal expected or seen in FD or LZ for a single-parcel dropout.
 
 ## D. Subject IDs inside intensity_ratings.mat (MATLAB table objects DMT_intensity / PCB_intensity)
-  table row names (both tables identical: True): ['S01TW', 'S02WT', 'S03CT', 'S06JB', 'S07MN', 'S08RS', 'S09SR', 'S10RM', 'S11AE', 'S12AP', 'S13HK', 'S14LL', 'S15LP', 'S16JM', 'S17CS', 'S18CS', 'S19SG', 'S22EK', 'S23LPJ', 'S25MM', 'SD', 'SEM', 'average']
+  table row names (both tables identical: True): 20 subject codes (not reproduced; data governance, 15 Sep 2026) + ['SD', 'SEM', 'average']
   table variables: Subject + 28 rating columns (VarName2..VarName29); 20 subjects + SD/SEM/average rows
-  dmt_intensity row -> table subject(s) with identical 28 ratings: [(0, ['S02WT']), (1, ['S03CT']), (2, ['S06JB']), (3, ['S07MN']), (4, ['S10RM']), (5, ['S11AE']), (6, ['S12AP']), (7, ['S13HK']), (8, ['S15LP']), (9, ['S17CS']), (10, ['S18CS']), (11, ['S19SG']), (12, ['S23LPJ']), (13, ['S25MM'])]
+  dmt_intensity row -> table row index (0-based) with identical 28 ratings: [(0, [1]), (1, [2]), (2, [3]), (3, [4]), (4, [7]), (5, [8]), (6, [9]), (7, [10]), (8, [12]), (9, [14]), (10, [15]), (11, [16]), (12, [18]), (13, [19])]
   every DMT row matches exactly one table subject: True; table indices [1, 2, 3, 4, 7, 8, 9, 10, 12, 14, 15, 16, 18, 19]; monotone (14 rows are the table order with 6 subjects removed): True
-  subjects in the 20-row table absent from the 14-row array: ['S01TW', 'S08RS', 'S09SR', 'S14LL', 'S16JM', 'S22EK']
-  pcb_intensity row 5 (non-zero ratings) -> table subject ['S11AE']; same subject as DMT row 5: True
-  pcb_intensity row 7 (non-zero ratings) -> table subject ['S13HK']; same subject as DMT row 7: True
+  table row indices of the 20-row table absent from the 14-row array: [0, 5, 6, 11, 13, 17] (six codes, not reproduced)
+  pcb_intensity row 5 (non-zero ratings) -> table row index [8]; same subject as DMT row 5: True
+  pcb_intensity row 7 (non-zero ratings) -> table row index [10]; same subject as DMT row 7: True
   pcb rows that are all zero match every all-zero table subject and carry no ordering information: [0, 1, 2, 3, 4, 6, 8, 9, 10, 11, 12, 13]
-  Reading: the ratings arrays are the table rows in table order with S01TW, S08RS, S09SR, S14LL, S16JM,
-  S22EK removed (14 of 20; Singleton et al. report 14 subjects after motion exclusion, Timmermann et al.
+  Reading: the ratings arrays are the table rows in table order with six subjects (table indices above)
+  removed (14 of 20; Singleton et al. report 14 subjects after motion exclusion, Timmermann et al.
   recruited 20). The DMT and PCB arrays share one ordering. No other file carries IDs, so this fixes
   the ratings ordering (ascending subject code) but cannot by itself tie it to the timeseries.
 

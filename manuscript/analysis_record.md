@@ -1885,12 +1885,12 @@ interpretation beyond the verdict.
     `PCB_intensity`), decodable from scipy's `__function_workspace__`:
     23 rows (20 subject codes + SD/SEM/average) × 28 rating columns. The
     14-row `dmt_intensity` array matches, row by row and uniquely, table
-    subjects **S02WT, S03CT, S06JB, S07MN, S10RM, S11AE, S12AP, S13HK,
-    S15LP, S17CS, S18CS, S19SG, S23LPJ, S25MM** in that order, i.e. the
-    table order with **S01TW, S08RS, S09SR, S14LL, S16JM, S22EK** removed
+    subjects **the 14 codes (not reproduced)** in that order, i.e. the
+    table order with **the six codes of the excluded participants (not
+    reproduced)** removed
     (14 of 20; Timmermann et al. recruited 20, Singleton et al. analyse
     14). The two placebo rows with non-zero ratings (indices 5 and 7)
-    match S11AE and S13HK, the same subjects as their DMT rows, so the
+    match the same two codes (not reproduced), the same subjects as their DMT rows, so the
     DMT and PCB rating arrays share one ordering. No other file carries
     IDs, so this fixes the ratings order as ascending subject code but
     cannot by itself tie it to the timeseries.
@@ -2321,8 +2321,7 @@ two-sided p reported; subject-bootstrap 95 % CI, 10,000 draws, seed
 - Confirm reuse licence with Singleton / Timmermann before publishing.
 - Ask the data authors to confirm that the timeseries subject order (rows
   of the (14, 2) cell) matches the 14 ratings IDs recovered from
-  `intensity_ratings.mat` (S02WT, S03CT, S06JB, S07MN, S10RM, S11AE,
-  S12AP, S13HK, S15LP, S17CS, S18CS, S19SG, S23LPJ, S25MM, in that order),
+  `intensity_ratings.mat` (the 14 codes (not reproduced), in that order),
   and that the FD and LZ files share it. See the subject-alignment
   section: verified for timeseries–FD (one subject) and timeseries–LZ,
   plausible only for the ratings.
@@ -2661,7 +2660,8 @@ review's appendix.
 
 ## Leave-two-out on the sts / autocorrelation collinearity: pre-run entry, 15 Sep 2026 11:09 UTC (appended; nothing above edited)
 
-Requested after the fourth review (the verification of the correction note, 15 Sep 2026), which asked for the
+Requested after the fourth review (the verification of the correction note, 15 Sep 2026, filed as
+`notes/verification_correction_note_2026-09-15.md`), which asked for the
 leave-two-out value of the per-subject correlation r(MMI-sts DiD, lag-1 autocorrelation DiD) = +0.953 (`ts_gsr`,
 W = 60, primary set; Results 3, Figure 3a) beside the full-set value, since subjects 8 and 14 sit far from the
 cloud. Script `notes/partB9_leave_two_out.py`; input the committed per-subject DiDs of
@@ -2684,3 +2684,81 @@ the minimum, +0.846, is without subjects 8 and 14 (the two the third review name
 +0.973 without subjects 6 and 10; 90 of the 91 refits are at or above +0.90; the 66 refits that keep both subjects
 8 and 14 lie between +0.948 and +0.973, the 24 that drop one of them between +0.913 and +0.947. Reported in
 Results 3 beside the full-set value and in the Figure 3a caption. Nothing else changes.
+
+## Data-governance note, 15 Sep 2026 12:15 UTC (appended; nothing above edited except as stated here)
+
+The participant codes recovered from the MATLAB table objects of `intensity_ratings.mat` (20 codes of the
+form S + two digits + initials: the 14 analysed subjects and the six excluded by the data authors) were
+removed on 15 September 2026 for data governance from every tracked file that carried them: this record
+(the "Subject alignment across files" section, item (c), and the "Open questions" entry on the subject
+order — the lists are replaced by "the 14 codes (not reproduced)" and "the six codes of the excluded
+participants (not reproduced)", and no other text of those entries was changed), `manuscript/draft.md`
+(Dataset paragraph), `notes/adversarial_review_2026-09-14.md` (one parenthesis),
+`scripts/10_subject_alignment_check.py` (it now prints table row indices and counts, never a code) and
+its outputs `results/subject_alignment_check.txt` and `results/run_10_subject_alignment_check.log` (the
+lists replaced by the corresponding table row indices; every number unchanged; a note line added under the
+header). The codes remain in the source file (`external/`, git-ignored, not redistributed) and in the
+repository history before this commit; purging them from the history requires a history rewrite, which
+is recorded here as an open item for the public release. In the same commit the leave-two-out pre-run
+entry above was given the file name of the verification pass it cites,
+`notes/verification_correction_note_2026-09-15.md`, which now holds that pass.
+
+## Finalisation pass, 15 Sep 2026 12:40 UTC (appended; nothing above edited)
+
+No scientific content changed; no computation run except one re-execution of `scripts/15_figures_v2.py`
+after the panel (b) title of Figure 4 was changed (same inputs, no number changed). From that run,
+`fig4_v2_residual_diagnostic.png`/`.pdf` and `captions_v2.md` are committed; the other four figures, whose
+content did not change, are left as committed after the leave-two-out revision, and `run_all.sh`
+(section 6, running since 10:25 UTC) regenerates all five from the pinned environment. The edits to
+`manuscript/draft_v2.md`:
+
+1. Title: the alternative-title line marked TK in the correction note of 15 Sep 2026 (item 4) is deleted;
+   the first title stands. That TK marker is resolved by this entry.
+2. Ethics statement: a section before "Data and code availability", worded after the approval statement of
+   Timmermann et al. (2023) as read on PubMed Central on 15 Sep 2026 (National Research Ethics Committee
+   London – Brent and the Health Research Authority; Declaration of Helsinki 2000, ICH GCP, NHS Research
+   Governance Framework; Imperial College London as sponsor; Home Office licence for Schedule 1 drugs;
+   written informed consent). That paper gives no reference number, so the number stays a TK marker pending
+   C. Timmermann. The statement adds that this is a secondary analysis of anonymised derivatives, with
+   no new data and no participant identifiable.
+3. Data reuse: the TK marker asking for the written confirmation to be attached is replaced by the confirmation by email from
+   C. Timmermann (13 Sep 2026) and S. P. Singleton (14 Sep 2026), correspondence held by the corresponding
+   author (also in README, "Licence", and CLAUDE.md).
+4. Software versions in Methods, Estimator: Python 3.12.3, NumPy 2.5.3, SciPy 1.18.1, Matplotlib 3.11.1
+   from `requirements.lock.txt`; `phyid` at commit 6c5f2e9d33c985efbdf875d45cb5a2a6a5cdbf44 (the pinned
+   commit, merge of the repository's pull request #4, 13 Mar 2026), cited in the reference list as a
+   software entry; OS 64-bit Linux, release marked TK (to be confirmed on the workstation).
+5. Reference verification: every entry checked against Crossref (`api.crossref.org/works/<DOI>`), the
+   publisher page or the preprint server. Corrected: "Dong et al. (2025)" → Zhang, X., Han, C., Xia, J.,
+   Deng, L., & Dong, J. (2025) (Dong is the last author; the in-text citation and the row label in
+   `notes/partB5_literature.md` are corrected with a dated parenthesis); Nago, H., Kojima, H.,
+   Yamaguchi, H., & Yamashita, Y. (2026), *Brain Informatics* 13(1), 25; Gatica et al. (2024) pages
+   1032–1050, doi 10.1162/netn_a_00388; Faes et al. (2025) full author list, *Physical Review Letters*
+   135(18), 187401, doi 10.1103/nrwj-n8lj; Liardi et al. (2025) 21(11), doi 10.1371/journal.pcbi.1013629;
+   Luppi et al. (2023) full author list, *NeuroImage* 269, 119926, doi 10.1016/j.neuroimage.2023.119926;
+   Luppi et al. (2026) full author list, 10(4), 777–802, doi 10.1038/s41562-025-02381-5; Mediano et al.
+   (2025) full author list, 122(39); Wu et al. (2013) title ends "…resting state fMRI data", 17(3);
+   Down et al. (2026) confirmed as a preprint only (no journal version found; the PubMed and PMC records
+   are preprint records); issue numbers added to Barrett 2015, Huang 2018, Luppi 2022, Prichard & Theiler
+   1994, Schaefer 2018, Singleton 2025, Timmermann 2023, Yeo 2011; the eLife entry marked as the version of
+   record (v4, 18 Jul 2024). Every other entry verified as printed. No TK marker remains in the reference list.
+6. Copy-edit: notation made uniform (r₁, ΦR, DiD, W = 60, p = …, CIs as [lower, upper]); Table 3 and
+   Table 4 p-values written to four decimals throughout (the added digits are read from
+   `notes/review_results/inference_rows_diag.csv` and `inference_rows_ccs_pub.csv`; the residual-row
+   values 0.0422 and 0.0137 are 0.042236… and 0.013671…); sentences over 60 words split (74 → 6 by the
+   splitter used, the six remaining being formula or enumeration sentences whose split would separate
+   a value from its qualifier); tense regularised (past for what was done, present for what the family and
+   the map show). No number and no claim changed; the only non-mechanical recasts are recorded in the
+   closing report of this pass.
+7. Figure 4 panel (b): title "same vertical scale as a" (untrue, the panel has its own y-limits) replaced
+   by "same units as a; same nats per unit height", in the script and the caption.
+8. Supplement S4 added: `manuscript/supplementary_cobidas.md`, the COBIDAS checklist (design, acquisition,
+   preprocessing, statistics, results, sharing) with each item reported, not applicable or not reported.
+9. Conflicts of interest: the TK marker on C.T.'s co-authorship of Singleton et al. (2025) is removed, the
+   author list of that paper (Crossref record of 10.1038/s42003-025-08078-9: Singleton, Timmermann, Luppi,
+   Eckernäs, Roseman, Carhart-Harris, Kuceyeski) confirming it.
+10. The verification of the correction note is filed as `notes/verification_correction_note_2026-09-15.md`
+   (the leave-two-out pre-run entry cites it by that name). Venue and preprint options are in
+   `notes/venue_options.md`.
+
+The TK markers remaining after this pass are listed in the closing report and in CLAUDE.md, "Remaining work".

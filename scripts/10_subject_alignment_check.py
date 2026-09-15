@@ -16,7 +16,10 @@ evidence available from the repository and the files themselves:
      TR);
   D. the opaque MATLAB `table` objects saved inside intensity_ratings.mat
      (DMT_intensity / PCB_intensity), which carry subject ID row names: the
-     14-row uint8 arrays are matched row-by-row against the 20-row tables;
+     14-row uint8 arrays are matched row-by-row against the 20-row tables.
+     The row names are participant codes; since 15 Sep 2026 (data governance)
+     this script reports table row indices and counts only and never prints a
+     code (record, "Data-governance note, 15 Sep 2026");
   E. matched-versus-mismatched subject pairings: for pairs of per-subject
      28-bin series from different files (group-mean shape removed), the mean
      Spearman rho of the matched pairing against a permutation null over
@@ -163,26 +166,27 @@ def build(rn_i, var_i):
 
 rowsD, varsD, TD = build(2, 4)
 rowsP, varsP, TP = build(11, 13)
-say(f"  table row names (both tables identical: {rowsD == rowsP}): {rowsD}")
+NONSUBJ = rowsD[20:]   # the trailing SD / SEM / average rows; the 20 subject codes are never printed
+say(f"  table row names (both tables identical: {rowsD == rowsP}): 20 subject codes (not reproduced; data governance, 15 Sep 2026) + {NONSUBJ}")
 say(f"  table variables: {varsD[0]} + {len(varsD) - 1} rating columns ({varsD[1]}..{varsD[-1]}); 20 subjects + SD/SEM/average rows")
 ids = []
 for i in range(N):
     hits = [rowsD[j] for j in range(20) if np.array_equal(DI[i], TD[j])]
     ids.append(hits)
-say(f"  dmt_intensity row -> table subject(s) with identical 28 ratings: {[(i, h) for i, h in enumerate(ids)]}")
+say(f"  dmt_intensity row -> table row index (0-based) with identical 28 ratings: {[(i, [rowsD.index(x) for x in h]) for i, h in enumerate(ids)]}")
 unique = all(len(h) == 1 for h in ids)
 order = [rowsD.index(h[0]) for h in ids] if unique else None
 say(f"  every DMT row matches exactly one table subject: {unique}; table indices {order}; "
     f"monotone (14 rows are the table order with 6 subjects removed): {order == sorted(order) if unique else 'n/a'}")
-say(f"  subjects in the 20-row table absent from the 14-row array: {[rowsD[j] for j in range(20) if j not in (order or [])]}")
+say(f"  table row indices of the 20-row table absent from the 14-row array: {[j for j in range(20) if j not in (order or [])]} (six codes, not reproduced)")
 pcb_nonzero = [i for i in range(N) if PI[i].any()]
 for i in pcb_nonzero:
     hits = [rowsP[j] for j in range(20) if np.array_equal(PI[i], TP[j])]
-    say(f"  pcb_intensity row {i} (non-zero ratings) -> table subject {hits}; same subject as DMT row {i}: {hits == ids[i]}")
+    say(f"  pcb_intensity row {i} (non-zero ratings) -> table row index {[rowsP.index(x) for x in hits]}; same subject as DMT row {i}: {hits == ids[i]}")
 say(f"  pcb rows that are all zero match every all-zero table subject and carry no ordering information: "
     f"{[i for i in range(N) if not PI[i].any()]}")
-say("  Reading: the ratings arrays are the table rows in table order with S01TW, S08RS, S09SR, S14LL, S16JM,")
-say("  S22EK removed (14 of 20; Singleton et al. report 14 subjects after motion exclusion, Timmermann et al.")
+say("  Reading: the ratings arrays are the table rows in table order with six subjects (table indices above)")
+say("  removed (14 of 20; Singleton et al. report 14 subjects after motion exclusion, Timmermann et al.")
 say("  recruited 20). The DMT and PCB arrays share one ordering. No other file carries IDs, so this fixes")
 say("  the ratings ordering (ascending subject code) but cannot by itself tie it to the timeseries.")
 

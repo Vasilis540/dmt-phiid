@@ -16,7 +16,7 @@ Cambridge (Prof. Emmanuel Stamatakis).
 
 ## Current state (15 Sep 2026)
 
-**Analysis complete. The paper is `manuscript/draft_v2.md` (revised 15 Sep after the second and third adversarial reviews and after the verification of the correction note); `manuscript/draft.md` is the superseded first draft, kept as a record. Figures `fig1_v2`–`fig5_v2` built by `scripts/15_figures_v2.py`.**
+**Analysis complete. The paper is `manuscript/draft_v2.md` (revised 15 Sep after the second and third adversarial reviews and after the verification of the correction note; finalisation pass 15 Sep: ethics statement, software versions, verified references, copy-edit, COBIDAS checklist in `manuscript/supplementary_cobidas.md`); `manuscript/draft.md` is the superseded first draft, kept as a record. Figures `fig1_v2`–`fig5_v2` built by `scripts/15_figures_v2.py`.**
 
 - Primary result (Primary B, windowed W = 60 estimator, ts_gsr, replicated
   on ts_demean): whole-brain synergy **decreases** under DMT, DiD negative
@@ -37,14 +37,21 @@ Cambridge (Prof. Emmanuel Stamatakis).
   correction note; the verification of that note (15 Sep) led to the
   wording fixes, the within-subject bands of Fig. 4, Fig. 5 and the
   leave-two-out (record, "Leave-two-out", pre-run entry and outcome).
-- Data reuse: agreed with the data collectors and the derivative authors by
-  email in September 2026, with attribution [TK: attach the written
-  confirmation]. Subject order across files verified at one subject
-  (record, "Subject alignment across files"); author confirmation still
-  requested.
+- Data reuse: confirmed by email from C. Timmermann (13 September 2026)
+  and S. P. Singleton (14 September 2026), with attribution; the
+  correspondence is held by the corresponding author. Subject order across
+  files verified at one subject (record, "Subject alignment across files");
+  author confirmation still requested.
+- Participant codes (the letter-digit-letter strings of the ratings table)
+  were removed from every tracked file on 15 Sep 2026 (record,
+  "Data-governance note, 15 Sep 2026"); they remain in `external/` (not
+  tracked) and in the git history, which has to be rewritten before the
+  repository is made public.
 - Remaining work: the [TK] items in `draft_v2.md` (affiliations, co-authors,
-  reference details, journal wording); run section 6 of `run_all.sh`
-  end-to-end once before submission.
+  the REC reference number, the OS release, journal wording); run
+  `run_all.sh` end-to-end once before submission (started 15 Sep 2026,
+  10:25 UTC); choose the venue and preprint server
+  (`notes/venue_options.md`).
 
 ## Post-hoc checks (NOT pre-specified; recorded here, not in the record)
 
@@ -109,6 +116,7 @@ manuscript/prespecification_summary.md  decisions by commit, changed-later audit
 manuscript/draft_v2.md           the paper (15 Sep 2026)
 manuscript/draft.md              superseded first draft, kept as a record
 manuscript/supplementary.md      supplementary tables, values quoted from results/
+manuscript/supplementary_cobidas.md  Supplement S4: COBIDAS reporting checklist for draft_v2.md
 manuscript/figures/              fig1_v2–fig5_v2 (pdf/png) + captions_v2.md, from 15_figures_v2.py;
                                  the draft.md figures + captions.md (12_figures.py) kept in place
 scripts/                         numbered by execution order, each independently runnable
@@ -129,7 +137,9 @@ scripts/                         numbered by execution order, each independently
   13_loo_did.py                  POST-HOC: leave-one-subject-out on the primary DiD
   14_proportionality.py          POST-HOC: sts / TDMI ratio DiD, four cells, rule in the docstring
   15_figures_v2.py               draft_v2.md figures, from results/ and notes/review_results/
-notes/                           adversarial reviews, review computations (rev_*.py, review_*.py),
+notes/                           adversarial reviews, the verification of the correction note
+                                 (verification_correction_note_2026-09-15.md), venue options
+                                 (venue_options.md), review computations (rev_*.py, review_*.py),
                                  Part B plans/notes/scripts (partB*.md, partB*.py); outputs under
                                  notes/review_results/ (tables, logs, inference rows, atom arrays)
 results/                         every table/array with script + git SHA in its header;
@@ -197,6 +207,8 @@ first.
 
 At the end of the record ("Open questions"), with the later dated entries
 ("Closure entry", "Part B, items 6–8", "Correction note, 15 Sep 2026",
-"Leave-two-out") after it. The data reuse terms were confirmed by email in September 2026
-(README, "Licence"; the written confirmation is still to be attached);
+"Leave-two-out", "Data-governance note, 15 Sep 2026", "Finalisation pass,
+15 Sep 2026") after it. The data reuse terms were confirmed by email from
+C. Timmermann (13 September 2026) and S. P. Singleton (14 September 2026);
+the correspondence is held by the corresponding author (README, "Licence");
 author confirmation of the subject order is still requested.
