@@ -2772,3 +2772,26 @@ and later) as the audit trail of what was fixed when, and a rewrite would change
 them. The codes are pseudonymous and were already public in the data authors' own release, so
 this repository's history adds no exposure that did not exist. The OS release in Methods is
 confirmed as Ubuntu 24.04.3 LTS (lsb_release, 15 Sep 2026).
+
+## CCS definition checked against the journal version, 15 Sep 2026 13:00 UTC (appended; nothing above edited)
+
+V.S. read the SI Appendix of Mediano et al. (2025), *PNAS* 122(39), e2423297122. Its Definition 2 defines the
+CCS double redundancy over the samples "for which all marginal pointwise mutual informations, as well as the
+pointwise full mutual information I(X; Y), have the same sign", identical to Appendix Definition 1 of arXiv
+2109.13186 (v1), the text `notes/partB6_ccs_definition.py` implements. The SI Appendix also states
+c(x; y) = I∂^{{1}{2}→{1}{2}} − I∂^{{12}→{12}}, the identity c ≡ rtr − sts the paper verified on the lattice, and
+that CCS is computed with respect to p(x, y) as in Ince's original preprint, not the maximum-entropy projection
+of Ince's published version, which is how it is computed here (the fitted Gaussian of the data). Outcome: the
+reading of the published definition fixed in the Part B pre-run entry is confirmed; every CCS number stays as
+it is; the rule that every CCS value in the paper is the published-definition value is unchanged.
+
+Edits to `manuscript/draft_v2.md`, no content change: (1) Methods, "The two redundancy functions": the sentence
+that the journal text could not be checked (its TK marker) is replaced by the confirmation, the SI Appendix is
+cited beside the arXiv reference wherever Definition 1 is cited (Methods; Table 1 caption), and a sentence
+states that CCS is computed with respect to the fitted Gaussian of the data, not a maximum-entropy projection;
+(2) same section: the SI Appendix is cited for the identity c ≡ rtr − sts; (3) Results 3: "three stated
+reasons and one rule" becomes "two stated reasons and one rule", the unchecked-definition reason is dropped
+and the confirmation stated, the other reasons and the rule stand; (4) Limitations: "read by us from the arXiv
+text" replaced by the published definition with its SI location; (5) reference list, Mediano et al. (2025):
+parenthetical replaced by "(SI Appendix, Definition 2, is the CCS double-redundancy definition used here;
+checked 15 September 2026)". The TK count in the draft falls from 14 to 13 (the OS release having been confirmed in the entry above).
