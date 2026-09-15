@@ -1,0 +1,21 @@
+# Regional MMI-sts against regional lag-1 autocorrelation, placebo run, pre-injection (partB11_regional_sts_r1.py; git=152cc6d; seed=20261120)
+
+Regional sts = mean over the region's 114 pairs of the global-fit local sts (scripts/11 atoms), placebo run, bins 1–8, mean over subjects; regional r₁ = windowed lag-1 autocorrelation (W = 60, windows 1–4, standardised within window), mean over windows and subjects; ts_gsr; 115 regions. Prediction recorded before the run (analysis_record.md, pre-run entry of 15 Sep 2026): positive correlation of regional sts with regional r₁ if the spatial-map exposure is real on these data. Spin test: Vasa rotations of the 100 Schaefer parcels (10,000, both directions), region 20 NaN, two-sided p and Vasa one-sided-average p.
+
+Regional r₁: mean 0.8455, min 0.8118, max 0.8742 (windowed); whole-span TRs 0–239: mean 0.8618, r(windowed, span) across regions +0.9633. Regional sts: mean 1.2893, min 1.1248, max 1.3635; regional rtr: mean 0.0225, min 0.0033, max 0.0416.
+
+| map | against | Pearson r (115) | Spearman ρ (115) | Spearman ρ (99 cortical) | spin p two-sided | Vasa p | null SD |
+|---|---|---|---|---|---|---|---|
+| sts | r₁ windowed | +0.863 | +0.835 | +0.771 | 0.0000 | 0.0000 | 0.131 |
+| sts | r₁ whole-span | +0.908 | +0.887 | +0.827 | 0.0000 | 0.0000 | 0.133 |
+| rtr | r₁ windowed | +0.638 | +0.635 | +0.504 | 0.0002 | 0.0002 | 0.137 |
+| rtr | r₁ whole-span | +0.661 | +0.640 | +0.494 | 0.0003 | 0.0003 | 0.141 |
+| sts − rtr | r₁ windowed | +0.792 | +0.729 | +0.618 | 0.0000 | 0.0000 | 0.115 |
+| sts − rtr | r₁ whole-span | +0.837 | +0.780 | +0.672 | 0.0000 | 0.0000 | 0.116 |
+
+Per-subject Pearson r(regional sts, regional r₁) across the 115 regions: mean +0.756 [+0.715, +0.790] (subject bootstrap), min +0.563, max +0.867, positive in 14/14.
+Per-subject Pearson r(regional sts − rtr, regional r₁): mean +0.711, positive in 14/14.
+Share of the between-region variance of sts carried by regional r₁ (r² of the 115-region Pearson): 0.745. SD across regions: sts 0.0447, rtr 0.0098, r₁ 0.0125.
+Cortical (99) vs subcortical (16) means: sts 1.3015 vs 1.2143; r₁ 0.8482 vs 0.8288.
+Reading under the pre-run entry: the pre-specified correlation (regional sts vs windowed regional r₁, Pearson) is positive (+0.863; spin p = 0.0000 on the 99 cortical parcels).
+
