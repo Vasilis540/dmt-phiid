@@ -2998,3 +2998,68 @@ and cross-lag results added where they bear on an answer); `notes/companion_plai
    (section 6, started 16:33 UTC); no "=== all done" line, so the [TK: run it once before submission] in Data and
    code availability stays. Whether the two scripts added to section 6 at 7c7809a run in this instance is not yet
    known (the pull of 7c7809a at 16:29 UTC replaced `run_all.sh` while section 6 was executing).
+
+## The sign(q)-weighted cross-lag deviation: pre-run entry, 15 Sep 2026 18:14 UTC (appended; nothing above edited)
+
+Commissioned by V.S. on 15 Sep 2026 after the fifth adversarial review, whose one finding is quoted here as
+relayed in the commission: "The cross-lag test doesn't test what the paper says it tests. Two sentences before
+running it, the paper says the pooling mechanism produces a deviation whose sign follows the sign of q, and that
+on `ts_gsr` half the pairs have q < 0. Then it computes the signed mean deviation over all pairs and finds it
+near zero. But near zero is what the mechanism predicts for a signed mean on `ts_gsr`, because the positive-q and
+negative-q contributions cancel. The +0.006 requirement was derived at q = +0.25. So +0.00009 says nothing either
+way, and 'pooling does not account for the residual' isn't licensed by it. The sign(q)-weighted mean would test
+it, the script already has per-pair q, and it's a one-line change and a minute of computation."
+
+**Order of events, stated for the record.** The signed mean over pairs was computed first (the pre-run entry of
+15:35 UTC and the outcome entry of 15:36 UTC above). Its `ts_gsr` grand mean had been seen once (+0.00009)
+before that pre-run entry was written, as that entry discloses; the manuscript will now say so as well. The
+sign(q)-weighted mean was identified by the fifth review as the statistic the mechanism implies; the verification
+of the correction note (`notes/verification_correction_note_2026-09-15.md`, item 7) had already named "the
+sign-adjusted cross-lag" as the relevant quantity when it corrected the Results 4 sentence on the sign of the
+covariance, and the commission of 15:35 UTC nevertheless specified the signed mean. Nothing of the two
+statistics below has been computed or seen before this entry; what has been seen is the content of the 15:36 UTC
+entry (the signed means, SDs, residuals and correlations on both variants).
+
+**Why the sign(q)-weighted mean is the statistic.** On the family the atoms are Gaussian mutual informations and
+are invariant under y → −y, which flips q and the cross-lag deviation d together, so sts(a, q, d) = sts(a, −q, −d):
+the deviation that lowers sts below the AR(1) prediction is positive for q > 0 and negative for q < 0, and the
+≈ +0.006 that the correction note of 10:05 UTC derived for a coupling account of the −0.01 run-level residual was
+derived at q = +0.25, i.e. for sign(q) × d. The pooling mechanism as the manuscript states it (a and |q| falling
+together across segments of a run) gives each pair a deviation of sign sign(q), so its signature is a positive
+mean of sign(q) × d; the signed mean over pairs of both signs of q cancels on `ts_gsr`, where the signed mean
+pairwise correlation is ≈ 0 (Supplementary Table S7; `results/global_fc_did_ts_gsr.csv`), whether or not
+pooling operates. `partB10_crosslag_deviation.py` prints a numerical check of the sign convention on the
+symmetric family before the data are loaded.
+
+**Added to `notes/partB10_crosslag_deviation.py`** (committed with this entry before it is run; the script's
+docstring describes the three statistics): per subject and run, over the 2 × 6,555 deviations, (2) the
+sign(q)-weighted mean, mean of sign(q) × d, and (3) the ordinary-least-squares slope of d on q across pairs
+(with intercept), each with the same inference as the signed mean — grand mean over subjects of the per-subject
+mean of the two runs, subject-bootstrap 95 % CI (10,000 draws, seed 20261120) and exact two-sided sign-flip p
+over the 14 subjects (2^14 assignments) — the number of subjects positive, and the correlation with the run-level
+residual of the diagnostic across the 28 runs. One set of bootstrap draws per variant is drawn at the point in
+the script where the signed mean's draws were taken at 152cc6d and is shared by the three statistics, so the
+signed mean's reported numbers do not change; the signed mean stays in the tables as reported. Descriptive, with
+no inference: the share of pairs with q < 0, and the mean deviation among the q > 0 and among the q < 0 pairs.
+Both variants; the CSV gains one column per new quantity.
+
+**Predictions, fixed before the run, in the commission's words:** "if pooling operates as described, the
+sign(q)-weighted mean on `ts_gsr` should be positive and of order +0.006; if it is near zero (CI includes zero)
+or far below that, pooling does not account for the run-level residual." Reading rules, my reading of the
+commission's words, fixed here before the run: "near zero" is a subject-bootstrap 95 % CI that includes zero;
+"of order +0.006" is within a factor of two of it (+0.003 to +0.012) with a CI excluding zero; "far below" is a
+positive value below half of it (+0.003); a negative value with a CI excluding zero is the signature absent with
+the sign that raises sts above the prediction; a value above +0.012 is reported as above the order required.
+For the slope, no magnitude was commissioned; the mechanism implies a positive slope on `ts_gsr`, and if the
+deviation were proportional to q, a sign(q)-weighted mean of +0.006 would correspond to a slope of
++0.006 / 0.1945 ≈ +0.03 (mean pair |q| on `ts_gsr` from the 152cc6d tables; my derivation, stated for scale
+only). For `ts_demean` no prediction was commissioned and none is made: its run-level residual is +0.1 %, its
+signed mean deviation is already known to be −0.00738, and most of its pairs have q > 0 (the signed mean
+pairwise correlation is 0.190–0.233, Results 2), so its sign(q)-weighted mean is expected to lie close to its
+signed mean, negative — a consequence of numbers already seen, not a prediction, and it is reported.
+
+**What follows for the manuscript.** Results 4 will report the sign(q)-weighted mean in place of the reading
+now drawn from the signed mean, and the Discussion and Limitations sentences that say pooling does not account
+for the run-level residual will be revised to what the new statistic supports, whichever way it comes out; the
+signed mean remains reported. Exploratory in the sense of the closure entry: specified after the primary result,
+no confirmatory claim attaches to it. `run_all.sh` already runs the script in section 6.
