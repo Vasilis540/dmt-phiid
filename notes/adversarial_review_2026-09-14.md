@@ -206,7 +206,7 @@ The pieces: the placebo drift and its 40 % share (0.1); DMT recovering to the pl
 - Methods, Intensity tracking: "Tracking is assessed on |ρ_S|; the sign is reported separately against the pre-specified positive direction" — explain in one clause why a sign-blind criterion was adopted (the record does: the decrease was already visible).
 - Methods, Robustness C: the reader is told both evaluations are out-of-sample but not that the fit half contains the injection.
 - "The estimator is characterised … on simulated VAR(1) processes with analytic ground truth" followed by "no simulated family matches the real dependence structure" — the reader needs to be told in one sentence what the simulations are then for.
-- Data section: the subject codes (S02WT …) are participant identifiers from another study's supplementary object; whether they should be reproduced in a paper is a question for the data owners.
+- Data section: the subject codes (the 14 codes, not reproduced here; removed for data governance on 15 September 2026) are participant identifiers from another study's supplementary object; whether they should be reproduced in a paper is a question for the data owners.
 
 **Small things.** "[TK]" placeholders in the affiliation, the PET atlas source, the licence and the acknowledgements; "Independent researcher, Athens" as sole affiliation on a paper going to a collaborator who will presumably be an author; the reference list's own note that author lists and pages are unverified.
 
