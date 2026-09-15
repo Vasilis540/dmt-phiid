@@ -2795,3 +2795,49 @@ and the confirmation stated, the other reasons and the rule stand; (4) Limitatio
 text" replaced by the published definition with its SI location; (5) reference list, Mediano et al. (2025):
 parenthetical replaced by "(SI Appendix, Definition 2, is the CCS double-redundancy definition used here;
 checked 15 September 2026)". The TK count in the draft falls from 14 to 13 (the OS release having been confirmed in the entry above).
+
+## Run-level mean cross-lag deviation and the regional sts–r₁ test: pre-run entry, 15 Sep 2026 15:35 UTC (appended; nothing above edited)
+
+Two computations that the paper's Limitations list as not run, commissioned by V.S. on 15 Sep 2026 with the
+predictions below fixed in the commission before either script was written. Each script is committed with this
+entry before it is run, so that its output header carries a clean SHA. Both are exploratory in the sense of the
+closure entry: they were specified after the primary result, and no confirmatory claim attaches to either.
+
+1. **Run-level mean cross-lag deviation** (`notes/partB10_crosslag_deviation.py`; outputs
+   `notes/review_results/partB/crosslag_deviation_tables.md`, `crosslag_deviation.csv`, log
+   `crosslag_deviation_run.log`). Per subject and run, from the run-level 4 × 4 correlation matrices of every
+   pair (all finite TRs of the run, the matrices of the diagnostic's run-level rows in `diag_tables.md`): the mean
+   over the 6,555 pairs of corr(x_t, y_{t+1}) − a_y q and of corr(y_t, x_{t+1}) − a_x q, with a_x, a_y the
+   run-level lag-1 autocorrelations and q the mean of the two lag-0 correlations, as `partB4_diagnostic.py` defines
+   them; both variants. Reported: the per-run means (DMT, placebo), the grand mean with a subject-bootstrap 95 % CI
+   (10,000 draws, seed 20261120) and an exact sign-flip p over the 14 subjects on the per-subject mean of the two
+   runs, the SD of the deviation across pairs for scale, the run-level residual of the diagnostic on the same runs,
+   and the correlation of the deviation with that residual across the 28 runs.
+   **Prediction, fixed before the run:** if pooling of non-stationary segments explains the run-level residual,
+   the deviation is negative on `ts_gsr` (where the run-level residual is −1.1 %) and near zero on `ts_demean`
+   (+0.1 %); if it is near zero on both, pooling does not explain it and the run-level residual is unaccounted for
+   by any mechanism named in the paper. "Near zero" is read as a subject-bootstrap 95 % CI that includes zero.
+   Disclosure: while checking that the cloud environment reproduces the run-level numbers of `diag_tables.md`
+   (observed 1.2883, predicted 1.3021, residual −0.0137 on `ts_gsr`, reproduced exactly), the `ts_gsr` grand mean of
+   the deviation was printed once (+0.00009) before this entry was written; the prediction above is the one given
+   in the commission before that check, unchanged.
+
+2. **Regional test of the spatial-map claim** (`notes/partB11_regional_sts_r1.py`; outputs
+   `notes/review_results/partB/regional_sts_r1_tables.md`, `regional_sts_r1.csv`, log `regional_sts_r1_run.log`).
+   Per region, MMI-sts averaged over the region's 114 pairs, from the saved regional atoms of
+   `scripts/11_regional_analysis.py` (`results/regional_atoms_bins_115regions-all_ts_gsr_global.npy`: global fit,
+   local atoms averaged per bin; the placebo run's pre-injection bins 1–8, mean over bins and subjects), against the
+   region's lag-1 autocorrelation on the same run and span (windowed, W = 60, each region standardised within the
+   window, mean of z_t z_{t+1}, windows 1–4, mean over windows and subjects; the whole-span TRs 0–239 value reported
+   beside it as a check); `ts_gsr`. Pearson and Spearman across the 115 regions (descriptive; the subcortex has no
+   spatial null), and a spin test on the 100 cortical parcels (region 20 NaN, 99 valid) with the Vasa rotations of
+   `external/DMT_NCT/fxns/SpinTests/rotated_maps/rotated_Schaefer_100.mat` (10,000 rotations, both directions,
+   two-sided p and Vasa one-sided-average p, as `scripts/11` applies them). The same is reported for rtr and for
+   sts − rtr, and the per-subject correlations across regions as a robustness check, all regardless of outcome; the
+   pre-specified quantity is the Pearson correlation of regional sts with the windowed regional r₁.
+   **Prediction, fixed before the run:** if the spatial-map exposure is real on these data, regional sts correlates
+   positively with regional r₁. The value is reported whatever it is. It says nothing about any published map,
+   since none reports regional r₁; what it tests is whether, on these data, the between-region variance of sts
+   follows the between-region variance of r₁ as the map says it must.
+
+Both scripts are added to `run_all.sh` (section 6, after `partB9_leave_two_out.py`).
