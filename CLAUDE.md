@@ -16,7 +16,7 @@ Cambridge (Prof. Emmanuel Stamatakis).
 
 ## Current state (15 Sep 2026)
 
-**Analysis complete. The paper is `manuscript/draft_v2.md` (revised 15 Sep after the second and third adversarial reviews); `manuscript/draft.md` is the superseded first draft, kept as a record. Figures `fig1_v2`–`fig4_v2` built by `scripts/15_figures_v2.py`.**
+**Analysis complete. The paper is `manuscript/draft_v2.md` (revised 15 Sep after the second and third adversarial reviews and after the verification of the correction note); `manuscript/draft.md` is the superseded first draft, kept as a record. Figures `fig1_v2`–`fig5_v2` built by `scripts/15_figures_v2.py`.**
 
 - Primary result (Primary B, windowed W = 60 estimator, ts_gsr, replicated
   on ts_demean): whole-brain synergy **decreases** under DMT, DiD negative
@@ -28,19 +28,23 @@ Cambridge (Prof. Emmanuel Stamatakis).
 - The two adversarial reviews of 14 and 15 Sep and the Part B analyses
   (dated entries in the record; `notes/partB_prespec_2026-09-14.md`)
   reframed the paper as an account of the estimator: the sts decrease is
-  reproduced by the lag-1 autocorrelation change (per-subject r = 0.95),
-  with a residual not accounted for by a stationary finite-sample null and
-  a CCS-sts increase that stays exploratory (record, "Closure entry" and
-  "Correction note, 15 Sep 2026"). The third review's findings and the
-  changes made in response are in the correction note.
+  reproduced by the lag-1 autocorrelation change (per-subject r = 0.95;
+  0.85–0.97 with any two subjects dropped), with a residual of which a
+  stationary finite-sample null accounts for a third to two-thirds (the
+  observed interval contains the null) and a CCS-sts increase that stays
+  exploratory (record, "Closure entry" and "Correction note, 15 Sep 2026").
+  The third review's findings and the changes made in response are in the
+  correction note; the verification of that note (15 Sep) led to the
+  wording fixes, the within-subject bands of Fig. 4, Fig. 5 and the
+  leave-two-out (record, "Leave-two-out", pre-run entry and outcome).
 - Data reuse: agreed with the data collectors and the derivative authors by
   email in September 2026, with attribution [TK: attach the written
   confirmation]. Subject order across files verified at one subject
   (record, "Subject alignment across files"); author confirmation still
   requested.
 - Remaining work: the [TK] items in `draft_v2.md` (affiliations, co-authors,
-  reference details, journal wording); delete `manuscript/draft_v2-1.md`,
-  an earlier variant with a different author list and abstract.
+  reference details, journal wording); run section 6 of `run_all.sh`
+  end-to-end once before submission.
 
 ## Post-hoc checks (NOT pre-specified; recorded here, not in the record)
 
@@ -105,7 +109,7 @@ manuscript/prespecification_summary.md  decisions by commit, changed-later audit
 manuscript/draft_v2.md           the paper (15 Sep 2026)
 manuscript/draft.md              superseded first draft, kept as a record
 manuscript/supplementary.md      supplementary tables, values quoted from results/
-manuscript/figures/              fig1_v2–fig4_v2 (pdf/png) + captions_v2.md, from 15_figures_v2.py;
+manuscript/figures/              fig1_v2–fig5_v2 (pdf/png) + captions_v2.md, from 15_figures_v2.py;
                                  the draft.md figures + captions.md (12_figures.py) kept in place
 scripts/                         numbered by execution order, each independently runnable
   00_verify.py                   data + method integrity check; run after any env change
@@ -192,7 +196,7 @@ first.
 ## Open questions
 
 At the end of the record ("Open questions"), with the later dated entries
-("Closure entry", "Part B, items 6–8", "Correction note, 15 Sep 2026")
-after it. The data reuse terms were confirmed by email in September 2026
+("Closure entry", "Part B, items 6–8", "Correction note, 15 Sep 2026",
+"Leave-two-out") after it. The data reuse terms were confirmed by email in September 2026
 (README, "Licence"; the written confirmation is still to be attached);
 author confirmation of the subject order is still requested.

@@ -2658,3 +2658,29 @@ review's appendix.
    `run_all.sh` are updated to name `draft_v2.md`, scripts 00–15 and the `notes/` scripts (section 6 of
    `run_all.sh`, not yet executed end-to-end); `manuscript/draft_v2-1.md` (an earlier variant with a
    different author list and abstract) is to be deleted.
+
+## Leave-two-out on the sts / autocorrelation collinearity: pre-run entry, 15 Sep 2026 11:09 UTC (appended; nothing above edited)
+
+Requested after the fourth review (the verification of the correction note, 15 Sep 2026), which asked for the
+leave-two-out value of the per-subject correlation r(MMI-sts DiD, lag-1 autocorrelation DiD) = +0.953 (`ts_gsr`,
+W = 60, primary set; Results 3, Figure 3a) beside the full-set value, since subjects 8 and 14 sit far from the
+cloud. Script `notes/partB9_leave_two_out.py`; input the committed per-subject DiDs of
+`notes/review_results/inference_rows_raw.pkl` (rows "sts ts_gsr W60" and "autocorr ts_gsr W60", field
+`did_subjects`); every pair of subjects dropped in turn (C(14, 2) = 91 refits), Pearson r and Spearman ρ over
+the remaining 12; outputs `notes/review_results/partB/leave_two_out.csv` and `leave_two_out.log`. Reported: the
+full-set value, the range over the 91 refits, the minimum with the pair that gives it, in Results 3 and the
+Figure 3a caption. No prediction; no inference; it changes no verdict (the collinearity is descriptive). The only
+computation of this revision. Two reporting changes in the same revision, no numbers changed: `partB7_splithalf.py`
+now prints the reliability ceiling √(rel_res × rel_CCS) beside the rule's branch, whether the threshold exceeded it,
+and that the reading is then undetermined (correction note of 15 Sep, item 1), and its tables and log are
+regenerated; `scripts/15_figures_v2.py` is re-run so that the figures and `captions_v2.md` come from one execution
+(Figure 4 bands are now within-subject SEMs; a Figure 5, the lag dependence of Table 5, is added).
+
+## Leave-two-out outcome, 15 Sep 2026 11:10 UTC (appended; nothing above edited)
+
+`notes/partB9_leave_two_out.py`, run once after the entry above; numbers from `notes/review_results/partB/leave_two_out.log`.
+Full set r = +0.953 (ρ = +0.903). Over the 91 refits the Pearson r ranges from +0.846 to +0.973 (median +0.954);
+the minimum, +0.846, is without subjects 8 and 14 (the two the third review named; ρ +0.846 there too), the maximum
++0.973 without subjects 6 and 10; 90 of the 91 refits are at or above +0.90; the 66 refits that keep both subjects
+8 and 14 lie between +0.948 and +0.973, the 24 that drop one of them between +0.913 and +0.947. Reported in
+Results 3 beside the full-set value and in the Figure 3a caption. Nothing else changes.

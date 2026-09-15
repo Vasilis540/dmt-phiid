@@ -22,4 +22,8 @@ group means — residual DiD odd +0.0193, even +0.0179; pub CCS-sts DiD odd +0.0
 [code] partial on the same-half autocorrelation DiD: within +0.796, +0.814 (mean +0.805); cross +0.289, +0.365 (mean +0.327)
 context — r(res_odd, ac_odd) = -0.688 (p = 0.007; ρ -0.600); r(res_even, ac_even) = -0.386 (p = 0.173; ρ -0.424); r(pubCCS_odd, ac_odd) = -0.575 (p = 0.031; ρ -0.508); r(pubCCS_even, ac_even) = -0.250 (p = 0.388; ρ -0.174); cross r(res_odd, ac_even) = -0.598 (p = 0.024; ρ -0.508); r(res_even, ac_odd) = -0.052 (p = 0.860; ρ -0.059)
 
-VERDICT (rule of the record, ts_gsr, published CCS): within-half mean +0.815, cross-half mean +0.319 (+0.160, +0.478) → shared component is estimation noise: both reported as null with this test as the evidence
+RULE BRANCH (rule of the record B7 applied as recorded, ts_gsr, published CCS; the reading is in the ceiling block below): within-half mean +0.815, cross-half mean +0.319 (+0.160, +0.478) → shared component is estimation noise: both reported as null with this test as the evidence
+CEILING [ts_gsr, pub]: rule branch = estimation noise; threshold 0.407 > ceiling 0.386 (rel_res +0.494, rel_CCS +0.302); mean cross-half +0.319, disattenuated +0.82 → reading UNDETERMINED (pass branch unreachable)
+CEILING [ts_gsr, code]: rule branch = estimation noise; threshold 0.381 > ceiling 0.311 (rel_res +0.494, rel_CCS +0.196); mean cross-half +0.230, disattenuated +0.74 → reading UNDETERMINED (pass branch unreachable)
+CEILING [ts_demean, pub]: rule branch = estimation noise; threshold 0.440 > ceiling 0.300 (rel_res +0.216, rel_CCS +0.417); mean cross-half +0.283, disattenuated +0.94 → reading UNDETERMINED (pass branch unreachable)
+CEILING [ts_demean, code]: rule branch = estimation noise; threshold 0.419 > ceiling 0.335 (rel_res +0.216, rel_CCS +0.518); mean cross-half +0.318, disattenuated +0.95 → reading UNDETERMINED (pass branch unreachable)
