@@ -2581,3 +2581,80 @@ and the curvature +36.9; at (0.6, 0.25) the slope is −0.61 and the curvature +
 view (a, q_ε fixed, c varied) ∂sts/∂c ≈ −1.3 to −1.5 at (0.85, 0.25) against ∂sts/∂r₁ ≈ +6.
 Reported in the manuscript's Methods (family), Results 4 (residual) and Discussion; no data
 claim rests on it.
+
+## Correction note, 15 Sep 2026 10:05 UTC (appended; nothing above edited): the B7 rule, the finite-sample null, proportionality in the manuscript, and the title
+
+Written after the third adversarial review (`notes/adversarial_review_draft_v2_second_pass_2026-09-15.md`).
+The pre-run entry (07:30 UTC) and the outcomes entry (07:55 UTC) of items 6–8 stand as written; this
+entry records what they got wrong and how `manuscript/draft_v2.md` now reads. Every number below is
+quoted from `notes/review_results/partB/splithalf_tables.md`, `splithalf.log`,
+`notes/review_results/logs/review_v2_residual_null.log`, `results/proportionality.csv` and the third
+review's appendix.
+
+1. **B7 rule: the pass criterion was unreachable, a flaw in the rule as recorded.** The pre-run entry
+   fixed the "NOT window noise" branch as: both cross-half correlations positive and their mean at least
+   half the mean within-half correlation. That threshold was set without reference to the split-half
+   reliabilities of the two quantities. At the reliabilities observed (`ts_gsr`: residual DiD +0.494,
+   published CCS-sts DiD +0.302) the largest cross-half correlation two perfectly correlated reliable
+   components could show is √(0.494 × 0.302) = 0.386, and the threshold was 0.5 × 0.815 = 0.407; on
+   `ts_demean` the ceiling is √(0.216 × 0.417) = 0.300 against a threshold of 0.5 × 0.881 = 0.44. The
+   "not window noise" branch could not be reached whatever the truth, because shared window noise inflates
+   the within-half correlation that the threshold is defined against. The outcome entry's verdict ("the
+   estimation-noise branch of the rule applies; both are reported as null") is therefore superseded: the
+   manuscript reports the test as **undetermined**. The observed mean cross-half correlation (+0.319; +0.160
+   and +0.478, p = 0.585 and 0.084) sits at the ceiling and disattenuates to 0.319 / 0.386 = 0.82, which is
+   consistent with a shared reliable component; the reliabilities are too low to distinguish that from a
+   partial one or, at N = 14, from none. What the test does establish is that most of the within-half
+   correlation (0.815 against a ceiling of 0.386) is estimation noise common to the same windows and that
+   the reliable part of each quantity is small. Nothing is promoted: the residual and the CCS-sts change
+   stay exploratory, they arose after four specification changes (windowed sts → sixteen atoms → CCS →
+   diagnostic residual), no autocorrelation-independent component is reported, and a pre-specified test on
+   an independent dataset remains the resolution. The outcome entry's "Limitation of the test" paragraph
+   was written after the verdict and is a post-outcome qualification; that is recorded here too. Rule of
+   the closure entry (item 4) unchanged.
+
+2. **Finite-sample null of the B4 residual (`notes/review_v2_residual_null.py`): provenance and range.**
+   This computation belongs to the second adversarial review (`notes/adversarial_review_draft_v2_2026-09-15.md`,
+   Appendix B). It was written and run during that review, before the pre-run entry of items 6–8, and has
+   no pre-run entry and no recorded rule in this record. The manuscript draft of 15 Sep (morning) described
+   it as one of the additions "with their rules recorded before they were run (record, 'Part B, items
+   6–8')"; that sentence was wrong and is corrected: the additions with pre-recorded rules are B6 and B7,
+   B8 was entered with no prediction, and the null is reported as a review computation. The third review
+   re-ran the script unchanged (it reproduces: four-cell levels −0.0353, −0.0313, −0.0350, −0.0364; DiD
+   +0.0054) and varied two of its free choices: per-pair filter heterogeneity SD 0.25 / 0.5 / 1.0 of the
+   mean → null DiD +0.0059 / +0.0052 / +0.0077; placebo ACF shape in every cell with the operating points
+   unchanged → +0.0037 (1,500 pairs × 25 windows per cell; Monte-Carlo error about ±0.001). The manuscript
+   quotes the range, a third to two-thirds of the observed +0.0115 [+0.0021, +0.0211], in place of "about
+   half", and states that the rest, and the run-level residual (−1.1 % against the null's −0.34 %), are not
+   accounted for by the null as specified. The null is stationary by construction; the runs are not
+   (injection at TR 240 on DMT; r₁ and variance drift on placebo). The third review names pooling of
+   segments with co-varying a and q under a single run-level fit as a candidate mechanism for the run-level
+   residual; it has not been tested (the run-level mean cross-lag deviation is not among the saved outputs),
+   and no claim rests on it. "A systematic departure ... exists" is withdrawn from the manuscript.
+
+3. **Proportionality (`results/proportionality.csv`, four pre-specified cells; rule in `14_proportionality.py`).**
+   The 15 Sep morning draft's Results 3 quoted the W = 60 `ts_gsr` cell only and read it as a confirmation
+   of the mechanism. The main text now reports all four cells, as `draft.md` and Table S8 did: proportional
+   at W = 60 on both variants and at the global fit on `ts_demean`; less than proportional at the global fit
+   on `ts_gsr` (+0.0204 [+0.0048, +0.0340], p = 0.0248; sts's share of the TDMI drop 0.658 [0.486, 0.817]
+   against a baseline share of 0.908) — the estimator Results 6 recommends for between-run contrasts, which
+   now says so and rests the recommendation on manufacture grounds alone. Proportionality is no longer
+   offered as a confirmation.
+
+4. **Title and "demonstration".** "Reports lag-1 autocorrelation change as synergy change" and
+   "demonstration" are withdrawn from the title in favour of the Conclusions' "dominated by"; the B4
+   pre-specified criterion under which the DMT contrast would have been a demonstration (residual DiD near
+   zero) was not met, so the word is not used for it. Two candidate titles are given in the draft [TK].
+
+5. **Smaller corrections in the same revision.** The partial correlation between the residual DiD and the
+   CCS-sts DiD is quoted under the published CCS definition (+0.831 / +0.855, `ts_gsr` / `ts_demean`; third
+   review, Appendix, computation 4) as the B6 rule requires, with `phyid`'s values (+0.688 / +0.820) beside
+   it. The Discussion's "both of which DMT produced" (r₁ and |q|) is corrected: the |q| fall is on `ts_gsr`
+   only; on `ts_demean` the signed mean correlation rose (`results/global_fc_did_ts_demean.csv`). The
+   Results 4 count of "both nulls" for the residual is replaced by the sign-flip p with the phase-null
+   technicality stated. Table 3's null row gives −3.0 % for the four-cell level and −3.1 % for the
+   homogeneous-filter level. The Figure 3 caption (`scripts/15_figures_v2.py`, `manuscript/figures/captions_v2.md`)
+   says the split-half test could not separate signal from window noise. `README.md`, `CLAUDE.md` and
+   `run_all.sh` are updated to name `draft_v2.md`, scripts 00–15 and the `notes/` scripts (section 6 of
+   `run_all.sh`, not yet executed end-to-end); `manuscript/draft_v2-1.md` (an earlier variant with a
+   different author list and abstract) is to be deleted.
