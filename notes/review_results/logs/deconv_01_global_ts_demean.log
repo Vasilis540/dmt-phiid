@@ -1,0 +1,38 @@
+  [qc] s=7 DMT region 20: zero variance (constant timeseries)
+  [qc] excluding region 20 for ALL subjects and BOTH conditions (pre-registered rule; defective in: s=7 DMT)
+  [qc] regions entering ΦID: 115 (selected 116, excluded 1)
+variant=ts_demean  regions=115/116 (all)  pairs=6555  subjects=14  conditions=('DMT', 'PCB')
+TRs=840  bins=28  TRs/bin=30  tau=1  fit_mode=global
+  subject  1/14 done  (63.4s elapsed)
+  subject  2/14 done  (135.3s elapsed)
+  [warn] s=2 PCB: dropped 1 non-finite TR(s) (tail)
+  subject  3/14 done  (238.2s elapsed)
+  subject  4/14 done  (352.8s elapsed)
+  subject  5/14 done  (431.2s elapsed)
+  subject  6/14 done  (462.8s elapsed)
+  subject  7/14 done  (494.6s elapsed)
+  subject  8/14 done  (526.5s elapsed)
+  subject  9/14 done  (558.5s elapsed)
+  subject 10/14 done  (590.4s elapsed)
+  subject 11/14 done  (621.2s elapsed)
+  subject 12/14 done  (651.8s elapsed)
+  subject 13/14 done  (682.7s elapsed)
+  subject 14/14 done  (714.4s elapsed)
+compute finished in 714.4s (3.9 ms/pair)
+
+array shape: (14, 2, 28, 16)  (atoms: rtr, rtx, rty, rts, xtr, xtx, xty, xts, ytr, ytx, yty, yts, str, stx, sty, sts)
+finite fraction: 1.000
+samples/bin (evaluated slots): min=28 max=30 median=30; empty slots=0
+sts global mean=0.8368  std=0.1263  min=0.0742  max=1.2194
+
+mean synergy (sts) across subjects, per bin:
+  DMT: [0.906 0.843 0.884 0.902 0.836 0.836 0.873 0.861 0.856 0.771 0.754 0.742
+ 0.699 0.763 0.8   0.774 0.793 0.776 0.768 0.826 0.817 0.808 0.805 0.818
+ 0.781 0.797 0.887 0.785]
+  PCB: [0.855 0.79  0.835 0.853 0.862 0.851 0.876 0.803 0.789 0.832 0.861 0.843
+ 0.828 0.822 0.874 0.891 0.864 0.889 0.864 0.89  0.893 0.928 0.897 0.873
+ 0.907 0.908 0.896 0.824]
+
+wrote results/atoms_bins_115regions-all_ts_demean_global.npy
+wrote results/atoms_bins_local_115regions-all_ts_demean_global.npy
+wrote results/atoms_bins_115regions-all_ts_demean_global.csv

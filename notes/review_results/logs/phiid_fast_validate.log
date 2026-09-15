@@ -1,0 +1,22 @@
+== raw data
+  (1) W60 window means vs saved, ts_gsr                                  max|diff| = 8.22e-15   (nan pattern equal: True)
+  (2) W30 window means vs saved, ts_gsr                                  max|diff| = 9.33e-15   (nan pattern equal: True)
+  (3) global bin means vs saved, ts_gsr                                  max|diff| = 1.22e-14   (nan pattern equal: True)
+  (4) 11's per-region global sts vs closed form, ts_gsr                  max|diff| = 1.43e-14   (nan pattern equal: True)
+  (4) 11's per-region global rtr vs closed form, ts_gsr                  max|diff| = 1.22e-15   (nan pattern equal: True)
+     (24s)
+  (1) W60 window means vs saved, ts_demean                               max|diff| = 7.99e-15   (nan pattern equal: True)
+  (3) global bin means vs saved, ts_demean                               max|diff| = 1.27e-14   (nan pattern equal: True)
+  (4) 11's per-region global sts vs closed form, ts_demean               max|diff| = 2.04e-14   (nan pattern equal: True)
+  (4) 11's per-region global rtr vs closed form, ts_demean               max|diff| = 9.99e-16   (nan pattern equal: True)
+     (35s)
+== deconvolved data
+  (5) deconvolved W60 window means vs saved, ts_gsr                      max|diff| = 5.11e-15   (nan pattern equal: True)
+  (5) deconvolved global bin means vs saved, ts_gsr                      max|diff| = 7.88e-15   (nan pattern equal: True)
+     (49s)
+  (5) deconvolved W60 window means vs saved, ts_demean                   max|diff| = 5.33e-15   (nan pattern equal: True)
+  (5) deconvolved global bin means vs saved, ts_demean                   max|diff| = 7.11e-15   (nan pattern equal: True)
+     (60s)
+== (6) direct comparison with phyid.calc_PhiID on 200 random (subject, condition, window, pair) draws, W = 60, ts_gsr
+  max|diff| over 200 draws × 16 atoms = 7.33e-15
+done in 63s

@@ -1,0 +1,122 @@
+# rev_regional_phir.py EXPLORATORY series=deconv variant=ts_demean estimator=win60 regions=115 excluded_regions=20 pre=windows1-4 post=windows6-14 signflip=exact2^14 two-sided fdr=BH q=0.05 spin=rotated_Schaefer_100 (10000 rotations, cortical only) bootstrap=10000 seed=20261120
+per-region atoms computed (6s)
+  consistency                  max_abs_diff_region_mean_vs_saved_pair_mean_16atoms +0.0000  atoms_win60_115regions-all_ts_demean_window.npy
+
+== per-region ΦR DiD (EXPLORATORY): 55 of 115 survive BH FDR q=0.05 (p threshold 0.02391); of these 55 positive, 0 negative; group-mean DiD positive in 114/115 regions
+  regional_did                 whole_brain_did_mean_over_regions                +0.0350 [+0.0184, +0.0526] p=0.0009  equals whole-brain pair-mean ΦR DiD
+  regional_did                 n_regions_fdr_significant                        +55.0000  BH q=0.05, p_thresh=0.02391
+  regional_did                 n_fdr_significant_positive                       +55.0000  
+  regional_did                 n_fdr_significant_negative                       +0.0000  
+  regional_did                 n_groupmean_positive_of_115                      +114.0000  
+  regional_did                 n_uncorrected_p_below_0.05                       +72.0000  
+  regional_did                 min_uncorrected_p                                +0.0001  region LH_Vis_4 did=+0.0482
+  regional_did                 n_cortical_fdr_significant                       +53.0000  
+  regional_did                 n_subcortical_fdr_significant                    +2.0000  
+  regional_did                 sd_of_groupmean_did_across_regions               +0.0129  
+  regional_did                 range_of_groupmean_did_across_regions            +0.0715  min -0.0063 max +0.0652
+  network_mean_did             Vis_n17                                          +0.0449 [+0.0267, +0.0648] p=0.0005  pos=12/14; fdr_sig=15
+  network_mean_did             SomMot_n14                                       +0.0404 [+0.0196, +0.0620] p=0.0048  pos=11/14; fdr_sig=9
+  network_mean_did             DorsAttn_n14                                     +0.0403 [+0.0207, +0.0610] p=0.0016  pos=12/14; fdr_sig=7
+  network_mean_did             SalVentAttn_n12                                  +0.0382 [+0.0200, +0.0572] p=0.0010  pos=12/14; fdr_sig=9
+  network_mean_did             Limbic_n5                                        +0.0209 [+0.0088, +0.0329] p=0.0068  pos=11/14; fdr_sig=0
+  network_mean_did             Cont_n13                                         +0.0274 [+0.0063, +0.0513] p=0.0339  pos=9/14; fdr_sig=0
+  network_mean_did             Default_n24                                      +0.0344 [+0.0175, +0.0522] p=0.0018  pos=13/14; fdr_sig=13
+  network_mean_did             Subcortex_n16                                    +0.0242 [+0.0107, +0.0376] p=0.0048  pos=12/14; fdr_sig=2
+  regional_did_fdr_regions     LH_Vis_1                                         +0.0287 p=0.0148  orig_index=0 net=1 pos=10/14
+  regional_did_fdr_regions     LH_Vis_3                                         +0.0518 p=0.0020  orig_index=2 net=1 pos=11/14
+  regional_did_fdr_regions     LH_Vis_4                                         +0.0482 p=0.0001  orig_index=3 net=1 pos=14/14
+  regional_did_fdr_regions     LH_Vis_5                                         +0.0499 p=0.0122  orig_index=4 net=1 pos=9/14
+  regional_did_fdr_regions     LH_Vis_6                                         +0.0613 p=0.0004  orig_index=5 net=1 pos=13/14
+  regional_did_fdr_regions     LH_Vis_8                                         +0.0517 p=0.0032  orig_index=7 net=1 pos=11/14
+  regional_did_fdr_regions     LH_Vis_9                                         +0.0552 p=0.0022  orig_index=8 net=1 pos=12/14
+  regional_did_fdr_regions     LH_SomMot_1                                      +0.0330 p=0.0238  orig_index=9 net=2 pos=9/14
+  regional_did_fdr_regions     LH_SomMot_2                                      +0.0409 p=0.0011  orig_index=10 net=2 pos=12/14
+  regional_did_fdr_regions     LH_SomMot_5                                      +0.0652 p=0.0006  orig_index=13 net=2 pos=13/14
+  regional_did_fdr_regions     LH_SomMot_6                                      +0.0570 p=0.0134  orig_index=14 net=2 pos=10/14
+  regional_did_fdr_regions     LH_DorsAttn_Post_1                               +0.0332 p=0.0232  orig_index=15 net=3 pos=10/14
+  regional_did_fdr_regions     LH_DorsAttn_Post_2                               +0.0549 p=0.0002  orig_index=16 net=3 pos=13/14
+  regional_did_fdr_regions     LH_DorsAttn_Post_4                               +0.0614 p=0.0016  orig_index=18 net=3 pos=13/14
+  regional_did_fdr_regions     LH_DorsAttn_PrCv_1                               +0.0415 p=0.0149  orig_index=21 net=3 pos=11/14
+  regional_did_fdr_regions     LH_DorsAttn_FEF_1                                +0.0535 p=0.0021  orig_index=22 net=3 pos=12/14
+  regional_did_fdr_regions     LH_SalVentAttn_FrOperIns_2                       +0.0409 p=0.0054  orig_index=25 net=4 pos=10/14
+  regional_did_fdr_regions     LH_SalVentAttn_PFCl_1                            +0.0409 p=0.0166  orig_index=26 net=4 pos=11/14
+  regional_did_fdr_regions     LH_SalVentAttn_Med_1                             +0.0354 p=0.0164  orig_index=27 net=4 pos=9/14
+  regional_did_fdr_regions     LH_SalVentAttn_Med_2                             +0.0365 p=0.0127  orig_index=28 net=4 pos=10/14
+  regional_did_fdr_regions     LH_SalVentAttn_Med_3                             +0.0457 p=0.0121  orig_index=29 net=4 pos=12/14
+  regional_did_fdr_regions     LH_Default_Par_2                                 +0.0327 p=0.0074  orig_index=40 net=7 pos=11/14
+  regional_did_fdr_regions     LH_Default_PFC_2                                 +0.0393 p=0.0072  orig_index=42 net=7 pos=11/14
+  regional_did_fdr_regions     LH_Default_PFC_3                                 +0.0356 p=0.0070  orig_index=43 net=7 pos=12/14
+  regional_did_fdr_regions     LH_Default_PFC_4                                 +0.0314 p=0.0171  orig_index=44 net=7 pos=12/14
+  regional_did_fdr_regions     LH_Default_PFC_5                                 +0.0443 p=0.0043  orig_index=45 net=7 pos=10/14
+  regional_did_fdr_regions     LH_Default_PFC_6                                 +0.0325 p=0.0197  orig_index=46 net=7 pos=11/14
+  regional_did_fdr_regions     LH_Default_PFC_7                                 +0.0498 p=0.0042  orig_index=47 net=7 pos=11/14
+  regional_did_fdr_regions     LH_Default_pCunPCC_1                             +0.0442 p=0.0040  orig_index=48 net=7 pos=11/14
+  regional_did_fdr_regions     LH_Default_pCunPCC_2                             +0.0422 p=0.0125  orig_index=49 net=7 pos=11/14
+  regional_did_fdr_regions     RH_Vis_1                                         +0.0358 p=0.0187  orig_index=50 net=1 pos=11/14
+  regional_did_fdr_regions     RH_Vis_2                                         +0.0510 p=0.0004  orig_index=51 net=1 pos=13/14
+  regional_did_fdr_regions     RH_Vis_3                                         +0.0329 p=0.0122  orig_index=52 net=1 pos=10/14
+  regional_did_fdr_regions     RH_Vis_4                                         +0.0386 p=0.0123  orig_index=53 net=1 pos=9/14
+  regional_did_fdr_regions     RH_Vis_5                                         +0.0645 p=0.0022  orig_index=54 net=1 pos=12/14
+  regional_did_fdr_regions     RH_Vis_6                                         +0.0502 p=0.0057  orig_index=55 net=1 pos=12/14
+  regional_did_fdr_regions     RH_Vis_7                                         +0.0346 p=0.0123  orig_index=56 net=1 pos=10/14
+  regional_did_fdr_regions     RH_Vis_8                                         +0.0455 p=0.0157  orig_index=57 net=1 pos=9/14
+  regional_did_fdr_regions     RH_SomMot_3                                      +0.0336 p=0.0121  orig_index=60 net=2 pos=11/14
+  regional_did_fdr_regions     RH_SomMot_5                                      +0.0348 p=0.0217  orig_index=62 net=2 pos=10/14
+  regional_did_fdr_regions     RH_SomMot_6                                      +0.0437 p=0.0179  orig_index=63 net=2 pos=10/14
+  regional_did_fdr_regions     RH_SomMot_7                                      +0.0509 p=0.0043  orig_index=64 net=2 pos=13/14
+  regional_did_fdr_regions     RH_SomMot_8                                      +0.0589 p=0.0125  orig_index=65 net=2 pos=11/14
+  regional_did_fdr_regions     RH_DorsAttn_Post_5                               +0.0428 p=0.0231  orig_index=70 net=3 pos=9/14
+  regional_did_fdr_regions     RH_DorsAttn_FEF_1                                +0.0387 p=0.0059  orig_index=72 net=3 pos=10/14
+  regional_did_fdr_regions     RH_SalVentAttn_TempOccPar_2                      +0.0339 p=0.0120  orig_index=74 net=4 pos=13/14
+  regional_did_fdr_regions     RH_SalVentAttn_FrOperIns_1                       +0.0511 p=0.0035  orig_index=75 net=4 pos=11/14
+  regional_did_fdr_regions     RH_SalVentAttn_Med_1                             +0.0379 p=0.0022  orig_index=76 net=4 pos=11/14
+  regional_did_fdr_regions     RH_SalVentAttn_Med_2                             +0.0497 p=0.0022  orig_index=77 net=4 pos=12/14
+  regional_did_fdr_regions     RH_Default_Par_1                                 +0.0397 p=0.0044  orig_index=89 net=7 pos=11/14
+  regional_did_fdr_regions     RH_Default_Temp_1                                +0.0228 p=0.0237  orig_index=90 net=7 pos=11/14
+  regional_did_fdr_regions     RH_Default_PFCv_2                                +0.0527 p=0.0044  orig_index=94 net=7 pos=13/14
+  regional_did_fdr_regions     RH_Default_pCunPCC_2                             +0.0307 p=0.0125  orig_index=99 net=7 pos=11/14
+  regional_did_fdr_regions     SUB_6                                            +0.0285 p=0.0148  orig_index=105 net=8 pos=11/14
+  regional_did_fdr_regions     SUB_13                                           +0.0402 p=0.0111  orig_index=112 net=8 pos=12/14
+
+== spin test: 10000 rotations of the 100 cortical parcels (7s)
+  spatial_spin_cortical99      rho_5HT2A                                        -0.2732 p=0.0205  two-sided spin p; Vasa one-sided-avg p=0.0086; null SD 0.117; BH(5) sig=1
+  spatial_descriptive_115      rho_5HT2A_incl_subcortex_no_p                    -0.0140  no spatial null for subcortex
+  spatial_spin_cortical99      rho_5HT1A                                        -0.4755 p=0.0003  two-sided spin p; Vasa one-sided-avg p=0.0003; null SD 0.153; BH(5) sig=1
+  spatial_descriptive_115      rho_5HT1A_incl_subcortex_no_p                    -0.2586  no spatial null for subcortex
+  spatial_spin_cortical99      rho_5HT1B                                        +0.2407 p=0.0420  two-sided spin p; Vasa one-sided-avg p=0.0199; null SD 0.120; BH(5) sig=0
+  spatial_descriptive_115      rho_5HT1B_incl_subcortex_no_p                    +0.2762  no spatial null for subcortex
+  spatial_spin_cortical99      rho_5HT4                                         -0.4985 p=0.0003  two-sided spin p; Vasa one-sided-avg p=0.0003; null SD 0.132; BH(5) sig=1
+  spatial_descriptive_115      rho_5HT4_incl_subcortex_no_p                     -0.2963  no spatial null for subcortex
+  spatial_spin_cortical99      rho_5HTT                                         +0.0631 p=0.6410  two-sided spin p; Vasa one-sided-avg p=0.3472; null SD 0.130; BH(5) sig=0
+  spatial_descriptive_115      rho_5HTT_incl_subcortex_no_p                     -0.1181  no spatial null for subcortex
+  spatial_spin_cortical99      bh_threshold_across_5_maps                       +0.0300  
+
+== workspace comparison (network-level proxies of Luppi et al. 2024; EXPLORATORY)
+  workspace_primary_Default+Cont workspace_minus_nonworkspace_vs_noncortex_ws     -0.0077 [-0.0147, -0.0008] p=0.0625  n_ws=37 n_non=62 pos=5/14
+  workspace_primary_Default+Cont workspace_mean_did_vs_noncortex_ws               +0.0320 [+0.0145, +0.0514] p=0.0028  pos=12/14
+  workspace_primary_Default+Cont nonworkspace_mean_did_vs_noncortex_ws            +0.0396 [+0.0223, +0.0580] p=0.0005  pos=12/14
+  workspace_primary_Default+Cont gateway_proxy_minus_nonworkspace_vs_noncortex_ws -0.0052 [-0.0139, +0.0029] p=0.2657  n=24 pos=7/14
+  workspace_primary_Default+Cont broadcaster_proxy_minus_nonworkspace_vs_noncortex_ws -0.0122 [-0.0219, -0.0022] p=0.0356  n=13 pos=4/14
+  workspace_primary_Default+Cont workspace_minus_nonworkspace_vs_noncortex_ws+subcortex -0.0045 [-0.0109, +0.0025] p=0.2219  n_ws=37 n_non=78 pos=4/14
+  workspace_primary_Default+Cont workspace_mean_did_vs_noncortex_ws+subcortex     +0.0320 [+0.0146, +0.0517] p=0.0028  pos=12/14
+  workspace_primary_Default+Cont nonworkspace_mean_did_vs_noncortex_ws+subcortex  +0.0364 [+0.0199, +0.0535] p=0.0007  pos=12/14
+  workspace_primary_Default+Cont gateway_proxy_minus_nonworkspace_vs_noncortex_ws+subcortex -0.0020 [-0.0095, +0.0052] p=0.6075  n=24 pos=8/14
+  workspace_primary_Default+Cont broadcaster_proxy_minus_nonworkspace_vs_noncortex_ws+subcortex -0.0090 [-0.0197, +0.0017] p=0.1359  n=13 pos=5/14
+  workspace_primary_Default+Cont gateway_proxy_minus_broadcaster_proxy            +0.0070 [-0.0041, +0.0191] p=0.2909  n_gw=24 n_bc=13
+  workspace_primary_Default+Cont dmt_change_workspace_minus_nonworkspace_cortex   -0.0027 [-0.0079, +0.0031] p=0.3610  
+  workspace_primary_Default+Cont pcb_change_workspace_minus_nonworkspace_cortex   +0.0050 [-0.0002, +0.0102] p=0.0912  
+  workspace_named_subregion    workspace_minus_nonworkspace_vs_noncortex_ws     -0.0029 [-0.0104, +0.0042] p=0.4625  n_ws=26 n_non=73 pos=8/14
+  workspace_named_subregion    workspace_mean_did_vs_noncortex_ws               +0.0346 [+0.0176, +0.0544] p=0.0011  pos=13/14
+  workspace_named_subregion    nonworkspace_mean_did_vs_noncortex_ws            +0.0375 [+0.0201, +0.0567] p=0.0011  pos=12/14
+  workspace_named_subregion    gateway_proxy_minus_nonworkspace_vs_noncortex_ws -0.0018 [-0.0098, +0.0060] p=0.6799  n=21 pos=8/14
+  workspace_named_subregion    broadcaster_proxy_minus_nonworkspace_vs_noncortex_ws -0.0075 [-0.0190, +0.0059] p=0.2777  n=5 pos=4/14
+  workspace_named_subregion    workspace_minus_nonworkspace_vs_noncortex_ws+subcortex -0.0005 [-0.0071, +0.0066] p=0.8997  n_ws=26 n_non=89 pos=7/14
+  workspace_named_subregion    workspace_mean_did_vs_noncortex_ws+subcortex     +0.0346 [+0.0178, +0.0541] p=0.0011  pos=13/14
+  workspace_named_subregion    nonworkspace_mean_did_vs_noncortex_ws+subcortex  +0.0351 [+0.0184, +0.0528] p=0.0015  pos=12/14
+  workspace_named_subregion    gateway_proxy_minus_nonworkspace_vs_noncortex_ws+subcortex +0.0006 [-0.0066, +0.0079] p=0.8688  n=21 pos=8/14
+  workspace_named_subregion    broadcaster_proxy_minus_nonworkspace_vs_noncortex_ws+subcortex -0.0051 [-0.0172, +0.0095] p=0.4949  n=5 pos=4/14
+  workspace_named_subregion    gateway_proxy_minus_broadcaster_proxy            +0.0057 [-0.0082, +0.0195] p=0.4465  n_gw=21 n_bc=5
+  workspace_named_subregion    dmt_change_workspace_minus_nonworkspace_cortex   -0.0007 [-0.0074, +0.0063] p=0.8645  
+  workspace_named_subregion    pcb_change_workspace_minus_nonworkspace_cortex   +0.0022 [-0.0026, +0.0072] p=0.4091  
+
+wrote /home/claude/dmt/notes/review_results/regional/regional_phir_deconv_ts_demean_win60.csv (37s)

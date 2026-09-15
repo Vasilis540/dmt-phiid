@@ -77,12 +77,11 @@ acquired and first described by
 > Timmermann, C., et al. (2023). *PNAS*, doi:10.1073/pnas.2218949120.
 
 **Licence.** The source repository carries no licence file, and no
-data-use agreement or request process is stated. Reuse terms are being
-confirmed with the authors before the preprint is made public; until then
-this repository does not redistribute the data (they are cloned into a
-git-ignored directory) and the results here should be treated as derived
-from data whose reuse terms are unconfirmed. This repository's own code and
-text have no licence file yet either.
+data-use agreement or request process is stated. The data are used with
+the agreement of the data collectors and the derivative authors, confirmed
+by email in September 2026, with attribution; this repository does not
+redistribute them (they are cloned into a git-ignored directory). This
+repository's own code and text have no licence file yet either.
 
 One data-quality note not documented in the source papers: subject index 7
 (DMT run) has region 20 constant at zero in every variant, so region 20 is
