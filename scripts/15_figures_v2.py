@@ -12,7 +12,7 @@ Figure 3  per subject: (a) MMI-sts DiD against the lag-1 autocorrelation DiD; (b
 Figure 4  the residual diagnostic by window: observed, AR(1)-predicted and residual whole-brain sts,
           DMT and placebo, group mean ± 1 within-subject SEM (Cousineau–Morey), panel (b) on the same vertical
           scale as panel (a)  (notes/review_results/partB/diag_series_ts_gsr_W60.npz)
-Figure 5  the lag dependence of Table 5: the sts DiD and the lag-τ autocorrelation DiD against τ, W = 60, with the
+Figure 5  the lag dependence of Table 6: the sts DiD and the lag-τ autocorrelation DiD against τ, W = 60, with the
           per-subject correlation of the two  (notes/review_results/inference_rows_lag.pkl)
 Figure 3a's caption also carries the leave-two-out range of the collinearity (notes/review_results/partB/leave_two_out.csv,
 from notes/partB9_leave_two_out.py).
@@ -230,7 +230,7 @@ did_o, did_p, did_r = did_per_subject(obs).mean(), did_per_subject(pred).mean(),
 captions += ["## Figure 4", "",
              f"The residual diagnostic by window (ts_gsr, W = 60, N = 14; lines are group means; shading is ± 1 within-subject SEM, Cousineau–Morey: each subject's 28 run × window values are centred on that subject's own mean before the SEM across subjects is taken, with Morey's correction √(28/27), so the bands show the uncertainty of within-subject comparisons across windows and runs and not the between-subject spread of the level, which the paper does not test; the same band is drawn on the dashed prediction lines; grey band = pre-injection windows 1–4, hatched = window 5, excluded from the primary post set; dashed vertical line = injection at 8 min). (a) Observed whole-brain sts (solid) and the sts predicted from each pair's measured lag-1 autocorrelations a_x, a_y and lag-0 correlation q alone (dashed), DMT (red) and placebo (blue); y-range {YL_A[0]:.2f}–{YL_A[1]:.2f} nats. (b) The residual, observed minus predicted, per run, in the same units as (a) and with the same nats per unit height ({YL_B[1] - YL_B[0]:.2f} nats on a panel {(YL_B[1] - YL_B[0]) / (YL_A[1] - YL_A[0]) * 100:.0f} % of the height of (a), which spans {YL_A[1] - YL_A[0]:.2f} nats), so that the residual's modulation can be read against the size of the level and of the contrast. The prediction over-shoots the level by {abs(res.mean()):.3f} nats and the primary DiD by {abs(did_p) - abs(did_o):.4f} nats (observed {did_o:+.4f}, predicted {did_p:+.4f}, residual DiD {did_r:+.4f}); the residual is least negative in the drug-present windows of the DMT run. Source: `notes/review_results/partB/diag_series_ts_gsr_W60.npz`.", ""]
 
-# ------------------------------------------------------------------ Figure 5: lag dependence (Table 5)
+# ------------------------------------------------------------------ Figure 5: lag dependence (Table 6)
 lag = rows("lag")
 TAUS = (1, 2, 3, 5)
 L = {}
@@ -252,7 +252,7 @@ axes[0].text(0.98, 0.04, "per-subject r(sts DiD, r_τ DiD), N = 14:\n" + ", ".jo
              transform=axes[0].transAxes, ha="right", va="bottom", fontsize=7.5, color="0.3")
 save(fig, "fig5_v2_lag_dependence")
 captions += ["## Figure 5", "",
-             "Lag dependence (Table 5; ts_gsr, W = 60, N = 14; points are group-mean primary DiDs, DMT minus placebo, post windows 6–14 minus pre 1–4; whiskers are subject-bootstrap 95 % CIs; the sign-flip p of every point is in Table 5). (a) The whole-brain MMI-sts DiD at τ = "
+             "Lag dependence (Table 6; ts_gsr, W = 60, N = 14; points are group-mean primary DiDs, DMT minus placebo, post windows 6–14 minus pre 1–4; whiskers are subject-bootstrap 95 % CIs; the sign-flip p of every point is in Table 6). (a) The whole-brain MMI-sts DiD at τ = "
              + ", ".join(f"{tau} ({L[tau]['sts']['did']:+.4f})" for tau in TAUS) + " nats, with r, the per-subject correlation between the sts DiD and the lag-τ autocorrelation DiD ("
              + ", ".join(f"{L[tau]['r']:+.3f}" for tau in TAUS) + "). (b) The mean regional lag-τ autocorrelation DiD at the same lags ("
              + ", ".join(f"{L[tau]['ac']['did']:+.4f}" for tau in TAUS) + "); the x-axis labels give the DMT pre-injection mean r_τ (windows 1–4). The sts contrast is significant wherever the lag-τ autocorrelation contrast is (τ = 1, 2, 3) and null where it is not (τ = 5); the r_τ DiD grows with τ up to τ = 3 while the sts DiD shrinks with the atom, and at τ = 3 the per-subject tracking is only partial (Results 5). Source: `notes/review_results/inference_rows_lag.pkl` (rows `sts tauN ts_gsr W60` and `autocorr lagN ts_gsr W60`, primary set).", ""]

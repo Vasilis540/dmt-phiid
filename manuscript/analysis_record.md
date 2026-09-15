@@ -2841,3 +2841,143 @@ closure entry: they were specified after the primary result, and no confirmatory
    follows the between-region variance of r₁ as the map says it must.
 
 Both scripts are added to `run_all.sh` (section 6, after `partB9_leave_two_out.py`).
+
+## Run-level mean cross-lag deviation and the regional sts–r₁ test: outcomes, 15 Sep 2026 15:36 UTC (appended; nothing above edited)
+
+Both scripts run at 152cc6d (clean; that commit's own time is 15:31 UTC, four minutes before the time written in the pre-run entry's heading, which was typed before the commit); every number below is quoted from `notes/review_results/partB/crosslag_deviation_tables.md`
+and `regional_sts_r1_tables.md`.
+
+1. **Run-level mean cross-lag deviation.** `ts_gsr`: DMT +0.00009, placebo +0.00009; grand mean +0.00009
+   [+0.00005, +0.00013], sign-flip p = 0.0004, positive in 13 of 14 subjects; SD of the deviation across pairs
+   within a run 0.0390, mean absolute deviation 0.0312; run-level residual of the diagnostic on the same runs
+   −0.0137 (−1.1 %); r(deviation, residual) across the 28 runs −0.277. `ts_demean`: DMT −0.00753, placebo
+   −0.00723; grand mean −0.00738 [−0.00902, −0.00588], p = 0.0001, positive in 0 of 14; SD across pairs 0.0415;
+   run-level residual +0.0008 (+0.1 %); r(deviation, residual) across the 28 runs −0.890.
+   **Reading against the pre-run entry.** Neither recorded branch obtained. On `ts_gsr` the deviation is not
+   negative (the commissioned sign) and not near zero by the recorded convention (its CI excludes zero), but it is
+   positive at +0.00009 against a pair-level SD of 0.0390. A correction to the commissioned prediction, stated
+   here rather than silently: on the coupled family a *positive* cross-lag deviation is what lowers sts below the
+   AR(1) prediction (c = +0.02 gives a deviation of +0.0188 and a residual of −0.0274, `coupling_map_tables.md`),
+   and the correction note of 15 Sep 2026 10:05 UTC already put the deviation that a coupling account of the
+   −0.01 run-level residual would require at about +0.006; the commissioned "negative on ts_gsr" has the sign
+   reversed. Under either sign the conclusion is the same: the observed +0.00009 is far below the ≈ +0.006 the
+   mechanism requires, so pooling of non-stationary segments, as the paper names it, does not account for the
+   run-level residual on `ts_gsr`, which remains unaccounted for by any mechanism named in the paper. The negative
+   correlation of the deviation with the residual across runs on both variants has the family's sign (a larger
+   deviation, a lower residual). On `ts_demean` the pooled matrices carry a negative mean deviation, −0.00738 on average and
+   negative in every subject, on the variant whose run-level residual is +0.1 %; it is reported as a fact of the data with no
+   interpretation offered, and it is a second place where the two variants differ at the run level.
+
+2. **Regional test of the spatial-map claim.** Regional r₁ (windowed): mean 0.8455, range 0.8118–0.8742;
+   whole-span 0.8618, r(windowed, whole-span) across regions +0.9633. Regional sts: mean 1.2893, range
+   1.1248–1.3635; regional rtr: mean 0.0225, range 0.0033–0.0416. Regional sts against windowed regional r₁:
+   Pearson +0.863, Spearman +0.835 over the 115 regions; Spearman +0.771 over the 99 cortical parcels, spin p
+   two-sided < 0.0001 and Vasa p < 0.0001 (no rotation of 10,000 reached the observed value; null SD 0.131).
+   Against the whole-span r₁: +0.908 / +0.887 / +0.827, spin p < 0.0001. rtr against r₁: +0.638 / +0.635 / +0.504,
+   spin p = 0.0002. sts − rtr against r₁: +0.792 / +0.729 / +0.618, spin p < 0.0001. Per subject, r(regional sts,
+   regional r₁) across regions: mean +0.756 [+0.715, +0.790], range +0.563 to +0.867, positive in 14 of 14; for
+   sts − rtr, mean +0.711, 14 of 14. r² of the 115-region Pearson: 0.745. SD across regions: sts 0.0447, rtr
+   0.0098, r₁ 0.0125. Cortical against subcortical means: sts 1.3015 vs 1.2143, r₁ 0.8482 vs 0.8288.
+   **Reading against the pre-run entry.** The predicted branch obtained: regional sts correlates positively with
+   regional r₁, and the correlation survives the spatial null. On these data three-quarters of the between-region
+   variance of the placebo-baseline synergy map is regional lag-1 autocorrelation, and the synergy-minus-redundancy
+   map correlates with regional r₁ at +0.79. What this does and does not say: it says the spatial-map exposure the
+   Discussion describes is real on this dataset — a regional r₁ gradient and a regional sts gradient coincide here
+   as the map says they must; it says nothing about any published synergy map, since none reports regional r₁,
+   and it does not say the regional r₁ gradient is an artefact rather than a property of the regions, because on
+   these data the two cannot be told apart. One observation outside the prediction: rtr also correlates with
+   regional r₁ (+0.64), where the family gives ∂rtr/∂r₁ ≈ 0.06 at the operating point; rtr's spread across regions
+   is a fifth of sts's (0.0098 against 0.0447).
+
+Reported in the manuscript's Results 2 (regional test), Results 4 (cross-lag deviation), Discussion and Limitations.
+
+## Text revision after the plain-language companion, 15 Sep 2026 15:46 UTC (appended; nothing above edited)
+
+`notes/companion_plain_language.md` (committed 0c4619f) closed with thirty-five places where explaining the paper
+exposed a statement without justification, an undefined term, a compressed step or a claim not reconstructible from
+the text. V.S. commissioned a fix for every one, with instructions where a decision was needed. No number in
+`manuscript/draft_v2.md` was changed; numbers were added only where an item asked for one or an averaging set had to
+be stated, each from a named file; the two items that were computations (29a, 29b) were run under the pre-run entry
+of 15:31 UTC above. Item by item (numbers as in the companion's list):
+
+1. Abstract, Results: "the excess" now reads "the excess sts − (xtx + yty)".
+2. Abstract, Results: the per-subject clause now says what is not significantly correlated with what (the CCS-sts
+   DiD with the r₁ DiD), and "uncorrelated" is qualified as a bound, not independence.
+3. Abstract, Conclusions: "114 %" is attributed to the per-pair diagnostic's prediction. Results 6: after the −0.069
+   sentence, the three autocorrelation-based figures for the sts change (−0.087 map projection, −0.0924 diagnostic,
+   −0.069 true-sts change before shrinkage) are reconciled: three questions, one sign, differences = the residual and
+   the manufacture figures seen from different sides.
+4. Introduction: ΦWMS defined as TDMI − I(X;X′) − I(Y;Y′), to which ΦR adds rtr; "innovation correlation" defined.
+5. Methods, Estimator: the integrated autocorrelation time defined as the crude 1 + 2 Σ r_k, with the record's ≈ 2.8
+   over eight lags cited.
+6. Methods, Estimator: the closed form stated to hold for MMI; CCS evaluated pointwise by the same module.
+7. Methods, redundancy functions: product lattice and its bottom node defined in a clause; the sum named as an
+   inclusion–exclusion over the lattice; "maximum-entropy projection" defined in a clause with the statement that its effect is not
+   evaluated here.
+8. Results 1: "in one respect" replaced by both departures from the family — the excess sign and the equality
+   xtx = yty = rts = str (0.6273 / 0.6125 against 0.5669 / 0.5667), with the mirror atoms matching −rts more nearly
+   than −xtx; the "structural account, approximate on data" reading kept.
+9. Methods, coupled family: the sts values at c = ±0.02 and ±0.05 from `coupling_map_tables.md` replace "a few
+   hundredths"; stated that no c is measured on the data.
+10. Methods, scope map: the |q| ≤ 0.6 grid is that of Figure 2a–b, the |q| ≤ 0.95 grid that of Figure 2c.
+11. Methods, DMT contrast: the record's evidence for the injection response at bins 8–10 is quoted (placebo rtr
+    bump at bins 8–9 on `ts_demean`, 0.042 and 0.049 against 0.028; placebo sts dip at bin 10 on `ts_gsr`), the
+    exclusion is stated to have been fixed at whole windows with TR 240 the end of bin 8 and a window boundary, so
+    bin 8 stays in the pre-injection set; the record makes no separate decision about bin 8.
+12. Methods, Multiplicity: the weighting rule's provenance stated — first committed at 9318997 (15 Sep 2026,
+    08:47 UTC), in the revision after the second adversarial review, after every result it governs existed, no record
+    entry of its own, not a pre-specified rule. Added to History and to Limitations.
+13. Results 2: after the r₁ DiD, the sentence that the contrast does not meet the weighting rule (p = 0.0106,
+    phase p = 0.0729 on `ts_gsr`) and that the account rests on the closed form, the collinearity and the per-pair
+    prediction; the r₁ change is the mechanism's input, not its evidence.
+14. Methods, residual diagnostic: the two meanings of "cell" defined (run × period cells of the null; variant ×
+    estimator cells elsewhere; simulated settings in the bias simulations).
+15. Methods, bias simulations: how three families yield four matched pairs (F1-i, F1-ii, F2-ii, F3-b), and the
+    reporting (mean difference with standard error; share of the real primary DiD, −0.0809).
+16. Results 1: the block's net change given with the atoms' DiDs from Table 1 and the TDMI change.
+17. Results 2: the pre-injection in-band spectral centroid (0.0369 Hz DMT, 0.0374 Hz placebo, `rev_extra.log`)
+    added as the evidence that the power sits at the low end of the band.
+18. Results 3: 0.99 labelled as the family's share of a change (∂sts/∂r₁ / ∂TDMI/∂r₁) and 0.98 as the family's
+    baseline share sts / TDMI (1.2588 of 1.2819, `coupling_map_tables.md`, c = 0).
+19. Results 3: the "9 % of the variance" sentence no longer presents the residual DiD as a test of that 9 %.
+20. History and Results 3: the closure entry's content stated (no confirmatory claim attaches to a specification
+    chosen after seeing results; no further specification in search of a positive DMT result).
+21. Results 4: the referent of "+0.006 would" named — the run-level residual (about −0.01 nats, −0.0137 on
+    `ts_gsr`), with the sign logic (positive deviation lowers sts) and the W = 60 deviation +0.00014 cited.
+22. Results 4 and the residual table's caption: the level columns defined (all subjects, both runs, all windows;
+    392 cells at W = 60; run-level rows the whole-run plug-in sts) and distinguished from the pre-injection means.
+23. Residual table caption: why the run-level residual DiD equals the observed DiD (one prediction per run).
+24. Results 5 and the lag table: phase-randomised p at W = 60 and the global-fit sts DiD with its p-values for
+    every τ, from `lag_tables.md`.
+25. Results 5: spectral centroid defined (power-weighted mean frequency within 0.01–0.08 Hz; `rev_extra.py`).
+26. Results 6: the base of the manufacture percentages named (the real primary DiD, −0.0809) and the ± figures
+    identified as standard errors.
+27. Methods, Results 3 and Discussion made to agree: CCS-sts is the average over all samples of a quantity that is
+    zero at the mask-selected samples and −c elsewhere.
+28. Recommendations: "a significant remainder" replaced by the p and the weighting rule's reading.
+29. Both computations run (pre-run entry 15:31 UTC, outcomes 15:36 UTC): (a) the run-level cross-lag deviation,
+    reported in Results 4; (b) the regional sts–r₁ test, reported in Results 2, with the Discussion's applicability
+    paragraph and Limitations revised. The Limitations sentence "were not run" replaced by the outcomes.
+30. Supplement pointer S1: the redundancy prediction described (rtr should rise with a mirrored time course; it did
+    not; unsupported on either variant).
+31. Tables renumbered in order of appearance: the CCS/ΦR table is Table 3, the residual diagnostic Table 4, the
+    split-half test Table 5, the lag dependence Table 6; every reference updated, including the Figure 5 caption in
+    `captions_v2.md` and `scripts/15_figures_v2.py`.
+32. Results 2: the overlay cell of Figure 2c named (DMT run, window 6) and the 1,500 pairs identified as a seeded
+    random subsample.
+33. History: the hypothesis predates the 20-region fit (record's opening section, before the checks of 11 Sep and
+    before any script); the fit was a pipeline check under the script's "first" setting, marked in its docstring
+    as never to be reported from; it was inspected and showed a decrease; the initial commit carried both; the
+    hypothesis was kept as the workspace account's prediction rather than revised (`prespecification_summary.md`:
+    "the direction was never revised").
+34. Results 4: the reading of the plan's "near zero" branch stated — a residual DiD whose subject-bootstrap 95 % CI
+    includes zero — with the statement that the reading is made here, after the outcome, and not in the plan; the
+    observed CI [+0.0021, +0.0211] does not include zero.
+35. Figures: the captions file's `git nogit` acknowledged; the figures are to be regenerated by `run_all.sh`
+    (section 6) in a git checkout before submission [TK]. At the time of this entry `run_all.sh`, started 13:25 local
+    time on 15 Sep, is in section 2 (the W = 30 windowed run) and has not reached section 6.
+
+Conventions stated by this entry and used in the paper: (i) "near zero", for the residual DiD, means a subject-
+bootstrap 95 % CI that includes zero; (ii) the weighting rule of Methods is a write-up convention dated 9318997 and
+not a pre-specified rule. `notes/defence_questions.md` updated where an answer changed (Q4, Q14, Q23; the regional
+and cross-lag results added where they bear on an answer); `notes/companion_plain_language.md` given a status note.

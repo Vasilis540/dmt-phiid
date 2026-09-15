@@ -1,0 +1,16 @@
+# Run-level mean cross-lag deviation (partB10_crosslag_deviation.py; git=152cc6d; seed=20261120)
+
+Per subject and run, mean over the 6,555 pairs of corr(x_t, y_(t+1)) − a_y q and corr(y_t, x_(t+1)) − a_x q, from the run-level 4 × 4 correlation matrices (all finite TRs of the run; a_x, a_y and q as in partB4_diagnostic.py). Prediction recorded before the run (analysis_record.md, pre-run entry of 15 Sep 2026): negative on ts_gsr and near zero on ts_demean if pooling of non-stationary segments explains the run-level residual; near zero on both otherwise. 'Near zero' = subject-bootstrap 95 % CI includes zero.
+
+## ts_gsr
+
+Mean cross-lag deviation: DMT +0.00009, PCB +0.00009; grand mean +0.00009 [+0.00005, +0.00013] (subject bootstrap, 10000 draws), exact sign-flip p = 0.0004, positive in 13/14 subjects. SD of the deviation across pairs within a run 0.0390; mean absolute deviation 0.0312. Run-level residual of the diagnostic on the same runs: -0.0137 (-1.1 % of observed 1.2883); r(deviation, residual) across the 28 runs -0.277. Mean pair a 0.8666, mean pair |q| 0.1945.
+Per-subject mean deviation (two runs): [ 3.75264e-05  7.15375e-05  2.19891e-05  2.66087e-04  9.34147e-05  1.57059e-04 -1.70303e-05  1.25757e-04  2.05576e-04  7.91719e-05  3.42781e-05  1.53955e-04  3.10311e-05  8.60420e-06]
+Reading under the pre-run entry: positive.
+
+## ts_demean
+
+Mean cross-lag deviation: DMT -0.00753, PCB -0.00723; grand mean -0.00738 [-0.00902, -0.00588] (subject bootstrap, 10000 draws), exact sign-flip p = 0.0001, positive in 0/14 subjects. SD of the deviation across pairs within a run 0.0415; mean absolute deviation 0.0337. Run-level residual of the diagnostic on the same runs: +0.0008 (+0.1 % of observed 1.2205); r(deviation, residual) across the 28 runs -0.890. Mean pair a 0.8567, mean pair |q| 0.2544.
+Per-subject mean deviation (two runs): [-0.00890 -0.00631 -0.00775 -0.00567 -0.00676 -0.00454 -0.00484 -0.00705 -0.00863 -0.01276 -0.00414 -0.00889 -0.01393 -0.00316]
+Reading under the pre-run entry: negative.
+
