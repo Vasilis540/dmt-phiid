@@ -2762,3 +2762,13 @@ content did not change, are left as committed after the leave-two-out revision, 
    `notes/venue_options.md`.
 
 The TK markers remaining after this pass are listed in the closing report and in CLAUDE.md, "Remaining work".
+
+## Git history and the participant codes, 15 Sep 2026 (appended; nothing above edited)
+
+The participant codes removed from tracked files on 15 Sep 2026 remain in the repository's
+history before commit fa39ef2. The history is not rewritten: the paper and this record cite
+commit SHAs (44cec4f, e16ebba, 33f0b33, 84ea657, febf599, e46df8a, cb1b2cf, b4f98a8, 477cccc
+and later) as the audit trail of what was fixed when, and a rewrite would change every one of
+them. The codes are pseudonymous and were already public in the data authors' own release, so
+this repository's history adds no exposure that did not exist. The OS release in Methods is
+confirmed as Ubuntu 24.04.3 LTS (lsb_release, 15 Sep 2026).
