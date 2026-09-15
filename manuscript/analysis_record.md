@@ -2991,7 +2991,7 @@ and cross-lag results added where they bear on an answer); `notes/companion_plai
 2. `notes/companion_plain_language.md`: table numbers changed throughout to the revised ones (CCS/ΦR Table 3,
    residual Table 4, split-half Table 5, lag Table 6); a unit added after Results 2 for the regional sts–r₁ test
    and one within Results 4 for the run-level cross-lag deviation, each with the paper's numbers; the status
-   notes of the previous commit removed; the sceptic answers that the text revision of 16:46 UTC had made
+   notes of the previous commit removed; the sceptic answers that the text revision of 15:46 UTC had made
    false (statements that the paper does not say or define something it now does) updated to what the paper now
    says; glossary entries added for the spin test, the Vasa rotations and the cross-lag deviation.
 3. `run_all.sh` (started 13:25 local time): at 16:39 UTC the log's last step is `notes/partB2_ccs_verify.py`
@@ -3063,3 +3063,166 @@ now drawn from the signed mean, and the Discussion and Limitations sentences tha
 for the run-level residual will be revised to what the new statistic supports, whichever way it comes out; the
 signed mean remains reported. Exploratory in the sense of the closure entry: specified after the primary result,
 no confirmatory claim attaches to it. `run_all.sh` already runs the script in section 6.
+
+## The sign(q)-weighted cross-lag deviation: outcome, 15 Sep 2026 18:18 UTC (appended; nothing above edited)
+
+Run at 13f1c6d (clean; the pre-run entry's commit, 18:14 UTC). Every number below is quoted from
+`notes/review_results/partB/crosslag_deviation_tables.md` (log `crosslag_deviation_run.log`, CSV
+`crosslag_deviation.csv`), except the family conversions in item 3, whose provenance is stated there. The signed
+mean's numbers are identical to those of the 152cc6d run (shared bootstrap draws): `ts_gsr` +0.00009 [+0.00005,
++0.00013], p = 0.0004, 13 of 14; `ts_demean` −0.00738 [−0.00902, −0.00588], p = 0.0001, 0 of 14.
+
+Family check printed by the script before the data are loaded (symmetric AR(1) pair, a = 0.85, both cross-lag
+entries displaced by d): sts(q = +0.25, d = +0.0188) = 1.23142 = sts(q = −0.25, d = −0.0188), against 1.30246
+at (q = −0.25, d = +0.0188) and 1.25883 at d = 0; at q = +0.25 a deviation of +0.006 gives a residual of
+−0.0103, and at q = −0.25 the same +0.006 gives +0.0120. So sign(q) × d > 0 is what lowers sts below the AR(1)
+prediction, as the pre-run entry states.
+
+1. **`ts_gsr`.** Share of pairs with q < 0: 0.545 (DMT 0.543, placebo 0.546); mean deviation among the q > 0
+   pairs +0.00384, among the q < 0 pairs −0.00304 — the cancellation the fifth review described, seen directly.
+   Sign(q)-weighted mean: DMT +0.00381, placebo +0.00299; grand mean +0.00340 [+0.00300, +0.00380], sign-flip
+   p = 0.0001, positive in 14 of 14 subjects (per subject +0.00200 to +0.00459); r with the run-level residual
+   across the 28 runs −0.767. Slope of the deviation on q across pairs: DMT +0.0184, placebo +0.0142; grand mean
+   +0.0163 [+0.0141, +0.0187], p = 0.0001, 14 of 14; r with the run-level residual −0.545.
+   **Reading against the pre-run entry.** Positive, CI excluding zero, and of the order required: +0.0034 is 57 %
+   of the ≈ +0.006 that a coupling account of the whole run-level residual requires, inside the factor-of-two
+   band fixed before the run. The mechanism's signature is present on `ts_gsr`, and the earlier reading —
+   "pooling does not account for the run-level residual", drawn from the signed mean — is withdrawn: the signed
+   mean was uninformative there, as the fifth review said, because 54.5 % of the pairs have q < 0 and their
+   deviations (−0.00304 on average) cancel those of the q > 0 pairs (+0.00384). The slope is positive at
+   +0.0163, close to the +0.0175 (= +0.0034 / 0.1945, mean pair |q|) that a deviation proportional to q would
+   give at this sign(q)-weighted mean (the pre-run entry's derivation, evaluated at the observed value rather
+   than at +0.006), so on `ts_gsr` the deviation grows in near proportion to q.
+2. **`ts_demean`** (no prediction commissioned). Share of pairs with q < 0: 0.196 (DMT 0.162, placebo 0.230);
+   mean deviation among the q > 0 pairs −0.00582, among the q < 0 pairs −0.01441. Sign(q)-weighted mean: DMT
+   −0.00324, placebo −0.00199; grand mean −0.00262 [−0.00495, −0.00037], sign-flip p = 0.0532, positive in 5 of
+   14; r with the run-level residual across the 28 runs −0.969. Slope: DMT +0.0228, placebo +0.0193; grand mean
+   +0.0211 [+0.0194, +0.0227], p = 0.0001, 14 of 14; r with the residual −0.289. The value lies close to the
+   signed mean's side, as the pre-run entry said it would given what was already known, and the two inferences
+   disagree at the margin (bootstrap CI excluding zero, sign-flip p above 0.05). Its sign is the one the
+   mechanism gives for a variant on which a and the signed mean correlation moved in opposite directions after
+   injection (Results 2: a fell, the signed mean correlation rose), which would raise sts above the prediction;
+   the variant's run-level residual is +0.0008 (+0.1 %). Reported as a fact of the data; no interpretation
+   beyond that sentence is offered, and no claim rests on it. The slope is positive on both variants (+0.0163,
+   +0.0211): a deviation growing with q is present on both, and the variants differ in a uniform offset (signed
+   means +0.00009 and −0.00738; on `ts_demean` the deviation is negative among the q > 0 pairs and among the
+   q < 0 pairs alike).
+3. **Conversion to a residual on the family** (evaluated with `rev_phiid_fast.atoms_from_corr` on the symmetric
+   AR(1) pair with both cross-lag entries displaced, as the script's family check does; stated here, not in a
+   result file). At the operating point (0.85, 0.25) a deviation of +0.0034 gives a residual of −0.0061, i.e.
+   44 % of the observed run-level residual of −0.0137 on `ts_gsr`; at the pairs' mean run-level point
+   (a 0.8666, |q| 0.1945) it gives −0.0051 (37 %). On `ts_demean`, −0.0026 at (0.85, 0.25) gives +0.0050 against
+   an observed +0.0008. The conversion is the symmetric family's at one point and is a scale, not a fit.
+4. **What the statistic does and does not establish.** It establishes that at the run level the cross-lag
+   correlations depart from a_y q and a_x q in the direction that follows the sign of q, at a size that on the
+   family's scale accounts for about half of the run-level residual on `ts_gsr`; that residual is therefore no
+   longer unaccounted for by any mechanism named in the paper, and the rest of it is. It does not establish
+   which mechanism produces the departure: pooling of non-stationary segments (a and |q| falling together after
+   injection) and lagged interaction of the pairs whose sign follows that of their correlation (the coupled
+   family's deviation is ≈ 0.94c, B8 outcome above) give the same run-level signature. The same statistic within
+   windows (W = 60), where pooling across segments is weaker, would bear on the distinction; it has not been
+   computed, and the W = 60 figure the manuscript quotes from `residual_source.log` (+0.00014) is a signed mean,
+   subject to the same cancellation. The finite-sample null was not re-run for this statistic. No confirmatory
+   claim attaches to any of this (closure entry).
+
+Reported in the manuscript's Results 4 (in place of the reading drawn from the signed mean, which stays in the
+text as reported), Discussion ("What the finding is and is not") and Limitations; `notes/defence_questions.md`
+and `notes/companion_plain_language.md` updated where the reading changes.
+
+## Text revision after the fifth review, 15 Sep 2026 18:46 UTC (appended; nothing above edited except as stated here)
+
+Commissioned by V.S. on 15 Sep 2026 with the fifth review, whose one finding is quoted in the pre-run entry of
+18:14 UTC above; the computation it asked for is in that entry and the outcome entry of 18:18 UTC. This entry
+lists the changes to `manuscript/draft_v2.md` and the one edit above this entry. Every added number is quoted
+from `notes/review_results/partB/crosslag_deviation_tables.md`, `regional_sts_r1_tables.md`, the outcome entry of
+18:18 UTC or Table 1, as stated at each.
+
+**The cross-lag reading.** Results 4: the pooling passage is now its own paragraph. It keeps the signed mean as
+reported (its prediction, outcome and the correction of the commissioned sign), adds that the `ts_gsr` signed grand
+mean had been seen once before the pre-run entry of 15:35 UTC was written, states the fifth review's finding (the
+atoms' invariance under reversing the sign of one region's series, which reverses q and the deviation together;
+54.5 % of the `ts_gsr` pairs with q < 0 at the run level; mean deviation +0.00384 among the q > 0 pairs and
+−0.00304 among the q < 0 pairs), reports the sign(q)-weighted mean and the slope on both variants with the
+prediction and its reading rule, gives the family-scale conversion of the outcome entry as a scale and not a
+decomposition, and says what the statistic does not establish (pooling is not distinguished from lagged
+interaction whose sign follows the pair's correlation or from finite sampling; the finite-sample null's value of
+the statistic and its within-window value are not computed). Removed: "Pooling of non-stationary segments, as
+named, therefore does not account for the run-level residual on `ts_gsr`, which remains unaccounted for by any
+mechanism named in this paper". The coupled-family sentence now sets the ≈ +0.006 against the sign(q)-weighted
++0.0034 and says that the W = 60 figure (+0.00014, `residual_source.log`, "mean signed") is a signed mean open to
+the same cancellation; the earlier "no mean offset (+0.00014)" is qualified the same way. "The remainder is not
+located" becomes "What produces the run-level deviation, and the rest of the run-level residual and of the
+residual DiD, is not located." The sentence on the sign of the pooled covariance gives the share of pairs with
+q < 0 in place of "on `ts_gsr` the median pair q is near zero, so about half the pairs have q < 0".
+Discussion, "What the finding is and is not": the sentence that the deviation "does not support" pooling, "so that
+residual is unaccounted for by any mechanism named here", is replaced by what the sign(q)-weighted statistic
+supports — the sign and order the mechanism predicts, pooling a candidate for part of the run-level residual (on
+the family's scale somewhat under half of it) and not its established source. Limitations: the sentence on the
+two computations is rewritten (the signed mean first; its prior sighting; that revision's reading; the fifth
+review's finding; the sign(q)-weighted outcome; what it does not distinguish).
+
+**The thirteen items.**
+1. Discussion: "the autocorrelation change predicts the sign and 114 %" → "the per-pair diagnostic's prediction
+   from each pair's (a_x, a_y, q) gives the sign and 114 % ... (Results 4)", as the Abstract words it.
+2. Results 6: "except in one family (+29 %)" → "except in one matched pair (F2-ii, +29 %)" (the +29 % at
+   W = 840 is F2-ii, `notes/review_results/logs/sts_matched_null_F2.log`); "three of the four matched families" →
+   "three of the four matched pairs". Recommendations: "three of four families" → "three of the four matched pairs".
+3. Results 1: the net stated, −0.0017 nats, the sum of the DiDs of the block and the four negative atoms in
+   Table 1 (−0.00168 at full precision from `results/atoms_win60_115regions-all_ts_gsr_window.npy`).
+4. "Cell": Results 2 "0 of 18,336 cells" → "grid points"; Results 4 and the Table 4 caption "392 cells" /
+   "392 subject × run × window cells" → "subject × run × window combinations". The Methods definition is also
+   extended where it was contradicted by uses the item did not list: it now names W = 30 (the "four windowed cells"
+   of Results 4 and Table 4's W = 30 rows) and the run × period meaning kept in Results 4's description of the
+   finite-sample null ("the four cells' operating points", "every cell").
+5. Results 2: "one of those ten cells" → "one of the overlay's 20 variant × run × window combinations (Methods) —
+   `ts_gsr`, the DMT run, window 6".
+6. Results 4: the run-level deviation pointer is "(above)", in the rewritten coupled-family sentence.
+7. Revisions named by content wherever "this revision", "the present revision" or "the previous revision" stood,
+   not only in Limitations: Methods (the CCS definition check; the coupled family; the two additions to the
+   diagnostic) and Limitations (the additions with rules recorded on the day) → "the revision after the second
+   review"; Results 2 (the regional test), Results 4 (the entry stating the near-zero convention, now with its time,
+   15:46 UTC; the cross-lag deviation), Limitations (the two computations), the Supplement pointer and Data and code
+   availability → "the revision after the plain-language companion"; the sign(q)-weighted additions → "after the
+   fifth review".
+8. Status line: "15:31" → "15:35"; the revision after the fifth review added, with its record entries (18:14,
+   18:18 and this entry). Above this entry, in "Figures at 7c7809a; companion brought up to date, 15 Sep 2026
+   16:39 UTC", "the text revision of 16:46 UTC" is corrected to "15:46 UTC", a typing error; that is the only edit
+   above this entry.
+9. Table 4 caption: 1.1554 attributed to Tables 1 and 2, and 1.3085 to Results 1 and 6 (`lag_tables.md`).
+10. Results 2: sts − rtr at "Pearson +0.792 across the 115 regions (Spearman +0.618 on the cortical parcels, spin
+    p < 0.0001)"; the same defect in the next clause fixed with it: rtr at "Pearson +0.638 (Spearman +0.504 on the
+    cortical parcels, spin p = 0.0002)", the spin p belonging to the cortical Spearman (`regional_sts_r1_tables.md`).
+11. Abstract: "a pre-registered split-half test" → "a split-half test with its rule recorded before the run".
+12. Abstract, Results: "Across regions on the placebo baseline, regional MMI-sts follows regional r₁ as predicted
+    before the test (Pearson r = 0.863 over 115 regions, r² = 0.745; cortical Spearman 0.771, spin p < 0.0001), so a
+    spatial synergy map's exposure to regional differences in r₁ is present on these data." The commission's
+    "r = 0.86, spin p < 0.0001; r² = 0.75" is given at the file's precision: the spin p belongs to the cortical
+    Spearman, not to the 115-region Pearson, and r² is 0.7447 (`regional_sts_r1.csv`), which rounds to 0.74 at two
+    decimals.
+13. History: "That ordering rests on document order within the record, not on a commit: the hypothesis and the
+    fit entered git together, in the initial commit."
+
+**Numbers.** Removed: the two uses of the signed mean as evidence against pooling (+0.00009 in the Discussion and
+in the old coupled-family sentence; the signed mean itself stays in Results 4) and the "+0.1 %" repeated in the
+old signed-mean sentence (it stays in the sentence before). Added: the cross-lag values of the two entries above,
+item 3's net, item 10's +0.504 and item 12's values; nothing else.
+
+**Notes.** `notes/defence_questions.md`: header; Q2 (document order); Q3 and Q14 (the sign(q)-weighted reading in
+place of the signed-mean reading); Q12 and Q18 (revision named; "matched pairs"). `notes/companion_plain_language.md`:
+the run-level cross-lag unit rewritten; the cross-lag sentences of the Results 4, Discussion and Limitations units;
+glossary ("cross-lag deviation" revised, "sign(q)-weighted mean" added); the units that quoted or paraphrased
+changed text (title, the Abstract units, the Methods units on the redundancy functions, the coupled family, the
+diagnostic and History, Results 1, Results 2, the regional unit, Table 4, Results 6, applicability,
+Recommendations); the preamble of the problems list now says which items the revision after the fifth review
+completed. One error of the companion's own is corrected with them: its Results 4 unit said that a zero-mean spread
+of coupling makes the residual more negative and cannot produce the positive DiD; the paper says it raises the
+residual and cannot produce the negative run-level residual. `CLAUDE.md`: current state.
+
+**`run_all.sh`, a correction to the entry of 16:39 UTC.** That entry said the run had not finished, with
+`notes/partB2_ccs_verify.py` as the log's last step. The run had stopped: at 16:33:47 UTC that script raised
+`PermissionError: [Errno 13] Permission denied: '/root/.cache/uv/git-v0/checkouts'` while searching for the
+reference MATLAB toolbox, and `run_all.sh` (`set -euo pipefail`) exited; the traceback is the last text of
+`results/run_all.log` on the author's machine, whose last write is 16:33:48 UTC. Commit d145e1c (V.S., 17:03 UTC)
+makes the script tolerate a missing or unreadable uv cache. The [TK: run it once before submission] of Data and
+code availability stands; the run has to be restarted, and neither `partB10`, `partB11` nor `15_figures_v2` has
+run in it.
