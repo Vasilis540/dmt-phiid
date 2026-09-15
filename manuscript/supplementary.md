@@ -1,6 +1,6 @@
 # Supplementary tables
 
-Companion to `manuscript/draft.md`. Every value is quoted from the named results file. Nats throughout; N = 14; sign-flip p exact over 2^14 assignments, two-sided; CIs are subject-bootstrap 95 % (10,000 draws); seed 20261120.
+Companion to `manuscript/draft_v2.md`, which points to these tables as its Supplement S1 (the original pre-specified analysis; `manuscript/draft.md`, which they first accompanied, is kept as a record). Every value is quoted from the named results file. Nats throughout; N = 14; sign-flip p exact over 2^14 assignments, two-sided; CIs are subject-bootstrap 95 % (10,000 draws); seed 20261120.
 
 ## Table S1. Step contrast on the sensitivity windows 5–14 (bins 9–28) vs pre-injection windows 1–4, W = 60
 
@@ -150,4 +150,4 @@ Source: `results/proportionality.csv` (script `14_proportionality.py` at git dbf
 | global fit | ts_gsr | +0.0204 [+0.0048, +0.0340], 0.0248, 4 | less than proportional | 0.9082 [0.8994, 0.9167] | 0.6584 [0.4864, 0.8174] | −0.0801 [−0.1320, −0.0316] | −0.1216 [−0.1914, −0.0519] |
 | global fit | ts_demean | +0.0071 [−0.0167, +0.0292], 0.5623, 5 | proportional | 0.8967 [0.8856, 0.9074] | 0.7867 [0.5004, 1.0127] | −0.1035 [−0.1678, −0.0359] | −0.1315 [−0.2001, −0.0610] |
 
-Within-condition ratio changes (post − pre): windowed ts_gsr DMT +0.0034 [−0.0004, +0.0070], p = 0.1097, PCB +0.0028 [−0.0030, +0.0090], p = 0.3990; windowed ts_demean DMT −0.0093 [−0.0215, +0.0019], p = 0.1621, PCB +0.0001 [−0.0071, +0.0074], p = 0.9712; global ts_gsr DMT +0.0167 [+0.0052, +0.0279], p = 0.0183, PCB −0.0037 [−0.0116, +0.0044], p = 0.3949; global ts_demean DMT +0.0015 [−0.0183, +0.0203], p = 0.8799, PCB −0.0056 [−0.0143, +0.0042], p = 0.2753. The sts and TDMI DiDs reproduce Table 2 and `results/windowed_atoms_did_ts_gsr_win60.csv` (bootstrap CIs differ in the third decimal from the main-text values because the draw order differs; point estimates are identical).
+Within-condition ratio changes (post − pre): windowed ts_gsr DMT +0.0034 [−0.0004, +0.0070], p = 0.1097, PCB +0.0028 [−0.0030, +0.0090], p = 0.3990; windowed ts_demean DMT −0.0093 [−0.0215, +0.0019], p = 0.1621, PCB +0.0001 [−0.0071, +0.0074], p = 0.9712; global ts_gsr DMT +0.0167 [+0.0052, +0.0279], p = 0.0183, PCB −0.0037 [−0.0116, +0.0044], p = 0.3949; global ts_demean DMT +0.0015 [−0.0183, +0.0203], p = 0.8799, PCB −0.0056 [−0.0143, +0.0042], p = 0.2753. The sts DiD reproduces Table 2 of `draft_v2.md` and the TDMI DiD its Table 1, and both reproduce `results/windowed_atoms_did_ts_gsr_win60.csv` (bootstrap CIs differ in the third decimal from the main-text values because the draw order differs; point estimates are identical).

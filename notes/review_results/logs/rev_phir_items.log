@@ -1,0 +1,72 @@
+deconvolved W30 atoms ready for ts_gsr (116s)
+PhiR_deconv ts_gsr W30             primary                DiD +0.0307 [+0.0148, +0.0472] p=0.0023 neg 2/14 | phase p=0.0010 | DMT +0.0135 (p=0.008) PCB -0.0172 (p=0.019) placebo share 0.56 | FD DiD +0.0143 (p=0.245) | FD-resid +0.0257 [+0.0121, +0.0392] p=0.0045 2/14 SURVIVES
+PhiR_deconv ts_gsr W30             sensitivity            DiD +0.0309 [+0.0152, +0.0476] p=0.0024 neg 2/14 | phase p=0.0010 | DMT +0.0147 (p=0.006) PCB -0.0162 (p=0.023) placebo share 0.52 | FD DiD +0.0174 (p=0.155) | FD-resid +0.0259 [+0.0122, +0.0392] p=0.0040 2/14 SURVIVES
+PhiR_deconv ts_gsr W30             early                  DiD +0.0380 [+0.0185, +0.0591] p=0.0023 neg 1/14 | phase p=0.0010 | DMT +0.0227 (p=0.001) PCB -0.0153 (p=0.057) placebo share 0.40 | FD DiD +0.0366 (p=0.010) | FD-resid +0.0306 [+0.0134, +0.0479] p=0.0063 3/14 SURVIVES
+PhiR_deconv ts_gsr W30             late                   DiD +0.0248 [+0.0112, +0.0403] p=0.0042 neg 2/14 | phase p=0.0080 | DMT +0.0061 (p=0.209) PCB -0.0187 (p=0.008) placebo share 0.75 | FD DiD -0.0034 (p=0.807) | FD-resid +0.0218 [+0.0097, +0.0323] p=0.0054 2/14 SURVIVES
+PhiR_deconv ts_gsr W30             trend_a_placebo_line   DiD +0.0283 [+0.0150, +0.0426] p=0.0015 neg 1/14
+PhiR_deconv ts_gsr W30             trend_b_shared_slope   DiD +0.0304 [+0.0174, +0.0439] p=0.0006 neg 1/14
+sts_deconv ts_gsr W30              primary                DiD -0.0671 [-0.1012, -0.0352] p=0.0013 neg 13/14 | phase p=0.0010 | DMT -0.0469 (p=0.004) PCB +0.0202 (p=0.068) placebo share 0.30 | FD DiD +0.0143 (p=0.245) | FD-resid -0.0608 [-0.0861, -0.0329] p=0.0016 13/14 SURVIVES
+sts_deconv ts_gsr W30              sensitivity            DiD -0.0664 [-0.1012, -0.0349] p=0.0017 neg 12/14 | phase p=0.0010 | DMT -0.0492 (p=0.003) PCB +0.0171 (p=0.113) placebo share 0.26 | FD DiD +0.0174 (p=0.155) | FD-resid -0.0598 [-0.0849, -0.0318] p=0.0017 13/14 SURVIVES
+sts_deconv ts_gsr W30              early                  DiD -0.0801 [-0.1160, -0.0476] p=0.0005 neg 13/14 | phase p=0.0010 | DMT -0.0657 (p=0.000) PCB +0.0144 (p=0.188) placebo share 0.18 | FD DiD +0.0366 (p=0.010) | FD-resid -0.0700 [-0.0967, -0.0421] p=0.0006 13/14 SURVIVES
+sts_deconv ts_gsr W30              late                   DiD -0.0566 [-0.0965, -0.0213] p=0.0094 neg 11/14 | phase p=0.0020 | DMT -0.0318 (p=0.063) PCB +0.0248 (p=0.034) placebo share 0.44 | FD DiD -0.0034 (p=0.807) | FD-resid -0.0534 [-0.0826, -0.0210] p=0.0076 12/14 SURVIVES
+sts_deconv ts_gsr W30              trend_a_placebo_line   DiD -0.0694 [-0.1026, -0.0399] p=0.0009 neg 13/14
+sts_deconv ts_gsr W30              trend_b_shared_slope   DiD -0.0709 [-0.1018, -0.0430] p=0.0006 neg 13/14
+deconvolved W30 atoms ready for ts_demean (254s)
+PhiR_deconv ts_demean W30          primary                DiD +0.0509 [+0.0286, +0.0729] p=0.0013 neg 1/14 | phase p=0.0010 | DMT +0.0266 (p=0.019) PCB -0.0243 (p=0.004) placebo share 0.48 | FD DiD +0.0143 (p=0.245) | FD-resid +0.0440 [+0.0228, +0.0647] p=0.0029 3/14 SURVIVES
+PhiR_deconv ts_demean W30          sensitivity            DiD +0.0508 [+0.0288, +0.0722] p=0.0015 neg 2/14 | phase p=0.0010 | DMT +0.0268 (p=0.019) PCB -0.0240 (p=0.006) placebo share 0.47 | FD DiD +0.0174 (p=0.155) | FD-resid +0.0440 [+0.0230, +0.0648] p=0.0026 3/14 SURVIVES
+PhiR_deconv ts_demean W30          early                  DiD +0.0501 [+0.0251, +0.0743] p=0.0023 neg 1/14 | phase p=0.0010 | DMT +0.0346 (p=0.005) PCB -0.0155 (p=0.061) placebo share 0.31 | FD DiD +0.0366 (p=0.010) | FD-resid +0.0429 [+0.0208, +0.0656] p=0.0028 2/14 SURVIVES
+PhiR_deconv ts_demean W30          late                   DiD +0.0515 [+0.0268, +0.0784] p=0.0017 neg 3/14 | phase p=0.0010 | DMT +0.0203 (p=0.113) PCB -0.0312 (p=0.001) placebo share 0.61 | FD DiD -0.0034 (p=0.807) | FD-resid +0.0449 [+0.0196, +0.0716] p=0.0059 4/14 SURVIVES
+PhiR_deconv ts_demean W30          trend_a_placebo_line   DiD +0.0507 [+0.0289, +0.0727] p=0.0006 neg 1/14
+PhiR_deconv ts_demean W30          trend_b_shared_slope   DiD +0.0491 [+0.0276, +0.0702] p=0.0012 neg 2/14
+sts_deconv ts_demean W30           primary                DiD -0.0791 [-0.1162, -0.0456] p=0.0007 neg 12/14 | phase p=0.0010 | DMT -0.0541 (p=0.008) PCB +0.0250 (p=0.037) placebo share 0.32 | FD DiD +0.0143 (p=0.245) | FD-resid -0.0689 [-0.0979, -0.0382] p=0.0013 12/14 SURVIVES
+sts_deconv ts_demean W30           sensitivity            DiD -0.0781 [-0.1151, -0.0449] p=0.0007 neg 12/14 | phase p=0.0010 | DMT -0.0559 (p=0.007) PCB +0.0222 (p=0.059) placebo share 0.28 | FD DiD +0.0174 (p=0.155) | FD-resid -0.0679 [-0.0962, -0.0385] p=0.0015 12/14 SURVIVES
+sts_deconv ts_demean W30           early                  DiD -0.0881 [-0.1251, -0.0549] p=0.0004 neg 13/14 | phase p=0.0010 | DMT -0.0727 (p=0.001) PCB +0.0155 (p=0.135) placebo share 0.18 | FD DiD +0.0366 (p=0.010) | FD-resid -0.0765 [-0.1039, -0.0485] p=0.0005 13/14 SURVIVES
+sts_deconv ts_demean W30           late                   DiD -0.0718 [-0.1145, -0.0335] p=0.0031 neg 11/14 | phase p=0.0010 | DMT -0.0393 (p=0.068) PCB +0.0326 (p=0.018) placebo share 0.45 | FD DiD -0.0034 (p=0.807) | FD-resid -0.0628 [-0.0991, -0.0255] p=0.0061 12/14 SURVIVES
+sts_deconv ts_demean W30           trend_a_placebo_line   DiD -0.0819 [-0.1214, -0.0467] p=0.0006 neg 13/14
+sts_deconv ts_demean W30           trend_b_shared_slope   DiD -0.0811 [-0.1197, -0.0473] p=0.0005 neg 13/14
+PhiR ts_gsr W30                    primary                DiD +0.0007 [-0.0108, +0.0135] p=0.9155 neg 8/14 | phase p=0.8651 | DMT -0.0019 (p=0.517) PCB -0.0026 (p=0.579) placebo share 3.64 | FD DiD +0.0143 (p=0.245) | FD-resid -0.0006 [-0.0098, +0.0093] p=0.9116 7/14 does NOT survive
+PhiR ts_gsr W30                    sensitivity            DiD +0.0003 [-0.0109, +0.0127] p=0.9685 neg 8/14 | phase p=0.9510 | DMT -0.0020 (p=0.492) PCB -0.0023 (p=0.613) placebo share 8.85 | FD DiD +0.0174 (p=0.155) | FD-resid -0.0011 [-0.0100, +0.0086] p=0.8368 7/14 does NOT survive
+PhiR ts_gsr W30                    early                  DiD -0.0004 [-0.0133, +0.0146] p=0.9623 neg 9/14 | phase p=0.9471 | DMT -0.0021 (p=0.575) PCB -0.0017 (p=0.729) placebo share -4.44 | FD DiD +0.0366 (p=0.010) | FD-resid -0.0017 [-0.0126, +0.0107] p=0.7904 8/14 does NOT survive
+PhiR ts_gsr W30                    late                   DiD +0.0016 [-0.0099, +0.0136] p=0.8033 neg 6/14 | phase p=0.7393 | DMT -0.0018 (p=0.487) PCB -0.0034 (p=0.517) placebo share 2.11 | FD DiD -0.0034 (p=0.807) | FD-resid +0.0003 [-0.0087, +0.0096] p=0.9539 6/14 does NOT survive
+PhiR ts_gsr W30                    trend_a_placebo_line   DiD +0.0012 [-0.0088, +0.0125] p=0.8378 neg 6/14
+PhiR ts_gsr W30                    trend_b_shared_slope   DiD +0.0004 [-0.0093, +0.0111] p=0.9460 neg 7/14
+wrote /home/claude/dmt/notes/review_results/inference_rows_w30.csv (30 rows)
+
+(2) per-subject ΦR, W = 60, primary set (windows 6–14 vs 1–4): DMT change, PCB change, DiD
+   deconv ts_gsr   : DiD [ 0.0134  0.0433  0.0313  0.0070  0.0143  0.0124 -0.0040  0.0620  0.0328  0.0455  0.0081  0.0032 -0.0185 -0.0020]
+          DMT change [ 0.0015  0.0026  0.0148  0.0093  0.0171  0.0095  0.0057  0.0216  0.0096  0.0179 -0.0055  0.0010 -0.0045 -0.0102]
+          PCB change [-0.0119 -0.0407 -0.0165  0.0023  0.0028 -0.0029  0.0097 -0.0404 -0.0232 -0.0275 -0.0135 -0.0023  0.0140 -0.0082]
+          mean DiD +0.0178; positive 11/14; DMT rise 11/14; PCB fall 10/14; median DiD +0.0129; DiD without subject of max |DiD| +0.0144
+   deconv ts_demean: DiD [-0.0109  0.0097  0.0353  0.0161  0.0099  0.0016  0.0264  0.0531  0.1001  0.0853  0.0336  0.0663  0.0617  0.0017]
+          DMT change [-0.0112  0.0026  0.0289  0.0032  0.0288 -0.0167  0.0391  0.0384  0.0585  0.0548 -0.0010  0.0016  0.0720 -0.0343]
+          PCB change [-0.0004 -0.0071 -0.0065 -0.0129  0.0189 -0.0183  0.0126 -0.0147 -0.0417 -0.0305 -0.0346 -0.0647  0.0103 -0.0360]
+          mean DiD +0.0350; positive 13/14; DMT rise 10/14; PCB fall 11/14; median DiD +0.0300; DiD without subject of max |DiD| +0.0300
+   raw    ts_gsr   : DiD [-0.0153  0.0054  0.0208 -0.0053  0.0091 -0.0042 -0.0132  0.0170  0.0018  0.0440 -0.0040 -0.0092 -0.0290 -0.0086]
+          DMT change [-0.0182 -0.0027  0.0038 -0.0022  0.0053 -0.0012 -0.0044  0.0007  0.0004  0.0087 -0.0081 -0.0087 -0.0033 -0.0069]
+          PCB change [-0.0029 -0.0081 -0.0171  0.0031 -0.0037  0.0029  0.0088 -0.0163 -0.0014 -0.0353 -0.0041  0.0004  0.0257  0.0017]
+          mean DiD +0.0007; positive 6/14; DMT rise 5/14; PCB fall 8/14; median DiD -0.0041; DiD without subject of max |DiD| -0.0027
+   raw    ts_demean: DiD [-0.0258 -0.0150  0.0168  0.0040  0.0050 -0.0110  0.0076  0.0056  0.0619  0.0463  0.0081  0.0852  0.0394 -0.0080]
+          DMT change [-0.0222 -0.0013  0.0028 -0.0110  0.0131 -0.0099  0.0180  0.0045  0.0448  0.0300  0.0021  0.0456  0.0667 -0.0208]
+          PCB change [ 0.0036  0.0137 -0.0140 -0.0150  0.0081  0.0011  0.0104 -0.0012 -0.0172 -0.0163 -0.0060 -0.0396  0.0273 -0.0128]
+          mean DiD +0.0157; positive 10/14; DMT rise 9/14; PCB fall 8/14; median DiD +0.0066; DiD without subject of max |DiD| +0.0104
+   ts_gsr: per-subject ΦR DiD deconvolved vs raw r = +0.806 (Spearman +0.842); deconvolved ΦR DiD vs deconvolved sts DiD r = -0.769 (Spearman -0.675)
+   ts_demean: per-subject ΦR DiD deconvolved vs raw r = +0.876 (Spearman +0.943); deconvolved ΦR DiD vs deconvolved sts DiD r = -0.710 (Spearman -0.798)
+
+(3) ΦR by window, W = 60: group mean (SE over 14 subjects)
+   deconv ts_gsr    DMT: 0.1210(0.0038) 0.1153(0.0032) 0.1210(0.0036) 0.1199(0.0062) 0.1380(0.0051) 0.1306(0.0032) 0.1316(0.0045) 0.1302(0.0067) 0.1265(0.0056) 0.1283(0.0049) 0.1240(0.0033) 0.1207(0.0039) 0.1269(0.0025) 0.1131(0.0031)
+   deconv ts_gsr    PCB: 0.1375(0.0055) 0.1338(0.0082) 0.1300(0.0075) 0.1256(0.0029) 0.1308(0.0040) 0.1179(0.0056) 0.1273(0.0050) 0.1160(0.0036) 0.1156(0.0043) 0.1248(0.0081) 0.1221(0.0053) 0.1161(0.0026) 0.1169(0.0054) 0.1269(0.0089)
+          PCB pre-mean 0.1317 → post-mean 0.1204; per-subject PCB change [-0.0119 -0.0407 -0.0165  0.0023  0.0028 -0.0029  0.0097 -0.0404 -0.0232 -0.0275 -0.0135 -0.0023  0.0140 -0.0082]; fall in 10/14
+          PCB group mean by block: windows 1–4 0.1317, 5 0.1308, 6–9 0.1192, 10–14 0.1214 | DMT: 0.1193, 0.1380, 0.1297, 0.1226
+   deconv ts_demean DMT: 0.1424(0.0062) 0.1452(0.0096) 0.1526(0.0146) 0.1576(0.0117) 0.1569(0.0083) 0.1660(0.0167) 0.1905(0.0231) 0.1626(0.0108) 0.1650(0.0078) 0.1610(0.0126) 0.1664(0.0155) 0.1774(0.0180) 0.1809(0.0220) 0.1452(0.0114)
+   deconv ts_demean PCB: 0.1743(0.0113) 0.1511(0.0097) 0.1612(0.0110) 0.1650(0.0196) 0.1640(0.0121) 0.1563(0.0137) 0.1592(0.0125) 0.1487(0.0100) 0.1408(0.0115) 0.1413(0.0070) 0.1357(0.0069) 0.1436(0.0092) 0.1504(0.0135) 0.1455(0.0126)
+          PCB pre-mean 0.1629 → post-mean 0.1468; per-subject PCB change [-0.0004 -0.0071 -0.0065 -0.0129  0.0189 -0.0183  0.0126 -0.0147 -0.0417 -0.0305 -0.0346 -0.0647  0.0103 -0.0360]; fall in 11/14
+          PCB group mean by block: windows 1–4 0.1629, 5 0.1640, 6–9 0.1513, 10–14 0.1433 | DMT: 0.1494, 0.1569, 0.1710, 0.1662
+   raw    ts_gsr    DMT: 0.0952(0.0021) 0.0951(0.0025) 0.0976(0.0021) 0.0966(0.0032) 0.0982(0.0040) 0.0926(0.0018) 0.0951(0.0029) 0.0930(0.0038) 0.0904(0.0025) 0.0954(0.0025) 0.0918(0.0021) 0.0921(0.0026) 0.0970(0.0028) 0.0938(0.0017)
+   raw    ts_gsr    PCB: 0.1042(0.0043) 0.1008(0.0046) 0.1004(0.0053) 0.0958(0.0019) 0.1025(0.0039) 0.0981(0.0046) 0.1010(0.0045) 0.0946(0.0031) 0.0922(0.0030) 0.0988(0.0041) 0.0969(0.0043) 0.0905(0.0022) 0.0934(0.0028) 0.1072(0.0079)
+          PCB pre-mean 0.1003 → post-mean 0.0970; per-subject PCB change [-0.0029 -0.0081 -0.0171  0.0031 -0.0037  0.0029  0.0088 -0.0163 -0.0014 -0.0353 -0.0041  0.0004  0.0257  0.0017]; fall in 8/14
+          PCB group mean by block: windows 1–4 0.1003, 5 0.1025, 6–9 0.0965, 10–14 0.0974 | DMT: 0.0961, 0.0982, 0.0928, 0.0940
+   raw    ts_demean DMT: 0.1224(0.0059) 0.1187(0.0065) 0.1217(0.0098) 0.1204(0.0083) 0.1279(0.0074) 0.1277(0.0154) 0.1463(0.0191) 0.1288(0.0113) 0.1232(0.0064) 0.1236(0.0096) 0.1339(0.0132) 0.1350(0.0152) 0.1477(0.0179) 0.1253(0.0087)
+   raw    ts_demean PCB: 0.1326(0.0073) 0.1159(0.0045) 0.1202(0.0073) 0.1307(0.0146) 0.1373(0.0091) 0.1245(0.0091) 0.1258(0.0088) 0.1216(0.0095) 0.1193(0.0108) 0.1182(0.0055) 0.1154(0.0056) 0.1102(0.0049) 0.1219(0.0075) 0.1294(0.0119)
+          PCB pre-mean 0.1248 → post-mean 0.1207; per-subject PCB change [ 0.0036  0.0137 -0.0140 -0.0150  0.0081  0.0011  0.0104 -0.0012 -0.0172 -0.0163 -0.0060 -0.0396  0.0273 -0.0128]; fall in 8/14
+          PCB group mean by block: windows 1–4 0.1248, 5 0.1373, 6–9 0.1228, 10–14 0.1190 | DMT: 0.1208, 0.1279, 0.1315, 0.1331
+done (290s)

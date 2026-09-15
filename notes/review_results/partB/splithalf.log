@@ -1,0 +1,25 @@
+# ts_gsr, W = 60
+full-set check: r(res, pub CCS) = +0.799 (p = 0.001; ρ +0.736); r(res, code CCS) = +0.729 (p = 0.003; ρ +0.710); r(res, autocorr) = -0.780 (p = 0.001; ρ -0.635)
+split-half reliability (odd vs even) — residual DiD: +0.494 (p = 0.072; ρ +0.446); pub CCS-sts DiD: +0.302 (p = 0.294; ρ +0.174); code CCS-sts DiD: +0.196 (p = 0.501; ρ +0.042); autocorrelation DiD: +0.741 (p = 0.002; ρ +0.538); MMI sts DiD: +0.717 (p = 0.004; ρ +0.525)
+group means — residual DiD odd +0.0067, even +0.0164; pub CCS-sts DiD odd +0.0033, even +0.0054; code CCS-sts DiD odd +0.0027, even +0.0046
+[pub] within-half: r(CCS_odd, res_odd) = +0.847 (p = 0.000; ρ +0.780), r(CCS_even, res_even) = +0.783 (p = 0.001; ρ +0.802) (mean +0.815)
+[pub] cross-half:  r(CCS_odd, res_even) = +0.160 (p = 0.585; ρ +0.191), r(CCS_even, res_odd) = +0.478 (p = 0.084; ρ +0.367) (mean +0.319); cross/within = 0.39
+[pub] partial on the same-half autocorrelation DiD: within +0.814, +0.816 (mean +0.815); cross +0.132, +0.176 (mean +0.154)
+[code] within-half: r(CCS_odd, res_odd) = +0.773 (p = 0.001; ρ +0.648), r(CCS_even, res_even) = +0.752 (p = 0.002; ρ +0.793) (mean +0.763)
+[code] cross-half:  r(CCS_odd, res_even) = +0.075 (p = 0.800; ρ +0.042), r(CCS_even, res_odd) = +0.385 (p = 0.174; ρ +0.292) (mean +0.230); cross/within = 0.30
+[code] partial on the same-half autocorrelation DiD: within +0.711, +0.718 (mean +0.714); cross +0.003, +0.023 (mean +0.013)
+context — r(res_odd, ac_odd) = -0.758 (p = 0.002; ρ -0.776); r(res_even, ac_even) = -0.777 (p = 0.001; ρ -0.732); r(pubCCS_odd, ac_odd) = -0.518 (p = 0.058; ρ -0.556); r(pubCCS_even, ac_even) = -0.402 (p = 0.154; ρ -0.341); cross r(res_odd, ac_even) = -0.385 (p = 0.174; ρ -0.389); r(res_even, ac_odd) = -0.700 (p = 0.005; ρ -0.547)
+
+# ts_demean, W = 60
+full-set check: r(res, pub CCS) = +0.875 (p = 0.000; ρ +0.793); r(res, code CCS) = +0.838 (p = 0.000; ρ +0.736); r(res, autocorr) = -0.597 (p = 0.024; ρ -0.525)
+split-half reliability (odd vs even) — residual DiD: +0.216 (p = 0.459; ρ +0.143); pub CCS-sts DiD: +0.417 (p = 0.138; ρ +0.398); code CCS-sts DiD: +0.518 (p = 0.058; ρ +0.495); autocorrelation DiD: +0.712 (p = 0.004; ρ +0.565); MMI sts DiD: +0.686 (p = 0.007; ρ +0.684)
+group means — residual DiD odd +0.0193, even +0.0179; pub CCS-sts DiD odd +0.0137, even +0.0106; code CCS-sts DiD odd +0.0153, even +0.0118
+[pub] within-half: r(CCS_odd, res_odd) = +0.884 (p = 0.000; ρ +0.829), r(CCS_even, res_even) = +0.878 (p = 0.000; ρ +0.670) (mean +0.881)
+[pub] cross-half:  r(CCS_odd, res_even) = +0.274 (p = 0.344; ρ +0.196), r(CCS_even, res_odd) = +0.292 (p = 0.311; ρ +0.327) (mean +0.283); cross/within = 0.32
+[pub] partial on the same-half autocorrelation DiD: within +0.823, +0.874 (mean +0.849); cross +0.247, +0.327 (mean +0.287)
+[code] within-half: r(CCS_odd, res_odd) = +0.856 (p = 0.000; ρ +0.798), r(CCS_even, res_even) = +0.821 (p = 0.000; ρ +0.582) (mean +0.838)
+[code] cross-half:  r(CCS_odd, res_even) = +0.323 (p = 0.260; ρ +0.244), r(CCS_even, res_odd) = +0.313 (p = 0.276; ρ +0.310) (mean +0.318); cross/within = 0.38
+[code] partial on the same-half autocorrelation DiD: within +0.796, +0.814 (mean +0.805); cross +0.289, +0.365 (mean +0.327)
+context — r(res_odd, ac_odd) = -0.688 (p = 0.007; ρ -0.600); r(res_even, ac_even) = -0.386 (p = 0.173; ρ -0.424); r(pubCCS_odd, ac_odd) = -0.575 (p = 0.031; ρ -0.508); r(pubCCS_even, ac_even) = -0.250 (p = 0.388; ρ -0.174); cross r(res_odd, ac_even) = -0.598 (p = 0.024; ρ -0.508); r(res_even, ac_odd) = -0.052 (p = 0.860; ρ -0.059)
+
+VERDICT (rule of the record, ts_gsr, published CCS): within-half mean +0.815, cross-half mean +0.319 (+0.160, +0.478) → shared component is estimation noise: both reported as null with this test as the evidence

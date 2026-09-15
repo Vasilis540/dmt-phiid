@@ -1,0 +1,70 @@
+# rev_regional_phir.py EXPLORATORY series=deconv variant=ts_gsr estimator=win60 regions=115 excluded_regions=20 pre=windows1-4 post=windows6-14 signflip=exact2^14 two-sided fdr=BH q=0.05 spin=rotated_Schaefer_100 (10000 rotations, cortical only) bootstrap=10000 seed=20261120
+per-region atoms computed (7s)
+  consistency                  max_abs_diff_region_mean_vs_saved_pair_mean_16atoms +0.0000  atoms_win60_115regions-all_ts_gsr_window.npy
+
+== per-region ΦR DiD (EXPLORATORY): 3 of 115 survive BH FDR q=0.05 (p threshold 0.00130); of these 3 positive, 0 negative; group-mean DiD positive in 112/115 regions
+  regional_did                 whole_brain_did_mean_over_regions                +0.0178 [+0.0068, +0.0289] p=0.0099  equals whole-brain pair-mean ΦR DiD
+  regional_did                 n_regions_fdr_significant                        +3.0000  BH q=0.05, p_thresh=0.00130
+  regional_did                 n_fdr_significant_positive                       +3.0000  
+  regional_did                 n_fdr_significant_negative                       +0.0000  
+  regional_did                 n_groupmean_positive_of_115                      +112.0000  
+  regional_did                 n_uncorrected_p_below_0.05                       +38.0000  
+  regional_did                 min_uncorrected_p                                +0.0001  region RH_Default_Temp_3 did=+0.0364
+  regional_did                 n_cortical_fdr_significant                       +3.0000  
+  regional_did                 n_subcortical_fdr_significant                    +0.0000  
+  regional_did                 sd_of_groupmean_did_across_regions               +0.0085  
+  regional_did                 range_of_groupmean_did_across_regions            +0.0422  min -0.0058 max +0.0364
+  network_mean_did             Vis_n17                                          +0.0221 [+0.0091, +0.0355] p=0.0082  pos=12/14; fdr_sig=0
+  network_mean_did             SomMot_n14                                       +0.0202 [+0.0059, +0.0359] p=0.0200  pos=12/14; fdr_sig=2
+  network_mean_did             DorsAttn_n14                                     +0.0208 [+0.0104, +0.0322] p=0.0022  pos=11/14; fdr_sig=0
+  network_mean_did             SalVentAttn_n12                                  +0.0206 [+0.0066, +0.0364] p=0.0172  pos=10/14; fdr_sig=0
+  network_mean_did             Limbic_n5                                        +0.0121 [+0.0030, +0.0216] p=0.0273  pos=10/14; fdr_sig=0
+  network_mean_did             Cont_n13                                         +0.0094 [-0.0038, +0.0227] p=0.2028  pos=9/14; fdr_sig=0
+  network_mean_did             Default_n24                                      +0.0190 [+0.0078, +0.0300] p=0.0076  pos=11/14; fdr_sig=1
+  network_mean_did             Subcortex_n16                                    +0.0129 [+0.0030, +0.0228] p=0.0276  pos=10/14; fdr_sig=0
+  regional_did_fdr_regions     LH_SomMot_4                                      +0.0305 p=0.0007  orig_index=12 net=2 pos=12/14
+  regional_did_fdr_regions     RH_SomMot_4                                      +0.0250 p=0.0006  orig_index=61 net=2 pos=13/14
+  regional_did_fdr_regions     RH_Default_Temp_3                                +0.0364 p=0.0001  orig_index=92 net=7 pos=14/14
+
+== spin test: 10000 rotations of the 100 cortical parcels (7s)
+  spatial_spin_cortical99      rho_5HT2A                                        -0.1388 p=0.1951  two-sided spin p; Vasa one-sided-avg p=0.0677; null SD 0.104; BH(5) sig=0
+  spatial_descriptive_115      rho_5HT2A_incl_subcortex_no_p                    +0.0467  no spatial null for subcortex
+  spatial_spin_cortical99      rho_5HT1A                                        -0.0692 p=0.6416  two-sided spin p; Vasa one-sided-avg p=0.3096; null SD 0.130; BH(5) sig=0
+  spatial_descriptive_115      rho_5HT1A_incl_subcortex_no_p                    +0.0226  no spatial null for subcortex
+  spatial_spin_cortical99      rho_5HT1B                                        -0.0070 p=0.9486  two-sided spin p; Vasa one-sided-avg p=0.4544; null SD 0.106; BH(5) sig=0
+  spatial_descriptive_115      rho_5HT1B_incl_subcortex_no_p                    +0.0596  no spatial null for subcortex
+  spatial_spin_cortical99      rho_5HT4                                         -0.0951 p=0.4228  two-sided spin p; Vasa one-sided-avg p=0.1752; null SD 0.115; BH(5) sig=0
+  spatial_descriptive_115      rho_5HT4_incl_subcortex_no_p                     -0.0379  no spatial null for subcortex
+  spatial_spin_cortical99      rho_5HTT                                         +0.1308 p=0.2792  two-sided spin p; Vasa one-sided-avg p=0.1769; null SD 0.117; BH(5) sig=0
+  spatial_descriptive_115      rho_5HTT_incl_subcortex_no_p                     -0.0183  no spatial null for subcortex
+  spatial_spin_cortical99      bh_threshold_across_5_maps                       +0.0000  
+
+== workspace comparison (network-level proxies of Luppi et al. 2024; EXPLORATORY)
+  workspace_primary_Default+Cont workspace_minus_nonworkspace_vs_noncortex_ws     -0.0047 [-0.0079, -0.0013] p=0.0233  n_ws=37 n_non=62 pos=4/14
+  workspace_primary_Default+Cont workspace_mean_did_vs_noncortex_ws               +0.0156 [+0.0041, +0.0271] p=0.0244  pos=10/14
+  workspace_primary_Default+Cont nonworkspace_mean_did_vs_noncortex_ws            +0.0203 [+0.0091, +0.0328] p=0.0035  pos=13/14
+  workspace_primary_Default+Cont gateway_proxy_minus_nonworkspace_vs_noncortex_ws -0.0013 [-0.0051, +0.0027] p=0.5317  n=24 pos=7/14
+  workspace_primary_Default+Cont broadcaster_proxy_minus_nonworkspace_vs_noncortex_ws -0.0109 [-0.0161, -0.0052] p=0.0037  n=13 pos=2/14
+  workspace_primary_Default+Cont workspace_minus_nonworkspace_vs_noncortex_ws+subcortex -0.0032 [-0.0060, -0.0004] p=0.0563  n_ws=37 n_non=78 pos=5/14
+  workspace_primary_Default+Cont workspace_mean_did_vs_noncortex_ws+subcortex     +0.0156 [+0.0038, +0.0269] p=0.0244  pos=10/14
+  workspace_primary_Default+Cont nonworkspace_mean_did_vs_noncortex_ws+subcortex  +0.0188 [+0.0081, +0.0304] p=0.0054  pos=11/14
+  workspace_primary_Default+Cont gateway_proxy_minus_nonworkspace_vs_noncortex_ws+subcortex +0.0002 [-0.0033, +0.0037] p=0.9130  n=24 pos=7/14
+  workspace_primary_Default+Cont broadcaster_proxy_minus_nonworkspace_vs_noncortex_ws+subcortex -0.0094 [-0.0146, -0.0040] p=0.0066  n=13 pos=2/14
+  workspace_primary_Default+Cont gateway_proxy_minus_broadcaster_proxy            +0.0095 [+0.0028, +0.0158] p=0.0176  n_gw=24 n_bc=13
+  workspace_primary_Default+Cont dmt_change_workspace_minus_nonworkspace_cortex   +0.0007 [-0.0012, +0.0026] p=0.4911  
+  workspace_primary_Default+Cont pcb_change_workspace_minus_nonworkspace_cortex   +0.0054 [+0.0020, +0.0090] p=0.0138  
+  workspace_named_subregion    workspace_minus_nonworkspace_vs_noncortex_ws     -0.0028 [-0.0074, +0.0016] p=0.2582  n_ws=26 n_non=73 pos=6/14
+  workspace_named_subregion    workspace_mean_did_vs_noncortex_ws               +0.0165 [+0.0052, +0.0273] p=0.0166  pos=11/14
+  workspace_named_subregion    nonworkspace_mean_did_vs_noncortex_ws            +0.0193 [+0.0076, +0.0319] p=0.0073  pos=11/14
+  workspace_named_subregion    gateway_proxy_minus_nonworkspace_vs_noncortex_ws -0.0008 [-0.0055, +0.0039] p=0.7618  n=21 pos=6/14
+  workspace_named_subregion    broadcaster_proxy_minus_nonworkspace_vs_noncortex_ws -0.0115 [-0.0187, -0.0045] p=0.0101  n=5 pos=3/14
+  workspace_named_subregion    workspace_minus_nonworkspace_vs_noncortex_ws+subcortex -0.0017 [-0.0058, +0.0021] p=0.4432  n_ws=26 n_non=89 pos=8/14
+  workspace_named_subregion    workspace_mean_did_vs_noncortex_ws+subcortex     +0.0165 [+0.0051, +0.0275] p=0.0166  pos=11/14
+  workspace_named_subregion    nonworkspace_mean_did_vs_noncortex_ws+subcortex  +0.0181 [+0.0072, +0.0299] p=0.0083  pos=11/14
+  workspace_named_subregion    gateway_proxy_minus_nonworkspace_vs_noncortex_ws+subcortex +0.0004 [-0.0040, +0.0047] p=0.8698  n=21 pos=7/14
+  workspace_named_subregion    broadcaster_proxy_minus_nonworkspace_vs_noncortex_ws+subcortex -0.0103 [-0.0168, -0.0038] p=0.0116  n=5 pos=2/14
+  workspace_named_subregion    gateway_proxy_minus_broadcaster_proxy            +0.0107 [+0.0035, +0.0175] p=0.0135  n_gw=21 n_bc=5
+  workspace_named_subregion    dmt_change_workspace_minus_nonworkspace_cortex   +0.0021 [-0.0006, +0.0050] p=0.1887  
+  workspace_named_subregion    pcb_change_workspace_minus_nonworkspace_cortex   +0.0049 [+0.0005, +0.0100] p=0.0686  
+
+wrote /home/claude/dmt/notes/review_results/regional/regional_phir_deconv_ts_gsr_win60.csv (38s)

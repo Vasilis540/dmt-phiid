@@ -1,0 +1,23 @@
+
+F3 empirical ACFs (realised after taper/clip): placebo lags 1-6 [ 0.868  0.539  0.172 -0.085 -0.174 -0.145] | DMT post [ 0.858  0.507  0.123 -0.13  -0.194 -0.133]
+   analytic sts as a function of lag-1 autocorrelation r1 (rows) and cross-correlation q (cols):
+        q=    0.00    0.20    0.40    0.60    0.80
+   r1=0.80   1.022   1.009   0.968   0.891   0.758
+   r1=0.84   1.223   1.209   1.163   1.076   0.922
+   r1=0.86   1.346   1.331   1.283   1.191   1.025
+   r1=0.87   1.414   1.399   1.350   1.255   1.083
+   r1=0.88   1.489   1.473   1.423   1.326   1.147
+   r1=0.90   1.661   1.644   1.591   1.488   1.295
+   matching by q: sts difference over q in [0, 0.95] ranges -0.5994 .. -0.0538 -> NO matched pair: the true sts cannot be held fixed while r1 falls, at any cross-correlation
+
+=== F3-b identical S4 (r1 0.8681 vs 0.8681, q = 0.2), DMT-like higher-lag ACF: lags 2-6 placebo [ 0.539  0.172 -0.085 -0.174 -0.145] vs modified-DMT [ 0.539  0.172 -0.085 -0.173 -0.14 ]
+   analytic sts baseline 1.3853 vs shifted 1.3853 (difference +0.00000); xtx 0.6850 vs 0.6850
+   W= 30: est sts baseline 1.0344, shifted 1.0333; manufactured difference -0.0010 ± 0.0067 = -1 % of the real |DiD|  (20s)
+   W= 60: est sts baseline 1.1862, shifted 1.1800; manufactured difference -0.0062 ± 0.0047 = -8 % of the real |DiD|  (38s)
+   W=840: est sts baseline 1.3396, shifted 1.3409; manufactured difference +0.0013 ± 0.0013 = +2 % of the real |DiD|  (63s)
+
+=== F3-c reference, unmatched: placebo ACF vs DMT-post ACF at q = 0.2: analytic sts 1.3853 vs 1.3166 (true difference -0.0688; real windowed DiD -0.0809)
+   W= 30: est sts baseline 1.0345 (analytic 1.3853), shifted 0.9834 (analytic 1.3166); estimated difference -0.0511 ± 0.0066 vs true -0.0688  (82s)
+   W= 60: est sts baseline 1.1837 (analytic 1.3853), shifted 1.1280 (analytic 1.3166); estimated difference -0.0557 ± 0.0046 vs true -0.0688  (101s)
+   W=840: est sts baseline 1.3418 (analytic 1.3853), shifted 1.2738 (analytic 1.3166); estimated difference -0.0680 ± 0.0013 vs true -0.0688  (128s)
+done

@@ -1,0 +1,64 @@
+(a) per-subject DiD agreement (primary set):
+   ts_gsr W60: autocorr vs sts  Pearson r = +0.953 (p = 0.0000), Spearman rho = +0.903 | PhiR vs sts  Pearson r = -0.552 (p = 0.041), Spearman rho = -0.477
+      subject DiDs autocorr: [-0.0161 -0.0024 -0.0260 -0.0200  0.0005 -0.0186 -0.0084 -0.0642 -0.0312 -0.0201 -0.0143 -0.0080 -0.0003  0.0242]
+      subject DiDs sts     : [-0.0813 -0.0446 -0.1572 -0.1379 -0.0118 -0.0536 -0.0653 -0.2795 -0.1316 -0.1533 -0.0405 -0.0677 -0.0027  0.0949]
+   ts_gsr global/bins: autocorr(run-std) vs sts  Pearson r = +0.448 (p = 0.1083), Spearman rho = +0.574
+   ts_demean W60: autocorr vs sts  Pearson r = +0.958 (p = 0.0000), Spearman rho = +0.925 | PhiR vs sts  Pearson r = -0.548 (p = 0.043), Spearman rho = -0.701
+      subject DiDs autocorr: [-0.0135 -0.0086 -0.0264 -0.0308 -0.0007 -0.0161 -0.0105 -0.0667 -0.0365 -0.0358 -0.0164 -0.0291 -0.0304  0.0196]
+      subject DiDs sts     : [-0.0343  0.0040 -0.1578 -0.1458 -0.0292 -0.0305 -0.0863 -0.3111 -0.2125 -0.1967 -0.0683 -0.1544 -0.1141  0.0935]
+   ts_demean global/bins: autocorr(run-std) vs sts  Pearson r = +0.070 (p = 0.8112), Spearman rho = +0.143
+
+(b) group-mean window series (W60), autocorr vs sts:
+   ts_gsr: r over 28 condition-windows = +0.977; within DMT r = +0.986; within PCB r = +0.945
+      DMT autocorr by window: [0.851 0.847 0.843 0.851 0.836 0.823 0.829 0.833 0.835 0.841 0.843 0.841 0.845 0.855]
+      DMT sts      by window: [1.163 1.145 1.139 1.176 1.100 1.047 1.069 1.079 1.090 1.101 1.130 1.127 1.140 1.179]
+      PCB autocorr by window: [0.844 0.841 0.849 0.848 0.833 0.848 0.844 0.851 0.852 0.851 0.851 0.850 0.853 0.853]
+      PCB sts      by window: [1.121 1.128 1.150 1.152 1.088 1.146 1.140 1.174 1.166 1.171 1.181 1.182 1.193 1.178]
+   ts_demean: r over 28 condition-windows = +0.938; within DMT r = +0.920; within PCB r = +0.956
+      DMT autocorr by window: [0.841 0.839 0.835 0.839 0.840 0.822 0.816 0.819 0.824 0.828 0.828 0.832 0.826 0.847]
+      DMT sts      by window: [1.109 1.101 1.084 1.107 1.050 0.996 0.981 1.014 1.020 1.039 1.055 1.057 1.050 1.121]
+      PCB autocorr by window: [0.831 0.832 0.838 0.830 0.822 0.835 0.833 0.844 0.845 0.845 0.849 0.845 0.842 0.849]
+      PCB sts      by window: [1.054 1.083 1.107 1.084 1.038 1.085 1.079 1.124 1.123 1.123 1.148 1.143 1.135 1.135]
+
+(c) band-pass and the level of r1:
+   ideal 0.01–0.08 Hz band-pass, flat in-band spectrum, TR 2 s: implied lag-1 autocorrelation r1 = 0.8176
+   ts_gsr: observed run-level r1 (mean over subjects × conditions × regions) = 0.8661; share of power inside 0.01–0.08 Hz = 0.992
+      in-band spectral centroid (Hz): DMT pre 0.0369 post 0.0383 | PCB pre 0.0374 post 0.0364 | DiD +0.00231 Hz [+0.00060, +0.00395] sign-flip p = 0.0217, 12/14 positive
+   ts_demean: observed run-level r1 (mean over subjects × conditions × regions) = 0.8561; share of power inside 0.01–0.08 Hz = 0.992
+      in-band spectral centroid (Hz): DMT pre 0.0385 post 0.0402 | PCB pre 0.0390 post 0.0378 | DiD +0.00292 Hz [+0.00105, +0.00469] sign-flip p = 0.0105, 12/14 positive
+
+(d) variance non-stationarity: window variance / run variance (mean over regions), W60, primary-form DiD:
+   raw         ts_gsr   : DMT pre 1.277 post 0.889 | PCB pre 0.936 post 1.062 | DiD -0.5137 [-0.6740, -0.3581] p = 0.0001, 14/14 negative
+      DMT group mean by window: [1.138 1.222 1.323 1.425 0.998 0.707 0.755 0.745 0.791 0.911 0.937 0.989 1.067 1.102]
+      PCB group mean by window: [0.819 0.953 1.010 0.964 0.798 0.904 0.925 1.011 1.022 1.037 1.094 1.097 1.199 1.273]
+   raw         ts_demean: DMT pre 1.207 post 0.907 | PCB pre 0.930 post 1.059 | DiD -0.4278 [-0.6169, -0.2669] p = 0.0004, 13/14 negative
+      DMT group mean by window: [1.077 1.129 1.262 1.359 1.127 0.752 0.834 0.719 0.797 0.901 0.959 1.038 1.082 1.086]
+      PCB group mean by window: [0.834 0.906 0.971 1.010 0.862 0.854 0.936 1.027 1.036 1.033 1.092 1.089 1.187 1.274]
+   deconvolved ts_gsr   : DMT pre 1.252 post 0.907 | PCB pre 0.970 post 1.049 | DiD -0.4245 [-0.5655, -0.2902] p = 0.0001, 14/14 negative
+      DMT group mean by window: [1.149 1.186 1.287 1.384 0.975 0.782 0.790 0.790 0.820 0.928 0.958 1.004 1.039 1.050]
+      PCB group mean by window: [0.879 0.997 0.997 1.005 0.816 0.892 0.950 0.998 1.014 1.023 1.082 1.099 1.170 1.213]
+   deconvolved ts_demean: DMT pre 1.183 post 0.934 | PCB pre 0.986 post 1.040 | DiD -0.3033 [-0.4868, -0.1477] p = 0.0021, 12/14 negative
+      DMT group mean by window: [1.069 1.079 1.231 1.352 1.010 0.828 0.904 0.765 0.830 0.929 0.977 1.058 1.094 1.020]
+      PCB group mean by window: [0.911 0.943 0.969 1.121 0.832 0.872 0.976 1.003 1.017 1.005 1.059 1.070 1.166 1.197]
+
+(e) correlation of each series with the window-variance ratio (raw data):
+   ts_gsr global-fit sts per 30-TR bin        : mean r over the 28 runs +0.365 (min -0.533, max +0.747); group-mean series r = +0.662
+   ts_gsr run-standardised autocorr per bin   : mean r over the 28 runs +0.995 (min +0.987, max +0.999); group-mean series r = +0.999
+   ts_gsr windowed W60 sts                    : mean r over the 28 runs +0.492 (min -0.417, max +0.896); group-mean series r = +0.766
+   ts_gsr window-standardised autocorr W60    : mean r over the 28 runs +0.543 (min -0.170, max +0.869); group-mean series r = +0.726
+   ts_demean global-fit sts per 30-TR bin        : mean r over the 28 runs +0.115 (min -0.646, max +0.504); group-mean series r = +0.561
+   ts_demean run-standardised autocorr per bin   : mean r over the 28 runs +0.993 (min +0.984, max +0.999); group-mean series r = +0.998
+   ts_demean windowed W60 sts                    : mean r over the 28 runs +0.246 (min -0.520, max +0.804); group-mean series r = +0.686
+   ts_demean window-standardised autocorr W60    : mean r over the 28 runs +0.371 (min -0.283, max +0.770); group-mean series r = +0.698
+
+(f) slopes behind the trend corrections (sts, W60, nats per window, mean over subjects):
+   ts_gsr: placebo run over all 14 windows +0.00541; shared slope b of model (b) +0.00681; DMT run over windows 6–14 alone +0.01464
+      window-index gap post − pre = 7.50; implied placebo change: placebo line +0.0406, shared slope +0.0511; raw placebo change +0.0324
+   ts_demean: placebo run over all 14 windows +0.00657; shared slope b of model (b) +0.00746; DMT run over windows 6–14 alone +0.01376
+      window-index gap post − pre = 7.50; implied placebo change: placebo line +0.0493, shared slope +0.0559; raw placebo change +0.0398
+
+(g) rsHRF outputs:
+   ts_gsr: estimated HRF (per region per run, TR resolution, 24 s) time-to-peak DMT run 6.08 s, PCB run 6.07 s; events per region (1 SD threshold, 840 TRs) DMT 40.7, PCB 40.7
+      deconvolved series: run-level r1 = 0.7899; share of power inside 0.01–0.08 Hz = 0.991
+   ts_demean: estimated HRF (per region per run, TR resolution, 24 s) time-to-peak DMT run 6.23 s, PCB run 6.16 s; events per region (1 SD threshold, 840 TRs) DMT 42.0, PCB 41.9
+      deconvolved series: run-level r1 = 0.7761; share of power inside 0.01–0.08 Hz = 0.991

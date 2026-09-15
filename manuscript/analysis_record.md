@@ -2426,3 +2426,158 @@ and their CSVs.
    the regional check.
 
 4. No further specification will be run in search of a positive DMT result.
+
+## Part B, items 6–8: pre-run entry, 15 Sep 2026 07:30 UTC (appended; nothing above edited)
+
+Written in response to `notes/adversarial_review_draft_v2_2026-09-15.md` (sections 1.5, 5–6, 9.2),
+before any number below was computed. Scripts `notes/partB6_ccs_definition.py`,
+`notes/partB7_splithalf.py`, `notes/partB8_coupling_map.py`; outputs under `notes/review_results/`.
+Standing rule of Part B unchanged: nothing here is a route back to a DMT-specific claim; the rule
+of the closure entry (item 4) stands. Every outcome is reported regardless.
+
+**B6. The CCS double-redundancy definition (check first, then use).** The 14 Sep review found
+that phyid's CCS double redundancy keeps the double co-information D at the samples where the
+signs of I_xta, I_xtb, I_yta, I_ytb and D agree, whereas the published definition (Mediano et
+al., arXiv:2109.13186v1, Appendix, Definition 1; the PNAS 2025 text is not accessible from this
+session) reads: "the double-redundancy based on common change in surprisal is defined as
+I_∂,CCS^{{1}{2}→{1}{2}} := Σ_{i∈S} c(x^(i); y^(i))", with S "the subset of samples for which all
+marginal pointwise mutual informations, as well as the pointwise full mutual information
+i(x; y), have the same sign", and c the pointwise co-information summed over the product lattice
+"excluding the lowest node". Reading adopted, fixed now: the marginal pointwise MIs are the four
+i(x_i; y_j) between one past and one future variable (I_xta, I_xtb, I_yta, I_ytb); the full
+pointwise MI is i(x; y) = I_xytab; c(x; y) is the code's D (checked algebraically: Eq. (5)'s
+signed sum over the 15 non-bottom lattice nodes is the code's expression term by term, with
+(−1)^{f+1} giving −I_xta, +I_xyta, −I_xytab, +R_xyta, −R_xytab, +R_abtx, −R_abtxy). So the
+published mask is sign(I_xta) = sign(I_xtb) = sign(I_yta) = sign(I_ytb) = sign(I_xytab) and the
+code's mask replaces I_xytab by D. Two other readings are computed as sensitivity only and decide
+nothing: (i) all eight partial MIs (the four above plus I_xtab, I_ytab, I_xyta, I_xytb) plus
+I_xytab; (ii) the published five signs plus sign(D). The single-target CCS redundancies (Ince
+2017, four-sign rule including the co-information) are unchanged in every version.
+Computation: on the same (subject, run, window, pair) samples, CCS atoms under the published mask
+and under phyid's mask, W = 60 (per-window fit) and the global fit (30-TR bins), `ts_gsr` and
+`ts_demean`, whole-brain pair means; the full inference engine (`rev_inference.py`) on the
+published-mask CCS sts, xtx + yty and rtr; the 16-atom table and the per-subject correlations of
+`partB2_ccs_run.py` repeated under the published mask.
+Rule, fixed now: the two definitions "agree on these data" if every whole-brain CCS-sts level and
+primary DiD (four cells) differs by less than 0.001 nats and no sign-flip p crosses 0.05 between
+them; then phyid's numbers stand and the agreement is stated. Otherwise every CCS number in the
+manuscript (Table 1, Table 4, Results 3, Discussion) is replaced by the published-definition
+value, and phyid's values are reported beside them in `ccs_pub_tables.md` as the code's variant.
+No CCS number is quoted in the manuscript until this has run. Expectation, not a prediction: the
+masks select different samples, so sample-level atoms will differ; whether whole-brain means
+differ materially is unknown.
+
+**B7. Split-half test of the CCS-sts / residual correlation.** The review found, from the
+committed per-subject DiDs, r(residual DiD, CCS-sts DiD) = +0.729 (ts_gsr W60) and +0.838
+(ts_demean W60), surviving partialling out the autocorrelation DiD (+0.688, +0.820). Both
+quantities are functions of the same per-window 4 × 4 matrices, so the shared variance may be a
+common signal or common estimation noise in the same windows. Test, fixed now: recompute both
+per-subject DiDs on odd windows only (pre {1, 3}, post {7, 9, 11, 13}) and on even windows only
+(pre {2, 4}, post {6, 8, 10, 12, 14}); window 5 stays excluded. Report the within-half
+correlations r(CCS_odd, res_odd), r(CCS_even, res_even) and the cross-half correlations
+r(CCS_odd, res_even), r(CCS_even, res_odd), both variants, with and without partialling out the
+autocorrelation DiD of the same half; CCS-sts under the definition selected by B6 (phyid's values
+alongside). Common window noise cannot correlate across disjoint windows; a common signal can.
+Decision rule, fixed now, on `ts_gsr` W = 60 (`ts_demean` reported as sensitivity): the shared
+component is NOT window noise if both cross-half correlations are positive and their mean is at
+least half the mean within-half correlation; then the residual and the CCS-sts change are
+reported together as one exploratory observation of an autocorrelation-independent component
+whose sign matches the original pre-specified direction, with the explicit statement that it
+arose after four specification changes (windowed sts → sixteen atoms → CCS → diagnostic
+residual) and requires an independent dataset. The shared component IS estimation noise if the
+mean cross-half correlation is below half the within-half mean or either cross-half correlation
+is negative; then both are reported as null with this test as the evidence. Either outcome is
+exploratory; neither becomes a headline. Cross-half correlations are attenuated by the
+half-length windows exactly as the within-half ones are, which is why the comparison is
+within-half against cross-half and not against the full-set r = 0.73.
+
+**B8. The family with lagged coupling (analytic, no data).** For the symmetric VAR(1) pair
+x_{t+1} = a x_t + c y_t + ε_{t+1}, y_{t+1} = a y_t + c x_t + η_{t+1}, corr(ε, η) = q_ε, the
+stationary covariance (discrete Lyapunov) and the lag-1 covariance give the population 4 × 4
+matrix in closed form; all 16 Gaussian-MMI atoms, sts − (xtx + yty), the six cross-prediction
+atoms and the population residual of the B4 diagnostic (sts of the true matrix minus sts of the
+AR(1)-substituted matrix built from the true a_x, a_y, q) are tabulated over c ∈ [−0.3, 0.3] at
+the data's operating point and at two others. Purpose: to state what lagged interaction does to
+sts relative to r₁, what the diagnostic returns when true coupling exists, and what spread of
+pair-specific coupling of either sign would produce a run-level residual of −0.01 nats. No
+prediction.
+
+## Part B, items 6–8: outcomes, 15 Sep 2026 07:55 UTC (appended; nothing above edited)
+
+Scripts as named in the pre-run entry, run once each after it was written; every number below
+is quoted from `notes/review_results/partB/ccs_pub_tables.md`, `ccs_definition_check.log`,
+`notes/review_results/inference_rows_ccs_pub.csv`, `splithalf_tables.md`, `splithalf.log` and
+`coupling_map_tables.md`. Nothing in the pre-run entry was changed after these numbers existed.
+
+**B6 outcome: the two definitions DIFFER on these data; the rule's second branch applies.**
+Whole-brain CCS-sts, published mask (Definition 1) against phyid's mask, DMT pre-injection level
+and primary DiD with sign-flip p:
+
+| cell | level pub / code | primary DiD pub / code | p pub / code | verdict (rule: |Δ| < 0.001 nats in both and no p crossing 0.05) |
+|---|---|---|---|---|
+| ts_gsr W60 | −0.0480 / −0.0387 | +0.0044 / +0.0036 | 0.0559 / 0.0844 | differs (level Δ 0.0094) |
+| ts_gsr global | −0.0358 / −0.0335 | +0.0197 / +0.0210 | 0.0002 / 0.0001 | differs (level Δ 0.0023, DiD Δ 0.0014) |
+| ts_demean W60 | −0.0378 / −0.0255 | +0.0120 / +0.0134 | 0.0040 / 0.0052 | differs (level Δ 0.0122, DiD Δ 0.0014) |
+| ts_demean global | −0.0386 / −0.0297 | +0.0355 / +0.0321 | 0.0001 / 0.0001 | differs (level Δ 0.0088, DiD Δ 0.0034) |
+
+Per-subject r(pub DiD, code DiD) 0.974, 0.992, 0.991, 0.956; the masks disagree on 6.3 % and
+6.6 % of samples in the two per-pair test windows (subject 1, DMT window 6 and PCB window 2),
+the published mask selecting 32–34 % of samples against the code's 26–28 %. Consequence, as
+fixed in the pre-run entry: every CCS number in the manuscript (Table 1, Table 4, Results 3,
+Discussion) is the published-definition value; phyid's values stand beside them in
+`ccs_pub_tables.md` as the code's variant. Qualitative statements unchanged under either mask:
+CCS-sts is near zero and negative at baseline; its primary DiD is positive in all four cells
+(ts_gsr W60 +0.0044 [+0.0004, +0.0081], sign-flip p = 0.0559, phase p = 0.006, positive in
+11/14, FD-residualised +0.0039 [+0.0005, +0.0073]; ts_gsr global +0.0197 [+0.0142, +0.0254],
+p = 0.0002, phase p = 0.001, positive in 13/14, FD-residualised +0.0152; ts_demean W60 +0.0120
+[+0.0054, +0.0192], p = 0.0040; ts_demean global +0.0355 [+0.0231, +0.0485], p = 0.0001,
+positive in 14/14); at the ts_gsr global fit the DMT run rises (+0.0122, p < 0.001) and the
+placebo run falls (−0.0075, p = 0.001). CCS-sts does not track r₁: per pair within a window
+r = −0.011 and −0.018 (MMI sts +0.742, +0.697); per subject r(CCS-sts DiD, autocorrelation DiD)
+= −0.420, −0.275, −0.428, −0.297 (p ≥ 0.127); across the 28 condition-window means −0.639
+(MMI +0.977). CCS xtx + yty keeps the MMI values and tracks r₁ (r = +0.949, +0.963, +0.917,
++0.921). Per subject the CCS-sts DiD correlates with the B4 residual DiD at +0.799 (p = 0.001,
+ts_gsr W60), +0.094 (ts_gsr global), +0.875 (ts_demean W60), +0.676 (ts_demean global). The two
+sensitivity readings (eight partial MIs + full MI; published five signs + sign(D)) give ts_gsr
+W60 sts −0.0468 / +0.0044 and −0.0425 / +0.0038; they decide nothing and are not quoted in the
+manuscript.
+
+**B7 outcome: the estimation-noise branch of the rule applies; both are reported as null.**
+ts_gsr W60, published CCS: within-half r(CCS_odd, res_odd) = +0.847, r(CCS_even, res_even) =
++0.783 (mean +0.815); cross-half r(CCS_odd, res_even) = +0.160, r(CCS_even, res_odd) = +0.478
+(mean +0.319; ratio 0.39, below the 0.50 threshold). Partialling out the same-half
+autocorrelation DiD: within +0.815, cross +0.154 (ratio 0.19). Under the rule (mean cross-half
+below half the within-half mean) the shared per-subject component of the residual DiD and the
+CCS-sts DiD is estimation noise common to the same windows, and the two are reported as null
+with respect to an autocorrelation-independent component, with this test as the evidence.
+Sensitivity, ts_demean W60: within +0.881, cross +0.283 (ratio 0.32); partialled 0.849 / 0.287
+(0.34); same branch. phyid's CCS: ts_gsr ratio 0.30 (partialled 0.02); ts_demean 0.38 (0.41).
+Limitation of the test, stated so that the null is not over-read: the split-half reliabilities of
+the two quantities are low (ts_gsr: residual DiD +0.494, published CCS-sts DiD +0.302;
+ts_demean: +0.216, +0.417; for comparison autocorrelation DiD +0.741 / +0.712, MMI-sts DiD
++0.717 / +0.686), so the largest cross-half correlation two perfectly correlated reliable
+components could show is √(0.494 × 0.302) = 0.39 on ts_gsr and 0.30 on ts_demean, and the
+observed means (0.32, 0.28) sit at that ceiling. The test therefore establishes that most of the
+within-half correlation is shared window noise and that the reliable components of both
+quantities are small; it cannot establish that no reliable shared component exists. Both
+quantities' group-mean DiDs are positive in both halves (residual odd +0.0067 / even +0.0164;
+CCS-sts odd +0.0033 / even +0.0054). The recorded rule is applied as written; the ceiling is
+reported beside the verdict wherever the verdict is quoted.
+
+**B8 outcome (analytic).** Symmetric VAR(1) with lagged coupling c, (r₁, q) held at the
+operating point (0.85, 0.25) by re-solving a and q_ε for each c: sts changes with c at fixed
+(r₁, q) with slope −1.77 nats per unit c at c = 0 and curvature +40.3 nats per unit c²; the six
+cross-prediction atoms stay at zero for every c (the symmetric family with equal coefficients
+keeps the block structure that zeroes them); sts − (xtx + yty) equals rtr only at c = 0, falls
+below it for c > 0 (c = +0.02: +0.0045 against rtr 0.0275; +0.05: +0.0032 against 0.0348) and
+exceeds it for c < 0 (−0.02: +0.0586 against 0.0191); the population cross-lag correlation
+departs from a_y q by ≈ +0.94 c. The population residual of the B4 diagnostic is 0 at c = 0, −0.027 at
+c = +0.02, −0.043 at +0.05, +0.044 at −0.02 and +0.152 at −0.05. A zero-mean spread of
+pair-specific coupling of SD σ_c gives an expected residual of +20 σ_c² at fixed (r₁, q), i.e.
+positive: it cannot produce the run-level residual of −0.01 nats, which would require a positive
+mean coupling of about +0.006 and a positive mean cross-lag deviation of about +0.006, whereas
+the measured deviations have mean +0.00014 (`residual_source.log`). At (0.85, 0) the slope is 0
+and the curvature +36.9; at (0.6, 0.25) the slope is −0.61 and the curvature +3.2. In the raw
+view (a, q_ε fixed, c varied) ∂sts/∂c ≈ −1.3 to −1.5 at (0.85, 0.25) against ∂sts/∂r₁ ≈ +6.
+Reported in the manuscript's Methods (family), Results 4 (residual) and Discussion; no data
+claim rests on it.

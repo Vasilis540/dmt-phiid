@@ -1,0 +1,29 @@
+  s= 1 c=0 done (2s); events/region median 42
+  s= 1 c=1 done (5s); events/region median 44
+  s= 2 c=0 done (8s); events/region median 42
+  s= 2 c=1 done (10s); events/region median 42
+  s= 3 c=0 done (12s); events/region median 42
+  s= 3 c=1 done (15s); events/region median 42
+  s= 4 c=0 done (17s); events/region median 43
+  s= 4 c=1 done (20s); events/region median 40
+  s= 5 c=0 done (22s); events/region median 42
+  s= 5 c=1 done (24s); events/region median 41
+  s= 6 c=0 done (27s); events/region median 41
+  s= 6 c=1 done (29s); events/region median 41
+  s= 7 c=0 done (32s); events/region median 40
+  s= 7 c=1 done (34s); events/region median 43
+  s= 8 c=0 done (37s); events/region median 42
+  s= 8 c=1 done (39s); events/region median 39
+  s= 9 c=0 done (42s); events/region median 41
+  s= 9 c=1 done (45s); events/region median 41
+  s=10 c=0 done (47s); events/region median 42
+  s=10 c=1 done (50s); events/region median 45
+  s=11 c=0 done (52s); events/region median 43
+  s=11 c=1 done (54s); events/region median 42
+  s=12 c=0 done (56s); events/region median 43
+  s=12 c=1 done (59s); events/region median 43
+  s=13 c=0 done (62s); events/region median 44
+  s=13 c=1 done (66s); events/region median 41
+  s=14 c=0 done (70s); events/region median 43
+  s=14 c=1 done (72s); events/region median 42
+wrote /home/claude/deconv_run/demean/external/DMT_NCT/data/DMT_clean_mni_continuous_fullPreprocsch116.mat [ts_demean] in 72s

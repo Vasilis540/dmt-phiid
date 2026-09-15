@@ -1,0 +1,16 @@
+filter fitted to the placebo ACF: beta=200 lo=0.0064 hi=0.080; lags 1-6 [ 0.872  0.549  0.179 -0.091 -0.196 -0.168] (target [0.868, 0.539, 0.172, -0.085, -0.174, -0.145])
+filter fitted to the DMTpost ACF: beta=100 lo=0.0030 hi=0.080; lags 1-6 [ 0.858  0.508  0.124 -0.127 -0.182 -0.099] (target [0.858, 0.507, 0.123, -0.13, -0.194, -0.133])
+
+== residual level under the null, homogeneous filter (placebo ACF), by window length ==
+W= 30: a=0.856 |q|=0.354 residual=-0.0886 (-8.52 %)   [data: W30 -9.7 %, W60 -4.3 %, run-level -1.1 %]
+W= 60: a=0.866 |q|=0.291 residual=-0.0373 (-3.10 %)   [data: W30 -9.7 %, W60 -4.3 %, run-level -1.1 %]
+W=840: a=0.870 |q|=0.222 residual=-0.0045 (-0.34 %)   [data: W30 -9.7 %, W60 -4.3 %, run-level -1.1 %]
+
+== residual at the four operating points of residual_source.log (W = 60) ==
+DMT pre  : window a=0.8625 (SD 0.031) |q|=0.2803  obs sts=1.1835  AR(1) pred=1.2189  residual=-0.0353 (-3.0 %)
+DMT post : window a=0.8532 (SD 0.030) |q|=0.2679  obs sts=1.1279  AR(1) pred=1.1592  residual=-0.0313 (-2.8 %)
+PCB pre  : window a=0.8602 (SD 0.031) |q|=0.2854  obs sts=1.1670  AR(1) pred=1.2020  residual=-0.0350 (-3.0 %)
+PCB post : window a=0.8655 (SD 0.032) |q|=0.2833  obs sts=1.2024  AR(1) pred=1.2387  residual=-0.0364 (-3.0 %)
+
+null residual change: DMT +0.0041, PCB -0.0013, DiD +0.0054
+data (residual_source.log): DMT +0.0077, PCB -0.0038, DiD +0.0115 [+0.0021, +0.0211]
