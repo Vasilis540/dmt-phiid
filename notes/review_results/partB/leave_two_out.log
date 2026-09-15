@@ -1,0 +1,19 @@
+# Leave-two-out on r(MMI-sts DiD, lag-1 autocorrelation DiD), ts_gsr, W = 60, primary set (partB9_leave_two_out.py)
+full set (N = 14): Pearson r = +0.953, Spearman ρ = +0.903
+leave-two-out (91 refits, N = 12 each): Pearson r range +0.846 to +0.973, median +0.954; minimum +0.846 without subjects 8 and 14; maximum +0.973 without subjects 6 and 10
+Spearman ρ range +0.846 to +0.944, median +0.902; minimum without subjects 8 and 14
+refits with r below 0.90: 1 of 91; below 0.85: 1
+  pairs containing subject  1: r range +0.921 to +0.964
+  pairs containing subject  2: r range +0.923 to +0.966
+  pairs containing subject  3: r range +0.913 to +0.968
+  pairs containing subject  4: r range +0.923 to +0.971
+  pairs containing subject  5: r range +0.916 to +0.963
+  pairs containing subject  6: r range +0.943 to +0.973
+  pairs containing subject  7: r range +0.922 to +0.965
+  pairs containing subject  8: r range +0.846 to +0.943
+  pairs containing subject  9: r range +0.923 to +0.966
+  pairs containing subject 10: r range +0.932 to +0.973
+  pairs containing subject 11: r range +0.937 to +0.973
+  pairs containing subject 12: r range +0.923 to +0.966
+  pairs containing subject 13: r range +0.917 to +0.963
+  pairs containing subject 14: r range +0.846 to +0.947

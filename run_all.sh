@@ -123,6 +123,7 @@ nrun notes/partB6_ccs_definition.py
 nrun notes/partB7_splithalf.py
 nstep partB/coupling_map_run        notes/partB8_coupling_map.py
 nstep logs/review_v2_residual_null  notes/review_v2_residual_null.py
+nrun notes/partB9_leave_two_out.py
 step 15_figures_v2                  scripts/15_figures_v2.py
 
 echo "=== all done in $(( ($(date +%s) - T0) / 60 )) min"
