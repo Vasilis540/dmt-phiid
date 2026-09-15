@@ -58,7 +58,14 @@ MINV_T = np.linalg.inv(_M).T
 # ------------------------------------------------------------------ (A) the reference toolbox
 print("== (A) reference MATLAB toolbox pinned by phyid")
 import phyid
-cands = list(Path("/root/.cache/uv/git-v0/checkouts").glob("*/*/matlab/PhiIDFull.m"))
+cands = []
+for _root in (Path("/root/.cache/uv/git-v0/checkouts"), Path.home() / ".cache/uv/git-v0/checkouts",
+              Path(__file__).resolve().parents[1] / ".venv"):
+    try:
+        if _root.is_dir():
+            cands += list(_root.rglob("matlab/PhiIDFull.m"))
+    except PermissionError:
+        pass
 if cands:
     mdir = cands[0].parent
     src = (mdir / "PhiIDFull.m").read_text()
