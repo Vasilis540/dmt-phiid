@@ -1,0 +1,7 @@
+q +0.00: d(residual)/d(deviation) +0.000   slope/q +nan   curvature +47.8
+q +0.02: d(residual)/d(deviation) -0.157   slope/q -7.85   curvature +47.8
+q +0.05: d(residual)/d(deviation) -0.393   slope/q -7.87   curvature +48.2
+q +0.10: d(residual)/d(deviation) -0.793   slope/q -7.93   curvature +49.4
+q +0.19: d(residual)/d(deviation) -1.546   slope/q -8.14   curvature +53.9
+q +0.25: d(residual)/d(deviation) -2.090   slope/q -8.36   curvature +58.9
+q +0.40: d(residual)/d(deviation) -3.720   slope/q -9.30   curvature +82.4

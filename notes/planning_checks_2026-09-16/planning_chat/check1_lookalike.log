@@ -1,0 +1,7 @@
+population: a=0.8375 q=0.2500 cross-lag=0.23750 a*q=0.20938 d=0.028125 formula=0.028125
+sim sign +1: mean q=+0.2461 mean d=+0.02770 (expected +0.02812); mean sign(q)*d=+0.02770
+sim sign -1: mean q=-0.2476 mean d=-0.02780 (expected -0.02812); mean sign(q)*d=+0.02780
+unequal: d(x->y) pop=0.027000 formula=0.027000
+A = [[0.83, 0.03], [0.03, 0.83]]  eig(Sigma_e) = [0.27, 0.3255]
+c=0.030000  c(1-q^2)=0.028125  d=0.028125
+VAR(1) stationary G0 = [[1.0, 0.25], [0.25, 1.0]]  G1 = [[0.8375, 0.2375], [0.2375, 0.8375]]

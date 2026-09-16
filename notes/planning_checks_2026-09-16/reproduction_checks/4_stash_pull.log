@@ -1,0 +1,7 @@
+$ git stash push -m "section-6 rerun at d145e1c: regenerated outputs, reproduce to float precision" && git pull .git-bundles/15_w60_null_shared_slow_component.bundle master && git push
+Saved working directory and index state On master: section-6 rerun at d145e1c: regenerated outputs, reproduce to float precision
+Updating d145e1c..0159fdf
+Fast-forward
+ 9 files changed, 991 insertions(+), 171 deletions(-)
+To https://github.com/Vasilis540/dmt-phiid.git
+   d145e1c..0159fdf  master -> master

@@ -3381,3 +3381,273 @@ Notes: `notes/defence_questions.md` (header, Q3, Q14) and `notes/companion_plain
 unit's reading, (b) and (c); the Results 4, Discussion and Limitations units' cross-lag sentences; the Abstract
 Conclusions (c) quotation of "is not located"; glossary entry "shared slow component") follow the paper. `CLAUDE.md`:
 current state.
+
+## Correction note on the computations of 16 Sep 2026 10:23 UTC (the W = 60 and finite-sample-null values of the sign(q)-weighted deviation), 16 Sep 2026 16:24 UTC (appended; nothing above edited)
+
+Commissioned by V.S. on 16 Sep 2026 with the seventh round, from an audit of the numbers printed in
+`notes/review_results/partB/crosslag_deviation_tables.md` at 9a19b10 and of the reviewer checks of the planning session
+(`notes/planning_checks_2026-09-16/`, committed with this note: `audit/audit_bundle15.py` and its log hold the
+arithmetic; `reviewer/v_null_qshape.py`, `v_null_periodic.py` and `planning_chat/check3_signsel.py` the values quoted
+under (i) and (ii)). The readings of the outcome entry of 10:32 UTC stand in the record as read under the rules of the
+pre-run entry of 10:23 UTC; the manuscript replaces them with the budget of the pre-run entry below (item 3 of the
+round) and reports the 10:32 values in a supplementary table, marked as superseded, with the reasons stated here.
+
+(i) **The W = 60 statistic selected on its own samples.** Section A of the 10:23 computation took the sign of q from
+each window, so the weight was estimated from the same 60 samples as the deviation it weighted. Under a population
+deviation of exactly zero that alone gives a positive mean: the null's own W = 60 value with that weight is +0.00348
+(the 10:32 tables), against −0.0002 to +0.0005 with the pair's run-level sign on the same generator for the q
+distributions tried (`reviewer/v_null_qshape.log`: δ_60 with the run-level sign +0.00015, +0.00002, −0.00021, +0.00027,
++0.00045 for N(0, 0.22), N(0, 0.30), |q| = 0.19 fixed, Laplace 0.18, the 30 %-at-zero mixture; +0.00136 only when every
+pair has q = 0). On a toy AR(1) with zero population deviation (`planning_chat/check3_signsel.log`) the window-sign
+W = 60 value is +0.040, +0.033 and +0.027 for q = 0, q ~ N(0, 0.2) and |q| = 0.25 against +0.0076, +0.0015 and −0.0029
+with the run-level sign. About half of the data's +0.00611 is therefore selection by the weight, and the figure net
+of the null then depends on how well the null reproduces the density of window-level q̂ near zero, which the 10:23
+computation did not assess (its null was not solved to the data's q̂ distribution at all). Results 4 at 0159fdf also
+does not say that the sign was the window's.
+
+(ii) **The run-length null value was read at the wrong operating point.** The 10:32 reading ("near zero: +0.00025,
+7.3 % of +0.00340, below the tenth fixed as near zero") used the null's homogeneous-filter check, whose run-level
+mean |q̂| is 0.222 against the data's 0.1945 (the 10:32 tables). On the same generator the statistic rises as more
+pairs sit near q = 0 (`reviewer/v_null_qshape.log`, placebo fit, heterogeneity 0.5, T = 840, SE 0.00004 each):
++0.00039 at mean |q̂| 0.183 with Gaussian q, N(0, 0.22); +0.00033 at N(0, 0.25) (mean |q̂| 0.205,
+`v_null_periodic.log`) and at N(0, 0.30) (0.244); interpolated at the data's 0.1945, about +0.00036, F ≈ 0.105
+(`audit/audit_bundle15.log`); +0.00053 with Laplace q of scale 0.18 (mean |q̂| 0.187); +0.00071 with 30 % of the pairs
+at q = 0 and the rest N(0, 0.30) (mean |q̂| 0.187); +0.00151 with every pair at q = 0; +0.00003 with |q| = 0.19 fixed.
+All three values at the data's mean |q̂| are at or above the 0.00034 fixed as "near zero" (the Gaussian case within
+Monte-Carlo error of it), so that reading does not survive the operating point, and the null's value depends on the
+shape of the q distribution near zero, which the 10:23 rule did not fix.
+
+(iii) **The ratio rule did not compute pooling.** The 10:23 rule inferred pooling from the ratio of two differently
+biased statistics (the window-sign W = 60 value against the run-level value); pooling itself — the across-window
+covariance of a and q under one fit — was not computed, and a "comparable" ratio does not exclude a pooling share of
+the order of a fifth. The run-type values point there (`audit/audit_bundle15.log`): at run length the DMT run exceeds
+the placebo run by +0.00082 (+0.00381 against +0.00299); within windows the excess is +0.00007 with the window's sign
+(+0.00615 against +0.00608), or about +0.0003 after removing the null cells' run-type difference (−0.00027, the four
+cells of the 10:32 tables weighted 4 pre and 10 post windows). That leaves a gap of about +0.0005 to +0.0008 between
+the run-level and the windowed run-type difference, 13–20 % of the DMT run-level value: what pooling of the
+injection's non-stationarity would add. It was not tested.
+
+(iv) **Minor.** The net W = 60 value was divided by the raw run-level value (0.77 and 0.81); net over net the ratios
+are 0.83 and 0.88 (`audit/audit_bundle15.log`).
+
+What follows: the manuscript's Results 4 no longer reads the W = 60 window-sign value or the homogeneous-filter null
+value; the budget below replaces both, with the sign of q taken from the run and the null solved to the data's
+run-level a, |q̂| and the density of q̂ near zero, at the run type's operating point.
+
+## The end-to-end run of `run_all.sh` and its reproduction checks, 16 Sep 2026 16:24 UTC (appended; nothing above edited)
+
+Quoted from `results/run_all_tail.log` (committed here unmodified: the log of the 16 Sep invocation) and from V.S.'s
+reproduction checks in `notes/planning_checks_2026-09-16/reproduction_checks/` (scripts and terminal outputs, committed
+with this entry; their README describes the working tree they ran on).
+
+1. **Invocations.** Sections 0–5 executed in the run started 15 Sep 2026 10:25 UTC (`results/run_all.log`, local
+   time 13:25), which continued into section 6 and stopped there at 16:33 UTC in `notes/partB2_ccs_verify.py` (the
+   entry on the d145e1c fix, 15 Sep 2026 18:46 UTC). That invocation had already executed the first ten steps of
+   section 6 (`rev_phiid_fast_validate.py`, `rev_run.py raw`, `rev_extra.py`, `rev_sts_matched_null.py` f1, f2 and f3,
+   `review_checks.py`, `rev_assemble.py`, `partB1_scope_map.py`, `partB1_overlay_points.py`; the HRF-deconvolution items
+   skipped, the sandbox being absent). The remainder of section 6 executed in one invocation on 16 Sep 2026 at d145e1c
+   (`/tmp/run_tail.sh`, log `results/run_all_tail.log`, 10:11–11:02 UTC, last line "=== all done in 51 min"), its
+   fourteen "===" steps in order: `partB2_ccs_verify.py`, `partB2_ccs_run.py`, `partB3_lag.py`, `partB4_diagnostic.py`,
+   `partB4_residual_source.py`, `partB5_family_checks.py`, `partB6_ccs_definition.py`, `partB7_splithalf.py`,
+   `partB8_coupling_map.py`, `review_v2_residual_null.py`, `partB9_leave_two_out.py`, `partB10_crosslag_deviation.py`,
+   `partB11_regional_sts_r1.py`, `scripts/15_figures_v2.py`. So every step of section 6 has executed, across the two
+   invocations, and the section as a whole has not executed in one. The `partB10` that ran is the version at d145e1c
+   (the signed mean of 7c7809a), before its extensions of 15 Sep 18:14 UTC (13f1c6d) and 16 Sep 10:23 UTC (9a19b10);
+   `partB12` and `partB13` (below) did not exist. The round's item 0 assumed that section 6 ran in one invocation on
+   16 Sep; the log shows the split inside the section, so the sentence of Data and code availability is left as it
+   stands ("the section has not yet been executed end-to-end as one run [TK: run it once before submission]"), which
+   remains true, and the reproduction result below is recorded here for the full run at the final commit; the sentence
+   that would state it is: "the pipeline has executed once, in two invocations at d145e1c (sections 0–5 and the first
+   ten steps of section 6 on 15 September; the remaining fourteen steps of section 6 on 16 September, 51 min), and its
+   outputs reproduce the committed tables — the sections 0–5 CSVs exactly, the section-6 CSVs to floating-point
+   precision (largest |Δ| 7.9 × 10⁻¹³) with the rounded tables identical [TK: the single full run at the final commit]".
+2. **Reproduction** (`reproduction_checks/2_compare_all.log`, `3_three_checks.log`). Every regenerated table was
+   compared with the committed file, CSVs parsed and compared numerically, text files by unified diff. The sections
+   0–5 CSVs are numerically identical (max |Δ| = 0 in every file: the atoms tables, the bias checks, the global-FC
+   tables, the LOO, LZ, primary-B, proportionality, regional, robustness, subject-alignment and tier-check tables). The
+   section-6 CSVs are identical to floating-point precision — `inference_rows_raw.csv` max |Δ| 7.89 × 10⁻¹³ (the
+   largest), `inference_rows_ccs.csv` 1.07 × 10⁻¹³, `inference_rows_lag.csv` 5.42 × 10⁻¹⁴, `inference_rows_ccs_pub.csv`
+   4 × 10⁻¹⁴, `inference_rows_diag.csv` 5.19 × 10⁻¹⁵, `crosslag_deviation.csv` 8.88 × 10⁻¹⁶; no cell differs by more
+   than 10⁻⁹ — the difference between the NumPy/SciPy builds of the sessions that produced the committed files and the
+   `.venv`, and the rounded `.md` tables are identical. The remaining text differences are SHA headers
+   (`captions_v2.md` "at git 7c7809a" → "d145e1c"; `crosslag_deviation_tables.md` and `regional_sts_r1_tables.md`
+   "git=152cc6d" → "d145e1c") and the sign of a printed zero in `coupling_map_tables.md` ("first derivative in c at 0:
+   −0.0000" → "+0.0000"). The comparison's "non-numeric column differs" flags on the `survives`, `note` and `condition`
+   columns were empty cells compared with themselves (NaN ≠ NaN in pandas); check 1 shows the distinct pairs of
+   `survives` values to be [[nan, nan]], no difference. Not compared numerically by the checks: the 30 `.npy`/`.npz`/
+   `.pkl` result files, which `git diff --stat` lists as changed (binary); every CSV and table derived from them
+   reproduces as stated.
+3. **Three provenance differences, recorded and not acted on now.** (a) `results/bias_check_nonstat.csv` gains 84
+   rows and `results/bias_check_nonstat_global.csv` 2 rows for the condition `nonstat_step_ar`, absent from the
+   committed files: the main 20,000-run invocation of `scripts/02_bias_check.py` now writes that condition (regenerated
+   header `n_runs=20000 git=2151be0`), whereas the committed file was produced at 18ad8b4 (12 Sep 2026, 21:43 local),
+   before f3b435d (13 Sep 2026, 15:31 local, "02_bias_check: AR-shift step condition at measured autocorrelation,
+   --only-nonstat flag") added the condition to the script's set. The regenerated rows differ from the 2,000-run rows
+   of `results/nonstat_ar_step/bias_check_nonstat.csv` by up to 0.030 (check 2; Monte-Carlo, different n_runs);
+   `results/nonstat_ar_step/` itself is regenerated by its own step of `run_all.sh` (`--only-nonstat nonstat_step_ar
+   --n-runs 2000`) with max |Δ| = 0; `logdet_correction_check.csv` and `tier_check_decay_windows.csv`, which read the
+   bias tables, reproduced identically. `draft_v2.md` and `supplementary.md` quote no value from
+   `results/nonstat_ar_step/` (the draft cites only the autocorrelation-function diagnostic appended to that condition's
+   entry); the record's entry of 13 Sep ("AR-shift step condition") quotes that file's 2,000-run outcome, which the full
+   run leaves unchanged, and the 20,000-run rows of the same condition will then sit beside it in
+   `results/bias_check_nonstat.csv`. (b) `results/subject_alignment_check.txt` regenerates with header `git=42d0d8e` and
+   without the hand-added data-governance comment of 15 Sep (check 3: no participant codes in the regenerated report;
+   the record's data-governance note of 15 Sep 2026 12:15 UTC stands). (c) `manuscript/figures/captions_v2.md` would
+   read "at git d145e1c" while the committed figures remain those of 7c7809a. None of the regenerated files was
+   committed: V.S. stashed them (`4_stash_pull.log`), pulled bundle 15 (fast-forward d145e1c..0159fdf) and pushed; the
+   single full run at the final commit will regenerate and commit them all under one SHA.
+
+## The cross-lag budget: pre-run entry, 16 Sep 2026 16:24 UTC (appended; nothing above edited)
+
+Commissioned by V.S. on 16 Sep 2026 (the seventh round), after the correction note above: split the run-level
+sign(q)-weighted cross-lag deviation into an exact budget on the data, score the same budget on the finite-sample null
+solved to the data's operating point and on two controls, and read the null-corrected budget under the rules below.
+Scripts: `notes/partB12_crosslag_budget.py` (data), `notes/partB13_crosslag_budget_null.py` (null, controls, and the
+null-corrected budget with its reading), both calling the one scoring function of `notes/rev_crosslag_budget.py`;
+added to `run_all.sh` section 6 after `partB10`; committed with this entry, with `results/run_all_tail.log` and
+`notes/planning_checks_2026-09-16/` (the planning session's checks, unmodified), before either script runs. Until that
+commit no value of any statistic below had been produced on the data or on the null (disclosure at the end).
+
+**Definitions** (x→y shown; y→x mirrors with a_x, ψ^x and ā_x; every per-pair quantity is the mean of the two
+directions, as in `partB10`). d = corr(x_t, y_{t+1}) − a_y q, with a_x, a_y and q exactly as `partB10` (the phyid-style
+4 × 4 correlation matrix, past and future blocks standardised separately). s = the sign of the pair's run-level q in
+that run (from the run-level matrix of the raw series), used for every term, on the data and in the null. Windows:
+W = 60, as `partB10` section A forms them (kept TRs in [60w, 60(w + 1)); subject index 2's placebo window 14 has 59
+TRs), each window's own a_{x,w}, a_{y,w}, q_w and d_w from its own matrix. Weights per pair and run: n_w TRs in window
+w, N = Σ n_w; σ_{x,w} the SD of x over the window's TRs (population form, ddof = 0); S_x² = Σ n_w σ²_{x,w} / N (same
+for y); π_w = n_w σ_{x,w} σ_{y,w} / (N S_x S_y); ψ^y_w = n_w σ²_{y,w} / (N S_y²); ā_y = Σ ψ^y_w a_{y,w}. Terms:
+δ_run = s·d at the run level (bundle 14's statistic, recomputed by the shared function; it must reproduce +0.00340 on
+`ts_gsr` and −0.00262 on `ts_demean`, and the script asserts equality with `partB10`'s per-run values); δ_wd = the same
+after removing each region's mean within each window (the run-level matrix of the window-demeaned series, s
+unchanged); δ_means = δ_run − δ_wd (variation of window means: slow variation beyond 2 minutes, shared or unshared,
+stationary or drift; either sign); δ_within = s·Σ_w π_w d_w (the within-window deviation, variance-weighted; zero if
+every window's deviation is zero); δ_pool = s·Σ_w π_w (a_{y,w} − ā_y) q_w (pooling of windows that differ in a, q or
+variance under a single fit: the mechanism Results 4 describes, plus its variance-weighting part);
+ε = δ_wd − δ_within − δ_pool (boundary lag products and block standardisation). So
+δ_run = δ_within + δ_pool + δ_means + ε exactly; the scripts assert the identity to machine precision. Beside the
+budget: δ_60 = s·mean_w d_w (the equal-weight within-window statistic with the run-level sign) and `partB10`'s
+window-sign value mean_w sign(q_w) d_w, each with its null value. Every data window is checked against
+`diag_series_<variant>_W60.npz` (`xcorr_dev`), as `partB10` does. Aggregation for every term as `partB10`: mean over
+pairs per run; per subject the mean of the two runs; grand mean with a subject-bootstrap 95 % CI (10,000 draws, seed
+20261120; one set of draws per variant, drawn in the order `ts_gsr`, `ts_demean` from one generator and shared by
+every term and by both scripts); exact two-sided sign-flip p over the 14 subjects; count positive; per run type
+(DMT, placebo) with its own CI. Both variants.
+
+**The null** (`partB13`). The filter family and `gen()` of `notes/review_v2_residual_null.py`, imported and not
+modified (each pair one band-pass × exp(−β f²) filter, β ~ N(β̄, h β̄) clipped at 5, applied to two white noises with
+correlation q drawn per pair; the population cross-lag correlation is exactly r₁q). `cell()` only prints and returns
+the residual, so the solver is this script's own. `gen()` draws from that module's generator, which the script sets to
+`np.random.default_rng([20261120, k])` for configuration k before the fresh draws; the solver uses
+`np.random.default_rng([20261120, k, 1000 + t])` for run type t, re-created at every evaluation (common random numbers,
+so that its objective is a deterministic function of the parameters; brentq on β̄ over [5, 4000] to the mean a, then
+on the q parameters). Runs of T = 840 TRs are simulated (`gen(n, 840, …)`) and cut into the same 14 windows of 60, so
+each simulated pair's s comes from its own run-level q̂. Operating points per run type; the null value of a term is
+the mean over the two run types, as the data's grand mean is, and per run type for rule (e); the Monte-Carlo SE of the
+combined value is half the root sum of squares of the two run types' SEs. The solver runs on a batch of 4,000
+pair-runs; then ≥ 25,000 fresh pair-runs per run type per configuration are drawn in batches of 5,000, more until the
+SE of δ_run,null is ≤ 0.0003 (at most 100,000). Monte-Carlo SEs are reported for every term.
+Configurations (k): 0, primary — h = 0.5; the DMT-post ACF filter for DMT runs and the placebo ACF filter for placebo
+runs (the null's own `fit_filter` fits); q from a zero-mean two-component Gaussian mixture, one component of SD 0.02
+with weight w and the other of SD σ₂, clipped to ±0.95, with (β̄, w, σ₂) solved so that the null's run-level mean pair
+a, mean |q̂| and fraction |q̂| < 0.05 equal the data's for that run type (nested brentq: σ₂ to the mean |q̂| at each w,
+w to the fraction; if the fraction is met or exceeded with no narrow component w is set to 0, and if it is not reached
+at w = 0.9 w is set to 0.9, either case stated). One at a time: 1, h = 0.25; 2, h = 1.0; 3, the placebo ACF filter for
+both run types; 4, q ~ N(0, σ_q) with (β̄, σ_q) solved to the run-level mean a and |q̂|; 5, the mixture solved to the run
+type's W = 60 window-level means (mean a, mean |q̂| and fraction |q̂| < 0.05 over pair-windows) instead of the
+run-level targets. `partB13` computes these targets, and the fractions of pairs with q̂ < 0, |q̂| < 0.05 and |q̂| < 0.10
+(run level and window level, per run type), from the data (`ts_gsr`); nothing else is computed from the data there.
+For every configuration it prints, beside the data's values, the null's run-level mean a, mean |q̂| and those three
+fractions.
+Controls, at the primary configuration's parameters, report-only, 25,000 pair-runs per run type. (i) Common drive:
+x = √(1 − λ) n_x + √λ s, y = √(1 − λ) n_y ± √λ s, λ = 0.2, the loading sign random per pair; n_x, n_y and s from the
+same filter family, each scaled to unit variance by its filter's analytic variance (checked empirically in the log):
+the regional parts at the solved β̄ with h = 0.5, the shared part at β_s solved so that its population lag-1
+autocorrelation is 0.10 above the regional parts' at β̄ (with the same relative heterogeneity). (ii) Pooling: each
+pair's q and filter change at TR 240 by pair-specific draws — TRs 0–239 at β₁ ~ N(6 β̄, h·6 β̄) with q₁ from the primary
+mixture, TRs 240–839 at β₂ ~ N(β̄/5, h·β̄/5) with q₂ = q₁ (1 − g), g ~ U(0.5, 1); the two segments generated as
+full-length runs and spliced at TR 240 (population lag-1 autocorrelations of the two filters printed; at the placebo
+band the family gives about 0.94 at 6 β̄ ≈ 1,200 and 0.84 at β̄/5 ≈ 40, so a and |q| fall together after TR 240 by
+pair-specific amounts). The design was chosen, from the family's analytic lag-1 autocorrelation and the mean |q̂|,
+so that δ_pool should exceed 10 Monte-Carlo SEs; the log reports the multiple. Every term's share of δ_run is reported
+for each control.
+Null-corrected value of a term: data minus null, same term, same configuration (subscript c); the null value is
+treated as fixed in the CIs (the data interval shifted), so δ_run,c = δ_within,c + δ_pool,c + δ_means,c + ε_c holds
+exactly. `partB13` reads `partB12`'s per-run values, applies rules (a)–(f) mechanically and prints the branch.
+
+**What each account implies.** Finite sampling: the null reproduces δ_run. Pooling of windows differing in a, q or
+variance: δ_pool. A stationary mechanism acting within 2 minutes (common slow drive, lagged coupling; equivalent at
+τ = 1, see the correction of Results 4 in this round): mostly δ_within, with about a tenth in δ_pool and up to a tenth
+in δ_means (planning checks; control (i)). Slow variation beyond 2 minutes, shared or unshared, or drift: δ_means, of
+either sign. Only "most" readings are attributed to a mechanism. A share of δ_pool or δ_means read as "part" or "a
+minor part" is not evidence of pooling or drift, except under rule (e). No prediction is made of which obtains, and
+none of the null's values (see the disclosure). V.S.'s expectation, stated before this commission: common slow drive
+is more likely than pooling or interaction. Recorded as an expectation, with no rule attached.
+
+**The rule (ts_gsr decides).**
+(a) Finite sampling, in this order. "none" if |δ_run,null| ≤ 2 Monte-Carlo SEs in every configuration. "opposing" if
+δ_run,null < −2 SEs in every configuration. With F = δ_run,null / δ_run (the data's grand mean): "a minor part" if
+0 < F ≤ 1/3 in every configuration; "most" if F ≥ 2/3 in every configuration, and then (b)–(e) are reported but not
+read. Otherwise the range of F is stated and (b)–(e) are read with it. The 10:32 reading is quoted beside it as
+recorded.
+(b) Apportioning, in this order. Gate: the CI of δ_run,c lies above zero in every configuration; otherwise "no
+positive null-corrected signature to apportion" (below zero in every configuration: "reversed"). If
+|ε_c| > δ_run,c / 10 in a configuration, the budget is reported and not read (the failing configurations named; a
+label is then not stated). For each of δ_within,c, δ_pool,c and δ_means,c, the first matching label applies:
+"undetermined at N = 14" if its CI half-width exceeds δ_run,c / 3; "absent" if its CI includes zero; "opposing" if its
+CI lies below zero; otherwise, by its share of δ_run,c: "most" if ≥ 2/3 and every other positive share is < 1/3;
+"part" if ≥ 1/3 and not "most"; "a minor part" if < 1/3. A label is stated only where every configuration gives it;
+otherwise the range of shares is stated. Validity, fixed now: if control (i) puts ≥ 1/3 in δ_pool or δ_means, no
+"most" reading of that term is made; if control (ii) puts ≥ 1/3 in δ_within, no "most" reading of δ_within is made
+(the controls' shares are their means over the two run types).
+(c) Readings. δ_within most: the signature is present inside 2-minute windows, where pooling across windows cannot
+act; the candidates are common slow drive or lagged coupling (not separable at τ = 1), non-stationarity faster than
+2 minutes, or a within-window finite-sample effect that the null as specified does not reproduce; pooling is not the
+principal account. δ_pool most: pooling is the principal account. δ_means most: slow variation or drift beyond
+2 minutes. Otherwise: each share is stated, with the attribution clause above.
+(d) The 10:32 W = 60 reading ("comparable: stationary rather than pooling") is quoted beside δ_60 with the run-level
+sign and beside the budget, with the reason it is superseded (the correction note above).
+(e) Run type. The per-subject difference DMT minus placebo in δ_pool,c (the data's per-subject difference minus the
+null's run-type difference), with an exact sign-flip p over the 14 subjects, at the primary configuration (the others
+reported). If it is positive with p < 0.05: "pooling is larger on the DMT run", with its size and its share of the
+DMT-run δ_run,c. Otherwise: "no run-type difference in pooling detected". The same differences for δ_within,c and
+δ_means,c are reported with no rule. Disclosed: the run-level values by run type (+0.00381, +0.00299) and `partB10`'s
+window-sign W = 60 values by run type (+0.00615, +0.00608) are known.
+(f) `ts_demean`: every data term is computed and reported; there is no null (it is built at the `ts_gsr` operating
+point), and it is not read.
+
+**Disclosure** (the planning session of 16 Sep 2026, after the 10:32 outcome existed but before it had been seen
+there; no data touched: that session had only the public clone at d145e1c, without `external/`; its scripts and logs
+are in `notes/planning_checks_2026-09-16/`).
+- Planning chat, synthetic AR(1), not the null's generator. Look-alike: 4,000 pairs × 3,000 samples gave mean d
+  +0.0277 and −0.0278 for the two loading signs, against ±0.0281; A = [[0.83, 0.03], [0.03, 0.83]] reproduces the
+  worked example's matrix exactly. Budget identity, five sets of 20,000 pairs × 14 windows of 60: largest |ε| 0.00021;
+  a built-in covariance of a and |q| of +0.0049 was recovered as δ_pool +0.0044; shared window-mean shifts appeared in
+  δ_means (+0.022), with δ_pool at −0.00005; in a set without pooling (a redrawn per window, windows independent),
+  δ_60 was −0.0024 against δ_within +0.0003. Sign selection, a = 0.86, T = 840, zero population deviation: run-level
+  sign(q̂)-weighted mean +0.0093 (q = 0), +0.0037 (q ~ N(0, 0.2)), +0.0001 (|q| = 0.25); W = 60 with the run-level sign
+  +0.0076, +0.0015, −0.0029; W = 60 with each window's own sign +0.040, +0.033, +0.027.
+- An adversarial reviewer subagent of the planning session ran some checks with the null's generator (placebo fit
+  β 200, band 0.0064–0.080 Hz, heterogeneity 0.5, T = 840, q drawn ad hoc, not solved to the data); the planning chat
+  re-ran them to record exact values. δ_run on the generator by q distribution (SE 0.00004 each): q = 0, +0.00151;
+  N(0, 0.22), mean |q̂| 0.183, +0.00039; N(0, 0.30), +0.00033; |q| = 0.19 fixed, +0.00003; Laplace 0.18, +0.00053; 30 %
+  at q = 0 with N(0, 0.30), mean |q̂| 0.187, +0.00071. δ_60 with the run-level sign on the same runs: +0.00136,
+  +0.00015, +0.00002, −0.00021, +0.00027, +0.00045. At N(0, 0.25): δ_run +0.00033, δ_within +0.00034, δ_pool +0.00002,
+  δ_means −0.00001, ε −0.00002, δ_60 +0.00007; 840-TR runs and 840-TR segments cut from 4,200-TR series agreed within
+  Monte-Carlo error. Stationary mechanisms from the same filter family (λ = 0.2), shares within / pool / means: shared
+  part slower (a_s 0.953, a_n 0.850) 0.88 / 0.08 / 0.05; much slower (0.989) 0.82 / 0.10 / 0.10; faster 0.96 / 0.05 /
+  0.00; the worked-example VAR(1) 0.89 / 0.09 / 0.05. Unshared slow drift added to the generator: δ_means −0.00058 and
+  +0.00078 at two amplitudes. Synthetic AR(1) with constant q and each region's a co-varying with its own window
+  variance: δ_pool −0.0028 and −0.0037, with every window's population deviation zero. B8 family: the deviation needed
+  for a residual of −0.0137 is +0.0082 at (0.85, 0.25) and +0.0105 at (0.867, 0.1945); the residual's slope in d is
+  ≈ −7.9q to −9.3q at a = 0.867.
+- Sequence. Drafted before the planning session had seen any value from the null's generator: the budget, the
+  run-level sign, and the thresholds 1/3, 2/3 and "none". Added after the reviewer's values were seen: the mixture
+  configuration, the controls and their validity clause, the δ_pool relabelling, the attribution clause and the
+  ordering of the branches. Added after the 10:32 outcome was seen: the correction note and rule (e).
+- The writing session (this entry), before the commit: the shared function was tested on synthetic arrays only (the
+  identity to 10⁻¹⁷, agreement with `PairPhiID` to 10⁻¹⁵, the data-path window layout with a 59-TR window); the null
+  script was exercised with `--dry` (50 pair-runs, fixed parameters, no data, every statistic's printing suppressed,
+  shapes and finiteness asserted); the analytic filter variance was checked against the FFT construction on the
+  session's own white noise; the family's lag-1 autocorrelation was tabulated against β for both bands (a
+  deterministic property of the filter, used to set the controls' parameters); the population checks of the shared
+  slow component and of the τ = 1 equivalence were printed. Nothing on the data or the null was seen.

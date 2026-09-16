@@ -1,0 +1,12 @@
+{'placebo': (np.float64(200.0), np.float64(0.0064), np.float64(0.08)), 'DMTpost': (np.float64(100.0), np.float64(0.003), np.float64(0.08))}
+periodic T=840 : run +0.00033(0.00003)  within +0.00034(0.00003)  aq +0.00002(0.00001)  means -0.00001(0.00000)  eps -0.00002(0.00000)  d60 +0.00007(0.00003)  a +0.87007(0.00010)  absq +0.20452(0.00077)
+  periodic: |sum over run| of one series 1.7763568394002505e-15  window-mean sum 5.551115123125783e-17
+cut from 4200  : run +0.00034(0.00003)  within +0.00033(0.00003)  aq +0.00004(0.00001)  means -0.00000(0.00000)  eps -0.00002(0.00000)  d60 +0.00007(0.00003)  a +0.86996(0.00010)  absq +0.20510(0.00077)
+  diff periodic - cut, run: -0.00001 (SE 0.00005)
+  diff periodic - cut, within: +0.00001 (SE 0.00004)
+  diff periodic - cut, aq: -0.00002 (SE 0.00001)
+  diff periodic - cut, means: -0.00000 (SE 0.00000)
+  diff periodic - cut, eps: -0.00000 (SE 0.00000)
+  diff periodic - cut, d60: +0.00000 (SE 0.00004)
+  diff periodic - cut, a: +0.00011 (SE 0.00014)
+  diff periodic - cut, absq: -0.00058 (SE 0.00109)

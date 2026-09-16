@@ -1,0 +1,3 @@
+kappa 0.0: run -0.00021 wd -0.00023 within -0.00058 aq +0.00037 (SE 0.00004) [cov part +0.00288, weight-mismatch part -0.00250] means +0.00002 eps -0.000020  mean sum(pi) 0.9686
+kappa 0.3: run -0.00337 wd -0.00327 within -0.00055 aq -0.00283 (SE 0.00004) [cov part +0.00270, weight-mismatch part -0.00553] means -0.00010 eps +0.000103  mean sum(pi) 0.9109
+kappa 0.5: run -0.00371 wd -0.00384 within -0.00029 aq -0.00368 (SE 0.00004) [cov part +0.00242, weight-mismatch part -0.00610] means +0.00013 eps +0.000130  mean sum(pi) 0.8112

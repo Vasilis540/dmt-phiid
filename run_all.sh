@@ -125,6 +125,8 @@ nstep partB/coupling_map_run        notes/partB8_coupling_map.py
 nstep logs/review_v2_residual_null  notes/review_v2_residual_null.py
 nrun notes/partB9_leave_two_out.py
 nstep partB/crosslag_deviation_run  notes/partB10_crosslag_deviation.py
+nstep partB/crosslag_budget_run     notes/partB12_crosslag_budget.py
+nstep partB/crosslag_budget_null_run notes/partB13_crosslag_budget_null.py
 nstep partB/regional_sts_r1_run     notes/partB11_regional_sts_r1.py
 step 15_figures_v2                  scripts/15_figures_v2.py
 
