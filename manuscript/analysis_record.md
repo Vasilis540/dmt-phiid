@@ -3807,3 +3807,108 @@ does not reproduce — produces the within-window term; and what produces the re
 the residual DiD. The thread's record is the sequence of entries from 15 Sep 15:35 UTC to this one; the superseded
 values stand in Supplementary Table S9 with their reasons, and every reading in the manuscript is the one the rules
 of the pre-run entry of 16:24 UTC give.
+
+## Text revision for readability, 16 Sep 2026 18:05 UTC (appended; nothing above edited)
+
+A readability pass on `manuscript/draft_v2.md`, commissioned by V.S. on 16 Sep 2026 on top of d51966e while the
+single full run of `run_all.sh` at d51966e was in progress. Text files only: `manuscript/draft_v2.md`,
+`CLAUDE.md`, `README.md`, `notes/companion_plain_language.md`, `notes/defence_questions.md` and this entry.
+Nothing under `scripts/`, `notes/*.py`, `run_all.sh`, `results/` or `notes/review_results/` was touched, so the
+running tree keeps one SHA; the figure captions (`scripts/15_figures_v2.py`) were left as they are, and the caption
+changes proposed are in the round's report, not in the repository. No number changed: the numeric tokens of the
+manuscript before and after were compared programmatically, section by section, and every difference is one of the
+moves listed in item 9 below. Word counts are whitespace-separated tokens (the four bold headings of the Abstract
+counted); alphabetic words in brackets.
+
+1. **Abstract.** 445 → 300 words (397 → 272). Kept: the claim; the identity and the 32-fold derivative ratio; the
+   regional Pearson +0.863 over 115 regions with the cortical Spearman +0.771 and its spin p < 0.0001; the DMT DiD
+   −0.0809 (p = 0.0038), the r₁ DiD −0.0146 (p = 0.0106) and their per-subject r = 0.953; the diagnostic's 114 %
+   and the residual DiD +0.0115 (p = 0.042) with the null's +0.0037–0.0077; CCS-sts not tracking r₁ and rising
+   under DMT (exploratory); the 0.80 correlation of its DiD with the residual's; the split-half test that "could not
+   tell shared signal from window noise"; the recommendation. Cut, each remaining where it was quoted from: "≈20
+   effective samples per 60-TR window" (Methods, Estimator); "balanced by four negative atoms" (Discussion, first
+   section; Methods, Closed-form atoms); "holds to 7 %", "−0.084 nats against rtr +0.039" (Results 1; Discussion);
+   r² = 0.745 (Results 2); "reproduced the level to 4.3 %" and "the per-subject DiD at r = 0.989" (Results 4, Table
+   4); "over-predicting the group DiD by 14 %" (the same fact as the 114 % kept); "r ≈ −0.01 (MMI-sts +0.7)" (the
+   rounded within-window correlations; the exact −0.011, −0.018 against +0.742, +0.697 are in Results 3); "(N = 14;
+   a bound on the dependence, not independence)" and the per-subject CCS clause (Results 3); the split-half
+   mechanics (Results 4); "not pre-specified" after the r₁ DiD (Results 3 and Methods say it); "(a review
+   computation)" after the finite-sample null (Methods, Results 4, Discussion say it).
+2. **Status line.** 337 → 30 words, two sentences: draft v2 as of 16 September 2026, not for circulation; every
+   revision and its record entries are listed in `CLAUDE.md` and in this record's dated entries. The revision chain
+   it carried (second and third reviews; the verification; the companion, 15:35/15:36/15:46 UTC; the fifth review,
+   18:14/18:18/18:46 UTC; 16 Sep 10:23/10:32/10:36 UTC; 16 Sep 16:24/16:37/16:48 UTC and the closure) is now the
+   numbered list "Revision chain of `manuscript/draft_v2.md`" in `CLAUDE.md`, current state. The sentences that
+   were appended to the status line but are not status — "supersedes `manuscript/draft.md`", the sources of every
+   number, the [TK] convention, the atom notation — are kept unchanged as a second bold paragraph, "Sources and
+   notation" (103 words).
+3. **Discussion, "What the finding is and is not".** 666 → 689 words (636 → 659); one paragraph → four: (i) what
+   the estimator responds to and the narrow consequence (207 words, 9 sentences); (ii) the three things the data
+   add, now numbered first/second/third — the wrong-signed excess, the residual with the null's share and the
+   run-level residual, the cross-lag budget's reading (338 words, 15 sentences); (iii) the shared variance with
+   CCS-sts and the undetermined split-half test (77 words); (iv) what is and is not claimed (67 words), which
+   gains one sentence stating the claim ("the account of the estimator and, on this dataset, the collinearity and
+   the diagnostic's reproduction of the contrast at the size stated"). Longest sentence 43 words (before: 96).
+   Every number of the old paragraph is in the new one, in the same clause.
+4. **Results 4.** Prose 2,042 → 2,059 words (1,785 → 1,806; the tables unchanged). The three fixes of the
+   commission: "δ_run, the mean of d over pairs weighted by the sign of the pair's run-level q" now continues "so
+   that a positive value is a departure in the direction that lowers sts" (and the Methods budget paragraph's "in
+   which d lowers sts" became the same phrase); "9–14 %" → "8–14 %", the enclosing integer range of F = 0.085–0.135
+   (`crosslag_budget_null_tables.md`, rule (a); the same figure in the Discussion, `CLAUDE.md`, the companion and
+   the defence questions changed with it; the outcome entry of 16:37 UTC and Table S9, which give F itself, are
+   untouched); "the injection adds about a tenth on the DMT run" → "the DMT run carries about a tenth more of it".
+   The 121-word budget sentence is five sentences, the 100-word "Neither outcome" sentence three, the 74-word
+   level sentence two, and the 61-word cross-lag-substitution sentence two; no number moved out of its clause. The
+   historical asides: the "near zero" reading's provenance (record, 15:46 UTC, not in the plan) and "a computation
+   of the second review, with no pre-recorded rule" are each kept once, at their first use in Results 4; the
+   repeat in the Table 4 caption is "a review computation, History". The vague pointer "(record, 16 September
+   2026)" at the paragraph's end names the entry ("The cross-lag budget: outcome").
+5. **Methods.** Every sentence over 60 words split (Estimator; the CCS definition, 94 words, and Ince's
+   projection, 74; the shared-slow-component sentence, 105; window 5's exclusion, 76; the weighting rule's history,
+   69; the budget's null, 82; the sts-matched null, 118; History's 20-region-fit sentence, 91, and closure
+   sentence, 70), the one exception being the integrated-autocorrelation-time sentence, which the commission asked
+   to be one sentence with the record pointer: it is one sentence of 78 tokens, 22 of them numbers (the six placebo
+   ACF values, the eight lags, the formula's constants, 3 TRs, ≈ 2.8 and the date), all kept. Symbols defined at first use in Methods: r₁ (Dataset), W
+   (Estimator), DiD (the CCS check, before The DMT contrast defines it), TDMI and a_x, a_y (Closed-form atoms), r_τ
+   (Bias simulations); S, C, q, s, d, δ_run were already defined where introduced. The "cell" definition is in one
+   place, Estimator (variant × estimator; the bias simulations' and the finite-sample null's uses named there);
+   the sentence in The residual diagnostic that defined it is replaced by "a cell being here one of those
+   run × period combinations". The finite-sample null's β̄ is named as its mean filter parameter where the budget
+   uses it before the null's description.
+6. **Data and code availability.** "every results table with the git SHA that produced it" → the accurate
+   statement: the tables under `results/` carry the SHA in their headers; the tables under `notes/review_results/`
+   carry it where their scripts print it — `partB/crosslag_deviation_tables.md` (partB10, git=9a19b10),
+   `partB/regional_sts_r1_tables.md` (partB11, 152cc6d), `partB/crosslag_budget_tables.md` and
+   `partB/crosslag_budget_null_tables.md` (partB12/13, 6b5181a); the deconvolution atom CSVs carry `git=nogit`
+   from the sandbox — and are otherwise reproduced by `run_all.sh` at the commit named in its log (checked by
+   reading the first lines of every non-`.npy` file under both directories at d51966e). The [TK] for the full run
+   stands; the replacement sentence of the entry of 16:24 UTC ("The end-to-end run of `run_all.sh` ...") is placed
+   beside it in square brackets, verbatim, ready to drop in with the SHA and the wall-clock time; its numbers
+   (d145e1c, ten and fourteen steps, 51 min, 7.9 × 10⁻¹³) are the only numeric tokens the manuscript gained.
+7. **AI-use statement.** "model Claude Fable 5.1" → the model and the session of each contribution are identified
+   in the commit trailers (several models were used across the sessions). "Each adversarial review re-traced every
+   number of the preceding draft" → the first three re-traced every number of the draft they read and the fourth
+   every number the revision had introduced; the fifth review's one finding is quoted in this record (18:14 UTC).
+8. **Consistency sweep.** "The three adversarial reviews" → five, the fourth of them the verification of the
+   correction note (this record's leave-two-out entry and the verification file itself number it so; the fifth is
+   the signed-mean finding quoted at 18:14 UTC): Data and code availability, the AI-use statement, `README.md`, the
+   companion (History unit; Data and code unit; AI-use unit) and defence Q6. Record pointers: "(record, 16
+   September 2026, 16:24 UTC)" in the Methods budget paragraph, ambiguous between two entries at 16:24, names "The
+   cross-lag budget: pre-run entry"; "(record, "Reference verification", 15 Sep 2026)" in References names the
+   entry it sits in, "Finalisation pass"; the integrated-autocorrelation-time pointer names its entry, "Primary B
+   result"; the closure pointer carries the entry's date, 14 September 2026. Every other "record, <time> UTC"
+   pointer was checked against the headings above (07:30, 07:55, 08:47 [a commit], 11:09, 12:48 [a commit], 15:35,
+   15:36, 15:46, 16:24, 16:37, 18:14, 18:18 all resolve). Every backticked file path in the manuscript exists at
+   d51966e (globs and `external/` excepted). Table and figure numbers unchanged and consistent with the captions
+   file. British spelling: no American form found. "Supersedes" wording consistent (status; Dataset; History; S3;
+   Figures; Data and code availability).
+9. **Numbers that moved.** Out of the manuscript and into `CLAUDE.md`: the status line's record times (item 2).
+   Out of the Abstract and left standing in Results 1–4 and Methods: item 1. Into the manuscript from this record:
+   item 6. Changed in rounding at the commission's instruction: 9–14 % → 8–14 % (item 4). Nothing else.
+10. **Not done, listed for V.S.** Caption changes (`scripts/15_figures_v2.py`, out of scope during the run) are
+    proposed in the report: split Figure 2(c)'s 121-word sentence and Figure 4's 109-word opening sentence and
+    Figure 3(b)'s 75-word sentence, with no number changed. The Figures paragraph names 7c7809a as the commit of
+    the current figures; when the single full run regenerates them the SHA there and in the captions file changes.
+11. **Companion and defence questions.** Changed only where a heading or a quoted sentence changed: the companion's
+    Abstract — Results unit carries a note on what left the Abstract; its Abstract — Results (c), History (b),
+    Discussion (b), Data and code (a) and AI-use (a) units follow the new text; the defence header and Q3, Q6.
