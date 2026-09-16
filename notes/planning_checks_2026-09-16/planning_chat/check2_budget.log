@@ -1,0 +1,4 @@
+D_run +0.00459 | D_run(window-demeaned) +0.00117 | R_mean = D_run - D_wd +0.00342
+D_60 equal-weight +0.00006 | D_60 pi-weighted +0.00061 | P (pi-weighted) +0.00057 | P equal-weight +0.00104
+eps = D_wd - D_60pi - P = -0.000011  (per-pair eps SD 0.00419; per-pair d_wd SD 0.01877)
+equal-weight budget remainder D_wd - D_60eq - P_eq = +0.000071

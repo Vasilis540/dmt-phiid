@@ -1,0 +1,5 @@
+1. survives, old vs new, distinct pairs: [[nan, nan]]
+2. extra rows (84, 12) vs nonstat_ar_step (84, 12) max |diff|: 0.03012500000000007
+   new header: # script=02_bias_check.py tau=1 kind=gaussian redundancy=MMI n_windows=2000 burn_in=200 seed=20261120 git=2151be0 n_runs=20000 n_boot=2000 m_decide=13
+   old header: # script=02_bias_check.py tau=1 kind=gaussian redundancy=MMI n_windows=2000 burn_in=200 seed=20261120 git=18ad8b4 n_runs=20000 n_boot=2000 m_decide=13
+3. letter-digit-letter tokens in subject_alignment_check.txt: []

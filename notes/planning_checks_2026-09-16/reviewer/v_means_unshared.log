@@ -1,0 +1,3 @@
+unshared drift amp 0.0: run +0.00033 within +0.00034 aq +0.00003 means -0.00001 eps -0.00002 | a 0.8701 |q| 0.205
+unshared drift amp 0.3: run -0.00028 within +0.00028 aq +0.00004 means -0.00058 eps -0.00002 | a 0.8746 |q| 0.198
+unshared drift amp 0.6: run +0.00099 within +0.00021 aq +0.00002 means +0.00078 eps -0.00002 | a 0.8852 |q| 0.199

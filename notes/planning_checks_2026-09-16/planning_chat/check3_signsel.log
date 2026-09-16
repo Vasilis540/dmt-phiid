@@ -1,0 +1,3 @@
+q = 0 for every pair      : run-level mean d +0.00008; sign(q_run)-weighted +0.00933 (SE 0.00004); W60 with run-level sign +0.00758; W60 with window sign +0.04042; true sign weight +0.00008; mean |q_run| 0.071
+q ~ N(0, 0.2)             : run-level mean d +0.00000; sign(q_run)-weighted +0.00373 (SE 0.00006); W60 with run-level sign +0.00146; W60 with window sign +0.03258; true sign weight -0.00003; mean |q_run| 0.175
+|q| = 0.25, random sign   : run-level mean d -0.00002; sign(q_run)-weighted +0.00005 (SE 0.00006); W60 with run-level sign -0.00286; W60 with window sign +0.02669; true sign weight -0.00012; mean |q_run| 0.250

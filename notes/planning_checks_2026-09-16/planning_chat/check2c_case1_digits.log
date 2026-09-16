@@ -1,0 +1,2 @@
+within_pi +0.000255 within -0.002379 aq -0.000022 means +0.000107
+var_het 0.0 mean_shift 0.0 cov_scale 0.0: population cov(a,|q|) +0.00000 | d_run +0.00029 d_wd +0.00018 means +0.00011 | within -0.00238 var +0.00263 aq -0.00002 eps -0.000050

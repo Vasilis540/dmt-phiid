@@ -1,0 +1,13 @@
+ notes/review_results/inference_rows_ccs.csv       | 144 +++++++++----------
+ notes/review_results/inference_rows_ccs_pub.csv   | 144 +++++++++----------
+ notes/review_results/inference_rows_diag.csv      | 144 +++++++++----------
+ notes/review_results/inference_rows_lag.csv       | 144 +++++++++----------
+ notes/review_results/inference_rows_raw.csv       | 162 +++++++++++-----------
+ notes/review_results/partB/coupling_map_tables.md |   2 +-
+ notes/review_results/partB/crosslag_deviation.csv | 112 +++++++--------
+ results/bias_check_nonstat.csv                    |  84 +++++++++++
+ results/bias_check_nonstat_global.csv             |   2 +
+ results/subject_alignment_check.txt               |   3 +-
+ 10 files changed, 513 insertions(+), 428 deletions(-)
+--- binaries:
+ 30 files changed, 0 insertions(+), 0 deletions(-)

@@ -1,0 +1,7 @@
+lambda 0.2: a_s 0.953, a_n 0.850; population d = +0.01638
+  common drive                                       run +0.01621 within +0.01426 aq +0.00124 means +0.00085 eps -0.00014 d60 +0.01399 | a 0.871 |q| 0.200  share within 0.88 means 0.05
+lambda 0.2: a_s 0.989, a_n 0.850; population d = +0.02217
+  common drive                                       run +0.02192 within +0.01788 aq +0.00211 means +0.00230 eps -0.00037 d60 +0.01713 | a 0.878 |q| 0.199  share within 0.82 means 0.10
+lambda 0.2: a_s 0.850, a_n 0.953; population d = -0.01638
+  common drive                                       run -0.01623 within -0.01562 aq -0.00082 means +0.00008 eps +0.00013 d60 -0.01717 | a 0.932 |q| 0.201  share within 0.96 means -0.00
+VAR(1) a=0.83 c=0.03 (worked example)                run +0.02794 within +0.02485 aq +0.00241 means +0.00126 eps -0.00059 d60 +0.02306 | a 0.833 |q| 0.247  share within 0.89 means 0.05

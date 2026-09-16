@@ -1,0 +1,8 @@
+(ii) near-zero threshold fixed at 10:23: 0.1 x 0.0034 = 0.00034; null W=840 share F = 0.074
+(ii) Gaussian-q points (mean |q^|, delta_run): {'N(0,0.22)  v_null_qshape': (0.183, 0.00039), 'N(0,0.25)  v_null_periodic': (0.20452, 0.00033), 'N(0,0.30)  v_null_qshape': (0.244, 0.00033)}
+(ii) interpolated at the data's mean |q^| 0.1945: +0.00036, F = 0.105
+(ii) Laplace 0.18 (mean |q^| 0.187): +0.00053, F = 0.156; 30 % at q = 0 (mean |q^| 0.187): +0.00071, F = 0.209
+(iv) writer's net ratios, net W60 over raw run: 0.774 (homogeneous), 0.815 (cells)
+(iv) net over net: 0.835, 0.879
+(iii) run-type difference DMT - PCB: run level +0.00082; W60 raw +0.00007; null cells' run-type difference -0.00027; W60 net +0.00034
+(iii) gap run level minus W60: +0.00048 (net) to +0.00075 (raw); share of the DMT run-level value 0.13-0.20
