@@ -81,20 +81,35 @@ Cambridge (Prof. Emmanuel Stamatakis).
   and the defence questions follow.
 - 16 Sep 2026: the sign(q)-weighted deviation within 60-TR windows and on the
   finite-sample null (`partB10` sections A and B; pre-run entry 10:23 UTC,
-  commit 9a19b10; outcome 10:32 UTC). Null at run length +0.00025 (near zero:
-  finite sampling is not the run-level source); `ts_gsr` W = 60 +0.00611
-  [+0.00563, +0.00665], 14 of 14, of which the null gives ≈ +0.0035; raw or
-  net, comparable to the run-level +0.00340 (1.80 / 0.77–0.81 times), so a
-  stationary mechanism rather than pooling. Results 4 names a third
-  look-alike, a slow component shared by a pair, d = λ(1 − λ)(a_s − a_n);
-  it and sign-following lagged interaction remain, not distinguished.
+  commit 9a19b10; outcome 10:32 UTC) — superseded the same day: a correction
+  note (16:24 UTC) records that the W = 60 statistic took the sign from each
+  window (selection on the same samples; the null's own value with that
+  weight is +0.00348 of the data's +0.00611) and that the run-length null was
+  read at the wrong q̂ density. The exact budget replaced it (round 7; pre-run
+  entry 16:24 UTC, commit 6b5181a; outcome 16:37 UTC; `partB12`/`partB13` with
+  `rev_crosslag_budget.py`): δ_run = δ_within + δ_pool + δ_means + ε, s = the
+  sign of the run-level q; null solved to the data's run-level a, |q̂| and
+  fraction |q̂| < 0.05 per run type in six configurations; two controls.
+  `ts_gsr`: δ_run +0.00340; null +0.00029 to +0.00046 (finite sampling a
+  minor part, 9–14 %); null-corrected +0.00301: within +0.00250 (83–84 %,
+  most), pool +0.00046 (15 %, a minor part), means +0.00004 (a minor part);
+  pooling larger on the DMT run (+0.00039, p = 0.0006, 11 % of that run's
+  signature). Common slow drive and lagged coupling are one account at τ = 1
+  (A = Γ₁Γ₀⁻¹); what acts inside the windows is open, and the closure entry
+  ends the thread. Supplementary Table S9 holds the budget and the superseded
+  values. `ts_demean` (−0.00262) reported, not read.
+- `run_all.sh` has executed once, in two invocations at d145e1c (sections 0–5
+  and the first ten steps of section 6 on 15 Sep; the remaining fourteen
+  steps on 16 Sep, `results/run_all_tail.log`, 51 min): sections 0–5 CSVs
+  reproduce exactly, section 6 to 7.9e-13 (record, 16 Sep 16:24 UTC entry;
+  `notes/planning_checks_2026-09-16/reproduction_checks/`). Regenerated
+  files not committed (stashed); three provenance differences recorded.
 - Remaining work: the [TK] items in `draft_v2.md` (affiliations, co-authors,
   the REC reference number, journal wording); run `run_all.sh` end-to-end
-  once before submission (the run started 15 Sep 2026, 10:25 UTC, stopped at
-  16:33 UTC in section 6: `notes/partB2_ccs_verify.py` raised a PermissionError
-  on the uv cache; d145e1c makes the script tolerate it; restart the run —
-  `partB10`, `partB11` and `15_figures_v2` have not run in it); choose the venue and
-  preprint server (`notes/venue_options.md`).
+  once as a single run at the final commit (V.S.; it regenerates and commits
+  every output under one SHA, `partB12`/`partB13` included, and closes the
+  Data and code availability [TK]); choose the venue and preprint server
+  (`notes/venue_options.md`).
 
 ## Post-hoc checks (NOT pre-specified; recorded here, not in the record)
 
@@ -185,6 +200,9 @@ notes/                           adversarial reviews, the verification of the co
                                  (venue_options.md), review computations (rev_*.py, review_*.py),
                                  Part B plans/notes/scripts (partB*.md, partB*.py; partB10 and
                                  partB11 added 15 Sep for the cross-lag deviation and the regional
+                                 test; partB12, partB13 and rev_crosslag_budget.py added 16 Sep for
+                                 the cross-lag budget; planning_checks_2026-09-16/ the planning
+                                 session's checks and V.S.'s reproduction checks; the regional
                                  sts–r₁ test); the plain-language companion and the defence
                                  questions (companion_plain_language.md, defence_questions.md);
                                  outputs under notes/review_results/ (tables, logs, inference
