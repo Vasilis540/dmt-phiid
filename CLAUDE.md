@@ -108,7 +108,8 @@ Cambridge (Prof. Emmanuel Stamatakis).
   readability", 18:05 UTC; text files only, no number changed, nothing
   under `scripts/`, `results/` or `notes/review_results/` touched, so that
   the single full run of `run_all.sh` started at d51966e keeps one SHA):
-  Abstract cut to 300 words; status line cut to two sentences; Discussion's
+  Abstract cut to 300 words (319 after the wording decisions of round 8b
+  restored two clauses); status line cut to two sentences; Discussion's
   first section in four paragraphs; Methods sentences over 60 words split,
   symbols defined at first use, the "cell" definition in Estimator only;
   Results 4's budget wording (8–14 % for F = 0.085–0.135; "the DMT run
@@ -149,6 +150,10 @@ Cambridge (Prof. Emmanuel Stamatakis).
      the thread).
   8. 16 Sep, the readability pass above (record, "Text revision for
      readability", 18:05 UTC).
+  9. 16 Sep, the wording decisions on that pass and the three caption
+     splits in `scripts/15_figures_v2.py`, not run (record, "Wording
+     decisions and caption edits", 19:58 UTC); the Figures paragraph
+     carries [TK: SHA] until the outputs commit regenerates the figures.
 - Remaining work: the [TK] items in `draft_v2.md` (affiliations, co-authors,
   the REC reference number, journal wording); run `run_all.sh` end-to-end
   once as a single run at the final commit (V.S.; it regenerates and commits

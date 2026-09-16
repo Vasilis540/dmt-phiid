@@ -3912,3 +3912,31 @@ counted); alphabetic words in brackets.
 11. **Companion and defence questions.** Changed only where a heading or a quoted sentence changed: the companion's
     Abstract — Results unit carries a note on what left the Abstract; its Abstract — Results (c), History (b),
     Discussion (b), Data and code (a) and AI-use (a) units follow the new text; the defence header and Q3, Q6.
+
+## Wording decisions and caption edits, 16 Sep 2026 19:58 UTC (appended; nothing above edited)
+
+V.S.'s decisions on the twelve sentences the readability pass (entry of 18:05 UTC) flagged, on top of fd4302e;
+text files and `scripts/15_figures_v2.py` only, the script not run. Six wording changes in `manuscript/draft_v2.md`:
+the Abstract regains "(within a window r ≈ −0.01 against +0.7)" after "CCS-sts does not track r₁ as MMI-sts does"
+and "so spatial synergy maps are exposed to regional differences in r₁" after the regional statistics (300 → 319
+words); the Discussion's closing paragraph states the claim concretely ("the account of the estimator on the AR(1)
+family and, on this dataset, the collinearity of the sts and r₁ contrasts and the diagnostic's reproduction of the
+contrast's sign and 114 % of its size"); the integrated-autocorrelation-time sentence of Estimator is two
+sentences, the pooled-placebo value with its consequence for the 60-TR window first and the record's cruder
+eight-lag estimate (≈ 2.8) with its pointer second, every number kept; Results 4 reads "8–14 % of the observed
+δ_run"; the Discussion's "The rest, together with a run-level residual three times the null's on `ts_gsr` (absent,
++0.1 %, on `ts_demean`), is not accounted for by the null as specified" is back in its old order. The other six
+stand as written (the review count as this record numbers it; the AI-use sentence; the `git=nogit` parenthesis;
+the "cell" definition in Estimator; the bracketed replacement sentence beside the run_all [TK], kept until the
+run's SHA replaces it). No number changed; the numeric tokens gained are the two restored Abstract values and the
+114 % of the claim sentence.
+
+Captions: the three splits proposed in the report were made in `scripts/15_figures_v2.py` as caption text only —
+Figure 2(c) at "with contours at 10, 30 and 100." and at "(the ratio is even in q)."; Figure 3(b) at "Pearson
+r = ...)." with the two remainders' sentence following; Figure 4's opening sentence into the panel description,
+the Cousineau–Morey band, its reading, and the grey-band / hatched / dashed-line legend — no plotting or data
+change, no other script. `manuscript/figures/captions_v2.md` is left as generated at 7c7809a and follows when
+V.S. runs the script once at the final commit after the full run; the Figures paragraph of the paper carries
+[TK: SHA] where it named 7c7809a, for the outputs commit. `CLAUDE.md` (the readability bullet's Abstract count;
+chain item 9) and the companion's Abstract — Results note (the restored clauses) follow; nothing in the defence
+questions quotes a changed sentence.
