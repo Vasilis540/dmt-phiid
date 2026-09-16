@@ -3288,3 +3288,96 @@ is λa_s, while the AR(1) substitution gives a_y q; so d = λ(1 − λ)(a_s − 
 slower than the regional parts, and reversing with the sign of the shared component's loading, i.e. following the
 sign of q — a stationary property of common slow structure, neither pooling nor lagged interaction. The script prints
 a population check of the identity (three parameter sets, both loadings) before the data are loaded.
+
+## The sign(q)-weighted deviation at W = 60 and on the finite-sample null: outcome, 16 Sep 2026 10:32 UTC (appended; nothing above edited)
+
+Run at 9a19b10 (clean; the pre-run entry's commit, 10:23 UTC). Every number below is quoted from
+`notes/review_results/partB/crosslag_deviation_tables.md` (log `crosslag_deviation_run.log`, CSV
+`crosslag_deviation.csv`), except the net values and ratios in item 1 and the shares in item 2, which are
+arithmetic on numbers printed there. Checks: every window of both variants (392 each) matched the saved diagnostic's
+`xcorr_dev`; the W = 60 signed mean reproduces the +0.00014 of `residual_source.log`; the regenerated null reproduced
+every residual value of its log (−8.52 %, −3.10 %, −0.34 %; −0.0353, −0.0313, −0.0350, −0.0364; DiD +0.0054); the
+population check of the common-component identity holds for all six parameter sets; the run-level section is unchanged
+(its lines and the CSV's run-level columns are identical to the 13f1c6d run's; the header now carries 9a19b10).
+
+1. **W = 60.** `ts_gsr`: share of pairs with q < 0 (window q) 0.515; mean deviation +0.00643 among the q > 0 pairs and
+   −0.00581 among the q < 0 pairs; signed mean +0.00014 [+0.00010, +0.00018] (sign-flip p = 0.0001, positive in 14 of 14;
+   r with the W = 60 residual across the 28 runs −0.283). **Sign(q)-weighted mean +0.00611 [+0.00563, +0.00665],
+   sign-flip p = 0.0001, positive in 14 of 14** (per subject +0.00505 to +0.00819; DMT run +0.00615, placebo run
+   +0.00608; r with the W = 60 residual −0.635). Slope of the deviation on q +0.0201 [+0.0184, +0.0222], p = 0.0001,
+   14 of 14 (DMT +0.0205, placebo +0.0198; r −0.416).
+   **Reading under the rule.** The ratio to the run-level +0.00340 is 1.80, within a factor of two: comparable — in the
+   commission's words, "a stationary mechanism is indicated and pooling is not distinguished by run length". Net of the
+   null's W = 60 value (item 2: +0.00348 with the homogeneous filter, +0.00334 as the mean of the four cells) the W = 60
+   value is +0.00263 or +0.00277, ratios 0.77 and 0.81: the same branch. The limit stated before the run concerned a
+   smaller value; the value is comparable although centring 60-TR windows shrinks a slow component's contribution, and
+   so it bears against pooling as the source of the run-level statistic.
+   `ts_demean` (no rule): share of pairs with q < 0 0.275; mean deviation −0.00303 among the q > 0 pairs and −0.01649
+   among the q < 0 pairs; signed mean −0.00674 [−0.00820, −0.00537] (positive in 0 of 14); sign(q)-weighted mean
+   +0.00160 [−0.00019, +0.00326], sign-flip p = 0.1061, positive in 9 of 14 (DMT +0.00108, placebo +0.00212; r with the
+   W = 60 residual −0.779), against −0.00262 at the run level; slope +0.0237 [+0.0219, +0.0255], p = 0.0001, 14 of 14.
+   Reported without interpretation.
+2. **The finite-sample null.** Homogeneous filter: at W = 840 (2,000 pairs × 10 windows) **sign(q)-weighted mean
+   +0.00025 ± 0.00005** (SE; 95 % [+0.00015, +0.00034]), signed mean +0.00000 ± 0.00005, slope +0.0012 ± 0.0001; at
+   W = 60 +0.00348 ± 0.00007, slope +0.0107 ± 0.0001; at W = 30 +0.00662 ± 0.00008, slope +0.0169 ± 0.0001. The four
+   operating-point cells at W = 60: +0.00344, +0.00311, +0.00325, +0.00356 (mean +0.00334 ± 0.00004); slopes +0.0112,
+   +0.0106, +0.0102, +0.0114.
+   **Reading under the rule.** At W = 840 the null value is 7.3 % of the run-level +0.00340 and below the tenth (0.00034)
+   fixed as "near zero": "a value near zero removes finite sampling as a source of the signature". Its interval excludes
+   zero; the rule fixed before the run reads the magnitude. Within windows finite sampling is not small: at W = 60 it
+   alone gives +0.00334 to +0.00348, 55–57 % of the data's +0.00611, and at W = 30 +0.00662; the statistic's finite-sample
+   part grows as the window shortens.
+3. **What the two computations say about the look-alikes.** Finite sampling is removed as the source of the run-level
+   signature (item 2). Pooling of non-stationary segments is indicated against as its source: net of finite sampling the
+   signature within 60-TR windows is 0.77–0.81 of the run-level value, where pooling as the source required less than
+   half (item 1). Two stationary look-alikes remain — lagged interaction whose sign follows that of the pair's
+   correlation, and a slow component shared by the two regions of a pair at a lag-1 autocorrelation above the regional
+   parts', d = λ(1 − λ)(a_s − a_n) — and neither computation distinguishes them: the null contains neither (its pairs
+   share one filter, so a_s = a_n, and it has no coupling), and both are stationary and so persist within windows.
+   Numbers outside the rules, stated without interpretation: at the run level the statistic is larger on the DMT run than
+   on the placebo run (+0.00381 against +0.00299), and at W = 60 the two runs are equal (+0.00615, +0.00608); no test of
+   either difference was specified or run.
+
+Reported in the manuscript's Results 4 (the third look-alike and the two computations), Discussion and Limitations.
+
+## Text revision with the W = 60 and null values of the sign(q)-weighted deviation, 16 Sep 2026 10:36 UTC (appended; nothing above edited)
+
+Commissioned with the two computations above. Changes to `manuscript/draft_v2.md`; every added number is quoted from
+`crosslag_deviation_tables.md` or from the outcome entry of 10:32 UTC.
+
+1. **Results 4.** The account of what the run-level statistic does not establish becomes its own paragraph. It names
+   three look-alikes of pooling that leave the same run-level signature: lagged interaction whose sign follows that of
+   the pair's correlation (as before), finite sampling (as before), and, new, a slow component shared by the two
+   regions of a pair, with its derivation in one sentence (x = s + n_x, y = s + n_y; q = λ; a_x = a_y = λa_s +
+   (1 − λ)a_n; true cross-lag correlation λa_s against the substitution's a_y q; d = λ(1 − λ)(a_s − a_n), following the
+   sign of q; the population check in the tables). It reports the two computations with their rules and outcomes (W = 60:
+   +0.00611 [+0.00563, +0.00665], 14 of 14, DMT and placebo runs, slope; null: +0.00025 ± 0.00005 at run length, +0.00348
+   at W = 60 with the cells' range, +0.00662 at W = 30; the ratios 1.80 raw and 0.77–0.81 net), says what they establish
+   (finite sampling removed as the source of the run-level signature; a stationary mechanism indicated rather than
+   pooling) and what they say about the shared slow component (one of the two mechanisms left, not separated from
+   sign-following lagged interaction, since the null contains neither and both persist within windows), and gives the
+   `ts_demean` W = 60 values and the run-level DMT/placebo difference beside the equal W = 60 runs, untested and
+   uninterpreted. Removed: "It does not establish pooling: ... finite sampling at 840 TRs produces part of the run-level
+   residual (the stationary null's −0.34 %, above), and neither that null's value of this statistic nor the statistic
+   within windows has been computed", and, from the coupled-family sentence, "while the W = 60 figure, +0.00014
+   (`residual_source.log`), is a signed mean, open to the same cancellation" (the signed mean stays in the post-hoc
+   supplement's sentence, and the W = 60 sign(q)-weighted value is now reported). The closing sentence becomes "Which
+   stationary mechanism produces the run-level deviation, and what produces the rest of the run-level residual and of the
+   residual DiD, is not located."
+2. **Discussion, "What the finding is and is not".** The sentence making pooling "a candidate for part of the run-level
+   residual ... and not its established source, since lagged interaction ... finite sampling ... and neither the null's
+   value of the statistic nor its value within windows has been computed" is replaced by the two computations' reading
+   (finite sampling removed; comparable within windows, raw and net; a stationary mechanism rather than pooling), the two
+   stationary look-alikes left undistinguished, and the departure's size on the family's scale, unchanged.
+3. **Limitations.** The sentence "That makes pooling a candidate ... whose share of the statistic is not known" is
+   replaced by the same reading in brief, with the net ratio and the half of the windowed statistic that is finite
+   sampling.
+4. **Status line, Supplement pointer, Data and code availability.** The revision of 16 September and its record entries
+   are named; the tables and `partB10` are described as holding the W = 60 and finite-sample-null values.
+
+Numbers removed: the null's −0.34 % and "840 TRs" in the replaced Results 4 sentence (−0.34 % stays where the null's
+levels are reported) and the +0.00014 of the coupled-family sentence (it stays in the supplement's sentence).
+Notes: `notes/defence_questions.md` (header, Q3, Q14) and `notes/companion_plain_language.md` (the run-level cross-lag
+unit's reading, (b) and (c); the Results 4, Discussion and Limitations units' cross-lag sentences; the Abstract
+Conclusions (c) quotation of "is not located"; glossary entry "shared slow component") follow the paper. `CLAUDE.md`:
+current state.
