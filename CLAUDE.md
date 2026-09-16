@@ -14,7 +14,7 @@ Cambridge (Prof. Emmanuel Stamatakis).
 - **20 Nov 2026** — public preprint + documented repo
 - **8 Dec 2026** — Cambridge application (Gates Cambridge / Cambridge Trust)
 
-## Current state (15 Sep 2026)
+## Current state (16 Sep 2026)
 
 **Analysis complete. The paper is `manuscript/draft_v2.md` (revised 15 Sep after the second and third adversarial reviews and after the verification of the correction note; finalisation pass 15 Sep: ethics statement, software versions, verified references, copy-edit, COBIDAS checklist in `manuscript/supplementary_cobidas.md`); `manuscript/draft.md` is the superseded first draft, kept as a record. Figures `fig1_v2`–`fig5_v2` built by `scripts/15_figures_v2.py`.**
 
@@ -91,7 +91,7 @@ Cambridge (Prof. Emmanuel Stamatakis).
   sign of the run-level q; null solved to the data's run-level a, |q̂| and
   fraction |q̂| < 0.05 per run type in six configurations; two controls.
   `ts_gsr`: δ_run +0.00340; null +0.00029 to +0.00046 (finite sampling a
-  minor part, 9–14 %); null-corrected +0.00301: within +0.00250 (83–84 %,
+  minor part, 8–14 % for F = 0.085–0.135); null-corrected +0.00301: within +0.00250 (83–84 %,
   most), pool +0.00046 (15 %, a minor part), means +0.00004 (a minor part);
   pooling larger on the DMT run (+0.00039, p = 0.0006, 11 % of that run's
   signature). Common slow drive and lagged coupling are one account at τ = 1
@@ -104,6 +104,51 @@ Cambridge (Prof. Emmanuel Stamatakis).
   reproduce exactly, section 6 to 7.9e-13 (record, 16 Sep 16:24 UTC entry;
   `notes/planning_checks_2026-09-16/reproduction_checks/`). Regenerated
   files not committed (stashed); three provenance differences recorded.
+- 16 Sep 2026, readability pass (round 8; record, "Text revision for
+  readability", 18:05 UTC; text files only, no number changed, nothing
+  under `scripts/`, `results/` or `notes/review_results/` touched, so that
+  the single full run of `run_all.sh` started at d51966e keeps one SHA):
+  Abstract cut to 300 words; status line cut to two sentences; Discussion's
+  first section in four paragraphs; Methods sentences over 60 words split,
+  symbols defined at first use, the "cell" definition in Estimator only;
+  Results 4's budget wording (8–14 % for F = 0.085–0.135; "the DMT run
+  carries about a tenth more of it"); Data and code availability states
+  which tables carry the git SHA; the AI-use statement no longer names one
+  model; "three adversarial reviews" corrected to five (the fourth the
+  verification of the correction note) here, in `README.md`, the companion
+  and the defence questions.
+- Revision chain of `manuscript/draft_v2.md` (moved here from its status
+  line on 16 Sep 2026; each entry named is a dated heading of
+  `manuscript/analysis_record.md`):
+  1. 15 Sep 2026, after the second adversarial review
+     (`notes/adversarial_review_draft_v2_2026-09-15.md`).
+  2. 15 Sep, after the third
+     (`notes/adversarial_review_draft_v2_second_pass_2026-09-15.md`); the
+     changes are listed in the record's correction note of 15 Sep
+     (10:05 UTC).
+  3. 15 Sep, after the verification of that correction note (the fourth
+     review, `notes/verification_correction_note_2026-09-15.md`): the
+     leave-two-out entries of 11:09 and 11:10 UTC; the finalisation pass
+     of 12:40 UTC.
+  4. 15 Sep, after the plain-language companion's list of thirty-five
+     problems (`notes/companion_plain_language.md`, last section): the
+     entries of 15:35, 15:36 and 15:46 UTC (the two computations run for
+     it and the text revision, item by item).
+  5. 15 Sep, after the fifth review, whose one finding was that the
+     run-level cross-lag deviation as first computed could not test the
+     mechanism it was run for (quoted in the entry of 18:14 UTC): the
+     entries of 18:14, 18:18 and 18:46 UTC.
+  6. 16 Sep, when that statistic was computed within 60-TR windows and on
+     the finite-sample null and a third look-alike was added to
+     Results 4: the entries of 10:23, 10:32 and 10:36 UTC.
+  7. 16 Sep, when a correction note recorded the defects of those two
+     computations and an exact budget of the statistic against a null
+     solved to the data replaced their readings: the entries of 16:24
+     (correction note; the `run_all.sh` entry; the budget's pre-run
+     entry), 16:37 (outcome) and 16:48 UTC (text revision; closure of
+     the thread).
+  8. 16 Sep, the readability pass above (record, "Text revision for
+     readability", 18:05 UTC).
 - Remaining work: the [TK] items in `draft_v2.md` (affiliations, co-authors,
   the REC reference number, journal wording); run `run_all.sh` end-to-end
   once as a single run at the final commit (V.S.; it regenerates and commits
