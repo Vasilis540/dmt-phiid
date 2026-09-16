@@ -79,6 +79,15 @@ Cambridge (Prof. Emmanuel Stamatakis).
   Results 4, Discussion and Limitations and thirteen text items were revised
   with it (record, "Text revision after the fifth review"); the companion
   and the defence questions follow.
+- 16 Sep 2026: the sign(q)-weighted deviation within 60-TR windows and on the
+  finite-sample null (`partB10` sections A and B; pre-run entry 10:23 UTC,
+  commit 9a19b10; outcome 10:32 UTC). Null at run length +0.00025 (near zero:
+  finite sampling is not the run-level source); `ts_gsr` W = 60 +0.00611
+  [+0.00563, +0.00665], 14 of 14, of which the null gives ≈ +0.0035; raw or
+  net, comparable to the run-level +0.00340 (1.80 / 0.77–0.81 times), so a
+  stationary mechanism rather than pooling. Results 4 names a third
+  look-alike, a slow component shared by a pair, d = λ(1 − λ)(a_s − a_n);
+  it and sign-following lagged interaction remain, not distinguished.
 - Remaining work: the [TK] items in `draft_v2.md` (affiliations, co-authors,
   the REC reference number, journal wording); run `run_all.sh` end-to-end
   once before submission (the run started 15 Sep 2026, 10:25 UTC, stopped at
