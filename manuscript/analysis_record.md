@@ -3651,3 +3651,159 @@ are in `notes/planning_checks_2026-09-16/`).
   session's own white noise; the family's lag-1 autocorrelation was tabulated against β for both bands (a
   deterministic property of the filter, used to set the controls' parameters); the population checks of the shared
   slow component and of the τ = 1 equivalence were printed. Nothing on the data or the null was seen.
+
+## The cross-lag budget: outcome, 16 Sep 2026 16:37 UTC (appended; nothing above edited)
+
+Both scripts ran at 6b5181a (clean; the pre-run entry's commit, 16:24 UTC): `partB12` in 22 s, `partB13` in 557 s.
+Every number below is quoted from `notes/review_results/partB/crosslag_budget_tables.md` (data; CSV
+`crosslag_budget.csv`, log `crosslag_budget_run.log`) and `crosslag_budget_null_tables.md` (null, controls, the
+null-corrected budget and the mechanical reading; CSV `crosslag_budget_null.csv`, log `crosslag_budget_null_run.log`).
+Checks passed: every window of both variants (392 each) matched the diagnostic's `xcorr_dev`; δ_run and the
+window-sign value reproduce `partB10`'s per-run values to 10⁻¹² (grand means +0.00340 on `ts_gsr`, −0.00262 on
+`ts_demean`; window-sign +0.00611 and +0.00160); the identity δ_run = δ_within + δ_pool + δ_means + ε holds to
+6.9 × 10⁻¹⁸ over pairs and runs; the population checks printed (the general form d(x→y) = q(1 − λ_y)(a_s − a_n) with
+equal and unequal loadings; the worked example's VAR(1): A = Γ₁Γ₀⁻¹ = [[0.8300, 0.0300], [0.0300, 0.8300]],
+q_ε = 0.0932, c(1 − q²) = +0.028125 = d, the Lyapunov check passed, sts 1.15173 and rtr 0.02903 the same for both);
+the controls' analytic variances matched the empirical ones (ratios 0.998–1.002); every Monte-Carlo SE of δ_run,null
+is 0.00003, below the 0.0003 fixed (25,000 pair-runs per run type everywhere).
+
+1. **Data, `ts_gsr`** (grand mean [subject-bootstrap 95 % CI], sign-flip p, positive of 14; DMT run, placebo run).
+   δ_run +0.00340 [+0.00300, +0.00380], p = 0.0001, 14 (DMT +0.00381, placebo +0.00299).
+   δ_within +0.00291 [+0.00257, +0.00325], p = 0.0001, 14 (+0.00310, +0.00272).
+   δ_pool +0.00050 [+0.00038, +0.00062], p = 0.0001, 14 (+0.00069, +0.00030).
+   δ_means +0.00001 [−0.00000, +0.00003], p = 0.1365, 8 (+0.00002, +0.00000).
+   ε −0.00002 [−0.00004, +0.00001], p = 0.2068 (−0.00000, −0.00003). δ_wd +0.00339.
+   δ_60 (run-level sign) +0.00245 [+0.00212, +0.00281], 14 (+0.00264, +0.00226); window-sign value +0.00611
+   [+0.00563, +0.00665] (+0.00615, +0.00608). Shares of δ_run: within 0.856, pool 0.146, means 0.004, ε −0.005.
+   Run-level mean pair a 0.8666 (DMT 0.8638, placebo 0.8694), mean |q̂| 0.1945 (0.1904, 0.1987), fraction of pairs
+   with q̂ < 0 0.545, |q̂| < 0.05 0.168, |q̂| < 0.10 0.328; mean Σ_w π_w 0.9624.
+2. **Null** (mean over the two run types ± Monte-Carlo SE; DMT-type, placebo-type). Solved parameters, primary:
+   DMT β̄ = 129.2, w = 0.082, σ₂ = 0.249; placebo β̄ = 197.4, w = 0.074, σ₂ = 0.253 (the run-level targets met to the
+   fourth decimal; the null's fraction q̂ < 0 is 0.50 against the data's 0.54, the mixture being symmetric — a limit of
+   the null as specified, not a target). δ_run,null: k = 0 +0.00039 ± 0.00003 (+0.00031, +0.00047); k = 1 (h = 0.25)
+   +0.00029 (+0.00029, +0.00029); k = 2 (h = 1.0) +0.00031 (+0.00026, +0.00037); k = 3 (placebo ACF both) +0.00046
+   (+0.00045, +0.00047); k = 4 (Gaussian q) +0.00032 (+0.00032, +0.00032); k = 5 (window targets) +0.00036 (+0.00027,
+   +0.00045). In every configuration the null's δ_run is δ_within (+0.00031 to +0.00044) with δ_pool +0.00002 to
+   +0.00005, δ_means −0.00001 to −0.00002, ε −0.00002; δ_60 +0.00007 to +0.00021; the window-sign value +0.00332 to
+   +0.00364 (against the data's +0.00611).
+3. **Controls** (primary parameters; mean over run types; shares of δ_run). (i) Common drive, λ = 0.2, a_s − a_n = 0.10
+   (DMT β̄ = 129.2 → a_n = 0.8650, β_s = 1258.6 → a_s = 0.9650; placebo β̄ = 197.4 → 0.8713, β_s = 1923.9 → 0.9713;
+   population d = +0.01600): δ_run +0.01438 ± 0.00004, δ_within +0.01291 (0.898), δ_pool +0.00129 (0.090), δ_means
+   +0.00027 (0.019), ε −0.00010 (−0.007); the run-level a rises to 0.882–0.888 with the shared part, |q̂| 0.199–0.200.
+   (ii) Pooling at TR 240 (β₁ ~ N(6β̄, ·), population lag-1 0.946 and 0.957; β₂ ~ N(β̄/5, ·), 0.840 and 0.836; q₂ = q₁(1 − g),
+   g ~ U(0.5, 1); segment means a 0.935/0.840 and |q̂| 0.221/0.078 on the DMT type): δ_run +0.00131 ± 0.00004,
+   δ_within +0.00040 (0.303), δ_pool +0.00095 (0.723; 49 and 44 Monte-Carlo SEs on the two run types), δ_means
+   −0.00002 (−0.015), ε −0.00001. The pooling control's δ_within (+0.00040) equals the null's own finite-sample
+   δ_within (+0.00040 at the primary configuration), so pooling of this kind adds nothing to δ_within beyond finite
+   sampling, and the common-drive control's δ_pool share (0.090) is the tenth the pre-run entry anticipated.
+4. **Null-corrected budget, `ts_gsr`** (data minus null; the data CI shifted; primary configuration, with the range
+   over the six). δ_run,c +0.00301 [+0.00261, +0.00340] (range +0.00294 to +0.00311); δ_within,c +0.00250 [+0.00217,
+   +0.00285] (+0.00247 to +0.00260); δ_pool,c +0.00046 [+0.00035, +0.00059] (+0.00045 to +0.00048); δ_means,c
+   +0.00004 [+0.00002, +0.00005] (+0.00002 to +0.00004); ε_c +0.00000 [−0.00002, +0.00003]. Shares: within 0.833
+   (0.833–0.839), pool 0.154 (0.152–0.155), means 0.012 (0.007–0.012), ε 0.001.
+5. **The reading, by the rules of the pre-run entry** (printed mechanically by `partB13`).
+   (a) Finite sampling: **a minor part** — F = δ_run,null / δ_run from 0.085 (k = 1) to 0.135 (k = 3), 0.116 at the
+   primary, within (0, 1/3] in every configuration. The 10:32 reading, as recorded: "near zero (+0.00025, 7.3 % of
+   +0.00340): finite sampling is removed as a source of the signature"; the null solved to the data's q̂ density gives
+   a larger value than the homogeneous-filter check's, as the correction note anticipated, and "removed" is withdrawn
+   in favour of "a minor part".
+   (b) Apportioning: gate passed (the CI of δ_run,c above zero in every configuration); ε check passed (|ε_c| ≤
+   δ_run,c / 10 everywhere); validity: control (i) puts 0.090 in δ_pool and 0.019 in δ_means, control (ii) 0.303 in
+   δ_within, all below 1/3, so every "most" reading is admissible. Labels, the same in every configuration:
+   **δ_within most** (0.833–0.839; CI half-width 0.00034 against δ_run,c / 3 = 0.00100), **δ_pool a minor part**
+   (0.152–0.155; CI [+0.00035, +0.00059] excludes zero), **δ_means a minor part** (0.007–0.012; CI [+0.00002, +0.00005]
+   excludes zero).
+   (c) Reading: δ_within most — the signature is present inside 2-minute windows, where pooling across windows cannot
+   act; the candidates are common slow drive or lagged coupling (not separable at τ = 1), non-stationarity faster than
+   2 minutes, or a within-window finite-sample effect that the null as specified does not reproduce; pooling is not the
+   principal account. Under the attribution clause the "minor part" shares of δ_pool and δ_means are not evidence of
+   pooling or drift, except under (e).
+   (d) δ_60 with the run-level sign, data +0.00245 against the primary null's +0.00017; the window-sign value, data
+   +0.00611 against the null's +0.00352. The 10:32 W = 60 reading ("comparable: stationary rather than pooling") is
+   superseded for the reasons of the correction note: with the run-level sign and the null solved to the data, the
+   within-window statistic net of finite sampling is +0.00228, three-quarters of the run-level δ_run,c, and what that
+   comparison could not say the budget says directly.
+   (e) Run type, primary configuration: the per-subject difference DMT − placebo in δ_pool,c is **+0.00039, sign-flip
+   p = 0.0006, positive in 12 of 14 → "pooling is larger on the DMT run"**: +0.00039, 0.11 of the DMT-run δ_run,c
+   (+0.00349); in the other configurations +0.00037 to +0.00041, p ≤ 0.0007, 0.11–0.12. Reported with no rule:
+   δ_within,c DMT − placebo +0.00052 (p = 0.1368; +0.00037 to +0.00052, p 0.14–0.27 across configurations), δ_means,c
+   +0.00005 (p = 0.0112; +0.00002 to +0.00005, p 0.011–0.26). So the injection's non-stationarity adds a pooling share
+   of about a tenth of the DMT run's null-corrected signature, the size the correction note's item (iii) anticipated
+   (13–20 % of the raw DMT run-level value) — and it is a minor part, not the principal account.
+   (f) `ts_demean`, computed and not read: δ_run −0.00262 [−0.00495, −0.00037] (DMT −0.00324, placebo −0.00199),
+   δ_within −0.00226 [−0.00428, −0.00034], δ_pool −0.00030 [−0.00069, +0.00001], δ_means +0.00000, ε −0.00005; δ_60
+   −0.00274; window-sign value +0.00160. Shares within 0.864, pool 0.116, means −0.000, ε 0.020. Reported as facts of
+   the data; the negative run-level value on the variant that keeps the global signal is what a shared part slower
+   than the regional parts would not produce, and the paper reports it without interpreting it.
+6. **What is open.** Which of the candidates of (c) produces δ_within — common slow drive and lagged coupling are one
+   candidate at τ = 1 (the equivalence above), and neither is separated from non-stationarity faster than 2 minutes
+   or from a within-window finite-sample effect absent from the null as specified; on the family's scale the
+   run-level departure corresponds to 44 % of the −0.0137 run-level residual at the operating point (37 % at the pairs'
+   mean run-level a and |q|; outcome entry of 15 Sep 18:18 UTC), and the rest of that residual, and of the residual
+   DiD, is not located.
+
+Reported in the manuscript's Results 4 (one paragraph), Methods (the statistic, the identity, the null and the
+controls), History (the statistic's computational history), Supplementary Table S9 (the budget; the 10:32 values marked
+as superseded), Discussion and Limitations; text-revision entry below; `notes/defence_questions.md` and
+`notes/companion_plain_language.md` follow.
+
+## Text revision with the cross-lag budget, 16 Sep 2026 16:48 UTC (appended; nothing above edited)
+
+Changes to `manuscript/draft_v2.md` and `manuscript/supplementary.md`, commissioned with the seventh round; every added
+number is quoted from `crosslag_budget_tables.md`, `crosslag_budget_null_tables.md`, `crosslag_budget_null.csv`, the
+outcome entry of 16:37 UTC or the outcome entry of 15 Sep 18:18 UTC (the family-scale shares), as stated at each.
+
+1. **Results 4.** The cross-lag material, from "A single Gaussian fitted to a run of that kind" to "is not located"
+   (two paragraphs, 1,621 words), is one paragraph of 434 words (383 alphabetic words; the count includes the
+   numbers and symbols): what the statistic is and why it is weighted by sign(q); the run-level value and its
+   family-scale share (44 % / 37 %, in place of "a little over half of the ≈ +0.006"); the four look-alikes (finite
+   sampling, pooling, lagged coupling, common slow drive) with d = q(1 − λ_y)(a_s − a_n) and the τ = 1 equivalence;
+   the budget's reading under the rules, with finite sampling's share and rule (e); the `ts_demean` value, reported
+   and not interpreted; what stays open. Removed from Results 4 and kept in Supplementary Table S9 or its note: the
+   signed mean and its correlations, the slopes, the q > 0 / q < 0 means, the W = 60 window-sign values, the
+   homogeneous-filter null values, the ratios 1.80 and 0.77–0.81, the family conversions in nats, and the readings of
+   16 September 10:32 UTC, marked as superseded with the reasons.
+2. **Methods.** (a) The coupled-family paragraph gains the general form of the shared-slow-component deviation
+   (x = s + n_x, y = ±s + n_y; q = ±√(λ_x λ_y); d(x→y) = q (1 − λ_y)(a_s − a_n); with equal loadings
+   q (1 − |q|)(a_s − a_n); no AR(1) form needed) and, in two sentences, the τ = 1 equivalence (every positive-definite
+   stationary 4 × 4 matrix of (x_t, y_t, x_{t+1}, y_{t+1}) is the lag-0/lag-1 structure of a VAR(1) with
+   A = Γ₁Γ₀⁻¹; the worked example λ = 0.25, a_s = 0.95, a_n = 0.80 gives a = 0.8375, q = 0.25, cross-lag 0.2375,
+   d = +0.028125, the symmetric family at coefficient 0.83, c = 0.03, q_ε = 0.093, d = c(1 − q²); `partB12`'s
+   population check). (b) A new paragraph in "The residual diagnostic", "The cross-lag deviation and its budget"
+   (228 whitespace tokens with the displayed identity, 195 without): the statistic, the identity as one displayed
+   equation, the null's configurations and the controls, the null correction and the pointer to the rules.
+3. **History.** The statistic's computational history in 143 words citing the record entries (signed mean, 15:35 and
+   15:36 UTC; fifth review and the sign(q)-weighted mean, 18:14 and 18:18 UTC; the W = 60 and null values, 16 Sep
+   10:23 and 10:32 UTC; the correction note and the budget, 16:24 and 16:37 UTC; Supplementary Table S9).
+4. **Supplementary Table S9** (new; no main-text renumbering): rows data (grand, DMT, placebo), null primary (with SE;
+   DMT-type / placebo-type), null range over configurations 0–5, null-corrected primary [CI] and range, share and
+   label; columns δ_run, δ_within, δ_pool, δ_means, ε, δ_60 (run-level sign), the window-sign value; both variants;
+   the controls' terms and shares in a second block; rule (e) and the reading in the note; the superseded values of
+   10:32 UTC with the reasons; and the earlier values removed from Results 4.
+5. **Discussion, "What the finding is and is not".** The three cross-lag sentences replaced by the reading in three:
+   the departure and its family-scale share; the budget (most inside 2-minute windows, finite sampling and pooling a
+   minor part each, pooling larger on the DMT run); what is not identified, with the τ = 1 equivalence; the
+   `ts_demean` sentence.
+6. **Limitations.** The three sentences on the two computations and the 10:23 readings replaced by three: the two
+   computations and the corrections (History; Table S9); the budget's reading and what it does not say; the null's
+   symmetric q distribution against the data's 54.5 % below zero, and `ts_demean` reported and not read.
+7. **Status line, Supplement pointer S3, Data and code availability.** This revision and its record entries named;
+   `crosslag_budget_tables.md`, `crosslag_budget_null_tables.md` and Table S9 added to S3; `partB12` and `partB13`
+   named in Data and code availability, `partB10`'s 16 September values marked as superseded. The sentence "Each of
+   those scripts was run individually as recorded in `notes/`, and the section has not yet been executed end-to-end
+   as one run [TK: run it once before submission]" is left as it stands (the entry on the end-to-end run, above).
+8. **Notes.** `CLAUDE.md` (current state: the 16 Sep bullet's readings replaced by this round's; the run_all status;
+   the layout); `notes/defence_questions.md` (header; Q3; Q14); `notes/companion_plain_language.md` (the cross-lag
+   unit rewritten around the budget; the Results 4, Discussion and Limitations units; the coupled-family unit gains
+   the general form and the τ = 1 equivalence; the Abstract Conclusions (c) pointer).
+
+## Closure of the cross-lag thread, 16 Sep 2026 16:48 UTC (appended; nothing above edited)
+
+No further computation on the source of the run-level cross-lag deviation, or on the source of the run-level
+residual, will be run before the draft is circulated. What the budget leaves open is stated as open in Results 4,
+the Discussion and Limitations: which of the candidates — common slow drive or lagged coupling (one account at
+τ = 1), non-stationarity faster than 2 minutes, or a within-window finite-sample effect that the null as specified
+does not reproduce — produces the within-window term; and what produces the rest of the run-level residual and of
+the residual DiD. The thread's record is the sequence of entries from 15 Sep 15:35 UTC to this one; the superseded
+values stand in Supplementary Table S9 with their reasons, and every reading in the manuscript is the one the rules
+of the pre-run entry of 16:24 UTC give.
