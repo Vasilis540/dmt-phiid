@@ -3226,3 +3226,65 @@ reference MATLAB toolbox, and `run_all.sh` (`set -euo pipefail`) exited; the tra
 makes the script tolerate a missing or unreadable uv cache. The [TK: run it once before submission] of Data and
 code availability stands; the run has to be restarted, and neither `partB10`, `partB11` nor `15_figures_v2` has
 run in it.
+
+## The sign(q)-weighted deviation at W = 60 and on the finite-sample null: pre-run entry, 16 Sep 2026 10:23 UTC (appended; nothing above edited)
+
+Commissioned by V.S. on 16 Sep 2026: two additions to `notes/partB10_crosslag_deviation.py`, with the rules below
+given in the commission, and, after they have run, a third named look-alike for Results 4 (a slow component shared
+by the two regions of a pair; derivation below). The script is committed with this entry before it is run.
+Nothing of either computation has been computed or seen. What has been seen: every run-level value of the entries of
+15 Sep 2026, 18:14 and 18:18 UTC; the W = 60 signed mean of the post-hoc supplement (+0.00014,
+`notes/review_results/partB/residual_source.log`); and the residual values the null's own run printed
+(`notes/review_results/logs/review_v2_residual_null.log`).
+
+**1. W = 60.** Per window, exactly as `partB4_diagnostic.py` builds the windows (kept TRs in [60w, 60(w + 1)), all 14
+windows of each run, both runs, both variants; `PairPhiID` on the window; a_x, a_y and q, and the sign of q, from
+the window's own matrices): the signed mean, the sign(q)-weighted mean and the OLS slope on q of the 2 × 6,555
+deviations; averaged over the run's windows to one value per subject and run; the run-level inference (grand mean
+over subjects of the per-subject mean of the two runs, subject-bootstrap 95 % CI with 10,000 draws from a generator
+seeded 20261120 that is separate from the run-level one, so the run-level numbers do not change; exact two-sided
+sign-flip p; subjects positive); and the correlation across the 28 runs with the W = 60 residual of the diagnostic
+(`diag_series_<variant>_W60.npz`, mean over the run's windows). Every window is checked against the saved
+diagnostic (its mean |deviation| must equal `xcorr_dev`).
+**Rule, in the commission's words:** "if pooling of non-stationary segments is the source, the W = 60 value should be
+markedly smaller than the run-level +0.00340 on ts_gsr, since a 60-TR window pools far less heterogeneity; if it is
+comparable, a stationary mechanism is indicated and pooling is not distinguished by run length." Reading, fixed here
+before the run: the ratio of the `ts_gsr` W = 60 grand mean to the run-level +0.00340; "markedly smaller" is a ratio
+below 0.5, "comparable" a ratio from 0.5 to 2, and a ratio above 2 is reported as larger. The branch is read on that
+value, as commissioned; the value net of the null's W = 60 value (computation 2) is reported beside it, and if the
+two fall in different branches that is stated. `ts_demean`: reported, no rule.
+**A limit of the rule, stated before the run (mine).** A markedly smaller W = 60 value is what pooling requires, but
+not only what pooling gives: centring each 60-TR window and the finite-sample shrinkage of a, q and the cross-lag
+correlations over 60 TRs remove more of a slow component's variance and lag-1 autocovariance than of a fast one's,
+so a stationary slow common component (the third look-alike) would also give a smaller windowed value than a run-level
+one. A markedly smaller value would therefore be consistent with pooling without establishing it; a comparable value
+bears against pooling as the source of the run-level statistic.
+
+**2. The finite-sample null.** The null of `notes/review_v2_residual_null.py`, regenerated from its own functions,
+generator (seeded 20261120 at import) and call sequence — its homogeneous-filter check at W = 30, 60 and 840 (2,000
+pairs × 8,400 TRs each), then its four operating-point cells at W = 60 (3,000 pairs × 50 windows each) — with the
+residual values of its log reproduced as the check that the draws are the same (−8.52 %, −3.10 %, −0.34 %; cells
+−0.0353, −0.0313, −0.0350, −0.0364; DiD +0.0054). Its construction gives each pair one filter applied to two
+correlated white noises, so the population cross-lag correlation is exactly r₁q: whatever the statistic shows on it
+is finite sampling. On the same simulated windows: the sign(q)-weighted mean of each pair-window's two deviations
+(the window's own a_x, a_y, q and sign of q), averaged over the pair's windows, mean over pairs with its standard
+error across pairs; the signed mean likewise; the OLS slope of the deviation on q across the pairs of each window
+index, averaged over window indices, with its standard error across them.
+**Rule, in the commission's words:** "a value near zero removes finite sampling as a source of the signature; a value
+comparable to +0.0034 would mean the statistic is not diagnostic at all." Reading, fixed here before the run: the
+comparison is at run length, the null's W = 840 value against the run-level `ts_gsr` +0.00340; "near zero" is an
+absolute value below a tenth of it (0.00034); "comparable" is at least half of it (+0.00170); a value in between is
+reported as the share of +0.00340 that finite sampling produces, with neither branch claimed; a negative value beyond
+−0.00034 is reported as finite sampling pushing the statistic the other way. The null's W = 60 values (homogeneous
+filter; mean of the four cells) are set beside the data's W = 60 value from computation 1, descriptively.
+**What the null cannot say (mine).** Because a pair's two series share one filter, the null contains no slow component
+shared at an autocorrelation different from the regional parts', no non-stationarity and no lagged interaction; it
+bears on finite sampling only.
+
+**3. The third look-alike, for Results 4 after the runs.** For a pair sharing a slow common component, x = s + n_x and
+y = s + n_y, with s of lag-1 autocorrelation a_s and independent regional parts of equal variance and lag-1
+autocorrelation a_n, and λ = var(s)/var(x): q = λ, a_x = a_y = λa_s + (1 − λ)a_n, and the true cross-lag correlation
+is λa_s, while the AR(1) substitution gives a_y q; so d = λ(1 − λ)(a_s − a_n), positive when the shared component is
+slower than the regional parts, and reversing with the sign of the shared component's loading, i.e. following the
+sign of q — a stationary property of common slow structure, neither pooling nor lagged interaction. The script prints
+a population check of the identity (three parameter sets, both loadings) before the data are loaded.
