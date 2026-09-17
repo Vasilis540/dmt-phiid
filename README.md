@@ -21,9 +21,10 @@ original analysis were committed before the results they govern existed; the
 later analyses were planned in dated record entries after the review
 computations had characterised the phenomenon, and the record says so.
 
-**The paper is `manuscript/draft_v2.md`** (revised 15 Sep 2026 after the
-second and third adversarial reviews and the verification of the correction note;
-finalisation pass, 15 Sep 2026: ethics statement, software versions, verified
+**The paper is `manuscript/draft_v2.md`** (revised 15–17 Sep 2026 after the
+second to sixth adversarial reviews, the fourth being the verification of the
+correction note, and after the plain-language companion; every revision is listed
+in `CLAUDE.md` and in the record's dated entries; finalisation pass, 15 Sep 2026: ethics statement, software versions, verified
 reference list, copy-edit). `manuscript/draft.md` is the
 superseded first draft, kept as a record.
 
@@ -39,7 +40,7 @@ superseded first draft, kept as a record.
 | `manuscript/analysis_record.md` | the full pre-specification and results record, append-only, never retroactively edited (dated correction notes are appended, never edited in) |
 | `manuscript/prespecification_summary.md` | **the audit trail of the original analysis**: each decision with the commit that fixed it, and whether it changed later; it does not cover the review computations or Part B, whose plans and outcomes are dated entries in the record |
 | `scripts/00–15_*.py` | analysis scripts, numbered in execution order, each independently runnable (`14` proportionality, `15` the v2 figures) |
-| `notes/` | the first three adversarial reviews (`adversarial_review_*.md`) and the fourth, the verification of the correction note (`verification_correction_note_2026-09-15.md`; the fifth review is quoted in the record's entry of 15 Sep 2026, 18:14 UTC), the venue and preprint options (`venue_options.md`), the review computations (`rev_*.py`, `review_*.py`, `review_computations_2026-09-14.md`), the Part B plans and notes (`partB_prespec_2026-09-14.md`, `partB*.md`) and their scripts (`partB*.py`, including `partB10_crosslag_deviation.py` and `partB11_regional_sts_r1.py`, added 15 Sep 2026), the plain-language companion (`companion_plain_language.md`) and the defence questions (`defence_questions.md`); result files, tables and logs under `notes/review_results/` |
+| `notes/` | the first three adversarial reviews (`adversarial_review_*.md`) and the fourth, the verification of the correction note (`verification_correction_note_2026-09-15.md`; the fifth review is quoted in the record's entry of 15 Sep 2026, 18:14 UTC), the sixth review of 17 Sep 2026 with its checks (`fresh_review_2026-09-17/`), the venue and preprint options (`venue_options.md`), the review computations (`rev_*.py`, `review_*.py`, `review_computations_2026-09-14.md`), the Part B plans and notes (`partB_prespec_2026-09-14.md`, `partB*.md`) and their scripts (`partB*.py`, including `partB10_crosslag_deviation.py` and `partB11_regional_sts_r1.py`, added 15 Sep 2026), the plain-language companion (`companion_plain_language.md`) and the defence questions (`defence_questions.md`); result files, tables and logs under `notes/review_results/` |
 | `results/` | every table and array of the original analysis, with the script name and git SHA in its header; `run_*.log` are the run logs |
 | `run_all.sh` | regenerates the original analysis (about 6 h single-core) and, in its last section, the review and Part B computations and the v2 figures |
 | `requirements.lock.txt` | pinned environment (Python 3.12) |
@@ -68,8 +69,10 @@ Individual scripts can be run on their own once their inputs exist, for
 example `scripts/06_primary_b_analysis.py --variant ts_gsr --window-trs 60`
 for the primary inference (it reads the windowed atoms written by
 `scripts/01_synergy_timecourse.py --fit-mode window`). All scripts use seed
-20261120, write the git SHA of the working tree into their output headers,
-and tag it `-dirty` if `scripts/` or the record had uncommitted changes.
+20261120. The scripts under `scripts/` that write results (all but
+`00_verify.py`), and of the `notes/` scripts `partB10`–`partB13`, write the git SHA of the working tree into their output
+headers and tag it `-dirty` if `scripts/` or the record had uncommitted changes;
+the other `notes/` scripts do not yet (an open item for the submission run).
 Figures are regenerated from saved results only, never from a recomputation.
 
 ## Data source, citation and licence

@@ -1,0 +1,10 @@
+image 2073 x 1760
+left spine column x = 229 (1425 dark px)
+vertical spine runs (y0, y1, height): [(83, 936, 853), (1040, 1610, 570)]
+
+panel a box height = 853 px for 0.3 nats -> 2843.3 px/nat
+panel b box height = 570 px for 0.2 nats -> 2850.0 px/nat
+scale ratio (b/a) = 1.0023
+box height ratio a:b = 1.4965   (equal nats-per-height needs 1.5000)
+
+VERDICT: the panels ARE on the same nats-per-unit-height scale; the claim holds.
