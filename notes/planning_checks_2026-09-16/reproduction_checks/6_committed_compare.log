@@ -1,0 +1,40 @@
+compared against cc59a74: 3 files (2 CSV, 1 text)
+CSV identical in every cell: 2
+CSV differing only by less than 1e-9: 0
+CSV with a real difference: 0
+CSV whose rows or columns changed: 0
+text files changed only on git-SHA lines: 0; there and in the sign of a printed zero: 0
+text files with other changes: 1
+    manuscript/figures/captions_v2.md (8 changed lines besides SHA lines)
+        -The scope map: Gaussian-MMI sts of a bivariate AR(1) pair as a function of the pair's lag-1 autocorrelation r₁ and lag-0 cross-correlation q (closed form of Methods; gri
+        +The scope map: Gaussian-MMI sts of a bivariate AR(1) pair as a function of the pair's lag-1 autocorrelation r₁ and lag-0 cross-correlation q (closed form of Methods; gri
+        -Per-subject difference-in-differences (post windows 6–14 minus pre windows 1–4, DMT minus placebo; ts_gsr, W = 60; one dot per subject, labelled by index). (a) Whole-bra
+        +Per-subject difference-in-differences (post windows 6–14 minus pre windows 1–4, DMT minus placebo; ts_gsr, W = 60; one dot per subject, labelled by index). (a) Whole-bra
+        -The residual diagnostic by window (ts_gsr, W = 60, N = 14; lines are group means; shading is ± 1 within-subject SEM, Cousineau–Morey: each subject's 28 run × window valu
+        +The residual diagnostic by window (ts_gsr, W = 60, N = 14; lines are group means). Shading is ± 1 within-subject SEM (Cousineau–Morey): each subject's 28 run × window va
+SHA in the headers of the regenerated files: {'48ea934': 1, 'd51966e': 2}
+other files changed by the run, by extension: {'pdf': 5, 'log': 2, 'sh': 1}
+untracked files under the output folders: 23
+    notes/review_results/logs/review_checks.log
+    notes/review_results/partB/ccs_atoms_bins_local_ts_demean.npy
+    notes/review_results/partB/ccs_atoms_bins_local_ts_gsr.npy
+    notes/review_results/partB/ccs_atoms_win60_local_ts_demean.npy
+    notes/review_results/partB/ccs_atoms_win60_local_ts_gsr.npy
+    notes/review_results/partB/coupling_map_run.log
+    notes/review_results/partB/lag_atoms_bins_local_tau1.npy
+    notes/review_results/partB/lag_atoms_bins_local_tau2.npy
+    notes/review_results/partB/lag_atoms_bins_local_tau3.npy
+    notes/review_results/partB/lag_atoms_bins_local_tau5.npy
+    notes/review_results/partB/lag_atoms_win60_local_tau1.npy
+    notes/review_results/partB/lag_atoms_win60_local_tau2.npy
+    notes/review_results/partB/lag_atoms_win60_local_tau3.npy
+    notes/review_results/partB/lag_atoms_win60_local_tau5.npy
+    notes/review_results/partB/overlay_points_run.log
+    notes/review_results/partB/scope_map_grid.npz
+    results/atoms_bins_local_115regions-all_ts_demean_global.npy
+    results/atoms_bins_local_115regions-all_ts_gsr_global.npy
+    results/run_00_verify.log
+    results/run_02_bias_check_n20000.log
+    results/run_15_figures_v2.log
+    results/run_all.log
+    results/run_tier_check_decay_windows.log
