@@ -1,0 +1,21 @@
+Group-mean window series, ts_gsr, W = 60 (14 windows x 2 runs):
+  r(windowed sts, variance ratio), DMT run     = +0.864
+  r(windowed sts, variance ratio), placebo run = +0.869
+  r(windowed r1 , variance ratio), DMT run     = +0.803
+  r(windowed r1 , variance ratio), placebo run = +0.786
+  pooled over the 28 condition-windows: r(sts, ratio) = +0.768, r(r1, ratio) = +0.722
+  review_computations section 6 states +0.77 / +0.73 for the group-mean series and
+  +0.49 / +0.54 per run on average; the paper quotes only +0.37, for the GLOBAL-FIT bins.
+
+Partial correlation of the two group-mean series, controlling the variance ratio:
+  r(sts, r1) over the 28 condition-windows          = +0.974   [paper: +0.977]
+  the same, partialling out the variance ratio      = +0.946
+
+The variance contrast itself (rev_extra.log section (d), raw ts_gsr):
+  DMT pre 1.277 -> post 0.889 ; PCB pre 0.936 -> post 1.062
+  DiD -0.5137 [-0.6740, -0.3581], sign-flip p = 0.0001, negative in 14/14
+  -- larger, more consistent and more significant than the r1 DiD
+     (-0.0146 [-0.0251, -0.0052], p = 0.0106, 12/14) which the paper calls
+     'the mechanism's input'.
+  The paper residualises on framewise displacement but not on the window-variance ratio,
+  and reports no control for it on the primary windowed contrast.

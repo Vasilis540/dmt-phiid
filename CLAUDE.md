@@ -14,7 +14,7 @@ Cambridge (Prof. Emmanuel Stamatakis).
 - **20 Nov 2026** — public preprint + documented repo
 - **8 Dec 2026** — Cambridge application (Gates Cambridge / Cambridge Trust)
 
-## Current state (16 Sep 2026)
+## Current state (17 Sep 2026)
 
 **Analysis complete. The paper is `manuscript/draft_v2.md` (revised 15 Sep after the second and third adversarial reviews and after the verification of the correction note; finalisation pass 15 Sep: ethics statement, software versions, verified references, copy-edit, COBIDAS checklist in `manuscript/supplementary_cobidas.md`); `manuscript/draft.md` is the superseded first draft, kept as a record. Figures `fig1_v2`–`fig5_v2` built by `scripts/15_figures_v2.py`.**
 
@@ -154,12 +154,36 @@ Cambridge (Prof. Emmanuel Stamatakis).
      splits in `scripts/15_figures_v2.py`, not run (record, "Wording
      decisions and caption edits", 19:58 UTC); the Figures paragraph
      carries [TK: SHA] until the outputs commit regenerates the figures.
+  10. 17 Sep, the response to the fresh adversarial review (the sixth
+     review, `notes/fresh_review_2026-09-17/`): record, "Response to the
+     fresh adversarial review", 17:19 UTC.
+- 17 Sep 2026, round 9: a fresh reviewer session (the sixth review) wrote
+  `notes/fresh_review_2026-09-17/` (review.md and checks/, committed
+  byte-identical; the `phase1_findings.md` it cites is not in the folder)
+  after reading V.S.'s working tree at d51966e while the single full run
+  was in progress. The response (record entry of 17:19 UTC; text and
+  caption strings only, no new analysis): F1 the 0.953 includes estimation
+  error the two DiDs share (full-length ceiling 0.84; Results 3,
+  Discussion, Fig. 3a); F2 the residual DiD's remainder is not established
+  (p = 0.15–0.47 against the null's values) while the run-level residual,
+  −0.0137 [−0.0145, −0.0130], exceeds the null (check C1; Table 4); F3 the
+  windowed series and the variance ratio, no variance control, with the
+  reason (Results 6; check C2); F4 the claim conditional on lagged
+  interaction not changing comparably (Abstract, Discussion); F5 which
+  tables carry a SHA (Data and code availability, defence Q25); F6–F15 as
+  in the entry, with Tarchi et al. (2026) added to the references; the
+  Abstract's CCS bracket as |r| < 0.02 (335 words); defence Q26 on the
+  effective-sample factor. Not adopted: the cross-half sts/r₁ computation,
+  the variance control, a derivative-ratio range.
 - Remaining work: the [TK] items in `draft_v2.md` (affiliations, co-authors,
   the REC reference number, journal wording); run `run_all.sh` end-to-end
   once as a single run at the final commit (V.S.; it regenerates and commits
   every output under one SHA, `partB12`/`partB13` included, and closes the
-  Data and code availability [TK]); choose the venue and preprint server
-  (`notes/venue_options.md`).
+  Data and code availability [TK]); for the submission run, add the git
+  SHA to the output headers of the `notes/` writers that lack it (standing
+  rule 8; of the review and Part B scripts only `partB10`–`partB13` write
+  it), then one full run of `run_all.sh` at the final commit; choose the
+  venue and preprint server (`notes/venue_options.md`).
 
 ## Post-hoc checks (NOT pre-specified; recorded here, not in the record)
 
@@ -246,7 +270,8 @@ scripts/                         numbered by execution order, each independently
   14_proportionality.py          POST-HOC: sts / TDMI ratio DiD, four cells, rule in the docstring
   15_figures_v2.py               draft_v2.md figures, from results/ and notes/review_results/
 notes/                           adversarial reviews, the verification of the correction note
-                                 (verification_correction_note_2026-09-15.md), venue options
+                                 (verification_correction_note_2026-09-15.md), the sixth review
+                                 with its checks (fresh_review_2026-09-17/), venue options
                                  (venue_options.md), review computations (rev_*.py, review_*.py),
                                  Part B plans/notes/scripts (partB*.md, partB*.py; partB10 and
                                  partB11 added 15 Sep for the cross-lag deviation and the regional

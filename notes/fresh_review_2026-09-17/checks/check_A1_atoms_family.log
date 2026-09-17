@@ -1,0 +1,101 @@
+==============================================================================
+1. THE SIXTEEN ATOMS ON THE FAMILY, against the Methods claims
+==============================================================================
+Methods claims: rtx=rty=xtr=ytr=xty=ytx=0 ; xtx=yty=rts=str=S-C ;
+                xts=yts=stx=sty=-(S-C) ; rtr=C ; sts=2S-C
+  with S=-0.5 ln(1-a^2), C=-0.5 ln(1-a^2 q^2)
+
+max |atom - Methods prediction| over 48 (a,q) settings, per atom:
+   rtr: 2.220e-16
+   rtx: 0.000e+00
+   rty: 0.000e+00
+   rts: 4.441e-16
+   xtr: 0.000e+00
+   xtx: 2.220e-16
+   xty: 0.000e+00
+   xts: 4.441e-16
+   ytr: 0.000e+00
+   ytx: 0.000e+00
+   yty: 2.220e-16
+   yts: 6.661e-16
+   str: 6.661e-16
+   stx: 8.882e-16
+   sty: 8.882e-16
+   sts: 2.442e-15
+  OVERALL MAX: 2.442e-15
+
+==============================================================================
+2. CROSS-CHECK MY LATTICE AGAINST phyid (kind='gaussian', tau=1, redundancy='MMI')
+==============================================================================
+  a=0.85, q=0.25, n=399000:
+    max |mine(plug-in 4x4) - phyid time-mean| over 16 atoms = 5.995e-15
+    phyid sts = 1.247967   mine = 1.247967   analytic = 1.258831
+  a=0.6, q=-0.4, n=399000:
+    max |mine(plug-in 4x4) - phyid time-mean| over 16 atoms = 9.437e-16
+    phyid sts = 0.416038   mine = 0.416038   analytic = 0.416624
+
+==============================================================================
+3. sts CLOSED FORM, DERIVATIVES, AND THE FOLD CLAIM
+==============================================================================
+  (r1=0.85, q=0.25): d/dr1 analytic +6.0705 lattice +6.0705 | d/dq analytic -0.1892 lattice -0.1892 | ratio 32.09
+  (r1=0.85, q=0.6): d/dr1 analytic +5.7126 lattice +5.7126 | d/dq analytic -0.5859 lattice -0.5859 | ratio 9.75
+  (r1=0.848, q=0.24): d/dr1 analytic +5.9869 lattice +5.9869 | d/dq analytic -0.1800 lattice -0.1800 | ratio 33.25
+  (r1=0.87, q=0.25): d/dr1 analytic +7.1005 lattice +7.1005 | d/dq analytic -0.1986 lattice -0.1986 | ratio 35.75
+  (r1=0.97, q=0.25): d/dr1 analytic +32.7613 lattice +32.7613 | d/dq analytic -0.2499 lattice -0.2499 | ratio 131.09
+  (r1=0.78, q=0.25): d/dr1 analytic +3.9330 lattice +3.9330 | d/dq analytic -0.1581 lattice -0.1581 | ratio 24.87
+  (r1=0.93, q=0.25): d/dr1 analytic +13.7061 lattice +13.7061 | d/dq analytic -0.2286 lattice -0.2286 | ratio 59.96
+  (r1=0.84, q=0.2): d/dr1 analytic +5.6719 lattice +5.6719 | d/dq analytic -0.1452 lattice -0.1452 | ratio 39.06
+  (r1=0.84, q=0.3): d/dr1 analytic +5.6258 lattice +5.6258 | d/dq analytic -0.2260 lattice -0.2260 | ratio 24.89
+
+  sts(0.85,0)   = 1.2819   [paper 1.282]
+  sts(0.85,0.6) = 1.1313   [paper 1.131]
+  sts(r1=0.2, q=0) = 0.0408
+  sts(r1=0.6, q=0) = 0.4463
+  sts(r1=0.8, q=0) = 1.0217
+  sts(r1=0.85, q=0) = 1.2819
+  sts(r1=0.9, q=0) = 1.6607
+  sts(r1=0.95, q=0) = 2.3279
+
+==============================================================================
+4. GRID COUNTS AND THE MINIMUM OF FIGURE 2(c)
+==============================================================================
+  |q|<=0.6 grid (Fig 2a/2b): 96 x 121 = 11616 points; points with |d/dq| > |d/dr1|: 0; exact ties: 121
+     min finite ratio = 6.553 at (r1=0.61, q=-0.60)
+  |q|<=0.95 grid (Fig 2c): 96 x 191 = 18336 points; points with |d/dq| > |d/dr1|: 0; exact ties: 191
+     min finite ratio = 1.889 at (r1=0.77, q=-0.95)
+  r in [-0.95,0.95]^2 (lag): 191 x 191 = 36481 points; points with |d/dq| > |d/dr1|: 0; exact ties: 191
+     min finite ratio = 1.889 at (r1=-0.77, q=-0.95)
+
+==============================================================================
+5. SHARED SLOW COMPONENT, d, AND THE tau=1 EQUIVALENCE
+==============================================================================
+  worked example lam=0.25, a_s=0.95, a_n=0.8:
+    q = 0.250000 [paper 0.25]; a = 0.837500 [paper 0.8375]
+    true cross-lag corr = 0.237500 [paper 0.2375]
+    d formula q(1-lam_y)(a_s-a_n) = 0.028125 [paper +0.028125]
+    d direct = true - a*q = 0.028125  -> match 2.78e-17
+    VAR(1) a=0.83,c=0.03: r1 = 0.837500, cross-lag = 0.237500, q_eps = 0.093199 [paper 0.093]
+    d = c(1-q^2) = 0.028125
+    max |S4(slow) - S4(VAR)| = 2.220e-16
+    max |atoms(slow) - atoms(VAR)| over 16 = 1.998e-15
+  general claim: over 10017 random PD stationary 4x4 blocks, violations of (Sigma PSD and rho(A)<1): 0
+
+==============================================================================
+6. d(sts)/d(cross-lag corr): the scale used for the 44 %/37 % reading
+==============================================================================
+  operating point (r1=0.85, q=0.25): d sts / d(cross-lag corr) = -1.8562 nats per unit
+     delta_run=+0.00340 -> -0.006311 nats;  as share of run-level residual -0.0137: 46.1 %
+     using the coupled family's -1.77 per unit c instead: -0.006018 -> 43.9 %
+  pairs' mean point (r1=0.848, q=0.24): d sts / d(cross-lag corr) = -1.7500 nats per unit
+     delta_run=+0.00340 -> -0.005950 nats;  as share of run-level residual -0.0137: 43.4 %
+     using the coupled family's -1.77 per unit c instead: -0.006018 -> 43.9 %
+
+  coupled family at the operating point: re-solving (a,q_eps) so that (r1,q)=(0.85,0.25)
+    c=-0.05: a=0.86250, q_eps=0.54387, r1=0.85000, q=0.25000, sts=1.4111
+    c=-0.02: a=0.85500, q_eps=0.36570, r1=0.85000, q=0.25000, sts=1.3023
+    c=+0.00: a=0.85000, q_eps=0.25000, r1=0.85000, q=0.25000, sts=1.2588
+    c=+0.02: a=0.84500, q_eps=0.13566, r1=0.85000, q=0.25000, sts=1.2315
+    c=+0.05: a=0.83750, q_eps=-0.03535, r1=0.85000, q=0.25000, sts=1.2155
+    paper's table rows: c=+0.02 1.2315, -0.02 1.3023, +0.05 1.2155, -0.05 1.4111, c=0 1.2588
+    slope from +-0.02: -1.771 nats per unit c  [paper -1.77]
+    curvature from +-0.02: +40.3 nats per unit c^2  [paper +40]

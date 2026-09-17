@@ -1,0 +1,98 @@
+==============================================================================
+1. PRIMARY DiD FROM THE SAVED WINDOWED ATOMS (independent of the pkl rows)
+==============================================================================
+  ts_gsr: pre DMT 1.1554  pre PCB 1.1378
+     DMT post-pre -0.0485   PCB post-pre +0.0324
+     DiD mean -0.080866  [-0.1253, -0.0365]  sign-flip p = 0.0038  negative in 13/14
+     share of pre-injection DMT mean: -7.0 %
+     TDMI DiD -0.1037; sts share of TDMI DiD 0.780; baseline share 0.782
+     Table 1 check (level = DMT pre-injection windows 1-4; DiD; n_neg):
+       rtr  level +0.0388  DiD -0.0078 (10)
+       rtx  level +0.0258  DiD -0.0012 (9)
+       rty  level +0.0254  DiD -0.0012 (9)
+       rts  level +0.5669  DiD -0.0407 (12)
+       xtr  level +0.0254  DiD -0.0012 (9)
+       xtx  level +0.6273  DiD -0.0523 (12)
+       xty  level -0.0254  DiD +0.0012 (5)
+       xts  level -0.5352  DiD +0.0399 (2)
+       ytr  level +0.0258  DiD -0.0012 (9)
+       ytx  level -0.0258  DiD +0.0012 (5)
+       yty  level +0.6125  DiD -0.0396 (13)
+       yts  level -0.5358  DiD +0.0404 (2)
+       str  level +0.5667  DiD -0.0408 (12)
+       stx  level -0.5350  DiD +0.0401 (2)
+       sty  level -0.5357  DiD +0.0403 (2)
+       sts  level +1.1554  DiD -0.0809 (13)
+       TDMI level +1.4772  DiD -0.1037
+  ts_demean: pre DMT 1.1004  pre PCB 1.0819
+     DMT post-pre -0.0633   PCB post-pre +0.0398
+     DiD mean -0.103112  [-0.1544, -0.0502]  sign-flip p = 0.0026  negative in 12/14
+     share of pre-injection DMT mean: -9.4 %
+     TDMI DiD -0.1186; sts share of TDMI DiD 0.870; baseline share 0.767
+
+==============================================================================
+2. THE PER-SUBJECT COLLINEARITY r(sts DiD, r1 DiD) = 0.953
+==============================================================================
+  ts_gsr W60: Pearson r = +0.9528 (p = 1.44e-07); Spearman = +0.9033
+     sts DiD mean -0.080866  sign-flip p 0.0038  neg 13/14
+     r1  DiD mean -0.014645  sign-flip p 0.0106  neg 12/14
+     r^2 = 0.9078; unshared variance = 9.2 %
+     max |pkl per-subject sts DiD - atoms-array DiD| = 6.661e-16
+     leave-two-out (91 refits): range +0.846 to +0.973, median +0.954; min without subjects 8 and 14
+  ts_demean W60: Pearson r = +0.9578 (p = 7.47e-08); Spearman = +0.9253
+     sts DiD mean -0.103112  sign-flip p 0.0026  neg 12/14
+     r1  DiD mean -0.021575  sign-flip p 0.0017  neg 13/14
+     r^2 = 0.9173; unshared variance = 8.3 %
+     max |pkl per-subject sts DiD - atoms-array DiD| = 0.000e+00
+     leave-two-out (91 refits): range +0.901 to +0.972, median +0.961; min without subjects 8 and 14
+
+==============================================================================
+3. CAN r = 0.953 SEPARATE THE PAPER'S READING FROM SHARED ESTIMATION NOISE?
+==============================================================================
+  The paper quotes split-half reliabilities 0.71-0.74 (r1 DiD) and 0.69-0.72 (sts DiD).
+    rel_sts=0.69, rel_r1=0.71: attenuation ceiling sqrt(rel*rel) = 0.700; observed r = 0.953 -> disattenuated 1.362
+    rel_sts=0.72, rel_r1=0.74: attenuation ceiling sqrt(rel*rel) = 0.730; observed r = 0.953 -> disattenuated 1.306
+    rel_sts=0.705, rel_r1=0.725: attenuation ceiling sqrt(rel*rel) = 0.715; observed r = 0.953 -> disattenuated 1.333
+  => the observed collinearity EXCEEDS the ceiling two independent-noise measurements of
+     perfectly correlated reliable components could reach, so a purely-reliable-signal
+     account does not fit either: part of the 0.953 must be noise shared within windows.
+     (The same argument the paper applies to the residual/CCS pair, Results 4.)
+  Regression slope of the sts DiD on the r1 DiD, and the map slope for comparison:
+    OLS slope = 4.263 nats per unit r1 (intercept -0.01844); family d sts/d r1 at (0.848, 0.24) = 5.99
+    predicted group DiD from slope*mean r1 DiD = -0.06243; observed -0.08087
+
+==============================================================================
+4. RESIDUAL DIAGNOSTIC: DiD, SIGN-FLIP p, AND THE CCS-sts RELATION
+==============================================================================
+  diag residual sts ts_gsr W60     primary  DiD +0.01153 [+0.00181, +0.02111] p = 0.0422 neg 4/14  (file: +0.01153, [+0.00213,+0.02107], p=0.0422)
+  diag residual sts ts_gsr W60     early    DiD +0.01791 [+0.00982, +0.02615] p = 0.0012 neg 2/14  (file: +0.01791, [+0.00988,+0.02597], p=0.0012)
+  diag residual sts ts_gsr W60     late     DiD +0.00642 [-0.00556, +0.01799] p = 0.3243 neg 5/14  (file: +0.00642, [-0.00582,+0.01831], p=0.3243)
+  diag residual sts ts_demean W60  primary  DiD +0.01823 [+0.00848, +0.02761] p = 0.0040 neg 2/14  (file: +0.01823, [+0.00894,+0.02774], p=0.0040)
+  diag residual sts ts_demean W60  early    DiD +0.01826 [+0.01277, +0.02343] p = 0.0001 neg 0/14  (file: +0.01826, [+0.01282,+0.02344], p=0.0001)
+  diag residual sts ts_demean W60  late     DiD +0.01820 [+0.00378, +0.03242] p = 0.0321 neg 4/14  (file: +0.01820, [+0.00363,+0.03286], p=0.0321)
+  diag predicted sts ts_gsr W60    primary  DiD -0.09239 [-0.14343, -0.04090] p = 0.0037 neg 13/14  (file: -0.09239, [-0.14440,-0.04142], p=0.0037)
+  diag predicted sts ts_gsr W60    early    DiD -0.12077 [-0.16743, -0.07353] p = 0.0006 neg 13/14  (file: -0.12077, [-0.16977,-0.07255], p=0.0006)
+  diag predicted sts ts_gsr W60    late     DiD -0.06970 [-0.13031, -0.00835] p = 0.0476 neg 11/14  (file: -0.06970, [-0.13134,-0.01021], p=0.0476)
+  diag observed sts ts_gsr W60     primary  DiD -0.08087 [-0.12533, -0.03655] p = 0.0038 neg 13/14  (file: -0.08087, [-0.12611,-0.03769], p=0.0038)
+  diag observed sts ts_gsr W60     early    DiD -0.10285 [-0.14576, -0.05983] p = 0.0009 neg 13/14  (file: -0.10285, [-0.14640,-0.06009], p=0.0009)
+  diag observed sts ts_gsr W60     late     DiD -0.06328 [-0.11392, -0.01138] p = 0.0337 neg 10/14  (file: -0.06328, [-0.11472,-0.01179], p=0.0337)
+  r(residual DiD, CCS-sts DiD) ts_gsr W60 = +0.7993 (p = 0.0006)
+  partial r controlling the r1 DiD = +0.8313
+  r(CCS-sts DiD, r1 DiD) = -0.4197 (p = 0.1351)
+  r(residual DiD, r1 DiD) = -0.7804
+  CCS-sts DiD mean +0.00438, sign-flip p 0.0559, positive in 11/14
+
+==============================================================================
+5. CIRCULARITY OF THE RESIDUAL: observed = predicted + residual, same windows
+==============================================================================
+  max |obs - (pred + res)| over the 392 cells = 0.000e+00
+  levels: obs 1.1377  pred 1.1865  res -0.0489 (-4.30 % of obs)
+  pred_sym level 1.3212 -> over-prediction +16.1 %
+  residual SD across the 392 cells 0.0161 vs observed sts SD 0.0790 (ratio 0.204)
+  observed DiD -0.08087  predicted DiD -0.09239  residual DiD +0.01153   (identity: +2.78e-17)
+  over-prediction = predicted/observed = 1.1426 -> 114 % of the magnitude
+  r(predicted DiD, observed DiD) per subject = +0.9893
+  NOTE: the residual DiD is an exact algebraic complement of the predicted DiD within the
+  observed DiD, so its inference is a test of the SAME 14 numbers re-split, not of new data.
+  DMT-run-only change +0.00771 (p 0.080); placebo -0.00382 (p 0.193)
+  placebo share of the residual DiD = 0.331

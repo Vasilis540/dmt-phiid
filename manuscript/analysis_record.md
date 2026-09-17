@@ -3940,3 +3940,220 @@ V.S. runs the script once at the final commit after the full run; the Figures pa
 [TK: SHA] where it named 7c7809a, for the outputs commit. `CLAUDE.md` (the readability bullet's Abstract count;
 chain item 9) and the companion's Abstract — Results note (the restored clauses) follow; nothing in the defence
 questions quotes a changed sentence.
+
+## Response to the fresh adversarial review, 17 Sep 2026 17:19 UTC (appended; nothing above edited)
+
+Commissioned by V.S. on 17 Sep 2026 on top of 56df014 (bundles 17 and 18, not yet pulled), while the single full run
+of `run_all.sh` at d51966e executes in V.S.'s repository folder. This round runs no new analysis and no script: it
+commits the review folder, verifies each finding against the files, and changes text files and the caption strings of
+`scripts/15_figures_v2.py` only (`manuscript/draft_v2.md`, `manuscript/supplementary.md` Table S9's identity line,
+`CLAUDE.md`, `README.md`, `notes/companion_plain_language.md`, `notes/defence_questions.md` and this entry). Nothing
+under `results/`, `notes/review_results/`, `notes/*.py`, `run_all.sh` or `scripts/` other than those caption strings
+is changed. Every value added to the text is read from a committed file named at its use, from the review's committed
+check logs, or is arithmetic on such values given below.
+
+1. **The review folder and the text it read.** A fresh reviewer session (Claude, configured model identifier
+   `claude-opus-5`, new to the manuscript) wrote `notes/fresh_review_2026-09-17/` into V.S.'s repository folder on 17
+   Sep 2026 (`review.md`, 16:00 UTC; `checks/` with six scripts and their logs). The folder is committed here
+   byte-identical (sha256 in item 6) and unedited. The review cites a `phase1_findings.md` (P1–P15) written before its
+   Phase 2; no such file is in the folder on V.S.'s computer, and none is committed. Its header says it worked from a
+   private copy at 56df014; the text it quotes is d51966e's, the working tree of V.S.'s folder during the run.
+   Evidence: (a) that folder's `manuscript/draft_v2.md`, `scripts/15_figures_v2.py` and `CLAUDE.md` are byte-identical
+   to d51966e (sha256 6073b31a…, dd1804e5…, 7ac3ff5c…), not to 56df014 (6e7f2c6b…, 3a7cfeba…, af809cac…); (b) the
+   review quotes text present only at d51966e — "9–14 %", "(and absent, +0.1 %, on `ts_demean`)", "every results table
+   with the git SHA that produced it", "What follows for a between-state contrast is narrow: when the states differ in
+   r₁", the Abstract's "a finite-sample null (a review computation) accounts for", and, in its number sweep, the
+   Abstract's "holds to 7 %" and "≈20 effective samples per 60-TR window", both removed in round 8; (c) it lists
+   `results/run_all_full.log` (modified 17 Sep 11:52 UTC, by the run in progress) and `.git-bundles/`, which exist
+   only in V.S.'s folder. Three of its descriptions match 56df014 instead — the commit in its header, the Abstract's
+   "319 words" and a "Sources and notation" paragraph — most likely from its brief; none of its quotations does. Its
+   locations therefore quote the text before rounds 8 and 8b; for each finding the corresponding sentence at 56df014
+   is the one changed below. Findings already resolved by those rounds: none in full; F5 and F9 in part (round 8).
+
+2. **Verification by the planning chat** (relayed in the commission; none of it a new analysis of the data), each
+   value checked here against the file it comes from:
+   - run-level residual on `ts_gsr`, per subject (mean of the two runs), from
+     `notes/review_results/partB/crosslag_deviation.csv`: −0.01373, subject bootstrap (10,000 draws) [−0.01448,
+     −0.01302], negative in 14 of 14, exact sign-flip p = 0.0001 against zero and against the null's −0.0045
+     (`notes/review_results/logs/review_v2_residual_null.log`, W = 840, "residual=-0.0045 (-0.34 %)"); `ts_demean`
+     +0.00079 [−0.00481, +0.00667]. `checks/check_C1_residual_vs_null.log` (2) gives the same `ts_gsr` values and,
+     from other bootstrap draws, [−0.00482, +0.00669] on `ts_demean`; the paper quotes the `ts_gsr` interval only,
+     from that log;
+   - the primary residual DiD minus each null value, exact sign-flip on the `did_subjects` of
+     `inference_rows_diag.pkl`: p = 0.150 at +0.0037, 0.238 at +0.0052, 0.251 at +0.0054, 0.290 at +0.0059, 0.466 at
+     +0.0077 (check C1 (1): 0.1500, 0.2378, 0.2506, 0.2903, 0.4661);
+   - from the group-mean window series printed in `notes/review_computations_2026-09-14.md`, section 6: r(sts,
+     variance ratio) +0.765, r(r₁, ratio) +0.718, r(sts, r₁) +0.974, partial r(sts, r₁ | ratio) +0.947 (three-decimal
+     series; the file's +0.73 for r₁ uses unrounded values). `checks/check_C2_variance_ratio.log`, from the
+     three-decimal series of `rev_extra.log` (b) and (d), gives +0.768, +0.722, +0.974 and +0.946; `rev_extra.log` (e)
+     gives the unrounded +0.766 and +0.726 and the per-run means +0.492 and +0.543, and (b) the unrounded r(sts, r₁)
+     over the 28 windows, +0.977;
+   - family-scale conversion of δ_run = +0.0034 with `rev_phiid_fast.atoms_from_corr`: −0.00605 at (0.85, 0.25), 44.2
+     %; −0.00507 at (0.8666, 0.1945), 37.0 %; −0.00570 at (0.848, 0.24), 41.6 % of −0.0137 (check C1 (4), the same);
+   - split-half reliabilities in `notes/review_results/partB/splithalf_tables.md`, odd-versus-even correlations of the
+     per-subject DiDs: 0.717 (MMI-sts) and 0.741 (r₁) on `ts_gsr`, full length by Spearman–Brown 0.835 and 0.851,
+     ceiling for a full-data correlation 0.843; `ts_demean` 0.686 and 0.712, full length 0.814 and 0.832, ceiling
+     0.823; observed 0.953 and 0.958 (check C1 (3), the same; the review's 0.73 is the half-length ceiling, 0.729);
+   - phase-randomised p of the lag-τ autocorrelation DiDs, `notes/review_results/inference_rows_lag.csv`, column
+     `phase_p`: 0.0729, 0.0040, 0.0020, 0.5834 at τ = 1, 2, 3, 5;
+   - SHA headers at d51966e: under `results/`, nine CSVs carry a `-dirty` SHA, six of them regenerated by the full run
+     (`global_fc_bins` ×2, `global_fc_did` ×2, `logdet_correction_check`, `subject_alignment_permtests`) and three
+     superseded and not cited (`nonstat_n20000/bias_check.csv`, `nonstat_n20000/bias_check_differential.csv`,
+     `tier_check_decay_windows_n2000_18ad8b4.csv`), and so does one text report, `subject_alignment_check.txt`; under
+     `notes/review_results/`, 7 of 84 text, CSV and log files carry a SHA — the four `partB10`–`partB13` tables and
+     the three run logs `crosslag_budget_run.log`, `crosslag_budget_null_run.log`, `regional_sts_r1_run.log`.
+
+3. **Checked in this session before writing.**
+   - F3: the pinned `phyid` (commit 6c5f2e9d33c985efbdf875d45cb5a2a6a5cdbf44, from the `direct_url.json` of the
+     `.venv` install on V.S.'s computer, read and not run) divides each of the four vectors [x_past, y_past, x_future,
+     y_future] by its own SD (ddof = 1) and fits the Gaussian's mean and covariance to the same samples
+     (`calculate.py`, `calc_PhiID` and `_get_entropy_four_vec`); `scripts/01_synergy_timecourse.py` in window mode
+     passes only the window's samples; `notes/rev_phiid_fast.py` (`standardised_lag_pair`) centres and scales the past
+     and future blocks of each fit. So each window is standardised and fitted on its own samples, and the clause "so
+     its variance level cannot enter its atoms" is written;
+   - F14: Varley (2024), arXiv 2407.16601, full text: "Speaking just as a single author, I feel strongly that, despite
+     its convenience and ease of computation, that the minimum mutual information function should probably not
+     continue to be used in its current form.";
+   - F10: Tarchi et al. (2026) against Crossref (10.1002/brb3.71352: *Brain and Behavior* 16(4), e71352, online 31
+     March 2026, twelve authors) and PubMed Central (PMC13111988; PMID 41913713). Crossref's deposit gives the sixth
+     author as given name "Annalisa Di", family name "Giacomo"; PubMed Central displays "Annalisa Di Giacomo", which
+     the entry follows. The article itself was not read, and the applicability table's row 9 is unchanged;
+   - F4 arithmetic: the whole-run δ_run differs between runs by +0.00381 − 0.00299 = +0.00082
+     (`crosslag_budget_tables.md`); at (0.85, 0.25), where +0.0034 converts to −0.00605 nats (1.78 nats per unit, the
+     record's −0.0061 of 15 Sep 2026, 18:18 UTC), that is 0.00146, about 0.0015 nats, against the primary sts DiD of
+     −0.0809; the conversion is the symmetric family's at one point and is used linearly, as a scale;
+   - queued item 2 arithmetic: over the six pooled placebo lags (0.868, 0.539, 0.172, −0.085, −0.174, −0.145), 1 + 2 Σ
+     r_k = 3.35 and Bartlett's 1 + 2 Σ r_k² = 3.26; 60/3.35 = 17.9 and 60/3.26 = 18.4.
+
+4. **Dispositions, reasons and changed text** (sentences quoted as they stood at 56df014 → as they stand now; the
+   report of this round lists every before/after pair in full):
+   - **F1 (MAJOR), accepted with its arithmetic corrected; no computation.** The review's ceiling of 0.73 is the
+     half-length ceiling, which bounds a cross-half correlation; r = 0.953 is a full-data correlation, whose ceiling
+     uses the full-length reliabilities (0.84). What follows: the collinearity shows that the estimator's output
+     follows each subject's measured r₁, which is the account, and it includes estimation error the two DiDs share; it
+     is not evidence that the subjects' underlying drug effects covary, which the paper does not claim. Results 3:
+     three sentences end the paragraph of "Two facts keep the two contrasts from being identical" ("Neither fact bears
+     on what the shared 91 % contains. …"); Discussion: "the per-subject collinearity is 0.95 (which includes
+     estimation error the two DiDs share; Results 3)"; Figure 3(a) caption string: "Both DiDs are read off the same
+     windows, so the correlation includes estimation error they share (Results 3)." Left as they were: Results 2's
+     sentence on what the account rests on, and the Abstract's r = 0.953. Not adopted: the cross-half correlation of
+     the sts and r₁ DiDs, since the paper does not claim covariation of underlying effects.
+   - **F2 (MAJOR), accepted.** Results 4: "The rest, and on `ts_gsr` a run-level residual three times the null's (…),
+     are not accounted for by the null as specified." → "The remainder of the residual DiD is therefore not
+     established: … What does exceed the null is the run-level residual on `ts_gsr`, −0.0137 [−0.0145, −0.0130],
+     negative in 14 of 14 subjects, against the null's −0.0045 (…; sign-flip p = 0.0001; like the p values above, a
+     computation of the fresh review, `checks/check_C1_residual_vs_null.log`, with no pre-recorded rule); …" (the
+     pointer covers the p values of the first sentence, which come from the same log). Discussion: "The rest, together
+     with a run-level residual three times the null's …, is not accounted for by the null as specified." → "The rest
+     of the residual DiD is not distinguishable from the null, every null value lying inside its interval; the
+     run-level residual on `ts_gsr` is, at three times the null's (−0.0137 [−0.0145, −0.0130] against −0.0045; absent,
+     +0.1 %, on `ts_demean`), and it is not accounted for by the null as specified." Abstract: "(+0.0037–0.0077 of
+     +0.0115, p = 0.042; every null value inside its CI)" (six words). Table 4: the `ts_gsr` run-level residual
+     "−0.0137 [−0.0145, −0.0130] (−1.1 %)", the caption naming check C1 as the interval's source. Beyond the
+     commission, for consistency: Limitations' "and of the residual they leave a third to two-thirds is finite-sample
+     under one stationary null and the rest is not accounted for" → "and of the residual DiD they leave … and the rest
+     is not distinguishable from it, while the run-level residual on `ts_gsr` exceeds that null". Left: Results 4's
+     closing clause "and what produces the rest of the run-level residual and of the residual DiD, is not located".
+   - **F3 (MAJOR), accepted for what it reports; the variance-residualised control is not adopted, and the text says
+     why.** Results 6, after the sentence giving +0.37, the commissioned three sentences (windowed sts +0.49 and
+     window-standardised r₁ +0.54 per run, +0.77 and +0.73 on the group-mean series; each window standardised and
+     fitted on its own samples; partialling the ratio out leaves r = +0.95; no contrast residualised on the ratio,
+     because for the windowed estimator that would remove the part of the r₁ change that coincides with the variance
+     change, not an artefact of scale), with "(from +0.97; …)" written "(from +0.97 on the series as printed to three
+     decimals, 0.977 unrounded, Results 3; …)" so that the 0.977 of Results 3 is not read as a different correlation.
+   - **F4 (MAJOR), accepted as a calibration of the conclusion.** The review's Abstract sentence (|c| = 0.02–0.05
+     moving sts by a third to twice the contrast) is not adopted: the cross-lag departure through which lagged
+     interaction shows at τ = 1 is measured on these data, is small, and is nearly the same on both runs (Results 4),
+     so that sentence would suggest a scale the data do not show. Abstract, Conclusions: "… wherever r₁ differs." → "…
+     wherever r₁ differs and lagged interaction does not change comparably." (the commission's "; here …" continuation
+     belonged to the Conclusions before round 8, whose 114 % clause is now in the Abstract's Results). Discussion:
+     "When the states differ in r₁, the MMI-sts contrast is dominated …" → "When the states differ in r₁ and not
+     comparably in lagged interaction, the MMI-sts contrast is dominated …", followed by "On this dataset the
+     cross-lag departure through which lagged interaction shows at τ = 1 is measured (Results 4) and differs little
+     between the runs (sign(q)-weighted +0.0038 on the DMT run against +0.0030 on placebo, whole runs; about 0.0015
+     nats on the family's scale at the operating point)." (arithmetic in item 3).
+   - **F5 (MAJOR), accepted; completed with tonight's run.** Round 8 had replaced "every results table with the git
+     SHA that produced it" with a statement naming the SHA-headed Part B tables, which still gave the `results/`
+     headers as "the git SHA of the commit that produced them" without the `-dirty` case and did not say that the full
+     run regenerates the rest at one commit. Data and code availability now reads "every results table (those under
+     `results/` and the Part B tables added from 15 September — … — name the producing commit in their headers, with a
+     `-dirty` tag where the tree had uncommitted changes; the other review and Part B outputs carry none, the
+     deconvolution atom files carrying `git=nogit` from the sandbox in which they were written; and a single full run
+     of `run_all.sh` regenerates all of them at one commit, except the superseded runs that script lists as kept for
+     the record and, without its sandbox, the HRF-deconvolution items [TK: run sentence])", a wording that stays true
+     after the run. `notes/defence_questions.md` Q25 corrected (its "every results table carries the git SHA that
+     produced it" had been missed in round 8); beyond the commission, `README.md`'s "All scripts … write the git SHA"
+     narrowed to the scripts that do; `CLAUDE.md`: the open item for the submission run (the SHA in the `notes/`
+     writers' headers, standing rule 8, then one full run at the final commit).
+   - **F6 (MINOR), accepted.** Results 4 and the Discussion: "37 % at the pairs' run-level mean point (a 0.8666, |q|
+     0.1945)" (`crosslag_budget_tables.md`; the record's entry of 15 Sep 2026, 18:18 UTC).
+   - **F7 (MINOR), accepted in the smaller form.** Abstract: "32-fold where BOLD pairs sit" → "32-fold at BOLD pairs'
+     operating point". Results 2, after the `ts_gsr` projection: "(on `ts_demean` the observed −0.0216 maps to −0.129
+     against an observed sts DiD of −0.103; `notes/partB1_scope_map.md`, item 5)". Not adopted: a ratio range.
+   - **F8 (MINOR), accepted.** Results 5: "wherever the lag-τ autocorrelation contrast is (τ = 1, 2, 3;
+     phase-randomised p = 0.0020, 0.0010 and 0.0010 at W = 60 and 0.0010 at the global fit, Table 6)" → "wherever the
+     lag-τ autocorrelation contrast is significant by sign-flip (τ = 1, 2, 3; the sts contrast's phase-randomised p =
+     0.0020, 0.0010 and 0.0010 at W = 60 and 0.0010 at the global fit, Table 6; the autocorrelation contrast's is
+     0.0729, 0.0040 and 0.0020, so at τ = 1 it misses that null, Results 2)" (the sts contrast's values kept beside
+     the commissioned ones). Table 6: the autocorrelation column gains the phase-randomised p (0.0729, 0.0040, 0.0020,
+     0.5834), the caption naming `inference_rows_lag.csv`. Figure 5 caption string: the same qualification, the three
+     values read from the `phase_p` field of `inference_rows_lag.pkl` (the expression was evaluated on the committed
+     pickle; the script was not run).
+   - **F9 (MINOR), partly resolved in round 8** (8–14 %). Results 4 adds "(the null's value depends on the density of
+     q̂ near zero, to which each configuration is solved; Methods)". The correction note's 1–44 % span is not quoted:
+     those q shapes were not solved to the data.
+   - **F10 (MINOR), accepted.** Gatica et al. (2024) is row 4 of the applicability table and was cited nowhere; Tarchi
+     et al. (2026), row 9, was neither cited nor listed. The table's nine empirical studies (rows 1–9 of
+     `notes/partB5_literature.md`) are cited together at the Discussion's pointer to the table, and a reference entry
+     for Tarchi et al. (2026), checked as in item 3 and marked as not read, is added; the reference list's note says
+     when it was checked.
+   - **F11 (MINOR), accepted.** Methods, Literature search: "it places Luppi et al. (2022) outside the pre-specified
+     set at the HCP standard TR of 0.72 s, which that paper's accessible text does not state (Supplement S3), and
+     which the Discussion addresses."
+   - **F12 (MINOR), accepted.** Methods: "δ_run splits exactly:" → "δ_run is written as the sum of four terms:"; ε
+     defined as ε = δ_wd − δ_within − δ_pool, the closing remainder (window boundaries and standardisation); "The
+     identity is therefore exact by construction, δ_within and δ_pool being the two terms built independently; |ε| is
+     0.00002 on `ts_gsr` and 0.00005 on `ts_demean` (grand means; `crosslag_budget_tables.md`)." Table S9: "Identity
+     (by construction): …".
+   - **F13 (WORDING), accepted** in Results 4 and the Discussion: "is 0.82 of the ceiling (its disattenuated value)".
+   - **F14 (WORDING), accepted** after checking the full text (item 3): "He writes, "speaking just as a single
+     author", that MMI "should probably not continue to be used in its current form" (Varley, 2024)."
+   - **F15 (WORDING), accepted.** Results 4: "a pooling control 30 %, and in that control the within-window term
+     equals the null's (+0.00040), i.e. it is finite sampling" (`crosslag_budget_null_tables.md`, control (ii) and
+     configuration 0).
+   - **Not adopted, recorded as considered:** the cross-half computation of the sts and r₁ DiDs (F1; the paper does
+     not claim covariation of underlying effects), the variance control (F3; the reason is in Results 6), a
+     derivative-ratio range (F7).
+   - **Queued items.** (1) The Abstract's CCS-sts bracket: "(within a window r ≈ −0.01 against +0.7)" → "(across pairs
+     within a window, |r| < 0.02 against +0.7)" (pair-level r = −0.011 and −0.018, Results 2). (2)
+     `notes/defence_questions.md` Q26 on the effective-sample factor for a correlation (item 3).
+   - **Review count and status.** Six adversarial reviews, the fourth the verification of the correction note and the
+     sixth this one: Data and code availability, the AI-use statement ("and the sixth re-traced about 200 numbers of
+     the draft it read, with its findings and checks in `notes/fresh_review_2026-09-17/`"), `README.md`, `CLAUDE.md`,
+     the companion and defence Q6; beyond the commission, one sentence in Methods, History, naming the sixth review,
+     this entry and the two checks quoted as review computations. Status line: "draft v2 as of 17 September 2026".
+
+5. **Counts and the notes.** The Abstract goes from 319 to 335 words (whitespace tokens, the four headings counted;
+   288 → 304 alphabetic words), within the commission's 335. The companion changes where a quoted or restated sentence
+   changed: the Abstract note and Abstract — Results (a); Abstract — Conclusions (a) and (c); Introduction paragraph 2
+   (a); Results 4 (the rest of the residual DiD; the split-half ceiling); the cross-lag unit (the run-level mean
+   point, twice; the q̂-density clause; the pooling control; and "the DMT run carries about a tenth more of it", a
+   round-8 wording the companion had not taken up); Results 5 (a); Discussion (a) and the quote of it in the title
+   unit's (c); Limitations (a); Data and code availability (a) and (c); AI-use statement (a) and (c). Not changed,
+   because the paper's sentences they restate did not change (sentences were added after them): the companion's
+   Results 3 unit (F1) and Results 6 unit (F3). The defence questions: the header, Q3, Q6, Q13, Q25 and the new Q26.
+
+6. **The committed review files** (`notes/fresh_review_2026-09-17/`, sha256):
+   - `review.md` d03e0ece34a23ac2270799de315c354c86b6e703bee967de72364be7578bfeb7
+   - `checks/check_A1_atoms_family.py` eee990cd9b36010c155d2078fe33d864fda626fd7709ba9cf2edef46a6d3e36d
+   - `checks/check_A1_atoms_family.log` 5cc1bd345d2645f5126e8232f9b362721c195c9d12c55ba2a0d4162f99dbd1a5
+   - `checks/check_A2_ratio_range.py` ffe37e6613257a620aeb5eb03e722c772990aa22956b230919ee34318dbd5997
+   - `checks/check_A2_ratio_range.log` 98e01db28e490aca859875b9fec86bbccb16065e857c06d5d59b14507819b43c
+   - `checks/check_B1_did_recompute.py` ebc8477e8dd5b62e154ae127fa9b876ce4ed2b3fb7d2d4e853eb007c4f20179c
+   - `checks/check_B1_did_recompute.log` e151c0aec7f7add2ca6689cf22725f4c18c502c80c0ab9649b8c3e6aa0638653
+   - `checks/check_C1_residual_vs_null.py` 2a5cb3535cad642cbc46248eafbbe43af36a956d01ba9035eae4b22cd7b65f39
+   - `checks/check_C1_residual_vs_null.log` ee2448137a5724fbece7edc8eb110f8fceb50c6c382263e19b1621e0ad4775fc
+   - `checks/check_C2_variance_ratio.py` 50afd91fbd4899443de4a012cc703c426a70ec4638e9c06e5d57b04a609bc761
+   - `checks/check_C2_variance_ratio.log` 744792fe9eb164c9726166f615cd28437baf047e7fefe28d7ec7e33a9e1aaaed
+   - `checks/check_I1_fig4_scale.py` beafbd9b17c9e4d975f4a7b37918652156615bae71c4d50a4e956cd404e36cf0
+   - `checks/check_I1_fig4_scale.log` dba5bf547387a420526e2e25b850ffaac0bb8489d6f44325e3b3ea3899ec40ee

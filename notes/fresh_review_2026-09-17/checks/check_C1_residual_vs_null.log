@@ -1,0 +1,97 @@
+==============================================================================
+(1) OBSERVED RESIDUAL DiD vs THE FINITE-SAMPLE NULL
+==============================================================================
+  observed residual DiD (ts_gsr W60, primary) = +0.01153  95 % CI [+0.00181, +0.02111]
+  sign-flip p against 0                        = 0.0422
+  null = +0.0054 (primary null (h = 0.5, DMT-post/placebo ACF)):
+      inside the observed 95 % CI? YES;  sign-flip p for (observed - null) = 0.2506
+  null = +0.0037 (lowest of the third review's variations):
+      inside the observed 95 % CI? YES;  sign-flip p for (observed - null) = 0.1500
+  null = +0.0077 (highest of the third review's variations):
+      inside the observed 95 % CI? YES;  sign-flip p for (observed - null) = 0.4661
+  null = +0.0052 (third review, h = 0.5):
+      inside the observed 95 % CI? YES;  sign-flip p for (observed - null) = 0.2378
+  null = +0.0059 (third review, h = 0.25):
+      inside the observed 95 % CI? YES;  sign-flip p for (observed - null) = 0.2903
+  => EVERY null value, including the largest, lies inside the observed CI, and the
+     excess over the null is not significant at any of them.  The residual DiD is
+     statistically compatible with being entirely finite-sample under this null.
+
+==============================================================================
+(2) RUN-LEVEL RESIDUAL vs THE NULL'S -0.34 %
+==============================================================================
+  ts_gsr: run-level residual mean -0.01373  95 % CI [-0.01448, -0.01302]   (as % of observed: -1.07 % [-1.12, -1.01])
+     sign-flip p against 0 = 0.0001; negative in 14/14
+     null (W = 840, homogeneous filter) = -0.00450 (-0.34 %): inside the observed CI? no;  sign-flip p for (observed - null) = 0.0001
+     => the run-level residual IS significantly more negative than the null's
+        value, so 'three times the null's' is supported in sign and order here,
+        but no interval is given for it anywhere in the paper or the tables.
+  ts_demean: run-level residual mean +0.00079  95 % CI [-0.00482, +0.00669]   (as % of observed: +0.09 % [-0.39, +0.58])
+     sign-flip p against 0 = 0.7904; negative in 9/14
+
+==============================================================================
+(3) ATTENUATION CEILING ON THE HEADLINE r = 0.953
+==============================================================================
+  Split-half (odd vs even window) reliabilities of the per-subject DiDs, from
+  notes/review_results/partB/splithalf_tables.md (the values the paper quotes as
+  '0.71-0.74 and 0.69-0.72'):
+  ts_gsr: rel(MMI-sts DiD) = 0.717, rel(r1 DiD) = 0.741
+     ceiling using the raw split-half values      = 0.729   (observed 0.953 -> disattenuated 1.31)
+     ceiling using Spearman-Brown full-length rel = 0.843   (observed 0.953 -> disattenuated 1.13)
+  ts_demean: rel(MMI-sts DiD) = 0.686, rel(r1 DiD) = 0.712
+     ceiling using the raw split-half values      = 0.699   (observed 0.958 -> disattenuated 1.37)
+     ceiling using Spearman-Brown full-length rel = 0.823   (observed 0.958 -> disattenuated 1.16)
+  A correlation between two *reliable* components cannot exceed sqrt(rel*rel) if the
+  two measurements' errors are independent.  The observed 0.953 exceeds both ceilings,
+  and disattenuates above 1.  Errors are therefore NOT independent: a material part of
+  the 0.953 is estimation noise shared by two quantities read off the same 60-TR
+  windows.  This is the argument the paper applies to the residual/CCS-sts pair
+  (Results 4: 'most of the within-half correlation ... is estimation noise common to
+  the same windows'); it is not applied to the 0.953, and no split-half of that pair
+  is reported, although splithalf_tables.md holds both reliabilities.
+
+==============================================================================
+(4) THE FAMILY-SCALE CONVERSION: 44 % AT THE OPERATING POINT, 37 % AT 'THE
+     PAIRS' MEAN POINT'
+==============================================================================
+  operating point (0.85, 0.25): sts 1.25883 -> 1.25278; change -0.00605 nats for delta_run = +0.00340
+      as a share of the -0.0137 run-level residual: 44.2 %
+  run-level mean pair point (0.8666, 0.1945): sts 1.37587 -> 1.37081; change -0.00507 nats for delta_run = +0.00340
+      as a share of the -0.0137 run-level residual: 37.0 %
+  the 'pairs' own point' of Results 2 (0.848, 0.24): sts 1.24862 -> 1.24292; change -0.00570 nats for delta_run = +0.00340
+      as a share of the -0.0137 run-level residual: 41.6 %
+  record (analysis_record.md, 'Conversion to a residual on the family'): -0.0061 (44 %)
+  at (0.85, 0.25) and -0.0051 (37 %) at (a 0.8666, |q| 0.1945).  Both reproduce.
+  NOTE: the point the paper calls 'the pairs' mean point' in Results 4 is the RUN-level
+  mean (0.8666, 0.1945); the point Results 2 calls 'the pairs' own point' is the
+  WINDOW-level mean (0.848, 0.24).  Neither Results 4 nor the Methods states which is
+  meant, and the two give 37 % and 43 %.
+
+==============================================================================
+(5) APPENDED: d sts / d(cross-lag deviation) as a function of a, to reconcile
+    notes/planning_checks_2026-09-16/reviewer/v_slope_q.log (a = 0.867) with
+    check_A1's value at the operating point (a = 0.85).
+==============================================================================
+  a = 0.85: q +0.02: slope -0.140  slope/q -6.98  curvature +36.6
+  a = 0.85: q +0.05: slope -0.350  slope/q -6.99  curvature +36.8
+  a = 0.85: q +0.10: slope -0.704  slope/q -7.04  curvature +37.8
+  a = 0.85: q +0.19: slope -1.373  slope/q -7.23  curvature +41.3
+  a = 0.85: q +0.25: slope -1.856  slope/q -7.42  curvature +45.2
+  a = 0.85: q +0.40: slope -3.302  slope/q -8.25  curvature +63.5
+
+  a = 0.8666: q +0.02: slope -0.157  slope/q -7.83  curvature +47.5
+  a = 0.8666: q +0.05: slope -0.392  slope/q -7.85  curvature +47.8
+  a = 0.8666: q +0.10: slope -0.790  slope/q -7.90  curvature +49.1
+  a = 0.8666: q +0.19: slope -1.541  slope/q -8.11  curvature +53.6
+  a = 0.8666: q +0.25: slope -2.083  slope/q -8.33  curvature +58.6
+  a = 0.8666: q +0.40: slope -3.709  slope/q -9.27  curvature +81.8
+
+  a = 0.867: q +0.02: slope -0.157  slope/q -7.85  curvature +47.8
+  a = 0.867: q +0.05: slope -0.393  slope/q -7.87  curvature +48.2
+  a = 0.867: q +0.10: slope -0.793  slope/q -7.93  curvature +49.4
+  a = 0.867: q +0.19: slope -1.546  slope/q -8.14  curvature +53.9
+  a = 0.867: q +0.25: slope -2.090  slope/q -8.36  curvature +58.9
+  a = 0.867: q +0.40: slope -3.720  slope/q -9.30  curvature +82.4
+
+  v_slope_q.log at a = 0.867: q 0.02 -0.157, 0.05 -0.393, 0.10 -0.793,
+  0.19 -1.546, 0.25 -2.090, 0.40 -3.720; curvature +47.8 to +82.4.
