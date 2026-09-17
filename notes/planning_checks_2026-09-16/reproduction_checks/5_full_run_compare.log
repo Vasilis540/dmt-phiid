@@ -1,0 +1,4 @@
+== results/bias_check.csv: old (36, 14) new (36, 14)
+   max |diff| over numeric cells 0; cells differing by > 1e-9: 0
+== results/bias_check_differential.csv: old (24, 12) new (24, 12)
+   max |diff| over numeric cells 0; cells differing by > 1e-9: 0
