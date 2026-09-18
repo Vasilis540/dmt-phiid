@@ -4222,3 +4222,139 @@ generated at 7c7809a and, before that, in a checkout without git. They are to be
 of the single full run, which is `CLAUDE.md`'s open item and not a [TK] in the paper. (2) The status line: "draft v2
 as of 18 September 2026; not for circulation." → "draft v2 as of 18 September 2026, for co-author review; not for
 citation or distribution."; its second sentence is unchanged. No number changed.
+
+## PLOS Computational Biology form, 18 Sep 2026 15:37 UTC (appended; nothing above edited)
+
+Round 12, commit A, commissioned 18 Sep 2026: text and record only. Nothing under `results/`, `notes/review_results/`,
+`notes/*.py`, `scripts/` or `run_all.sh` changed in this commit (the SHA headers of the `notes/` scripts are commit B,
+with its own pre-run entry below). Target journal: PLOS Computational Biology, Methods article type; the preprint goes
+to bioRxiv. Author-year citations are kept; the numbered form is done at submission. No number changed: the
+numeric-token check against 223f8a1 shows, for the paper, only the 0.80 of the dropped split-half sentence leaving and
+the dates and item numbers of the new sentences arriving; the supplement and the COBIDAS checklist lose no token.
+
+1. **Abstract.** Unstructured, as PLOS's abstracts are: one paragraph, the four bold headings dropped, the
+   background–methods–results–conclusions flow kept as sentences. 296 words (335 with the headings and 331 without,
+   before). Cut by dropping, not compressing, in the commissioned order: the split-half sentence, "Its DiD correlates
+   with the residual's at 0.80; a split-half test could not tell shared signal from window noise; no
+   autocorrelation-independent component is reported" (24 words), and the clause "so spatial synergy maps are exposed
+   to regional differences in r₁" (12 words); the third candidate, the CCS bracket's numbers ("across pairs within a
+   window, |r| < 0.02 against +0.7"), stays. Every number that stays is quoted from the same file as before; both
+   dropped statements stay in Results 4 and Results 2. The Abstract now reads:
+
+    Integrated Information Decomposition with minimum-mutual-information (MMI) redundancy underlies most fMRI
+    synergy reports. Varley (2024) showed that the MMI synergy of two independent autocorrelated processes equals
+    one process's self-information. Which atoms carry it, how the synergy atom sts depends on lag-1
+    autocorrelation r₁ and lag-0 correlation q, and how much of an sts change is autocorrelation change were open.
+    We derive the sixteen Gaussian-MMI atoms of a bivariate AR(1) pair, map sts over (r₁, q), and compare MMI with
+    CCS redundancy, on within-subject fMRI data (14 volunteers, DMT and placebo) in a pre/post
+    difference-in-differences (DiD). A residual diagnostic predicts each pair's sts from its measured
+    autocorrelations and correlation. The study began as a pre-specified test of synergy up-regulation. On the
+    family sts = −ln(1 − r₁²) + ½ ln(1 − r₁²q²) = xtx + yty + rtr; |∂sts/∂r₁| exceeds |∂sts/∂q| 32-fold at BOLD
+    pairs' operating point. On the placebo baseline regional MMI-sts follows regional r₁, as predicted (r = 0.863
+    over 115 regions; cortical Spearman 0.771, spin p < 0.0001). Under DMT whole-brain MMI-sts fell (DiD −0.0809
+    nats, p = 0.0038), as did mean r₁ (−0.0146, p = 0.0106), correlating at r = 0.953 per subject. The
+    diagnostic's prediction gives the sign and 114 % of the magnitude of the sts change; a finite-sample null
+    accounts for a third to two-thirds of the residual DiD (+0.0037–0.0077 of +0.0115, p = 0.042; every null value
+    inside its CI). CCS-sts does not track r₁ as MMI-sts does (across pairs within a window, |r| < 0.02 against
+    +0.7), and rose under DMT (exploratory). On autocorrelated fMRI, MMI-sts contrasts between states or groups
+    are dominated by lag-1 autocorrelation change wherever r₁ differs and lagged interaction does not change
+    comparably. Report r₁ beside sts, run the diagnostic, consider CCS or longer lags.
+
+2. **Author summary.** New section immediately after the Abstract, under PLOS's heading "Author summary": 198 words,
+   first person plural, non-technical and distinct from the Abstract; one number (fourteen volunteers), "lag-1" being
+   the name of the quantity. It says what synergy from ΦID is used for in brain imaging; that the synergy atom of the
+   usual estimator mostly reflects how smooth each region's signal is over time, on a mathematical family and on real
+   data; that under DMT the apparent fall in synergy was the fall in autocorrelation; that the study began by testing
+   the opposite hypothesis and reports its refutation; and what readers should do. It reads:
+
+    Functional brain imaging asks how regions carry information together, not only which regions are active. A
+    widely used measure, from integrated information decomposition, is synergy: information a pair of regions
+    holds jointly and neither holds alone. Synergy has been reported to differ across the cortex and to pick out
+    regions whose integration falls under anaesthesia and in disorders of consciousness, and is read as a mark of
+    integrative processing. We show that, with the estimator almost all of these studies use, the synergy value
+    mostly reflects something simpler: how smooth each region's signal is over time (its lag-1 autocorrelation).
+    We derive this on a solvable mathematical family and confirm it on functional MRI data from fourteen
+    volunteers scanned under the psychedelic DMT and under placebo. Under DMT the measured synergy fell, but so
+    did the smoothness of the signals, and the apparent fall in synergy was the fall in autocorrelation. We had
+    set out to test the opposite hypothesis, that DMT raises synergy, and we report its refutation and what we
+    found instead. We recommend that studies report autocorrelation beside synergy and run the diagnostic we
+    provide, which says how much of a synergy contrast autocorrelation accounts for.
+
+3. **Short title.** A line under the title: "Short title: Autocorrelation dominates the MMI synergy atom of ΦID on
+   fMRI" — 61 characters (PLOS allows 70).
+4. **Headings and back matter in PLOS form.** "Methods" is "Materials and methods", the order of sections unchanged
+   (PLOS permits Methods before Results); the in-text cross-references of the form "Methods, Dataset" are unchanged.
+   The Ethics statement moved from the back matter into Materials and methods as its first subsection, "Ethics
+   statement" (its REC [TK] stays). The AI-use statement moved into Materials and methods as its last subsection, "Use
+   of AI tools", worded to PLOS's policy — the tool (Claude, Anthropic; the model of each contribution identified,
+   with its session, in the commit trailers), how it was used, how its outputs were evaluated (every number checked
+   against its source file before commit; the six reviews and their corrections in `notes/` and this record), which
+   aspects of the work it affected, and that the authors are responsible for the accuracy and validity of the content,
+   for the citation of sources, and for the hypotheses, interpretations, results, conclusions and limitations being
+   their own; the [TK: journal-specific wording] is gone. "Conflicts of interest" is "Competing interests" (text
+   unchanged, its [TK] stays). "Funding" is added between Author contributions and Competing interests: "V.S. received
+   no specific funding for this work. [TK: funding statements of C.T. and S.P.S., if any apply to their
+   contributions.]" "Supplement (pointer)" is "Supporting information"; its items S1–S4 are S1 Text–S4 Text, the
+   supplement's Tables S1–S9 are S1 Table–S9 Table, and a closing line, "S1–S9 Tables", lists the nine tables of
+   `manuscript/supplementary.md` by short title (each Supporting information item is packaged as its own file, with
+   its caption, at submission).
+5. **Every renamed reference.** Paper: Introduction, last sentence ("in the supplement" → "in the Supporting
+   information (S1 Text)"); Dataset ("the supplement's Table S2" → "S2 Table"); Bias simulations ("Supplement S2" →
+   "S2 Text"); Literature search ("(Supplement S3)" → "(S3 Text)"; "in the Supplement (S3; …)" → "in the Supporting
+   information (S3 Text; …)"); History of the study, Results 4 and Limitations ("Supplementary Table S9" → "S9 Table",
+   three places); Results 3 ("Supplementary Table S8" → "S8 Table"); Discussion, "A distinction for applicability"
+   ("(Supplement S3)" twice and "(Supplement S2)" → "(S3 Text)", "(S2 Text)"); Discussion, "Recommendations"
+   ("(Supplement S2)" → "(S2 Text)"); Supporting information (S1–S4 → S1 Text–S4 Text; "Tables S1–S8" → "S1–S8
+   Tables"; "Supplementary Table S9" → "S9 Table"). `manuscript/supplementary.md`: the introductory sentence (now
+   "which cites S1–S8 Tables from its S1 Text … and S9 Table from Results 4 and S3 Text"); the nine headings "Table
+   Sn." → "Sn Table."; "Source: as Table S1" → "as S1 Table". `manuscript/supplementary_cobidas.md`: the introductory
+   "(Supplement S4)" → "(S4 Text)"; items D9, A5, P6, S5, R5 and R6 ("Supplement S1, Table S2" → "S1 Text, S2 Table";
+   "Supplement S1, Table S6" → "S1 Text, S6 Table"; "Supplement S2" → "S2 Text"; "Supplement S1 (Table S3)" → "S1 Text
+   (S3 Table)"; "Supplement S1" → "S1 Text"; "Supplement S1, Tables S3–S5" → "S1 Text, S3–S5 Tables").
+   `notes/companion_plain_language.md`: the header's scope ("the Supplement pointers" → "the Supporting-information
+   pointers"); Glossary (COBIDAS "Supplement S4" → "S4 Text"; Lempel-Ziv "(Supplement S1)" → "(S1 Text)"; intensity
+   tracking "(Supplement S1, Table S2)" → "(S1 Text, S2 Table)"; the "AI-use statement" entry renamed "Use of AI
+   tools"); Abstract — Background (c) and Introduction — paragraph 1 (c) ("Supplement S3" → "S3 Text"); Methods —
+   Dataset (b) and (c) ("Supplement S1" → "S1 Text" twice; "(Table S2)" → "(S2 Table)"); Methods — The DMT contrast
+   (c) ("Table S1" → "S1 Table"); Methods — Literature search ("Supplement S3" → "S3 Text"); the run-level cross-lag
+   unit of Results 4 ("Supplementary Table S9" → "S9 Table", three places); Discussion — A distinction for
+   applicability ("(Supplement S3)" → "(S3 Text)"); Discussion — Limitations ("Supplementary Table S9" → "S9 Table");
+   the "Supplement (pointer)" unit, now "Supporting information" (S1–S4 → S1 Text–S4 Text; "(Tables S1–S8)" → "(S1–S8
+   Tables)"; "The S2 pointer", "The revised S1 pointer" → "The S2 Text pointer", "The revised S1 Text pointer").
+   `notes/defence_questions.md`: Q3 ("Supplementary Table S9" → "S9 Table"); Q6 ("The AI-use statement" → "The Use of
+   AI tools subsection of Materials and methods"; pointer "AI-use statement" → "Materials and methods, 'Use of AI
+   tools'"); Q7 ("Supplement S3" → "S3 Text"); Q8 ("The conflict-of-interest statement" → "The competing-interests
+   statement"; pointer "Conflicts of interest" → "Competing interests"); Q20 ("Supplement S1, Table S2" → "S1 Text, S2
+   Table", twice); Q22 and Q24 ("Supplement S2" → "S2 Text"); its header records the revision. `README.md`: the
+   COBIDAS row ("Supplement S4" → "S4 Text"). `CLAUDE.md`: the cross-lag bullet ("Supplementary Table S9" → "S9
+   Table"), the post-hoc proportionality check ("Table S8" → "S8 Table") and the layout row ("Supplement S4" → "S4
+   Text"). The record's own earlier entries, `manuscript/draft.md` and the notes under `notes/` other than the two
+   named keep their historical names.
+6. **Ethics statement, made exact.** The sentence "no participant can be identified from the derivatives used, which
+   carry no demographic, image or identifying field" made a claim about identifiability; the released ratings table
+   (`intensity_ratings.mat` in the source release) carries subject codes — an S, a two-digit subject number and two
+   letters — which this analysis does not use and which were removed from the repository's tracked files on 15 Sep
+   2026 ("Data-governance note" above). The sentence now reads: "no new data were collected and no participant was
+   contacted. The quantities used carry no demographic, image or identifying field. The released ratings table
+   (`intensity_ratings.mat` in the source release) carries subject codes — an S, a two-digit subject number and two
+   letters — which this analysis does not use and which the repository's tracked files do not contain (they were
+   removed from them on 15 September 2026; record, "Data-governance note")." The form of the codes is described
+   without an example string.
+7. **Governance: the git history and the subject codes.** The repository is public (reachable without login). The
+   codes are in the public source release: V.S. verified this on 18 Sep 2026 by reading `intensity_ratings.mat` from a
+   fresh clone of `singlesp/DMT_NCT`. So the git history carries nothing the source release does not, and a history
+   rewrite is hygiene rather than a governance necessity — which is what the entry "Git history and the participant
+   codes, 15 Sep 2026" above already concluded on the same ground. `CLAUDE.md`'s "has to be rewritten before the
+   repository is made public" is replaced by these facts, and the companion's Data and code availability unit (c)
+   restates them. Decision, as the commission put it (rewrite before the preprint, or leave the history as it is with
+   this note; V.S. named no other choice, so the commission's default applies): the history is left as it is, with
+   this note.
+8. **Companion and defence questions.** Changed only where a quoted sentence or heading changed, plus two units for
+   the new sections: the companion gains an "Author summary" unit after the Abstract units and a "Funding" unit after
+   Author contributions; its Abstract — Background unit notes the unstructured form and its Abstract — Results
+   revision note records the two drops; the Ethics statement, Competing interests and Use of AI tools units are
+   retitled with their new places and their (a) restate the new sentences; the Data and code availability unit (c)
+   carries the governance facts. The defence questions' header lists the revision (Q3, Q6, Q7, Q8, Q20, Q22, Q24); no
+   answer changed otherwise. Status line: "draft v2 as of 18 September 2026" (unchanged; the same day). `CLAUDE.md`:
+   current state (round 12), the subject-code bullet, revision-chain item 12, the remaining [TK] list (affiliations,
+   co-authors, the REC reference number, the co-authors' funding statements, the run sentence), the venue.

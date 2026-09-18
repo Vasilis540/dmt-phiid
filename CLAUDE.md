@@ -14,7 +14,7 @@ Cambridge (Prof. Emmanuel Stamatakis).
 - **20 Nov 2026** — public preprint + documented repo
 - **8 Dec 2026** — Cambridge application (Gates Cambridge / Cambridge Trust)
 
-## Current state (18 Sep 2026, round 11)
+## Current state (18 Sep 2026, round 12)
 
 **Analysis complete. The paper is `manuscript/draft_v2.md` (revised 15 Sep after the second and third adversarial reviews and after the verification of the correction note; finalisation pass 15 Sep: ethics statement, software versions, verified references, copy-edit, COBIDAS checklist in `manuscript/supplementary_cobidas.md`); `manuscript/draft.md` is the superseded first draft, kept as a record. Figures `fig1_v2`–`fig5_v2` built by `scripts/15_figures_v2.py`.**
 
@@ -42,11 +42,18 @@ Cambridge (Prof. Emmanuel Stamatakis).
   correspondence is held by the corresponding author. Subject order across
   files verified at one subject (record, "Subject alignment across files");
   author confirmation still requested.
-- Participant codes (the letter-digit-letter strings of the ratings table)
-  were removed from every tracked file on 15 Sep 2026 (record,
+- Subject codes (an S, a two-digit subject number and two letters, in the
+  ratings table) were removed from every tracked file on 15 Sep 2026 (record,
   "Data-governance note, 15 Sep 2026"); they remain in `external/` (not
-  tracked) and in the git history, which has to be rewritten before the
-  repository is made public.
+  tracked) and in the git history. The repository is public (reachable
+  without login) and the codes are in the public source release (V.S.
+  verified this on 18 Sep 2026 by reading `intensity_ratings.mat` from a
+  fresh clone of `singlesp/DMT_NCT`), so the history carries nothing the
+  source release does not, and a history rewrite is hygiene rather than a
+  governance necessity. Decision (18 Sep 2026; the commission's default,
+  V.S. having named no other choice): the history is left as it is, with
+  this note (record, "PLOS Computational Biology form",
+  18 Sep 2026; the paper's Ethics statement states the facts).
 - 15 Sep 2026, afternoon: `notes/companion_plain_language.md` (a
   plain-language companion for the first author) closed with 35 places
   where the paper stated something without justifying it, used an undefined
@@ -99,7 +106,7 @@ Cambridge (Prof. Emmanuel Stamatakis).
   pooling larger on the DMT run (+0.00039, p = 0.0006, 11 % of that run's
   signature). Common slow drive and lagged coupling are one account at τ = 1
   (A = Γ₁Γ₀⁻¹); what acts inside the windows is open, and the closure entry
-  ends the thread. Supplementary Table S9 holds the budget and the superseded
+  ends the thread. S9 Table holds the budget and the superseded
   values. `ts_demean` (−0.00262) reported, not read.
 - `run_all.sh` has executed once, in two invocations at d145e1c (sections 0–5
   and the first ten steps of section 6 on 15 Sep; the remaining fourteen
@@ -194,6 +201,12 @@ Cambridge (Prof. Emmanuel Stamatakis).
   11. 18 Sep, the Figures paragraph filled with the tree as it is (48ea934)
      and the status line set for co-author review (record, "Figures
      paragraph and status line for co-author review", 14:58 UTC).
+  12. 18 Sep, the PLOS Computational Biology form (record, "PLOS
+     Computational Biology form"): unstructured Abstract, Author summary,
+     short title, "Materials and methods" with the Ethics statement and
+     "Use of AI tools" as subsections, Funding, Competing interests,
+     Supporting information (S1–S4 Text, S1–S9 Table), the exact Ethics
+     sentence on the subject codes.
 - 18 Sep 2026, round 11: the Figures paragraph names the commit at which the
   five figures were generated, 48ea934, as the captions file records, with
   5906148 as the commit that holds them, 7c7809a and the no-git checkout as
@@ -201,8 +214,25 @@ Cambridge (Prof. Emmanuel Stamatakis).
   18 September 2026, for co-author review; not for citation or
   distribution". The figures are to be regenerated once more at the commit
   of the single full run (open item below), not marked as a [TK].
+- 18 Sep 2026, round 12 (record, "PLOS Computational Biology form"):
+  target journal PLOS Computational Biology (Methods article type),
+  preprint to bioRxiv; author-year citations kept, the numbered form done
+  at submission. Abstract unstructured and 296 words (the split-half
+  sentence and the "spatial synergy maps are exposed" clause dropped, the
+  CCS bracket's numbers kept); Author summary (198 words) after it; short
+  title (61 characters); "Methods" is "Materials and methods" with
+  "Ethics statement" first and "Use of AI tools" last (PLOS wording, no
+  [TK]); "Funding" added ([TK] for C.T. and S.P.S.); "Conflicts of
+  interest" is "Competing interests"; "Supplement (pointer)" is
+  "Supporting information" with S1–S4 Text and S1–S9 Table, renamed
+  wherever the paper, the supplement, the COBIDAS checklist, the
+  companion, the defence questions, `README.md` and this file cite them;
+  the Ethics statement's identifiability sentence replaced by the exact
+  facts on the subject codes. The subject-code bullet above records the
+  governance facts and the decision on the history.
 - Remaining work: the [TK] items in `draft_v2.md` (affiliations, co-authors,
-  the REC reference number, journal wording); run `run_all.sh` end-to-end
+  the REC reference number, the co-authors' funding statements, the run
+  sentence); run `run_all.sh` end-to-end
   once as a single run at the final commit, with the lid open for the whole
   run (four attempts on 16–17 Sep stopped inside `02_bias_check`, two of
   them within minutes of the lid closing, one of those with every sleep
@@ -214,8 +244,11 @@ Cambridge (Prof. Emmanuel Stamatakis).
   run, add the git
   SHA to the output headers of the `notes/` writers that lack it (standing
   rule 8; of the review and Part B scripts only `partB10`–`partB13` write
-  it), then one full run of `run_all.sh` at the final commit; choose the
-  venue and preprint server (`notes/venue_options.md`).
+  it), then one full run of `run_all.sh` at the final commit. Venue chosen
+  (18 Sep 2026): PLOS Computational Biology, Methods article type; preprint
+  to bioRxiv (`notes/venue_options.md`); the numbered citation form and
+  the packaging of the Supporting information items as separate files are
+  done at submission.
 
 ## Post-hoc checks (NOT pre-specified; recorded here, not in the record)
 
@@ -258,7 +291,7 @@ named CSVs.
   a more-than-proportional (selective) synergy reduction.** The
   windowed and global estimators put sts at different shares of TDMI
   (0.78 vs 0.90) because the per-window bias falls on sts and the
-  self-transfer atoms differently. In the draft (Results, Discussion, Table S8).
+  self-transfer atoms differently. In the draft (Results, Discussion, S8 Table).
 
 ## The record: `manuscript/analysis_record.md`
 
@@ -280,7 +313,7 @@ manuscript/prespecification_summary.md  decisions by commit, changed-later audit
 manuscript/draft_v2.md           the paper (15 Sep 2026)
 manuscript/draft.md              superseded first draft, kept as a record
 manuscript/supplementary.md      supplementary tables, values quoted from results/
-manuscript/supplementary_cobidas.md  Supplement S4: COBIDAS reporting checklist for draft_v2.md
+manuscript/supplementary_cobidas.md  S4 Text: COBIDAS reporting checklist for draft_v2.md
 manuscript/figures/              fig1_v2–fig5_v2 (pdf/png) + captions_v2.md, from 15_figures_v2.py;
                                  the draft.md figures + captions.md (12_figures.py) kept in place
 scripts/                         numbered by execution order, each independently runnable

@@ -1,8 +1,8 @@
 # Supplementary tables
 
-Companion to `manuscript/draft_v2.md`, which points to these tables as its Supplement S1 (the original pre-specified analysis; `manuscript/draft.md`, which they first accompanied, is kept as a record). Every value is quoted from the named results file. Nats throughout; N = 14; sign-flip p exact over 2^14 assignments, two-sided; CIs are subject-bootstrap 95 % (10,000 draws); seed 20261120.
+Companion to `manuscript/draft_v2.md`, which cites S1–S8 Tables from its S1 Text (the original pre-specified analysis; `manuscript/draft.md`, which they first accompanied, is kept as a record) and S9 Table from Results 4 and S3 Text. Every value is quoted from the named results file. Nats throughout; N = 14; sign-flip p exact over 2^14 assignments, two-sided; CIs are subject-bootstrap 95 % (10,000 draws); seed 20261120.
 
-## Table S1. Step contrast on the sensitivity windows 5–14 (bins 9–28) vs pre-injection windows 1–4, W = 60
+## S1 Table. Step contrast on the sensitivity windows 5–14 (bins 9–28) vs pre-injection windows 1–4, W = 60
 
 Source: `results/primary_b_ts_gsr_win60.csv` (git e46df8a), `results/primary_b_ts_demean_win60.csv` (git f3b435d).
 
@@ -16,9 +16,9 @@ Source: `results/primary_b_ts_gsr_win60.csv` (git e46df8a), `results/primary_b_t
 
 W = 30 positive control (`results/primary_b_ts_gsr_win30.csv`, git ac1fdc0), ts_gsr, pre = bins 1–8: primary post bins 11–28, DiD raw −0.0686 [−0.1084, −0.0293], p = 0.0042, phase-randomised p = 0.0010, 13/14 negative, −6.7 % of the W = 30 pre-injection DMT mean of 1.0223; DMT post − pre −0.0390 [−0.0680, −0.0058], p = 0.0354; PCB post − pre +0.0296 [+0.0076, +0.0531], p = 0.0269; FD-residualised −0.0545 [−0.0836, −0.0215], p = 0.0065, 13/14. Sensitivity bins 10–28: DiD −0.0658 [−0.1072, −0.0261], p = 0.0067; residualised −0.0514 [−0.0799, −0.0179], p = 0.0109.
 
-## Table S2. Tier-2 intensity tracking, decay windows, DMT run, W = 60
+## S2 Table. Tier-2 intensity tracking, decay windows, DMT run, W = 60
 
-Source: as Table S1. ρ_S = Spearman correlation. "Group-mean series" is the 14-subject mean sts series vs the group intensity template f (thresholded at |ρ| ≥ 0.80; p vs the phase-randomised null). "Per-subject" is the group mean of per-subject ρ_S vs own ratings (primary) or vs f (sensitivity), tested for existence against the null, not thresholded. Control (a): the within-subject difference ρ_DMT − ρ_PCB (template) must have a CI excluding zero and PCB must be below half of DMT. Control (b): the same three conditions on FD-residualised sts. Sign is negative in every cell against the pre-specified positive direction.
+Source: as S1 Table. ρ_S = Spearman correlation. "Group-mean series" is the 14-subject mean sts series vs the group intensity template f (thresholded at |ρ| ≥ 0.80; p vs the phase-randomised null). "Per-subject" is the group mean of per-subject ρ_S vs own ratings (primary) or vs f (sensitivity), tested for existence against the null, not thresholded. Control (a): the within-subject difference ρ_DMT − ρ_PCB (template) must have a CI excluding zero and PCB must be below half of DMT. Control (b): the same three conditions on FD-residualised sts. Sign is negative in every cell against the pre-specified positive direction.
 
 | statistic | ts_gsr, windows 6–14 (primary) | ts_gsr, windows 5–14 (sensitivity) | ts_demean, windows 6–14 | ts_demean, windows 5–14 |
 |---|---|---|---|---|
@@ -37,7 +37,7 @@ Source: as Table S1. ρ_S = Spearman correlation. "Group-mean series" is the 14-
 
 W = 30 (ts_gsr, bins 11–28; check only, decides nothing): group-mean series ρ_S −0.9752 raw, −0.8535 FD-residualised; per-subject means −0.388 / −0.408 raw, −0.267 / −0.279 residualised, all p ≤ 0.002; control (a) clears on raw (−0.223 [−0.415, −0.043]) and is void on the residualised data (−0.146 [−0.337, +0.031]).
 
-## Table S3. Exploratory regional DiD: regions surviving BH FDR (q = 0.05)
+## S3 Table. Exploratory regional DiD: regions surviving BH FDR (q = 0.05)
 
 Source: `results/regional_analysis_<variant>.csv`, `results/regional_did_map_<variant>.csv` (git 4f7437b). Global fit; pre bins 1–8, post bins 11–28; group-mean DiD negative in 114 of 115 regions on both variants; the one positive region is subcortical parcel 104 (+0.028, p = 0.495 on ts_gsr; +0.019, p = 0.566 on ts_demean). BH thresholds: p = 0.00304 (ts_gsr, 7 regions), 0.00826 (ts_demean, 19 regions). All survivors negative and cortical. **Exploratory.**
 
@@ -79,7 +79,7 @@ ts_demean:
 
 Common to both variants: LH_DorsAttn_Post_2, LH_DorsAttn_PrCv_1, LH_Default_Par_1, RH_SalVentAttn_TempOccPar_2.
 
-## Table S4. Exploratory workspace comparison
+## S4 Table. Exploratory workspace comparison
 
 Source: `results/regional_analysis_<variant>.csv`. Per-subject mean regional DiD inside the proxy minus outside it (negative = larger decrease inside). Primary proxy = Yeo Default ∪ Control (37 cortical parcels; gateway proxy = Default 24, broadcaster proxy = Control 13); named-subregion proxy = 26 parcels (gateway 21, broadcaster 5). Non-workspace = remaining cortical parcels, or remaining cortical + 16 subcortical ("+ subcortex"). **Exploratory.**
 
@@ -96,7 +96,7 @@ Source: `results/regional_analysis_<variant>.csv`. Per-subject mean regional DiD
 
 Set means, primary proxy vs cortical non-workspace: ts_gsr workspace −0.0885 [−0.1457, −0.0329], p = 0.0078, non-workspace −0.0791 [−0.1299, −0.0290], p = 0.0083; ts_demean workspace −0.1115 [−0.1816, −0.0375], p = 0.0131, non-workspace −0.1065 [−0.1722, −0.0392], p = 0.0118. Rank-rule check on the placebo run (descriptive): 52 (ts_gsr) and 58 (ts_demean) of 115 regions have synergy rank above redundancy rank; overlap with the 37-parcel primary proxy 20 (Jaccard 0.323) and 32 (Jaccard 0.571).
 
-## Table S5. Exploratory receptor-map correlations
+## S5 Table. Exploratory receptor-map correlations
 
 Source: `results/regional_analysis_<variant>.csv`. Spearman ρ between the group-mean regional DiD map and receptor density on the 99 cortical parcels; two-sided spin p over 10,000 rotations (Váša one-sided-average p in brackets); BH across the five maps: nothing significant on either variant. The 115-region ρ including subcortex has no spatial null and is descriptive. **Exploratory.**
 
@@ -110,7 +110,7 @@ Source: `results/regional_analysis_<variant>.csv`. Spearman ρ between the group
 
 Receptor inter-correlations (Spearman, 115 regions): 1A–2A 0.532, 1B–2A 0.528, 2A–4 0.436, 2A–HTT −0.451, 1A–4 0.405, 1B–HTT −0.364, 1A–HTT −0.100, 4–HTT 0.068, 1B–4 0.056, 1A–1B −0.002.
 
-## Table S6. EEG Lempel-Ziv complexity vs ΦID quantities, global fit, 28 bins
+## S6 Table. EEG Lempel-Ziv complexity vs ΦID quantities, global fit, 28 bins
 
 Source: `results/lz_vs_tdmi_<variant>.csv` (git 84ea657). Per-subject Spearman ρ across the 28 bins, group mean with subject-bootstrap CI; p against 1,000 phase-randomised surrogates of the LZ series (one-sided in the predicted direction; two-sided in brackets); "series" = ρ of the group-mean series with its two-sided p.
 
@@ -125,7 +125,7 @@ Source: `results/lz_vs_tdmi_<variant>.csv` (git 84ea657). Per-subject Spearman �
 | ts_demean | sts | DMT | −0.2026 [−0.3457, −0.0674] | 9/14 | 0.0070 (0.0110) | −0.6694 (0.0709) |
 | ts_demean | rtr | DMT | −0.0229 [−0.1101, +0.0685] | 5/14 (predicted +) | 0.6284 (0.7143) | +0.0668 (0.8282) |
 
-## Table S7. Global functional connectivity per bin set
+## S7 Table. Global functional connectivity per bin set
 
 Source: `results/global_fc_did_<variant>.csv` (git 66b570e-dirty). Mean Pearson r over the 6,555 pairs; DiD form as in the main text; the whole-brain sts DiD from the global-fit atoms on the identical bins alongside.
 
@@ -139,7 +139,7 @@ Source: `results/global_fc_did_<variant>.csv` (git 66b570e-dirty). Mean Pearson 
 
 Pre-injection mean r: ts_demean DMT 0.1905, PCB 0.1813; ts_gsr DMT −0.0020, PCB −0.0039 (GSR pins the mean near zero by construction; every ts_gsr bin lies within −0.0058 to −0.0008).
 
-## Table S8. Post-hoc proportionality: sts / TDMI ratio DiD, four cells
+## S8 Table. Post-hoc proportionality: sts / TDMI ratio DiD, four cells
 
 Source: `results/proportionality.csv` (script `14_proportionality.py` at git dbf2311; interpretation rule recorded in the script docstring and in the project orientation file before the run). Post-hoc, specified after the primary result, reported regardless of outcome. Ratio = sts / TDMI (TDMI = Σ 16 atoms) per subject, condition and window (W = 60) or bin (global fit); DiD = (post − pre)_DMT − (post − pre)_PCB on the mean ratio over the window set; exact sign-flip p over 2^14 assignments, two-sided; subject-bootstrap 95 % CI, 10,000 draws, seed 20261120. Windows: W = 60, pre 1–4, post 6–14; global fit, pre bins 1–8, post 11–28. Verdict by the pre-recorded rule: CI includes zero → proportional; significantly negative → more than proportional; significantly positive → less than proportional. (i) = sts share of TDMI at pre-injection baseline on the DMT run (subject mean, with CI); (ii) = sts DiD / TDMI DiD on the group means, with a subject-bootstrap CI of the ratio of means. (i) and (ii) are comparable within a cell, not across estimators: the windowed and global fits give different baseline shares because per-window finite-sample bias falls on sts and on the self-transfer atoms. No temporal null, no motion handling.
 
@@ -152,7 +152,7 @@ Source: `results/proportionality.csv` (script `14_proportionality.py` at git dbf
 
 Within-condition ratio changes (post − pre): windowed ts_gsr DMT +0.0034 [−0.0004, +0.0070], p = 0.1097, PCB +0.0028 [−0.0030, +0.0090], p = 0.3990; windowed ts_demean DMT −0.0093 [−0.0215, +0.0019], p = 0.1621, PCB +0.0001 [−0.0071, +0.0074], p = 0.9712; global ts_gsr DMT +0.0167 [+0.0052, +0.0279], p = 0.0183, PCB −0.0037 [−0.0116, +0.0044], p = 0.3949; global ts_demean DMT +0.0015 [−0.0183, +0.0203], p = 0.8799, PCB −0.0056 [−0.0143, +0.0042], p = 0.2753. The sts DiD reproduces Table 2 of `draft_v2.md` and the TDMI DiD its Table 1, and both reproduce `results/windowed_atoms_did_ts_gsr_win60.csv` (bootstrap CIs differ in the third decimal from the main-text values because the draw order differs; point estimates are identical).
 
-## Table S9. The cross-lag budget of Results 4: data, finite-sample null, null-corrected terms and shares; the controls; the superseded values of 16 September 2026, 10:32 UTC
+## S9 Table. The cross-lag budget of Results 4: data, finite-sample null, null-corrected terms and shares; the controls; the superseded values of 16 September 2026, 10:32 UTC
 
 Source: `notes/review_results/partB/crosslag_budget_tables.md` (data; `partB12_crosslag_budget.py`) and `crosslag_budget_null_tables.md` (null, controls, null-corrected budget and the mechanical reading; `partB13_crosslag_budget_null.py`), both at git 6b5181a, seed 20261120; definitions in Methods and `notes/rev_crosslag_budget.py`; the rules in the record's pre-run entry of 16 September 2026, 16:24 UTC, and the outcome of 16:37 UTC. Terms per subject and run are means over the 6,555 pairs, s = the sign of the pair's run-level q; grand mean = mean over subjects of the per-subject mean of the two runs, with subject-bootstrap 95 % CI (10,000 draws); the null value is the mean over the two run types of ≥ 25,000 simulated pair-runs each (Monte-Carlo SE in parentheses); the null-corrected value is data minus null with the data interval shifted; the range is over the six null configurations (0 primary: heterogeneity 0.5, DMT-post/placebo ACF, mixture q solved to the run-level a, |q̂| and fraction |q̂| < 0.05; 1 heterogeneity 0.25; 2 heterogeneity 1.0; 3 placebo ACF for both run types; 4 Gaussian q; 5 mixture solved to the W = 60 window-level means). Identity (by construction): δ_run = δ_within + δ_pool + δ_means + ε, to 6.9 × 10⁻¹⁸. Nats-free (correlation units).
 
