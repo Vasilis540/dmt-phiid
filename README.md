@@ -69,10 +69,11 @@ Individual scripts can be run on their own once their inputs exist, for
 example `scripts/06_primary_b_analysis.py --variant ts_gsr --window-trs 60`
 for the primary inference (it reads the windowed atoms written by
 `scripts/01_synergy_timecourse.py --fit-mode window`). All scripts use seed
-20261120. The scripts under `scripts/` that write results (all but
-`00_verify.py`), and of the `notes/` scripts `partB10`–`partB13`, write the git SHA of the working tree into their output
-headers and tag it `-dirty` if `scripts/` or the record had uncommitted changes;
-the other `notes/` scripts do not yet (an open item for the submission run).
+20261120. Every script under `scripts/` that writes results (all but
+`00_verify.py`) writes the git SHA of the working tree into its output header,
+tagged `-dirty` if `scripts/` or the record had uncommitted changes; of the
+`notes/` scripts, `partB10`–`partB13` do the same and the others do not yet (an
+open item for the submission run).
 Figures are regenerated from saved results only, never from a recomputation.
 
 ## Data source, citation and licence
