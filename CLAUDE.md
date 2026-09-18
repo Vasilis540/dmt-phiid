@@ -14,7 +14,7 @@ Cambridge (Prof. Emmanuel Stamatakis).
 - **20 Nov 2026** — public preprint + documented repo
 - **8 Dec 2026** — Cambridge application (Gates Cambridge / Cambridge Trust)
 
-## Current state (18 Sep 2026)
+## Current state (18 Sep 2026, round 11)
 
 **Analysis complete. The paper is `manuscript/draft_v2.md` (revised 15 Sep after the second and third adversarial reviews and after the verification of the correction note; finalisation pass 15 Sep: ethics statement, software versions, verified references, copy-edit, COBIDAS checklist in `manuscript/supplementary_cobidas.md`); `manuscript/draft.md` is the superseded first draft, kept as a record. Figures `fig1_v2`–`fig5_v2` built by `scripts/15_figures_v2.py`.**
 
@@ -67,7 +67,7 @@ Cambridge (Prof. Emmanuel Stamatakis).
   and units match the revised paper. Regenerated again by V.S. at 48ea934
   (5906148, 17 Sep; the captions file records that commit) from unchanged
   results, with the caption strings of rounds 8b and 9; the paper's Figures
-  paragraph still carries [TK: SHA] (see the TK inventory of round 10).
+  paragraph names 48ea934 since round 11 (18 Sep; no [TK] there any more).
 - 15 Sep 2026, evening: a fifth review found that the run-level cross-lag
   deviation, computed as a signed mean over pairs, could not test the
   pooling mechanism on `ts_gsr` (the deviation that lowers sts has the sign
@@ -156,7 +156,7 @@ Cambridge (Prof. Emmanuel Stamatakis).
   9. 16 Sep, the wording decisions on that pass and the three caption
      splits in `scripts/15_figures_v2.py`, not run (record, "Wording
      decisions and caption edits", 19:58 UTC); the Figures paragraph
-     carries [TK: SHA] until the outputs commit regenerates the figures.
+     carried [TK: SHA] until round 11.
   10. 17 Sep, the response to the fresh adversarial review (the sixth
      review, `notes/fresh_review_2026-09-17/`): record, "Response to the
      fresh adversarial review", 17:19 UTC.
@@ -191,6 +191,16 @@ Cambridge (Prof. Emmanuel Stamatakis).
   were never rewritten. Text: Results 4's closing clause, Data and code
   availability in three sentences, two wording repeats, README's SHA
   sentence; status line 18 Sep.
+  11. 18 Sep, the Figures paragraph filled with the tree as it is (48ea934)
+     and the status line set for co-author review (record, "Figures
+     paragraph and status line for co-author review", 14:58 UTC).
+- 18 Sep 2026, round 11: the Figures paragraph names the commit at which the
+  five figures were generated, 48ea934, as the captions file records, with
+  5906148 as the commit that holds them, 7c7809a and the no-git checkout as
+  the earlier generations; the status line reads "draft v2 as of
+  18 September 2026, for co-author review; not for citation or
+  distribution". The figures are to be regenerated once more at the commit
+  of the single full run (open item below), not marked as a [TK].
 - Remaining work: the [TK] items in `draft_v2.md` (affiliations, co-authors,
   the REC reference number, journal wording); run `run_all.sh` end-to-end
   once as a single run at the final commit, with the lid open for the whole
@@ -198,8 +208,10 @@ Cambridge (Prof. Emmanuel Stamatakis).
   them within minutes of the lid closing, one of those with every sleep
   target masked; record, "The attempts at the end-to-end run") — V.S.; it
   regenerates and commits every output under one SHA, `partB12`/`partB13`
-  included, and closes the Data and code availability [TK] and the Figures
-  paragraph's [TK: SHA]; for the submission run, add the git
+  included, closes the Data and code availability [TK], and regenerates the
+  five figures once more at that commit, after which the Figures paragraph's
+  48ea934 and the captions file's header change to it; for the submission
+  run, add the git
   SHA to the output headers of the `notes/` writers that lack it (standing
   rule 8; of the review and Part B scripts only `partB10`–`partB13` write
   it), then one full run of `run_all.sh` at the final commit; choose the
