@@ -14,7 +14,7 @@ Cambridge (Prof. Emmanuel Stamatakis).
 - **20 Nov 2026** — public preprint + documented repo
 - **8 Dec 2026** — Cambridge application (Gates Cambridge / Cambridge Trust)
 
-## Current state (17 Sep 2026)
+## Current state (18 Sep 2026)
 
 **Analysis complete. The paper is `manuscript/draft_v2.md` (revised 15 Sep after the second and third adversarial reviews and after the verification of the correction note; finalisation pass 15 Sep: ethics statement, software versions, verified references, copy-edit, COBIDAS checklist in `manuscript/supplementary_cobidas.md`); `manuscript/draft.md` is the superseded first draft, kept as a record. Figures `fig1_v2`–`fig5_v2` built by `scripts/15_figures_v2.py`.**
 
@@ -64,7 +64,10 @@ Cambridge (Prof. Emmanuel Stamatakis).
   25 questions with answers.
 - Figures regenerated at 7c7809a (`captions_v2.md` header "at git
   7c7809a"; values unchanged) and committed; the companion's table numbers
-  and units match the revised paper.
+  and units match the revised paper. Regenerated again by V.S. at 48ea934
+  (5906148, 17 Sep; the captions file records that commit) from unchanged
+  results, with the caption strings of rounds 8b and 9; the paper's Figures
+  paragraph still carries [TK: SHA] (see the TK inventory of round 10).
 - 15 Sep 2026, evening: a fifth review found that the run-level cross-lag
   deviation, computed as a signed mean over pairs, could not test the
   pooling mechanism on `ts_gsr` (the deviation that lowers sts has the sign
@@ -175,11 +178,28 @@ Cambridge (Prof. Emmanuel Stamatakis).
   Abstract's CCS bracket as |r| < 0.02 (335 words); defence Q26 on the
   effective-sample factor. Not adopted: the cross-half sts/r₁ computation,
   the variance control, a derivative-ratio range.
+- 17–18 Sep 2026: V.S.'s commits 48ea934 (two bias-check tables with a
+  d51966e header and the truncated run log), 5906148 (figures at 48ea934)
+  and 0a25aaa (`reproduction_checks/6_*`; its message corrects 48ea934's:
+  no full run has completed). Round 10 (record, "The attempts at the
+  end-to-end run of `run_all.sh`, 16–18 September 2026", 14:45 UTC): four
+  attempts, 16–17 Sep, all stopped inside `02_bias_check`; the two that
+  stopped within minutes of the lid being closed include one with every
+  sleep target masked, so a closed lid stops the run by a route other
+  than suspend, and memory was not short (11.7–12.2 GB available); the
+  stationary bias tables reproduce at d51966e; the non-stationary tables
+  were never rewritten. Text: Results 4's closing clause, Data and code
+  availability in three sentences, two wording repeats, README's SHA
+  sentence; status line 18 Sep.
 - Remaining work: the [TK] items in `draft_v2.md` (affiliations, co-authors,
   the REC reference number, journal wording); run `run_all.sh` end-to-end
-  once as a single run at the final commit (V.S.; it regenerates and commits
-  every output under one SHA, `partB12`/`partB13` included, and closes the
-  Data and code availability [TK]); for the submission run, add the git
+  once as a single run at the final commit, with the lid open for the whole
+  run (four attempts on 16–17 Sep stopped inside `02_bias_check`, two of
+  them within minutes of the lid closing, one of those with every sleep
+  target masked; record, "The attempts at the end-to-end run") — V.S.; it
+  regenerates and commits every output under one SHA, `partB12`/`partB13`
+  included, and closes the Data and code availability [TK] and the Figures
+  paragraph's [TK: SHA]; for the submission run, add the git
   SHA to the output headers of the `notes/` writers that lack it (standing
   rule 8; of the review and Part B scripts only `partB10`–`partB13` write
   it), then one full run of `run_all.sh` at the final commit; choose the

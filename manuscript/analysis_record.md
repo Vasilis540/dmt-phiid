@@ -4157,3 +4157,57 @@ check logs, or is arithmetic on such values given below.
    - `checks/check_C2_variance_ratio.log` 744792fe9eb164c9726166f615cd28437baf047e7fefe28d7ec7e33a9e1aaaed
    - `checks/check_I1_fig4_scale.py` beafbd9b17c9e4d975f4a7b37918652156615bae71c4d50a4e956cd404e36cf0
    - `checks/check_I1_fig4_scale.log` dba5bf547387a420526e2e25b850ffaac0bb8489d6f44325e3b3ea3899ec40ee
+
+## The attempts at the end-to-end run of `run_all.sh`, 16–18 September 2026, 18 Sep 2026 14:45 UTC (appended; nothing above edited)
+
+Written from V.S.'s terminal and the system journal of his workstation, relayed in the commission of 18 Sep 2026;
+clock times are local (EEST, UTC+3) as those sources stamp them. Where a cause is not recorded it is said to be not
+recorded. This entry runs nothing and changes no result file; the [TK] of Data and code availability stands.
+
+1. **Attempt 1, 16 Sep, at d51966e.** The `02_bias_check` step line of the log is stamped 20:36:21. The log's last
+   write is 21:27:23 and its last step line is still `02_bias_check`. The machine booted at 22:52:06; when between
+   those times the run stopped, and why, is not recorded.
+2. **Attempt 2, 16 Sep 23:21:01, at d51966e.** The log's last write is 23:22:40, at the header of the first
+   non-stationary condition (`nonstat_step_coupling`, printed after the stationary conditions complete at about 97 s).
+   The lid was closed at about 23:30 for a two-minute suspend test under a `systemd-inhibit` lock on
+   `handle-lid-switch`; that boot's journal ends at 23:36:20.
+3. **Attempt 3, 17 Sep 14:50:24, at d51966e.** The log's last write is 14:52:05, at the same header (the log as
+   committed in 48ea934, `results/run_all_full.log`: two step lines, no traceback). The first non-stationary condition
+   takes about ten minutes (attempt 4), so the run stopped before about 15:02. The journal records several boots that
+   afternoon, the last at 19:18:53 after a clean shutdown logged at 19:18:32; the cause is not recorded.
+4. **Attempt 4, 17 Sep 21:01:55, at 0a25aaa**, as a root-owned systemd transient unit (`systemd-run`,
+   `OOMScoreAdjust=-500`) outside the user session, with `sleep.target`, `suspend.target`, `hibernate.target` and
+   `hybrid-sleep.target` masked, and a five-minute heartbeat recording the log's size and the available memory
+   (11.7–12.2 GB throughout). It passed where attempts 2 and 3 had stopped: the first non-stationary condition
+   completed at 21:13:51. V.S. closed the lid after a check at about 21:17; the log's last write is 21:19:31 and the
+   heartbeat's last tick 21:21:55; the next boot recorded is 18 Sep 17:18:21.
+5. **Reading.** Attempts 2 and 4 stopped within minutes of the lid being closed, attempt 4 with every sleep target
+   masked, so on this machine a closed lid stops the run by a route other than suspend; memory was not short. Attempts
+   1 and 3 stopped for causes the journal does not record. The run is to be done with the lid open before the
+   preprint, and the [TK] of Data and code availability stands. The sleep targets were unmasked on 18 Sep.
+6. **Correction to the message of 0a25aaa.** That message attributes `results/bias_check.csv` and
+   `results/bias_check_differential.csv`, as committed in 48ea934, to the 23:21 invocation of 16 Sep (attempt 2).
+   `scripts/02_bias_check.py` writes those two tables after the stationary conditions and before the non-stationary
+   section (its `write_csv(OUT_CSV, rows)` and `write_csv(OUT_DIFF_CSV, diff_rows)` precede `print("\nNON-STATIONARY
+   conditions")`), so every attempt that ran more than about two minutes wrote them, and the versions committed in
+   48ea934 are attempt 3's (their modification time is 14:52:04 on 17 Sep, one second before the log's last write).
+   Their data are identical to the previously committed versions in every cell
+   (`notes/planning_checks_2026-09-16/reproduction_checks/6_committed_compare.log`: two CSVs, identical in every
+   cell), so the stationary bias tables reproduce at d51966e at 20,000 runs; no attempt reached the writing of the
+   non-stationary tables, and none rewrote them. Attempt 4 rewrote the same two tables with a `git=0a25aaa` header;
+   V.S. restored them and the run log to the committed versions on 18 Sep without comparing their data. The other
+   statements of 0a25aaa's message stand: no full run has completed; the figures of 5906148 were regenerated at
+   48ea934 from unchanged results, and their captions file records that commit.
+7. **Text changes of the same round** (round 10, commissioned 18 Sep 2026; text and record only; nothing under
+   `results/`, `notes/review_results/`, `notes/*.py`, `scripts/` or `run_all.sh` changed). Results 4's closing clause
+   "and what produces the rest of the run-level residual and of the residual DiD, is not located" presumed the
+   remainder that the response to the sixth review (17 Sep, F2) removed; it now reads "and what produces the rest of
+   the run-level residual, is not located (the residual DiD's remainder is not established, above; …)", and the
+   companion's two restatements follow. Data and code availability, one sentence with nested brackets since 17 Sep, is
+   three again: what is at the repository; which tables name the producing commit in their headers (tagged `-dirty`
+   where `scripts/` or the record had uncommitted changes at the time) and which carry none; the single full run [TK:
+   run sentence]; every fact kept. Two repeats: the Discussion's second consecutive "On this dataset" is "Here", and
+   Results 4's second consecutive "therefore" is dropped. `README.md`'s sentence on which scripts write the git SHA is
+   rewritten to parse. Results 4 already attributes the DMT run's larger pooling term to the run, not to the injection
+   ("the DMT run carries about a tenth more of it", round 8), so nothing is changed there. Status line: "draft v2 as
+   of 18 September 2026". `CLAUDE.md`: current state; the end-to-end run as an open item with the lid finding.
