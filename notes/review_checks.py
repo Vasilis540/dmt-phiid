@@ -17,6 +17,10 @@ import numpy as np
 import scipy.io as sio
 from scipy import stats
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from rev_git import SHA
+print(f"git={SHA}", flush=True)
+
 ATOMS = "rtr,rtx,rty,rts,xtr,xtx,xty,xts,ytr,ytx,yty,yts,str,stx,sty,sts".split(",")
 IX = {n: i for i, n in enumerate(ATOMS)}
 R = Path("results")

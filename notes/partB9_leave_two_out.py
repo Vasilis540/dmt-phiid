@@ -13,10 +13,15 @@ Run from the repository root: .venv/bin/python notes/partB9_leave_two_out.py   (
 """
 import itertools
 import pickle
+import sys
 from pathlib import Path
 
 import numpy as np
 from scipy.stats import pearsonr, spearmanr
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from rev_git import SHA
+print(f"git={SHA}", flush=True)
 
 REPO = Path(__file__).resolve().parents[1]
 RR = REPO / "notes" / "review_results"
@@ -37,6 +42,7 @@ rows = pickle.load(open(RR / "inference_rows_raw.pkl", "rb"))
 sts, ac = get(rows, "sts ts_gsr W60"), get(rows, "autocorr ts_gsr W60")
 n = sts.size
 r_all, rho_all = pearsonr(sts, ac)[0], spearmanr(sts, ac)[0]
+log(f"git={SHA}")
 log("# Leave-two-out on r(MMI-sts DiD, lag-1 autocorrelation DiD), ts_gsr, W = 60, primary set (partB9_leave_two_out.py)")
 log(f"full set (N = {n}): Pearson r = {r_all:+.3f}, Spearman ρ = {rho_all:+.3f}")
 recs = []
@@ -53,7 +59,7 @@ for s in range(1, n + 1):
     sub = r[[k for k, x in enumerate(recs) if s in (x[0], x[1])]]
     log(f"  pairs containing subject {s:2d}: r range {sub.min():+.3f} to {sub.max():+.3f}")
 with open(OUT / "leave_two_out.csv", "w") as f:
-    f.write("# partB9_leave_two_out.py; ts_gsr W60 primary; per-subject DiDs from inference_rows_raw.pkl; subjects 1-based\n")
+    f.write(f"# partB9_leave_two_out.py; ts_gsr W60 primary; per-subject DiDs from inference_rows_raw.pkl; subjects 1-based; git={SHA}\n")
     f.write("drop_a,drop_b,pearson_r,spearman_rho\n")
     for a, b, pr, sr in recs:
         f.write(f"{a},{b},{pr:.6f},{sr:.6f}\n")

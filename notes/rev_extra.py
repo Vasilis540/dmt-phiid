@@ -33,6 +33,8 @@ from scipy.stats import pearsonr, spearmanr
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from rev_series import autocorr_series, phir_from_atoms, IX, REGIONS
+from rev_git import SHA
+print(f"git={SHA}", flush=True)
 
 SEED = 20261120
 rng = np.random.default_rng(SEED)

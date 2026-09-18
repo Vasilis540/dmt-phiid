@@ -19,6 +19,8 @@ import scipy.io as sio
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from rev_phiid_fast import PairPhiID, incidence, ATOMS
 from phyid.calculate import calc_PhiID
+from rev_git import SHA
+print(f"git={SHA}", flush=True)
 
 REPO = Path(__file__).resolve().parents[1]
 RES = REPO / "results"

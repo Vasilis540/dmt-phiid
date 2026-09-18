@@ -26,6 +26,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from rev_phiid_fast import PairPhiID, atoms_from_corr, ar1_corr, ATOMS
 from rev_inference import Engine, fmt, window_sets
 from rev_series import autocorr_series
+from rev_git import SHA
+print(f"git={SHA}", flush=True)
 
 REPO = Path(__file__).resolve().parents[1]
 OUT = REPO / "notes" / "review_results" / "partB"
@@ -166,9 +168,9 @@ for tau in TAUS:
         lines.append("")
 
 lines.insert(2, "\n".join(["## Summary across τ (ts_gsr)", ""] + summary + [""]))
-pd.DataFrame([{k: v for k, v in r.items() if k != "did_subjects"} for r in rows]).to_csv(RR / "inference_rows_lag.csv", index=False)
+(RR / "inference_rows_lag.csv").write_text(f"# partB3_lag.py; git={SHA}\n" + pd.DataFrame([{k: v for k, v in r.items() if k != "did_subjects"} for r in rows]).to_csv(index=False))
 with open(RR / "inference_rows_lag.pkl", "wb") as fh:
     pickle.dump(rows, fh)
-(OUT / "lag_tables.md").write_text("\n".join(lines) + "\n")
+(OUT / "lag_tables.md").write_text("\n".join(lines[:1] + [f"git={SHA}"] + lines[1:]) + "\n")
 print("\n".join(lines[:40]))
 print(f"done ({time.time() - t0:.0f}s)")

@@ -49,6 +49,8 @@ import scipy.io as sio
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from rev_phiid_fast import _M, KNOWNS, ATOMS, _MI_SETS, _SUBSETS
 from phyid.calculate import calc_PhiID
+from rev_git import SHA
+print(f"git={SHA}", flush=True)
 
 REPO = Path(__file__).resolve().parents[1]
 REGIONS = np.array([r for r in range(116) if r != 20])

@@ -30,6 +30,8 @@ import rev_phiid_fast as RPF
 from rev_phiid_fast import PairPhiID, ATOMS, KNOWNS, _ccs_red
 from rev_inference import Engine, fmt, window_sets
 from rev_series import autocorr_series
+from rev_git import SHA
+print(f"git={SHA}", flush=True)
 
 REPO = Path(__file__).resolve().parents[1]
 OUT = REPO / "notes" / "review_results" / "partB"
@@ -114,6 +116,7 @@ def run_variant(var, mask, with_global=True, with_local=True):
 
 
 # ---------------------------------------------------------------- 0. the masks on the same samples
+log(f"git={SHA}")
 log("# CCS definition check (partB6_ccs_definition.py)")
 log("")
 log("## 0. The four masks on identical samples: subject 1, ts_gsr, DMT window 6 and placebo window 2, all 6,555 pairs")
@@ -142,7 +145,7 @@ for (s, c, w) in ((0, 0, 5), (0, 1, 1)):
 log(f"   ({time.time() - t0:.0f}s)")
 
 # ---------------------------------------------------------------- 1. full run under the published mask, both variants
-rows, lines = [], ["# CCS tables under the published double-redundancy definition (partB6_ccs_definition.py)", "",
+rows, lines = [], ["# CCS tables under the published double-redundancy definition (partB6_ccs_definition.py)", f"git={SHA}", "",
                    "Mask 'pub' = Definition 1 of Mediano et al. (arXiv:2109.13186v1, Appendix): D kept where the four single-source, single-target local MIs and the local full MI i(x; y) share a sign. 'code' = phyid (D's own sign as the fifth). MMI from results/atoms_*.npy.", ""]
 raw_rows = pickle.load(open(RR / "inference_rows_raw.pkl", "rb"))
 diag_rows = pickle.load(open(RR / "inference_rows_diag.pkl", "rb"))
@@ -238,7 +241,7 @@ for k, v in summary.items():
 log(f"   VERDICT: {'the two definitions agree on these data; phyid numbers stand' if agree_all else 'the definitions differ on these data; every CCS number in the manuscript is replaced by the published-definition value (this file), phyid values reported alongside as the code variant'}")
 log(f"done ({time.time() - t0:.0f}s)")
 
-pd.DataFrame([{k: v for k, v in r.items() if k != "did_subjects"} for r in rows]).to_csv(RR / "inference_rows_ccs_pub.csv", index=False)
+(RR / "inference_rows_ccs_pub.csv").write_text(f"# partB6_ccs_definition.py; git={SHA}\n" + pd.DataFrame([{k: v for k, v in r.items() if k != "did_subjects"} for r in rows]).to_csv(index=False))
 with open(RR / "inference_rows_ccs_pub.pkl", "wb") as fh:
     pickle.dump(rows, fh)
 lines += ["## Sensitivity masks (ts_gsr, W = 60, window means only)", ""] + [f"- {m}: sts level {v[0]:+.4f}, primary DiD {v[1]:+.4f} (negative in {v[2]}/14), selected share {v[3]:.3f}" for m, v in sens.items()] + [""]

@@ -27,6 +27,8 @@ import scipy.io as sio
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from rev_phiid_fast import PairPhiID, atoms_from_corr, ar1_corr, ATOMS
+from rev_git import SHA
+print(f"git={SHA}", flush=True)
 
 REPO = Path(__file__).resolve().parents[1]
 OUT = REPO / "notes" / "review_results" / "partB"
@@ -66,7 +68,7 @@ np.savez(OUT / "scope_map_grid.npz", r1=r1_grid, q=q_grid, **{k: v for k, v in M
 print(f"map computed ({time.time() - t0:.0f}s)")
 
 # boundary r1*(q): smallest r1 at which the r1-dominated region begins (region == 1) above the flat zone, per q
-lines = ["# Scope map tables (partB1_scope_map.py)", ""]
+lines = ["# Scope map tables (partB1_scope_map.py)", f"git={SHA}", ""]
 lines += ["## sts(r1, q), nats (rows r1, columns q)", "", "| r1 \\ q | " + " | ".join(f"{q:+.1f}" for q in (-0.6, -0.4, -0.2, 0.0, 0.2, 0.4, 0.6)) + " |", "|---|" + "---|" * 7]
 for r1 in (0.0, 0.2, 0.4, 0.6, 0.7, 0.8, 0.85, 0.9, 0.95):
     i = int(np.argmin(np.abs(r1_grid - r1)))
@@ -132,7 +134,7 @@ for var in ("ts_gsr", "ts_demean"):
             rows.append(",".join(f"{v:.6f}" if isinstance(v, float) else str(v) for v in vals))
             lines.append(f"| {var} | {cn} | {w + 1} | {r1_pair.size} | {100 * (reg == 1).mean():.1f} % | {100 * (reg == 2).mean():.1f} % | {100 * (reg == 0).mean():.1f} % | {100 * (np.abs(q_pair) > 0.6).mean():.1f} % | "
                          f"{np.median(r1_pair):.3f} ({np.percentile(r1_pair, 5):.3f}–{np.percentile(r1_pair, 95):.3f}) | {np.median(q_pair):+.3f} ({np.percentile(q_pair, 5):+.3f}–{np.percentile(q_pair, 95):+.3f}) | {np.median(np.abs(q_pair)):.3f} | {obs.mean():.4f} | {model.mean():.4f} |")
-(OUT / "scope_map_overlay.csv").write_text("\n".join(rows) + "\n")
+(OUT / "scope_map_overlay.csv").write_text("\n".join([f"# partB1_scope_map.py; git={SHA}"] + rows) + "\n")
 (OUT / "scope_map_tables.md").write_text("\n".join(lines) + "\n")
 print("\n".join(lines[-12:]))
 np.savez(OUT / "scope_map_overlay_points.npz", **{f"{v}_{c}_w{w + 1}_{k}": arr for (v, c, w), tup in overlay.items() for k, arr in zip(("r1", "q", "obs", "model"), tup)})

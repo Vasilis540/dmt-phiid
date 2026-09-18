@@ -11,6 +11,8 @@ import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import rev_tables as rt
+from rev_git import SHA
+print(f"git={SHA}", flush=True)
 
 HERE = Path(__file__).resolve().parent
 SRC = HERE / "review_computations_2026-09-14.src.md"
@@ -48,6 +50,8 @@ for base, var, est in (("sts", "ts_gsr", "W60"), ("sts", "ts_demean", "W60"), ("
                        ("PhiR", "ts_gsr", "W60"), ("PhiR", "ts_demean", "W60"), ("PhiR", "ts_gsr", "global-bins"), ("PhiR", "ts_demean", "global-bins")):
     lines.append(f"| {base} {var} {est} | {cell(row(f'{base} {var} {est}'))} | {cell(row(f'{base}_deconv {var} {est}'))} |")
 text = text.replace("{{DECONV_COMPARISON}}", "\n".join(lines))
+head, sep, rest = text.partition("\n")
+text = f"{head}{sep}git={SHA}\n{rest}"
 DST.write_text(text)
 left = re.findall(r"\{\{[^}]+\}\}", text)
 print(f"wrote {DST} ({len(text.splitlines())} lines); unfilled markers: {left}")

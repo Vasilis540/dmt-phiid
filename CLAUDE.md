@@ -229,7 +229,14 @@ Cambridge (Prof. Emmanuel Stamatakis).
   companion, the defence questions, `README.md` and this file cite them;
   the Ethics statement's identifiability sentence replaced by the exact
   facts on the subject codes. The subject-code bullet above records the
-  governance facts and the decision on the history.
+  governance facts and the decision on the history. Commit B of the round:
+  the git SHA in the output headers of the nineteen `notes/` scripts that
+  lacked it, through `notes/rev_git.py` (a `git=<SHA>` line after the title
+  of every .md and titled .log, first in the assembled logs, first in the
+  run logs; `# script; git=<SHA>` first lines in the five CSVs no reader
+  reads without `comment="#"`; `inference_rows_raw/deconv/w30.csv` left
+  without one because `rev_tables.py` and `3_three_checks.py` read them
+  plain); pre-run entry appended before the run; the run is open (below).
 - Remaining work: the [TK] items in `draft_v2.md` (affiliations, co-authors,
   the REC reference number, the co-authors' funding statements, the run
   sentence); run `run_all.sh` end-to-end
@@ -240,11 +247,14 @@ Cambridge (Prof. Emmanuel Stamatakis).
   regenerates and commits every output under one SHA, `partB12`/`partB13`
   included, closes the Data and code availability [TK], and regenerates the
   five figures once more at that commit, after which the Figures paragraph's
-  48ea934 and the captions file's header change to it; for the submission
-  run, add the git
-  SHA to the output headers of the `notes/` writers that lack it (standing
-  rule 8; of the review and Part B scripts only `partB10`–`partB13` write
-  it), then one full run of `run_all.sh` at the final commit. Venue chosen
+  48ea934 and the captions file's header change to it. The `notes/` writers
+  write the git SHA since round 12's commit B (`notes/rev_git.py`; record,
+  "The git SHA in the output headers of the notes/ scripts: pre-run entry",
+  18 Sep): the verification run of section 6 at that commit, its comparison
+  (`6_committed_compare.py <commit B>`, plus `git diff -- '*.log'` for the
+  logs) and the outcome entry are V.S.'s to do, the regenerated outputs
+  committed only if every difference is a header line, a SHA or an
+  elapsed-time line; then one full run of `run_all.sh` at the final commit. Venue chosen
   (18 Sep 2026): PLOS Computational Biology, Methods article type; preprint
   to bioRxiv (`notes/venue_options.md`); the numbered citation form and
   the packaging of the Supporting information items as separate files are
@@ -337,7 +347,8 @@ scripts/                         numbered by execution order, each independently
 notes/                           adversarial reviews, the verification of the correction note
                                  (verification_correction_note_2026-09-15.md), the sixth review
                                  with its checks (fresh_review_2026-09-17/), venue options
-                                 (venue_options.md), review computations (rev_*.py, review_*.py),
+                                 (venue_options.md), review computations (rev_*.py, review_*.py;
+                                 rev_git.py gives the git SHA for their headers),
                                  Part B plans/notes/scripts (partB*.md, partB*.py; partB10 and
                                  partB11 added 15 Sep for the cross-lag deviation and the regional
                                  test; partB12, partB13 and rev_crosslag_budget.py added 16 Sep for
@@ -383,7 +394,9 @@ first.
    explicitly.
 8. **Reproducibility.** `SEED = 20261120` everywhere; git SHA in every
    output header (scripts tag `-dirty` if `scripts/` or the record have
-   uncommitted changes); every figure regenerable from a single script;
+   uncommitted changes; the `notes/` scripts through `notes/rev_git.py`,
+   which also tests `notes/*.py`); every figure regenerable from a single
+   script;
    no manual figure editing.
 9. **Directional honesty.** The hypothesis was directional (synergy up).
    The observed decrease is a refutation. Do not reframe it. Tier-2 claims

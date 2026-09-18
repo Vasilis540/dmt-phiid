@@ -4358,3 +4358,68 @@ the dates and item numbers of the new sentences arriving; the supplement and the
    answer changed otherwise. Status line: "draft v2 as of 18 September 2026" (unchanged; the same day). `CLAUDE.md`:
    current state (round 12), the subject-code bullet, revision-chain item 12, the remaining [TK] list (affiliations,
    co-authors, the REC reference number, the co-authors' funding statements, the run sentence), the venue.
+
+## The git SHA in the output headers of the notes/ scripts: pre-run entry, 18 Sep 2026 15:46 UTC (appended; nothing above edited)
+
+Round 12, commit B, commissioned 18 Sep 2026; appended before anything is run. Standing rule 8 of `CLAUDE.md` requires
+the git SHA in every output header. Of the `notes/` scripts that write outputs under `notes/review_results/`, only
+`partB10`–`partB13` did; this commit adds it to the others through one shared helper and nothing else in any script
+changes.
+
+1. **The helper.** `notes/rev_git.py`: `git_sha()` returns the short SHA of HEAD, with `-dirty` appended if
+   `scripts/`, `notes/*.py` or the record (`manuscript/analysis_record.md`) have uncommitted changes, and `nogit` on
+   failure — the same test `partB10`–`partB13` use (`git rev-parse --short HEAD`; `git status --porcelain -- scripts
+   notes/*.py manuscript/analysis_record.md`); `SHA` is computed once at import. Each script imports it (`from rev_git
+   import SHA`, after `sys.path.insert(0, <notes/>)`, which `rev_sts_matched_null.py`, `review_checks.py` and
+   `partB9_leave_two_out.py` did not have and now do) and prints `git=<SHA>` as its first output line, so that it
+   lands in the run log where `run_all.sh` captures stdout (`nstep`).
+2. **Where the SHA goes in the files.** A line `git=<SHA>` immediately after the title line of every `.md` and of
+   every `.log` that has a title line (`scope_map_tables.md`, `ccs_tables.md`, `lag_tables.md`, `diag_tables.md`,
+   `ccs_pub_tables.md`, `splithalf_tables.md`, `coupling_map_tables.md`, `residual_source.log`, `family_checks.log`,
+   `review_computations_2026-09-14.md`); as the first line of the logs that are assembled from `log()` calls, where
+   the first call is also the first printed line (`ccs_definition_check.log`, `splithalf.log`, `leave_two_out.log`). A
+   `# <script>; git=<SHA>` first line in the CSVs that no reader reads without `comment="#"`:
+   `inference_rows_ccs.csv`, `inference_rows_lag.csv`, `inference_rows_diag.csv`, `inference_rows_ccs_pub.csv` (only
+   their `.pkl` twins are read) and `scope_map_overlay.csv` (no reader); `leave_two_out.csv`'s existing comment line
+   gains `; git=<SHA>` (`scripts/15_figures_v2.py` reads it with `skiprows=2`, unchanged). A separate line rather than
+   a rewritten title, so that `6_committed_compare.py`, which drops from its text diff every line carrying a SHA,
+   reports the change as SHA lines only.
+3. **CSVs left without a header, and why.** `inference_rows_raw.csv` and `inference_rows_deconv.csv` (`rev_run.py`)
+   and `inference_rows_w30.csv` (`rev_phir_items.py`): `notes/rev_tables.py`, which `rev_assemble.py` imports, reads
+   all three with `pd.read_csv` and no `comment="#"`, and
+   `notes/planning_checks_2026-09-16/reproduction_checks/3_three_checks.py` reads the first the same way; a comment
+   line would break them. `crosslag_deviation.csv` and `crosslag_budget.csv` are `partB10`/`partB12` outputs outside
+   this change (and `partB12`/`partB13` read them without `comment="#"`).
+4. **The scripts changed** (checked against section 6 of `run_all.sh`, which is not changed):
+   `rev_phiid_fast_validate.py`, `rev_run.py`, `rev_extra.py`, `rev_sts_matched_null.py`, `review_checks.py`,
+   `rev_assemble.py`, `partB1_scope_map.py`, `partB1_overlay_points.py`, `partB2_ccs_verify.py`, `partB2_ccs_run.py`,
+   `partB3_lag.py`, `partB4_diagnostic.py`, `partB4_residual_source.py`, `partB5_family_checks.py`,
+   `partB6_ccs_definition.py`, `partB7_splithalf.py`, `partB8_coupling_map.py`, `review_v2_residual_null.py`,
+   `partB9_leave_two_out.py` — nineteen, plus the new `rev_git.py`. Not changed: `partB10`–`partB13` (they already
+   write it) and the deconvolution items `rev_phir_items.py`, `rev_regional_phir.py` and `rev_regional_note.py`, which
+   run only with the sandbox of `rev_deconv.py` and cannot be verified without it; `rev_deconv.py` itself;
+   `rev_inference.py`, `rev_series.py`, `rev_phiid_fast.py`, `rev_tables.py`, `rev_regional_tables.py` and
+   `rev_crosslag_budget.py`, which write nothing under `notes/review_results/` themselves. Noted, not changed:
+   `ccs_verify.log`, `ccs_run.log`, `lag_run.log` and `diag_run.log` are stdout captures of runs made outside
+   `run_all.sh`; section 6 runs those four scripts with `nrun` (no capture), so it does not regenerate those logs and
+   they keep their committed form without a SHA.
+5. **The rule for the verification run.** Section 6 of `run_all.sh` is run as it stands (its `nstep`/`nrun` lines,
+   about an hour, in V.S.'s repository folder, from the pinned environment, at the commit of commit B's code — which
+   is why the code and this entry are committed first) and every output is compared with the committed version by
+   `notes/planning_checks_2026-09-16/reproduction_checks/6_committed_compare.py <commit B>`: every output identical to
+   the committed version apart from the header line and the SHA; any other difference is a defect of the change and is
+   reported, not committed. The regenerated outputs are committed only if the rule holds; otherwise they are left
+   uncommitted and the defect is reported. The outcome is the next entry. `6_committed_compare.py` compares the `.md`,
+   `.csv` and `.txt` files; the `.log` files are outside its diff and are compared with `git diff -- '*.log'`, where a
+   changed line other than the SHA line and an elapsed-time line (the stdout captures and `ccs_definition_check.log`
+   print seconds) is a defect under the same rule. The section-6 steps that `nrun` runs without capture do not rewrite
+   their `*_run.log` captures (item 4), and `15_figures_v2.py` at the end of the section regenerates the five figures,
+   whose captions file then names commit B's SHA; the figure files are counted by the same script among the other
+   changed files and are not text.
+6. **Before the run, in the session's clone (no data, no sandbox).** The nineteen scripts and the helper byte-compile
+   under Python 3.12. The four scripts that need no `external/` data — `partB5_family_checks.py`,
+   `partB8_coupling_map.py`, `partB9_leave_two_out.py` (from the committed `inference_rows_raw.pkl`) and
+   `rev_assemble.py` (from the committed inference CSVs) — are run once in the clone on the uncommitted code (so with
+   a `-dirty` SHA) and their outputs compared with the committed versions under the rule of item 5; those outputs are
+   discarded, not committed, and the result is in the round's report, not here. The verification run itself is V.S.'s:
+   this session has no shell on his machine and its clone holds no `external/` data.
