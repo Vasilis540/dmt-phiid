@@ -22,6 +22,8 @@ import scipy.io as sio
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from rev_phiid_fast import PairPhiID, atoms_from_corr, ar1_corr, ATOMS
 from rev_inference import window_sets
+from rev_git import SHA
+print(f"git={SHA}", flush=True)
 
 REPO = Path(__file__).resolve().parents[1]
 MAT = REPO / "external" / "DMT_NCT" / "data" / "DMT_clean_mni_continuous_fullPreprocsch116.mat"
@@ -55,7 +57,7 @@ for s in range(14):
     print(f"   subject {s + 1}/14 done ({time.time() - t0:.0f}s)", flush=True)
 Sx = window_sets(W); PRE, POST = Sx["PRE"], Sx["primary"]
 res = obs - pred
-lines = ["# Residual source (partB4_residual_source.py; ts_gsr, W = 60, all subjects, both runs, 14 windows)", ""]
+lines = ["# Residual source (partB4_residual_source.py; ts_gsr, W = 60, all subjects, both runs, 14 windows)", f"git={SHA}", ""]
 lines.append(f"Means over all cells: observed sts {np.nanmean(obs):.4f}; AR(1) prediction {np.nanmean(pred):.4f} (residual {np.nanmean(res):+.4f}); "
              f"cross-lag substitution only {np.nanmean(p_cross):.4f} (residual {np.nanmean(obs - p_cross):+.4f}); lag-0 substitution only {np.nanmean(p_lag0):.4f} (residual {np.nanmean(obs - p_lag0):+.4f}). "
              f"max |prediction − cross-lag-only| over cells {np.nanmax(np.abs(pred - p_cross)):.5f}.")

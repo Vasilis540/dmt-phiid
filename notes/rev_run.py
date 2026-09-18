@@ -19,6 +19,8 @@ import scipy.io as sio
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from rev_inference import Engine, fmt
 from rev_series import autocorr_series, phir_from_atoms, IX
+from rev_git import SHA
+print(f"git={SHA}", flush=True)
 
 REPO = Path(__file__).resolve().parents[1]
 ORIG = REPO / "results"                            # committed atom arrays (the review's clean rerun reproduced them to machine precision)

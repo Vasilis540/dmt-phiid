@@ -24,6 +24,8 @@ from scipy.stats import pearsonr, spearmanr
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from rev_phiid_fast import PairPhiID, ATOMS
 from rev_inference import Engine, fmt, window_sets
+from rev_git import SHA
+print(f"git={SHA}", flush=True)
 
 REPO = Path(__file__).resolve().parents[1]
 OUT = REPO / "notes" / "review_results" / "partB"
@@ -65,7 +67,7 @@ def run_variant(var):
     return win, win_local, bins, bins_local, agree
 
 
-rows, lines = [], ["# CCS tables (partB2_ccs_run.py)", ""]
+rows, lines = [], ["# CCS tables (partB2_ccs_run.py)", f"git={SHA}", ""]
 raw_rows = pickle.load(open(RR / "inference_rows_raw.pkl", "rb"))
 
 
@@ -127,7 +129,7 @@ for var in ("ts_gsr", "ts_demean"):
                              f"MMI sts vs r1 {pearsonr(mm[:, IX['sts']], r1p)[0]:+.3f}; CCS sts pair mean {am[:, IX['sts']].mean():+.4f} (SD {am[:, IX['sts']].std():.4f}), CCS xtx+yty {am[:, IX['xtx']].mean() + am[:, IX['yty']].mean():+.4f}, MMI sts {mm[:, IX['sts']].mean():+.4f}; agree share {ag.mean():.3f}")
         lines.append("")
 
-pd.DataFrame([{k: v for k, v in r.items() if k != "did_subjects"} for r in rows]).to_csv(RR / "inference_rows_ccs.csv", index=False)
+(RR / "inference_rows_ccs.csv").write_text(f"# partB2_ccs_run.py; git={SHA}\n" + pd.DataFrame([{k: v for k, v in r.items() if k != "did_subjects"} for r in rows]).to_csv(index=False))
 with open(RR / "inference_rows_ccs.pkl", "wb") as fh:
     pickle.dump(rows, fh)
 (OUT / "ccs_tables.md").write_text("\n".join(lines) + "\n")

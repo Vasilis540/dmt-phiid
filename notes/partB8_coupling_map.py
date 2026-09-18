@@ -19,6 +19,8 @@ from scipy.optimize import least_squares
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from rev_phiid_fast import atoms_from_corr, ar1_corr, ATOMS, phir
+from rev_git import SHA
+print(f"git={SHA}", flush=True)
 
 OUT = Path(__file__).resolve().parents[1] / "notes" / "review_results" / "partB"
 IX = {n: i for i, n in enumerate(ATOMS)}
@@ -55,7 +57,7 @@ def matched(c, r1_target, q_target):
     return sol.x[0], sol.x[1]
 
 
-lines = ["# Lagged coupling on the symmetric VAR(1) family (partB8_coupling_map.py)", ""]
+lines = ["# Lagged coupling on the symmetric VAR(1) family (partB8_coupling_map.py)", f"git={SHA}", ""]
 for (r1_t, q_t, label) in ((0.85, 0.25, "the data's operating point"), (0.85, 0.0, "no instantaneous correlation"), (0.60, 0.25, "lower autocorrelation")):
     cs = [c for c in (-0.14, -0.10, -0.05, -0.02, 0.0, 0.02, 0.05, 0.10, 0.14) if abs(r1_t) + abs(c) < 0.99]
     lines += [f"## (r1, q) held at ({r1_t}, {q_t}) — {label}; a and q_ε re-solved for each c (matched view)", "",

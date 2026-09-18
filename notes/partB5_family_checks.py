@@ -13,6 +13,8 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from rev_phiid_fast import atoms_from_corr, ar1_corr, ATOMS
+from rev_git import SHA
+print(f"git={SHA}", flush=True)
 
 REPO = Path(__file__).resolve().parents[1]
 IX = {n: i for i, n in enumerate(ATOMS)}
@@ -36,7 +38,7 @@ def groups(At):
             "rts+str": At[:, IX["rts"]] + At[:, IX["str"]], "mirrors": At[:, IX["xts"]] + At[:, IX["yts"]] + At[:, IX["stx"]] + At[:, IX["sty"]], "PhiR": phir(At)}
 
 
-lines = ["# Family checks (partB5_family_checks.py)", ""]
+lines = ["# Family checks (partB5_family_checks.py)", f"git={SHA}", ""]
 for r, q in ((0.85, 0.25), (0.85, 0.5), (0.97, 0.25)):
     g0, gr1, gr2, gq1, gq2 = groups(A(r, q)), groups(A(r + H, q)), groups(A(r - H, q)), groups(A(r, q + H)), groups(A(r, q - H))
     lines.append(f"({r}, {q}): levels " + ", ".join(f"{k} {g0[k][0]:.4f}" for k in g0))

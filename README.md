@@ -71,9 +71,11 @@ for the primary inference (it reads the windowed atoms written by
 `scripts/01_synergy_timecourse.py --fit-mode window`). All scripts use seed
 20261120. Every script under `scripts/` that writes results (all but
 `00_verify.py`) writes the git SHA of the working tree into its output header,
-tagged `-dirty` if `scripts/` or the record had uncommitted changes; of the
-`notes/` scripts, `partB10`–`partB13` do the same and the others do not yet (an
-open item for the submission run).
+tagged `-dirty` if `scripts/` or the record had uncommitted changes; every
+`notes/` script that writes under `notes/review_results/` does the same through
+`notes/rev_git.py` (`partB10`–`partB13` since 15–16 September 2026, the others
+since 18 September; their committed outputs carry the SHA from the first run of
+section 6 at or after that commit, and the older outputs carry none).
 Figures are regenerated from saved results only, never from a recomputation.
 
 ## Data source, citation and licence

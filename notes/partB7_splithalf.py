@@ -30,6 +30,8 @@ from scipy.stats import pearsonr, spearmanr
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from rev_series import autocorr_series
 from rev_phiid_fast import ATOMS
+from rev_git import SHA
+print(f"git={SHA}", flush=True)
 
 REPO = Path(__file__).resolve().parents[1]
 OUT = REPO / "notes" / "review_results" / "partB"
@@ -61,8 +63,9 @@ def r_str(a, b):
     return f"{r:+.3f} (p = {p:.3f}; ρ {spearmanr(a, b)[0]:+.3f})"
 
 
+log(f"git={SHA}")
 ts = sio.loadmat(MAT)
-tables = ["# Split-half test of the CCS-sts / residual correlation (partB7_splithalf.py)", ""]
+tables = ["# Split-half test of the CCS-sts / residual correlation (partB7_splithalf.py)", f"git={SHA}", ""]
 verdict, rel, xw = {}, {}, {}
 for var in ("ts_gsr", "ts_demean"):
     z = np.load(OUT / f"diag_series_{var}_W60.npz")

@@ -19,6 +19,7 @@ Run from the repository root: .venv/bin/python notes/review_v2_residual_null.py 
 import sys, os, numpy as np
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__))))
 from rev_phiid_fast import atoms_from_corr, ar1_corr, ATOMS
+from rev_git import SHA
 from scipy.optimize import brentq
 rng = np.random.default_rng(20261120)
 TR = 2.0; STS = ATOMS.index("sts")
@@ -79,6 +80,7 @@ def cell(target_a, target_q, lo, hi, W=60, n_pairs=3000, T=3000, bsd=0.5, label=
     return res.mean(), obs.mean()
 
 if __name__ == "__main__":
+    print(f"git={SHA}", flush=True)
     fits = {k: fit_filter(t) for k, t in TARGET_ACF.items()}
     for k, b in fits.items():
         print(f"filter fitted to the {k} ACF: beta={b[1]:.0f} lo={b[2]:.4f} hi={b[3]:.3f}; lags 1-6 {np.round(b[4][1:],3)} (target {TARGET_ACF[k]})")

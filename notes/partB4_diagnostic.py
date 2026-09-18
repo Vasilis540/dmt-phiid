@@ -34,6 +34,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from rev_phiid_fast import PairPhiID, atoms_from_corr, ar1_corr, ATOMS
 from rev_inference import Engine, fmt, window_sets
 from rev_series import autocorr_series
+from rev_git import SHA
+print(f"git={SHA}", flush=True)
 
 REPO = Path(__file__).resolve().parents[1]
 OUT = REPO / "notes" / "review_results" / "partB"
@@ -50,7 +52,7 @@ def raw_did(label, s="primary"):
     return [r for r in raw_rows if r["label"] == label and r["set"] == s][0]["did_subjects"]
 
 
-rows, lines = [], ["# Diagnostic tables (partB4_diagnostic.py)", ""]
+rows, lines = [], ["# Diagnostic tables (partB4_diagnostic.py)", f"git={SHA}", ""]
 for var in ("ts_gsr", "ts_demean"):
     for W in (60, 30):
         n_win = 840 // W
@@ -126,7 +128,7 @@ for var in ("ts_gsr", "ts_demean"):
             pred_run[s, c] = atoms_from_corr(ar1_corr(ax, ay, q))[:, S].mean(); obs_run[s, c] = pp.atoms_mean()[:, S].mean()
     lines.append(f"{var}: run-level observed sts (whole run, plug-in) {obs_run.mean():.4f} vs AR(1) prediction from run-level (a_x, a_y, q) {pred_run.mean():.4f} (residual {np.mean(obs_run - pred_run):+.4f}, {100 * np.mean(obs_run - pred_run) / obs_run.mean():+.1f} %); "
                  f"the prediction is constant across the run's bins, so the bin-level residual DiD equals the observed global-fit DiD ({((A[:, 0, 10:28].mean(1) - A[:, 0, :8].mean(1)) - (A[:, 1, 10:28].mean(1) - A[:, 1, :8].mean(1))).mean():+.4f}); no decomposition is possible at this estimator.")
-pd.DataFrame([{k: v for k, v in r.items() if k != "did_subjects"} for r in rows]).to_csv(RR / "inference_rows_diag.csv", index=False)
+(RR / "inference_rows_diag.csv").write_text(f"# partB4_diagnostic.py; git={SHA}\n" + pd.DataFrame([{k: v for k, v in r.items() if k != "did_subjects"} for r in rows]).to_csv(index=False))
 with open(RR / "inference_rows_diag.pkl", "wb") as fh:
     pickle.dump(rows, fh)
 (OUT / "diag_tables.md").write_text("\n".join(lines) + "\n")

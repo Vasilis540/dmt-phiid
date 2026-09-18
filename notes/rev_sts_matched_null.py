@@ -30,6 +30,9 @@ from scipy.optimize import brentq
 
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "scripts"))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from rev_git import SHA
+print(f"git={SHA}", flush=True)
 import importlib
 bc = importlib.import_module("02_bias_check")
 from phyid.calculate import calc_PhiID
