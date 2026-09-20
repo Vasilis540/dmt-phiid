@@ -81,7 +81,8 @@ step 12_figures                     scripts/12_figures.py
 #    committed logs carry. The HRF-deconvolution items (review section 3, the closed ΦR exploration,
 #    Supplement S2) need the sandbox described in notes/rev_deconv.py — the deconvolved .mat merged
 #    under notes/review_results/deconv/ and scripts/01 rerun on it there — and are skipped unless it
-#    is present.
+#    is present. Added 20 Sep 2026 (round 13): the seven computations B14–B20 of the plan of that date, each under
+#    its own pre-run entry in the record, at the nstep lines commented with the entry's name.
 nstep() {  # nstep <log path under notes/review_results, without .log> <script> [args...]
     local log="notes/review_results/$1.log"; shift
     echo "=== $(date '+%F %T')  $*   -> $log"
@@ -94,6 +95,8 @@ nrun() {   # nrun <script> [args...]   (the script writes its own log and tables
 mkdir -p notes/review_results/logs notes/review_results/partB
 nstep logs/phiid_fast_validate      notes/rev_phiid_fast_validate.py
 nstep logs/rev_run_raw              notes/rev_run.py raw
+# B16 (record, "Prewhitening (B16): pre-run entry, 20 Sep 2026"): AR(p)-whitened atoms and the DMT contrast; the longest step of the section
+nstep partB/prewhiten_run           notes/partB16_prewhiten.py
 nstep logs/rev_extra                notes/rev_extra.py
 nstep logs/sts_matched_null_F1      notes/rev_sts_matched_null.py f1
 nstep logs/sts_matched_null_F2      notes/rev_sts_matched_null.py f2
@@ -113,14 +116,23 @@ fi
 nrun notes/rev_assemble.py
 nstep partB/scope_map_run           notes/partB1_scope_map.py
 nstep partB/overlay_points_run      notes/partB1_overlay_points.py
+# B17 (record, "Ground-truth calibration of the diagnostic (B17): pre-run entry, 20 Sep 2026"): simulation only; reads scope_map_overlay_points.npz
+nstep partB/calibration_run         notes/partB17_calibration.py
 nrun notes/partB2_ccs_verify.py
 nrun notes/partB2_ccs_run.py
 nrun notes/partB3_lag.py
 nrun notes/partB4_diagnostic.py
+# B14 (record, "Family-predicted sixteen atoms per pair (B14): pre-run entry, 20 Sep 2026") and B15 (record, "The directed cross-lag component (B15): pre-run entry, 20 Sep 2026")
+nstep partB/family_atoms_run        notes/partB14_family_atoms.py
+nstep partB/directed_crosslag_run   notes/partB15_directed_crosslag.py
 nrun notes/partB4_residual_source.py
 nrun notes/partB5_family_checks.py
 nrun notes/partB6_ccs_definition.py
+# B18 (record, "The CCS increase decomposed (B18): pre-run entry, 20 Sep 2026")
+nstep partB/ccs_decomposition_run   notes/partB18_ccs_decomposition.py
 nrun notes/partB7_splithalf.py
+# B19 (record, "Exchange rates, the within-window regression, the cross-half correlation and BCa intervals (B19): pre-run entry, 20 Sep 2026")
+nstep partB/exchange_rates_run      notes/partB19_exchange_rates.py
 nstep partB/coupling_map_run        notes/partB8_coupling_map.py
 nstep logs/review_v2_residual_null  notes/review_v2_residual_null.py
 nrun notes/partB9_leave_two_out.py
@@ -128,6 +140,8 @@ nstep partB/crosslag_deviation_run  notes/partB10_crosslag_deviation.py
 nstep partB/crosslag_budget_run     notes/partB12_crosslag_budget.py
 nstep partB/crosslag_budget_null_run notes/partB13_crosslag_budget_null.py
 nstep partB/regional_sts_r1_run     notes/partB11_regional_sts_r1.py
+# B20 (record, "The regional map with regional r₁ partialled out (B20): pre-run entry, 20 Sep 2026"): reads regional_sts_r1.csv
+nstep partB/regional_partial_run    notes/partB20_regional_partial.py
 step 15_figures_v2                  scripts/15_figures_v2.py
 
 echo "=== all done in $(( ($(date +%s) - T0) / 60 )) min"

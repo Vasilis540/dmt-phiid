@@ -4636,3 +4636,271 @@ only the numbers the new sentences quote from their sources and files (listed in
    applicability unit and Q7; the sources described as unread or blocked), with a dated note at the top of each file
    saying so; the other restatements of sentences changed in this round stand until the restructuring round rewrites
    both files.
+
+## Family-predicted sixteen atoms per pair (B14): pre-run entry, 20 Sep 2026 19:07 UTC (appended; nothing above edited)
+
+Round 13, commit B, commissioned 20 Sep 2026; appended before `notes/partB14_family_atoms.py` is written, and before
+anything is run. The specification, the prediction and the rule are those of
+`notes/review_2026-09-20/plan_to_submission_2026-09-20.md`, §5, reproduced here without paraphrase:
+
+    B14 Family-predicted sixteen atoms per pair (asymmetric diagonal family). For every subject, run and W = 60
+    window (and the global fit's 28 bins), and for each of the 6,555 pairs, take the window's measured (a_x, a_y,
+    q) exactly as `partB4_diagnostic.py` does, evaluate all sixteen MMI atoms by
+    `rev_phiid_fast.atoms_from_corr(ar1_corr(a_x, a_y, q))`, average over pairs, and produce Table 1's columns
+    "family-predicted" beside "observed" for levels (DMT windows 1–4) and the primary DiD, with the residual
+    observed − predicted per atom. Prediction recorded: the family with unequal coefficients gives sts − (xtx +
+    yty) < 0 (about −0.07 for the data's window-level scatter of a), rts = str below xtx, yty, and mirror atoms ≈
+    −rts; the residual for sts equals the diagnostic's (−0.0489 at W = 60, `diag_tables.md`) by construction.
+    Rule: if the predicted sign of the excess and the ordering rts < xtx, yty match the data, Results 1's "two
+    departures" and their ACF attribution are replaced by the asymmetric-family account and the per-atom
+    residuals; otherwise the departures stand as reported. No external data beyond what `partB4` already reads.
+
+**Implementation.** Inputs: `external/DMT_NCT/data/DMT_clean_mni_continuous_fullPreprocsch116.mat` (both variants,
+   region 20 excluded, non-finite TRs dropped as `scripts/01` drops them),
+   `results/atoms_bins_115regions-all_<variant>_global.npy` for the global fit's observed bins,
+   `notes/review_results/partB/diag_series_<variant>_W60.npz` for the check that the sts residual reproduces the
+   diagnostic's. Per subject, run and W = 60 window the window's `PairPhiID` matrices give the observed sixteen atoms
+   (`atoms_mean`) and the measured (a_x, a_y, q) exactly as `partB4_diagnostic.py` takes them (a_x = C[0, 2], a_y =
+   C[1, 3], q the mean of C[0, 1] and C[2, 3]); `atoms_from_corr(ar1_corr(a_x, a_y, q))` gives the predicted sixteen;
+   both averaged over the 6,555 pairs. At the global fit the run-level (a_x, a_y, q) give one prediction per run,
+   constant across its 28 bins, so only the levels are compared there and the predicted DiD is zero by construction
+   (as `partB4` records).
+**Outputs and conventions.** Outputs (`notes/review_results/partB/`): `family_atoms_tables.md` (per variant: Table 1's
+   columns observed / family-predicted / residual for the DMT pre-injection level, windows 1–4, and the primary DiD,
+   windows 6–14 minus 1–4, DMT minus placebo, mean over subjects with the count of negative subjects; the excess sts −
+   (xtx + yty) observed and predicted; the ordering checks; the global-fit levels), `family_atoms_<variant>_W60.npz`
+   (observed and predicted (14, 2, 14, 16) arrays), `family_atoms_ts_gsr_W60.csv` (one row per atom, the table's
+   columns, for the paper's Table 1) and the run log `family_atoms_run.log` via `nstep`. Seed 20261120 (no random
+   draws). About the running time of `partB4_diagnostic.py`. The script imports `rev_git.SHA`, prints `git=<SHA>` as
+   its first line and writes it after the title of every table and log; every free choice is stated in the header; it
+   runs alone from the repository root with the pinned environment; it is added to section 6 of `run_all.sh` with an
+   `nstep` line naming this entry. The outcome is appended as a later entry after V.S. runs it; nothing is relabelled
+   by the outcome.
+
+## The directed cross-lag component (B15): pre-run entry, 20 Sep 2026 19:07 UTC (appended; nothing above edited)
+
+Round 13, commit B, commissioned 20 Sep 2026; appended before `notes/partB15_directed_crosslag.py` is written, and
+before anything is run. The specification, the prediction and the rule are those of
+`notes/review_2026-09-20/plan_to_submission_2026-09-20.md`, §5, reproduced here without paraphrase:
+
+    B15 The directed cross-lag component. Per pair and window: d_xy = corr(x_t, y_{t+1}) − a_y q, d_yx = corr(y_t,
+    x_{t+1}) − a_x q; δ_sym = (d_xy + d_yx)/2 (the existing d) and δ_anti = (d_xy − d_yx)/2. Report the run-level
+    RMS of δ_anti per subject and run, its DiD, and the closed-form response of sts to δ_anti alone (the AR(1)
+    matrix with only the antisymmetric deviation added, both signs, per pair, averaged) as the "directed" share of
+    the run-level residual, beside the symmetric share already reported. Add to the finite-sample null one
+    configuration with within-pair lead–lag asymmetry (y = x delayed by one sample mixed with independent noise at
+    the pair's q; or the VAR(1) with c_xy ≠ c_yx at the operating point) and report the null residual under it.
+    Prediction recorded: antisymmetric deviation lowers sts (closed form: −0.0126 at ±0.05; mean −0.008 for SD
+    0.04 at (0.85, 0.25)); whether the data's δ_anti accounts for the unlocated part of the run-level residual
+    (−0.0137 against the null's −0.0045) is the question; no branch labels. Rule: reported with its size; the
+    Discussion names directed lead–lag (hemodynamic latency differences) as a candidate only if a source is cited.
+
+**Implementation.** Inputs as B14 (the same matrices). Per pair: d_xy = corr(x_t, y_{t+1}) − a_y q, d_yx = corr(y_t,
+   x_{t+1}) − a_x q; δ_sym = (d_xy + d_yx)/2 (the d of `partB10`), δ_anti = (d_xy − d_yx)/2. Run level: from each
+   run's whole-run matrices (all finite TRs), the RMS of δ_anti over the 6,555 pairs per subject and run, its mean
+   over runs, and per subject the mean of the two runs; W = 60: the RMS per window, averaged over the run's windows,
+   and its DiD (windows 6–14 minus 1–4, DMT minus placebo) with the subject bootstrap (10,000 draws, seed 20261120)
+   and the exact sign-flip p. Closed-form response at the run level, per pair: sts of the AR(1) matrix of (a_x, a_y,
+   q) with only the antisymmetric deviation added (C[0, 3] = a_y q + δ_anti, C[1, 2] = a_x q − δ_anti, symmetric
+   entries alike) minus the AR(1) sts, averaged over pairs — the directed share; the symmetric share alike with δ_sym
+   added to both cross-lag entries; and the full response with both, beside the run-level residual of the diagnostic
+   (observed run-level sts minus the AR(1) prediction, `residual_source.log`'s quantity) recomputed here. The
+   finite-sample null: the generator, filter fit and window statistics of `notes/review_v2_residual_null.py`
+   reproduced from its functions, with two configurations of within-pair lead–lag asymmetry at the DMT pre operating
+   point (a = 0.8632, |q| = 0.2842, W = 60, 3,000 pairs, T = 3,000): (1) y = x delayed by one sample mixed with
+   independent noise, the mixing weight solved so that the pair's lag-0 correlation is the target q; (2) the symmetric
+   VAR(1) pair at the operating point with c_xy = +c and c_yx = −c, c ∈ {0.02, 0.04, 0.06}, the innovation correlation
+   solved so that the lag-0 correlation is the target. For each: the null residual level and its δ_anti RMS, beside
+   the null's own symmetric configuration reproduced.
+**Outputs and conventions.** Outputs: `directed_crosslag_tables.md`, `directed_crosslag.csv` (one row per subject and
+   run), `directed_crosslag_run.log` via `nstep`. Seed 20261120. About the running time of `partB10` plus the null's
+   few minutes. The script imports `rev_git.SHA`, prints `git=<SHA>` as its first line and writes it after the title
+   of every table and log; every free choice is stated in the header; it runs alone from the repository root with the
+   pinned environment; it is added to section 6 of `run_all.sh` with an `nstep` line naming this entry. The outcome is
+   appended as a later entry after V.S. runs it; nothing is relabelled by the outcome.
+
+## Prewhitening (B16): pre-run entry, 20 Sep 2026 19:07 UTC (appended; nothing above edited)
+
+Round 13, commit B, commissioned 20 Sep 2026; appended before `notes/partB16_prewhiten.py` is written, and before
+anything is run. The specification, the prediction and the rule are those of
+`notes/review_2026-09-20/plan_to_submission_2026-09-20.md`, §5, reproduced here without paraphrase:
+
+    B16 Prewhitening. Two variants of the regional series: (a) each region's series replaced by the residuals of
+    its own AR(p) fit, p by BIC in 1–5, per run; (b) p = 1 (the diagonal AR(1) innovations). For each: the sixteen
+    atoms under MMI and CCS at W = 60 and the global fit on `ts_gsr` and `ts_demean`, the DMT contrast with the
+    same inference as the primary, the lag-1 autocorrelation of the whitened series, and the residual diagnostic.
+    Prediction recorded: on the family prewhitening removes S, so MMI-sts falls to the order of the cross-lag
+    structure (near zero) and the DMT sts contrast shrinks to the order of the cross-lag contrast; the sign of the
+    prewhitened contrast is not predicted. Rule: a remedy check, reported as such; not a finding about DMT; the
+    primary result is unchanged by it.
+
+**Implementation.** Inputs: the `.mat` above, `external/DMT_NCT/data/FDlong.mat` (through `rev_inference.Engine`),
+   `notes/review_results/inference_rows_raw.pkl` (the raw autocorrelation and sts DiDs for comparison). Prewhitening
+   per region and run on the released series: (a) AR(p) by ordinary least squares on the run's finite TRs, p chosen by
+   BIC over 1–5, the series replaced by its residuals with the first p TRs of the run set to non-finite (dropped
+   downstream as `scripts/01` drops non-finite TRs); (b) p = 1. For each of the four series (two variants × two
+   whitenings): the sixteen MMI atoms (`PairPhiID.atoms_mean`, `atoms_bins`) and CCS atoms (`atoms_ccs`, `phyid`'s
+   mask) at W = 60 and at the global fit's 28 bins, exactly as `partB2_ccs_run.py` computes them on the raw series;
+   the DMT contrast of MMI-sts and CCS-sts with the primary inference (`Engine.run` on the window and bin series with
+   their TR-local series: DiD, subject bootstrap, exact sign-flip p, phase-randomised null, FD residualisation); the
+   whitened series' mean lag-1 autocorrelation (`rev_series.autocorr_series`, window and run modes) with the same
+   inference; and the residual diagnostic of `partB4` (per-pair prediction from the whitened window's (a_x, a_y, q);
+   observed, predicted and residual whole-brain series and their DiDs). The chosen orders p are tabulated
+   (distribution over regions and runs).
+**Outputs and conventions.** Outputs: `prewhiten_tables.md`, `inference_rows_prewhiten.csv` (+ `.pkl`),
+   `prewhiten_atoms_<whitening>_<variant>_{win60,bins}.npy`, `prewhiten_run.log` via `nstep`. Seed 20261120. The
+   longest of the seven: four passes of the `partB2` pipeline plus the diagnostic, of the order of an hour and a half.
+   The script imports `rev_git.SHA`, prints `git=<SHA>` as its first line and writes it after the title of every table
+   and log; every free choice is stated in the header; it runs alone from the repository root with the pinned
+   environment; it is added to section 6 of `run_all.sh` with an `nstep` line naming this entry. The outcome is
+   appended as a later entry after V.S. runs it; nothing is relabelled by the outcome.
+
+## Ground-truth calibration of the diagnostic (B17): pre-run entry, 20 Sep 2026 19:07 UTC (appended; nothing above edited)
+
+Round 13, commit B, commissioned 20 Sep 2026; appended before `notes/partB17_calibration.py` is written, and before
+anything is run. The specification, the prediction and the rule are those of
+`notes/review_2026-09-20/plan_to_submission_2026-09-20.md`, §5, reproduced here without paraphrase:
+
+    B17 Ground-truth calibration of the diagnostic (no external data). Simulate 14 "subjects" × 2 "runs" × 840
+    samples of 115-region-like pairs (6,555 pairs is unnecessary: 300 pairs suffice) as VAR(1) pairs at the
+    operating point with heterogeneity (a per region ~ N(0.85, 0.0125), window scatter arising from sampling; q
+    per pair from the data's empirical distribution on `ts_gsr`; c = 0 at baseline), with a "post-injection"
+    change in windows 6–14 of the DMT run only: (i) Δa = −0.015, Δc = 0; (ii) Δa = 0, Δc = +0.01, +0.02, +0.03 and
+    −0.02; (iii) Δa = −0.015 with Δc = +0.02; (iv) a within-pair asymmetry configuration (a_x − a_y = 0.03 fixed).
+    Run the actual pipeline (the closed-form estimator validated against `phyid`; W = 60 windows and the global
+    fit; the same DiD, sign-flip inference, the diagnostic's prediction from measured (a_x, a_y, q), the residual,
+    δ_sym and δ_anti). Report per condition: sts DiD, predicted DiD, residual DiD with its sign-flip p, and the
+    two δ DiDs, at both estimators, seed 20261120, 50 replicate datasets. Predictions recorded: (i) residual ≈ its
+    finite-sample expectation (+0.004 to +0.008 at W = 60; near zero at the global fit); (ii) residual ≈ −1.77 Δc
+    at the global fit (first order), smaller in magnitude at W = 60 through the bias, δ_sym ≈ 0.94 Δc; (iii)
+    additive to first order; (iv) sts level lowered by the asymmetry with the residual near its expectation. Rule:
+    this is the calibration the diagnostic lacked; its table is quoted wherever a residual is interpreted, and the
+    finite-sample null of Results 4 is superseded by it where they overlap.
+
+**Implementation.** No external data. Pairs are simulated independently: 300 pairs per "subject", 14 subjects × 2 runs
+   × 840 samples; per pair a_x, a_y ~ N(0.85, 0.0125) (drawn per region, i.e. independently for the two members), q
+   from the empirical distribution of the data's window-level pair q on `ts_gsr` (the 52,440 values of `pre_w1to4_q`
+   in the committed `notes/review_results/partB/scope_map_overlay_points.npz`, resampled with replacement), c = 0 at
+   baseline; the pair is the coupled VAR(1) x_{t+1} = a_x x_t + c y_t + ε, y_{t+1} = a_y y_t + c x_t + η with
+   innovation correlation solved so that the lag-0 correlation equals the drawn q at baseline; a burn-in of 200
+   samples; the post-injection change applied from sample 300 (window 6) of the DMT run only. Conditions: (i) Δa =
+   −0.015, Δc = 0; (ii) Δa = 0, Δc ∈ {+0.01, +0.02, +0.03, −0.02}; (iii) Δa = −0.015 with Δc = +0.02; (iv) a_x − a_y =
+   0.03 fixed (a_x = a + 0.015, a_y = a − 0.015) with Δa = −0.015, Δc = 0. Pipeline: the closed-form estimator
+   (`PairPhiID` on the 300 pairs of each window, W = 60, and on the whole run with `atoms_bins` for the 28 bins); the
+   DiD (windows 6–14 minus 1–4 and bins 11–28 minus 1–8, DMT minus placebo), exact sign-flip p over the 14 subjects,
+   subject-bootstrap 95 % CI (1,000 draws per replicate); the diagnostic's prediction from the measured (a_x, a_y, q)
+   of each window or run; the residual; δ_sym and δ_anti per window. 50 replicate datasets per condition, seed
+   20261120 (one generator, conditions in the order listed).
+**Outputs and conventions.** Outputs: `calibration_tables.md` (per condition and estimator: mean and SD over
+   replicates of the sts DiD, the predicted DiD, the residual DiD, the residual DiD's sign-flip p and the share of
+   replicates with p < 0.05, the δ_sym and δ_anti DiDs, and the sts level), `calibration.csv` (one row per condition ×
+   estimator × replicate), `calibration_run.log` via `nstep`. Minutes. The script imports `rev_git.SHA`, prints
+   `git=<SHA>` as its first line and writes it after the title of every table and log; every free choice is stated in
+   the header; it runs alone from the repository root with the pinned environment; it is added to section 6 of
+   `run_all.sh` with an `nstep` line naming this entry. The outcome is appended as a later entry after V.S. runs it;
+   nothing is relabelled by the outcome.
+
+## The CCS increase decomposed (B18): pre-run entry, 20 Sep 2026 19:07 UTC (appended; nothing above edited)
+
+Round 13, commit B, commissioned 20 Sep 2026; appended before `notes/partB18_ccs_decomposition.py` is written, and
+before anything is run. The specification, the prediction and the rule are those of
+`notes/review_2026-09-20/plan_to_submission_2026-09-20.md`, §5, reproduced here without paraphrase:
+
+    B18 The CCS increase decomposed. CCS-sts (mean over samples) = −(1/M) Σ_{i∉S} c_i. Per cell: the mask-selected
+    share s = |S|/M, the mean double co-information over rejected samples c̄_rej, so that CCS-sts = −(1 − s)
+    c̄_rej; report the DiDs of s and c̄_rej and the first-order split of the CCS-sts DiD between them, for the
+    published mask and `phyid`'s. Prediction recorded: none (descriptive). Rule: the plain reading replaces "no
+    established reading"; it does not make the CCS increase a finding about DMT.
+
+**Implementation.** Inputs as B14 (both variants). Per pair, window (W = 60) and run (the global fit on all finite
+   TRs): the local double co-information c_i (D of `rev_phiid_fast.ccs_local_knowns`, D ≡ rtr − sts on the lattice)
+   and the mask S at every sample, for `phyid`'s mask (the code's) and the published mask (the four single MIs and
+   i(x; y) sharing a sign, `partB6`'s "pub"); the mask-selected share s = |S|/M, the mean of c over the rejected
+   samples c̄_rej, and CCS-sts = −(1 − s) c̄_rej per pair (checked against `atoms_ccs` to machine precision), averaged
+   over pairs. Per subject and run the change from the pre windows (1–4; bins 1–8) to the post windows (6–14; bins
+   11–28) of the pair-mean sts is split exactly per pair into c̄_pre Δs (the share term), −(1 − s_pre) Δc̄ (the
+   co-information term) and +Δs Δc̄ (the interaction), each averaged over pairs; the DiDs (DMT minus placebo) of s,
+   c̄_rej, the three terms and CCS-sts, with the subject bootstrap (10,000 draws, seed 20261120) and the exact
+   sign-flip p.
+**Outputs and conventions.** Outputs: `ccs_decomposition_tables.md`, `ccs_decomposition.csv` (one row per variant ×
+   estimator × mask × subject × run), `ccs_decomposition_run.log` via `nstep`. About the running time of `partB6`. The
+   script imports `rev_git.SHA`, prints `git=<SHA>` as its first line and writes it after the title of every table and
+   log; every free choice is stated in the header; it runs alone from the repository root with the pinned environment;
+   it is added to section 6 of `run_all.sh` with an `nstep` line naming this entry. The outcome is appended as a later
+   entry after V.S. runs it; nothing is relabelled by the outcome.
+
+## Exchange rates, the within-window regression, the cross-half correlation and BCa intervals (B19): pre-run entry, 20 Sep 2026 19:07 UTC (appended; nothing above edited)
+
+Round 13, commit B, commissioned 20 Sep 2026; appended before `notes/partB19_exchange_rates.py` is written, and before
+anything is run. The specification, the prediction and the rule are those of
+`notes/review_2026-09-20/plan_to_submission_2026-09-20.md`, §5, reproduced here without paraphrase:
+
+    B19 Exchange rates, the within-window regression, the cross-half correlation, and BCa intervals. (a) Exchange
+    rates at the operating point from the closed form (already in `family_checks.log`; one table). (b) Within each
+    W = 60 window, the regression of pair sts on (mean r₁, |q|, |a_x − a_y|) across the 6,555 pairs; report the
+    mean R² and standardised coefficients over windows, beside r² for r₁ alone (0.55) and R² for the full
+    prediction (0.796). (c) From the split-half per-subject half DiDs already saved: r(sts_odd, r₁_even) and
+    r(sts_even, r₁_odd), their mean, and the disattenuated value. (d) BCa versions of every bootstrap interval
+    reported in the main text, computed in the same scripts under the rule that point estimates and sign-flip p
+    values are unchanged; both interval types tabulated where they differ by more than 10 % of the interval width.
+    Predictions: (b) R² close to 0.80 with |a_x − a_y| carrying the difference between 0.55 and 0.80; (c) below
+    0.953 and near the ceiling 0.729; (d) BCa intervals wider at N = 14.
+
+**Implementation.** (a) No external data: the exchange rates at (0.85, 0.25) from the closed form — sts per 0.01 of
+   r₁, per 0.1 of |q|, per 0.01 of the symmetric VAR(1) coupling c (the coupled family of `partB8`, Γ₀ from the
+   discrete Lyapunov equation, the innovation correlation held so that q stays at 0.25) — and per SD of the data's own
+   variation (regional r₁ SD 0.0125 from `regional_sts_r1.csv`; pair |q| SD from the committed
+   `scope_map_overlay_points.npz`; window-level a scatter 0.03 as the verification of 20 Sep took it), with the
+   identity at q = 0 with unequal coefficients (sts = 2 min(S_x, S_y), rtr = 0) logged. (b) Needs the `.mat`: within
+   each W = 60 window of every subject and run, both variants, the per-pair sts, mean r₁, |q| and |a_x − a_y|
+   recomputed exactly as `partB4_diagnostic.py` builds them (`partB4` does not save per-pair values); the regression
+   of sts on (mean r₁, |q|, |a_x − a_y|) across the 6,555 pairs; the mean R² and standardised coefficients over the
+   392 windows, beside r² for r₁ alone and R² for the full prediction. (c) Needs the `.mat` for the autocorrelation
+   series only: the odd/even half DiDs of `partB7` (odd = pre {1, 3}, post {7, 9, 11, 13}; even = pre {2, 4}, post {6,
+   8, 10, 12, 14}) recomputed from `diag_series_<variant>_W60.npz` (observed sts) and `rev_series.autocorr_series`
+   (r₁), since `partB7` does not save them; r(sts_odd, r₁_even), r(sts_even, r₁_odd), their mean, the split-half
+   reliabilities of both, and the disattenuated value mean / √(rel_sts × rel_r₁). (d) No external data: for every
+   bootstrap interval the main text reports whose per-subject values are committed — the DiDs of the
+   `inference_rows_*.pkl` rows the text quotes (raw sts and autocorrelation, diagnostic observed / predicted /
+   residual, CCS published, lag) and the primary sts DiD of Table 2 from
+   `results/atoms_win60_115regions-all_<variant>_window.npy` — the percentile interval recomputed (10,000 draws, seed
+   20261120) beside the committed one, the BCa interval (bias-correction z₀ from the bootstrap distribution,
+   acceleration from the jackknife), the point estimate and the sign-flip p unchanged by construction; both interval
+   types tabulated where they differ by more than 10 % of the width. Parts (b) and (c) are skipped, and say so, when
+   the `.mat` is absent.
+**Outputs and conventions.** Outputs: `exchange_rates_tables.md`, `bca_intervals.csv`, `exchange_rates_run.log` via
+   `nstep`. Seed 20261120. Parts (a) and (d) run in seconds; (b) takes the diagnostic's time. The script imports
+   `rev_git.SHA`, prints `git=<SHA>` as its first line and writes it after the title of every table and log; every
+   free choice is stated in the header; it runs alone from the repository root with the pinned environment; it is
+   added to section 6 of `run_all.sh` with an `nstep` line naming this entry. The outcome is appended as a later entry
+   after V.S. runs it; nothing is relabelled by the outcome.
+
+## The regional map with regional r₁ partialled out (B20): pre-run entry, 20 Sep 2026 19:07 UTC (appended; nothing above edited)
+
+Round 13, commit B, commissioned 20 Sep 2026; appended before `notes/partB20_regional_partial.py` is written, and
+before anything is run. The specification, the prediction and the rule are those of
+`notes/review_2026-09-20/plan_to_submission_2026-09-20.md`, §5, reproduced here without paraphrase:
+
+    B20 The regional map with regional r₁ partialled out. Regress regional r₁ out of the placebo-baseline regional
+    sts and sts − rtr maps (115 regions); report the residual maps' means by Yeo-7 network and subcortex, the
+    sensory (visual + somatomotor) versus association (default + frontoparietal) contrast before and after
+    partialling, and the per-subject version. Prediction recorded: the residual map's sensory–association contrast
+    is reduced; its sign is not predicted. Rule: reported as the partialled map; no spin test (the two maps are
+    algebraically linked).
+
+**Implementation.** No external data for the group maps: `notes/review_results/partB/regional_sts_r1.csv` (`partB11`;
+   per region the placebo pre-injection sts, rtr, sts − rtr and the windowed and whole-span r₁, 115 regions,
+   `ts_gsr`), with the Yeo-7 network of each cortical parcel from its name in
+   `data/Schaefer2018_100Parcels_7Networks_order.lut` and the 16 subcortical parcels as one class. Ordinary least
+   squares of the sts map and the sts − rtr map on regional r₁ (windowed; the whole-span r₁ as a sensitivity), the
+   residual maps, their means by network and subcortex, and the sensory (Vis + SomMot) minus association (Default +
+   Cont) contrast before and after partialling. Per-subject version: per-subject regional sts from
+   `results/regional_atoms_bins_115regions-all_ts_gsr_global.npy` (placebo bins 1–8) against per-subject regional r₁
+   recomputed from the `.mat` as `partB11` computes it (windows 1–4); skipped, and said so, when the `.mat` is absent.
+   No spin test.
+**Outputs and conventions.** Outputs: `regional_partial_tables.md`, `regional_partial.csv` (one row per region),
+   `regional_partial_run.log` via `nstep`. Seconds. The script imports `rev_git.SHA`, prints `git=<SHA>` as its first
+   line and writes it after the title of every table and log; every free choice is stated in the header; it runs alone
+   from the repository root with the pinned environment; it is added to section 6 of `run_all.sh` with an `nstep` line
+   naming this entry. The outcome is appended as a later entry after V.S. runs it; nothing is relabelled by the
+   outcome.
