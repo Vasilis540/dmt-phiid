@@ -1,4 +1,5 @@
 # CCS tables under the published double-redundancy definition (partB6_ccs_definition.py)
+git=d507728
 
 Mask 'pub' = Definition 1 of Mediano et al. (arXiv:2109.13186v1, Appendix): D kept where the four single-source, single-target local MIs and the local full MI i(x; y) share a sign. 'code' = phyid (D's own sign as the fifth). MMI from results/atoms_*.npy.
 

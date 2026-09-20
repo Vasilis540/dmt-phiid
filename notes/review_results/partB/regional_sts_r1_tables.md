@@ -1,4 +1,4 @@
-# Regional MMI-sts against regional lag-1 autocorrelation, placebo run, pre-injection (partB11_regional_sts_r1.py; git=152cc6d; seed=20261120)
+# Regional MMI-sts against regional lag-1 autocorrelation, placebo run, pre-injection (partB11_regional_sts_r1.py; git=d507728; seed=20261120)
 
 Regional sts = mean over the region's 114 pairs of the global-fit local sts (scripts/11 atoms), placebo run, bins 1–8, mean over subjects; regional r₁ = windowed lag-1 autocorrelation (W = 60, windows 1–4, standardised within window), mean over windows and subjects; ts_gsr; 115 regions. Prediction recorded before the run (analysis_record.md, pre-run entry of 15 Sep 2026): positive correlation of regional sts with regional r₁ if the spatial-map exposure is real on these data. Spin test: Vasa rotations of the 100 Schaefer parcels (10,000, both directions), region 20 NaN, two-sided p and Vasa one-sided-average p.
 

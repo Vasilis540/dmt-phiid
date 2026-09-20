@@ -1,13 +1,11 @@
+git=d507728
 F2 (c): no sign change: sts difference ranges -0.6933 .. -0.1038 over the stable range 0.001-0.237
 F2 (q): no sign change: sts difference ranges -0.6961 .. -0.0963 over the stable range -0.900-0.900
 
 === F2-ii AR VAR(1) a=0.87: q 0.05 -> 0.30, a compensates
    baseline: a=(0.87, 0.87) c=(0.025, 0.01) q=0.0500 s=(1.0, 1.4) | autocorr (0.877,0.871) corr(x,y) 0.197 | analytic sts 1.3844 rtr 0.0163 xtx 0.7104
    shifted : a=(0.8836, 0.8836) c=(0.025, 0.01) q=0.3000 s=(1.0, 1.4) | autocorr (0.898,0.887) corr(x,y) 0.442 | analytic sts 1.3844 rtr 0.0862 xtx 0.7233
-   W= 30: est sts baseline 0.4777, shifted 0.4827; manufactured difference +0.0051 ± 0.0068  = +6 % of the real |DiD|   (15s)
-   W= 60: est sts baseline 0.8056, shifted 0.8112; manufactured difference +0.0055 ± 0.0065  = +7 % of the real |DiD|   (29s)
-   W=840: est sts baseline 1.3037, shifted 1.3273; manufactured difference +0.0236 ± 0.0023  = +29 % of the real |DiD|   (50s)
-
-F3 empirical ACFs (realised after taper/clip): placebo lags 1-6 [ 0.868  0.539  0.172 -0.085 -0.174 -0.145] | DMT post [ 0.858  0.507  0.123 -0.13  -0.194 -0.133]
-F3: no compensating q in range: f(a) and f(b) must have different signs
+   W= 30: est sts baseline 0.4777, shifted 0.4827; manufactured difference +0.0051 ± 0.0068  = +6 % of the real |DiD|   (10s)
+   W= 60: est sts baseline 0.8056, shifted 0.8112; manufactured difference +0.0055 ± 0.0065  = +7 % of the real |DiD|   (19s)
+   W=840: est sts baseline 1.3037, shifted 1.3273; manufactured difference +0.0236 ± 0.0023  = +29 % of the real |DiD|   (33s)
 done

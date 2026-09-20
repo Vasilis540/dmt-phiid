@@ -1,4 +1,5 @@
 # Lagged coupling on the symmetric VAR(1) family (partB8_coupling_map.py)
+git=d507728
 
 ## (r1, q) held at (0.85, 0.25) — the data's operating point; a and q_ε re-solved for each c (matched view)
 
@@ -38,7 +39,7 @@ Residual at c = 0: +0.00000; first derivative in c at 0: -1.7711 nats per unit c
 | +0.05 | 0.8500 | -0.3091 | +0.0500 | +0.0000 | 1.3309 | 1.2794 | +0.0515 | 0.0013 | +0.0000 | 1.3412 | 0.0605 | 1.2819 | +0.0490 |
 | +0.10 | 0.8500 | -0.6355 | +0.1000 | +0.0000 | 1.5356 | 1.2719 | +0.2637 | 0.0050 | +0.0000 | 1.5773 | 0.3004 | 1.2819 | +0.2536 |
 
-Residual at c = 0: +0.00000; first derivative in c at 0: -0.0000 nats per unit c; second derivative: +36.924 nats per unit c². A spread of pair-specific coupling with zero mean and SD σ_c gives an expected residual of ½·+36.924·σ_c² at fixed (r1, q); σ_c = 0.023 gives −0.01 nats (sign of curvature positive: coupling would raise the residual, not lower it).
+Residual at c = 0: +0.00000; first derivative in c at 0: +0.0000 nats per unit c; second derivative: +36.924 nats per unit c². A spread of pair-specific coupling with zero mean and SD σ_c gives an expected residual of ½·+36.924·σ_c² at fixed (r1, q); σ_c = 0.023 gives −0.01 nats (sign of curvature positive: coupling would raise the residual, not lower it).
 
 ### Raw view at the same point: a = 0.8500, q_ε = +0.0000 fixed, c varied (r1 and q move with c)
 

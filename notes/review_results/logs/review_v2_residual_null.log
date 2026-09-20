@@ -1,3 +1,4 @@
+git=d507728
 filter fitted to the placebo ACF: beta=200 lo=0.0064 hi=0.080; lags 1-6 [ 0.872  0.549  0.179 -0.091 -0.196 -0.168] (target [0.868, 0.539, 0.172, -0.085, -0.174, -0.145])
 filter fitted to the DMTpost ACF: beta=100 lo=0.0030 hi=0.080; lags 1-6 [ 0.858  0.508  0.124 -0.127 -0.182 -0.099] (target [0.858, 0.507, 0.123, -0.13, -0.194, -0.133])
 

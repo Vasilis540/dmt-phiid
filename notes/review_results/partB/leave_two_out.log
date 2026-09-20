@@ -1,3 +1,4 @@
+git=d507728
 # Leave-two-out on r(MMI-sts DiD, lag-1 autocorrelation DiD), ts_gsr, W = 60, primary set (partB9_leave_two_out.py)
 full set (N = 14): Pearson r = +0.953, Spearman ρ = +0.903
 leave-two-out (91 refits, N = 12 each): Pearson r range +0.846 to +0.973, median +0.954; minimum +0.846 without subjects 8 and 14; maximum +0.973 without subjects 6 and 10

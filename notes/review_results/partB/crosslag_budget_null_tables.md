@@ -1,4 +1,4 @@
-# The cross-lag budget on the finite-sample null, the controls, and the null-corrected budget of the data (partB13_crosslag_budget_null.py; git=6b5181a; seed=20261120)
+# The cross-lag budget on the finite-sample null, the controls, and the null-corrected budget of the data (partB13_crosslag_budget_null.py; git=d507728; seed=20261120)
 
 Data targets (ts_gsr), computed here: DMT run level: mean a 0.8638, mean |q̂| 0.1904, fraction q̂ < 0 0.543, |q̂| < 0.05 0.174, |q̂| < 0.10 0.337; DMT window level: mean a 0.8561, mean |q̂| 0.2721, fraction q̂ < 0 0.515, |q̂| < 0.05 0.111, |q̂| < 0.10 0.219; PCB run level: mean a 0.8694, mean |q̂| 0.1987, fraction q̂ < 0 0.546, |q̂| < 0.05 0.162, |q̂| < 0.10 0.319; PCB window level: mean a 0.8631, mean |q̂| 0.2828, fraction q̂ < 0 0.516, |q̂| < 0.05 0.106, |q̂| < 0.10 0.210
 

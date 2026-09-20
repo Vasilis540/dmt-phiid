@@ -20,7 +20,7 @@ Slope of the deviation on q across pairs (OLS, per run): DMT +0.0228, PCB +0.019
 Per-subject slope (two runs): [0.0216 0.0161 0.0207 0.0238 0.0192 0.0256 0.0204 0.0232 0.0274 0.0171 0.0183 0.0221 0.0169 0.0223]
 Reading: positive.
 
-run-level section done in 2 s
+run-level section done in 3 s
 ### ts_gsr (W = 60; 392 windows checked against diag_series xcorr_dev)
 
 Share of pairs with q < 0 (window q): 0.515; mean deviation among the q > 0 pairs +0.00643, among the q < 0 pairs -0.00581; mean pair a 0.8596, mean pair |q| 0.2774; W = 60 residual of the diagnostic -0.0489 (descriptive).
@@ -39,17 +39,17 @@ Per-subject W = 60 sign(q)-weighted mean deviation (two runs): [-0.00151  0.0034
 Ratio to the run-level value -0.00262: -0.61 (no rule for this variant).
 W = 60 slope of the deviation on q across pairs (OLS per window, mean over windows): DMT +0.0236, PCB +0.0238; grand mean +0.0237 [+0.0219, +0.0255] (subject bootstrap, 10000 draws), exact sign-flip p = 0.0001, positive in 14/14 subjects; r(statistic, W = 60 residual of the diagnostic, mean over the run's windows) across the 28 runs +0.029.
 
-W = 60 section done in 14 s
-W = 30: residual -0.0886 (-8.52 %); share of pair-windows with q < 0 0.503, mean |q| 0.354; sign(q)-weighted mean deviation +0.00662 ± 0.00008 (SE; 95 % [+0.00647, +0.00677]); signed mean +0.00000 ± 0.00005; slope on q +0.0169 ± 0.0001 over 280 window indices (5 s)
-W = 60: residual -0.0373 (-3.10 %); share of pair-windows with q < 0 0.505, mean |q| 0.291; sign(q)-weighted mean deviation +0.00348 ± 0.00007 (SE; 95 % [+0.00335, +0.00361]); signed mean +0.00000 ± 0.00005; slope on q +0.0107 ± 0.0001 over 140 window indices (9 s)
-W = 840: residual -0.0045 (-0.34 %); share of pair-windows with q < 0 0.516, mean |q| 0.222; sign(q)-weighted mean deviation +0.00025 ± 0.00005 (SE; 95 % [+0.00015, +0.00034]); signed mean +0.00000 ± 0.00005; slope on q +0.0012 ± 0.0001 over 10 window indices (11 s)
-DMT pre: residual -0.0353 (-2.99 %); share of pair-windows with q < 0 0.496, mean |q| 0.280; sign(q)-weighted mean deviation +0.00344 ± 0.00007 (SE; 95 % [+0.00330, +0.00357]); signed mean -0.00015 ± 0.00006; slope on q +0.0112 ± 0.0002 over 50 window indices (34 s)
-DMT post: residual -0.0313 (-2.77 %); share of pair-windows with q < 0 0.507, mean |q| 0.268; sign(q)-weighted mean deviation +0.00311 ± 0.00007 (SE; 95 % [+0.00297, +0.00325]); signed mean -0.00007 ± 0.00007; slope on q +0.0106 ± 0.0002 over 50 window indices (65 s)
-PCB pre: residual -0.0350 (-3.00 %); share of pair-windows with q < 0 0.502, mean |q| 0.285; sign(q)-weighted mean deviation +0.00325 ± 0.00007 (SE; 95 % [+0.00311, +0.00339]); signed mean -0.00006 ± 0.00006; slope on q +0.0102 ± 0.0001 over 50 window indices (90 s)
-PCB post: residual -0.0364 (-3.02 %); share of pair-windows with q < 0 0.499, mean |q| 0.283; sign(q)-weighted mean deviation +0.00356 ± 0.00007 (SE; 95 % [+0.00342, +0.00369]); signed mean -0.00001 ± 0.00006; slope on q +0.0114 ± 0.0002 over 50 window indices (111 s)
+W = 60 section done in 30 s
+W = 30: residual -0.0886 (-8.52 %); share of pair-windows with q < 0 0.503, mean |q| 0.354; sign(q)-weighted mean deviation +0.00662 ± 0.00008 (SE; 95 % [+0.00647, +0.00677]); signed mean +0.00000 ± 0.00005; slope on q +0.0169 ± 0.0001 over 280 window indices (6 s)
+W = 60: residual -0.0373 (-3.10 %); share of pair-windows with q < 0 0.505, mean |q| 0.291; sign(q)-weighted mean deviation +0.00348 ± 0.00007 (SE; 95 % [+0.00335, +0.00361]); signed mean +0.00000 ± 0.00005; slope on q +0.0107 ± 0.0001 over 140 window indices (11 s)
+W = 840: residual -0.0045 (-0.34 %); share of pair-windows with q < 0 0.516, mean |q| 0.222; sign(q)-weighted mean deviation +0.00025 ± 0.00005 (SE; 95 % [+0.00015, +0.00034]); signed mean +0.00000 ± 0.00005; slope on q +0.0012 ± 0.0001 over 10 window indices (13 s)
+DMT pre: residual -0.0353 (-2.99 %); share of pair-windows with q < 0 0.496, mean |q| 0.280; sign(q)-weighted mean deviation +0.00344 ± 0.00007 (SE; 95 % [+0.00330, +0.00357]); signed mean -0.00015 ± 0.00006; slope on q +0.0112 ± 0.0002 over 50 window indices (43 s)
+DMT post: residual -0.0313 (-2.77 %); share of pair-windows with q < 0 0.507, mean |q| 0.268; sign(q)-weighted mean deviation +0.00311 ± 0.00007 (SE; 95 % [+0.00297, +0.00325]); signed mean -0.00007 ± 0.00007; slope on q +0.0106 ± 0.0002 over 50 window indices (82 s)
+PCB pre: residual -0.0350 (-3.00 %); share of pair-windows with q < 0 0.502, mean |q| 0.285; sign(q)-weighted mean deviation +0.00325 ± 0.00007 (SE; 95 % [+0.00311, +0.00339]); signed mean -0.00006 ± 0.00006; slope on q +0.0102 ± 0.0001 over 50 window indices (114 s)
+PCB post: residual -0.0364 (-3.02 %); share of pair-windows with q < 0 0.499, mean |q| 0.283; sign(q)-weighted mean deviation +0.00356 ± 0.00007 (SE; 95 % [+0.00342, +0.00369]); signed mean -0.00001 ± 0.00006; slope on q +0.0114 ± 0.0002 over 50 window indices (142 s)
 
 Reading under the rule of 16 Sep 2026 (W = 840 against the run-level ts_gsr value): near zero (|+0.00025| below a tenth of the run-level +0.00340; share +0.073): finite sampling is removed as a source of the signature.
 At W = 60 (descriptive, no rule): null +0.00348 (homogeneous filter) and +0.00334 (four cells) against the data's ts_gsr W = 60 value +0.00611.
 
-done in 125 s
-wrote /tmp/claude-0/-home-claude/5b1a6fc2-e8b6-5369-9325-c9aa6936fdcb/scratchpad/repo/notes/review_results/partB/crosslag_deviation_tables.md and crosslag_deviation.csv
+done in 172 s
+wrote /home/vilalius/dmt-phiid/notes/review_results/partB/crosslag_deviation_tables.md and crosslag_deviation.csv

@@ -1,4 +1,4 @@
-# partB9_leave_two_out.py; ts_gsr W60 primary; per-subject DiDs from inference_rows_raw.pkl; subjects 1-based
+# partB9_leave_two_out.py; ts_gsr W60 primary; per-subject DiDs from inference_rows_raw.pkl; subjects 1-based; git=d507728
 drop_a,drop_b,pearson_r,spearman_rho
 1,2,0.953695,0.888112
 1,3,0.954338,0.888112

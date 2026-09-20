@@ -1,37 +1,16 @@
+git=d507728
 
 === F1-i asym VAR(1): a 0.55->0.50 (both scaled), c compensates
    baseline: a=(0.55, 0.4) c=(0.15, 0.05) q=0.2000 s=(1.0, 1.4) | autocorr (0.605,0.413) corr(x,y) 0.306 | analytic sts 0.0942 rtr 0.0137 xtx 0.1633
    shifted : a=(0.5, 0.3636) c=(0.1072, 0.0357) q=0.2000 s=(1.0, 1.4) | autocorr (0.536,0.371) corr(x,y) 0.268 | analytic sts 0.0942 rtr 0.0080 xtx 0.1319
-   W= 30: est sts baseline 0.0563, shifted 0.0515; manufactured difference -0.0048 ± 0.0016  = -6 % of the real |DiD|   (30s)
-   W= 60: est sts baseline 0.0780, shifted 0.0706; manufactured difference -0.0075 ± 0.0015  = -9 % of the real |DiD|   (59s)
-   W=840: est sts baseline 0.0925, shifted 0.0938; manufactured difference +0.0013 ± 0.0006  = +2 % of the real |DiD|   (90s)
+   W= 30: est sts baseline 0.0563, shifted 0.0515; manufactured difference -0.0048 ± 0.0016  = -6 % of the real |DiD|   (10s)
+   W= 60: est sts baseline 0.0780, shifted 0.0706; manufactured difference -0.0075 ± 0.0015  = -9 % of the real |DiD|   (20s)
+   W=840: est sts baseline 0.0925, shifted 0.0938; manufactured difference +0.0013 ± 0.0006  = +2 % of the real |DiD|   (33s)
 
 === F1-ii asym VAR(1): q 0.20->0.60, a compensates
    baseline: a=(0.55, 0.4) c=(0.15, 0.05) q=0.2000 s=(1.0, 1.4) | autocorr (0.605,0.413) corr(x,y) 0.306 | analytic sts 0.0942 rtr 0.0137 xtx 0.1633
    shifted : a=(0.7255, 0.5276) c=(0.15, 0.05) q=0.6000 s=(1.0, 1.4) | autocorr (0.818,0.561) corr(x,y) 0.646 | analytic sts 0.0942 rtr 0.0838 xtx 0.3188
-   W= 30: est sts baseline 0.0586, shifted 0.0857; manufactured difference +0.0270 ± 0.0018  = +33 % of the real |DiD|   (113s)
-   W= 60: est sts baseline 0.0787, shifted 0.0914; manufactured difference +0.0127 ± 0.0016  = +16 % of the real |DiD|   (131s)
-   W=840: est sts baseline 0.0931, shifted 0.0937; manufactured difference +0.0006 ± 0.0005  = +1 % of the real |DiD|   (151s)
-Traceback (most recent call last):
-  File "/home/claude/dmt/notes/rev_sts_matched_null.py", line 117, in <module>
-    report_pair("F2 AR VAR(1) a=0.87: a -> 0.85, c compensates", base2, match(base2, sh, "c", 0.001, 0.5), estimate_var1, describe_var1)
-                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/claude/dmt/notes/rev_sts_matched_null.py", line 65, in match
-    v = brentq(f, lo, hi, xtol=1e-10)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/claude/dmt/.venv/lib/python3.12/site-packages/scipy/optimize/_zeros_py.py", line 858, in brentq
-    r = _zeros._brentq(f, a, b, xtol, rtol, maxiter, args, full_output, disp)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/claude/dmt/.venv/lib/python3.12/site-packages/scipy/optimize/_zeros_py.py", line 107, in f_raise
-    fx = f(x, *args)
-         ^^^^^^^^^^^
-  File "/home/claude/dmt/notes/rev_sts_matched_null.py", line 63, in f
-    return sts_of_params(p)[0] - target
-           ^^^^^^^^^^^^^^^^
-  File "/home/claude/dmt/notes/rev_sts_matched_null.py", line 45, in sts_of_params
-    A, Q = bc.var1_matrices(**p)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/home/claude/dmt/scripts/02_bias_check.py", line 286, in var1_matrices
-    assert eig < 1, f"VAR(1) unstable: spectral radius {eig:.3f}"
-           ^^^^^^^
-AssertionError: VAR(1) unstable: spectral radius 1.166
+   W= 30: est sts baseline 0.0586, shifted 0.0857; manufactured difference +0.0270 ± 0.0018  = +33 % of the real |DiD|   (43s)
+   W= 60: est sts baseline 0.0787, shifted 0.0914; manufactured difference +0.0127 ± 0.0016  = +16 % of the real |DiD|   (53s)
+   W=840: est sts baseline 0.0931, shifted 0.0937; manufactured difference +0.0006 ± 0.0005  = +1 % of the real |DiD|   (67s)
+done
