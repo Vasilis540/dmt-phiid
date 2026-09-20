@@ -1,4 +1,5 @@
 # Review computations, 14 Sep 2026 — items 1–5
+git=d507728
 
 Companion to `notes/adversarial_review_2026-09-14.md`. Everything below is computed from the released data, the committed atom arrays and the committed scripts, in the clean environment described in that review (Python 3.12.3, numpy 2.5.3, scipy 1.18.1, phyid 6c5f2e9, rsHRF 1.7.0 for item 3). Nothing here is manuscript text and nothing proposes a framing; each item ends with what the computation shows and stops there. The CCS double-redundancy line of the review is withdrawn (your correction stands); nothing below depends on it.
 

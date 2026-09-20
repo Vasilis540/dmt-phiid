@@ -1,3 +1,4 @@
+git=d507728
 # ts_gsr, W = 60
 full-set check: r(res, pub CCS) = +0.799 (p = 0.001; ρ +0.736); r(res, code CCS) = +0.729 (p = 0.003; ρ +0.710); r(res, autocorr) = -0.780 (p = 0.001; ρ -0.635)
 split-half reliability (odd vs even) — residual DiD: +0.494 (p = 0.072; ρ +0.446); pub CCS-sts DiD: +0.302 (p = 0.294; ρ +0.174); code CCS-sts DiD: +0.196 (p = 0.501; ρ +0.042); autocorrelation DiD: +0.741 (p = 0.002; ρ +0.538); MMI sts DiD: +0.717 (p = 0.004; ρ +0.525)

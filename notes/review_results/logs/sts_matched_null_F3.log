@@ -1,3 +1,4 @@
+git=d507728
 
 F3 empirical ACFs (realised after taper/clip): placebo lags 1-6 [ 0.868  0.539  0.172 -0.085 -0.174 -0.145] | DMT post [ 0.858  0.507  0.123 -0.13  -0.194 -0.133]
    analytic sts as a function of lag-1 autocorrelation r1 (rows) and cross-correlation q (cols):
@@ -12,12 +13,12 @@ F3 empirical ACFs (realised after taper/clip): placebo lags 1-6 [ 0.868  0.539  
 
 === F3-b identical S4 (r1 0.8681 vs 0.8681, q = 0.2), DMT-like higher-lag ACF: lags 2-6 placebo [ 0.539  0.172 -0.085 -0.174 -0.145] vs modified-DMT [ 0.539  0.172 -0.085 -0.173 -0.14 ]
    analytic sts baseline 1.3853 vs shifted 1.3853 (difference +0.00000); xtx 0.6850 vs 0.6850
-   W= 30: est sts baseline 1.0344, shifted 1.0333; manufactured difference -0.0010 ± 0.0067 = -1 % of the real |DiD|  (20s)
-   W= 60: est sts baseline 1.1862, shifted 1.1800; manufactured difference -0.0062 ± 0.0047 = -8 % of the real |DiD|  (38s)
-   W=840: est sts baseline 1.3396, shifted 1.3409; manufactured difference +0.0013 ± 0.0013 = +2 % of the real |DiD|  (63s)
+   W= 30: est sts baseline 1.0344, shifted 1.0333; manufactured difference -0.0010 ± 0.0067 = -1 % of the real |DiD|  (11s)
+   W= 60: est sts baseline 1.1862, shifted 1.1800; manufactured difference -0.0062 ± 0.0047 = -8 % of the real |DiD|  (22s)
+   W=840: est sts baseline 1.3396, shifted 1.3409; manufactured difference +0.0013 ± 0.0013 = +2 % of the real |DiD|  (37s)
 
 === F3-c reference, unmatched: placebo ACF vs DMT-post ACF at q = 0.2: analytic sts 1.3853 vs 1.3166 (true difference -0.0688; real windowed DiD -0.0809)
-   W= 30: est sts baseline 1.0345 (analytic 1.3853), shifted 0.9834 (analytic 1.3166); estimated difference -0.0511 ± 0.0066 vs true -0.0688  (82s)
-   W= 60: est sts baseline 1.1837 (analytic 1.3853), shifted 1.1280 (analytic 1.3166); estimated difference -0.0557 ± 0.0046 vs true -0.0688  (101s)
-   W=840: est sts baseline 1.3418 (analytic 1.3853), shifted 1.2738 (analytic 1.3166); estimated difference -0.0680 ± 0.0013 vs true -0.0688  (128s)
+   W= 30: est sts baseline 1.0345 (analytic 1.3853), shifted 0.9834 (analytic 1.3166); estimated difference -0.0511 ± 0.0066 vs true -0.0688  (47s)
+   W= 60: est sts baseline 1.1837 (analytic 1.3853), shifted 1.1280 (analytic 1.3166); estimated difference -0.0557 ± 0.0046 vs true -0.0688  (58s)
+   W=840: est sts baseline 1.3418 (analytic 1.3853), shifted 1.2738 (analytic 1.3166); estimated difference -0.0680 ± 0.0013 vs true -0.0688  (73s)
 done

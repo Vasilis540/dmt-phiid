@@ -1,3 +1,4 @@
+git=d507728
 (a) per-subject DiD agreement (primary set):
    ts_gsr W60: autocorr vs sts  Pearson r = +0.953 (p = 0.0000), Spearman rho = +0.903 | PhiR vs sts  Pearson r = -0.552 (p = 0.041), Spearman rho = -0.477
       subject DiDs autocorr: [-0.0161 -0.0024 -0.0260 -0.0200  0.0005 -0.0186 -0.0084 -0.0642 -0.0312 -0.0201 -0.0143 -0.0080 -0.0003  0.0242]
@@ -34,12 +35,6 @@
    raw         ts_demean: DMT pre 1.207 post 0.907 | PCB pre 0.930 post 1.059 | DiD -0.4278 [-0.6169, -0.2669] p = 0.0004, 13/14 negative
       DMT group mean by window: [1.077 1.129 1.262 1.359 1.127 0.752 0.834 0.719 0.797 0.901 0.959 1.038 1.082 1.086]
       PCB group mean by window: [0.834 0.906 0.971 1.010 0.862 0.854 0.936 1.027 1.036 1.033 1.092 1.089 1.187 1.274]
-   deconvolved ts_gsr   : DMT pre 1.252 post 0.907 | PCB pre 0.970 post 1.049 | DiD -0.4245 [-0.5655, -0.2902] p = 0.0001, 14/14 negative
-      DMT group mean by window: [1.149 1.186 1.287 1.384 0.975 0.782 0.790 0.790 0.820 0.928 0.958 1.004 1.039 1.050]
-      PCB group mean by window: [0.879 0.997 0.997 1.005 0.816 0.892 0.950 0.998 1.014 1.023 1.082 1.099 1.170 1.213]
-   deconvolved ts_demean: DMT pre 1.183 post 0.934 | PCB pre 0.986 post 1.040 | DiD -0.3033 [-0.4868, -0.1477] p = 0.0021, 12/14 negative
-      DMT group mean by window: [1.069 1.079 1.231 1.352 1.010 0.828 0.904 0.765 0.830 0.929 0.977 1.058 1.094 1.020]
-      PCB group mean by window: [0.911 0.943 0.969 1.121 0.832 0.872 0.976 1.003 1.017 1.005 1.059 1.070 1.166 1.197]
 
 (e) correlation of each series with the window-variance ratio (raw data):
    ts_gsr global-fit sts per 30-TR bin        : mean r over the 28 runs +0.365 (min -0.533, max +0.747); group-mean series r = +0.662
@@ -58,7 +53,5 @@
       window-index gap post − pre = 7.50; implied placebo change: placebo line +0.0493, shared slope +0.0559; raw placebo change +0.0398
 
 (g) rsHRF outputs:
-   ts_gsr: estimated HRF (per region per run, TR resolution, 24 s) time-to-peak DMT run 6.08 s, PCB run 6.07 s; events per region (1 SD threshold, 840 TRs) DMT 40.7, PCB 40.7
-      deconvolved series: run-level r1 = 0.7899; share of power inside 0.01–0.08 Hz = 0.991
-   ts_demean: estimated HRF (per region per run, TR resolution, 24 s) time-to-peak DMT run 6.23 s, PCB run 6.16 s; events per region (1 SD threshold, 840 TRs) DMT 42.0, PCB 41.9
-      deconvolved series: run-level r1 = 0.7761; share of power inside 0.01–0.08 Hz = 0.991
+   ts_gsr: deconvolution outputs not present
+   ts_demean: deconvolution outputs not present

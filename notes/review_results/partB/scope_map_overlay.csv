@@ -1,3 +1,4 @@
+# partB1_scope_map.py; git=d507728
 variant,condition,window,n_pairs,frac_r1_dominated,frac_q_dominated,frac_flat,frac_abs_q_above_0.6,median_r1,p05_r1,p95_r1,median_q,p05_q,p95_q,median_abs_q,mean_observed_sts,mean_model_sts_at_pair_r1_q
 ts_gsr,DMT,1,6555,1.000000,0.000000,0.000000,0.065294,0.848228,0.800875,0.891968,-0.017058,-0.516869,0.576598,0.236768,1.074830,1.239550
 ts_gsr,DMT,2,6555,1.000000,0.000000,0.000000,0.099314,0.858214,0.801748,0.896161,-0.022644,-0.573513,0.633083,0.272090,1.080716,1.271168

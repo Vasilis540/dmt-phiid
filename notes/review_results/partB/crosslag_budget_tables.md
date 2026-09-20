@@ -1,4 +1,4 @@
-# The cross-lag budget on the data (partB12_crosslag_budget.py; git=6b5181a; seed=20261120)
+# The cross-lag budget on the data (partB12_crosslag_budget.py; git=d507728; seed=20261120)
 
 Per subject and run, over the 6,555 pairs: δ_run = s·d at the run level (s = sign of the run-level q; d = mean of the two directions of corr(x_t, y_(t+1)) − a_y q), δ_wd = the same after removing each region's mean within each W = 60 window, δ_means = δ_run − δ_wd, δ_within = s·Σ_w π_w d_w, δ_pool = s·Σ_w π_w (a_(y,w) − ā_y) q_w, ε = δ_wd − δ_within − δ_pool (definitions and weights: notes/rev_crosslag_budget.py); beside them δ_60 = s·mean_w d_w and partB10's window-sign value mean_w sign(q_w) d_w. Mean over pairs per run; per subject the mean of the two runs; grand mean with subject-bootstrap 95 % CI (10,000 draws, seed 20261120, one set of draws per variant), exact sign-flip p, count positive; per run type. Rules recorded before the run: analysis_record.md, "The cross-lag budget: pre-run entry, 16 Sep 2026"; the null-corrected budget and the reading under those rules are in crosslag_budget_null_tables.md (partB13).
 

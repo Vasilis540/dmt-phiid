@@ -1,4 +1,5 @@
 # Split-half test of the CCS-sts / residual correlation (partB7_splithalf.py)
+git=d507728
 
 ## ts_gsr, W = 60
 

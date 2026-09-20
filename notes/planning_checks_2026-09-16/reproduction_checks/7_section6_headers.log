@@ -1,0 +1,33 @@
+compared against d507728: 22 files (10 CSV, 12 text)
+CSV identical in every cell: 2
+CSV differing only by less than 1e-9: 8; largest 7.89e-13 (notes/review_results/inference_rows_raw.csv)
+CSV with a real difference: 0
+CSV whose rows or columns changed: 0
+text files changed only on git-SHA lines: 11; there and in the sign of a printed zero: 1 (coupling_map_tables.md)
+text files with other changes: 0
+SHA in the headers of the regenerated files: {'d507728': 18, 'no SHA in the first three lines': 4}
+other files changed by the run, by extension: {'pkl': 5, 'log': 17, 'npy': 20, 'npz': 5}
+untracked files under the output folders: 23
+    notes/review_results/logs/review_checks.log
+    notes/review_results/partB/ccs_atoms_bins_local_ts_demean.npy
+    notes/review_results/partB/ccs_atoms_bins_local_ts_gsr.npy
+    notes/review_results/partB/ccs_atoms_win60_local_ts_demean.npy
+    notes/review_results/partB/ccs_atoms_win60_local_ts_gsr.npy
+    notes/review_results/partB/coupling_map_run.log
+    notes/review_results/partB/lag_atoms_bins_local_tau1.npy
+    notes/review_results/partB/lag_atoms_bins_local_tau2.npy
+    notes/review_results/partB/lag_atoms_bins_local_tau3.npy
+    notes/review_results/partB/lag_atoms_bins_local_tau5.npy
+    notes/review_results/partB/lag_atoms_win60_local_tau1.npy
+    notes/review_results/partB/lag_atoms_win60_local_tau2.npy
+    notes/review_results/partB/lag_atoms_win60_local_tau3.npy
+    notes/review_results/partB/lag_atoms_win60_local_tau5.npy
+    notes/review_results/partB/overlay_points_run.log
+    notes/review_results/partB/scope_map_grid.npz
+    results/atoms_bins_local_115regions-all_ts_demean_global.npy
+    results/atoms_bins_local_115regions-all_ts_gsr_global.npy
+    results/run_00_verify.log
+    results/run_02_bias_check_n20000.log
+    results/run_15_figures_v2.log
+    results/run_all.log
+    results/run_tier_check_decay_windows.log
