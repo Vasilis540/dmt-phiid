@@ -98,7 +98,7 @@ Set means, primary proxy vs cortical non-workspace: ts_gsr workspace −0.0885 [
 
 ## S5 Table. Exploratory receptor-map correlations
 
-Source: `results/regional_analysis_<variant>.csv`. Spearman ρ between the group-mean regional DiD map and receptor density on the 99 cortical parcels; two-sided spin p over 10,000 rotations (Váša one-sided-average p in brackets); BH across the five maps: nothing significant on either variant. The 115-region ρ including subcortex has no spatial null and is descriptive. **Exploratory.**
+Source: `results/regional_analysis_<variant>.csv`. Spearman ρ between the group-mean regional DiD map and receptor density on the 99 cortical parcels; two-sided spin p over 10,000 parcel rotations (the spin test of Alexander-Bloch et al., 2018, with the rotations of Váša et al., 2018, released with the data; Váša one-sided-average p in brackets); BH across the five maps: nothing significant on either variant. The 115-region ρ including subcortex has no spatial null and is descriptive. **Exploratory.**
 
 | map | ts_gsr ρ (p) [Váša p] | 115-region ρ | ts_demean ρ (p) [Váša p] | 115-region ρ |
 |---|---|---|---|---|

@@ -14,7 +14,7 @@ Cambridge (Prof. Emmanuel Stamatakis).
 - **20 Nov 2026** — public preprint + documented repo
 - **8 Dec 2026** — Cambridge application (Gates Cambridge / Cambridge Trust)
 
-## Current state (18 Sep 2026, round 12)
+## Current state (20 Sep 2026, round 13)
 
 **Analysis complete. The paper is `manuscript/draft_v2.md` (revised 15 Sep after the second and third adversarial reviews and after the verification of the correction note; finalisation pass 15 Sep: ethics statement, software versions, verified references, copy-edit, COBIDAS checklist in `manuscript/supplementary_cobidas.md`); `manuscript/draft.md` is the superseded first draft, kept as a record. Figures `fig1_v2`–`fig5_v2` built by `scripts/15_figures_v2.py`.**
 
@@ -207,6 +207,12 @@ Cambridge (Prof. Emmanuel Stamatakis).
      "Use of AI tools" as subsections, Funding, Competing interests,
      Supporting information (S1–S4 Text, S1–S9 Table), the exact Ethics
      sentence on the subject codes.
+  13. 20 Sep, the citation audit's F1–F19 and the plan's Q1–Q8 (record,
+     "Text corrections of round 13"): every attribution checked against the
+     full texts; Luppi et al. (2022)'s own surrogate test stated; all four
+     residual–CCS correlations; the counterbalanced order; n_eff by
+     Bartlett's formula; seventeen references added, Prichard & Theiler
+     replaced by Theiler et al. (1992).
 - 18 Sep 2026, round 11: the Figures paragraph names the commit at which the
   five figures were generated, 48ea934, as the captions file records, with
   5906148 as the commit that holds them, 7c7809a and the no-git checkout as
@@ -237,6 +243,35 @@ Cambridge (Prof. Emmanuel Stamatakis).
   reads without `comment="#"`; `inference_rows_raw/deconv/w30.csv` left
   without one because `rev_tables.py` and `3_three_checks.py` read them
   plain); pre-run entry appended before the run; the run is open (below).
+- 20 Sep 2026 (V.S., a75d015): the section-6 verification run at d507728
+  passed the pre-run rule (record, "The git SHA in the output headers of
+  the notes/ scripts: outcome"); outputs committed; the binaries were
+  restored before `8_binary_compare.py` could run, so their direct
+  comparison is required before the final full run's commit. The same
+  commit filed `notes/review_2026-09-20/`: the citation audit against the
+  36 PDFs of `external/papers/` (git-ignored) and the SI Appendix of
+  Mediano et al. (2025), the independent adversarial review (44
+  findings), its verification, and the plan to submission; record entries
+  of 20 Sep for each, and "Decisions of 20 Sep 2026": D1 the multiplicity
+  rule withdrawn in round 14 (one confirmatory test, the MMI-sts DiD;
+  everything else exploratory, effect size and interval, no threshold
+  language; the rule's history to S5 Text); D2 the title changes in round
+  14 to option (d) of the plan unless V.S. says otherwise; D3 W = 60 stays
+  primary, the global fit beside it with the bias tabulated; D4 "a planned
+  directional test recorded before the primary analysis" in round 14; D5
+  B16 (prewhitening) run before the preprint; audit F7 and F9 adopted.
+- 20 Sep 2026, round 13 (record, "Text corrections of round 13"; commit A):
+  F1–F19 and Q1–Q8 applied with the audit's and the plan's wordings;
+  `notes/partB5_literature_v2.md` (Table A from the full texts; the 14 Sep
+  file kept as the record); references: seventeen added, eight of them not
+  yet cited (Arbabshirani, Cliff, Honari, Ito, Kay & Ince, Murray, Raut,
+  Faes 2017 — their sentences come with round 14), the † convention gone,
+  Tarchi and Mediano 2025 parentheticals amended; Abstract 302 and Author
+  summary 204 words after F19 and Q7 (over the caps of 300 and 200 until the
+  round-14 rewrite); `captions_v2.md` hand-edited for F16 while its source
+  `scripts/15_figures_v2.py` (line 231) is unchanged — the script must carry
+  "Cousineau, 2005; Morey, 2008" before the final run or the run reverts
+  the caption. Commit B: the pre-run entries and scripts of B14–B20 (below).
 - Remaining work: the [TK] items in `draft_v2.md` (affiliations, co-authors,
   the REC reference number, the co-authors' funding statements, the run
   sentence); run `run_all.sh` end-to-end
@@ -258,7 +293,16 @@ Cambridge (Prof. Emmanuel Stamatakis).
   (18 Sep 2026): PLOS Computational Biology, Methods article type; preprint
   to bioRxiv (`notes/venue_options.md`); the numbered citation form and
   the packaging of the Supporting information items as separate files are
-  done at submission.
+  done at submission. Round 13's computations B14–B20 (record, pre-run entries
+  of 20 Sep; `notes/partB14_*.py`–`partB20_*.py`; section 6 of `run_all.sh`)
+  are V.S.'s to run (`runb14`), their outcome entries appended afterwards;
+  round 14 (the restructuring: PLOS CB order, ≤ 10,000 words, S5 Text
+  "Provenance and audit trail", the residual against its finite-sample
+  expectation, D1–D4, the figures, the abstract, Author summary and title,
+  the §5 sentences citing the eight uncited references) follows their
+  outcomes; then the final full run at the final code commit with
+  `6_committed_compare.py` and `8_binary_compare.py`, a fresh review of the
+  finished text, typesetting, and the note to C.T.
 
 ## Post-hoc checks (NOT pre-specified; recorded here, not in the record)
 
@@ -346,7 +390,11 @@ scripts/                         numbered by execution order, each independently
   15_figures_v2.py               draft_v2.md figures, from results/ and notes/review_results/
 notes/                           adversarial reviews, the verification of the correction note
                                  (verification_correction_note_2026-09-15.md), the sixth review
-                                 with its checks (fresh_review_2026-09-17/), venue options
+                                 with its checks (fresh_review_2026-09-17/), the citation audit,
+                                 the independent review, its verification and the plan to
+                                 submission of 20 Sep (review_2026-09-20/), the applicability
+                                 table (partB5_literature.md, 14 Sep; partB5_literature_v2.md,
+                                 20 Sep, from the full texts), venue options
                                  (venue_options.md), review computations (rev_*.py, review_*.py;
                                  rev_git.py gives the git SHA for their headers),
                                  Part B plans/notes/scripts (partB*.md, partB*.py; partB10 and
