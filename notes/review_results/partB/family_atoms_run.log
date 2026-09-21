@@ -1,0 +1,139 @@
+git=f1f5fcc
+   ts_gsr: subject 1/14 done (1s)
+   ts_gsr: subject 2/14 done (2s)
+   ts_gsr: subject 3/14 done (2s)
+   ts_gsr: subject 4/14 done (3s)
+   ts_gsr: subject 5/14 done (3s)
+   ts_gsr: subject 6/14 done (4s)
+   ts_gsr: subject 7/14 done (4s)
+   ts_gsr: subject 8/14 done (5s)
+   ts_gsr: subject 9/14 done (5s)
+   ts_gsr: subject 10/14 done (6s)
+   ts_gsr: subject 11/14 done (6s)
+   ts_gsr: subject 12/14 done (7s)
+   ts_gsr: subject 13/14 done (8s)
+   ts_gsr: subject 14/14 done (8s)
+   ts_demean: subject 1/14 done (9s)
+   ts_demean: subject 2/14 done (9s)
+   ts_demean: subject 3/14 done (10s)
+   ts_demean: subject 4/14 done (10s)
+   ts_demean: subject 5/14 done (11s)
+   ts_demean: subject 6/14 done (11s)
+   ts_demean: subject 7/14 done (12s)
+   ts_demean: subject 8/14 done (13s)
+   ts_demean: subject 9/14 done (13s)
+   ts_demean: subject 10/14 done (14s)
+   ts_demean: subject 11/14 done (14s)
+   ts_demean: subject 12/14 done (15s)
+   ts_demean: subject 13/14 done (15s)
+   ts_demean: subject 14/14 done (16s)
+# Family-predicted sixteen atoms per pair, asymmetric diagonal family (partB14_family_atoms.py)
+git=f1f5fcc
+
+Per window and pair: observed MMI atoms (PairPhiID.atoms_mean) and predicted atoms atoms_from_corr(ar1_corr(a_x, a_y, q)) from the window's measured (a_x, a_y, q), averaged over the 6,555 pairs; level = DMT windows 1–4, DiD = windows 6–14 minus 1–4, DMT minus placebo (mean over 14 subjects; in brackets the number of subjects with a negative DiD). W = 60; seed 20261120; region 20 excluded.
+
+## ts_gsr, W = 60: Table 1's columns with the family-predicted atoms
+
+| atom | observed level | predicted level | residual level | observed DiD (neg/14) | predicted DiD (neg/14) | residual DiD (neg/14) |
+|---|---|---|---|---|---|---|
+| rtr | +0.0388 | +0.0504 | -0.0116 | -0.0078 (10) | -0.0086 (10) | +0.0008 (4) |
+| rtx | +0.0258 | +0.0027 | +0.0231 | -0.0012 (9) | -0.0003 (10) | -0.0008 (8) |
+| rty | +0.0254 | +0.0024 | +0.0230 | -0.0012 (9) | -0.0000 (10) | -0.0011 (9) |
+| rts | +0.5669 | +0.5756 | -0.0087 | -0.0407 (12) | -0.0414 (13) | +0.0008 (4) |
+| xtr | +0.0254 | +0.0024 | +0.0230 | -0.0012 (9) | -0.0000 (10) | -0.0011 (9) |
+| xtx | +0.6273 | +0.6617 | -0.0345 | -0.0523 (12) | -0.0535 (12) | +0.0012 (5) |
+| xty | -0.0254 | -0.0024 | -0.0230 | +0.0012 (5) | +0.0000 (4) | +0.0011 (5) |
+| xts | -0.5352 | -0.5747 | +0.0395 | +0.0399 (2) | +0.0413 (2) | -0.0014 (9) |
+| ytr | +0.0258 | +0.0027 | +0.0231 | -0.0012 (9) | -0.0003 (10) | -0.0008 (8) |
+| ytx | -0.0258 | -0.0027 | -0.0230 | +0.0012 (5) | +0.0003 (4) | +0.0008 (6) |
+| yty | +0.6125 | +0.6470 | -0.0345 | -0.0396 (13) | -0.0408 (12) | +0.0012 (5) |
+| yts | -0.5358 | -0.5747 | +0.0389 | +0.0404 (2) | +0.0414 (2) | -0.0010 (9) |
+| str | +0.5667 | +0.5750 | -0.0082 | -0.0408 (12) | -0.0414 (12) | +0.0006 (5) |
+| stx | -0.5350 | -0.5750 | +0.0400 | +0.0401 (2) | +0.0414 (2) | -0.0013 (9) |
+| sty | -0.5357 | -0.5750 | +0.0392 | +0.0403 (2) | +0.0414 (2) | -0.0011 (9) |
+| sts | +1.1554 | +1.2084 | -0.0530 | -0.0809 (13) | -0.0924 (13) | +0.0115 (4) |
+| TDMI (sum) | +1.4772 | +1.4240 | +0.0532 | -0.1037 (12) | -0.1129 (12) | +0.0092 (5) |
+
+Excess sts − (xtx + yty), DMT windows 1–4: observed -0.0844; family-predicted from each pair's (a_x, a_y, q) -0.1003; rtr observed +0.0388, predicted +0.0504.
+Ordering rts = str below xtx, yty: predicted yes (rts +0.5756, str +0.5750, xtx +0.6617, yty +0.6470); observed yes (rts +0.5669, str +0.5667, xtx +0.6273, yty +0.6125).
+Mirror atoms (xts, yts, stx, sty): predicted [-0.5747 -0.5747 -0.5750 -0.5750] against −rts predicted -0.5756; observed [-0.5352 -0.5358 -0.5350 -0.5357] against −rts observed -0.5669.
+sts residual, all subjects, runs and windows: -0.0489 (the diagnostic's, diag_tables.md: −0.0489 on ts_gsr); observed sts level 1.1554, predicted 1.2084; sts DiD observed -0.0809, predicted -0.0924, residual +0.0115.
+Largest |residual level| over the sixteen atoms: sts (-0.0530); largest |residual DiD|: sts (+0.0115).
+
+Check against diag_series_ts_gsr_W60.npz: max |sts residual here − diagnostic's res| = 9.99e-15 (identical by construction up to floating point).
+
+## ts_demean, W = 60: Table 1's columns with the family-predicted atoms
+
+| atom | observed level | predicted level | residual level | observed DiD (neg/14) | predicted DiD (neg/14) | residual DiD (neg/14) |
+|---|---|---|---|---|---|---|
+| rtr | +0.0444 | +0.0593 | -0.0149 | +0.0005 (8) | +0.0030 (8) | -0.0025 (8) |
+| rtx | +0.0293 | +0.0035 | +0.0257 | +0.0040 (6) | +0.0002 (7) | +0.0038 (6) |
+| rty | +0.0288 | +0.0030 | +0.0258 | +0.0003 (5) | +0.0010 (4) | -0.0007 (7) |
+| rts | +0.5265 | +0.5364 | -0.0099 | -0.0643 (12) | -0.0624 (12) | -0.0019 (11) |
+| xtr | +0.0287 | +0.0030 | +0.0258 | +0.0003 (5) | +0.0010 (4) | -0.0007 (7) |
+| xtx | +0.5871 | +0.6237 | -0.0366 | -0.0823 (13) | -0.0817 (13) | -0.0006 (7) |
+| xty | -0.0286 | -0.0030 | -0.0257 | -0.0002 (8) | -0.0010 (10) | +0.0008 (7) |
+| xts | -0.4933 | -0.5352 | +0.0419 | +0.0621 (2) | +0.0625 (2) | -0.0003 (7) |
+| ytr | +0.0292 | +0.0035 | +0.0257 | +0.0040 (6) | +0.0002 (7) | +0.0038 (6) |
+| ytx | -0.0291 | -0.0035 | -0.0256 | -0.0039 (8) | -0.0002 (7) | -0.0037 (8) |
+| yty | +0.5658 | +0.6024 | -0.0366 | -0.0610 (12) | -0.0604 (12) | -0.0006 (7) |
+| yts | -0.4942 | -0.5353 | +0.0411 | +0.0635 (2) | +0.0626 (2) | +0.0009 (7) |
+| str | +0.5264 | +0.5356 | -0.0091 | -0.0646 (13) | -0.0625 (12) | -0.0021 (10) |
+| stx | -0.4929 | -0.5356 | +0.0427 | +0.0627 (2) | +0.0625 (2) | +0.0002 (7) |
+| sty | -0.4943 | -0.5356 | +0.0412 | +0.0636 (2) | +0.0625 (2) | +0.0010 (6) |
+| sts | +1.1004 | +1.1403 | -0.0399 | -0.1031 (12) | -0.1213 (12) | +0.0182 (2) |
+| TDMI (sum) | +1.4341 | +1.3625 | +0.0716 | -0.1186 (13) | -0.1341 (12) | +0.0155 (5) |
+
+Excess sts − (xtx + yty), DMT windows 1–4: observed -0.0525; family-predicted from each pair's (a_x, a_y, q) -0.0858; rtr observed +0.0444, predicted +0.0593.
+Ordering rts = str below xtx, yty: predicted yes (rts +0.5364, str +0.5356, xtx +0.6237, yty +0.6024); observed yes (rts +0.5265, str +0.5264, xtx +0.5871, yty +0.5658).
+Mirror atoms (xts, yts, stx, sty): predicted [-0.5352 -0.5353 -0.5356 -0.5356] against −rts predicted -0.5364; observed [-0.4933 -0.4942 -0.4929 -0.4943] against −rts observed -0.5265.
+sts residual, all subjects, runs and windows: -0.0378 (the diagnostic's, diag_tables.md: −0.0489 on ts_gsr); observed sts level 1.1004, predicted 1.1403; sts DiD observed -0.1031, predicted -0.1213, residual +0.0182.
+Largest |residual level| over the sixteen atoms: stx (+0.0427); largest |residual DiD|: sts (+0.0182).
+
+Check against diag_series_ts_demean_W60.npz: max |sts residual here − diagnostic's res| = 9.10e-15 (identical by construction up to floating point).
+
+## Global fit (run-level a_x, a_y, q; levels, placebo and DMT pre-injection bins 1–8 of the observed bins; the prediction is constant across a run's bins)
+
+| variant | atom | observed level (bins 1–8, DMT) | predicted level (run-level, DMT) | residual |
+|---|---|---|---|---|
+| ts_gsr | rtr | +0.0248 | +0.0234 | +0.0014 |
+| ts_gsr | rtx | +0.0076 | +0.0006 | +0.0070 |
+| ts_gsr | rty | +0.0074 | +0.0005 | +0.0070 |
+| ts_gsr | rts | +0.6435 | +0.6306 | +0.0129 |
+| ts_gsr | xtr | +0.0074 | +0.0005 | +0.0070 |
+| ts_gsr | xtx | +0.6897 | +0.6736 | +0.0160 |
+| ts_gsr | xty | -0.0074 | -0.0005 | -0.0070 |
+| ts_gsr | xts | -0.6386 | -0.6306 | -0.0080 |
+| ts_gsr | ytr | +0.0076 | +0.0006 | +0.0070 |
+| ts_gsr | ytx | -0.0076 | -0.0006 | -0.0070 |
+| ts_gsr | yty | +0.6719 | +0.6585 | +0.0134 |
+| ts_gsr | yts | -0.6388 | -0.6306 | -0.0082 |
+| ts_gsr | str | +0.6435 | +0.6306 | +0.0130 |
+| ts_gsr | stx | -0.6387 | -0.6306 | -0.0081 |
+| ts_gsr | sty | -0.6388 | -0.6306 | -0.0082 |
+| ts_gsr | sts | +1.3085 | +1.2858 | +0.0227 |
+| ts_gsr | excess sts − (xtx + yty) | -0.0531 | -0.0463 | -0.0067 |
+| ts_demean | rtr | +0.0301 | +0.0444 | -0.0144 |
+| ts_demean | rtx | +0.0074 | +0.0012 | +0.0062 |
+| ts_demean | rty | +0.0085 | +0.0010 | +0.0075 |
+| ts_demean | rts | +0.5979 | +0.5740 | +0.0239 |
+| ts_demean | xtr | +0.0085 | +0.0010 | +0.0075 |
+| ts_demean | xtx | +0.6522 | +0.6199 | +0.0323 |
+| ts_demean | xty | -0.0085 | -0.0010 | -0.0075 |
+| ts_demean | xts | -0.5933 | -0.5739 | -0.0195 |
+| ts_demean | ytr | +0.0074 | +0.0012 | +0.0062 |
+| ts_demean | ytx | -0.0074 | -0.0012 | -0.0062 |
+| ts_demean | yty | +0.6236 | +0.6010 | +0.0227 |
+| ts_demean | yts | -0.5934 | -0.5739 | -0.0195 |
+| ts_demean | str | +0.5979 | +0.5739 | +0.0240 |
+| ts_demean | stx | -0.5934 | -0.5739 | -0.0195 |
+| ts_demean | sty | -0.5937 | -0.5739 | -0.0198 |
+| ts_demean | sts | +1.2403 | +1.1948 | +0.0455 |
+| ts_demean | excess sts − (xtx + yty) | -0.0355 | -0.0261 | -0.0095 |
+
+## The rule of the pre-run entry
+
+ts_gsr: predicted excess -0.1003 against observed -0.0844 — sign matches; predicted ordering rts = str < xtx, yty holds and the observed ordering holds; sts residual -0.0489.
+ts_demean: predicted excess -0.0858 against observed -0.0525 — sign matches; predicted ordering rts = str < xtx, yty holds and the observed ordering holds; sts residual -0.0378.
+Reading under the rule: the predicted sign of the excess and the ordering rts < xtx, yty match the data on both variants, so Results 1's "two departures" and their ACF attribution are replaced by the asymmetric-family account and the per-atom residuals (round 14).
+done (18s)

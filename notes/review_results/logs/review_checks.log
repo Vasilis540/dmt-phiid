@@ -1,0 +1,87 @@
+git=d507728
+
+==============================================================================
+1. All 16 atoms: baseline level and DiD (the draft's Table 2 shows 6 of them)
+==============================================================================
+
+[windowed W60, ts_gsr]  DMT pre-injection whole-brain means:
+   rtr=+0.039  rtx=+0.026  rty=+0.025  rts=+0.567  xtr=+0.025  xtx=+0.627  xty=-0.025  xts=-0.535  ytr=+0.026  ytx=-0.026  yty=+0.613  yts=-0.536  str=+0.567  stx=-0.535  sty=-0.536  sts=+1.155
+   DiD per atom:
+   rtr=-0.0078  rtx=-0.0012  rty=-0.0012  rts=-0.0407  xtr=-0.0012  xtx=-0.0523  xty=+0.0012  xts=+0.0399  ytr=-0.0012  ytx=+0.0012  yty=-0.0396  yts=+0.0404  str=-0.0408  stx=+0.0401  sty=+0.0403  sts=-0.0809
+   TDMI DiD -0.1037 | sts+rts+str+xts+yts+stx+sty -0.0017 | xtx+yty -0.0919 | rtr -0.0078
+   PhiR     level +0.0961  DiD +0.0007  p=0.8971  negative 8/14
+   xtx+yty  level +1.2398  DiD -0.0919  p=0.0089  negative 12/14
+
+[windowed W60, ts_demean]  DMT pre-injection whole-brain means:
+   rtr=+0.044  rtx=+0.029  rty=+0.029  rts=+0.526  xtr=+0.029  xtx=+0.587  xty=-0.029  xts=-0.493  ytr=+0.029  ytx=-0.029  yty=+0.566  yts=-0.494  str=+0.526  stx=-0.493  sty=-0.494  sts=+1.100
+   DiD per atom:
+   rtr=+0.0005  rtx=+0.0040  rty=+0.0003  rts=-0.0643  xtr=+0.0003  xtx=-0.0823  xty=-0.0002  xts=+0.0621  ytr=+0.0040  ytx=-0.0039  yty=-0.0610  yts=+0.0635  str=-0.0646  stx=+0.0627  sty=+0.0636  sts=-0.1031
+   TDMI DiD -0.1186 | sts+rts+str+xts+yts+stx+sty +0.0199 | xtx+yty -0.1433 | rtr +0.0005
+   PhiR     level +0.1208  DiD +0.0157  p=0.0853  negative 4/14
+   xtx+yty  level +1.1529  DiD -0.1433  p=0.0024  negative 13/14
+
+[global fit, ts_gsr]  DMT pre-injection whole-brain means:
+   rtr=+0.025  rtx=+0.008  rty=+0.007  rts=+0.644  xtr=+0.007  xtx=+0.690  xty=-0.007  xts=-0.639  ytr=+0.008  ytx=-0.008  yty=+0.672  yts=-0.639  str=+0.644  stx=-0.639  sty=-0.639  sts=+1.309
+   DiD per atom:
+   rtr=-0.0060  rtx=-0.0031  rty=-0.0028  rts=-0.0396  xtr=-0.0028  xtx=-0.0544  xty=+0.0028  xts=+0.0367  ytr=-0.0031  ytx=+0.0031  yty=-0.0431  yts=+0.0368  str=-0.0397  stx=+0.0368  sty=+0.0368  sts=-0.0801
+   TDMI DiD -0.1216 | sts+rts+str+xts+yts+stx+sty -0.0122 | xtx+yty -0.0975 | rtr -0.0060
+   PhiR     level +0.0257  DiD -0.0062  p=0.0953  negative 9/14
+   xtx+yty  level +1.3616  DiD -0.0975  p=0.0093  negative 12/14
+
+[global fit, ts_demean]  DMT pre-injection whole-brain means:
+   rtr=+0.030  rtx=+0.007  rty=+0.009  rts=+0.598  xtr=+0.009  xtx=+0.652  xty=-0.009  xts=-0.593  ytr=+0.007  ytx=-0.007  yty=+0.624  yts=-0.593  str=+0.598  stx=-0.593  sty=-0.594  sts=+1.240
+   DiD per atom:
+   rtr=+0.0078  rtx=+0.0017  rty=-0.0022  rts=-0.0644  xtr=-0.0022  xtx=-0.0901  xty=+0.0022  xts=+0.0624  ytr=+0.0017  ytx=-0.0017  yty=-0.0664  yts=+0.0625  str=-0.0648  stx=+0.0626  sty=+0.0628  sts=-0.1035
+   TDMI DiD -0.1315 | sts+rts+str+xts+yts+stx+sty +0.0176 | xtx+yty -0.1565 | rtr +0.0078
+   PhiR     level +0.0464  DiD +0.0180  p=0.1177  negative 5/14
+   xtx+yty  level +1.2758  DiD -0.1565  p=0.0049  negative 11/14
+
+==============================================================================
+2. The thresholded tracking statistic (group-mean-series rho vs template) on the PLACEBO run
+==============================================================================
+   ts_gsr     windows 6-14: DMT -0.9833  PLACEBO -0.8333  (placebo vs plain time index +0.8333)
+   ts_gsr     windows 5-14: DMT -0.8667  PLACEBO -0.8788  (placebo vs plain time index +0.8788)
+   ts_demean  windows 6-14: DMT -0.9333  PLACEBO -0.7667  (placebo vs plain time index +0.7667)
+   ts_demean  windows 5-14: DMT -0.6727  PLACEBO -0.8303  (placebo vs plain time index +0.8303)
+
+==============================================================================
+3. Where the DiD comes from: drug-present windows 6-9 vs tail windows 10-14 (W60)
+==============================================================================
+   ts_gsr     post 6-14   DiD -0.0809 p=0.0038 neg 13/14 | DMT -0.0485 PCB +0.0324 | placebo share 0.40
+   ts_gsr     post 6-9    DiD -0.1029 p=0.0009 neg 13/14 | DMT -0.0842 PCB +0.0187 | placebo share 0.18
+   ts_gsr     post 10-14  DiD -0.0633 p=0.0337 neg 10/14 | DMT -0.0199 PCB +0.0434 | placebo share 0.69
+   ts_gsr     baseline windows 1-3 (bin 8 dropped), post 6-14: DiD -0.0787 p=0.0033
+   ts_demean  post 6-14   DiD -0.1031 p=0.0026 neg 12/14 | DMT -0.0633 PCB +0.0398 | placebo share 0.39
+   ts_demean  post 6-9    DiD -0.1183 p=0.0012 neg 13/14 | DMT -0.0975 PCB +0.0208 | placebo share 0.18
+   ts_demean  post 10-14  DiD -0.0910 p=0.0128 neg 11/14 | DMT -0.0360 PCB +0.0550 | placebo share 0.60
+   ts_demean  baseline windows 1-3 (bin 8 dropped), post 6-14: DiD -0.1014 p=0.0016
+
+==============================================================================
+4. Mean regional lag-1 autocorrelation per 60-TR window vs the sts contrast (ts_gsr)
+==============================================================================
+   lag-1 autocorr: DMT pre 0.8632 post 0.8532; PCB pre 0.8603 post 0.8657
+   DiD -0.0155 p=0.0056 negative 12/14
+   per-subject r(autocorr DiD, sts DiD) = 0.973; across 28 condition x window group means r = 0.984
+
+==============================================================================
+5. How independent was the 'pre-specified' windowed test of the global-fit result already in hand?
+==============================================================================
+   per-subject r(global-fit DiD, windowed DiD) = 0.954
+   20-region sanity run (written 12 Sep 10:12, git=nogit): DiD -0.0994, negative 12/14, p=0.0156; r with the primary windowed DiD = 0.791
+
+==============================================================================
+6. Robustness C: the pre-drug offset inside contrast (ii)
+==============================================================================
+   DMT pre-injection (bins 1-8) under the placebo-fitted model: 1.3549
+   PCB held-out half (bins 15-28) under the same model:        1.4323   -> pre-drug offset -0.0774
+   contrast (ii) DMT - PCB bins 15-28: -0.1110 (p=0.0005);  contrast (i) within-DMT step: -0.0508 [-0.1047, +0.0137] p=0.1338
+
+==============================================================================
+7. Redundancy-function dependence: MMI vs CCS on 400 random pairs, global fit (about 2 min)
+==============================================================================
+   ts_gsr     MMI: sts baseline +1.306; sts DiD -0.0815 (negative 12/14, p=0.0088); xtx+yty DiD -0.0954; TDMI DiD -0.1189
+   ts_gsr     CCS: sts baseline -0.033; sts DiD +0.0212 (negative 0/14, p=0.0001); xtx+yty DiD -0.0781; TDMI DiD -0.1189
+   ts_demean  MMI: sts baseline +1.242; sts DiD -0.1080 (negative 12/14, p=0.0126); xtx+yty DiD -0.1586; TDMI DiD -0.1312
+   ts_demean  CCS: sts baseline -0.029; sts DiD +0.0330 (negative 0/14, p=0.0001); xtx+yty DiD -0.1148; TDMI DiD -0.1312
+
+done

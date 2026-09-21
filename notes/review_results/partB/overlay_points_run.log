@@ -1,0 +1,4 @@
+git=d507728
+dmt_w6: n = 6555, r1 median 0.840, |q| median 0.225
+pcb_w2: n = 6555, r1 median 0.847, |q| median 0.236
+pre_w1to4: n = 52440, r1 median 0.855, |q| median 0.249
