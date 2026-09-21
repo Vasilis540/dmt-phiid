@@ -82,7 +82,8 @@ step 12_figures                     scripts/12_figures.py
 #    Supplement S2) need the sandbox described in notes/rev_deconv.py — the deconvolved .mat merged
 #    under notes/review_results/deconv/ and scripts/01 rerun on it there — and are skipped unless it
 #    is present. Added 20 Sep 2026 (round 13): the seven computations B14–B20 of the plan of that date, each under
-#    its own pre-run entry in the record, at the nstep lines commented with the entry's name.
+#    its own pre-run entry in the record, at the nstep lines commented with the entry's name. Added 21 Sep 2026
+#    (round 14): B16b and B17b, under their pre-run entries of that date, likewise.
 nstep() {  # nstep <log path under notes/review_results, without .log> <script> [args...]
     local log="notes/review_results/$1.log"; shift
     echo "=== $(date '+%F %T')  $*   -> $log"
@@ -97,6 +98,8 @@ nstep logs/phiid_fast_validate      notes/rev_phiid_fast_validate.py
 nstep logs/rev_run_raw              notes/rev_run.py raw
 # B16 (record, "Prewhitening (B16): pre-run entry, 20 Sep 2026"): AR(p)-whitened atoms and the DMT contrast; the longest step of the section
 nstep partB/prewhiten_run           notes/partB16_prewhiten.py
+# B16b (record, "The whitened series' spectrum (B16b): pre-run entry, 21 Sep 2026"): power shares and r₁ of the raw and the whitened series; no atoms; minutes
+nstep partB/whitened_spectrum_run   notes/partB16b_whitened_spectrum.py
 nstep logs/rev_extra                notes/rev_extra.py
 nstep logs/sts_matched_null_F1      notes/rev_sts_matched_null.py f1
 nstep logs/sts_matched_null_F2      notes/rev_sts_matched_null.py f2
@@ -118,6 +121,8 @@ nstep partB/scope_map_run           notes/partB1_scope_map.py
 nstep partB/overlay_points_run      notes/partB1_overlay_points.py
 # B17 (record, "Ground-truth calibration of the diagnostic (B17): pre-run entry, 20 Sep 2026"): simulation only; reads scope_map_overlay_points.npz
 nstep partB/calibration_run         notes/partB17_calibration.py
+# B17b (record, "Calibration of the diagnostic on the band-passed generator (B17b): pre-run entry, 21 Sep 2026"): simulation only; reads scope_map_overlay_points.npz and calibration.csv
+nstep partB/calibration_filtered_run notes/partB17b_calibration_filtered.py
 nrun notes/partB2_ccs_verify.py
 nrun notes/partB2_ccs_run.py
 nrun notes/partB3_lag.py
