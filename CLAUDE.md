@@ -14,9 +14,9 @@ Cambridge (Prof. Emmanuel Stamatakis).
 - **20 Nov 2026** — public preprint + documented repo
 - **8 Dec 2026** — Cambridge application (Gates Cambridge / Cambridge Trust)
 
-## Current state (21 Sep 2026, round 14, Stage B)
+## Current state (21 Sep 2026, round 14, follow-up commit)
 
-**Analysis complete. The paper is `manuscript/draft_v2.md`, restructured on 21 Sep 2026 (round 14, Stage B) for a journal reader in the PLOS Computational Biology Methods-article order: new title, abstract and Author summary at their caps, seven Results sections, main text 9,994 words (title through Methods), the supporting information as `manuscript/si/S1_Text.md`–`S5_Text.md` and the tables S1–S11 in `manuscript/supplementary.md`. `manuscript/draft.md` is the superseded first draft, kept as a record; `notes/companion_plain_language.md` is retired. Figures `fig1_v2`–`fig5_v2` built by `scripts/15_figures_v2.py`, whose revision of 21 Sep also writes `fig1_v2_atoms_observed_predicted` and `fig6_v2_regional`; the committed files stay those of 48ea934 until the final full run.**
+**Analysis complete. The paper is `manuscript/draft_v2.md`, restructured on 21 Sep 2026 (round 14, Stage B) for a journal reader in the PLOS Computational Biology Methods-article order: new title, abstract and Author summary at their caps, seven Results sections, main text 9,991 words (title through Methods, after the follow-up commit), the supporting information as `manuscript/si/S1_Text.md`–`S5_Text.md` and the tables S1–S11 in `manuscript/supplementary.md`. `manuscript/draft.md` is the superseded first draft, kept as a record; `notes/companion_plain_language.md` is retired. Figures `fig1_v2`–`fig5_v2` built by `scripts/15_figures_v2.py`, whose revision of 21 Sep also writes `fig1_v2_atoms_observed_predicted` and `fig6_v2_regional`; the committed files stay those of 48ea934 until the final full run.**
 
 - Primary result (Primary B, windowed W = 60 estimator, ts_gsr, replicated
   on ts_demean): whole-brain synergy **decreases** under DMT, DiD negative
@@ -292,7 +292,8 @@ Cambridge (Prof. Emmanuel Stamatakis).
   regional r₁ (−0.0202 → +0.0007, p = 0.90). Two new pre-run entries and
   scripts: B16b `notes/partB16b_whitened_spectrum.py` (data; minutes) and
   B17b `notes/partB17b_calibration_filtered.py` (no data; about an hour),
-  in section 6 of `run_all.sh`; V.S. runs them (`runb16b`).
+  in section 6 of `run_all.sh`; V.S. ran them at 106bd33 (`runb16b`, 14 s and 2,342 s, no tracebacks) and committed
+  the outputs as ada6438; their outcome entries are in the round-14 follow-up commit.
 - 21 Sep 2026, round 14, Stage B (record, "Round 14: the restructuring"):
   `manuscript/draft_v2.md` rewritten once, for a journal reader, in the PLOS
   CB order. Title option (d) of decision D2; abstract 300 words and Author
@@ -311,12 +312,19 @@ Cambridge (Prof. Emmanuel Stamatakis).
   gains S10 (calibration) and S11 (prewhitening) and the spin-test p values
   in S5 Table's note; `notes/defence_questions.md` rewritten (24 questions);
   `notes/companion_plain_language.md` retired with a dated note. 36 values
-  that depend on B16b and B17b stand as `[TK: B16b]`/`[TK: B17b]` until
-  those outputs are committed, then filled in a follow-up commit.
-- Remaining work: the 36 `[TK: B16b]`/`[TK: B17b]` values, filled from the
-  committed tables of B16b and B17b in a follow-up commit (with the matching
-  cells of S3 Text, S10 and S11 Tables, and the outcome entries of B16b and
-  B17b in the record); the thirteen permanent [TK] items in `draft_v2.md`
+  that depend on B16b and B17b stood as `[TK: B16b]`/`[TK: B17b]` until the
+  follow-up commit below.
+- 21 Sep 2026, round 14, follow-up commit (record, "B16b, outcome", "B17b, outcome" and "Round 14, follow-up commit:
+  the fills and seven corrections"): B16b met its prediction in the two decisive parts and missed the in-band-share
+  constant (0.655 against 0.5–0.6, because the stop-band residue is weighted toward Nyquist, not flat); B17b
+  reproduced the data's regime (W = 60 level 1.1883, sts DiD −0.0940 for Δa = −0.015, −0.0063 per 0.001 of r₁
+  against the data's −0.0055) and gave a residual DiD of +0.0027 ± 0.0014 under a pure autocorrelation change,
+  below the +0.004 to +0.008 recorded; its coupling rows are uninformative as implemented (they inject a thirtieth
+  of B17's δ_sym at the same c), so B17's rows stay the calibration of the coupling response. The residual is now
+  read by direction — no coupling change of either kind produces its DMT change — with the three calibrated
+  expectations inside its interval. Thirty-six values filled, seven corrections applied, eighteen paragraphs
+  condensed to keep the main text under 10,000 words (9,991).
+- Remaining work: the thirteen permanent [TK] items in `draft_v2.md`
   (affiliations, co-authors, the REC reference number, the co-authors'
   funding statements, contributions, competing interests, the run
   sentence); run `run_all.sh` end-to-end

@@ -255,7 +255,50 @@ Record, "Ground-truth calibration of the diagnostic (B17)" (pre-run entry 20 Sep
 | (iv) a_x − a_y = 0.03, Δa = −0.015 | global (run-level prediction) | 1.1127 | -0.0677 ± 0.0046 | +0.0000 ± 0.0000 | -0.0677 ± 0.0046 | 0.000; 1.00 | — | — |
 | (iv) a_x − a_y = 0.03, Δa = −0.015 | global (period-level prediction) | 1.1127 | -0.0677 ± 0.0046 | -0.0746 ± 0.0045 | +0.0069 ± 0.0030 | 0.114; 0.64 | — | — |
 
-The (ii) rows are read as the main text reads them: the first-order response of sts to c is odd in q (−1.74 per unit at q = +0.25, +1.74 at q = −0.25) and the q pool is sign-symmetric (mean −0.004, 48 % positive), so the first-order term averages out and the even second-order term remains. The band-passed calibration (`partB/calibration_filtered_tables.md`, `calibration_filtered.csv`) is quoted in the main text where the two generators differ: [TK: B17b — its table, with the solved parameters β̄, σ_q, β̄_post and δ, and its population reference column for the AR(1) conditions (i) and (iv)]. S10 Table collects the W = 60 and global-fit rows of both.
+The (ii) rows are read as the main text reads them: the first-order response of sts to c is odd in q (−1.74 per unit at q = +0.25, +1.74 at q = −0.25) and the q pool is sign-symmetric (mean −0.004, 48 % positive), so the first-order term averages out and the even second-order term remains. The band-passed calibration (`partB/calibration_filtered_tables.md`, `calibration_filtered.csv`; record, "B17b, outcome", 21 September 2026) repeats the same conditions on the generator of `review_v2_residual_null.py` — a smooth 0.0064–0.080 Hz band-pass with 0.004 Hz cosine edges and a tilt exp(−β f²) applied to two white noises of correlation q — whose per-pair distributions were solved once, on draws of 3,000 pairs × 3,000 samples, and held fixed: β̄ = 185.4 (realised window-level mean a 0.8637 against a target of 0.8632), σ_q = 0.2637 (mean |q| 0.2844 against 0.2842), β̄_post = 105.7 (post-injection a 0.8483 against 0.8482) and δ = 82.6 (a_x − a_y 0.0300 against 0.03). Its rows:
+
+| condition | estimator | sts level (pre) | sts DiD | predicted DiD | residual DiD | residual p (mean; share < 0.05) | δ_sym DiD | RMS δ_anti DiD |
+|---|---|---|---|---|---|---|---|---|
+| (i) Δa (post filter) | W60 | 1.1883 | -0.0940 ± 0.0028 | -0.0966 ± 0.0027 | +0.0027 ± 0.0014 | 0.136; 0.54 | -0.00005 ± 0.00030 | +0.00641 ± 0.00104 |
+| (i) Δa (post filter) | global (run-level prediction) | 1.3262 | -0.1046 ± 0.0035 | +0.0000 ± 0.0000 | -0.1046 ± 0.0035 | 0.000; 1.00 | — | — |
+| (i) Δa (post filter) | global (period-level prediction) | 1.3262 | -0.1046 ± 0.0035 | -0.1089 ± 0.0030 | +0.0043 ± 0.0020 | 0.116; 0.62 | — | — |
+| (ii) Δc = +0.01 | W60 | 1.1878 | +0.0001 ± 0.0029 | -0.0002 ± 0.0025 | +0.0003 ± 0.0011 | 0.464; 0.04 | +0.00025 ± 0.00031 | -0.00021 ± 0.00096 |
+| (ii) Δc = +0.01 | global (run-level prediction) | 1.3349 | -0.0003 ± 0.0034 | -0.0000 ± 0.0000 | -0.0003 ± 0.0034 | 0.494; 0.08 | — | — |
+| (ii) Δc = +0.01 | global (period-level prediction) | 1.3349 | -0.0003 ± 0.0034 | -0.0002 ± 0.0024 | -0.0002 ± 0.0021 | 0.459; 0.06 | — | — |
+| (ii) Δc = +0.02 | W60 | 1.1878 | +0.0002 ± 0.0025 | +0.0004 ± 0.0026 | -0.0002 ± 0.0012 | 0.517; 0.04 | +0.00045 ± 0.00024 | -0.00002 ± 0.00103 |
+| (ii) Δc = +0.02 | global (run-level prediction) | 1.3353 | -0.0001 ± 0.0034 | +0.0000 ± 0.0000 | -0.0001 ± 0.0034 | 0.569; 0.02 | — | — |
+| (ii) Δc = +0.02 | global (period-level prediction) | 1.3353 | -0.0001 ± 0.0034 | -0.0000 ± 0.0028 | -0.0001 ± 0.0020 | 0.477; 0.04 | — | — |
+| (ii) Δc = +0.03 | W60 | 1.1883 | -0.0009 ± 0.0028 | -0.0005 ± 0.0026 | -0.0004 ± 0.0012 | 0.453; 0.06 | +0.00069 ± 0.00024 | -0.00018 ± 0.00096 |
+| (ii) Δc = +0.03 | global (run-level prediction) | 1.3361 | -0.0010 ± 0.0041 | -0.0000 ± 0.0000 | -0.0010 ± 0.0041 | 0.440; 0.16 | — | — |
+| (ii) Δc = +0.03 | global (period-level prediction) | 1.3361 | -0.0010 ± 0.0041 | -0.0005 ± 0.0028 | -0.0005 ± 0.0022 | 0.390; 0.08 | — | — |
+| (ii) Δc = −0.02 | W60 | 1.1879 | -0.0002 ± 0.0026 | +0.0000 ± 0.0024 | -0.0002 ± 0.0012 | 0.469; 0.04 | -0.00044 ± 0.00030 | +0.00019 ± 0.00077 |
+| (ii) Δc = −0.02 | global (run-level prediction) | 1.3354 | -0.0004 ± 0.0039 | -0.0000 ± 0.0000 | -0.0004 ± 0.0039 | 0.422; 0.14 | — | — |
+| (ii) Δc = −0.02 | global (period-level prediction) | 1.3354 | -0.0004 ± 0.0039 | -0.0004 ± 0.0027 | -0.0000 ± 0.0019 | 0.518; 0.04 | — | — |
+| (iii) Δa and Δc = +0.02 | W60 | 1.1875 | -0.0944 ± 0.0026 | -0.0971 ± 0.0026 | +0.0027 ± 0.0011 | 0.115; 0.50 | +0.00060 ± 0.00031 | +0.00645 ± 0.00092 |
+| (iii) Δa and Δc = +0.02 | global (run-level prediction) | 1.3255 | -0.1055 ± 0.0028 | +0.0000 ± 0.0000 | -0.1055 ± 0.0028 | 0.000; 1.00 | — | — |
+| (iii) Δa and Δc = +0.02 | global (period-level prediction) | 1.3255 | -0.1055 ± 0.0028 | -0.1091 ± 0.0024 | +0.0036 ± 0.0014 | 0.132; 0.44 | — | — |
+| (iv) a_x − a_y = 0.03 with Δa | W60 | 1.1668 | -0.0889 ± 0.0026 | -0.0920 ± 0.0027 | +0.0031 ± 0.0012 | 0.064; 0.62 | -0.00002 ± 0.00028 | +0.00592 ± 0.00108 |
+| (iv) a_x − a_y = 0.03 with Δa | global (run-level prediction) | 1.2526 | -0.0913 ± 0.0028 | -0.0000 ± 0.0000 | -0.0913 ± 0.0028 | 0.000; 1.00 | — | — |
+| (iv) a_x − a_y = 0.03 with Δa | global (period-level prediction) | 1.2526 | -0.0913 ± 0.0028 | -0.1014 ± 0.0028 | +0.0101 ± 0.0016 | 0.001; 1.00 | — | — |
+| (i) | 1.1936 | 1.1121 | -0.0816 | 0.7152 | -0.0422 | 1.1317 | -0.0675 |
+| (iv) | 1.1474 | 1.0699 | -0.0775 | 0.7131 | -0.0422 | 1.1127 | -0.0677 |
+| (iv) − (i), pre level | -0.0463 | — | — | -0.0021 | — | -0.0190 | — |
+
+Two things in that table the main text uses. First, its regime is the data's: a W = 60 level of 1.1883 against the data's 1.1554 and an sts DiD of −0.0940 for a Δa of −0.015, which is −0.0063 per 0.001 of r₁ against the data's −0.0055, where the AR(1) generator gives −0.0028. Second, its residual DiD under a pure autocorrelation change is +0.0027 ± 0.0014, below the +0.004 to +0.008 the pre-run entry recorded and below the AR(1) generator's +0.0049 and the finite-sample null's +0.0054; the miss is recorded as a miss. Its residual's sign-flip p against zero is below 0.05 in 54 % of replicates (mean p 0.136) against 82 % (mean 0.056) on AR(1) pairs, so the test against zero is anti-conservative on both.
+
+The two generators' (ii) rows are reconciled on the scale of the perturbation, not of c. The coupling of the band-passed generator is added after filtering, on the post samples, with each series re-standardised, and it induces a mean symmetric cross-lag departure δ_sym whose DiD is +0.00025, +0.00045, +0.00069 and −0.00044 at Δc = +0.01, +0.02, +0.03 and −0.02 — about a thirtieth of the AR(1) generator's VAR(1) coupling at the same c (+0.0076, +0.0148, +0.0221, −0.0150; ratios 30 to 34). The AR(1) generator's residual response is quadratic in the induced δ_sym, residual ≈ −22 δ_sym² (the four rows give −17, −24, −22 and −24), which at a δ_sym of 0.0007 predicts a residual of −0.00001: that is what the band-passed rows show (+0.0003 to −0.0004, every one inside its replicate SD). The two therefore agree once the perturbation is matched, and the AR(1) rows are the calibration of the residual's response to a coupling change that the main text quotes. This is a departure from the rule recorded with the pre-run entry ("where B17 and B17b differ, the main text quotes B17b"), taken because on the coupling rows they do not differ once the perturbation is matched, and recorded as such in the outcome entry.
+
+One caution from the same table. At the global fit with a period-level prediction, condition (iv) — an asymmetric population with the autocorrelation change — leaves a residual DiD of +0.0101 ± 0.0016 whose sign-flip p is below 0.05 in 100 % of replicates, against +0.0031 at W = 60. An asymmetric population biases the global-fit residual upward, so the global-fit residual is not a safe read when the pairs are asymmetric; the paper reads the residual at W = 60.
+
+The population reference column, computed in closed form at 20,000 draws of B17's parameter distributions and its q pool, gives the population change the AR(1) conditions correspond to and the share of it each estimator returns:
+
+| condition | population sts, pre | population sts, post | population change | B17 W60 level (pre) | B17 W60 sts DiD | B17 global level (pre) | B17 global sts DiD |
+|---|---|---|---|---|---|---|---|
+| (i) | 1.1936 | 1.1121 | -0.0816 | 0.7152 | -0.0422 | 1.1317 | -0.0675 |
+| (iv) | 1.1474 | 1.0699 | -0.0775 | 0.7131 | -0.0422 | 1.1127 | -0.0677 |
+| (iv) − (i), pre level | -0.0463 | — | — | -0.0021 | — | -0.0190 | — |
+
+S10 Table collects the W = 60 and global-fit rows of both generators.
 
 ## 8. The prewhitening check and the whitened series' spectrum
 
@@ -286,7 +329,29 @@ Record, "Prewhitening (B16)" (pre-run entry 20 Sep 2026; outcome 21 Sep 2026) an
 Whitened series: mean lag-1 autocorrelation, DMT pre-injection +0.2625; its DiD -0.0544 (raw series -0.0146); per subject r(MMI sts DiD, whitened autocorrelation DiD) = +0.495; r(MMI sts DiD, raw autocorrelation DiD) = +0.552; r(MMI sts DiD whitened, MMI sts DiD raw) = +0.473; raw MMI sts DiD -0.0809.
 Diagnostic on the whitened series (W = 60): observed sts level 0.2766, predicted 0.2426, residual +0.0341; DiD observed -0.0262, predicted -0.0192, residual -0.0070 (negative in 8/14).
 
-The whitened series' power shares inside, below and above 0.01–0.08 Hz, the run-level r₁ and the W = 60 r₁ of the raw, AR(1), AR(p ≤ 5), AR(10) and AR(20) residual series (`partB/whitened_spectrum_tables.md`): [TK: B16b — its table]. S11 Table collects both.
+The whitened series' power shares inside, below and above 0.01–0.08 Hz, the run-level r₁ and the W = 60 r₁ of the raw, AR(1), AR(p ≤ 5), AR(10) and AR(20) residual series (`partB/whitened_spectrum_tables.md`; record, "B16b, outcome", 21 September 2026; means over the 28 runs, SD over runs in brackets; in-band share = periodogram power at 0.01 ≤ f ≤ 0.08 Hz over the total, as `rev_extra.py` (c) computes it):
+
+**ts_gsr**
+
+| series | in-band share (0.01–0.08 Hz) | share below 0.01 Hz | share above 0.08 Hz | run-level r₁ | W = 60 r₁, DMT windows 1–4 | kept samples per run |
+|---|---|---|---|---|---|---|
+| raw | 0.992 (0.003) | 0.007 (0.003) | 0.001 (0.000) | +0.8661 (0.0076) | +0.8479 (0.0147) | 840.0 |
+| ar1 | 0.996 (0.001) | 0.001 (0.000) | 0.003 (0.001) | +0.7572 (0.0055) | +0.7506 (0.0107) | 839.0 |
+| arp | 0.655 (0.051) | 0.007 (0.002) | 0.338 (0.050) | +0.2944 (0.0698) | +0.2625 (0.0814) | 835.0 |
+| p10 | 0.479 (0.049) | 0.008 (0.002) | 0.512 (0.050) | +0.0943 (0.0794) | +0.1368 (0.0844) | 830.0 |
+| p20 | 0.391 (0.015) | 0.012 (0.002) | 0.597 (0.015) | +0.0002 (0.0076) | +0.0524 (0.0429) | 820.0 |
+
+**ts_demean**
+
+| series | in-band share (0.01–0.08 Hz) | share below 0.01 Hz | share above 0.08 Hz | run-level r₁ | W = 60 r₁, DMT windows 1–4 | kept samples per run |
+|---|---|---|---|---|---|---|
+| raw | 0.992 (0.003) | 0.007 (0.003) | 0.001 (0.000) | +0.8561 (0.0104) | +0.8382 (0.0165) | 840.0 |
+| ar1 | 0.996 (0.002) | 0.001 (0.001) | 0.003 (0.001) | +0.7483 (0.0091) | +0.7426 (0.0131) | 839.0 |
+| arp | 0.670 (0.070) | 0.006 (0.002) | 0.324 (0.070) | +0.3011 (0.1061) | +0.2583 (0.1153) | 835.0 |
+| p10 | 0.457 (0.042) | 0.008 (0.002) | 0.535 (0.042) | +0.0346 (0.0584) | +0.0739 (0.0855) | 830.0 |
+| p20 | 0.387 (0.018) | 0.012 (0.002) | 0.600 (0.017) | -0.0024 (0.0089) | +0.0323 (0.0445) | 820.0 |
+
+The AR(1) residual keeps 99.6 % of its power in band and r₁ = 0.76: p = 1 is not a filter. B16's AR(p ≤ 5) residual keeps 65.5 % in band and carries 33.8 % above 0.08 Hz, where the raw series carries 0.1 %; at fixed orders 10 and 20 the in-band share falls to 47.9 % and 39.1 % and the above-band share rises to 51.2 % and 59.7 % as the run-level r₁ falls to 0.09 and 0.00. The ratio of above-band to in-band power rises from 0.0010 in the raw series to 0.516 at p = 5, a factor of 512, and to 1.53 at p = 20. The pre-run entry predicted an in-band share of 0.5–0.6 at p ≤ 5 from a mixture of flattened in-band noise at r₁ = 0.82 and a flat stop-band residue, whose r₁ over 0.08–0.25 Hz at TR 2 s is −0.395; the observed share is 0.655, and a flat mixture at that share would have r₁ = +0.40 against the observed +0.29, so the residue is weighted toward Nyquist (its flat-equivalent r₁ is about −0.70) and the same whitened r₁ is reached at a higher in-band share than the flat calculation gave. The prediction's two decisive parts — that the AR(1) residual stays in band, and that the AR(p) residual's power leaves the band and goes on leaving it as p rises while r₁ falls to zero — are met; the failure condition of the rule (an AR(p) share above 0.9) was not triggered. At p = 20 the residual is white at the run level (r₁ = 0.0002) because it is mostly stop-band residue, which is the answer to the objection that one should whiten harder. No atoms were computed at p = 10 or 20, as the entry specified. S11 Table collects B16 and B16b.
 
 ## 9. Manufacture and the lag variants
 
@@ -296,4 +361,4 @@ The main text's Table 6 and Fig 5 give the lag variants (`ts_gsr`, W = 60; `note
 
 ## 10. The applicability table
 
-The full table with its search record is `notes/partB5_literature_v2.md` (revised from the full texts on 20 September 2026; `notes/partB5_literature.md` is the record of what could be read on 14 September). Its Table A lists, for each of nine empirical fMRI ΦID studies (Down et al., 2026; Gatica et al., 2024; Luppi et al., 2022, 2023, 2024, 2026; Nago et al., 2026; Tarchi et al., 2026; Zhang et al., 2025) and for Varley (2024) and Mediano et al. (2025), the data (N, TR), parcellation, preprocessing (band, nuisance, HRF deconvolution), the quantity reported, the redundancy function, estimator and lag, whether autocorrelation was addressed, the reported effect, and the scope-map reading — the sign of r₁ change that would produce the reported effect on the map, in the same conditional form for every study. Its Table B gives the inputs: the atom signature of an r₁ change against a q change on the family (at (0.85, 0.25): ∂sts/∂r₁ +6.07 against ∂rtr/∂r₁ +0.06; ∂sts/∂q −0.19 against ∂rtr/∂q +0.19); the r₁ of ideal band-passed white noise at each study's band and TR (0.008–0.09 Hz at TR 2 s → 0.78, at 1.838 s → 0.81, at 0.72 s → 0.97; 0.0025–0.05 Hz at TR 2 s → 0.93, 2.4 s → 0.90, 2.6 s → 0.89, 3 s → 0.85, 1.25 s → 0.97; 0.01–0.1 Hz at 2.0/1.0/1.2 s → 0.73/0.93/0.90; this dataset's 0.01–0.08 Hz at TR 2 s → 0.82 against a measured 0.866), which are lower bounds because real BOLD has its power at the low end of the band; the direction of the autocorrelation change in the conditions studied, from the sources read (Huang et al., 2018); and what HRF deconvolution does on this dataset (run-level r₁ 0.866 → 0.790 on ts_gsr, about 30 % of the sts level removed, the sts contrast unchanged, −0.0782 against −0.0809 at W = 60; S2 Text).
+The full table with its search record is `notes/partB5_literature_v2.md` (revised from the full texts on 20 September 2026; `notes/partB5_literature.md` is the record of what could be read on 14 September). Its Table A lists, for each of nine empirical fMRI ΦID studies (Down et al., 2026; Gatica et al., 2024; Luppi et al., 2022, 2023, 2024, 2026; Nago et al., 2026; Tarchi et al., 2026; Zhang et al., 2025) and for Varley (2024) and Mediano et al. (2025), the data (N, TR), parcellation, preprocessing (band, nuisance, HRF deconvolution), the quantity reported, the redundancy function, estimator and lag, whether autocorrelation was addressed, the reported effect, and the scope-map reading — the sign of r₁ change that would produce the reported effect on the map, in the same conditional form for every study. Its Table B gives the inputs: the atom signature of an r₁ change against a q change on the family (at (0.85, 0.25): ∂sts/∂r₁ +6.07 against ∂rtr/∂r₁ +0.06; ∂sts/∂q −0.19 against ∂rtr/∂q +0.19; at (0.97, 0.25), the point the 0.72 s band of Luppi et al. (2022) implies, the same closed form of the main text's Methods — ∂sts/∂a = 2a/(1 − a²) − aq²/(1 − a²q²) and ∂rtr/∂a = aq²/(1 − a²q²) — gives +32.8 against +0.06, which is the pair of values the Discussion quotes; no output file holds them, since the scope map's grid stops at r₁ = 0.95); the r₁ of ideal band-passed white noise at each study's band and TR (0.008–0.09 Hz at TR 2 s → 0.78, at 1.838 s → 0.81, at 0.72 s → 0.97; 0.0025–0.05 Hz at TR 2 s → 0.93, 2.4 s → 0.90, 2.6 s → 0.89, 3 s → 0.85, 1.25 s → 0.97; 0.01–0.1 Hz at 2.0/1.0/1.2 s → 0.73/0.93/0.90; this dataset's 0.01–0.08 Hz at TR 2 s → 0.82 against a measured 0.866), which are lower bounds because real BOLD has its power at the low end of the band; the direction of the autocorrelation change in the conditions studied, from the sources read (Huang et al., 2018); and what HRF deconvolution does on this dataset (run-level r₁ 0.866 → 0.790 on ts_gsr, about 30 % of the sts level removed, the sts contrast unchanged, −0.0782 against −0.0809 at W = 60; S2 Text).
