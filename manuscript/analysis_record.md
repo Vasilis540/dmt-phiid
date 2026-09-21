@@ -5661,3 +5661,92 @@ against the committed tables. Everything else in the draft was checked cell by c
    under an asymmetric population; S10 and S11 Tables carry both computations. Figure 2's caption, in the main text
    and in `scripts/15_figures_v2.py`, says that panel (a) draws one subject's pairs; Figure 4's caption no longer
    quotes the AR(1) expectation, and the script reads the band-passed table when it is present, which it now is.
+
+## The final end-to-end run of `run_all.sh`: pre-run entry, 21 Sep 2026 17:54 UTC (appended; nothing above edited)
+
+Every earlier run of this repository's pipeline was made step by step or section by section: sections 0–5 in pieces
+on 12–17 September, section 6 end to end on 20 September at d507728 (`runsec6d`, 59 min), B14–B20 on 21 September at
+f1f5fcc and B16b and B17b the same day at 106bd33. `run_all.sh` has never been executed as one run; four attempts on
+16–17 September stopped inside `02_bias_check` (record, "The attempts at the end-to-end run"). The Data and code
+availability paragraph, the Figures paragraph and the reproduction claim of the paper all rest on that run, and this
+entry fixes what it is and what counts as a pass before it is made.
+
+1. **The commit.** The run is made at the commit that carries this entry — round 15's commit, the last code and text
+   commit before the run — in V.S.'s repository folder, from the pinned environment (`.venv`, `requirements.lock.txt`,
+   Python 3.12.3), with `external/DMT_NCT/data/*.mat` present at upstream 77af7aa, the working tree clean. The
+   commands are in the round's message; the run is a root transient unit (`runfinal`, log `~/run_final_21.log`), with
+   the laptop rebooted first so that the lid setting is in effect for the whole run, which is hours and not minutes.
+2. **What the outputs will carry.** Every regenerated output writes `git=<the run's commit>` in its header, through
+   `scripts/*`'s own SHA call and `notes/rev_git.py` for the `notes/` writers, and `-dirty` if the tree is not clean —
+   a `-dirty` tag anywhere is a failure of the run's conditions, not a tolerated difference. Four files carry no SHA
+   by design, as the pre-run entry of 18 September records: `notes/review_results/partB/crosslag_deviation.csv`,
+   `crosslag_budget.csv`, `crosslag_budget_null.csv` and `regional_sts_r1.csv`, whose readers read them without
+   `comment="#"`. Four logs are not regenerated at all, because section 6 runs their scripts with `nrun` (no capture)
+   and they are stdout captures of runs made outside `run_all.sh`: `ccs_verify.log`, `ccs_run.log`, `lag_run.log` and
+   `diag_run.log`; they keep their committed form and their absence from the run's diff is expected. The
+   deconvolution files under `notes/review_results/deconv/` and `notes/review_results/regional/` carry `git=nogit`
+   and are written only in the sandbox of `notes/rev_deconv.py`.
+3. **The deconvolution items.** The sandbox (the deconvolved `.mat` merged under `notes/review_results/deconv/` and
+   `scripts/01` rerun on it there) is git-ignored and is not present in a fresh clone. The run is made **without**
+   it: `run_all.sh` prints "skipping the HRF-deconvolution items" and the eleven steps of that branch do not execute,
+   so their committed outputs — the four `deconv/atoms_*` CSVs, the sixteen `regional/regional_phir_*` CSVs and the
+   `logs/deconv_*`, `rev_deconv_*`, `rev_phir_items`, `rev_run_deconv` and `regional_*` logs — stay as committed and
+   are not compared. If V.S. rebuilds the sandbox first, the branch runs and those files are compared under the same
+   rule as the rest; the check command reports which branch was taken.
+4. **The rule for a pass, fixed before the run.** Against the commit of item 1, with
+   `notes/planning_checks_2026-09-16/reproduction_checks/6_committed_compare.py <SHA>` for the `.md`, `.csv` and
+   `.txt` outputs and `8_binary_compare.py <SHA>` for the `.npy`, `.npz` and `.pkl` outputs, both run on the working
+   tree **before anything is added, restored or committed**, since both compare the working tree against the
+   reference commit and a restore destroys the evidence:
+   - text outputs (`.md`, `.log`, `.txt`): identical to the committed ones apart from their `git=` lines, the elapsed
+     times and step timestamps they print, absolute paths, and the sign of a printed zero;
+   - CSV outputs: every cell within 1e-9 of the committed value, with no changed row or column;
+   - binary outputs: identical, or every numeric entry within 1e-9 with the NaN pattern unchanged;
+   - anything above those tolerances — a changed cell, a changed row or column, a value differing by more than 1e-9,
+     a `-dirty` header, a traceback, a step that did not run — blocks the commit. It is investigated and recorded in
+     an entry of this record before anything else happens: the outputs are not committed, the text is not changed,
+     and no result of the paper moves until the difference is explained. This is the rule, not a preference: a
+     difference here means either the code does not reproduce its own committed outputs or the environment has
+     changed, and both are findings about the paper.
+5. **The figures are exempt from the identity rule, and are expected to differ.** `scripts/15_figures_v2.py` changed
+   in rounds 13, 14 and 14's follow-up, after the committed figures were generated at 48ea934, so the regenerated
+   `manuscript/figures/fig*_v2.*` and `captions_v2.md` will differ from the committed ones. The differences expected,
+   and the list V.S. checks them against by eye rather than against an impression:
+   - **Figure 1 is new in content**: the sixteen atoms observed against the family's prediction, levels in (a) and
+     DiDs in (b), from `family_atoms_ts_gsr_W60.npz`, written to `fig1_v2_atoms_observed_predicted.pdf`/`.png`. The
+     old `fig1_v2_atoms_mmi_ccs.*` is not rewritten and stays as committed.
+   - **Figure 2**: panel (a) gains the density contours of the saved pre-injection pairs (one subject's, as its
+     caption now says) and the operating point; panel (c) is replaced by sts against the coupling c at three fixed
+     (r₁, q), read from `coupling_map_tables.md`. Panel (b) is unchanged.
+   - **Figure 3**: no printed p-values; a new middle panel, the family-predicted against the observed sts DiD per
+     subject with the identity line; the cross-half value in the caption.
+   - **Figure 4**: a third panel, the DMT − placebo residual difference per window with within-subject bands and the
+     calibrated expectation as a dashed step, read from `calibration_filtered_tables.md` (+0.0027 ± 0.0014); the
+     caption's within-subject-SEM citation reads "(Cousineau, 2005; Morey, 2008)" where the committed captions file
+     was hand-edited to the same words in round 13.
+   - **Figure 5** is unchanged in content; only its header line and any timestamp may differ.
+   - **Figure 6 is new**: regional sts against regional r₁ by network, and the sensory − association contrast before
+     and after partialling, written to `fig6_v2_regional.pdf`/`.png`.
+   - `captions_v2.md` is regenerated from the script and will carry the run's commit in its header.
+   A figure that differs in any other way — a panel that is not in this list, a value in a caption that does not
+   match the tables — is treated as item 4 treats a difference, not as a figure matter.
+6. **What the run does not regenerate.** The superseded sanity runs listed in `run_all.sh`'s header
+   (`results/synergy_bins_20regions_*`, `results/synergy_bins_115regions-all_ts_gsr_global.*`,
+   `results/nonstat_n20000/`, `results/tier_check_decay_windows_n2000_18ad8b4.csv`), the four logs of item 2, the
+   deconvolution items of item 3, and the `draft.md` figures' captions file `manuscript/figures/captions.md`, which
+   `scripts/12_figures.py` does rewrite and which is therefore compared under item 4.
+7. **One ordering fix made in the same commit as this entry.** `notes/partB19_exchange_rates.py` reads
+   `notes/review_results/partB/regional_sts_r1.csv` for the regional SD of r₁, and that file is written by
+   `notes/partB11_regional_sts_r1.py`, which stood *after* B19 in section 6. On every run so far B19 therefore read
+   the committed file from an earlier run rather than the current one; the values are unchanged because B11's output
+   has not changed since 15 September, but in a clean-room reproduction the step would read a stale file or fail.
+   The B11 step is moved above B19 in `run_all.sh`; B20, which also reads that file, still follows B11. This is the
+   only forward dependency in the script: every other step reads only what an earlier step wrote.
+8. **The expected shape of the run.** 61 steps without the deconvolution branch (65 step lines, of which four are
+   that branch, one of them a loop of eight), the last being `scripts/15_figures_v2.py`, and the line
+   "=== all done in N min". The committed logs give, for the steps that print their own elapsed time, about 21,500 s
+   for sections 0–5 (of which `02_bias_check` at 20,000 runs is 7,182 s and the three windowed `scripts/01` steps
+   12,000 s) and about 10,600 s for section 6 (of which B17 is 3,382 s, B17b 2,342 s and B16 1,683 s); with the
+   thirty-odd steps that print no time, the run is expected to take about nine hours, and about twelve minutes more
+   if the deconvolution sandbox is present. The outcome entry records the actual wall-clock, the step count, the
+   traceback count and the two comparisons' verdicts file by file.

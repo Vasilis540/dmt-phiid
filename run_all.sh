@@ -136,6 +136,9 @@ nrun notes/partB6_ccs_definition.py
 # B18 (record, "The CCS increase decomposed (B18): pre-run entry, 20 Sep 2026")
 nstep partB/ccs_decomposition_run   notes/partB18_ccs_decomposition.py
 nrun notes/partB7_splithalf.py
+# B11 moved above B19 on 21 Sep 2026 (round 15): partB19 reads regional_sts_r1.csv, which this step writes;
+# it stood after B19 until then, so B19 read the previous run's file. B20 still follows it.
+nstep partB/regional_sts_r1_run     notes/partB11_regional_sts_r1.py
 # B19 (record, "Exchange rates, the within-window regression, the cross-half correlation and BCa intervals (B19): pre-run entry, 20 Sep 2026")
 nstep partB/exchange_rates_run      notes/partB19_exchange_rates.py
 nstep partB/coupling_map_run        notes/partB8_coupling_map.py
@@ -144,7 +147,6 @@ nrun notes/partB9_leave_two_out.py
 nstep partB/crosslag_deviation_run  notes/partB10_crosslag_deviation.py
 nstep partB/crosslag_budget_run     notes/partB12_crosslag_budget.py
 nstep partB/crosslag_budget_null_run notes/partB13_crosslag_budget_null.py
-nstep partB/regional_sts_r1_run     notes/partB11_regional_sts_r1.py
 # B20 (record, "The regional map with regional r₁ partialled out (B20): pre-run entry, 20 Sep 2026"): reads regional_sts_r1.csv
 nstep partB/regional_partial_run    notes/partB20_regional_partial.py
 step 15_figures_v2                  scripts/15_figures_v2.py

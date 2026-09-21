@@ -14,7 +14,7 @@ Cambridge (Prof. Emmanuel Stamatakis).
 - **20 Nov 2026** — public preprint + documented repo
 - **8 Dec 2026** — Cambridge application (Gates Cambridge / Cambridge Trust)
 
-## Current state (21 Sep 2026, round 14, follow-up commit)
+## Current state (21 Sep 2026, round 15: the last text fixes, before the final run)
 
 **Analysis complete. The paper is `manuscript/draft_v2.md`, restructured on 21 Sep 2026 (round 14, Stage B) for a journal reader in the PLOS Computational Biology Methods-article order: new title, abstract and Author summary at their caps, seven Results sections, main text 9,991 words (title through Methods, after the follow-up commit), the supporting information as `manuscript/si/S1_Text.md`–`S5_Text.md` and the tables S1–S11 in `manuscript/supplementary.md`. `manuscript/draft.md` is the superseded first draft, kept as a record; `notes/companion_plain_language.md` is retired. Figures `fig1_v2`–`fig5_v2` built by `scripts/15_figures_v2.py`, whose revision of 21 Sep also writes `fig1_v2_atoms_observed_predicted` and `fig6_v2_regional`; the committed files stay those of 48ea934 until the final full run.**
 
@@ -324,7 +324,19 @@ Cambridge (Prof. Emmanuel Stamatakis).
   read by direction — no coupling change of either kind produces its DMT change — with the three calibrated
   expectations inside its interval. Thirty-six values filled, seven corrections applied, eighteen paragraphs
   condensed to keep the main text under 10,000 words (9,991).
-- Remaining work: the thirteen permanent [TK] items in `draft_v2.md`
+- 21 Sep 2026, round 15 (record, "The final end-to-end run of `run_all.sh`: pre-run entry"): the abstract's residual
+  clause narrowed to what Results 4 establishes ("a residual that a coupling change of either sign would have
+  lowered"); the family's own per-pair R² (0.796) restored to Results 1 and the `(Ince, 2017, Definition 2)` pointer
+  to Methods; the round's numbers CSV de-duplicated and every row checked at the line it names (230 rows, 0
+  failures). `run_all.sh` checked step by step: one forward dependency found and fixed — `partB11_regional_sts_r1.py`
+  now runs before `partB19_exchange_rates.py`, which reads its CSV — and no other step reads a file a later step
+  writes. The pre-run entry fixes the commit, the SHA-header expectations, the deconvolution branch, the pass rule
+  (text identical apart from SHA/timing/path/signed-zero lines, CSV within 1e-9, binaries within 1e-9, both
+  comparisons run before anything is added) and the figure differences to expect. Main text 9,999 words.
+- Remaining work: the single end-to-end run of `run_all.sh` (V.S.; `runfinal`, about nine hours, lid open, the
+  laptop rebooted first), then bundle 26: the run's outcome entry with the comparison verdicts, the Data-availability
+  [TK] and the Figures paragraph's 48ea934 replaced by the run's commit, and CSV rows for anything the regenerated
+  outputs changed. The thirteen permanent [TK] items in `draft_v2.md`
   (affiliations, co-authors, the REC reference number, the co-authors'
   funding statements, contributions, competing interests, the run
   sentence); run `run_all.sh` end-to-end
