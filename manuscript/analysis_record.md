@@ -5474,3 +5474,190 @@ source file and row) and the word counts by section.
    new computation (a pre-run entry) — noted for V.S. (b) The main text quotes B17b and B16b as placeholders,
    since their outputs were not on origin when Stage B was complete. (c) The reference list is unchanged from round
    13 (41 entries); Wolff 2022 and Zilio 2021 remain uncited and absent.
+
+## B16b, outcome, 21 Sep 2026 17:10 UTC (appended; nothing above edited)
+
+Outcome of "The whitened series' spectrum (B16b): pre-run entry, 21 Sep 2026 14:03 UTC"; run by V.S. at 106bd33
+(the Stage B commit of round 14) in the root transient unit `runb16b` (log `~/run_b16b_21.log`; the step's tee log
+`notes/review_results/partB/whitened_spectrum_run.log`, 14 s, no traceback); the output carries `git=106bd33` and
+was committed as ada6438.
+
+**Prediction and rule (from the pre-run entry).** "Prediction: the AR(1) residual keeps most of its power in band
+   (share above 0.9) with r₁ near 0.75; the AR(p ≤ 5) residual's in-band share falls to about 0.5–0.6 (a mixture of
+   flattened in-band noise at r₁ = 0.82 and amplified above-band residue at r₁ ≈ −0.4 has r₁ = 0.26 at an in-band
+   share of 0.54); at p = 10 and 20 the share falls further toward 0.28 as r₁ approaches zero — the whitened series is
+   increasingly the amplified stop-band residue. Rule: descriptive; quoted in the Remedies paragraph; no atoms are
+   computed at p = 10 or 20. If the prediction fails (the AR(p) share stays above 0.9), the 'amplified residue'
+   explanation is dropped from the text and the remaining autocorrelation is reported without it."
+**Outcome (`whitened_spectrum_tables.md`).** Prediction met in its two decisive parts and missed in one constant;
+   the rule's failure condition (an AR(p) share above 0.9) was not triggered, so the "amplified residue" explanation
+   stands. ts_gsr, mean over the 28 runs (SD over runs in the table): the raw series has 99.2 % of its power inside
+   0.01–0.08 Hz, 0.7 % below and 0.1 % above, with run-level r₁ 0.8661. The AR(1) residual keeps 99.6 % of its power
+   in band with run-level r₁ 0.7572 (W = 60, DMT windows 1–4: 0.7506) — p = 1 removes almost nothing and is not a
+   filter. The AR(p ≤ 5) residual, B16's whitening with its BIC orders reproduced exactly (p = 5 for 3,218 of the
+   3,220 region–runs, p = 4 for 2; ts_demean p = 5 for 3,215, p = 4 for 5), keeps only 65.5 % of its power in band and
+   carries 33.8 % above 0.08 Hz, with run-level r₁ 0.2944 (W = 60: 0.2625). At fixed p = 10 and p = 20 the in-band
+   share falls to 47.9 % and 39.1 % and the above-band share rises to 51.2 % and 59.7 %, while the run-level r₁ falls
+   to 0.0943 and 0.0002. ts_demean is the same picture: raw 99.2 %; the AR(p) residual 67.0 % in band, 32.4 % above,
+   r₁ 0.3011 (W = 60: 0.2583); p = 20 38.7 %, 60.0 %, −0.0024. The ratio of above-band to in-band power rises from
+   0.0010 in the raw series to 0.516 in the AR(5) residual, a factor of 512, and to 1.53 at p = 20. The table's two
+   consistency checks hold: the raw in-band share reproduces `rev_extra.log` (0.992) and the raw W = 60 r₁ of the DMT
+   pre-injection windows reproduces `inference_rows_raw.csv` (0.8479 on ts_gsr, 0.8382 on ts_demean).
+**The miss, and its reason.** The entry predicted an AR(p) in-band share of "about 0.5–0.6"; it came out 0.655 on
+   ts_gsr and 0.670 on ts_demean. That band was computed from a mixture of flattened in-band noise at r₁ = 0.82 and a
+   *flat* stop-band residue, whose r₁ over 0.08–0.25 Hz at TR 2 s is −0.395 (the same calculation that gives +0.817
+   in band; `partB16b` and the check in this entry). A flat mixture at an in-band share of 0.655 would have a
+   whitened r₁ of +0.40, not the observed +0.29, so the actual residue is weighted toward Nyquist (the implied
+   flat-equivalent r₁ is about −0.70), and the same whitened r₁ is reached at a higher in-band share than the flat
+   calculation gave. The prediction's two decisive parts — that the AR(1) residual stays in band at r₁ ≈ 0.75, and
+   that the AR(p) residual's power moves out of band and goes on moving as p rises while r₁ falls to zero — are met;
+   the constant is not.
+**Reading under the rule (descriptive; quoted in the Remedies paragraph; no atoms at p = 10 or 20).** AR(p)
+   prewhitening of band-passed BOLD does not produce a white version of the signal but a series a third to
+   three-fifths of whose power is amplified stop-band residue, where the raw series has a thousandth of its power. At
+   p = 20 the residual is white at the run level (r₁ = 0.0002) precisely because it is mostly that residue — which is
+   the answer to the objection that one should simply whiten harder: whitening harder does not recover the signal's
+   in-band structure, it replaces the series by its stop band.
+**Text consequence.** Round 14, follow-up commit: Results 7 quotes the AR(5) in-band share (0.66) and the above-band
+   shares at p = 5, 10 and 20 (34 %, 51 %, 60 %) with the r₁ values beside them, in place of the two [TK: B16b]
+   marks; S11 Table carries B16 and B16b in full.
+
+## B17b, outcome, 21 Sep 2026 17:10 UTC (appended; nothing above edited)
+
+Outcome of "Calibration of the diagnostic on the band-passed generator (B17b): pre-run entry, 21 Sep 2026 14:03 UTC";
+run by V.S. in the same unit as B16b (tee log `notes/review_results/partB/calibration_filtered_run.log`, 2,342 s, no
+traceback); the outputs (`calibration_filtered_tables.md`, `calibration_filtered.csv`) carry `git=106bd33` and were
+committed as ada6438. The generator was solved once on the calibration draw and held fixed: β̄ = 185.4, σ_q = 0.2637,
+β̄_post = 105.7, δ = 82.6, with realised window-level mean a 0.8637 (target 0.8632), mean |q| 0.2844 (0.2842), post a
+0.8483 (0.8482) and a_x − a_y 0.0300 (0.03).
+
+**Prediction and rule (from the pre-run entry).** "Predictions: the W = 60 sts level near the null's 1.18 rather
+   than B17's 0.715; under (i) the sts DiD between −0.07 and −0.10 (the data's is −0.0809) and the residual DiD near
+   the data's own null, +0.004 to +0.008; (ii) residual negative for either sign of Δc; (iii) additive; (iv) level
+   lowered, residual near its (i) value; the population reference for B17 (i): a change of about −0.08 (1.19 → 1.11),
+   and for (iv) − (i) a level difference of about −0.045. Rule: where B17 and B17b differ, the main text quotes B17b
+   (the generator closer to the data) and S3 Text carries both; the finite-sample null of Results 4 is superseded by
+   B17b where they overlap; the null's own DiD (+0.0054) is quoted beside B17b's (i)."
+**Outcome, the regime (met, and better than predicted).** The W = 60 sts level is 1.1883 against the data's 1.1554
+   (the diagnostic's all-window observed level 1.1377) and B17's 0.715; at the global fit 1.3262 against the data's
+   1.3085. Under (i) a Δa of −0.015 gives an sts DiD of −0.0940 ± 0.0028 at W = 60 — inside the predicted −0.07 to
+   −0.10 — and −0.1046 at the global fit. Per 0.001 of r₁ that is −0.0063 at W = 60 against the data's −0.0055 (an
+   observed Δr₁ of −0.0146 for a DiD of −0.0809) and B17's AR(1) −0.0028: the band-passed generator reproduces the
+   data's exchange rate, and the AR(1) family returns half of it. The population reference column gives B17's
+   distributions a change of −0.0816 under (i) (1.1936 → 1.1121) and a level difference of −0.0463 for (iv) − (i),
+   both as predicted.
+**Outcome, (i)'s residual (missed low).** +0.0027 ± 0.0014, against the recorded +0.004 to +0.008. Positive and of
+   the same order, but smaller: B17's AR(1) value is +0.0049 ± 0.0017 and the data's own finite-sample null +0.0054.
+   The miss is recorded as a miss, not rounded into the band. Its sign-flip p against zero is below 0.05 in 54 % of
+   replicates (mean p 0.136), against 82 % (mean 0.056) on the AR(1) generator: the test of the residual against zero
+   is anti-conservative on both generators, less so here.
+**Outcome, (ii) (uninformative as implemented, and why).** The residual DiD is +0.0003, −0.0002, −0.0004 and −0.0002
+   at Δc = +0.01, +0.02, +0.03 and −0.02, every one inside its ±0.0011 to ±0.0012 replicate SD: no response. This
+   does not contradict B17. The coupling of this script — added after filtering, on the post samples, each series
+   re-standardised — induced a δ_sym DiD of only +0.00025, +0.00045, +0.00069 and −0.00044, about a thirtieth of
+   B17's VAR(1) coupling at the same Δc (+0.0076, +0.0148, +0.0221, −0.0150; ratios 30 to 34). B17's own response is
+   quadratic in the induced δ_sym — residual ≈ −22 δ_sym², the four rows giving −17, −24, −22 and −24 — which at a
+   δ_sym of 0.0007 predicts a residual of −0.00001, which is what B17b shows. On the δ_sym scale the two generators
+   agree; on the c scale they do not, because the same c injects different amounts of lagged structure through the
+   two constructions. B17's rows therefore remain the calibration of the residual's response to a coupling change,
+   and the (ii) rows of the two generators are comparable by their induced δ_sym DiD and not by c. This is a
+   departure from the literal rule ("where B17 and B17b differ the main text quotes B17b"), taken because on the
+   coupling rows they do not differ once the perturbation is matched, and it is recorded here as such.
+**Outcome, (iii) and (iv) (met).** (iii) +0.0027, against (i)'s +0.0027 plus (ii) at +0.02 of −0.0002: additive.
+   (iv) lowers the W = 60 level by 0.0215 (1.1883 → 1.1668) and the global-fit level by 0.0736 (1.3262 → 1.2526),
+   with the residual at +0.0031, near its (i) value of +0.0027. On the AR(1) generator the same asymmetry lowered the
+   W = 60 level by 0.0021 and the global-fit level by 0.0190 against the population difference of 0.0463 its own
+   parameter distributions give — 4.5 % and 41 % of it — where on the band-passed generator the two estimators
+   return 0.0215 and 0.0736, ten times as much at W = 60. How much of the asymmetry's population exchange rate an
+   estimator recovers therefore depends on the generator and is not a fixed shrinkage; the band-passed generator has
+   no population column of its own, so no share is quoted for it.
+**A caution, recorded and carried into the text.** At the global fit with a period-level prediction, condition (iv)
+   leaves a residual DiD of +0.0101 ± 0.0016 whose sign-flip p is below 0.05 in 100 % of replicates. An asymmetric
+   population biases the global-fit residual upward. This paper reads the residual at W = 60, where the same
+   condition gives +0.0031, and S3 Text states that the global-fit residual is not a safe read when the pairs are
+   asymmetric.
+**Reading under the rule.** The calibrated expectation of the residual DiD under a pure autocorrelation change, on
+   the generator closest to the data, is +0.0027 ± 0.0014. The data's residual DiD, +0.0115 [+0.0021, +0.0211], is
+   four times it, and the expectation sits 0.0006 above the interval's lower limit — inside it, but at its edge. The
+   three expectations (band-passed +0.0027, AR(1) +0.0049, the finite-sample null +0.0054, range +0.0037 to +0.0077)
+   are all inside the interval. What the calibration licenses is narrower than the draft of Stage B claimed and does
+   not depend on the exact expectation: a coupling change applied independently of sign(q) lowers the residual
+   quadratically, for either sign of Δc (B17: −0.0010 to −0.0109), so it cannot raise the residual above the
+   pure-autocorrelation expectation; a coupling change correlated with sign(q) would move it at first order, and that
+   statistic's own DMT contrast bounds it (the sign(q)-weighted δ_sym DiD is −0.00119 [−0.00288, +0.00062],
+   p = 0.2233 at W = 60 on the primary variant, `directed_crosslag_tables.md`). The residual's DMT change is
+   therefore in the direction no coupling change of either kind produces, and carries no evidence of a change in
+   lagged interaction; its excess over the calibrated expectation is not attributable to coupling and is left
+   unexplained, with the candidates named (sampling, or a change in the shape of the autocorrelation function beyond
+   its lag-1 summary, which the AR(1) prediction cannot follow).
+**Text consequence.** Round 14, follow-up commit: Results 4 quotes +0.0027 ± 0.0014 as the calibrated expectation
+   and carries the argument above in place of the "within its finite-sample expectation" reading; Table 4's
+   calibrated-expectation row and Table 7's band-passed columns are filled; Table 5 gains the population and
+   band-passed rows under (i); the abstract's residual sentence is rewritten; the first-order-cancellation caveat is
+   stated where the calibration is described; S3 Text and S10 Table carry B17 and B17b side by side with the δ_sym
+   reconciliation and the global-fit caution.
+
+## Round 14, follow-up commit: the fills and seven corrections, 21 Sep 2026 17:10 UTC (appended; nothing above edited)
+
+The commit that carries the outcome entries above also filled the thirty-six [TK: B16b] and [TK: B17b] values of
+`manuscript/draft_v2.md` from the committed tables, rewrote the readings B17b changes (Results 4's calibration and
+reading paragraphs, the Discussion's residual paragraph, the abstract's residual sentence, Table 4's
+calibrated-expectation row, Table 7's band-passed columns and caption, Table 5's two simulated rows and the sentence
+after it, Results 7's two B16b values), and applied seven corrections the planning session found on checking Stage B
+against the committed tables. Everything else in the draft was checked cell by cell and stands.
+
+**The seven corrections.**
+   1. Results 2, provenance. Before: "under the directional-failure rule recorded with the hypothesis". After: "under
+   the directional-failure rule this is a refutation of the up-regulation hypothesis; the rule itself was written
+   after a 115-region global fit had shown a decrease (Methods)" — which is what this record and the Methods
+   paragraph "Pre-registration and deviations" say. Every other claim in the main text about when a rule or plan was
+   recorded was then checked against the record; all twenty-two agree, and one wording was sharpened ("four
+   pre-specified variant × estimator combinations" → "the four combinations of the study's two preprocessing
+   variants and two estimators", since the post-hoc check itself was not pre-specified).
+   2. Discussion, the rtr comparison. Before: "a statement about the family, which the data follow only loosely (here
+   rtr fell by a tenth of the sts fall where the family gives a hundredth)". That contradicted Table 1: the family at
+   each pair's measured (a_x, a_y, q) predicts an rtr DiD of −0.0086 against an observed −0.0078, the closest
+   agreement of any atom; the "hundredth" is the ratio of the two pure-r₁ derivatives, not what the family predicts
+   here, because the pairs' |q| fell as well (−0.0164). After: the derivatives are given as the family statement
+   (∂rtr/∂r₁ = 0.06 against ∂sts/∂r₁ = 6.07), and the data's fall is reported with the family's prediction beside it.
+   3. Discussion: "to within 0.05 nats for sts" → 0.053, the residual Table 1 gives.
+   4. Results 4: "a population difference of about 0.045" → 0.0463, quoted from B17b's population reference column.
+   5. Results 4: "the residual is not tested against zero anywhere in this paper" sat beside a Table 4 interval that
+   excludes zero. After: "no p value against zero is reported for the residual anywhere in this paper; its interval
+   is the estimate's uncertainty and is read against the calibrated expectation".
+   6. Results 6: "rts, str and the four mirror atoms are near zero" — the CCS mirror atoms are +0.072, the size of
+   rtr and larger than |CCS-sts|. After: "rts and str are near zero (−0.013) and the four mirror atoms are small and
+   positive (+0.072) where MMI gives −0.535".
+   7. The numbers CSV of the round's report: two wrong pointers corrected (the map projection is item 5 of
+   `notes/partB1_scope_map.md`, not `scope_map_tables.md`; the mean pair |q| change, −0.0164, is the "pair |q|" line
+   of `notes/review_results/partB/residual_source.log`, not the overlay table). Every other row whose source was a
+   summary file rather than a results table was then opened and checked: twelve locators were corrected in all, two
+   rows were dropped as no longer in the main text, twelve values were updated to the shortened text, and
+   twenty-seven rows were added for the values B16b and B17b supply. The CSV now has 249 rows.
+**Two further corrections made in the same pass, not on the planning session's list.** (a) Methods described the
+   band-passed generator's filter as "a smooth 0.01–0.08 Hz band-pass"; its committed header gives the
+   placebo-fitted edges, 0.0064–0.080 Hz with 0.004 Hz cosine transitions, and Methods now says so. (b) The
+   Discussion's "∂sts/∂r₁ = 32.8 against ∂rtr/∂r₁ = 0.06" at the r₁ = 0.97 implied by the 0.72 s band of Luppi et al.
+   (2022) is held by no output file, because the scope map's grid stops at r₁ = 0.95; S3 Text §10 now states that
+   the two values are the closed form of Methods evaluated at (0.97, 0.25), and both were verified numerically
+   (+32.76 and +0.064).
+**Word count.** Filling the placeholders and rewriting the readings took the main text to 10,551 words, over the
+   10,000 the plan sets, so eighteen paragraphs were condensed — the detail moved to or already held by S3 Text
+   (the calibration's condition-by-condition description, the variance-ratio figures, the split of the CCS increase
+   at W = 60, the three lag intervals, the within-window regression's standardised coefficients, the proportionality
+   cells, parts of the Luppi et al. (2022) paragraph and of Methods). Main text 9,991 (Stage B 9,994); introduction
+   788, results prose 4,472, discussion 1,861, methods 2,842; abstract 300 and Author summary 200 at their caps;
+   "Pre-registration and deviations" 148. No number was dropped that the text relies on, and none was changed by the
+   condensing; the CSV lists what each surviving number is and where it comes from.
+**TK inventory (unchanged in count).** Thirteen permanent items in the main text, as after Stage B: the two
+   co-author marks and the further-co-authors line, the two affiliations, the REC reference number, the run sentence
+   in Data and code availability, three in Author contributions, Funding and Competing interests. The thirty-seven
+   transient [TK: B16b]/[TK: B17b] marks are gone. S5 Text's three marks are down to one, the pending full run:
+   B16b and B17b's run and outputs commit are now named, and the self-reference to this commit was replaced by the
+   commit identifiers of Stage A, Stage B and the outputs, since a commit cannot name its own.
+**Also in this commit.** The bracketed note at the head of the References keeps only the dates a reader of the
+   reference list needs; its record references and the path to the citation audit are in S5 Text §5. S3 Text §7 and
+   §8 carry B17b and B16b in full, with the δ_sym reconciliation of the two generators and the global-fit caution
+   under an asymmetric population; S10 and S11 Tables carry both computations. Figure 2's caption, in the main text
+   and in `scripts/15_figures_v2.py`, says that panel (a) draws one subject's pairs; Figure 4's caption no longer
+   quotes the AR(1) expectation, and the script reads the band-passed table when it is present, which it now is.
