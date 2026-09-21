@@ -98,7 +98,7 @@ Set means, primary proxy vs cortical non-workspace: ts_gsr workspace −0.0885 [
 
 ## S5 Table. Exploratory receptor-map correlations
 
-Source: `results/regional_analysis_<variant>.csv`. Spearman ρ between the group-mean regional DiD map and receptor density on the 99 cortical parcels; two-sided spin p over 10,000 parcel rotations (the spin test of Alexander-Bloch et al., 2018, with the rotations of Váša et al., 2018, released with the data; Váša one-sided-average p in brackets); BH across the five maps: nothing significant on either variant. The 115-region ρ including subcortex has no spatial null and is descriptive. **Exploratory.**
+Source: `results/regional_analysis_<variant>.csv`. Spearman ρ between the group-mean regional DiD map and receptor density on the 99 cortical parcels; two-sided spin p over 10,000 parcel rotations (the spin test of Alexander-Bloch et al., 2018, with the rotations of Váša et al., 2018, released with the data; Váša one-sided-average p in brackets); BH across the five maps: nothing significant on either variant. The 115-region ρ including subcortex has no spatial null and is descriptive. **Exploratory.** The same spin test applied to the regional sts–r₁ correlations of the main text's Results 3 (placebo run, pre-injection; `notes/review_results/partB/regional_sts_r1_tables.md`): sts against windowed regional r₁, Spearman ρ = +0.771 on the 99 cortical parcels, spin p < 0.0001 (Váša p < 0.0001; null SD 0.131); sts − rtr, ρ = +0.618, spin p < 0.0001; rtr, ρ = +0.504, spin p = 0.0002 (Váša p = 0.0002); against whole-span r₁, ρ = +0.827, +0.672 and +0.494 with spin p < 0.0001, < 0.0001 and 0.0003. No spin test is applied to the partialled map of Results 3, whose two inputs are algebraically linked.
 
 | map | ts_gsr ρ (p) [Váša p] | 115-region ρ | ts_demean ρ (p) [Váša p] | 115-region ρ |
 |---|---|---|---|---|
@@ -185,3 +185,67 @@ Rule (e), the per-subject difference DMT − placebo, null-corrected at the prim
 Superseded values of 16 September 2026, 10:32 UTC (`crosslag_deviation_tables.md`, sections A and B at git 9a19b10; record, correction note of 16 September, 16:24 UTC), reported here and no longer read: at W = 60 with the sign of each window's own q, `ts_gsr` +0.00611 [+0.00563, +0.00665] (DMT +0.00615, placebo +0.00608; slope of the deviation on q +0.0201) and `ts_demean` +0.00160 [−0.00019, +0.00326]; the finite-sample null with the same weight, homogeneous filter, +0.00348 at W = 60 (the four operating-point cells +0.00344, +0.00311, +0.00325, +0.00356) and +0.00662 at W = 30; the same null's run-level value +0.00025 ± 0.00005 at W = 840 (mean |q̂| 0.222 against the data's 0.1945). The readings drawn from them — "near zero: finite sampling removed" and "comparable to the run-level value (1.80 raw, 0.77–0.81 net): a stationary mechanism rather than pooling" — are superseded because the window's sign selects on the same samples as the deviation (about half of +0.00611 is that selection: the null's +0.00348), the null's run-level value was read at a different density of q̂ near zero (the null solved to the data gives +0.00029 to +0.00046), and the ratio compared two differently biased statistics without computing pooling; the budget above computes it.
 
 Earlier values of the same statistic, removed from Results 4 in the revision of 16 September and kept here (record, 15 September 2026, 15:36 and 18:18 UTC, and 16 September, 10:32 UTC; `crosslag_deviation_tables.md`): the signed mean over pairs, `ts_gsr` +0.00009 [+0.00005, +0.00013] (sign-flip p = 0.0004, positive in 13 of 14; pair-level SD of the deviation 0.0390) and `ts_demean` −0.00738 [−0.00902, −0.00588] (p = 0.0001, negative in 14 of 14), which on `ts_gsr` cancels between the 54.5 % of pairs with q < 0 (mean deviation −0.00304) and the pairs with q > 0 (+0.00384); the correlation across the 28 runs of the run-level statistic with the run-level residual, −0.767 (sign(q)-weighted) against −0.277 (signed) on `ts_gsr` and −0.969 against −0.890 on `ts_demean`; the slope of the deviation on q across pairs, +0.0163 [+0.0141, +0.0187] at the run level and +0.0201 [+0.0184, +0.0222] at W = 60 on `ts_gsr`, +0.0211 [+0.0194, +0.0227] and +0.0237 [+0.0219, +0.0255] on `ts_demean`; on `ts_demean` the run-level sign(q)-weighted mean −0.00262 (sign-flip p = 0.0532, positive in 5 of 14; −0.00582 among the q > 0 pairs, −0.01441 among the q < 0 pairs) and the W = 60 window-sign value +0.00160 (p = 0.1061); and the family-scale conversion at the operating point (0.85, 0.25), where a deviation of +0.006 gives a residual of −0.0103, +0.0034 gives −0.0061 (44 % of the observed −0.0137) and, at the pairs' mean run-level a and |q| (0.8666, 0.1945), −0.0051 (37 %).
+
+
+## S10 Table. Calibration of the residual diagnostic at both estimators: the AR(1) generator and the band-passed generator
+
+Source: `notes/review_results/partB/calibration_tables.md` (B17; record, pre-run entry 20 Sep 2026, outcome 21 Sep 2026) and `calibration_filtered_tables.md` (B17b; pre-run entry 21 Sep 2026). N_PAIRS = 300 per subject, 14 subjects × 2 runs × 840 samples, the change from sample 300 of the DMT run only, 50 replicates per condition (± is the SD over replicates); DiD = windows 6–14 minus 1–4 (bins 11–28 minus 1–8), DMT minus placebo. At the global fit two predictions are tabulated: the pipeline's run-level prediction (constant across a run's bins, so its DiD is zero and the residual DiD equals the observed DiD) and a period-level prediction from (a_x, a_y, q) measured on the pre and the post samples separately. "residual p" is the exact sign-flip p of the residual DiD against zero (mean over replicates; share of replicates below 0.05): the anti-conservatism of that test is what the calibration establishes (main text, Results 4). AR(1) generator: a_x, a_y ~ N(0.85, 0.0125); q from the data's window-level pool; Δa = −0.015 in population; coupling as a VAR(1) cross-coefficient.
+
+| condition | estimator | sts level (pre) | sts DiD | predicted DiD | residual DiD | residual p (mean; share < 0.05) | δ_sym DiD | RMS δ_anti DiD |
+|---|---|---|---|---|---|---|---|---|
+| (i) Δa = −0.015, Δc = 0 | W60 | 0.7152 | -0.0422 ± 0.0034 | -0.0471 ± 0.0036 | +0.0049 ± 0.0017 | 0.056; 0.82 | +0.00014 ± 0.00065 | +0.00130 ± 0.00050 |
+| (i) Δa = −0.015, Δc = 0 | global (run-level prediction) | 1.1317 | -0.0675 ± 0.0058 | -0.0000 ± 0.0000 | -0.0675 ± 0.0058 | 0.000; 1.00 | — | — |
+| (i) Δa = −0.015, Δc = 0 | global (period-level prediction) | 1.1317 | -0.0675 ± 0.0058 | -0.0764 ± 0.0048 | +0.0089 ± 0.0028 | 0.046; 0.62 | — | — |
+| (ii) Δc = +0.01 | W60 | 0.7153 | +0.0010 ± 0.0036 | +0.0020 ± 0.0037 | -0.0010 ± 0.0018 | 0.460; 0.08 | +0.00758 ± 0.00072 | -0.00014 ± 0.00065 |
+| (ii) Δc = +0.01 | global (run-level prediction) | 1.1390 | +0.0003 ± 0.0049 | -0.0000 ± 0.0000 | +0.0003 ± 0.0049 | 0.537; 0.04 | — | — |
+| (ii) Δc = +0.01 | global (period-level prediction) | 1.1390 | +0.0003 ± 0.0049 | +0.0028 ± 0.0040 | -0.0025 ± 0.0027 | 0.461; 0.12 | — | — |
+| (ii) Δc = +0.02 | W60 | 0.7154 | +0.0002 ± 0.0039 | +0.0053 ± 0.0037 | -0.0052 ± 0.0016 | 0.055; 0.76 | +0.01480 ± 0.00069 | -0.00037 ± 0.00063 |
+| (ii) Δc = +0.02 | global (run-level prediction) | 1.1446 | -0.0033 ± 0.0050 | -0.0000 ± 0.0000 | -0.0033 ± 0.0050 | 0.403; 0.14 | — | — |
+| (ii) Δc = +0.02 | global (period-level prediction) | 1.1446 | -0.0033 ± 0.0050 | +0.0092 ± 0.0039 | -0.0124 ± 0.0029 | 0.010; 0.92 | — | — |
+| (ii) Δc = +0.03 | W60 | 0.7152 | +0.0001 ± 0.0031 | +0.0110 ± 0.0034 | -0.0109 ± 0.0017 | 0.001; 1.00 | +0.02210 ± 0.00071 | -0.00083 ± 0.00055 |
+| (ii) Δc = +0.03 | global (run-level prediction) | 1.1512 | -0.0080 ± 0.0037 | -0.0000 ± 0.0000 | -0.0080 ± 0.0037 | 0.206; 0.26 | — | — |
+| (ii) Δc = +0.03 | global (period-level prediction) | 1.1512 | -0.0080 ± 0.0037 | +0.0198 ± 0.0035 | -0.0278 ± 0.0027 | 0.000; 1.00 | — | — |
+| (ii) Δc = −0.02 | W60 | 0.7152 | -0.0002 ± 0.0038 | +0.0053 ± 0.0037 | -0.0055 ± 0.0018 | 0.039; 0.80 | -0.01495 ± 0.00066 | -0.00027 ± 0.00059 |
+| (ii) Δc = −0.02 | global (run-level prediction) | 1.1438 | -0.0045 ± 0.0050 | +0.0000 ± 0.0000 | -0.0045 ± 0.0050 | 0.408; 0.14 | — | — |
+| (ii) Δc = −0.02 | global (period-level prediction) | 1.1438 | -0.0045 ± 0.0050 | +0.0089 ± 0.0041 | -0.0134 ± 0.0033 | 0.009; 0.94 | — | — |
+| (iii) Δa = −0.015, Δc = +0.02 | W60 | 0.7153 | -0.0419 ± 0.0035 | -0.0427 ± 0.0033 | +0.0009 ± 0.0016 | 0.521; 0.00 | +0.01500 ± 0.00080 | +0.00093 ± 0.00056 |
+| (iii) Δa = −0.015, Δc = +0.02 | global (run-level prediction) | 1.1364 | -0.0694 ± 0.0049 | -0.0000 ± 0.0000 | -0.0694 ± 0.0049 | 0.000; 1.00 | — | — |
+| (iii) Δa = −0.015, Δc = +0.02 | global (period-level prediction) | 1.1364 | -0.0694 ± 0.0049 | -0.0687 ± 0.0040 | -0.0006 ± 0.0035 | 0.525; 0.10 | — | — |
+| (iv) a_x − a_y = 0.03, Δa = −0.015 | W60 | 0.7131 | -0.0422 ± 0.0036 | -0.0473 ± 0.0038 | +0.0051 ± 0.0018 | 0.052; 0.72 | +0.00013 ± 0.00071 | +0.00130 ± 0.00056 |
+| (iv) a_x − a_y = 0.03, Δa = −0.015 | global (run-level prediction) | 1.1127 | -0.0677 ± 0.0046 | +0.0000 ± 0.0000 | -0.0677 ± 0.0046 | 0.000; 1.00 | — | — |
+| (iv) a_x − a_y = 0.03, Δa = −0.015 | global (period-level prediction) | 1.1127 | -0.0677 ± 0.0046 | -0.0746 ± 0.0045 | +0.0069 ± 0.0030 | 0.114; 0.64 | — | — |
+
+Band-passed generator (the same conditions on series with the data's spectrum and window-level operating point; the (ii) rows read by their δ_sym DiD, not by c): [TK: B17b — the table of `calibration_filtered_tables.md`, with the solved parameters and the population reference column].
+
+## S11 Table. The prewhitening check and the whitened series' spectrum
+
+Source: `notes/review_results/inference_rows_prewhiten.csv` and `partB/prewhiten_tables.md` (B16; record, pre-run entry 20 Sep 2026, outcome 21 Sep 2026); `partB/whitened_spectrum_tables.md` (B16b; pre-run entry 21 Sep 2026). Each region's series replaced, per run, by the residuals of its own AR(p) fit (p by BIC over 1–5, which chose p = 5 for 3,218 of the 3,220 region × run series on ts_gsr and 3,215 on ts_demean) or of its AR(1) fit; the atoms, the diagnostic and the DMT contrast recomputed unchanged with the primary inference. "Lag-1 autocorrelation of the whitened series" is `rev_series.autocorr_series` in window mode at W = 60 and, at the global fit, in run mode (the series standardised over the whole run and the lag-1 products averaged within 30-TR bins, a quantity that can exceed 1). **A remedy check, not a finding about DMT.**
+
+| whitening | variant | estimator | quantity | DMT pre-injection level | DiD [95 % CI] | sign-flip p | negative/14 |
+|---|---|---|---|---|---|---|---|
+| AR(p), p by BIC in 1–5 | ts_gsr | W = 60 | MMI-sts | 0.2202 | −0.0262 [−0.0589, +0.0049] | 0.1406 | 8 |
+| AR(p), p by BIC in 1–5 | ts_gsr | W = 60 | CCS-sts | 0.0159 | −0.0135 [−0.0217, −0.0042] | 0.0160 | 11 |
+| AR(p), p by BIC in 1–5 | ts_gsr | W = 60 | lag-1 autocorrelation of the whitened series | 0.2625 | −0.0544 [−0.1023, −0.0053] | 0.0520 | 12 |
+| AR(p), p by BIC in 1–5 | ts_gsr | global fit | MMI-sts | 0.1042 | −0.0264 [−0.0700, +0.0159] | 0.2736 | 8 |
+| AR(p), p by BIC in 1–5 | ts_gsr | global fit | CCS-sts | −0.0030 | −0.0045 [−0.0118, +0.0027] | 0.2610 | 7 |
+| AR(p), p by BIC in 1–5 | ts_gsr | global fit | lag-1 autocorrelation of the whitened series (run-standardised bins) | 0.2831 | −0.2044 [−0.2951, −0.1201] | 0.0006 | 13 |
+| AR(p), p by BIC in 1–5 | ts_demean | W = 60 | MMI-sts | 0.2350 | −0.0274 [−0.0629, +0.0077] | 0.1654 | 9 |
+| AR(p), p by BIC in 1–5 | ts_demean | W = 60 | CCS-sts | 0.0324 | −0.0168 [−0.0340, +0.0030] | 0.1073 | 10 |
+| AR(p), p by BIC in 1–5 | ts_demean | W = 60 | lag-1 autocorrelation of the whitened series | 0.2583 | −0.0418 [−0.1238, +0.0315] | 0.3459 | 9 |
+| AR(p), p by BIC in 1–5 | ts_demean | global fit | MMI-sts | 0.1306 | −0.0264 [−0.0718, +0.0155] | 0.2831 | 8 |
+| AR(p), p by BIC in 1–5 | ts_demean | global fit | CCS-sts | 0.0171 | −0.0028 [−0.0135, +0.0082] | 0.6385 | 7 |
+| AR(p), p by BIC in 1–5 | ts_demean | global fit | lag-1 autocorrelation of the whitened series (run-standardised bins) | 0.2703 | −0.1448 [−0.2672, −0.0405] | 0.0162 | 11 |
+| AR(1) | ts_gsr | W = 60 | MMI-sts | 0.7176 | −0.0620 [−0.0899, −0.0364] | 0.0006 | 13 |
+| AR(1) | ts_gsr | W = 60 | CCS-sts | −0.0552 | −0.0057 [−0.0094, −0.0022] | 0.0065 | 12 |
+| AR(1) | ts_gsr | W = 60 | lag-1 autocorrelation of the whitened series | 0.7506 | −0.0196 [−0.0282, −0.0116] | 0.0010 | 12 |
+| AR(1) | ts_gsr | global fit | MMI-sts | 0.8043 | −0.0559 [−0.0877, −0.0280] | 0.0015 | 13 |
+| AR(1) | ts_gsr | global fit | CCS-sts | −0.0298 | +0.0134 [+0.0086, +0.0186] | 0.0005 | 1 |
+| AR(1) | ts_gsr | global fit | lag-1 autocorrelation of the whitened series (run-standardised bins) | 0.9215 | −0.3164 [−0.4257, −0.2157] | 0.0004 | 13 |
+| AR(1) | ts_demean | W = 60 | MMI-sts | 0.6822 | −0.0784 [−0.1070, −0.0501] | 0.0004 | 13 |
+| AR(1) | ts_demean | W = 60 | CCS-sts | −0.0469 | +0.0035 [−0.0044, +0.0130] | 0.5170 | 5 |
+| AR(1) | ts_demean | W = 60 | lag-1 autocorrelation of the whitened series | 0.7426 | −0.0276 [−0.0370, −0.0182] | 0.0004 | 13 |
+| AR(1) | ts_demean | global fit | MMI-sts | 0.7648 | −0.0871 [−0.1289, −0.0454] | 0.0020 | 13 |
+| AR(1) | ts_demean | global fit | CCS-sts | −0.0287 | +0.0204 [+0.0121, +0.0298] | 0.0004 | 1 |
+| AR(1) | ts_demean | global fit | lag-1 autocorrelation of the whitened series (run-standardised bins) | 0.8631 | −0.2412 [−0.3762, −0.1251] | 0.0013 | 13 |
+
+Diagnostic on the AR(p)-whitened series, ts_gsr, W = 60: observed sts level 0.2766, predicted 0.2426, residual +0.0341; DiD observed −0.0262, predicted −0.0192, residual −0.0070 (negative in 8/14). The AR(1) residual's lag-1 autocorrelation of 0.75 is the value ρ₁(ρ₁² − ρ₂)/(1 − ρ₁²) takes for the pooled placebo function (ρ₁ = 0.868, ρ₂ = 0.539). Power shares inside, below and above 0.01–0.08 Hz, the run-level r₁ and the W = 60 r₁ of the raw, AR(1), AR(p ≤ 5), AR(10) and AR(20) residual series: [TK: B16b — the table of `whitened_spectrum_tables.md`].

@@ -1,4 +1,9 @@
-# A plain-language companion to `manuscript/draft_v2.md`
+# A plain-language companion to `manuscript/draft_v2.md` — RETIRED 21 September 2026
+
+*Retired in round 14 (21 September 2026; record, "Round 14: the restructuring"). The paper was rewritten that day in the PLOS Computational Biology order with one confirmatory test, and this companion follows the structure and the sentences of the drafts of 15–20 September, which no longer exist: its unit-by-unit restatements, its section numbers (Results 1–6 of the old order), its tables and its figures refer to that text and are not maintained. Its role is taken by the paper's Author summary (a plain-language account of what was found) and by S5 Text, "Provenance and audit trail" (`manuscript/si/S5_Text.md`), which holds the history and every review. The file is kept as it stood on 20 September 2026 as part of the record; nothing below was edited on retirement, and nothing in it should be read as a description of the current paper.*
+
+---
+
 
 Written 15 September 2026 for the first author. It follows the paper unit by unit — title, each abstract section, each Introduction paragraph, each Methods subsection, each numbered Results section and each table in it, each Discussion subsection, each figure with its caption, the Supporting-information pointers and the back-matter sections — and gives for each unit (a) what it says in plain language, (b) why it is there, and (c) the one or two hardest questions a reviewer or a senior scientist would ask about it, with the answer and where in the paper the answer lives. Every number below is quoted from the paper (`draft_v2.md`, `figures/captions_v2.md` or `supplementary.md`); where I do arithmetic on the paper's numbers I say so. The last section lists every place where writing the plain version showed the paper stating something without justifying it, using a term it never defines, compressing a step, or making a claim I could not rebuild from its own text. The paper itself is not edited by this document.
 

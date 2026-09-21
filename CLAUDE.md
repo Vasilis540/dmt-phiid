@@ -14,9 +14,9 @@ Cambridge (Prof. Emmanuel Stamatakis).
 - **20 Nov 2026** — public preprint + documented repo
 - **8 Dec 2026** — Cambridge application (Gates Cambridge / Cambridge Trust)
 
-## Current state (21 Sep 2026, round 14, Stage A)
+## Current state (21 Sep 2026, round 14, Stage B)
 
-**Analysis complete. The paper is `manuscript/draft_v2.md` (revised 15 Sep after the second and third adversarial reviews and after the verification of the correction note; finalisation pass 15 Sep: ethics statement, software versions, verified references, copy-edit, COBIDAS checklist in `manuscript/supplementary_cobidas.md`); `manuscript/draft.md` is the superseded first draft, kept as a record. Figures `fig1_v2`–`fig5_v2` built by `scripts/15_figures_v2.py`.**
+**Analysis complete. The paper is `manuscript/draft_v2.md`, restructured on 21 Sep 2026 (round 14, Stage B) for a journal reader in the PLOS Computational Biology Methods-article order: new title, abstract and Author summary at their caps, seven Results sections, main text 9,994 words (title through Methods), the supporting information as `manuscript/si/S1_Text.md`–`S5_Text.md` and the tables S1–S11 in `manuscript/supplementary.md`. `manuscript/draft.md` is the superseded first draft, kept as a record; `notes/companion_plain_language.md` is retired. Figures `fig1_v2`–`fig5_v2` built by `scripts/15_figures_v2.py`, whose revision of 21 Sep also writes `fig1_v2_atoms_observed_predicted` and `fig6_v2_regional`; the committed files stay those of 48ea934 until the final full run.**
 
 - Primary result (Primary B, windowed W = 60 estimator, ts_gsr, replicated
   on ts_demean): whole-brain synergy **decreases** under DMT, DiD negative
@@ -292,10 +292,33 @@ Cambridge (Prof. Emmanuel Stamatakis).
   regional r₁ (−0.0202 → +0.0007, p = 0.90). Two new pre-run entries and
   scripts: B16b `notes/partB16b_whitened_spectrum.py` (data; minutes) and
   B17b `notes/partB17b_calibration_filtered.py` (no data; about an hour),
-  in section 6 of `run_all.sh`; V.S. runs them (`runb16b`). Stage B (the
-  restructured manuscript) follows.
-- Remaining work: the [TK] items in `draft_v2.md` (affiliations, co-authors,
-  the REC reference number, the co-authors' funding statements, the run
+  in section 6 of `run_all.sh`; V.S. runs them (`runb16b`).
+- 21 Sep 2026, round 14, Stage B (record, "Round 14: the restructuring"):
+  `manuscript/draft_v2.md` rewritten once, for a journal reader, in the PLOS
+  CB order. Title option (d) of decision D2; abstract 300 words and Author
+  summary 200 at their caps; main text 9,994 words against 16,508 before.
+  Results in seven sections (the closed form and the exchange rates in data
+  units; the DMT contrast and its per-pair prediction, with the new Table 5;
+  the regional map partialled, with the new Fig 6; the residual diagnostic
+  read against its calibrated expectation rather than against zero; the lag
+  dependence; CCS; remedies). The "32-fold" per-unit statement, the τ > 1
+  recommendation and the multiplicity weighting rule are withdrawn (D1); the
+  single confirmatory test is named as such and everything else is reported
+  as exploratory with effect sizes and intervals. No SHA, timestamp, file
+  path or record reference in the main text (B5); the provenance lives in
+  `manuscript/si/S5_Text.md`. `scripts/15_figures_v2.py` revised for Figs 1–4
+  and the new Fig 6 (not regenerated in this commit). `supplementary.md`
+  gains S10 (calibration) and S11 (prewhitening) and the spin-test p values
+  in S5 Table's note; `notes/defence_questions.md` rewritten (24 questions);
+  `notes/companion_plain_language.md` retired with a dated note. 36 values
+  that depend on B16b and B17b stand as `[TK: B16b]`/`[TK: B17b]` until
+  those outputs are committed, then filled in a follow-up commit.
+- Remaining work: the 36 `[TK: B16b]`/`[TK: B17b]` values, filled from the
+  committed tables of B16b and B17b in a follow-up commit (with the matching
+  cells of S3 Text, S10 and S11 Tables, and the outcome entries of B16b and
+  B17b in the record); the thirteen permanent [TK] items in `draft_v2.md`
+  (affiliations, co-authors, the REC reference number, the co-authors'
+  funding statements, contributions, competing interests, the run
   sentence); run `run_all.sh` end-to-end
   once as a single run at the final commit, with the lid open for the whole
   run (four attempts on 16–17 Sep stopped inside `02_bias_check`, two of
@@ -303,7 +326,8 @@ Cambridge (Prof. Emmanuel Stamatakis).
   target masked; record, "The attempts at the end-to-end run") — V.S.; it
   regenerates and commits every output under one SHA, `partB12`/`partB13`
   included, closes the Data and code availability [TK], and regenerates the
-  five figures once more at that commit, after which the Figures paragraph's
+  figures once more at that commit — six now, `fig6_v2_regional` included,
+  with `captions_v2.md` — after which the Figures paragraph's
   48ea934 and the captions file's header change to it. The `notes/` writers
   write the git SHA since round 12's commit B (`notes/rev_git.py`; record,
   "The git SHA in the output headers of the notes/ scripts: pre-run entry",
@@ -388,11 +412,14 @@ place. Read the relevant section before touching a script or result.
 CLAUDE.md                        this file: orientation and standing rules
 manuscript/analysis_record.md    pre-specification + results record (append-only)
 manuscript/prespecification_summary.md  decisions by commit, changed-later audit
-manuscript/draft_v2.md           the paper (15 Sep 2026)
+manuscript/draft_v2.md           the paper (restructured 21 Sep 2026)
 manuscript/draft.md              superseded first draft, kept as a record
-manuscript/supplementary.md      supplementary tables, values quoted from results/
-manuscript/supplementary_cobidas.md  S4 Text: COBIDAS reporting checklist for draft_v2.md
-manuscript/figures/              fig1_v2–fig5_v2 (pdf/png) + captions_v2.md, from 15_figures_v2.py;
+manuscript/si/                   S1_Text.md–S5_Text.md, the supporting texts of draft_v2.md
+manuscript/supplementary.md      supplementary tables S1–S11, values quoted from results/
+                                 and notes/review_results/
+manuscript/supplementary_cobidas.md  the COBIDAS reporting checklist, pointed to by S4 Text
+manuscript/figures/              fig1_v2–fig5_v2 (pdf/png) + captions_v2.md, from 15_figures_v2.py
+                                 (the committed files are those of 48ea934 until the final run);
                                  the draft.md figures + captions.md (12_figures.py) kept in place
 scripts/                         numbered by execution order, each independently runnable
   00_verify.py                   data + method integrity check; run after any env change
