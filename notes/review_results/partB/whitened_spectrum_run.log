@@ -1,0 +1,62 @@
+git=106bd33
+   ts_gsr: subject 1/14 done (1s)
+   ts_gsr: subject 2/14 done (2s)
+   ts_gsr: subject 3/14 done (2s)
+   ts_gsr: subject 4/14 done (3s)
+   ts_gsr: subject 5/14 done (3s)
+   ts_gsr: subject 6/14 done (4s)
+   ts_gsr: subject 7/14 done (4s)
+   ts_gsr: subject 8/14 done (4s)
+   ts_gsr: subject 9/14 done (5s)
+   ts_gsr: subject 10/14 done (5s)
+   ts_gsr: subject 11/14 done (6s)
+   ts_gsr: subject 12/14 done (6s)
+   ts_gsr: subject 13/14 done (7s)
+   ts_gsr: subject 14/14 done (7s)
+   ts_demean: subject 1/14 done (8s)
+   ts_demean: subject 2/14 done (8s)
+   ts_demean: subject 3/14 done (9s)
+   ts_demean: subject 4/14 done (9s)
+   ts_demean: subject 5/14 done (10s)
+   ts_demean: subject 6/14 done (10s)
+   ts_demean: subject 7/14 done (10s)
+   ts_demean: subject 8/14 done (11s)
+   ts_demean: subject 9/14 done (11s)
+   ts_demean: subject 10/14 done (12s)
+   ts_demean: subject 11/14 done (12s)
+   ts_demean: subject 12/14 done (13s)
+   ts_demean: subject 13/14 done (13s)
+   ts_demean: subject 14/14 done (13s)
+# Where the power of the prewhitened series lies (partB16b_whitened_spectrum.py)
+git=106bd33
+
+Per region and run: the raw series and the residuals of AR(1), AR(p) with p by BIC over 1–5 (B16's whitening, recomputed), and fixed p = 10 and p = 20 (OLS with intercept; the first p samples dropped). In-band share = periodogram power at 0.01 ≤ f ≤ 0.08 Hz over the total, the run's kept samples pooled over regions, as rev_extra.py (c); run-level r₁ as rev_extra.py's r1_obs; window-level r₁ = rev_series.autocorr_series (window mode, W = 60), DMT windows 1–4, as B16. Reference values: raw in-band share 0.992 and r₁ of ideal flat-spectrum noise on the band at TR 2 s 0.8176 (rev_extra.log); the band's share of the Nyquist range 0.07/0.25 = 0.28. Seed 20261120 (no random draws). Region 20 excluded.
+
+## ts_gsr: power shares and lag-1 autocorrelation of the raw and the whitened series (mean over the 28 runs; SD over runs in brackets)
+
+| series | in-band share (0.01–0.08 Hz) | share below 0.01 Hz | share above 0.08 Hz | run-level r₁ | W = 60 r₁, DMT windows 1–4 | kept samples per run |
+|---|---|---|---|---|---|---|
+| raw | 0.992 (0.003) | 0.007 (0.003) | 0.001 (0.000) | +0.8661 (0.0076) | +0.8479 (0.0147) | 840.0 |
+| ar1 | 0.996 (0.001) | 0.001 (0.000) | 0.003 (0.001) | +0.7572 (0.0055) | +0.7506 (0.0107) | 839.0 |
+| arp | 0.655 (0.051) | 0.007 (0.002) | 0.338 (0.050) | +0.2944 (0.0698) | +0.2625 (0.0814) | 835.0 |
+| p10 | 0.479 (0.049) | 0.008 (0.002) | 0.512 (0.050) | +0.0943 (0.0794) | +0.1368 (0.0844) | 830.0 |
+| p20 | 0.391 (0.015) | 0.012 (0.002) | 0.597 (0.015) | +0.0002 (0.0076) | +0.0524 (0.0429) | 820.0 |
+
+Consistency: BIC orders recomputed (ts_gsr), count over 115 regions × 28 runs: p = 1: 0, p = 2: 0, p = 3: 0, p = 4: 2, p = 5: 3218 (B16: p = 5 for 3,218); raw in-band share 0.992 (rev_extra.log: 0.992); raw W = 60 r₁ of DMT windows 1–4 0.8479 (inference_rows_raw.csv, pre_dmt of 'autocorr ts_gsr W60': 0.8479).
+
+## ts_demean: power shares and lag-1 autocorrelation of the raw and the whitened series (mean over the 28 runs; SD over runs in brackets)
+
+| series | in-band share (0.01–0.08 Hz) | share below 0.01 Hz | share above 0.08 Hz | run-level r₁ | W = 60 r₁, DMT windows 1–4 | kept samples per run |
+|---|---|---|---|---|---|---|
+| raw | 0.992 (0.003) | 0.007 (0.003) | 0.001 (0.000) | +0.8561 (0.0104) | +0.8382 (0.0165) | 840.0 |
+| ar1 | 0.996 (0.002) | 0.001 (0.001) | 0.003 (0.001) | +0.7483 (0.0091) | +0.7426 (0.0131) | 839.0 |
+| arp | 0.670 (0.070) | 0.006 (0.002) | 0.324 (0.070) | +0.3011 (0.1061) | +0.2583 (0.1153) | 835.0 |
+| p10 | 0.457 (0.042) | 0.008 (0.002) | 0.535 (0.042) | +0.0346 (0.0584) | +0.0739 (0.0855) | 830.0 |
+| p20 | 0.387 (0.018) | 0.012 (0.002) | 0.600 (0.017) | -0.0024 (0.0089) | +0.0323 (0.0445) | 820.0 |
+
+Consistency: BIC orders recomputed (ts_demean), count over 115 regions × 28 runs: p = 1: 0, p = 2: 0, p = 3: 0, p = 4: 5, p = 5: 3215 (B16: p = 5 for 3,215); raw in-band share 0.992 (rev_extra.log: 0.992); raw W = 60 r₁ of DMT windows 1–4 0.8382 (inference_rows_raw.csv, pre_dmt of 'autocorr ts_demean W60': 0.8382).
+
+## Prediction and rule of the pre-run entry
+
+Prediction: the AR(1) residual keeps most of its power in band (share above 0.9) with r₁ near 0.75; the AR(p ≤ 5) residual's in-band share falls to about 0.5–0.6 (a mixture of flattened in-band noise at r₁ = 0.82 and amplified above-band residue at r₁ ≈ −0.4 has r₁ = 0.26 at an in-band share of 0.54); at p = 10 and 20 the share falls further toward 0.28 as r₁ approaches zero — the whitened series is increasingly the amplified stop-band residue. Rule: descriptive; quoted in the Remedies paragraph; no atoms are computed at p = 10 or 20. If the prediction fails (the AR(p) share stays above 0.9), the "amplified residue" explanation is dropped from the text and the remaining autocorrelation is reported without it.
+done (14s)
