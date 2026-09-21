@@ -1,0 +1,43 @@
+# The directed (antisymmetric) cross-lag component (partB15_directed_crosslag.py)
+git=f1f5fcc
+
+Per pair d_xy = corr(x_t, y_{t+1}) − a_y q and d_yx = corr(y_t, x_{t+1}) − a_x q; δ_sym = (d_xy + d_yx)/2 (partB10's d), δ_anti = (d_xy − d_yx)/2. Run level from the whole-run 4 × 4 matrices; W = 60 from each window's own. Seed 20261120; subject bootstrap 10000 draws; exact sign-flip p over 2^14 assignments. Region 20 excluded.
+
+## ts_gsr, run level (whole-run matrices; 28 runs)
+
+RMS of δ_anti over pairs: mean over runs 0.03783 (DMT 0.03757, placebo 0.03809); per subject (mean of the two runs) min 0.03128, max 0.04489. RMS of δ_sym: 0.00941. For reference, 1/√(kept TRs) ≈ 0.0345.
+Mean pair a 0.8666, mean pair |q| 0.1945.
+Closed-form response of the pair-mean sts (mean over runs): to δ_anti alone -0.00641 [-0.00692, -0.00586] (subject bootstrap of the per-subject mean of the two runs) — the directed share; to δ_sym alone -0.00712 — the symmetric share; to both -0.01373; run-level residual of the diagnostic (observed − AR(1) prediction) -0.01373 (DMT -0.01418, placebo -0.01328); the responses account for 100 % of the residual (directed alone 47 %, symmetric alone 52 %).
+Per-subject directed response (mean of the two runs): [-0.00710 -0.00790 -0.00608 -0.00431 -0.00581 -0.00477 -0.00728 -0.00602 -0.00592 -0.00793 -0.00675 -0.00620 -0.00699 -0.00664]; negative in 14/14; sign-flip p = 0.0001.
+DMT − placebo of the run-level RMS of δ_anti: -0.00052, sign-flip p = 0.7313; of the directed response: +0.00044, p = 0.3800.
+
+## ts_gsr, W = 60 (each window's own matrices)
+
+RMS of δ_anti per window, mean over runs and windows 0.10982 (DMT pre 0.10805, DMT post 0.11222, placebo pre 0.10958, placebo post 0.10745); for reference 1/√60 = 0.1291.
+DiD of the RMS of δ_anti (windows 6–14 minus 1–4, DMT minus placebo): +0.00631 [+0.00006, +0.01278], sign-flip p = 0.0829, negative in 6/14.
+DiD of the sign(q)-weighted mean of δ_sym (partB10's W = 60 statistic, for reference): -0.00119 [-0.00288, +0.00062], p = 0.2233.
+
+## ts_demean, run level (whole-run matrices; 28 runs)
+
+RMS of δ_anti over pairs: mean over runs 0.04013 (DMT 0.03884, placebo 0.04142); per subject (mean of the two runs) min 0.03410, max 0.05350. RMS of δ_sym: 0.01312. For reference, 1/√(kept TRs) ≈ 0.0345.
+Mean pair a 0.8567, mean pair |q| 0.2544.
+Closed-form response of the pair-mean sts (mean over runs): to δ_anti alone -0.00851 [-0.00991, -0.00720] (subject bootstrap of the per-subject mean of the two runs) — the directed share; to δ_sym alone +0.00920 — the symmetric share; to both +0.00079; run-level residual of the diagnostic (observed − AR(1) prediction) +0.00079 (DMT +0.00163, placebo -0.00005); the responses account for 100 % of the residual (directed alone -1073 %, symmetric alone 1160 %).
+Per-subject directed response (mean of the two runs): [-0.00953 -0.00768 -0.00685 -0.00549 -0.00660 -0.00528 -0.00743 -0.00771 -0.01253 -0.00991 -0.00704 -0.01346 -0.01260 -0.00706]; negative in 14/14; sign-flip p = 0.0001.
+DMT − placebo of the run-level RMS of δ_anti: -0.00258, sign-flip p = 0.2714; of the directed response: -0.00012, p = 0.8330.
+
+## ts_demean, W = 60 (each window's own matrices)
+
+RMS of δ_anti per window, mean over runs and windows 0.11285 (DMT pre 0.11211, DMT post 0.11471, placebo pre 0.11241, placebo post 0.11150); for reference 1/√60 = 0.1291.
+DiD of the RMS of δ_anti (windows 6–14 minus 1–4, DMT minus placebo): +0.00352 [-0.00250, +0.00965], sign-flip p = 0.2977, negative in 5/14.
+DiD of the sign(q)-weighted mean of δ_sym (partB10's W = 60 statistic, for reference): -0.00390 [-0.00633, -0.00137], p = 0.0128.
+
+## The finite-sample null with within-pair lead–lag asymmetry (DMT pre operating point, W = 60, 3,000 pairs, T = 3,000)
+
+(0) symmetric filter null, as review_v2_residual_null.py (solved bmean 184, qsd 0.266): window a 0.8629, |q| 0.2824; residual -0.03535 (-2.98 %); RMS δ_anti 0.10389, RMS δ_sym 0.02342; closed-form response to δ_anti -0.03484, to δ_sym -0.00009, to both -0.03575.
+(1) y = x delayed by one sample mixed with independent noise at the pair's q (w = q / r₁ of x, clipped to ±0.99): window a 0.8637, |q| 0.2828; residual -0.06505 (-5.59 %); RMS δ_anti 0.12579, RMS δ_sym 0.02347; closed-form response to δ_anti -0.04954, to δ_sym -0.01159, to both -0.06552.
+(2) symmetric VAR(1), population a = 0.8632, c_xy = +0.02, c_yx = −0.02, q ~ N(0, 0.266) clipped to the reachable lag-0 range -0.987 to +0.987 (window a and |q| as measured, see the note in the script): window a 0.7987, |q| 0.3126; residual -0.07353 (-9.52 %); RMS δ_anti 0.06488, RMS δ_sym 0.05227; closed-form response to δ_anti -0.01305, to δ_sym -0.05854, to both -0.07386.
+(2) symmetric VAR(1), population a = 0.8632, c_xy = +0.04, c_yx = −0.04, q ~ N(0, 0.266) clipped to the reachable lag-0 range -0.949 to +0.949 (window a and |q| as measured, see the note in the script): window a 0.8012, |q| 0.3133; residual -0.07253 (-9.22 %); RMS δ_anti 0.07516, RMS δ_sym 0.05067; closed-form response to δ_anti -0.01860, to δ_sym -0.05166, to both -0.07304.
+(2) symmetric VAR(1), population a = 0.8632, c_xy = +0.06, c_yx = −0.06, q ~ N(0, 0.266) clipped to the reachable lag-0 range -0.888 to +0.888 (window a and |q| as measured, see the note in the script): window a 0.8043, |q| 0.3091; residual -0.06842 (-8.47 %); RMS δ_anti 0.08931, RMS δ_sym 0.04900; closed-form response to δ_anti -0.02685, to δ_sym -0.03947, to both -0.06933.
+
+Null residual levels: symmetric -0.03535; delayed-copy -0.06505; antisymmetric VAR(1) c = 0.02: -0.07353, c = 0.04: -0.07253, c = 0.06: -0.06842. These are W = 60 window-level residuals; the data's W = 60 residual is −0.0489 on ts_gsr (diag_tables.md) and its run-level residual −0.0137 (residual_source.log; recomputed in this script's run-level section above). Reported with their sizes; no branch labels (rule of the pre-run entry).
+

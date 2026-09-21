@@ -1,0 +1,106 @@
+git=f1f5fcc
+   (b) ts_gsr: subject 1/14 done (1s)
+   (b) ts_gsr: subject 2/14 done (2s)
+   (b) ts_gsr: subject 3/14 done (3s)
+   (b) ts_gsr: subject 4/14 done (4s)
+   (b) ts_gsr: subject 5/14 done (5s)
+   (b) ts_gsr: subject 6/14 done (6s)
+   (b) ts_gsr: subject 7/14 done (7s)
+   (b) ts_gsr: subject 8/14 done (7s)
+   (b) ts_gsr: subject 9/14 done (8s)
+   (b) ts_gsr: subject 10/14 done (9s)
+   (b) ts_gsr: subject 11/14 done (10s)
+   (b) ts_gsr: subject 12/14 done (11s)
+   (b) ts_gsr: subject 13/14 done (12s)
+   (b) ts_gsr: subject 14/14 done (13s)
+   (b) ts_demean: subject 1/14 done (13s)
+   (b) ts_demean: subject 2/14 done (14s)
+   (b) ts_demean: subject 3/14 done (15s)
+   (b) ts_demean: subject 4/14 done (16s)
+   (b) ts_demean: subject 5/14 done (17s)
+   (b) ts_demean: subject 6/14 done (18s)
+   (b) ts_demean: subject 7/14 done (19s)
+   (b) ts_demean: subject 8/14 done (19s)
+   (b) ts_demean: subject 9/14 done (20s)
+   (b) ts_demean: subject 10/14 done (21s)
+   (b) ts_demean: subject 11/14 done (22s)
+   (b) ts_demean: subject 12/14 done (23s)
+   (b) ts_demean: subject 13/14 done (24s)
+   (b) ts_demean: subject 14/14 done (25s)
+# Exchange rates in data units, the within-window regression, the cross-half correlation and BCa intervals (partB19_exchange_rates.py)
+git=f1f5fcc
+
+## (a) Exchange rates at the operating point (r₁, q) = (0.85, 0.25), closed form, central differences h = 1e-4
+
+| input | ∂sts/∂input (nats per unit) | sts change per step in data units | per SD of the data's variation |
+|---|---|---|---|
+| r₁ (both members) | +6.0705 | +0.0607 per 0.01 of r₁ | +0.0758 per regional SD 0.0125 (regional_sts_r1.csv); +0.1821 per window-level scatter 0.03 |
+| q (lag-0 correlation) | -0.1892 | -0.0189 per 0.1 of \|q\| | -0.0370 per SD of pair \|q\| 0.1957 (SD of q 0.3424; scope_map_overlay_points.npz) |
+| c (symmetric VAR(1) coupling), measured r₁ and q held at (0.85, 0.25) — partB8's matched view, the coupling map's convention | -1.7402 | -0.0174 per 0.01 of c | — (no data value of c) |
+| c (symmetric VAR(1) coupling), a held at 0.85 and q at 0.25 (r₁ then moves with c) | -0.2225 | -0.0022 per 0.01 of c | — |
+| \|a_x − a_y\| at fixed mean 0.85 (one-sided at 0) | -3.0897 | -0.0309 per 0.01 of \|a_x − a_y\| | -0.0927 per 0.03 (the window-level scatter of one member's a; see the next line) |
+
+sts against the within-pair asymmetry a_x − a_y at fixed mean 0.85 and q = 0.25: 0.00 → 1.2588; 0.01 → 1.2285; 0.02 → 1.1993; 0.03 → 1.1711; 0.05 → 1.1176; 0.10 → 0.9988 (the response is first-order in the asymmetry because MMI takes the minimum of the two self-informations: sts ≈ 2 min(S_x, S_y) − C).
+Ratio |∂sts/∂r₁| / |∂sts/∂q| per unit: 32.1; per SD of the data's variation (regional r₁ SD against pair |q| SD): 2.05; with the window-level scatter of a (0.03) in place of the regional SD: 4.92.
+Coupled family check: sts at c = 0 through the Lyapunov construction 1.258831 against the diagonal closed form 1.258831.
+
+Identity at q = 0 with unequal coefficients (sts = 2 min(S_x, S_y), rtr = 0):
+  (a_x, a_y) = (0.83, 0.87): sts 1.167641, 2 min(S_x, S_y) 1.167641, difference -2.2e-16; rtr 0.0e+00.
+  (a_x, a_y) = (0.85, 0.85): sts 1.281934, 2 min(S_x, S_y) 1.281934, difference -2.2e-16; rtr 0.0e+00.
+  (a_x, a_y) = (0.8, 0.9): sts 1.021651, 2 min(S_x, S_y) 1.021651, difference -2.2e-16; rtr 0.0e+00.
+  (a_x, a_y) = (0.95, 0.6): sts 0.446287, 2 min(S_x, S_y) 0.446287, difference -5.6e-17; rtr 0.0e+00.
+
+## (b) Within-window regression of pair sts on (mean r₁, |q|, |a_x − a_y|), W = 60, all 392 windows per variant
+
+| variant | mean R² (3 regressors) | mean r² (r₁ alone) | mean R² of the full AR(1) prediction | mean standardised coefficients (r₁, \|q\|, \|a_x − a_y\|) |
+|---|---|---|---|---|
+| ts_gsr | 0.808 (min 0.677, max 0.882) | 0.462 | 0.796 | +0.661, -0.463, -0.426 |
+| ts_demean | 0.741 (min 0.249, max 0.869) | 0.398 | 0.741 | +0.594, -0.476, -0.413 |
+
+Prediction recorded (b): R² close to 0.80 with |a_x − a_y| carrying the difference between 0.55 and 0.80.
+
+## (c) Cross-half correlation of the MMI-sts DiD and the r₁ DiD (halves of partB7; per-subject half DiDs recomputed)
+
+| variant | r(sts_odd, r₁_even) | r(sts_even, r₁_odd) | mean | rel(sts) odd/even | rel(r₁) odd/even | ceiling √(rel × rel) | disattenuated mean / ceiling | full-set r |
+|---|---|---|---|---|---|---|---|---|
+| ts_gsr | +0.742 | +0.645 | +0.694 | +0.717 | +0.741 | 0.729 | +0.95 | +0.953 |
+| ts_demean | +0.707 | +0.674 | +0.690 | +0.686 | +0.712 | 0.699 | +0.99 | +0.958 |
+
+Prediction recorded (c): below 0.953 and near the ceiling 0.729 (√(0.717 × 0.741), the split-half reliabilities of splithalf_tables.md).
+
+## (d) BCa intervals beside the percentile intervals, per-subject DiDs (N = 14), 10,000 draws, seed 20261120
+
+| quantity | DiD | sign-flip p | committed percentile CI | percentile CI recomputed | BCa CI | z₀ | a | width ratio BCa/percentile | differ by > 10 % of width |
+|---|---|---|---|---|---|---|---|---|---|
+| sts ts_gsr W60 [primary] | -0.0809 | 0.0038 | [-0.1261, -0.0377] | [-0.1253, -0.0365] | [-0.1280, -0.0384] | -0.025 | -0.013 | 1.01 | no |
+| sts ts_demean W60 [primary] | -0.1031 | 0.0026 | [-0.1558, -0.0522] | [-0.1544, -0.0502] | [-0.1554, -0.0513] | -0.011 | -0.005 | 1.00 | no |
+| sts ts_gsr global-bins [primary] | -0.0801 | 0.0071 | [-0.1310, -0.0315] | [-0.1304, -0.0298] | [-0.1327, -0.0318] | -0.015 | -0.010 | 1.00 | no |
+| sts ts_demean global-bins [primary] | -0.1035 | 0.0132 | [-0.1687, -0.0365] | [-0.1669, -0.0354] | [-0.1643, -0.0316] | +0.017 | +0.014 | 1.01 | no |
+| autocorr ts_gsr W60 [primary] | -0.0146 | 0.0106 | [-0.0251, -0.0052] | [-0.0248, -0.0049] | [-0.0259, -0.0057] | -0.037 | -0.028 | 1.01 | no |
+| autocorr ts_demean W60 [primary] | -0.0216 | 0.0017 | [-0.0319, -0.0116] | [-0.0316, -0.0112] | [-0.0319, -0.0115] | -0.010 | -0.008 | 1.00 | no |
+| autocorr ts_gsr run-standardised bins [primary] | -0.4580 | 0.0001 | [-0.6018, -0.3200] | [-0.5973, -0.3181] | [-0.6052, -0.3227] | -0.016 | -0.010 | 1.01 | no |
+| PhiR ts_gsr W60 [primary] | +0.0007 | 0.8971 | [-0.0078, +0.0100] | [-0.0079, +0.0099] | [-0.0071, +0.0113] | +0.038 | +0.036 | 1.04 | no |
+| diag observed sts ts_gsr W60 [primary] | -0.0809 | 0.0038 | [-0.1261, -0.0377] | [-0.1253, -0.0365] | [-0.1280, -0.0384] | -0.025 | -0.013 | 1.01 | no |
+| diag predicted sts ts_gsr W60 [primary] | -0.0924 | 0.0037 | [-0.1444, -0.0414] | [-0.1434, -0.0409] | [-0.1460, -0.0431] | -0.017 | -0.012 | 1.00 | no |
+| diag residual sts ts_gsr W60 [primary] | +0.0115 | 0.0422 | [+0.0021, +0.0211] | [+0.0018, +0.0211] | [+0.0020, +0.0212] | +0.011 | +0.004 | 1.00 | no |
+| diag residual sts ts_gsr W60 [early] | +0.0179 | 0.0012 | [+0.0099, +0.0260] | [+0.0098, +0.0262] | [+0.0101, +0.0264] | +0.014 | +0.010 | 1.00 | no |
+| diag residual sts ts_gsr W60 [late] | +0.0064 | 0.3243 | [-0.0058, +0.0183] | [-0.0056, +0.0180] | [-0.0056, +0.0180] | +0.002 | -0.002 | 1.00 | no |
+| diag residual sts ts_demean W60 [primary] | +0.0182 | 0.0040 | [+0.0089, +0.0277] | [+0.0085, +0.0276] | [+0.0085, +0.0276] | -0.004 | +0.002 | 1.00 | no |
+| diag residual sts ts_gsr W30 [primary] | +0.0182 | 0.0137 | [+0.0066, +0.0299] | [+0.0062, +0.0298] | [+0.0063, +0.0299] | +0.009 | -0.000 | 1.00 | no |
+| CCSpub sts ts_gsr W60 [primary] | +0.0044 | 0.0559 | [+0.0004, +0.0081] | [+0.0003, +0.0083] | [+0.0002, +0.0081] | -0.009 | -0.014 | 1.00 | no |
+| CCSpub sts ts_gsr global-bins [primary] | +0.0197 | 0.0002 | [+0.0142, +0.0254] | [+0.0141, +0.0252] | [+0.0144, +0.0256] | +0.023 | +0.013 | 1.01 | no |
+| CCSpub sts ts_demean W60 [primary] | +0.0120 | 0.0040 | [+0.0054, +0.0192] | [+0.0050, +0.0193] | [+0.0056, +0.0200] | +0.026 | +0.033 | 1.01 | no |
+| CCSpub sts ts_demean global-bins [primary] | +0.0355 | 0.0001 | [+0.0231, +0.0485] | [+0.0232, +0.0484] | [+0.0238, +0.0492] | +0.026 | +0.016 | 1.01 | no |
+| sts tau1 ts_gsr W60 [primary] | -0.0809 | 0.0038 | [-0.1261, -0.0377] | [-0.1253, -0.0365] | [-0.1280, -0.0384] | -0.025 | -0.013 | 1.01 | no |
+| sts tau2 ts_gsr W60 [primary] | -0.0429 | 0.0037 | [-0.0654, -0.0204] | [-0.0657, -0.0200] | [-0.0670, -0.0210] | -0.025 | -0.014 | 1.01 | no |
+| sts tau3 ts_gsr W60 [primary] | -0.0043 | 0.0018 | [-0.0063, -0.0022] | [-0.0063, -0.0022] | [-0.0063, -0.0023] | -0.023 | -0.009 | 1.00 | no |
+| sts tau5 ts_gsr W60 [primary] | -0.0024 | 0.3688 | [-0.0073, +0.0022] | [-0.0072, +0.0023] | [-0.0074, +0.0022] | -0.005 | -0.014 | 1.00 | no |
+| autocorr lag1 ts_gsr W60 [primary] | -0.0146 | 0.0106 | [-0.0251, -0.0052] | [-0.0248, -0.0049] | [-0.0259, -0.0057] | -0.037 | -0.028 | 1.01 | no |
+| autocorr lag2 ts_gsr W60 [primary] | -0.0468 | 0.0090 | [-0.0754, -0.0174] | [-0.0756, -0.0172] | [-0.0760, -0.0177] | -0.011 | -0.003 | 1.00 | no |
+| autocorr lag3 ts_gsr W60 [primary] | -0.0681 | 0.0132 | [-0.1120, -0.0213] | [-0.1110, -0.0227] | [-0.1102, -0.0221] | +0.002 | +0.009 | 1.00 | no |
+| autocorr lag5 ts_gsr W60 [primary] | -0.0108 | 0.5670 | [-0.0453, +0.0263] | [-0.0455, +0.0252] | [-0.0438, +0.0270] | +0.019 | +0.016 | 1.00 | no |
+| Table 2 primary sts DiD ts_gsr W60 (from results/atoms_win60) | -0.0809 | 0.0038 | — | [-0.1253, -0.0365] | [-0.1280, -0.0384] | -0.025 | -0.013 | 1.01 | no |
+| Table 2 primary sts DiD ts_demean W60 (from results/atoms_win60) | -0.1031 | 0.0026 | — | [-0.1544, -0.0502] | [-0.1554, -0.0513] | -0.011 | -0.005 | 1.00 | no |
+
+Rule recorded (d): point estimates and sign-flip p values unchanged (they do not depend on the interval); both interval types tabulated where they differ by more than 10 % of the interval width. Prediction: BCa intervals wider at N = 14. The committed percentile interval was drawn in the writing script's own generator order; the recomputed one uses a fresh generator (seed 20261120) per quantity, so the two percentile intervals differ by Monte-Carlo error only.
+done (25s)

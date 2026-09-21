@@ -1,0 +1,79 @@
+git=f1f5fcc
+# The regional sts and sts − rtr maps with regional r₁ partialled out (partB20_regional_partial.py)
+git=f1f5fcc
+
+Group maps from regional_sts_r1.csv (partB11: placebo run, pre-injection; ts_gsr; 115 regions); OLS with intercept on regional r₁ (windowed W = 60 windows 1–4; whole-span TRs 0–239 as a sensitivity); Yeo-7 networks from the parcel names, the 16 subcortical parcels as one class; sensory = Vis + SomMot (31 parcels), association = Default + Cont (37 parcels). No spin test (the maps are algebraically linked). Seed 20261120.
+
+## sts map on regional r₁ (windowed)
+
+Slope +3.0887 nats per unit r₁ (r² = 0.745); SD across regions of the map 0.0447, of the residual map 0.0226.
+Sensory − association contrast: before partialling -0.0202 nats (-0.45 map SD); after partialling +0.0037 nats (+0.16 residual-map SD); the same contrast of r₁ itself -0.0078.
+
+| network | n | map mean | residual mean | r₁ mean |
+|---|---|---|---|---|
+| Vis | 17 | +1.2837 | +0.0102 | 0.8403 |
+| SomMot | 14 | +1.2931 | -0.0082 | 0.8493 |
+| DorsAttn | 14 | +1.3082 | +0.0207 | 0.8449 |
+| SalVentAttn | 12 | +1.3003 | -0.0000 | 0.8490 |
+| Limbic | 5 | +1.3194 | +0.0191 | 0.8490 |
+| Cont | 13 | +1.3238 | -0.0078 | 0.8591 |
+| Default | 24 | +1.2998 | +0.0015 | 0.8484 |
+| Subcortex | 16 | +1.2143 | -0.0235 | 0.8288 |
+
+## sts map on regional r₁ (whole-span)
+
+Slope +2.9095 nats per unit r₁ (r² = 0.825); SD across regions of the map 0.0447, of the residual map 0.0187.
+Sensory − association contrast: before partialling -0.0202 nats (-0.45 map SD); after partialling +0.0060 nats (+0.32 residual-map SD); the same contrast of r₁ itself -0.0090.
+
+| network | n | map mean | residual mean | r₁ mean |
+|---|---|---|---|---|
+| Vis | 17 | +1.2837 | +0.0094 | 0.8566 |
+| SomMot | 14 | +1.2931 | -0.0069 | 0.8655 |
+| DorsAttn | 14 | +1.3082 | +0.0107 | 0.8646 |
+| SalVentAttn | 12 | +1.3003 | +0.0014 | 0.8651 |
+| Limbic | 5 | +1.3194 | +0.0236 | 0.8640 |
+| Cont | 13 | +1.3238 | -0.0107 | 0.8773 |
+| Default | 24 | +1.2998 | -0.0003 | 0.8655 |
+| Subcortex | 16 | +1.2143 | -0.0126 | 0.8404 |
+
+## sts − rtr map on regional r₁ (windowed)
+
+Slope +2.5906 nats per unit r₁ (r² = 0.628); SD across regions of the map 0.0408, of the residual map 0.0249.
+Sensory − association contrast: before partialling -0.0215 nats (-0.53 map SD); after partialling -0.0014 nats (-0.06 residual-map SD); the same contrast of r₁ itself -0.0078.
+
+| network | n | map mean | residual mean | r₁ mean |
+|---|---|---|---|---|
+| Vis | 17 | +1.2593 | +0.0058 | 0.8403 |
+| SomMot | 14 | +1.2618 | -0.0150 | 0.8493 |
+| DorsAttn | 14 | +1.2871 | +0.0218 | 0.8449 |
+| SalVentAttn | 12 | +1.2790 | +0.0030 | 0.8490 |
+| Limbic | 5 | +1.3086 | +0.0325 | 0.8490 |
+| Cont | 13 | +1.2944 | -0.0078 | 0.8591 |
+| Default | 24 | +1.2752 | +0.0009 | 0.8484 |
+| Subcortex | 16 | +1.2042 | -0.0195 | 0.8288 |
+
+## sts − rtr map on regional r₁ (whole-span)
+
+Slope +2.4479 nats per unit r₁ (r² = 0.700); SD across regions of the map 0.0408, of the residual map 0.0224.
+Sensory − association contrast: before partialling -0.0215 nats (-0.53 map SD); after partialling +0.0006 nats (+0.02 residual-map SD); the same contrast of r₁ itself -0.0090.
+
+| network | n | map mean | residual mean | r₁ mean |
+|---|---|---|---|---|
+| Vis | 17 | +1.2593 | +0.0051 | 0.8566 |
+| SomMot | 14 | +1.2618 | -0.0140 | 0.8655 |
+| DorsAttn | 14 | +1.2871 | +0.0134 | 0.8646 |
+| SalVentAttn | 12 | +1.2790 | +0.0042 | 0.8651 |
+| Limbic | 5 | +1.3086 | +0.0363 | 0.8640 |
+| Cont | 13 | +1.2944 | -0.0103 | 0.8773 |
+| Default | 24 | +1.2752 | -0.0006 | 0.8655 |
+| Subcortex | 16 | +1.2042 | -0.0101 | 0.8404 |
+
+## Per-subject version (regional sts from results/regional_atoms_bins, placebo bins 1–8; regional r₁ recomputed as partB11, placebo windows 1–4)
+
+| map | contrast before partialling (mean ± SD over subjects; sign-flip p) | contrast after partialling (mean ± SD; p) | mean slope | mean r² |
+|---|---|---|---|---|
+| sts | -0.0202 ± 0.0243; p = 0.0062 | +0.0007 ± 0.0203; p = 0.8992 | +2.6450 | 0.576 |
+| sts − rtr | -0.0215 ± 0.0233; p = 0.0035 | -0.0021 ± 0.0207; p = 0.7135 | +2.4267 | 0.511 |
+
+Prediction recorded (plan §5, B20): the residual map's sensory–association contrast is reduced; its sign is not predicted. Rule: reported as the partialled map; no spin test.
+done (1s)
