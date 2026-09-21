@@ -14,7 +14,7 @@ Cambridge (Prof. Emmanuel Stamatakis).
 - **20 Nov 2026** — public preprint + documented repo
 - **8 Dec 2026** — Cambridge application (Gates Cambridge / Cambridge Trust)
 
-## Current state (20 Sep 2026, round 13)
+## Current state (21 Sep 2026, round 14, Stage A)
 
 **Analysis complete. The paper is `manuscript/draft_v2.md` (revised 15 Sep after the second and third adversarial reviews and after the verification of the correction note; finalisation pass 15 Sep: ethics statement, software versions, verified references, copy-edit, COBIDAS checklist in `manuscript/supplementary_cobidas.md`); `manuscript/draft.md` is the superseded first draft, kept as a record. Figures `fig1_v2`–`fig5_v2` built by `scripts/15_figures_v2.py`.**
 
@@ -269,9 +269,31 @@ Cambridge (Prof. Emmanuel Stamatakis).
   Tarchi and Mediano 2025 parentheticals amended; Abstract 302 and Author
   summary 204 words after F19 and Q7 (over the caps of 300 and 200 until the
   round-14 rewrite); `captions_v2.md` hand-edited for F16 while its source
-  `scripts/15_figures_v2.py` (line 231) is unchanged — the script must carry
-  "Cousineau, 2005; Morey, 2008" before the final run or the run reverts
-  the caption. Commit B: the pre-run entries and scripts of B14–B20 (below).
+  `scripts/15_figures_v2.py` (line 231) was unchanged until 21 Sep, when the
+  script was given the same words (round 14, Stage A). Commit B: the pre-run
+  entries and scripts of B14–B20 (below).
+- 21 Sep 2026: V.S. ran B14–B20 at f1f5fcc (`runb14` completed B16 and was
+  killed by a lid closure during B17; `runb17` ran B17, B14, B15, B18, B19,
+  B20 from the start; no tracebacks) and committed the outputs as 96e2242,
+  with the sixteen never-tracked outputs of the 20 Sep section-6 run.
+  Round 14, Stage A (record, "B14, outcome" … "B20, outcome", 21 Sep): the
+  seven outcome entries — B14 met (Results 1's "two departures" replaced by
+  the asymmetric-family account); B15 the run-level residual located (half
+  directed, half symmetric on ts_gsr; the directed part unchanged by DMT);
+  B16 prediction not met as recorded — AR(p ≤ 5) leaves r₁ = 0.26, sts 0.22,
+  contrast −0.026 (p = 0.14), still predicted by the residual autocorrelation;
+  B17 (i), (iii), (iv) met, (ii) wrong in form (the first-order term averages
+  out over a sign-symmetric q pool), the test of the residual against zero
+  anti-conservative (p < 0.05 in 82 % of null replicates), the family's
+  windowed bias larger than the data's; B18 the CCS increase is the
+  co-information term; B19 exchange rates in data units, R² = 0.808,
+  cross-half r = 0.694 (ceiling 0.729), BCa within 10 % of percentile; B20
+  the sensory–association contrast of the regional map is accounted for by
+  regional r₁ (−0.0202 → +0.0007, p = 0.90). Two new pre-run entries and
+  scripts: B16b `notes/partB16b_whitened_spectrum.py` (data; minutes) and
+  B17b `notes/partB17b_calibration_filtered.py` (no data; about an hour),
+  in section 6 of `run_all.sh`; V.S. runs them (`runb16b`). Stage B (the
+  restructured manuscript) follows.
 - Remaining work: the [TK] items in `draft_v2.md` (affiliations, co-authors,
   the REC reference number, the co-authors' funding statements, the run
   sentence); run `run_all.sh` end-to-end
@@ -295,12 +317,14 @@ Cambridge (Prof. Emmanuel Stamatakis).
   the packaging of the Supporting information items as separate files are
   done at submission. Round 13's computations B14–B20 (record, pre-run entries
   of 20 Sep; `notes/partB14_*.py`–`partB20_*.py`; section 6 of `run_all.sh`)
-  are V.S.'s to run (`runb14`), their outcome entries appended afterwards;
-  round 14 (the restructuring: PLOS CB order, ≤ 10,000 words, S5 Text
+  were run on 21 Sep (96e2242) and their outcome entries appended (Stage A of
+  round 14); B16b and B17b are V.S.'s to run (`runb16b`), their outcome
+  entries to follow; round 14, Stage B (the restructuring: PLOS CB order, ≤ 10,000 words, S5 Text
   "Provenance and audit trail", the residual against its finite-sample
   expectation, D1–D4, the figures, the abstract, Author summary and title,
-  the §5 sentences citing the eight uncited references) follows their
-  outcomes; then the final full run at the final code commit with
+  the §5 sentences citing the eight uncited references) quotes B16b's share
+  and B17b's rows as [TK: B16b]/[TK: B17b] until they are committed; then
+  the final full run at the final code commit with
   `6_committed_compare.py` and `8_binary_compare.py`, a fresh review of the
   finished text, typesetting, and the note to C.T.
 
@@ -400,7 +424,9 @@ notes/                           adversarial reviews, the verification of the co
                                  Part B plans/notes/scripts (partB*.md, partB*.py; partB10 and
                                  partB11 added 15 Sep for the cross-lag deviation and the regional
                                  test; partB12, partB13 and rev_crosslag_budget.py added 16 Sep for
-                                 the cross-lag budget; planning_checks_2026-09-16/ the planning
+                                 the cross-lag budget; partB14–partB20 added 20 Sep for the plan
+                                 of that date and run 21 Sep; partB16b and partB17b added 21 Sep;
+                                 planning_checks_2026-09-16/ the planning
                                  session's checks and V.S.'s reproduction checks; the regional
                                  sts–r₁ test); the plain-language companion and the defence
                                  questions (companion_plain_language.md, defence_questions.md);

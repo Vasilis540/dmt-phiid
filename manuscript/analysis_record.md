@@ -4904,3 +4904,392 @@ before anything is run. The specification, the prediction and the rule are those
    from the repository root with the pinned environment; it is added to section 6 of `run_all.sh` with an `nstep` line
    naming this entry. The outcome is appended as a later entry after V.S. runs it; nothing is relabelled by the
    outcome.
+
+## B14, outcome, 21 Sep 2026 14:03 UTC (appended; nothing above edited)
+
+Outcome of "Family-predicted sixteen atoms per pair (B14): pre-run entry, 20 Sep 2026 19:07 UTC". The run, as the
+commit message of 96e2242 states it: V.S. ran the seven scripts of the pre-run entries of 20 Sep 2026 (B14–B20) at
+f1f5fcc on his machine in two root systemd units — `runb14` (log `~/run_b14_20.log`), which completed B16 (first in
+the section-6 order of `run_all.sh`) and was killed by a lid closure during B17 (condition (iv), replicate 20 of 50;
+the partial `calibration_run.log` was deleted), and `runb17` (log `~/run_b17_20.log`), which ran B17, B14, B15, B18,
+B19 and B20 from the start. No tracebacks in either; every output carries `git=f1f5fcc`; the tables, CSVs, arrays and
+tee logs were committed by V.S. as 96e2242 on 21 Sep 2026, together with the sixteen outputs of the 20 Sep section-6
+run whose paths had never been tracked. This entry and the six that follow (B15–B20) read the committed tables at
+96e2242; every number quoted was checked against its file on 21 Sep 2026 before being written here.
+
+**Prediction and rule (from the pre-run entry).** "Prediction recorded: the family with unequal coefficients gives
+   sts − (xtx + yty) < 0 (about −0.07 for the data's window-level scatter of a), rts = str below xtx, yty, and mirror
+   atoms ≈ −rts; the residual for sts equals the diagnostic's (−0.0489 at W = 60, `diag_tables.md`) by construction.
+   Rule: if the predicted sign of the excess and the ordering rts < xtx, yty match the data, Results 1's 'two
+   departures' and their ACF attribution are replaced by the asymmetric-family account and the per-atom residuals;
+   otherwise the departures stand as reported."
+**Outcome (`family_atoms_tables.md`, `family_atoms_ts_gsr_W60.csv`; ts_gsr, W = 60; level = DMT windows 1–4, DiD =
+   windows 6–14 minus 1–4, DMT minus placebo).** Prediction met on both variants. Excess sts − (xtx + yty): observed
+   −0.0844, family-predicted from each pair's (a_x, a_y, q) −0.1003 (sign matches; the entry's "about −0.07" was an
+   estimate from the window-level scatter of a alone). Ordering rts = str below xtx, yty: predicted (0.5756, 0.5750 <
+   0.6617, 0.6470) and observed (0.5669, 0.5667 < 0.6273, 0.6125). Mirror atoms (xts, yts, stx, sty): predicted −0.5747
+   to −0.5750 against −rts predicted −0.5756; observed −0.5350 to −0.5358 against −rts observed −0.5669. Residual
+   levels (observed − predicted): sts −0.0530 (the largest); xtx and yty −0.0345 each; the four mirrors +0.0389 to
+   +0.0400; the six cross atoms +0.0230 / +0.0231 (rtx, rty, xtr, ytr) and −0.0230 (xty, ytx), where the family
+   predicts ±0.0024 to ±0.0027; rtr −0.0116; rts −0.0087; str −0.0082; TDMI +0.0532. Residual DiDs: every atom within
+   ±0.0014 except sts (+0.0115 — the diagnostic's residual DiD; the two agree to 9.99e-15 by construction) and TDMI
+   (+0.0092); rtr +0.0008. ts_demean: excess observed −0.0525, predicted −0.0858 (sign matches); the ordering holds;
+   sts residual −0.0399 (level) and +0.0182 (DiD); the largest residual level is stx (+0.0427); the diagnostic's
+   all-window residual −0.0378. Global fit (run-level prediction, constant across a run's bins; levels only, DMT
+   pre-injection bins 1–8): ts_gsr sts observed 1.3085, predicted 1.2858, residual +0.0227; excess observed −0.0531,
+   predicted −0.0463; ts_demean sts 1.2403 against 1.1948.
+**Reading under the rule.** Rule met on both variants: Results 1's "two departures" and their ACF attribution are
+   replaced by the asymmetric-family account and the per-atom residuals. What the family leaves — the two
+   self-prediction atoms 0.035 below it, the six cross-prediction atoms at ±0.023 where it has ±0.003, the four
+   mirrors 0.04 above it — is the signature of lagged structure the diagonal family lacks, which B15 locates.
+**Text consequence.** Round 14, Stage B: Results 1 rebuilt around Table 1's observed, family-predicted and residual
+   columns for levels and DiDs (ts_gsr, W = 60; ts_demean in S3 Text); the "two departures" and the ACF-decay
+   attribution deleted; Fig 1 redrawn as observed against family-predicted atoms.
+
+## B15, outcome, 21 Sep 2026 14:03 UTC (appended; nothing above edited)
+
+Outcome of "The directed cross-lag component (B15): pre-run entry, 20 Sep 2026 19:07 UTC"; run by `runb17` at
+f1f5fcc (see the B14 outcome entry), committed as 96e2242.
+
+**Prediction and rule (from the pre-run entry).** "Prediction recorded: antisymmetric deviation lowers sts (closed
+   form: −0.0126 at ±0.05; mean −0.008 for SD 0.04 at (0.85, 0.25)); whether the data's δ_anti accounts for the
+   unlocated part of the run-level residual (−0.0137 against the null's −0.0045) is the question; no branch labels.
+   Rule: reported with its size; the Discussion names directed lead–lag (hemodynamic latency differences) as a
+   candidate only if a source is cited."
+**Outcome (`directed_crosslag_tables.md`, `directed_crosslag.csv`).** ts_gsr, run level (the 28 whole-run matrices):
+   RMS of δ_anti over pairs 0.0378 (per subject 0.0313–0.0449; for reference 1/√(kept TRs) ≈ 0.0345); RMS of δ_sym
+   0.0094. Closed-form response of the pair-mean sts to δ_anti alone −0.0064 [−0.0069, −0.0059] (subject bootstrap),
+   to δ_sym alone −0.0071, to both −0.0137, which is the run-level residual (−0.0137) by construction; the
+   informative content is the split, 47 % directed and 52 % symmetric. The directed response is negative in 14/14
+   subjects (sign-flip p = 0.0001); its DMT − placebo difference is +0.0004 (p = 0.38) and that of the RMS of δ_anti
+   −0.0005 (p = 0.73). ts_demean: directed −0.0085 [−0.0099, −0.0072] (14/14), symmetric +0.0092, both +0.0008 = the
+   run-level residual — the two shares cancel; the symmetric share changes sign between the preprocessing variants,
+   the directed share does not. W = 60: RMS of δ_anti per window 0.110 (reference 1/√60 = 0.129); its DiD +0.0063
+   [+0.0001, +0.0128], p = 0.083 (ts_gsr); +0.0035, p = 0.30 (ts_demean). Finite-sample null with lead–lag asymmetry at
+   the DMT-pre operating point (W = 60; 3,000 pairs × 3,000 samples): the symmetric filter null −0.0354, of which the
+   response to δ_anti is −0.0348 and to δ_sym −0.0001 (the null's own residual is almost entirely the antisymmetric
+   sampling scatter); the delayed copy −0.0651; the VAR(1) with antisymmetric coupling (c_xy = +c, c_yx = −c; the
+   table's label reads "symmetric VAR(1)" for the symmetric self-coefficients) at c = 0.02, 0.04, 0.06: −0.0735,
+   −0.0725, −0.0684 (their window-level a came out at 0.80, below the operating point, as the table's note says); the
+   data's W = 60 residual, −0.0489, lies between the symmetric null and the lead–lag nulls.
+**Reading under the rule (reported with sizes; no branch labels).** The run-level residual is located — about half
+   directed and half symmetric on ts_gsr, the two cancelling on ts_demean — and the directed component does not
+   change under DMT, so it contributes nothing to the residual DiD. The question the entry asked (whether δ_anti
+   accounts for the unlocated part of the run-level residual) is answered in the affirmative for about half of it.
+   No source for directed hemodynamic lead–lag is cited, so the Discussion does not name it as a candidate.
+**Text consequence.** Round 14, Stage B: Results 4 states the location of the run-level residual in two sentences
+   (the split, its sign change without GSR, the directed component unchanged by DMT); the cross-lag budget, the
+   split-half apparatus and the sign(q)-weighted statistics move to S3 Text.
+
+## B16, outcome, 21 Sep 2026 14:03 UTC (appended; nothing above edited)
+
+Outcome of "Prewhitening (B16): pre-run entry, 20 Sep 2026 19:07 UTC"; run by `runb14` at f1f5fcc (see the B14
+outcome entry), committed as 96e2242.
+
+**Prediction and rule (from the pre-run entry).** "Prediction recorded: on the family prewhitening removes S, so
+   MMI-sts falls to the order of the cross-lag structure (near zero) and the DMT sts contrast shrinks to the order of
+   the cross-lag contrast; the sign of the prewhitened contrast is not predicted. Rule: a remedy check, reported as
+   such; not a finding about DMT; the primary result is unchanged by it."
+**Outcome (`prewhiten_tables.md`; `notes/review_results/inference_rows_prewhiten.csv`).** Prediction not met as
+   recorded: sts after AR(p) whitening is 0.22, a fifth of the raw level, and its contrast −0.026 is an order of
+   magnitude above the cross-lag contrasts of B10 and B15 — because the whitening is incomplete, which is what the
+   check finds. BIC chose p = 5, the top of the pre-specified range, for 3,218 of the 3,220 region–runs on ts_gsr and
+   3,215 on ts_demean. The AR(p) residuals are not white: mean lag-1 autocorrelation 0.2625 (ts_gsr, W = 60, DMT
+   windows 1–4), 0.2583 (ts_demean); the AR(1) residuals barely change, 0.7506 and 0.7426 — for a series with
+   autocorrelations ρ₁, ρ₂ the AR(1) residual has lag-1 autocorrelation ρ₁(ρ₁² − ρ₂)/(1 − ρ₁²), which is 0.75 for the
+   pooled placebo function (0.868, 0.539): the function decays faster than geometrically, so an AR(1) fit leaves most
+   of the structure, and p = 1 is no remedy for that analytic reason. MMI-sts after AR(p), ts_gsr W = 60: level 0.2202
+   (raw 1.1554), DiD −0.0262 [−0.0589, +0.0049], sign-flip p = 0.14, negative in 8/14, phase-randomised p = 0.42;
+   ts_demean 0.2350, −0.0274, p = 0.17; ts_gsr global fit 0.1042, −0.0264, p = 0.27. The diagnostic on the whitened
+   series still accounts for most of what remains: over all windows and runs observed 0.2766 against predicted 0.2426
+   (residual +0.0341); DiD observed −0.0262 against predicted −0.0192 (residual −0.0070, 8/14). CCS-sts after AR(p):
+   0.0159, DiD −0.0135 [−0.0217, −0.0042], p = 0.016, 11/14 — a decrease where the raw CCS-sts rose; exploratory. The
+   whitened series' autocorrelation DiD at W = 60 is −0.0544 (p = 0.052), larger than the raw −0.0146, because each
+   run's own AR fit absorbs its own autocorrelation and the DMT run's residual structure differs. The "autocorr … run-
+   standardised bins" rows are a different quantity, defined as `rev_series.autocorr_series` computes it in "run"
+   mode: each region's series is standardised over the whole run's kept TRs, the lag-1 products z_t z_{t+1} are
+   averaged over regions, and their mean within each 30-TR bin is reported — a bin whose local mean sits away from the
+   run mean adds the square of that offset, so the quantity can exceed 1 (raw ts_gsr, DMT pre-injection 1.1035, DiD
+   −0.4580; whitened 0.2831, DiD −0.2044). AR(1) variant (ts_gsr, W = 60): r₁ 0.7506, sts 0.7176, DiD −0.0620,
+   p = 0.0006 — no remedy.
+**Reading under the rule (a remedy check, not a finding about DMT; the primary result unchanged).** AR(p ≤ 5)
+   prewhitening removes about four-fifths of the sts level and two-thirds of its DMT contrast, which is then not
+   significant, and what remains is still predicted by the residual autocorrelation (−0.019 of −0.026). The remedy is
+   incomplete because the series is band-limited — 99.2 % of its power lies inside 0.01–0.08 Hz (`rev_extra.log`),
+   where ideal flat-spectrum noise at TR 2 s has r₁ = 0.82 — so a residual with r₁ = 0.26 can only be one in which the
+   AR polynomial has amplified the out-of-band residue; B16b (next entries) measures that share.
+**Text consequence.** Round 14, Stage B: Results 7 ("Remedies") states the whitened level, contrast and residual
+   autocorrelation with the analytic reason for the AR(1) case and the band-limitation reason for the AR(p) case
+   (B16b's share quoted once it is committed); the τ > 1 and prewhitening recommendations are withdrawn; S11 Table
+   holds B16 and B16b.
+
+## B17, outcome, 21 Sep 2026 14:03 UTC (appended; nothing above edited)
+
+Outcome of "Ground-truth calibration of the diagnostic (B17): pre-run entry, 20 Sep 2026 19:07 UTC"; run by `runb17`
+at f1f5fcc from the start (the `runb14` attempt was killed during condition (iv), replicate 20 of 50, and its partial
+log deleted; see the B14 outcome entry), committed as 96e2242.
+
+**Prediction and rule (from the pre-run entry).** "Predictions recorded: (i) residual ≈ its finite-sample expectation
+   (+0.004 to +0.008 at W = 60; near zero at the global fit); (ii) residual ≈ −1.77 Δc at the global fit (first
+   order), smaller in magnitude at W = 60 through the bias, δ_sym ≈ 0.94 Δc; (iii) additive to first order; (iv) sts
+   level lowered by the asymmetry with the residual near its expectation. Rule: this is the calibration the
+   diagnostic lacked; its table is quoted wherever a residual is interpreted, and the finite-sample null of Results 4
+   is superseded by it where they overlap."
+**Outcome (`calibration_tables.md`, `calibration.csv`; 300 AR(1) pairs per subject, a ~ N(0.85, 0.0125), q from the
+   data's window-level pool, 50 replicates; ± is the SD over replicates).** Predictions (i), (iii) and (iv) met; (ii)
+   met in sign for positive Δc, not for Δc = −0.02, and wrong in form (below); and the family's windowed bias is
+   larger than the data's — simulated W = 60 sts level 0.715 against the data's 1.155, global fit 1.13 against 1.31 —
+   so these exchange rates are the family's, not the data's, which is why B17b repeats the calibration on the
+   band-passed generator. W = 60: (i) Δa = −0.015: sts DiD −0.0422 ± 0.0034, predicted −0.0471 ± 0.0036, residual
+   +0.0049 ± 0.0017 (inside the recorded +0.004 to +0.008); the residual's sign-flip p against zero has mean 0.056 and
+   is below 0.05 in 82 % of replicates — the test against zero is anti-conservative under the diagnostic's own null
+   (finding 9 of the review of 20 Sep, quantified). (ii) Δc = +0.01, +0.02, +0.03, −0.02: residual −0.0010, −0.0052,
+   −0.0109, −0.0055 (± 0.0016 to 0.0018): negative for both signs of Δc and growing roughly as Δc², not the recorded
+   first-order −1.77 Δc. The reason: the closed-form response of sts to c at fixed measured (r₁, q) is −1.74 per unit
+   at q = +0.25 and +1.74 at q = −0.25 (the family is invariant under (c, q) → (−c, −q), so the first derivative in c
+   is odd in q; checked in the closed form on 21 Sep), and B17's q pool is sign-symmetric (mean −0.004; 48 %
+   positive; `scope_map_overlay_points.npz`, `pre_w1to4_q`), so the first-order term averages out over the pool — the
+   measured (a_x, a_y, q) absorb it — and the even second-order term remains; the recorded prediction took the
+   derivative at one sign of q. δ_sym DiD +0.0076, +0.0148, +0.0221, −0.0150 (≈ 0.74 Δc, not the recorded 0.94, which
+   was the population value at the run level). (iii) both: residual +0.0009 ± 0.0016, additive to first order (+0.0049
+   − 0.0052). (iv) a_x − a_y = 0.03 fixed, with (i)'s Δa: level 0.7131 against 0.7152, residual +0.0051 ± 0.0018 — the
+   level falls by 0.002 at W = 60 and by 0.019 at the global fit (1.1127 against 1.1317), far less than the closed
+   form's population-level difference between the two parameter distributions (B17b's population column reports it;
+   the planning session's evaluation gives about −0.045), so the exchange rate for within-pair asymmetry of Results 1
+   is a population statement that the finite-sample estimators reproduce only in part, the windowed one hardly at all
+   (its â_x, â_y already scatter by 0.03 per window). Global fit, period-level prediction: (i) +0.0089 ± 0.0028 — not
+   the "near zero" the entry recorded for the global fit: the period-level prediction is itself a finite-sample
+   quantity (300 and 540 samples), and its residual expectation under a pure Δa is of the same size as the windowed
+   one; (ii) +0.01: −0.0025, +0.02: −0.0124, +0.03: −0.0278, −0.02: −0.0134; (iii) −0.0006; (iv) +0.0069. Run-level
+   prediction at the global fit: constant within a run, so its DiD is zero and the residual DiD equals the observed
+   DiD (−0.0675 under (i)), as `partB4` records for the data.
+**Reading under the rule (the calibration is quoted wherever a residual is interpreted; the finite-sample null of
+   Results 4 is superseded where they overlap).** The data's residual DiD, +0.0115 [+0.0021, +0.0211]
+   (`inference_rows_diag.csv`), sits +0.0066 above the pure-autocorrelation expectation of this family (+0.0049; the
+   data's own null gives +0.0054, `review_v2_residual_null.log`, and +0.0037 to +0.0077 over its free choices, the
+   sensitivity analysis of the second-pass review of 15 Sep), within its interval, and a coupling change of either
+   sign would have moved it the other way — so the residual DiD carries no evidence of a change in lagged
+   interaction, and the pre-specified "near zero" reading obtains once the reference is the calibrated expectation
+   rather than zero. B17b decides which expectation the text quotes.
+**Text consequence.** Round 14, Stage B: Results 4 ("The residual diagnostic, calibrated") quotes the calibration
+   table (B17b in the text, B17 in S3 Text and S10 Table), reads the residual DiD against the calibrated expectation,
+   and drops the test against zero (Table 4 loses its p column; Methods says in one sentence that the test against
+   zero was the pre-specified branch rule and that B17 shows it anti-conservative); Table 5 tabulates the sts change
+   produced by the autocorrelation change by estimator.
+
+## B18, outcome, 21 Sep 2026 14:03 UTC (appended; nothing above edited)
+
+Outcome of "The CCS increase decomposed (B18): pre-run entry, 20 Sep 2026 19:07 UTC"; run by `runb17` at f1f5fcc
+(see the B14 outcome entry), committed as 96e2242.
+
+**Prediction and rule (from the pre-run entry).** "Prediction recorded: none (descriptive). Rule: the plain reading
+   replaces 'no established reading'; it does not make the CCS increase a finding about DMT."
+**Outcome (`ccs_decomposition_tables.md`, `ccs_decomposition.csv`).** The identity CCS-sts = −(1 − s) c̄_rej holds
+   against `atoms_ccs` to 2.2e-16; the three-term split (share term c̄_pre Δs, co-information term −(1 − s_pre) Δc̄,
+   interaction +Δs Δc̄) is exact to within 1.4e-17 in every cell. Published mask, ts_gsr, global fit (the cell that
+   met the withdrawn weighting rule): CCS-sts DiD +0.0197 [+0.0142, +0.0254], carried by the co-information term
+   +0.0174 [+0.0127, +0.0224] — c̄_rej fell under DMT, DiD −0.0292, 14/14 — with the share term +0.0028 (s rose,
+   +0.042) and the interaction −0.0005. ts_gsr, W = 60: +0.0044 = co-information +0.0059 + share −0.0018 (s fell,
+   −0.021) + interaction +0.0002. ts_demean, global: +0.0355 = +0.0343 + 0.0044 − 0.0032; ts_demean, W = 60: +0.0120 =
+   +0.0125 − 0.0004 − 0.0001. `phyid`'s mask gives the same reading in every cell (global ts_gsr: +0.0210 =
+   +0.0198 + 0.0017 − 0.0005).
+**Reading under the rule.** The plain reading replaces "no established reading": CCS-sts rises toward zero under DMT
+   because the double co-information of the sign-disagreeing samples shrinks in magnitude (14/14 at the global fit),
+   not because fewer samples are rejected; it remains exploratory and is not a finding about DMT.
+**Text consequence.** Round 14, Stage B: Results 6 ("CCS: the synergy atom is near zero and its DMT change has a
+   mechanical reading") states the decomposition in two sentences; the mask comparison moves to Methods (three
+   sentences) with its check in S3 Text.
+
+## B19, outcome, 21 Sep 2026 14:03 UTC (appended; nothing above edited)
+
+Outcome of "Exchange rates, the within-window regression, the cross-half correlation and BCa intervals (B19): pre-run
+entry, 20 Sep 2026 19:07 UTC"; run by `runb17` at f1f5fcc (see the B14 outcome entry), committed as 96e2242.
+
+Disclosure, recorded here as the round-13 report disclosed it on 20 Sep 2026: on 20 Sep a 28-second smoke test of
+B19's part (b) ran on the real data in the writer's clone, which still held `external/DMT_NCT/data/*.mat` from 15
+September by accident (the commission of round 13 stated there was none there); its output was discarded, nothing
+from it was quoted or recorded, the file was moved out of the clone for the rest of that session, and the committed
+B19 outputs are V.S.'s run of 21 Sep. On 21 Sep the clone was confirmed to hold no `.mat` file (round-14 report).
+
+**Prediction and rule (from the pre-run entry).** "(d) BCa versions of every bootstrap interval reported in the main
+   text, computed in the same scripts under the rule that point estimates and sign-flip p values are unchanged; both
+   interval types tabulated where they differ by more than 10 % of the interval width. Predictions: (b) R² close to
+   0.80 with |a_x − a_y| carrying the difference between 0.55 and 0.80; (c) below 0.953 and near the ceiling 0.729;
+   (d) BCa intervals wider at N = 14." (Parts (a) and (b) carry no prediction beyond the numbers they report; (d) was
+   recomputed from the committed per-subject DiDs rather than "in the same scripts", as the pre-run entry's
+   implementation paragraph states.)
+**Outcome (`exchange_rates_tables.md`, `bca_intervals.csv`).** (a) At (r₁, q) = (0.85, 0.25): ∂sts/∂r₁ = +6.07 (+0.061
+   per 0.01 of r₁; +0.076 per regional SD 0.0125; +0.18 per window-level scatter 0.03); ∂sts/∂q = −0.19 (−0.019 per
+   0.1 of |q|; −0.037 per SD of pair |q|, 0.196); ∂sts/∂c = −1.74 per unit with measured r₁ and q held (−0.017 per
+   0.01 of c; the coupling map's convention), −0.22 with a held; ∂sts/∂|a_x − a_y| = −3.09 (−0.031 per 0.01; sts
+   1.2588 → 1.1711 at an asymmetry of 0.03). Per-unit ratio |∂sts/∂r₁| / |∂sts/∂q| 32.1; per SD of the data's own
+   variation 2.05 (4.92 with the window-level scatter of a in place of the regional SD). The q = 0 identity for unequal
+   coefficients (sts = 2 min(S_x, S_y), rtr = 0) holds to 2.2e-16 at four (a_x, a_y) pairs. (b) Within-window
+   regression, all 392 windows, ts_gsr: R² = 0.808 (three regressors) against r² = 0.462 for r₁ alone and 0.796 for
+   the full AR(1) prediction; standardised coefficients r₁ +0.66, |q| −0.46, |a_x − a_y| −0.43; ts_demean 0.741 /
+   0.398 / 0.741. Prediction met; the text's r² = 0.55 and 0.49 are subject 1's two windows in `ccs_pub_tables.md`
+   (r = +0.742 and +0.697), so the all-window means are the numbers to quote and the subject-1 values may stay as the
+   illustration. (c) Cross-half correlation of the sts and r₁ DiDs: +0.742 and +0.645, mean +0.694, against the
+   ceiling 0.729; disattenuated 0.95; full-set 0.953 (ts_gsr); +0.690 against 0.699, 0.99, 0.958 (ts_demean).
+   Prediction met: the two DiDs share essentially all of their reliable variance; 0.694 is the number to quote, with
+   0.953 beside it as the full-set value. (d) BCa against percentile intervals for 29 quantities: no pair differs by
+   more than 10 % of the width (largest width ratio 1.04, ΦR); the prediction "BCa wider" did not materialise; the
+   percentile intervals stand.
+**Reading under the rule.** The exchange rates are stated in data units (0.01 of r₁ ↔ 0.061 nats; 0.1 of |q| ↔
+   0.019; 0.01 of coupling ↔ 0.017; 0.01 of within-pair asymmetry ↔ 0.031, a population rate the finite-sample
+   estimators reproduce only in part, B17 (iv)); the per-unit "32-fold" statement is replaced by the per-SD ratio
+   2.05 : 1; the per-subject relation between the sts and r₁ contrasts is stated as the cross-half correlation 0.694
+   against its ceiling 0.729 with 0.953 as the full-set value; Methods says in one sentence that the percentile
+   intervals stand (B19d).
+**Text consequence.** Round 14, Stage B: Results 1 (exchange rates in data units; the 32-fold statement deleted
+   everywhere), Results 2 (the cross-half correlation; the all-window R² beside subject 1's illustration), Methods
+   (percentile intervals).
+
+## B20, outcome, 21 Sep 2026 14:03 UTC (appended; nothing above edited)
+
+Outcome of "The regional map with regional r₁ partialled out (B20): pre-run entry, 20 Sep 2026 19:07 UTC"; run by
+`runb17` at f1f5fcc (see the B14 outcome entry), committed as 96e2242.
+
+**Prediction and rule (from the pre-run entry).** "Prediction recorded: the residual map's sensory–association
+   contrast is reduced; its sign is not predicted. Rule: reported as the partialled map; no spin test (the two maps
+   are algebraically linked)."
+**Outcome (`regional_partial_tables.md`, `regional_partial.csv`).** Prediction met; the sign is now known. Group map
+   (placebo run, pre-injection, ts_gsr, 115 regions): sts on regional r₁, slope +3.09 nats per unit (r² = 0.745;
+   whole-span r₁ 0.825); SD of the map 0.0447, of the residual map 0.0226. Sensory (Vis + SomMot, 31 parcels) −
+   association (Default + Cont, 37 parcels): −0.0202 nats (−0.45 map SD) before partialling, +0.0037 (+0.16 residual
+   SD) after; sts − rtr: −0.0215 (−0.53 SD) before, −0.0014 (−0.06 SD) after; the same contrast of r₁ itself −0.0078.
+   Per subject: sts −0.0202 ± 0.0243, sign-flip p = 0.0062 before, +0.0007 ± 0.0203, p = 0.90 after; sts − rtr
+   −0.0215, p = 0.0035 before, −0.0021, p = 0.71 after. Network means of the residual map lie within ±0.024 (subcortex
+   −0.024, DorsAttn +0.021).
+**Reading under the rule (reported as the partialled map; no spin test).** On this dataset the sensory–association
+   contrast of the regional synergy map, and of the synergy-minus-redundancy map, is accounted for by regional r₁. It
+   is the spatial-map exposure shown at TR 2 s without deconvolution on one dataset, to be stated beside the F9
+   paragraph on Luppi et al. (2022), whose phase-randomised surrogate test on HCP data argues the other way for their
+   macroscale associations.
+**Text consequence.** Round 14, Stage B: Results 3 ("Regional synergy follows regional autocorrelation") states the
+   partialled contrast with its per-subject p; the spin test and its p move to S5 Table's note; new Fig 6.
+
+## The whitened series' spectrum (B16b): pre-run entry, 21 Sep 2026 14:03 UTC (appended; nothing above edited)
+
+Round 14, Stage A, commissioned 21 Sep 2026 after the B16 outcome entry above; appended before
+`notes/partB16b_whitened_spectrum.py` is written, and before anything is run. The specification, the prediction and
+the rule are those of the commission of 21 Sep 2026 (A2), reproduced here without paraphrase:
+
+    B16b — `notes/partB16b_whitened_spectrum.py`. For each region and run, both variants: the raw series and four
+    residual series — AR(1); AR(p) with p by BIC over 1–5 (exactly `partB16`'s `whiten`, recomputed, not saved);
+    fixed p = 10; fixed p = 20 (OLS, first p samples dropped). For each: the share of power inside 0.01–0.08 Hz
+    computed as `rev_extra.py` (c) computes it (rfft periodogram of the mean-removed kept samples, share of |X(f)|²
+    with 0.01 ≤ f ≤ 0.08 Hz), with the shares below 0.01 Hz and above 0.08 Hz separately; the run-level lag-1
+    autocorrelation (as `rev_extra.py`'s r1_obs); and the W = 60 window-level mean r₁ of DMT windows 1–4 (as B16
+    reports it, `autocorr_series` window mode). Table: one row per series (raw, ar1, arp, p = 10, p = 20), the five
+    quantities averaged over region–runs, per variant; the reference values in the header: the raw share 0.992 and
+    the r₁ of ideal flat-spectrum noise on the band at TR 2 s, 0.8176 (`rev_extra.log`); the band's share of the
+    Nyquist range, 0.07/0.25 = 0.28. Prediction: the AR(1) residual keeps most of its power in band (share above
+    0.9) with r₁ near 0.75; the AR(p ≤ 5) residual's in-band share falls to about 0.5–0.6 (a mixture of flattened
+    in-band noise at r₁ = 0.82 and amplified above-band residue at r₁ ≈ −0.4 has r₁ = 0.26 at an in-band share of
+    0.54); at p = 10 and 20 the share falls further toward 0.28 as r₁ approaches zero — the whitened series is
+    increasingly the amplified stop-band residue. Rule: descriptive; quoted in the Remedies paragraph; no atoms are
+    computed at p = 10 or 20. If the prediction fails (the AR(p) share stays above 0.9), the "amplified residue"
+    explanation is dropped from the text and the remaining autocorrelation is reported without it. Data needed;
+    minutes.
+
+**Implementation.** Inputs: `external/DMT_NCT/data/DMT_clean_mni_continuous_fullPreprocsch116.mat` (both variants,
+   region 20 excluded). Per region and run: the raw series; the AR(1) residual and the AR(p) residual with p by BIC
+   over 1–5, both by `partB16_prewhiten.py`'s `ar_fit` and `whiten` (ordinary least squares with intercept on the
+   run's finite samples, BIC on the common sample t ≥ 5, the first p samples non-finite), recomputed here and not
+   saved; the residuals of fixed p = 10 and p = 20 by the same `ar_fit`. For each of the five series the run's kept
+   samples are the TRs finite in every region (as `rev_extra.py` keeps them); the periodogram is |rfft(x − x̄)|² of
+   the kept samples at TR 2 s, and the in-band share is the sum of the periodogram over 0.01 ≤ f ≤ 0.08 Hz divided by
+   its total, computed per run over all regions pooled exactly as `rev_extra.py` (c) computes `frac_in` (the sums
+   over regions, then the ratio), with the shares below 0.01 Hz and above 0.08 Hz reported the same way; the
+   run-level lag-1 autocorrelation is the mean over regions of the mean product of the run-standardised series with
+   its lag-1 copy, `rev_extra.py`'s `r1_obs`; the W = 60 window-level r₁ is `rev_series.autocorr_series` in window
+   mode on the series with the non-finite samples in place, averaged over DMT windows 1–4 and subjects, as B16
+   reports it. A consistency line reports the BIC orders recomputed (to be compared with B16's counts, 3,218 and
+   3,215 at p = 5). No atoms are computed. Seed 20261120 (no random draws).
+**Outputs and conventions.** Output (`notes/review_results/partB/`): `whitened_spectrum_tables.md` — per variant one
+   table with a row per series (raw, ar1, arp, p = 10, p = 20) and the five quantities averaged over region–runs
+   (the shares over the 28 runs, the autocorrelations over the 3,220 region–runs, the window-level r₁ over the 14
+   subjects), the reference values in its header (raw share 0.992; r₁ of ideal flat-spectrum noise on the band at
+   TR 2 s 0.8176, `rev_extra.log`; the band's share of the Nyquist range 0.07/0.25 = 0.28), and the prediction and
+   rule above quoted at its foot; the run log `whitened_spectrum_run.log` via `nstep`. The script imports
+   `rev_git.SHA`, prints `git=<SHA>` as its first line and writes it after the title of the table; every free choice
+   is stated in the header; it runs alone from the repository root with the pinned environment; it is added to
+   section 6 of `run_all.sh` after `partB16_prewhiten.py` with an `nstep` line naming this entry. The outcome is
+   appended as a later entry after V.S. runs it; nothing is relabelled by the outcome.
+
+## Calibration of the diagnostic on the band-passed generator (B17b): pre-run entry, 21 Sep 2026 14:03 UTC (appended; nothing above edited)
+
+Round 14, Stage A, commissioned 21 Sep 2026 after the B17 outcome entry above; appended before
+`notes/partB17b_calibration_filtered.py` is written, and before anything is run. The specification, the predictions
+and the rule are those of the commission of 21 Sep 2026 (A2), reproduced here without paraphrase:
+
+    B17b — `notes/partB17b_calibration_filtered.py`. B17's conditions on the generator of
+    `review_v2_residual_null.py` in place of AR(1) pairs: one smooth 0.01–0.08 Hz band-pass with tilt exp(−β f²)
+    (the placebo-fitted lo, hi of that script) applied to two white noises with correlation q; per pair β ~ N(β̄,
+    0.5 β̄), q ~ N(0, σ_q); β̄ and σ_q solved by `brentq` as there so that the W = 60 window-level mean pair a and
+    mean |q| equal the DMT-pre operating point (0.8632, 0.2842) — every solve (β̄, β̄_post, σ_q, δ) done once on a
+    calibration draw of the null's size (3,000 pairs × 3,000 samples) and then held fixed for all replicates.
+    Structure as B17: 14 subjects × 2 runs × 840 samples, 300 pairs, the change at sample 300 of the DMT run only,
+    50 replicates, seed 20261120, the same estimators (W = 60 windows; global fit with the run-level and the
+    period-level prediction), statistics and table. The change is applied by filtering each run's white noises
+    twice — with the pre and with the post parameters — and splicing at sample 300, which is a window boundary
+    (windows 1–4 and 6–14 are used; window 5 is not) and a bin boundary. Conditions: (i) Δa: β̄_post solved so that
+    the window-level mean a of the post period is 0.8482 (the data's Δr₁ is −0.0146 at window level, which is what
+    this Δa matches, unlike B17's population Δa); (ii) Δc ∈ {+0.01, +0.02, +0.03, −0.02}: lagged symmetric coupling
+    added after filtering on the post samples, x_t ← x_t + c y_{t−1}, y_t ← y_t + c x_{t−1}, each series then
+    re-standardised — a different implementation from B17's VAR(1) coupling, so the (ii) rows are read by their
+    δ_sym DiD, not by c; (iii) both; (iv) asymmetry: each member filtered with its own β, β_x = β + δ, β_y = β − δ,
+    δ solved so that the window-level a_x − a_y = 0.03, with (i)'s Δa. Also a population reference column for B17's
+    AR(1) conditions (i) and (iv): the closed-form sts at the drawn (a_x, a_y, q) (20,000 draws from B17's
+    distributions and its Q_POOL), pre and post, so that the shrinkage of the W = 60 and global estimators of B17
+    can be stated against it. Predictions: the W = 60 sts level near the null's 1.18 rather than B17's 0.715; under
+    (i) the sts DiD between −0.07 and −0.10 (the data's is −0.0809) and the residual DiD near the data's own null,
+    +0.004 to +0.008; (ii) residual negative for either sign of Δc; (iii) additive; (iv) level lowered, residual
+    near its (i) value; the population reference for B17 (i): a change of about −0.08 (1.19 → 1.11; the planning
+    session's closed-form evaluation of 21 Sep, 20,000 draws), and for (iv) − (i) a level difference of about
+    −0.045. Rule: where B17 and B17b differ, the main text quotes B17b (the generator closer to the data) and S3
+    Text carries both; the finite-sample null of Results 4 is superseded by B17b where they overlap; the null's own
+    DiD (+0.0054, `review_v2_residual_null.log`) is quoted beside B17b's (i). No data needed; about half an hour.
+
+**Implementation.** No external data. Generator: `review_v2_residual_null.py`'s `psd_weights` (the smooth band-pass
+   with 0.004 Hz cosine edges and the tilt exp(−β f²)) at the lo and hi that `fit_filter` returns for the placebo
+   target ACF (0.0064 and 0.080 Hz in `review_v2_residual_null.log`; refitted here by the same function), applied by
+   multiplication of the rfft of the white noises by √(weights) over the run's 840 samples, exactly as that script's
+   `gen` applies it over its 3,000 (circular filtering; a free choice stated in the header). Per pair β ~ N(β̄,
+   0.5 β̄) clipped below at 5 and q ~ N(0, σ_q) clipped to ±0.95, as there. Calibration draws (3,000 pairs × 3,000
+   samples, W = 60 windows, the window-level a and |q| measured by that script's `window_corr` and `residual`, which
+   are `partB4`'s definitions): β̄ by `brentq`
+   so that the window-level mean pair a is 0.8632, then σ_q so that the mean |q| is 0.2842 (the DMT-pre operating
+   point of `residual_source.log`); β̄_post by `brentq` at that σ_q so that the window-level mean a is 0.8482; δ by
+   `brentq` so that the window-level mean a_x − a_y is 0.03 when x is filtered at β + δ and y at β − δ, at the pre
+   β̄ (the same δ is applied at β̄_post). The four solves are done once and held fixed. Per replicate, subject and
+   run: 300 pairs' white noises (e₁, e₂ with correlation q); the placebo run filtered at the pre parameters; the DMT
+   run filtered twice, at the pre and at the post parameters (each pair's β scaled by β̄_post/β̄, which carries
+   N(β̄, 0.5 β̄) to N(β̄_post, 0.5 β̄_post)), and spliced at sample 300 (samples 0–299 from the pre filtering, 300–839
+   from the post), a window and a bin boundary. Condition (ii): after the filtering, on the post
+   samples t ≥ 300, x_t ← x_t + c y_{t−1} and y_t ← y_t + c x_{t−1} with the unmodified series on the right-hand
+   sides (t = 300 uses the last pre sample), and each post segment then rescaled to the standard deviation it had
+   before the coupling was added (the re-standardisation; a free choice stated in the header). Condition (iii): (i)'s post
+   filtering and (ii)'s coupling at Δc = +0.02. Condition (iv): x at β + δ and y at β − δ throughout, with (i)'s
+   post parameters. Pipeline, statistics and table exactly as `partB17_calibration.py` (its `analyse_run`, `did`,
+   `signflip_p` and `boot_ci`, copied): W = 60 windows and the global fit with the run-level and the period-level
+   prediction; per replicate the DiD of observed, predicted and residual sts, the residual's sign-flip p and
+   bootstrap CI, and the δ_sym and RMS δ_anti DiDs. The population reference column: 20,000 draws of B17's
+   distributions (a_x, a_y ~ N(0.85, 0.0125) independently for (i); a_x = a + 0.015, a_y = a − 0.015 with a ~
+   N(0.85, 0.0125) for (iv); q from `scope_map_overlay_points.npz`, `pre_w1to4_q`), the closed-form sts at (a_x,
+   a_y, q) pre and at (a_x − 0.015, a_y − 0.015) post with the innovation correlation held as B17 holds it (the lag-0
+   q recomputed from it), and the (iv) − (i) level difference. Seed 20261120; one generator; the calibration solves
+   first, then the conditions in B17's order.
+**Outputs and conventions.** Outputs (`notes/review_results/partB/`): `calibration_filtered_tables.md` (B17's table
+   for the filtered generator, the solved parameters, the population reference for B17's (i) and (iv), and the
+   predictions and rule above quoted at its foot), `calibration_filtered.csv` (one row per condition × estimator ×
+   replicate, B17's columns) and the run log `calibration_filtered_run.log` via `nstep`. Running time: B17 took
+   3,382 s on V.S.'s machine (`calibration_run.log`); this script does the same pipeline work plus the four solves,
+   so about an hour rather than the half hour the commission estimates. The script imports
+   `rev_git.SHA`, prints `git=<SHA>` as its first line and writes it after the title of every table; every free
+   choice is stated in the header; it runs alone from the repository root with the pinned environment; it is added
+   to section 6 of `run_all.sh` after `partB17_calibration.py` with an `nstep` line naming this entry. A smoke test
+   with N_REP = 2 in the writer's clone (no data) checks that it runs end to end; its output is discarded and its
+   result reported in the round's report only. The outcome is appended as a later entry after V.S. runs it; nothing
+   is relabelled by the outcome.
