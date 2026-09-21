@@ -5293,3 +5293,184 @@ and the rule are those of the commission of 21 Sep 2026 (A2), reproduced here wi
    with N_REP = 2 in the writer's clone (no data) checks that it runs end to end; its output is discarded and its
    result reported in the round's report only. The outcome is appended as a later entry after V.S. runs it; nothing
    is relabelled by the outcome.
+
+## Round 14: the restructuring, 21 Sep 2026 15:12 UTC (appended; nothing above edited)
+
+Round 14, Stage B, commissioned 21 Sep 2026 (the plan of 20 Sep, §2 and §6; the decisions D1–D5 of 20 Sep; the
+outcome entries B14–B20 above). `manuscript/draft_v2.md` was rewritten once, for a journal reader, in the PLOS
+Computational Biology Methods-article order (title, abstract, author summary, introduction, results, discussion,
+materials and methods, supporting information, figures, data and code availability, author contributions, funding,
+competing interests, references). Every number in the new text was taken from the committed tables (a75d015,
+96e2242) and never from memory; the values that depend on B16b and B17b, whose outputs are not yet committed, are
+[TK: B16b] and [TK: B17b] placeholders (37 of them), to be filled in a follow-up commit from their committed
+tables. Nothing under `results/`, `notes/review_results/`, `scripts/` (other than `15_figures_v2.py`, below) or the
+existing `notes/*.py` changed. The round's report carries the numbers CSV (every number of the main text with its
+source file and row) and the word counts by section.
+
+**Title.** Before: "Lag-1 autocorrelation dominates the Gaussian-MMI synergy atom of integrated information decomposition: an analytic account, a residual diagnostic, and a within-subject test on DMT fMRI". After (decision D2, option (d) of the plan's §4): "The Gaussian-MMI synergy atom of integrated information decomposition is mostly self-prediction: a closed form on the AR(1) family, a per-pair diagnostic, and a within-subject DMT fMRI test"; short title
+   "The MMI synergy atom of ΦID is mostly self-prediction".
+**Abstract, before (302 words):**
+   Integrated Information Decomposition with minimum-mutual-information (MMI) redundancy underlies most fMRI synergy
+   reports. Varley (2024) showed that the MMI synergy of two independent autocorrelated processes equals the self-
+   information of the less self-predictive of the two. Which atoms carry it, how the synergy atom sts depends on lag-1
+   autocorrelation r₁ and lag-0 correlation q, and how much of an sts change is autocorrelation change were open. We
+   derive the sixteen Gaussian-MMI atoms of a bivariate AR(1) pair, map sts over (r₁, q), and compare MMI with CCS
+   redundancy, on within-subject fMRI data (14 volunteers, DMT and placebo) in a pre/post difference-in-differences
+   (DiD). A residual diagnostic predicts each pair's sts from its measured autocorrelations and correlation. The study
+   began as a pre-specified test of synergy up-regulation. On the family sts = −ln(1 − r₁²) + ½ ln(1 − r₁²q²) = xtx +
+   yty + rtr; |∂sts/∂r₁| exceeds |∂sts/∂q| 32-fold at BOLD pairs' operating point. On the placebo baseline regional
+   MMI-sts follows regional r₁, as predicted (r = 0.863 over 115 regions; cortical Spearman 0.771, spin p < 0.0001).
+   Under DMT whole-brain MMI-sts fell (DiD −0.0809 nats, p = 0.0038), as did mean r₁ (−0.0146, p = 0.0106),
+   correlating at r = 0.953 per subject. The diagnostic's prediction gives the sign and 114 % of the magnitude of the
+   sts change; a finite-sample null accounts for a third to two-thirds of the residual DiD (+0.0037–0.0077 of +0.0115,
+   p = 0.042; every null value inside its CI). CCS-sts does not track r₁ as MMI-sts does (across pairs within a
+   window, |r| < 0.02 against +0.7), and rose under DMT (exploratory). On autocorrelated fMRI, MMI-sts contrasts
+   between states or groups are dominated by lag-1 autocorrelation change wherever r₁ differs and lagged interaction
+   does not change comparably. Report r₁ beside sts, run the diagnostic, consider CCS or longer lags.
+**Abstract, after (300 words; D4's wording "began as a planned directional test recorded before the primary analysis"; no p = 0.042, no "32-fold", no undefined "cell" or "DiD"):**
+   Integrated information decomposition (ΦID) with the minimum-mutual-information (MMI) redundancy function underlies
+   most reports of synergy in fMRI. We derive the sixteen Gaussian-MMI atoms of a bivariate AR(1) pair in closed form
+   and show that the synergy atom, sts, is mostly self-prediction: on the symmetric family sts = xtx + yty + rtr, the
+   two self-prediction atoms plus the double redundancy, balanced by four negative atoms, and with unequal
+   coefficients MMI takes the smaller self-information, so sts falls below the sum. sts therefore inherits the
+   dependence of self-information on lag-1 autocorrelation r₁: at the operating point of BOLD region pairs, 0.01 of r₁
+   moves sts by 0.061 nats and 0.1 of the lag-0 correlation |q| by 0.019, a ratio of 2 to 1 per standard deviation of
+   the data's own variation, and lagged coupling moves sts non-monotonically. We test the account on within-subject
+   fMRI (14 volunteers, DMT and placebo, TR 2 s) with one confirmatory contrast, the pre/post difference-in-
+   differences of whole-brain MMI-sts, which began as a planned directional test recorded before the primary analysis.
+   sts fell under DMT (−0.081 nats, p = 0.004, 13 of 14 subjects), r₁ fell (−0.015), and the sts change predicted from
+   each pair's measured autocorrelations and lag-0 correlation was −0.092; the two contrasts share their reliable
+   variance across subjects (cross-half r = 0.69, ceiling 0.73). The regional synergy map follows regional r₁ (r =
+   0.86 over 115 regions), and its sensory–association contrast vanishes when r₁ is partialled out. A per-pair
+   diagnostic, calibrated on simulated ground truth, leaves a residual within its finite-sample expectation, so the
+   data carry no evidence of a change in lagged interaction. Under CCS redundancy the synergy atom is near zero;
+   prewhitening is not a remedy on band-passed data. We recommend reporting r₁ beside sts and reading sts contrasts
+   against the per-pair prediction.
+**Author summary.** 204 → 200 words; Q7's sentence stands; "which is its lag-1 autocorrelation" → "its lag-1
+   autocorrelation"; "not only which regions are active" → "not only which are active"; "DMT and under placebo" → "DMT
+   and placebo".
+**Claims that changed strength or reference.**
+   1. The residual. Before (Abstract; Results 4; Table 4): "a finite-sample null accounts for a third to two-thirds
+   of the residual DiD (+0.0037–0.0077 of +0.0115, p = 0.042; every null value inside its CI)"; "The residual DiD is
+   not near zero ... Neither outcome named in the analysis plan obtained ... The residual is a pre-specified test
+   whose outcome fell outside both recorded branches; it is not relabelled by that outcome"; Table 4 with the
+   residual's sign-flip p and phase p. After (Results 4; Table 4; Table 7; Methods, "The residual diagnostic and
+   its calibration"): the residual DiD (+0.0115 [+0.0021, +0.0211]) is read against its calibrated expectation
+   under a pure autocorrelation change — +0.0049 ± 0.0017 on AR(1) pairs (B17), [TK: B17b] on the band-passed
+   generator, +0.0054 (range +0.0037 to +0.0077) under the finite-sample null — and is within it; a coupling change
+   of either sign would have lowered it; "the residual DiD therefore carries no evidence of a change in lagged
+   interaction under DMT, and the pre-specified 'near zero' reading of the diagnostic obtains once the reference is
+   the calibrated expectation rather than zero; the residual is not tested against zero anywhere in this paper".
+   Table 4 loses its sign-flip-p and phase-p columns and gains the calibrated-expectation row; Methods states in
+   one sentence that the test against zero was the pre-specified branch rule and that the calibration shows it
+   anti-conservative (p < 0.05 in 82 % of null replicates).
+   2. The multiplicity rule (D1). Before (Methods, "Multiplicity"): 474 inference rows; "Inferential weight is placed
+   on the pre-specified primary contrast ... and on results whose sign-flip and phase-randomised p are both ≤ 0.005
+   across variants; a p between 0.01 and 0.06 ... is reported as such and is not treated as an established effect.
+   This weighting rule is not a pre-specified rule." After (Methods, "Confirmatory and exploratory analyses"): "The
+   pre-specified DiD of whole-brain MMI-sts on ts_gsr at W = 60 is the single confirmatory test of this paper. Every
+   other quantity is exploratory and is reported with its effect size and interval, without threshold language";
+   the rule's text, its count and its history are in S5 Text §2, and it is withdrawn.
+   3. The r₁-dominance statements. Before: title "Lag-1 autocorrelation dominates ..."; Abstract "|∂sts/∂r₁| exceeds
+   |∂sts/∂q| 32-fold at BOLD pairs' operating point" and "MMI-sts contrasts between states or groups are dominated by
+   lag-1 autocorrelation change wherever r₁ differs and lagged interaction does not change comparably"; Results 2
+   "the derivatives are 6.07 and −0.19 nats per unit (ratio 32)"; Discussion "Its dependence on r₁ dominates its
+   dependence on q at every point of the map at which BOLD pairs sit". After (Abstract; Results 1; Discussion): the
+   exchange rates in data units — 0.01 of r₁ ↔ 0.061 nats, 0.1 of |q| ↔ 0.019, 0.01 of coupling ↔ 0.017, 0.01 of
+   within-pair asymmetry ↔ 0.031 (population) — and the per-SD ratio 2.05 : 1 (4.9 with the window-level scatter of
+   a); "32-fold" and "dominates" deleted everywhere; "when the compared conditions differ in r₁, the MMI-sts
+   contrast moves with that difference at the stated rate".
+   4. The proportionality sentence (finding 25). Before (Results 3): "Proportionality is what the map predicts for an
+   r₁-driven change ... The global fit on ts_gsr does not, and the paper does not offer proportionality as a
+   confirmation of the mechanism." After (Results 2): "Proportionality is what the symmetric family predicts for a
+   common change of r₁ (sts carries 0.99 of a change in TDMI at the operating point, against a baseline share of
+   0.98); with unequal changes of a_x and a_y (Results 1) that share moves, so the less-than-proportional result is
+   consistent with the account and is not read further."
+   5. Results 1's "two departures" (B14 rule met): the two departures from the symmetric family and their attribution
+   to the autocorrelation function's decay are replaced by the asymmetric-family account — Table 1 rebuilt with
+   observed, family-predicted and residual columns for levels and DiDs — and the residual pattern (self-prediction
+   atoms 0.035 below, cross-prediction atoms at ±0.023 where the family has ±0.003, mirrors 0.04 above, sts 0.053
+   below) is described as lagged structure the diagonal family lacks, located by B15.
+   6. The run-level residual (B15): "not located" → located, about half directed and half symmetric on ts_gsr, the
+   two cancelling on ts_demean, the directed component unchanged by DMT; the cross-lag budget, the split-half
+   apparatus (verdict undetermined, in two sentences) and the sign(q)-weighted statistics move to S3 Text §6.
+   7. The CCS increase (B18): "no established reading" → the mechanical reading (the co-information term carries it;
+   c̄_rej −0.0292, 14/14 at the global fit; +0.0174 of +0.0197); the mask comparison in three sentences of Methods
+   with the check in S3 Text §2; the four residual–CCS correlations kept (Q1).
+   8. The regional map (B20): new Results 3 with the partialled contrast (−0.0202, p = 0.006 → +0.0007, p = 0.90;
+   sts − rtr −0.0215 → −0.0021) and Fig 6; the spin test and its p moved to the note of S5 Table; the
+   intrinsic-timescale sentences (Raut 2020; Ito 2020; Murray 2014).
+   9. Remedies (B16, B16b): new Results 7 — AR(p ≤ 5) leaves r₁ = 0.26, sts 0.22, contrast −0.026 (p = 0.14) still
+   predicted by the residual autocorrelation (−0.019 of −0.026); the AR(1) residual r₁ = 0.75 with the analytic
+   reason ρ₁(ρ₁² − ρ₂)/(1 − ρ₁²); the band-limitation reason with the in-band share [TK: B16b]; the Cliff, Honari
+   and Arbabshirani sentences; deconvolution in one sentence; the manufacture figures condensed into Table 8 with the
+   estimator recommendation and its two qualifications; Liardi 2025 as the ΦID authors' stated direction.
+   10. The lag recommendation: "Consider τ > 1, with its signal cost" → "a longer lag reduces everything, the
+   artefact included", not recommended (Results 5; Recommendations); Q5's relative DiDs and CI overlap kept.
+   11. The phase-randomised surrogate (finding 20): confined to a stationarity check of the derived series, reported
+   in the tables and carrying no inference (Methods); Table 6 loses its phase-p column.
+   12. The BCa intervals (B19d): Methods states in one sentence that the percentile intervals stand (largest width
+   ratio 1.04).
+   13. The per-subject collinearity: the cross-half correlation 0.694 against the ceiling 0.729 (disattenuated 0.95)
+   is the number quoted, with 0.953 as the full-set value (Results 2; Fig 3 caption); the within-window regression
+   R² = 0.808 beside r² = 0.55 (Results 1).
+   14. The eight references uncited since round 13 now have their sentences: Cliff, Honari, Arbabshirani (Results 7),
+   Afyouni (Methods, Estimator; Recommendations), Murray, Raut, Ito (Results 3), Faes 2017 and Kay & Ince
+   (Introduction; Limitations). Alexander-Bloch 2018 and Váša 2018 are cited in Methods for the spin test whose p
+   values are in S5 Table's note.
+   15. Findings 40–42 of the review of 20 Sep: the abstract has two to three significant figures, no bracketed p, no
+   "cell", "DiD" defined at its first use in Results; each sentence of finding 41 is split or deleted; each hedge of
+   finding 42 is one plain statement ("reported without interpretation" → "its sign reversal without global signal
+   regression is an unknown"; "not located" → located; "the exclusion is seen to be by rule and not by evidence" →
+   deleted; "it is not relabelled by that outcome" → deleted with the branch reading; "the verdict is undetermined" →
+   "undetermined at the two quantities' reliabilities", once, in Results 4 and 6).
+**Provenance (B5).** The main text carries no commit identifier, timestamp, file path, "record, …", "review, section
+   …", "the fifth review", "plain-language companion" or "review computation" (checked by pattern); file paths are
+   in Data and code availability, the Figures paragraph and the supporting texts; "review computation" → "post hoc
+   computation" throughout. The "Status" and "Sources and notation" preambles are gone: the status line is the
+   first sentence of Data and code availability, the atom notation the first paragraph of Results, "every number is
+   quoted from ..." the second sentence of Data and code availability. The History and the Use-of-AI paragraph are
+   condensed; "Pre-registration and deviations" (148 words) replaces the History in Methods.
+**Tables.** Table 1 rebuilt from B14 (observed, family-predicted, residual; levels and DiDs; ts_gsr, W = 60; the
+   sensitivity variant and the CCS atoms in S3 Text §1); Table 2 unchanged; Table 3 (CCS-sts and ΦR by combination)
+   without the `phyid`-mask column; Table 4 as in item 1; Table 5 new ("The sts change produced by the
+   autocorrelation change, by estimator", eight rows); the old Table 5 (split-half) moved to S3 Text §6; Table 6
+   without the phase-p column; Table 7 new (calibration, B17 with B17b's cells [TK: B17b]); Table 8 new (manufacture, four rows; its W = 30 cells for the two matched pairs whose
+   difference is not distinguishable from zero, which the old text did not quote, filled from their committed
+   logs at +6 % ± 8 % and −1 % ± 8 %).
+**Figures (B6; `scripts/15_figures_v2.py`, revised; the figures and `captions_v2.md` not regenerated in this commit —
+   the committed files stay the 48ea934 ones, as the Figures paragraph says, until the final full run).** Fig 1:
+   observed against family-predicted atoms, levels and DiDs (B14; new file `fig1_v2_atoms_observed_predicted`).
+   Fig 2: panel (a) with the saved pre-injection pairs pooled (the density of the 52,440 pair × window points of
+   the overlay, windows 1–4 of both runs of subject 1 — all subjects' pairs are in no committed file); panel (c)
+   replaced by sts against c at fixed (r₁, q) from `coupling_map_tables.md`. Fig 3: no printed p-values; the
+   predicted-against-observed sts DiD panel added as (b); the cross-half value in the caption. Fig 4: a third panel,
+   the DMT − placebo residual difference per window with within-subject bands and the calibrated expectation as a
+   dashed step (read from `calibration_filtered_tables.md` when present, otherwise `calibration_tables.md`). Fig 5
+   unchanged. Fig 6 new: regional sts against regional r₁ by network, and the sensory − association contrast before
+   and after partialling (B20; `fig6_v2_regional`). All caption text lives in the script. The script was run in the
+   writer's clone on the committed inputs to look at the panels; its outputs were discarded.
+**Supporting information (B9).** New files `manuscript/si/S1_Text.md` (the original analysis), `S2_Text.md` (the ΦR
+   exploration and deconvolution), `S3_Text.md` (the supporting tables of the estimator account, ten sections),
+   `S4_Text.md` (the COBIDAS pointer) and `S5_Text.md` (provenance and audit trail: the History, the multiplicity
+   count and the withdrawn rule, the decisions of 20 Sep, the run inventory, the reviews and audits, every commit
+   identifier). `manuscript/supplementary.md`: S5 Table's note carries the spin-test p values of the regional
+   correlations; S10 Table (the calibration at both estimators, B17 and B17b) and S11 Table (the prewhitening check,
+   B16, and the whitened spectrum, B16b) added. `notes/companion_plain_language.md` retired with a dated note at its
+   head; `notes/defence_questions.md` rewritten to the new text (24 questions).
+**Word count.** Before (96e2242): title 25, introduction 895, methods 6,575, results (prose) 6,245, discussion 2,768
+   — main text 16,508; abstract 302; author summary 204; whole file 21,775. After: title 28, introduction 809,
+   results (prose) 4,382, discussion 1,849, methods 2,926 — main text 9,994 (cap 10,000); abstract 300 (cap 300);
+   author summary 200 (cap 150–200); "Pre-registration and deviations" 148 (cap 150); tables and their captions in
+   Results 1,994; whole file 15,147 (the tables' rows 1,540 of it).
+**TK inventory.** Permanent items 13 (before 15): the two co-author [TK] marks and "[TK further co-authors nominated
+   by C.T.]"; the two [TK affiliation]s; the REC reference number; the "[TK] marking a value that no file holds"
+   definition and the run sentence in Data and code availability (the earlier third Data-availability [TK], the
+   sentence to drop in after the run, is merged into the run sentence); three in Author contributions; Funding;
+   Competing interests. Transient placeholders 37: [TK: B17b] ×36 (Results 2's Table 5, Results 4, Table 4, Table
+   7) and [TK: B16b] ×1 (Results 7), filled in the follow-up commit from the committed tables of B16b and B17b.
+**Not done as specified, with the reason.** (a) Fig 2a pools the pre-injection pairs of the saved overlay, which
+   holds subject 1's eight windows only; all subjects' pairs are in no committed file and writing them would be a
+   new computation (a pre-run entry) — noted for V.S. (b) The main text quotes B17b and B16b as placeholders,
+   since their outputs were not on origin when Stage B was complete. (c) The reference list is unchanged from round
+   13 (41 entries); Wolff 2022 and Zilio 2021 remain uncited and absent.

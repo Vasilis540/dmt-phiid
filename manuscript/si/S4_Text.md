@@ -1,0 +1,3 @@
+# S4 Text. The COBIDAS reporting checklist
+
+Supporting information for "The Gaussian-MMI synergy atom of integrated information decomposition is mostly self-prediction". The COBIDAS reporting checklist for MRI, filled for this secondary analysis, is `manuscript/supplementary_cobidas.md`: each item is marked reported (with its location in the paper), not applicable (with the reason) or not reported (with what is missing). Items that refer to section numbers of earlier drafts are read against the present structure (Results 1–7 and the Methods subsections of the main text); the acquisition and preprocessing items are those of the source studies (Timmermann et al., 2023; Singleton et al., 2025), which the checklist cites rather than restates.
