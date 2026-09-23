@@ -6252,3 +6252,66 @@ B17b within one replicate SD — sts DiD −0.0940 ± 0.0028, AR(1)-substituted 
    naming this entry. `--n-rep N` sets the replicates; the writer's session runs it once with `--n-rep 1` (a
    twentieth), after this entry is committed, to check that it runs; the outputs are discarded and nothing from them
    is quoted. The outcome is appended as a later entry after V.S. runs it; nothing is relabelled by the outcome.
+
+## Correction to the first-attempt entry: both attempts of the final run of `run_all.sh` were ended by a power-off from the desktop session, 23 Sep 2026 15:36 UTC (appended; nothing above edited)
+
+This corrects "The final end-to-end run of `run_all.sh`: first attempt, 21 Sep 2026, lost to a suspend" (23 Sep 2026
+11:31 UTC), which is left unedited, and records how the second attempt ended. The facts are from the journal of V.S.'s
+machine, its login records (`wtmp`) and UPower's charge history (round 16, note 3); times are EEST (UTC + 3).
+
+**The first attempt, 21 Sep.** Started at 21:36:24 (18:36:24 UTC); the heartbeat's last line is 23:11:25. At 23:13:04
+gnome-shell's end-session dialog appeared (`endSessionDialog: No XDG_SESSION_ID, fetched from logind: 2`), and at
+23:13:05 systemd-logind logged "The system will power off now!" and "System is powering down." The battery stood at
+58 %, discharging (UPower, 23:09:09). The lid was closed at 21:23:48 and opened at 21:29:54, both before the run
+started, and was not closed again before the power-off. **Cause: the machine was powered off from the desktop
+session.** The first-attempt entry's reading — the lid closed and the laptop suspended, because
+`HandleLidSwitch=ignore` was not yet in effect — is wrong and is withdrawn, with "lost to a suspend" in its title.
+What that entry records of the log, of the nine paths copied to `~/aborted_run_21` and of the restore is unaffected.
+
+**The second attempt, 22–23 Sep.** Started on 22 Sep at 22:48:41 (19:48:41 UTC), under the conditions the
+first-attempt entry records. The heartbeat's last line is 00:18:41 on 23 Sep (21:18:41 UTC on 22 Sep): log 6,954
+bytes, two "=== " lines, inside step 2 (`scripts/02_bias_check.py --n-runs 20000`). At 00:19:39 the same end-session
+dialog appeared; at 00:19:40 systemd-logind logged "The system will power off now!" and at 00:19:41 "System is
+powering down." The battery stood at 55 % (00:17:28). That boot has no lid events. **Cause: the same.** The lid
+setting and the sleep inhibitor had been in effect throughout.
+
+**What the second attempt left, and how it was cleared (23 Sep).** The run had written four paths:
+`results/bias_check.csv` and `results/bias_check_differential.csv` (modified), `results/run_00_verify.log` and
+`results/run_02_bias_check_n20000.log` (new). They were copied to `~/aborted_run_22` together with the log and the
+heartbeat, and the three output trees were restored to HEAD (`git restore --source=HEAD --staged --worktree` and
+`git clean -fd` on `results`, `notes/review_results` and `manuscript/figures`); both clean-tree counts then read 0,
+and HEAD is 0b8d1a4. Nothing either attempt wrote is used. The pre-run entry of 21 Sep is closed in the next entry.
+
+## The final end-to-end run of `run_all.sh` at 0b8d1a4: not completed, and its pre-run entry closed, 23 Sep 2026 15:36 UTC (appended; nothing above edited)
+
+This closes "The final end-to-end run of `run_all.sh`: pre-run entry, 21 Sep 2026 17:54 UTC". The run it fixed was not
+completed at 0b8d1a4. It was attempted twice, on 21 Sep and on 22–23 Sep, and both attempts were ended inside step 2
+by a power-off from the desktop session (the first-attempt entry and the correction above). No output of either
+attempt was committed or is used, and the entry has no outcome.
+
+The single full run of `run_all.sh` moves to the final commit, after Stage B of round 16, and is made under a new
+pre-run entry written for that commit. Its conditions add two to those of the second attempt: the inhibitor also
+blocks shutdown (`systemd-inhibit --what=sleep:idle:handle-lid-switch:shutdown --mode=block`), and the run starts only
+with the charger connected. The same two conditions, with the battery percentage and the charger state in the
+heartbeat, are in the command block that runs B21–B24 (the round's command file, `round16_commands.sh`, block (a)).
+
+## B23 pre-run entry: a note on the (a3) solve and on the writer's check runs, 23 Sep 2026 15:36 UTC (appended; nothing above edited)
+
+A note to "The residual's response to the alternatives of the direction argument, CCS-sts against autocorrelation,
+exposure across datasets and the unequal-coefficient grid (B23): pre-run entry, 23 Sep 2026 11:31 UTC", appended
+before V.S. runs B23.
+
+1. **The (a3) solve.** The entry's Implementation solves (a, q_ε) at each grid point "by least squares as partB19's
+   `coupled_sts_matched` does". `notes/partB23_diagnostic_alternatives.py` (9d793dc) does that and then, where the
+   least-squares residual exceeds 1e-12, polishes the solution with `scipy.optimize.fsolve` started from it, keeping
+   the polished point only if its residual is smaller; every solve is required to hold r₁ and q to 1e-10, a check
+   counted in the table. This is a free choice: the same root, held to 1e-10.
+2. **The writer's check runs.** The entry has the writer's session run B23 once at `--scale 20` (the script's
+   `--scale` also coarsens the (a3) grid by the same factor, which the entry does not say). It ran B23 twice, not
+   once: the first run failed the (a3) precision check, then required at 1e-8; the polish of item 1 was added and the
+   requirement set to 1e-10; the second run confirmed the check. Neither run's outputs were kept. From the first, only
+   the check lines and the log's last three lines (the rule's text, the check count and the time taken) were read;
+   from the second, the check lines and, to confirm that the tables were formed, their section headings, a count of
+   "nan" entries and the first twenty lines of part (b), cut at 160 characters, with every decimal number masked (the
+   only numbers left were the design's counts and the numbers of excluded pairs). The check lines name each check and
+   give its difference from its target and its tolerance; no other value from either run was read, and none is quoted.

@@ -14,7 +14,7 @@ Cambridge (Prof. Emmanuel Stamatakis).
 - **20 Nov 2026** — public preprint + documented repo
 - **8 Dec 2026** — Cambridge application (Gates Cambridge / Cambridge Trust)
 
-## Current state (23 Sep 2026, round 16, Part A: the review of 22 Sep recorded, B21–B24 under pre-run entries)
+## Current state (23 Sep 2026, round 16, Part A: the review of 22 Sep recorded, B21–B24 under pre-run entries, the final run at 0b8d1a4 closed unfinished)
 
 **Analysis complete. The paper is `manuscript/draft_v2.md`, restructured on 21 Sep 2026 (round 14, Stage B) for a journal reader in the PLOS Computational Biology Methods-article order: new title, abstract and Author summary at their caps, seven Results sections, main text 9,991 words (title through Methods, after the follow-up commit), the supporting information as `manuscript/si/S1_Text.md`–`S5_Text.md` and the tables S1–S11 in `manuscript/supplementary.md`. `manuscript/draft.md` is the superseded first draft, kept as a record; `notes/companion_plain_language.md` is retired. Figures `fig1_v2`–`fig5_v2` built by `scripts/15_figures_v2.py`, whose revision of 21 Sep also writes `fig1_v2_atoms_observed_predicted` and `fig6_v2_regional`; the committed files stay those of 48ea934 until the final full run.**
 
@@ -333,9 +333,10 @@ Cambridge (Prof. Emmanuel Stamatakis).
   writes. The pre-run entry fixes the commit, the SHA-header expectations, the deconvolution branch, the pass rule
   (text identical apart from SHA/timing/path/signed-zero lines, CSV within 1e-9, binaries within 1e-9, both
   comparisons run before anything is added) and the figure differences to expect. Main text 9,999 words.
-- 23 Sep 2026, round 16, Part A (no manuscript text changed): the first attempt of the final run (`runfinal`,
-  21 Sep) was lost to a suspend inside `02_bias_check` and the second attempt started on 22 Sep 22:48:41 EEST under
-  the unchanged pre-run entry (record, "The final end-to-end run of `run_all.sh`: first attempt"); the independent
+- 23 Sep 2026, round 16, Part A (no manuscript text changed): the final run at 0b8d1a4 was not completed — both
+  attempts (21 Sep, `runfinal`; 22–23 Sep) were ended inside `02_bias_check` by a power-off from the desktop
+  session, not by a suspend as the first-attempt entry had it (record: "The final end-to-end run of `run_all.sh`:
+  first attempt", its correction, and the entry closing the pre-run entry of 21 Sep); the independent
   review and citation pass of 22 Sep and their verification committed byte-identical (`notes/review_2026-09-22/`;
   record entry with the sha256); the direction argument of Results 4 withdrawn (record, "Correction: the direction
   argument of Results 4 is withdrawn"); four computations under pre-run entries — B21 (inverted sign-flip
@@ -343,19 +344,24 @@ Cambridge (Prof. Emmanuel Stamatakis).
   (the aligned and directed cross-lag statistics without selection, the per-SD exchange rate, a network spin test),
   B23 (the residual's response to the alternatives, CCS-sts against r₁, exposure across datasets, the
   unequal-coefficient grid), B24 (the pure-autocorrelation expectations on the band-passed generator) — added to
-  section 6 of `run_all.sh` before the figures, with `notes/rev_inference_inverted.py` (`rev_inference.py` unchanged).
-- Remaining work: V.S.'s commit of the final run's outputs (second attempt, at 0b8d1a4) and, in bundle 26, its
-  outcome entry with the two comparisons' verdicts; V.S.'s run of B21–B24 (`runb21`, `round16_commands.sh`) and
-  their outcome entries; Stage B of round 16 (every R16B disposition of the 22 Sep verification, the shortening of
-  Finding 20, the Data-availability [TK] and the Figures paragraph's 48ea934 replaced by the run's commit, the
-  numbers CSV rebuilt, the figures regenerated). The thirteen permanent [TK] items in `draft_v2.md`
+  section 6 of `run_all.sh` before the figures, with `notes/rev_inference_inverted.py` (`rev_inference.py` unchanged);
+  a note to B23's pre-run entry (the (a3) solve's fsolve polish; the writer's two check runs at `--scale 20`).
+- Remaining work: V.S.'s run of B21–B24 (`runb21`, `round16_commands.sh`, with `shutdown` in the inhibitor and the
+  charger connected) and their outcome entries; Stage B of round 16 (every R16B disposition of the 22 Sep
+  verification, the shortening of Finding 20, the numbers CSV rebuilt, the figures regenerated); then the single
+  end-to-end run of `run_all.sh` at the final commit under a new pre-run entry, and its outcome entry, after which the
+  Data-availability [TK] and the Figures paragraph's 48ea934 take that run's commit. The thirteen permanent [TK]
+  items in `draft_v2.md`
   (affiliations, co-authors, the REC reference number, the co-authors'
   funding statements, contributions, competing interests, the run
   sentence); run `run_all.sh` end-to-end
   once as a single run at the final commit, with the lid open for the whole
-  run (four attempts on 16–17 Sep stopped inside `02_bias_check`, two of
+  run, `shutdown` in the inhibitor's `--what` list and the charger connected
+  (four attempts on 16–17 Sep stopped inside `02_bias_check`, two of
   them within minutes of the lid closing, one of those with every sleep
-  target masked; record, "The attempts at the end-to-end run") — V.S.; it
+  target masked; record, "The attempts at the end-to-end run"; two more at
+  0b8d1a4 on 21–23 Sep were ended by a power-off from the desktop session;
+  record, the entry closing the pre-run entry of 21 Sep) — V.S.; it
   regenerates and commits every output under one SHA, `partB12`/`partB13`
   included, closes the Data and code availability [TK], and regenerates the
   figures once more at that commit — six now, `fig6_v2_regional` included,
