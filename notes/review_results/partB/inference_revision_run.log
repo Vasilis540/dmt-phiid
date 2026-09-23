@@ -1,0 +1,19 @@
+git=a9d9ca4
+   (a)(i): 738 pickle rows (134s)
+   (a)(ii): Engine recomputations done (141s)
+   (a)(iii): saved per-subject quantities done (169s)
+   (b)–(d) done (172s)
+# Inverted sign-flip intervals, the residual against its calibrated expectations, the per-subject regressions and the correlation intervals (partB21_inference_revision.py)
+git=a9d9ca4
+
+Exploratory (decision D1): effect sizes and intervals; no threshold language. N = 14 subjects; the exact sign-flip test over 2^14 assignments, two-sided; the inverted interval {μ : p(μ) > 0.05} of notes/rev_inference_inverted.py (relative tolerance 1e-12; bounds bisected to 1e-7 after a 2,001-point monotonicity grid); the t interval mean ± t(0.975, 13)·SD/√14; the percentile interval as committed. Seed 20261120.
+
+Checks: 1025 run, 0 failed.
+Mode: full (the .mat and FDlong.mat present).
+
+## (a) Summary
+
+Quantities: 932 (738 pickle rows, 36 Engine recomputations, 158 other saved per-subject quantities); 202 of them matched to an interval quoted in draft_v2.md, S1–S5 Text or supplementary.md.
+Width of the inverted interval over the committed percentile interval (932 quantities with a committed interval): median 1.143, quartiles 1.127–1.156, range 1.039–1.288; share with a ratio in 1.05–1.20: 0.997, below 1.05: 0.001, above 1.20: 0.002.
+   checks: 1025 run, 0 failed
+done (172s)
