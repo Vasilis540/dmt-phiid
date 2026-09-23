@@ -605,7 +605,7 @@ cols = ["group", "label", "set", "field", "source", "quoted_at", "n", "mean", "c
 
 def cell(v):
     if isinstance(v, float):
-        return "" if not np.isfinite(v) else repr(v)
+        return "" if not np.isfinite(v) else repr(float(v))  # float() first: NumPy 2's repr of np.float64 adds a wrapper (Stage B of round 16)
     return '"' + str(v).replace('"', "'") + '"' if ("," in str(v) or '"' in str(v)) else str(v)
 
 

@@ -6315,3 +6315,343 @@ before V.S. runs B23.
    "nan" entries and the first twenty lines of part (b), cut at 160 characters, with every decimal number masked (the
    only numbers left were the design's counts and the numbers of excluded pairs). The check lines name each check and
    give its difference from its target and its tolerance; no other value from either run was read, and none is quoted.
+
+## B21, outcome, 23 Sep 2026 21:40 UTC (appended; nothing above edited)
+
+Outcome of "Inverted sign-flip intervals, the residual against its calibrated expectations, the per-subject
+regressions and the correlation intervals (B21): pre-run entry, 23 Sep 2026 11:31 UTC". V.S. ran the four `nstep`
+lines of B21–B24 in section 6 of `run_all.sh` at a9d9ca4 on 23 Sep 2026, 17:31:41–17:40:33 UTC (20:31–20:40 EEST), in
+the transient unit `runb21` as vilalius, under
+`systemd-inhibit --what=sleep:idle:handle-lid-switch:shutdown --mode=block` with the charger connected (the heartbeat
+at 17:36:41 UTC: battery 82 %, charger connected). The steps started at 17:31:41 (B21), 17:34:33 (B22), 17:35:46 (B23)
+and 17:36:46 (B24) and took 172, 73, 59 and 227 s; the unit's log ends `=== all done in 8 min` and `=== unit exit 0`,
+with no traceback. The checks: B21 1,025 run and 0 failed (mode full, the .mat and FDlong.mat present), B22 22 and 0,
+B23 63 and 0, B24 10 and 0. All 13 outputs carry `git=a9d9ca4` and were committed as 90690f4. B21's outputs are
+`notes/review_results/partB/inference_revision_tables.md`, `inference_revision.csv`, `splithalf_subjects.csv` and
+`inference_revision_run.log`.
+
+**Predictions (from the pre-run entry).** "(a) The inverted intervals are wider than the committed percentile
+   intervals by 5–20 %, and exclude zero exactly when the exact p is below 0.05 (this part holds by construction)";
+   and for (d) "the disattenuated ratio's interval is wide, with its lower limit below 0.7." The other values of
+   (a)–(d) were known from the verification of 22 Sep (Findings 3, 5 and 13) and are reproductions, not predictions.
+**Outcome, (a).** 932 quantities carry a committed interval: the 738 pickle rows, 36 Engine recomputations and 158
+   other saved per-subject quantities; 202 of them match an interval quoted in `draft_v2.md`, S1–S5 Text or
+   `supplementary.md` as they stood at a9d9ca4. The inverted interval over the committed percentile interval has a
+   median width ratio of 1.143 (quartiles 1.127–1.156, range 1.039–1.288). 929 of the 932 ratios lie in 1.05–1.20
+   (1.072–1.191): met for those. The three outside it are S9 Table cells of the cross-lag budget whose committed
+   limits were printed at five decimals on widths of four to eleven units of the fifth decimal, so that their ratios
+   are set by that rounding: δ_means on the DMT run, ts_gsr (1.288), δ_eps, grand mean, ts_demean (1.231), and δ_means
+   on the placebo run, ts_demean (1.039). Zero lies outside the inverted interval exactly when the exact p is at most
+   0.05 for 932 of 932, and no grid point showed p rising away from the mean. The zero-inclusion differs between the
+   percentile and the inverted interval for 39 quantities. Nine of them were quoted in the text and are rewritten in
+   Stage B as effect and interval: the CCS-sts DiD at W = 60 on ts_gsr, [−0.0001, +0.0088], p = 0.056, and its
+   FD-residualised version, [−0.0001, +0.0077], p = 0.053; the ΦR DiD at W = 60 on ts_demean, [−0.0024, +0.0341], p =
+   0.085; the placebo change of MMI-sts on ts_demean, sensitivity set, [−0.0021, +0.0646], p = 0.064; the
+   AR(p)-whitened r₁ DiD, [−0.1077, +0.0006], p = 0.052; and four S9 Table cells on ts_demean, the grand means of
+   δ_run, [−0.00528, +0.00006], p = 0.053, and δ_within, [−0.00455, +0.00005], p = 0.054, and on the placebo run δ_60,
+   [−0.00501, +0.00026], p = 0.076, and the window-sign value, [−0.00011, +0.00430], p = 0.062. S17 Table lists all
+   932 rows, the other 30 changes among them. The exact p against zero differs from the committed p by more than the
+   committed p's precision for seven quantities, all of them CCS decomposition rows whose committed p was read from a
+   four-decimal table (largest difference 0.0006); none is quoted in the text. The four known intervals are
+   reproduced: the primary sts DiD [−0.1317, −0.0310], the residual DiD [+0.0005, +0.0226], the r₁ DiD [−0.0261,
+   −0.0037], the CCS-sts DiD at W = 60 on ts_gsr [−0.0001, +0.0088].
+**Outcome, (b) and (c) (reproduced).** The primary residual DiD, +0.01153 [+0.00046, +0.02265], has exact p 0.1079,
+   0.2188 and 0.2506 against +0.0027, +0.0049 and +0.0054 (known: 0.108, 0.219, 0.251), with 4 of 14 subjects below
+   each. The regressions on the r₁ DiD: sts on ts_gsr, slope +4.2627 [+3.4085, +5.1169] (t, 12 df; bootstrap [+3.7768,
+   +5.2686]; leave-one-out +4.1392 to +4.5346) and intercept −0.01844 [−0.03900, +0.00212]; on ts_demean +4.9219 and
+   +0.00308; the residual on ts_gsr −0.7535 [−1.1332, −0.3737] (bootstrap [−1.0207, −0.4360]; leave-one-out −0.7915 to
+   −0.6994), intercept +0.00049; on ts_demean −0.5679 [−1.0480, −0.0878]; the model-based corrected sts slopes +5.008
+   (split-half reliability of the r₁ DiD 0.741, full-set 0.851) and +5.917 (0.712, 0.832). No bootstrap resample was
+   skipped. Every known value is reproduced at its printed precision.
+**Outcome, (d) (the Fisher-z intervals met to the rounding of the stated values; the disattenuated ratio met on
+   ts_gsr, missed on ts_demean).** 0.694 → [0.258, 0.895] (stated [0.26, 0.90]); 0.953 → [0.854, 0.985] ([0.85,
+   0.99]); −0.780 → [−0.927, −0.426] ([−0.93, −0.43]); 0.989 → [0.966, 0.997] ([0.96, 1.00]). Every recomputed
+   correlation equals its committed value. The disattenuated cross-half ratio is +0.951 [+0.617, +0.991] on ts_gsr
+   (366 of 10,000 draws excluded), its lower limit below 0.7 as predicted, and +0.987 [+0.901, +1.069] on ts_demean
+   (169 excluded), where the prediction is missed.
+**Reading under the rule.** The rule is applied as recorded: Stage B reports the inverted interval wherever the text
+   reported a percentile interval of a mean over subjects and states the method once, in Methods; the correlations
+   carry their Fisher-z intervals and the regression slopes their t intervals; the calibration's replicate SDs keep
+   their form; the exact p values against the three calibrated expectations replace "inside its interval". The
+   quantities with no saved per-subject vector, listed in the tables, keep their subject-bootstrap percentile
+   intervals, labelled as such, and are not approximated.
+**The checks outside V.S.'s run.** The writer's check before the run, recorded in 9d793dc, ran B21 with
+   `--committed-only` in a clone without the data; its outputs were discarded. The planning session ran B21 and B22
+   once each on a synthetic stand-in for the data; no value from those runs is meaningful or quoted, and their files
+   were deleted. After V.S.'s run the planning session recomputed all 738 pickle rows with an independent exact
+   inversion — each limit an order statistic of the acceptance intervals of the 16,382 non-constant sign assignments —
+   and found them identical, the limits within 4.9 × 10⁻⁸; it reproduced (b), (c) and (d) exactly, and the saved
+   quantities are identical.
+**The CSV writer.** `inference_revision.csv` writes a numeric cell that NumPy returned as a scalar as
+   `np.float64(<value>)`: `cell()` in `notes/partB21_inference_revision.py` takes `repr()` of the value, and under
+   NumPy 2 the repr of an `np.float64` carries that wrapper. The values are complete and exact; a reader strips the
+   wrapper. The commit that carries this entry changes `cell()` to format `float(v)`. The fix changes no value, and
+   the final run's `inference_revision.csv` will differ from 90690f4's only by the `np.float64` wrappers. The
+   committed CSV is not edited.
+
+## B22, outcome, 23 Sep 2026 21:40 UTC (appended; nothing above edited)
+
+Outcome of "The aligned and directed cross-lag statistics without selection, the per-SD exchange rate and the network
+spin test (B22): pre-run entry, 23 Sep 2026 11:31 UTC"; run by V.S. in the same unit as B21 (the B21 outcome entry
+above), 17:34:33–17:35:46 UTC, 73 s, 22 checks run and 0 failed. Outputs:
+`notes/review_results/partB/aligned_directed_tables.md`, `aligned_directed.csv` and `aligned_directed_run.log`, all
+with `git=a9d9ca4`. The specification's checks are met: the window-sign statistic's DiDs reproduce −0.00119 (ts_gsr)
+and −0.00390 (ts_demean), the RMS δ_anti DiD +0.00631, p = 0.0829 (ts_gsr; ts_demean +0.00352, p = 0.2977), and the
+mean standardised coefficients +0.661, −0.463, −0.426 (ts_gsr) and +0.594, −0.476, −0.413 (ts_demean).
+
+**Predictions (from the pre-run entry).** "(a) ts_gsr: A_other level +0.001 to +0.004, DiD −0.003 to +0.001;
+   ts_demean: level −0.001 to −0.004, DiD −0.005 to 0; A_same near A_other; on ts_gsr the level below the window-sign
+   +0.0061 and near the run-sign +0.00245 (`crosslag_budget.csv`, δ_60); on ts_demean the level of the sign of δ_run
+   (−0.0026). (b) B level about +0.020 (ts_gsr) and +0.024 (ts_demean); the DiD negative if a shared slow structure
+   weakened under DMT, near B24's expectation if not. (c) D DiD −0.002 to −0.006 on ts_gsr; the directed part lowers
+   the residual DiD; Sym's DiD exceeds the residual DiD. (d) Within windows SD r₁ 0.025–0.035, SD |q| 0.18–0.22, ratio
+   4–6; group level 0.010–0.016, 0.12–0.18, ratio 2–4; unstandardised slopes +5 to +6 per unit r₁, −0.40 to −0.55 per
+   unit |q|, −3 to −5 per unit asymmetry. (e) Spin p below 0.05 for the unpartialled F; 0.01–0.3 for the residual
+   map's F; above 0.05 for both contrasts (the last two uncertain)."
+**Outcome, (a) (met).** A_other: on ts_gsr level +0.00196 [+0.00124, +0.00268] and DiD −0.00059 [−0.00166, +0.00041],
+   p = 0.2679; on ts_demean level −0.00251 [−0.00458, −0.00047] and DiD −0.00249 [−0.00474, −0.00026], p = 0.0282.
+   A_same beside it: +0.00265 and −0.00090 (ts_gsr), −0.00355 and −0.00212 (ts_demean). The ts_gsr level lies below
+   the window-sign statistic's +0.00642 and near the run-sign +0.00245; the ts_demean level is negative, with δ_run's
+   sign. The share of pairs whose sign of q̄ differs between the two runs is 0.209 (ts_gsr) and 0.186 (ts_demean).
+**Outcome, (b) (the levels met; the conditional prediction does not discriminate).** B level +0.02019 (ts_gsr) and
+   +0.02441 (ts_demean). The DiD is −0.00233 [−0.00837, +0.00387] on ts_gsr and −0.00037 on ts_demean; B24's
+   pure-autocorrelation expectation is itself negative, −0.00263 ± 0.00077, and the ts_gsr DiD lies at it, so
+   "negative" and "near B24's expectation" are both true and the prediction does not separate a weakened shared slow
+   structure from none.
+**Outcome, (c) (the D DiD missed; the other two missed on ts_gsr and met on ts_demean by point estimate only).** On
+   ts_gsr the D DiD is +0.00111 [−0.00332, +0.00518], outside −0.002 to −0.006 and positive, so the directed part does
+   not lower the residual DiD; Sym's DiD, +0.01034 [+0.00138, +0.01943], is below the residual DiD, +0.01153; D + Sym
+   is +0.01145. On ts_demean the D DiD is −0.00143 [−0.00613, +0.00327] and Sym's +0.01860 [+0.00698, +0.03041]
+   against the residual's +0.01823, both in the predicted direction by their point estimates, D's interval including
+   zero and Sym's exceeding the residual by 0.00037.
+**Outcome, (d) (the within-window SDs, the ratios and the |q| slopes met; the group-level SDs missed; the r₁ slope met
+   on ts_gsr and missed on ts_demean; the asymmetry slopes missed).** Within the 112 pre-injection windows the mean
+   between-pair SD of r₁ is 0.0284 and of |q| 0.1957, ratio 4.66 (mean of the per-window ratios 4.69); on ts_demean
+   0.0294, 0.2087, 4.52. Group level (each pair averaged over the 14 subjects × 8 pre windows): 0.0082 and 0.0799,
+   ratio 3.28; on ts_demean 0.0081 and 0.1039, ratio 2.51 — both SDs below their predicted ranges, the ratios inside
+   theirs. The mean unstandardised partial slopes over the 392 windows: +5.126 per unit r₁, −0.528 per unit |q| and
+   −2.707 per unit |a_x − a_y| (ts_gsr); +4.523, −0.506 and −2.583 (ts_demean). The verification's one-subject values
+   (Finding 7: 0.0290, 0.1957, ratio 4.75, +5.483, −0.472) were on a different sample.
+**Outcome, (e) (the unpartialled F's p missed, just above 0.05; the residual map's p below its predicted range; the
+   contrasts met).** The eight-class F of the sts map is 16.933, spin p 0.0564; of the map with regional r₁ partialled
+   out, 8.146, spin p 0.0009 (10,000 rotations). The residual map's SomMot − Default contrast is −0.00965 (spin p
+   0.2240) and its Vis − Default contrast +0.00875 (0.3089); on the unpartialled map −0.00665 (0.6107) and −0.01606
+   (0.1990).
+**Reading under the rule, and the conversions.** A_other is reported, with A_same and B beside it. B24's
+   pure-autocorrelation expectations (its entry below): A_other +0.00001 ± 0.00031, A_same +0.00004 ± 0.00037, B
+   −0.00263 ± 0.00077, D −0.00100 ± 0.00041, Sym +0.00373 ± 0.00092; B23 (b)'s change under (i) against the
+   unperturbed pairs: A_other +0.00001 ± 0.00004, A_same +0.00001, B +0.00034, D +0.00015. B23's aligned conversions,
+   the residual change per unit change of A_other at W = 60 in (b): k = −2.47 for δ = −0.01·sign(q) (+0.01850 /
+   −0.00748) and −1.73 for +0.01·sign(q) (−0.01354 / +0.00782); −2.75 for Δa_s = −0.03 (+0.01020 / −0.00371); about
+   −40 for λ → 0.9λ (+0.00391 / −0.00010, the denominator two SE from zero). On ts_gsr the A_other DiD less B24's
+   expectation is −0.0006 [−0.0017, +0.0004], a residual change of +0.0015 [−0.0010, +0.0041] at k = −2.47 and +0.0017
+   [−0.0011, +0.0046] at k = −2.75: 0.17–0.19 [−0.12, +0.52] of the residual's excess over the band-passed
+   expectation, +0.0088 (+0.0115 − 0.0027). On ts_demean the A_other DiD, −0.00249 [−0.00474, −0.00026], with no
+   expectation subtracted, gives +0.0062 [+0.0006, +0.0117] and +0.0068 [+0.0007, +0.0130], against that variant's
+   residual DiD of +0.0182; no excess is computed there, the band-passed generator having been solved to ts_gsr. A
+   fall in the weight of a shared component (λ → 0.9λ) raises the residual while barely moving A_other. So the aligned
+   statistic neither explains the excess nor excludes aligned structure as its source; Results 4 carries this as form
+   (b) (the decision entry below). (d) replaces the per-SD ratio of the abstract and Results 1 (4.66 within windows,
+   3.28 at the group level; the 2.05 of the earlier text withdrawn, Finding 7). (e) decides the network statement:
+   with regional r₁ partialled out the somatomotor − default and visual − default contrasts lie within the rotation
+   null (spin p 0.22 and 0.31), while the residual map keeps an eight-class network structure beyond it (spin p
+   0.0009); the unpartialled map's F has spin p 0.0564. Results 3 says that partialling removes the pre-defined
+   sensory–association contrast (the per-subject sign-flip test of B20) but not all network structure, and Fig 6c
+   draws the residual map's network means.
+**The checks outside V.S.'s run.** The writer did not run B22 before V.S.'s run (function tests on synthetic series
+   only; 9d793dc). The planning session ran it once on a synthetic stand-in (the B21 entry above; nothing from that
+   run is meaningful or quoted, and its files were deleted). After V.S.'s run it recomputed every cell of the (a)–(c)
+   tables and (d)'s within-window SDs and ratio from `aligned_directed.csv`, and (e)'s F values and contrasts from
+   `regional_partial.csv`: all identical. The spin p values, the group-level SDs and the slopes were not recomputed.
+
+## B23, outcome, 23 Sep 2026 21:40 UTC (appended; nothing above edited)
+
+Outcome of "The residual's response to the alternatives of the direction argument, CCS-sts against autocorrelation,
+exposure across datasets and the unequal-coefficient grid (B23): pre-run entry, 23 Sep 2026 11:31 UTC", with its note
+of 15:36 UTC; run by V.S. in the same unit as B21, 17:35:46–17:36:45 UTC, 59 s, 63 checks run and 0 failed, at scale
+1/1. Outputs: `notes/review_results/partB/diagnostic_alternatives_tables.md`, `diagnostic_alternatives.csv` and
+`diagnostic_alternatives_run.log`, all with `git=a9d9ca4`. The run log carries two RuntimeWarnings from `fsolve` in
+the (a3) polish ("The iteration is not making good progress, as measured by the improvement from the last ten
+iterations" and "xtol=0.000000 is too small, no further improvement in the approximate solution is possible"). They
+are expected: the polish keeps a point only if its residual is smaller than the least-squares solution's, and every
+solve met the 10⁻¹⁰ requirement (the check line: |difference| 9.9e-13).
+
+**Predictions (from the pre-run entry).** "(a1) +0.0036 and +0.0037 at ±0.01, +0.0154 and +0.0158 at ±0.02; (a2)
+   −0.0224 at +0.01 and +0.0297 at −0.01; (a3) +0.0029 at +0.01, +0.0102 at +0.02 and +0.0070 at −0.02, the aligned
+   version moving at first order; (a4) negative for either sign, about −22 δ_sym²; (a5) the residual rises as the
+   shared component weakens, about −1.2 per unit Δr₁. (b) (a4) reproduces Table 7's AR(1) rows within 2 SE (the
+   review's simulation: −0.0011, −0.0049, −0.0113 and −0.0052 at c = +0.01, +0.02, +0.03 and −0.02); (a1) ±0.02
+   +0.0066 and +0.0064; (a2) +0.01 −0.0102 and −0.01 +0.0135; (i) +0.003 to +0.007. (c) CCS-sts falls as r₁ rises at
+   fixed q; the slope at (0.85, 0.25) is between −2 and −0.1. (d) Δsts within ±15 % across TR 0.72–2 s while Δr₁
+   varies about sevenfold [...]. (e) Population Δr₁ −0.010 to −0.020 and Δsts −0.08 to −0.15. (f) The grid extremes
+   zero to rounding; at a = 0.85 the sign change at about 0.008 (q = 0.25), 0.035 (q = 0.5) and 0.09 (q = 0.7); none
+   within 0.10 at (0.80, 0.70)." The entry names which of these were already computed on other pools or designs.
+**Outcome, (a) at a = 0.85.** (a1) +0.00393 and +0.00329 at δ = +0.01 and −0.01, +0.01609 and +0.01482 at +0.02 and
+   −0.02: positive for either sign as predicted, the sizes within 11.1 % of the stated values, the order of the two
+   signs reversed (+δ above −δ). (a2) −0.02245 at +0.01·sign(q) and +0.02968 at −0.01·sign(q): met. (a3) +0.00237 at c
+   = +0.01, +0.00912 at +0.02 and +0.00813 at −0.02 (+0.00188 at −0.01), against +0.0029, +0.0102 and +0.0070 from a
+   400-draw pool; the aligned version −0.01671 and +0.02097 at c = ±0.01·sign(q), −0.02960 and +0.04684 at
+   ±0.02·sign(q), first order as predicted: partly met. Doubling the (a3) grid step changes no pool mean by more than
+   1.1 × 10⁻¹⁴ (either a); the invariance under (c, q) → (−c, −q) holds at the five checked grid points. (a4)
+   −0.00190, −0.00815, −0.01893 and −0.00913 at c = +0.01, +0.02, +0.03 and −0.02: negative for either sign, met;
+   residual / δ_sym² −24.28, −26.45, −28.08 and −29.71, against about −22: missed. (a5) at base residual −0.02724 and
+   base mean(sign(q)·δ_sym) +0.00950: +0.00466, +0.00928 and +0.01385 under Δa_s = −0.01, −0.02 and −0.03 and +0.00471
+   under λ → 0.9λ; the residual rises as the component weakens, met; per unit Δr₁ −1.72 to −1.70 and −2.89, against
+   about −1.2: missed. (a6) the largest |residual| over the pool is 0. At a = 0.8632 the same pattern with larger
+   magnitudes (tables).
+**Outcome, (b) (W = 60, 3,000 pairs, changes ± SE).** (i) Δa = −0.015: residual +0.00537 ± 0.00009, inside +0.003 to
+   +0.007, met; Δr₁ −0.01377, residual per unit Δr₁ −0.390. (a4) c = +0.02 −0.00479 ± 0.00065 and c = −0.02 −0.00546 ±
+   0.00066, within 2 SE of Table 7's AR(1) rows (−0.0052 ± 0.0016 and −0.0055 ± 0.0018) and of the review's −0.0049
+   and −0.0052: met. (a1) δ = +0.02 +0.00978 ± 0.00093 and −0.02 +0.01016 ± 0.00095, against +0.0066 and +0.0064:
+   missed, about half as large again. (a2) +0.01·sign(q) −0.01354 ± 0.00030 and −0.01·sign(q) +0.01850 ± 0.00038,
+   against −0.0102 and +0.0135: missed, about a third larger. Beside them (a3) c = +0.02 +0.00677 ± 0.00055 and (a5)
+   Δa_s = −0.03 +0.01020 ± 0.00023 and λ → 0.9λ +0.00391 ± 0.00012 (residual per unit Δr₁ −1.587 and −2.727). (b)
+   gives the (a5) base as differences from the unperturbed AR(1) pairs, so its levels are the sums: observed sts
+   0.71753 − 0.01423 = 0.70330, AR(1)-substituted 0.78780 + 0.00041 = 0.78821, residual −0.07027 − 0.01464 = −0.08491.
+   No pair was excluded in any condition.
+**Outcome, (c) (missed).** CCS-sts at q = 0.25: −0.03041, −0.03135, −0.03175, −0.03189 and −0.03130 at r₁ = 0.80,
+   0.83, 0.85, 0.87 and 0.90, the same shape at q = 0.10 and 0.40: it falls from 0.80 to 0.87 and rises again at 0.90.
+   The central-difference slope at (0.85, 0.25) is −0.0134 per unit r₁ (MMI-sts from the same fits +6.0903), flatter
+   than the predicted −2 to −0.1; the change from Δa = −0.015 at (0.85, 0.25) is +0.00034 (MMI-sts −0.08607).
+**Outcome, (d) (met to rounding).** On 0.008–0.09 Hz, Δsts at TR 0.72, 1.838 and 2 s is +0.1904, +0.1696 and +0.1652
+   at β = 100 (the largest 15.3 % above the smallest), +0.3822, +0.3436 and +0.3353 at 200 (14.0 %), +0.7379, +0.6722
+   and +0.6581 at 400 (12.1 %), while Δr₁ at β = 100 is +0.00528 at 0.72 s and +0.03759 at 2 s, sevenfold; the stated
+   values are reproduced. At this study's setting (0.01–0.08 Hz, TR 2 s, flat-band r₁ 0.8174) Δsts / Δr₁ is +5.27 to
+   +6.53; on the eleven settings of Table B item 2 it ranges from +3.52 to +46.66, largest where the flat-band r₁ is
+   highest.
+**Outcome, (e) (met).** On the band-passed generator the population r₁ goes from 0.8678 to 0.8515 (Δr₁ −0.01629) and
+   sts from 1.3795 to 1.2669 (Δsts −0.11263). On the AR(1) generator the population Δr₁ is −0.015 by construction, and
+   B17's (i), simulated over 3,000 pairs, gives a window-level Δr₁ DiD of −0.01243 ± 0.00101.
+**Outcome, (f) (met).** Over the grid the largest |str − min(xtx, yty)| is 5.6e-16, the smallest rts − str −2.2e-16
+   and the largest sts − (xtx + yty + rtr) +4.4e-16 (every entry within 6.7e-16 of zero); at a = 0.85 sts − (xtx +
+   yty) first turns negative at an asymmetry of 0.0080 (q = 0.25), 0.0345 (q = 0.5) and 0.0915 (q = 0.7), at 0.0005
+   for q = 0.05 at every a, and not within 0.10 at (0.80, 0.70).
+**Reading under the rule.** (a) and (b) replace the direction argument (withdrawn on 22 Sep): Results 4 states how
+   each construction moves the residual — a VAR(1) cross-coefficient with the innovations held lowers it for either
+   sign, a cross-lag change at fixed (r₁, q) raises it for either sign, a change aligned with sign(q) moves it at
+   first order, and a weakening of a shared slow component raises it — and Table 3 gives the W = 60 values. (c)
+   replaces "does not follow autocorrelation": CCS-sts is nearly flat in r₁ on the family, and non-monotone. (d)
+   replaces "most exposed dataset": the exposure per unit of spectral difference is similar across TR 0.72–2 s, and
+   the larger Δsts / Δr₁ at short TR reflects the smaller Δr₁. (e) completes the Δr₁ columns of the former Table 5
+   (S13 Table). (f) replaces Results 1's two statements corrected by Finding 12.
+**The checks outside V.S.'s run.** The writer's two check runs at `--scale 20` are recorded in the note of 15:36 UTC.
+   The planning session ran the (a3) solver alone on the full grid, the worst solve error 9.95 × 10⁻¹³, and after
+   V.S.'s run re-ran B23 at a9d9ca4: `diagnostic_alternatives.csv` is byte-identical, and the tables differ only in
+   floating-point quantities near 10⁻¹⁶ (the (f) extremes and the differences in the (a3) notes and checks); the 20
+   closed-form values of (a1)–(a5) at a = 0.85 agree.
+
+## B24, outcome, 23 Sep 2026 21:40 UTC (appended; nothing above edited)
+
+Outcome of "The pure-autocorrelation expectations of the new statistics on the band-passed generator (B24): pre-run
+entry, 23 Sep 2026 11:31 UTC"; run by V.S. in the same unit as B21, 17:36:46–17:40:33 UTC, 227 s, 10 checks run and 0
+failed, 20 replicates. Outputs: `notes/review_results/partB/bandpassed_expectations_tables.md`,
+`bandpassed_expectations.csv` and `bandpassed_expectations_run.log`, all with `git=a9d9ca4`.
+
+**Prediction (from the pre-run entry).** "The check passes; the A_other DiD within ±0.0005, the A_same DiD within
+   ±0.001, the B DiD within ±0.003; the D DiD −0.002 to −0.006; Sym's DiD equal to the residual DiD minus D's within
+   0.001."
+**Outcome, the check (passed).** Condition (i) at W = 60 against B17b: sts DiD −0.09441 ± 0.00222 (B17b −0.09400 ±
+   0.00280), AR(1)-substituted DiD −0.09719 ± 0.00205 (−0.09660 ± 0.00270), residual DiD +0.00279 ± 0.00122 (+0.00270
+   ± 0.00140), RMS δ_anti DiD +0.00669 ± 0.00100 (+0.00641 ± 0.00104), each within one of B17b's SDs. The W = 60 sts
+   level is 1.1881.
+**Outcome, the statistics (met, except D).** DiDs, mean ± SD over the 20 replicates: A_other +0.00001 ± 0.00031,
+   A_same +0.00004 ± 0.00037, B −0.00263 ± 0.00077 — each inside its stated range. D −0.00100 ± 0.00041, above the
+   predicted −0.002 to −0.006: missed. Sym +0.00373 ± 0.00092, and Sym's DiD minus (the residual DiD − D's) is
+   −0.00006 ± 0.00017: met. The window-sign statistic, selected on the window's own q, has DiD −0.00087 ± 0.00033 and
+   level +0.00340 ± 0.00015 where A_other's level is −0.00028 ± 0.00019; the window-level mean pair r₁ falls by
+   −0.01540 ± 0.00035, and the global fit's period-level residual DiD is +0.0041 ± 0.0016.
+**Reading under the rule.** These are the pure-autocorrelation expectations against which B22's DiDs are read (the B22
+   entry above). Within this one simulation the sts DiD per unit of pair-level a is 6.13 (−0.09441 / −0.01540) and the
+   residual DiD per unit of pair-level a −0.18 (+0.00279 / −0.01540), the rates the decision entry below takes for L8
+   and L10.
+**The checks outside V.S.'s run.** The writer's check run at `--n-rep 1` is recorded in 9d793dc. After V.S.'s run the
+   planning session re-ran B24 at a9d9ca4: `bandpassed_expectations.csv` is identical apart from the sign of seven
+   zeros.
+
+## Stage B of round 16: the shortened text (23 Sep 2026), 23 Sep 2026 21:40 UTC (appended; nothing above edited)
+
+V.S.'s decision of 23 Sep 2026, after the review and the citation pass of 22 Sep and their verification
+(`notes/review_2026-09-22/`): the main text is shortened, Introduction through Methods to at most 7,000 words (tables,
+captions, display equations and references excluded; headings counted), the abstract to at most 300 and the author
+summary to at most 200; it keeps three tables and six figures; nothing the result files support is deleted, and
+material leaves the main text only by moving to the supporting information. The title becomes "The Gaussian-MMI
+synergy atom of integrated information decomposition is mostly self-prediction: a closed form on the AR(1) family and
+a within-subject DMT fMRI application" (it was "... a closed form on the AR(1) family, a per-pair diagnostic, and a
+within-subject DMT fMRI test"). Stage B (bundle 27: this commit, the text, and the regenerated figures) implements it.
+The text commit's counts, whitespace tokens: Introduction through Methods 6,984 with headings (6,860 without);
+abstract 300; author summary 196; three tables, six figures. The section budgets set with the decision (running text,
+headings excluded) are met except in Results 4, 841 words against 800, Results 7, 419 against 350, the Discussion,
+1,228 against 1,100, and the Limitations, 234 against 200, whose excess is mostly wording given for Stage B; the total
+is within its limit.
+
+**"Confirmatory" becomes "primary" (Finding 6).** The pre-specified DiD of whole-brain MMI-sts on ts_gsr at W = 60 is
+   called the primary contrast. The up-regulation hypothesis was committed (44cec4f, 12 Sep) together with a 20-region
+   global fit whose DiD by the later definition is −0.0994; the 115-region global fit that showed a decrease and the
+   directional-failure rule are in 33f0b33 (13 Sep 10:40), the windowed statistic's step contrast in b7e4595 (11:36),
+   and the primary result in cb1b2cf (13:15). The text states that history (abstract, Introduction, Results 2 and
+   Methods, "Pre-registration and deviations"), and "confirmatory" (outside quotations of the record) and "obtains"
+   are gone from the main text and the supporting information.
+**The withdrawal carried into the text.** The direction argument of Results 4, withdrawn on 22 Sep (the correction
+   entry of 23 Sep 11:31 UTC), and the "bound" built on the superseded window-sign statistic are gone from the text.
+   Results 4 states the residual's response to each construction of a change in lagged structure (B17, B23; Table 3),
+   its exact p against the three calibrated expectations (B21 (b)), the across-subject rates, and the aligned
+   statistic (B22) in form (b) below; it reads the residual's rise as compatible with a pure autocorrelation change
+   the generators do not represent, with a coupling change at fixed lag-0 structure, and with a weakening of lagged
+   structure aligned with q.
+**Intervals (B21).** Every interval of a mean over subjects in the main text and the supporting information is the
+   inverted sign-flip interval, the method stated once in Methods; correlations carry Fisher-z intervals and
+   regression slopes t intervals on 12 df; the calibration's replicate SDs keep their form. These stay
+   subject-bootstrap percentile intervals, labelled so, because no per-subject vector is saved or the quantity is not
+   a mean over subjects: S2 Table's group Spearman ρ, S6 Table's LZ correlations, S4 Table's workspace contrasts, the
+   mean per-subject r(regional sts, regional r₁) +0.756 [+0.715, +0.790], S8 Table's (ii) share (e.g. 0.7797 [0.6531,
+   0.9362]), the spectral centroid DiD of S3 Text (`rev_extra.py` saves no per-subject values), and the disattenuated
+   cross-half ratio (a subject bootstrap by B21's design). S2 Text's deconvolved ΦR DiD is a row of
+   `inference_rows_deconv.pkl` and so carries B21's inverted interval, +0.0178 [+0.0051, +0.0307]; the deconvolved ΦR
+   values without a saved per-subject vector (the baseline gap, the placebo slope, window 4 − window 1) are quoted
+   without an interval. The nine quoted intervals whose zero-inclusion changes (the B21 entry above) are rewritten as
+   effect and interval, without "survives"; S17 Table lists all 932 rows, with the three rounding cells and the seven
+   CCS decomposition p values in its note.
+**The moves to the supporting information.** Main-text material moved, not deleted: to S1 Text, the Methods' ethics
+   clauses, dataset details, estimator call, window and bias-check design, motion control, lag variants and software;
+   to S3 Text, the CCS definition (§2), the closed-form derivation, derivatives and unequal-coefficient pipeline, the
+   coupled-family evaluation and the worked example of Mediano et al. (§3), the operating-point medians, exposure
+   values and pair-level regressions (§4), the cross-half, trend, bootstrap and CCS decomposition details (§5), the
+   residual's level, its run-level location, the null levels and the CCS–residual correlations (§6), the calibration
+   details (§7), the prewhitening details (§8), the lag details (§9) and the literature details (§10); to S8, S10,
+   S11, S13, S14 and S16 Tables' notes, the proportionality, calibration, prewhitening, lag and manufacture details.
+   Five main-text tables became S Tables: the residual diagnostic (Table 4 → S12), the estimator comparison (Table 5 →
+   S13, with population and window-level Δr₁ columns and B23 (e)'s band-passed row; its caption's comparison of
+   population and estimator rows deleted, Finding 14), the lag dependence (Table 6 → S14), CCS and ΦR (Table 3 → S15)
+   and manufacture (Table 8 → S16); the calibration table (Table 7) leaves the main text for S10 Table, which carries
+   both generators, and B23 and B24 in full are S18 Table. The old Fig 3b and 3c leave the paper; their correlations
+   are in Results 4 (r = 0.99) and S3 Text §6. The full list, sentence by sentence, is in the Stage B report.
+**Withdrawn, not moved.** Each by its finding: the direction argument and the bound (Findings 1 and 2), "no free
+   parameter" for the AR(1)-substituted estimate (Finding 5), the global fit as the recommended estimator and the
+   recommendations built on it (Finding 9), the 2.05 per-SD ratio (Finding 7; replaced by B22 (d)), "does not follow
+   autocorrelation" for CCS (Finding 8; B23 (c)), "most exposed dataset" (Finding 11; B23 (d)), "drug-only" (Finding
+   16), the statement that no p value against zero is reported for the residual (replaced by B21 (b)'s p values
+   against the calibrated expectations), and the null range +0.0037 to +0.0077 (Finding 19; the null's own +0.0054
+   stays).
+**No estimator preference (Finding 9).** The paper reports the windowed estimator (W = 60, primary by
+   pre-specification) and the run-level global fit and prefers neither; D3's preference for the global fit (S5 Text)
+   is withdrawn. The prewhitening statement is narrowed to the band-limit argument, and the recommended null keeps
+   each region's autocorrelation and the pair's lag-0 correlation.
+**Form (b) of Results 4's fourth paragraph.** Under B22's rule the aligned statistic's DiD is converted to
+   residual-DiD equivalents at B23's aligned conversions (the B22 entry above). Its interval admits changes that
+   account for between none and about half of the residual's excess over the band-passed expectation, so Results 4
+   says that it "neither explains the excess nor excludes aligned structure as its source", and gives the sensitivity
+   variant's fall and the λ → 0.9λ case beside it.
+**The rates of L8 and L10** (the entries of the Stage B commission's claims ledger for the group-level rate of sts on
+   r₁ and for the residual's rate). Each generator's rate is taken within one simulation and per unit of pair-level a
+   (the mean of a pair's a_x and a_y, the r₁ the generators change): sts per unit, 6.13 on the band-passed generator
+   (B24: −0.09441 / −0.01540) and 3.08 on AR(1) pairs (B23 (b) (i): −0.04240 / −0.01377); the residual per unit, −0.18
+   (B24: +0.00279 / −0.01540), −0.39 (B23 (b) (i)) and −0.37 on the finite-sample null (+0.0054 / −0.0146,
+   `review_v2_residual_null.log`), and −1.59 and −2.73 for the two shared-component changes (B23 (b)). The data's rate
+   is given on both estimators of r₁: sts 5.2 per unit of pair-level a (−0.0809 / −0.0155, `residual_source.log`) and
+   0.0055 nats per 0.001 of regional r₁ (−0.0809 / −0.0146), and the residual −0.74 per unit of pair-level a at the
+   group level and −0.75 per unit of regional r₁ across subjects (the OLS slope of B21 (c)).
+**The CSV writer.** The fix and its note are in the B21 entry above; the committed `inference_revision.csv` is not
+   edited.
+**`sch116_to_yeo.csv`.** The two copies of the data clone's `sch116_to_yeo.csv` (the network labels of the 116
+   parcels; no subject data) that remain in the writer's session after the .mat copies were deleted in round 16 are
+   kept, by V.S.'s decision; they need not be deleted.
