@@ -1,30 +1,35 @@
 """
 15_figures_v2.py — manuscript figures for draft_v2 (the methods frame), drawn from saved results only.
-Revised 21 Sep 2026 (round 14, Stage B) for the restructured text: Figure 1 now draws the observed atoms against the
-AR(1) family's prediction from each pair's measured (a_x, a_y, q); Figure 2c draws sts against lagged coupling c at
-fixed (r₁, q); Figure 3 gains the predicted-against-observed panel and loses the printed p-values; Figure 4 gains the
-DMT − placebo residual-difference panel with its calibrated expectation; Figure 6 (regional) is new.
+Revised 21 Sep 2026 (round 14, Stage B) for the restructured text, and 23 Sep 2026 (round 16, Stage B) for the
+shortened text: "predicted" becomes "AR(1)-substituted" (Figure 1's file is renamed); Figure 2c gains the mirrored
+q = −0.25 curve; Figure 3 is redrawn (the sts contrast against the r₁ contrast with the OLS fit and the band-passed
+generator's rate, the cross-half relation, the residual against the r₁ contrast with the generators' rates); Figure 6
+gains the residual map's network means with their spin test; every interval of a mean over subjects is the inverted
+sign-flip interval of B21 (notes/rev_inference_inverted.py).
 
-Figure 1  the sixteen Gaussian-MMI atoms, observed and family-predicted, DMT pre-injection level and primary DiD,
+Figure 1  the sixteen Gaussian-MMI atoms, observed and AR(1)-substituted, DMT pre-injection level and primary DiD,
           ts_gsr, W = 60  (notes/review_results/partB/family_atoms_ts_gsr_W60.npz; partB14)
 Figure 2  (a) the (r₁, q) scope map of the bivariate AR(1) family with one subject's pre-injection pairs (the saved overlay)
           pooled (closed form, notes/rev_phiid_fast.py; notes/review_results/partB/scope_map_overlay_points.npz);
           (b) the excess sts − (xtx + yty); (c) sts against the coupling c of the symmetric VAR(1) pair at fixed
-          (r₁, q) (notes/review_results/partB/coupling_map_tables.md; partB8)
-Figure 3  per subject: (a) MMI-sts DiD against the lag-1 autocorrelation DiD; (b) family-predicted against observed
-          sts DiD; (c) CCS-sts DiD (published definition) against the residual DiD of the diagnostic
-          (notes/review_results/inference_rows_{raw,diag,ccs_pub}.pkl)
-Figure 4  the residual diagnostic by window: (a) observed and AR(1)-predicted whole-brain sts, (b) the residual,
-          (c) the DMT − placebo residual difference per window against its calibrated expectation, group means
-          ± 1 within-subject SEM (Cousineau, 2005; Morey, 2008)  (notes/review_results/partB/diag_series_ts_gsr_W60.npz;
+          (r₁, q), with the q = −0.25 curve mirrored by the invariance (c, q) → (−c, −q)
+          (notes/review_results/partB/coupling_map_tables.md; partB8)
+Figure 3  per subject: (a) the MMI-sts DiD against the regional r₁ DiD, with the OLS fit and the band-passed generator's
+          rate; (b) the cross-half relation; (c) the residual DiD against the r₁ DiD, with the OLS fit and the
+          generators' rates  (notes/review_results/inference_rows_{raw,diag}.pkl;
+          notes/review_results/partB/splithalf_subjects.csv; the rates from bandpassed_expectations_tables.md,
+          diagnostic_alternatives_tables.md and notes/review_results/logs/review_v2_residual_null.log; the
+          disattenuated ratio from inference_revision_tables.md)
+Figure 4  the AR(1)-substituted estimate by window: (a) observed and AR(1)-substituted whole-brain sts, (b) the
+          residual, (c) the DMT − placebo residual difference per window against its calibrated expectation, group
+          means ± 1 within-subject SEM (Cousineau, 2005; Morey, 2008)  (notes/review_results/partB/diag_series_ts_gsr_W60.npz;
           the expectation from notes/review_results/partB/calibration_filtered_tables.md when present, otherwise
           calibration_tables.md)
-Figure 5  the lag dependence of Table 6  (notes/review_results/inference_rows_lag.pkl)
+Figure 5  the lag dependence of S14 Table  (notes/review_results/inference_rows_lag.pkl)
 Figure 6  (a) regional sts against regional r₁, 115 regions coloured by network; (b) the sensory − association
-          contrast of the sts and sts − rtr maps before and after partialling regional r₁ out
-          (notes/review_results/partB/regional_partial.csv; partB20)
-Figure 3a's caption carries the leave-two-out range of the collinearity (notes/review_results/partB/leave_two_out.csv)
-and the cross-half correlation of notes/review_results/partB/exchange_rates_tables.md (quoted from the text).
+          contrast of the sts and sts − rtr maps before and after partialling regional r₁ out; (c) the residual map's
+          network means with the eight-class F and its spin test  (notes/review_results/partB/regional_partial.csv;
+          partB20; the spin test from notes/review_results/partB/aligned_directed_tables.md, B22 (e))
 Outputs manuscript/figures/fig{1..6}_v2_*.{png,pdf} and manuscript/figures/captions_v2.md. The v1 figures are left in place.
 Run from the repository root: .venv/bin/python scripts/15_figures_v2.py
 """
@@ -40,11 +45,12 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.colors import LogNorm
-from scipy.stats import pearsonr, spearmanr
+from scipy.stats import f_oneway, pearsonr, spearmanr, t as t_dist
 
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "notes"))
 from rev_phiid_fast import atoms_from_corr, ar1_corr, ATOMS
+from rev_inference_inverted import signflip_inversion
 
 RES, RR, FIG = REPO / "results", REPO / "notes" / "review_results", REPO / "manuscript" / "figures"
 FIG.mkdir(exist_ok=True)
@@ -54,6 +60,8 @@ SEED = 20261120
 rng = np.random.default_rng(SEED)
 try:
     GIT = subprocess.check_output(["git", "rev-parse", "--short", "HEAD"], cwd=REPO, text=True).strip()
+    if subprocess.check_output(["git", "status", "--porcelain", "--untracked-files=no"], cwd=REPO, text=True).strip():
+        GIT += "-dirty"
 except Exception:
     GIT = "nogit"
 plt.rcParams.update({"font.size": 9, "axes.spines.top": False, "axes.spines.right": False, "figure.dpi": 150, "savefig.dpi": 300})
@@ -67,10 +75,42 @@ def did_per_subject(A):
     return ch[:, 0] - ch[:, 1]
 
 
-def boot_ci(v, n=10000):
-    v = np.asarray(v, float)
-    draws = v[rng.integers(0, v.size, (n, v.size))].mean(1)
-    return np.percentile(draws, [2.5, 97.5])
+def inv_ci(v):
+    """B21's inverted sign-flip 95 % interval of the mean over subjects (notes/rev_inference_inverted.py)."""
+    r = signflip_inversion(np.asarray(v, float))
+    return r["lo"], r["hi"]
+
+
+def ols(x, y):
+    """OLS slope and intercept with t intervals on n − 2 df."""
+    x, y = np.asarray(x, float), np.asarray(y, float)
+    n = x.size; X = np.c_[np.ones(n), x]
+    beta, *_ = np.linalg.lstsq(X, y, rcond=None)
+    e = y - X @ beta; s2 = e @ e / (n - 2)
+    se = np.sqrt(np.diag(s2 * np.linalg.inv(X.T @ X)))
+    tq = t_dist.ppf(0.975, n - 2)
+    return dict(b=beta[1], a=beta[0], b_lo=beta[1] - tq * se[1], b_hi=beta[1] + tq * se[1])
+
+
+def fisher_ci(r, n=14):
+    z = np.arctanh(r); h = 1.959964 / np.sqrt(n - 3)
+    return np.tanh(z - h), np.tanh(z + h)
+
+
+def table_line(path, startswith):
+    for l in (RR / path).read_text().splitlines():
+        if l.startswith(startswith):
+            return l
+    raise ValueError(f"no line starting {startswith!r} in {path}")
+
+
+def num(s):
+    return float(s.replace("−", "-").replace("+", ""))
+
+
+def um(text):
+    """Typographic minus for a signed number in running text (Python's formatting writes a hyphen)."""
+    return re.sub(r"(?<![\w.])-(?=\d)", "−", text)
 
 
 def save(fig, stem):
@@ -80,7 +120,7 @@ def save(fig, stem):
     print("wrote", FIG / f"{stem}.png")
 
 
-# ------------------------------------------------------------------ Figure 1: observed against family-predicted atoms (B14)
+# ------------------------------------------------------------------ Figure 1: observed against AR(1)-substituted atoms (B14)
 fam = np.load(RR / "partB" / "family_atoms_ts_gsr_W60.npz")
 obs16, pred16 = fam["obs"], fam["pred"]                                            # (14, 2, 14, 16)
 order = ["rtr", "rtx", "rty", "xtr", "ytr", "xty", "ytx", "xtx", "yty", "rts", "str", "xts", "yts", "stx", "sty", "sts"]
@@ -94,11 +134,11 @@ x = np.arange(16); wbar = 0.38
 for ax, (vo, vp, ylab, title) in zip(axes, ((lvl_o, lvl_p, "atom value, DMT pre-injection (nats)", "a  level (windows 1–4, DMT run)"),
                                            (did_o.mean(0), did_p.mean(0), "primary DiD (nats)", "b  DMT − placebo, post − pre (windows 6–14 vs 1–4)"))):
     ax.bar(x - wbar / 2, [vo[IX[a]] for a in order], wbar, color=C_OBS, label="observed (MMI)")
-    ax.bar(x + wbar / 2, [vp[IX[a]] for a in order], wbar, color=C_PRED, label="AR(1) family from each pair's (a_x, a_y, q)")
+    ax.bar(x + wbar / 2, [vp[IX[a]] for a in order], wbar, color=C_PRED, label="AR(1)-substituted, from each pair's (a_x, a_y, q)")
     if ylab.startswith("primary"):
         for k, a in enumerate(order):
             for off, d in ((-wbar / 2, did_o[:, IX[a]]), (wbar / 2, did_p[:, IX[a]])):
-                lo, hi = boot_ci(d)
+                lo, hi = inv_ci(d)
                 ax.plot([x[k] + off] * 2, [lo, hi], color="black", lw=0.8)
     ax.axhline(0, color="black", lw=0.6)
     ax.set_ylabel(ylab); ax.set_title(title, loc="left", fontsize=9.5)
@@ -111,12 +151,12 @@ for name, members in groups:
     axes[1].text(pos + (len(members) - 1) / 2, axes[1].get_ylim()[0] - 0.22 * np.diff(axes[1].get_ylim())[0], name, ha="center", va="top", fontsize=7.5, color="0.35")
     pos += len(members)
 exc_o = lvl_o[IX["sts"]] - lvl_o[IX["xtx"]] - lvl_o[IX["yty"]]; exc_p = lvl_p[IX["sts"]] - lvl_p[IX["xtx"]] - lvl_p[IX["yty"]]
-axes[0].annotate(f"sts − (xtx + yty): observed {exc_o:+.3f}, family-predicted {exc_p:+.3f}\n(the symmetric family gives +rtr; unequal coefficients make it negative)",
+axes[0].annotate(um(f"sts − (xtx + yty): observed {exc_o:+.3f}, AR(1)-substituted {exc_p:+.3f}\n(the symmetric family gives +rtr; unequal coefficients make it negative)"),
                  xy=(15, lvl_o[IX["sts"]]), xytext=(8.6, 0.95), fontsize=7.5, arrowprops=dict(arrowstyle="-", color="0.5", lw=0.6))
-save(fig, "fig1_v2_atoms_observed_predicted")
+save(fig, "fig1_v2_atoms_observed_substituted")
 res_lvl = lvl_o - lvl_p; res_did = did_o.mean(0) - did_p.mean(0)
 captions += ["## Figure 1", "",
-             f"The sixteen Gaussian-MMI ΦID atoms of the whole-brain pair mean (6,555 pairs, 14 subjects, ts_gsr, windowed estimator W = 60), observed (blue) and predicted by the bivariate AR(1) family from each pair's measured lag-1 autocorrelations a_x, a_y and lag-0 correlation q (green; the family with unequal coefficients, evaluated per pair and window and averaged over pairs). (a) DMT pre-injection level (windows 1–4). (b) Primary difference-in-differences, DMT minus placebo, post (windows 6–14) minus pre (windows 1–4); whiskers are subject-bootstrap 95 % CIs (10,000 draws). Panel (a) carries no uncertainty: its bars are group means of the level. Atom codes: first letter the past-side type, last letter the future-side type (r redundant, x unique to region X, y unique to Y, s synergistic; e.g. rts = redundancy-to-synergy). The family reproduces the structure of the table: the excess sts − (xtx + yty) is negative in the data ({exc_o:+.4f}) as the family predicts ({exc_p:+.4f}); rts and str lie below xtx and yty; the four mirror atoms are negative. What it leaves is the residual pattern of Table 1: sts {res_lvl[IX['sts']]:+.4f}, the self-prediction atoms {res_lvl[IX['xtx']]:+.4f} and {res_lvl[IX['yty']]:+.4f}, the mirror atoms {res_lvl[IX['xts']]:+.4f} to {res_lvl[IX['stx']]:+.4f}, the six cross-prediction atoms ±{abs(res_lvl[IX['rtx']]):.4f} where the family has ±{abs(lvl_p[IX['rtx']]):.4f}; the residual DiDs are within ±0.0014 for every atom except sts ({res_did[IX['sts']]:+.4f}). Source: `notes/review_results/partB/family_atoms_ts_gsr_W60.npz` (partB14).", ""]
+             f"The sixteen Gaussian-MMI ΦID atoms of the whole-brain pair mean (6,555 pairs, 14 subjects, ts_gsr, windowed estimator W = 60), observed (blue) and AR(1)-substituted (green): the atoms of each pair's 4 × 4 matrix with its measured lag-1 autocorrelations a_x, a_y and lag-0 correlation q kept and its two cross-lag correlations replaced by a_y q and a_x q, evaluated per pair and window and averaged over pairs. (a) DMT pre-injection level (windows 1–4). (b) Primary difference-in-differences, DMT minus placebo, post (windows 6–14) minus pre (windows 1–4); whiskers are inverted sign-flip 95 % intervals of the mean over subjects (B21). Panel (a) carries no uncertainty: its bars are group means of the level. Atom codes: first letter the past-side type, last letter the future-side type (r redundant, x unique to region X, y unique to Y, s synergistic; e.g. rts = redundancy-to-synergy). The AR(1)-substituted atoms reproduce the structure of the table: the excess sts − (xtx + yty) is negative in the data ({exc_o:+.4f}) and in the substituted atoms ({exc_p:+.4f}); rts and str lie below xtx and yty; the four mirror atoms are negative. What the substitution leaves is the residual pattern of Table 1: sts {res_lvl[IX['sts']]:+.4f}, the self-prediction atoms {res_lvl[IX['xtx']]:+.4f} and {res_lvl[IX['yty']]:+.4f}, the mirror atoms {res_lvl[IX['xts']]:+.4f} to {res_lvl[IX['stx']]:+.4f}, the six cross-prediction atoms ±{abs(res_lvl[IX['rtx']]):.4f} where the substituted atoms are ±{abs(lvl_p[IX['rtx']]):.4f}; the residual DiDs of the other fifteen atoms are at most {np.abs(np.delete(res_did, IX['sts'])).max():.5f} in absolute value, against {res_did[IX['sts']]:+.4f} for sts. Source: `notes/review_results/partB/family_atoms_ts_gsr_W60.npz` (partB14).", ""]
 
 # ------------------------------------------------------------------ Figure 2: scope map with the pooled pairs, the excess, and sts against c
 STEP = 0.01   # the grid of the scope-map tables (notes/partB1_scope_map.md; Methods)
@@ -164,15 +204,17 @@ for title, lab, col in (("## (r1, q) held at (0.85, 0.25)", "(r₁, q) = (0.85, 
     c, s_c = coupling_rows(title)
     cvals[lab] = (c, s_c)
     axes[2].plot(c, s_c, "-o", color=col, ms=4, lw=1.2, label=lab)
+    if col == "black":   # the family is invariant under (c, q) → (−c, −q): the q = −0.25 curve is the mirror image
+        axes[2].plot(-c, s_c, "--", marker="o", mfc="white", color=col, ms=4, lw=1.0, label="(0.85, −0.25), by (c, q) → (−c, −q)")
 axes[2].axvline(0, color="0.8", lw=0.6)
 axes[2].set_xlabel("c, symmetric lagged coupling of the VAR(1) pair"); axes[2].set_ylabel("sts (nats) at fixed (r₁, q)")
-axes[2].set_title("c  lagged coupling moves sts non-monotonically", loc="left", fontsize=8.5)
-axes[2].legend(frameon=False, fontsize=7.5)
+axes[2].set_title("c  coupling of the same sign as q lowers sts; of the opposite sign, raises it", loc="left", fontsize=8.5)
+axes[2].legend(frameon=False, fontsize=7.5, loc="center", bbox_to_anchor=(0.55, 0.36))
 save(fig, "fig2_v2_scope_map")
 c_op, s_op = cvals["(r₁, q) = (0.85, 0.25), the operating point"]
 row = lambda cv: s_op[np.argmin(np.abs(c_op - cv))]
 captions += ["## Figure 2", "",
-             f"The scope map and the coupled family. (a) Gaussian-MMI sts of a bivariate AR(1) pair as a function of the pair's lag-1 autocorrelation r₁ and lag-0 cross-correlation q (closed form of Methods; grid step {STEP}), with the density of one subject's saved pre-injection pairs — the overlay holds subject 1 only (ts_gsr; windows 1–4 of both runs, {pool_r1.size:,} pair × window points; contours at the 50th, 80th and 95th percentiles of the occupied cells; r₁ = mean of the two regions' within-window lag-1 autocorrelations, q = the pair's within-window lag-0 correlation; median r₁ {np.median(pool_r1):.3f}, median |q| {np.median(np.abs(pool_q)):.3f}) and the operating point (0.85, 0.25) marked. (b) sts − (xtx + yty), which on the symmetric family equals rtr and vanishes at q = 0. (c) sts against the coupling c of the symmetric VAR(1) pair x_{{t+1}} = a x_t + c y_t + ε, y_{{t+1}} = a y_t + c x_t + η, with a and the innovation correlation re-solved at each c so that the pair's r₁ and q stay fixed, at three points; at the operating point sts is {row(0):.4f} at c = 0, {row(0.02):.4f} at +0.02, {row(0.05):.4f} at +0.05 and {row(0.10):.4f} at +0.10, and {row(-0.02):.4f} and {row(-0.05):.4f} at −0.02 and −0.05: positive lagged coupling lowers the atom called synergy at the data's operating point, and the response is not monotone. Source: `notes/rev_phiid_fast.py` (closed form), `notes/review_results/partB/scope_map_overlay_points.npz`, `notes/review_results/partB/coupling_map_tables.md` (matched view; partB8).", ""]
+             f"The scope map and the coupled family. (a) Gaussian-MMI sts of a bivariate AR(1) pair as a function of the pair's lag-1 autocorrelation r₁ and lag-0 cross-correlation q (closed form of Methods; grid step {STEP}), with the density of one subject's saved pre-injection pairs — the overlay holds subject 1 only (ts_gsr; windows 1–4 of both runs, {pool_r1.size:,} pair × window points; contours at the 50th, 80th and 95th percentiles of the occupied cells; r₁ = mean of the two regions' within-window lag-1 autocorrelations, q = the pair's within-window lag-0 correlation; median r₁ {np.median(pool_r1):.3f}, median |q| {np.median(np.abs(pool_q)):.3f}) and the operating point (0.85, 0.25) marked. (b) sts − (xtx + yty), which on the symmetric family equals rtr and is zero at q = 0. (c) sts against the coupling c of the symmetric VAR(1) pair x_{{t+1}} = a x_t + c y_t + ε, y_{{t+1}} = a y_t + c x_t + η, with a and the innovation correlation re-solved at each c so that the pair's r₁ and q stay fixed, at three points (solid); at the operating point sts is {row(0):.4f} at c = 0, {row(0.02):.4f} at +0.02, {row(0.05):.4f} at +0.05 and {row(0.10):.4f} at +0.10, and {row(-0.02):.4f} and {row(-0.05):.4f} at −0.02 and −0.05. The dashed curve is the same point with q = −0.25, obtained from the family's invariance under (c, q) → (−c, −q): coupling of the same sign as q lowers sts; of the opposite sign, raises it, and the response is not monotone. Source: `notes/rev_phiid_fast.py` (closed form), `notes/review_results/partB/scope_map_overlay_points.npz`, `notes/review_results/partB/coupling_map_tables.md` (matched view; partB8).", ""]
 
 # ------------------------------------------------------------------ Figure 3: per-subject scatters
 def rows(f):
@@ -183,37 +225,66 @@ def get(rs, label, st="primary"):
     return np.asarray([r for r in rs if r["label"] == label and r["set"] == st][0]["did_subjects"], float)
 
 
-raw, diag, ccsp = rows("raw"), rows("diag"), rows("ccs_pub")
+raw, diag = rows("raw"), rows("diag")
 d_sts, d_ac = get(raw, "sts ts_gsr W60"), get(raw, "autocorr ts_gsr W60")
-d_obs, d_pred = get(diag, "diag observed sts ts_gsr W60"), get(diag, "diag predicted sts ts_gsr W60")
-d_res, d_ccs = get(diag, "diag residual sts ts_gsr W60"), get(ccsp, "CCSpub sts ts_gsr W60")
-fig, axes = plt.subplots(1, 3, figsize=(13.2, 4.0), gridspec_kw=dict(wspace=0.32))
-panels = ((d_ac, d_sts, "lag-1 autocorrelation DiD", "MMI-sts DiD (nats)", "a  the sts contrast against the autocorrelation contrast", False),
-          (d_obs, d_pred, "observed sts DiD (nats)", "family-predicted sts DiD (nats)", "b  the prediction from each pair's (a_x, a_y, q)", True),
-          (d_res, d_ccs, "residual DiD of the diagnostic (nats)", "CCS-sts DiD, published definition (nats)", "c  the two remainders", False))
-rvals = []
-for ax, (xv, yv, xl, yl, title, identity) in zip(axes, panels):
-    r = pearsonr(xv, yv)[0]; rho = spearmanr(xv, yv)[0]; rvals.append(r)
-    b = np.polyfit(xv, yv, 1); xx = np.linspace(xv.min(), xv.max(), 10)
-    ax.plot(xx, np.polyval(b, xx), color="0.6", lw=0.8)
-    if identity:
-        lim = [min(xv.min(), yv.min()) - 0.01, max(xv.max(), yv.max()) + 0.01]
-        ax.plot(lim, lim, color="0.85", lw=0.8, ls="--")
+d_res = get(diag, "diag residual sts ts_gsr W60")
+# the generators' rates within one simulation, per unit of pair-level a (the mean of a pair's a_x and a_y)
+BE = "partB/bandpassed_expectations_tables.md"
+be_sts = num(table_line(BE, "| observed sts |").split("|")[2].split("±")[0])
+be_res = num(table_line(BE, "| residual |").split("|")[2].split("±")[0])
+be_a = num(table_line(BE, "| window-level mean pair r₁ |").split("|")[3].split("±")[0])
+RATE_BP_STS, RATE_BP_RES = be_sts / be_a, be_res / be_a                                  # B24
+da_i = [c.strip() for c in table_line("partB/diagnostic_alternatives_tables.md", "| (i) Δa = −0.015 |").split("|")]
+RATE_AR1_STS = num(da_i[3].split("±")[0]) / num(da_i[6].split("±")[0])                   # B23 (b) (i)
+RATE_AR1_RES = num(da_i[11])
+nl = (RR / "logs" / "review_v2_residual_null.log").read_text()
+wa = {k: float(re.search(k + r"\s*: window a=([0-9.]+)", nl).group(1)) for k in ("DMT pre", "DMT post", "PCB pre", "PCB post")}
+null_a = (wa["DMT post"] - wa["DMT pre"]) - (wa["PCB post"] - wa["PCB pre"])
+null_res = float(re.search(r"null residual change: .*DiD ([+-][0-9.]+)", nl).group(1))
+RATE_NULL_RES = null_res / null_a                                                          # the finite-sample null
+rsl = (RR / "partB" / "residual_source.log").read_text()
+data_a = float(re.search(r"pair a: .*primary DiD ([+-][0-9.]+)", rsl).group(1))              # the data's pair-level a DiD
+sh = list(csv.reader(open(RR / "partB" / "splithalf_subjects.csv")))
+shh = sh[1]; shb = [r for r in sh[2:] if r and r[0] == "ts_gsr"]
+H = {k: np.array([float(r[shh.index(k)]) for r in shb]) for k in ("sts_odd", "sts_even", "r1_odd", "r1_even")}
+r_oe, r_eo = pearsonr(H["r1_even"], H["sts_odd"])[0], pearsonr(H["r1_odd"], H["sts_even"])[0]
+r_half = 0.5 * (r_oe + r_eo); half_lo, half_hi = fisher_ci(r_half)
+dis = [c.strip() for c in table_line("partB/inference_revision_tables.md", "| ts_gsr | +").split("|")]   # (d): the disattenuated ratio
+CEIL, DIS, DIS_CI = float(dis[7]), num(dis[8]), dis[9]
+f_sts, f_res = ols(d_ac, d_sts), ols(d_ac, d_res)
+r_full = pearsonr(d_ac, d_sts)[0]; full_lo, full_hi = fisher_ci(r_full)
+fig, axes = plt.subplots(1, 3, figsize=(13.4, 4.1), gridspec_kw=dict(wspace=0.34))
+for ax, (xv, yv, fit, rates, xl, yl, title) in zip((axes[0], axes[2]), (
+        (d_ac, d_sts, f_sts, [(RATE_BP_STS, "band-passed generator", C_DMT, "--")],
+         "regional r₁ DiD", "MMI-sts DiD (nats)", "a  the sts contrast against the r₁ contrast"),
+        (d_ac, d_res, f_res, [(RATE_BP_RES, "band-passed generator", C_DMT, "--"), (RATE_AR1_RES, "AR(1) pairs", C_OBS, ":"),
+                              (RATE_NULL_RES, "finite-sample null", "0.45", "-.")],
+         "regional r₁ DiD", "residual DiD (nats)", "c  the residual against the r₁ contrast"))):
+    xx = np.linspace(min(xv.min(), 0) - 0.002, max(xv.max(), 0) + 0.002, 20)
+    ax.plot(xx, fit["a"] + fit["b"] * xx, color="0.25", lw=1.0, label=um(f"OLS fit: {fit['b']:+.2f} [{fit['b_lo']:+.2f}, {fit['b_hi']:+.2f}]"))
+    for rate, lab, col, ls in rates:
+        ax.plot(xx, rate * xx, color=col, lw=1.1, ls=ls, label=um(f"{lab}: {rate:+.2f}"))
     ax.scatter(xv, yv, s=28, color="0.15", zorder=3)
     for k in range(14):
         ax.annotate(str(k + 1), (xv[k], yv[k]), xytext=(3, 3), textcoords="offset points", fontsize=6.5, color="0.4")
     ax.axhline(0, color="0.8", lw=0.6); ax.axvline(0, color="0.8", lw=0.6)
     ax.set_xlabel(xl); ax.set_ylabel(yl); ax.set_title(title, loc="left", fontsize=9)
-    ax.text(0.03, 0.95, f"r = {r:+.2f}, ρ = {rho:+.2f}, N = 14", transform=ax.transAxes, fontsize=8, va="top")
-l2o = np.loadtxt(RR / "partB" / "leave_two_out.csv", delimiter=",", skiprows=2)     # drop_a, drop_b, pearson_r, spearman_rho
-l2o_min, l2o_max = float(l2o[:, 2].min()), float(l2o[:, 2].max())
-kmin = int(np.argmin(l2o[:, 2])); l2o_pair = (int(l2o[kmin, 0]), int(l2o[kmin, 1]))
-axes[0].text(0.03, 0.88, f"leave-two-out (91 refits): r = {l2o_min:+.2f} to {l2o_max:+.2f}", transform=axes[0].transAxes, fontsize=7.5, va="top", color="0.35")
+    ax.legend(frameon=False, fontsize=6.8, loc="lower right" if ax is axes[0] else "upper right", title="per unit (generators: of pair-level a)", title_fontsize=6.8)
+axes[0].text(0.03, 0.95, f"r = {r_full:+.3f} [{full_lo:+.3f}, {full_hi:+.3f}], N = 14", transform=axes[0].transAxes, fontsize=8, va="top")
+axes[2].set_ylim(top=0.075)
+axes[1].plot(H["r1_even"], H["sts_odd"], ls="none", marker="o", ms=5.5, color="0.15", label=f"sts on odd windows, r₁ on even: r = {r_oe:+.3f}", zorder=3)
+axes[1].plot(H["r1_odd"], H["sts_even"], ls="none", marker="^", ms=6, mfc="white", mec="0.15", label=f"sts on even windows, r₁ on odd: r = {r_eo:+.3f}", zorder=3)
+axes[1].axhline(0, color="0.8", lw=0.6); axes[1].axvline(0, color="0.8", lw=0.6)
+axes[1].set_xlabel("regional r₁ DiD, one half of the windows"); axes[1].set_ylabel("MMI-sts DiD, the other half (nats)")
+axes[1].set_title("b  the cross-half relation", loc="left", fontsize=9)
+axes[1].set_ylim(top=0.26)
+axes[1].legend(frameon=False, fontsize=6.8, loc="upper left", bbox_to_anchor=(0.0, 0.86), numpoints=1)
+axes[1].text(0.03, 0.95, f"mean r = {r_half:+.3f} [{half_lo:+.3f}, {half_hi:+.3f}]\nceiling {CEIL:.3f}; disattenuated {DIS:+.3f} {DIS_CI}", transform=axes[1].transAxes, fontsize=7.8, va="top")
 save(fig, "fig3_v2_per_subject")
 captions += ["## Figure 3", "",
-             f"Per-subject difference-in-differences (post windows 6–14 minus pre windows 1–4, DMT minus placebo; ts_gsr, W = 60; one dot per subject, labelled by index; grey line the least-squares fit; r Pearson, ρ Spearman, descriptive). (a) Whole-brain MMI-sts DiD against the mean regional lag-1 autocorrelation DiD (r = {rvals[0]:+.3f}; dropping every pair of subjects in turn, 91 refits, gives r = {l2o_min:+.3f} to {l2o_max:+.3f}, the minimum without subjects {l2o_pair[0]} and {l2o_pair[1]}). Both DiDs are read off the same windows, so the correlation includes estimation error they share; the cross-half correlation — each subject's sts DiD on the odd windows against the r₁ DiD on the even windows and the reverse — is 0.742 and 0.645, mean 0.694, against a ceiling of 0.729 set by the two quantities' split-half reliabilities (Results 2; `notes/review_results/partB/exchange_rates_tables.md`). (b) The sts DiD predicted from each pair's measured (a_x, a_y, q) by the AR(1) family against the observed sts DiD (r = {rvals[1]:+.3f}; dashed line the identity; the prediction over-shoots by 14 % on the group mean). (c) CCS-sts DiD (published double-redundancy definition) against the residual DiD of the diagnostic, observed minus predicted (r = {rvals[2]:+.3f}); both are computed from the same windows, so a shared component can be signal or estimation noise, and the split-half test of S3 Text could not separate them at the reliabilities of the two quantities. Source: `notes/review_results/inference_rows_raw.pkl`, `inference_rows_diag.pkl`, `inference_rows_ccs_pub.pkl` (field `did_subjects`, primary set); `notes/review_results/partB/leave_two_out.csv`.", ""]
+             f"Per-subject difference-in-differences (post windows 6–14 minus pre windows 1–4, DMT minus placebo; ts_gsr, W = 60; one marker per subject, labelled by index in (a) and (c)). The x-axis of (a) and (c) is the paper's r₁ contrast, the DiD of the regions' mean sample lag-1 autocorrelation; the generators' rates are per unit of their pair-level a, the mean of a pair's a_x and a_y, a second estimator of the same autocorrelation, each rate taken within one simulation and drawn through the origin. (a) Whole-brain MMI-sts DiD against the r₁ DiD: the OLS fit, {f_sts['b']:+.2f} per unit (t interval, 12 df, [{f_sts['b_lo']:+.2f}, {f_sts['b_hi']:+.2f}]; intercept {f_sts['a']:+.3f}), and the band-passed generator's rate, {RATE_BP_STS:.2f} per unit of pair-level a ({be_sts:+.5f} / {be_a:+.5f}, B24); r = {r_full:+.3f}, Fisher-z 95 % interval [{full_lo:+.3f}, {full_hi:+.3f}]. Both DiDs are read off the same windows, so r includes estimation error they share. (b) The cross-half relation: each subject's sts DiD on the odd windows against its r₁ DiD on the even windows (filled circles, r = {r_oe:+.3f}) and the sts DiD on the even windows against the r₁ DiD on the odd windows (open triangles, r = {r_eo:+.3f}); mean r = {r_half:+.3f}, Fisher-z interval of the mean [{half_lo:+.3f}, {half_hi:+.3f}] (an approximation), against a ceiling of {CEIL:.3f} set by the two halves' split-half reliabilities; disattenuated, {DIS:+.3f} {DIS_CI} (subject bootstrap, B21 (d)). (c) The residual DiD (observed minus AR(1)-substituted sts) against the r₁ DiD: the OLS fit, {f_res['b']:+.2f} per unit (t interval [{f_res['b_lo']:+.2f}, {f_res['b_hi']:+.2f}]; intercept {f_res['a']:+.4f}), and the rates of the band-passed generator ({RATE_BP_RES:+.2f}, B24), of AR(1) pairs ({RATE_AR1_RES:+.2f}, B23 (b) (i)) and of the finite-sample null ({RATE_NULL_RES:+.2f}: {null_res:+.4f} / {null_a:+.4f}), per unit of pair-level a; on that basis the data's group means give {d_res.mean() / data_a:+.2f} ({d_res.mean():+.4f} / {data_a:+.4f}, `residual_source.log`). Source: `notes/review_results/inference_rows_raw.pkl` and `inference_rows_diag.pkl` (field `did_subjects`, primary set); `notes/review_results/partB/splithalf_subjects.csv`, `inference_revision_tables.md` (d), `bandpassed_expectations_tables.md`, `diagnostic_alternatives_tables.md` (b), `residual_source.log`; `notes/review_results/logs/review_v2_residual_null.log`.", ""]
 
-# ------------------------------------------------------------------ Figure 4: residual diagnostic by window, with the calibrated expectation
+# ------------------------------------------------------------------ Figure 4: the AR(1)-substituted estimate by window, with the calibrated expectation
 z = np.load(RR / "partB" / "diag_series_ts_gsr_W60.npz")
 obs, pred, res = z["obs"], z["pred"], z["res"]                                   # (14, 2, 14)
 t = (np.arange(14) + 0.5) * 2.0                                                  # window centre, minutes
@@ -244,6 +315,7 @@ def calibrated_expectation():
 
 
 EXP, EXP_SD, EXP_SRC = calibrated_expectation()
+P_EXP = [float(table_line("partB/inference_revision_tables.md", f"| {e} |").split("|")[2]) for e in ("+0.0027", "+0.0049", "+0.0054")]   # B21 (b)
 YL_A, YL_B = (1.00, 1.30), (-0.15, 0.05)                                          # 0.30 and 0.20 nats: equal scale at height ratio 1.5 : 1
 YL_C = (-0.04, 0.06)
 fig, axes = plt.subplots(3, 1, figsize=(7.8, 9.0), sharex=True, gridspec_kw=dict(hspace=0.16, height_ratios=[YL_A[1] - YL_A[0], YL_B[1] - YL_B[0], YL_C[1] - YL_C[0]]))
@@ -252,12 +324,12 @@ for ax in axes:
     ax.axvline(8, color="k", ls="--", lw=0.8)
 se_obs, se_pred, se_res = within_sem(obs), within_sem(pred), within_sem(res)
 for c, cname, col in ((0, "DMT", C_DMT), (1, "placebo", C_PCB)):
-    for arr, se, ls, lab in ((obs, se_obs, "-", "observed"), (pred, se_pred, "--", "AR(1) prediction")):
+    for arr, se, ls, lab in ((obs, se_obs, "-", "observed"), (pred, se_pred, "--", "AR(1)-substituted")):
         m = arr[:, c].mean(0)
         axes[0].plot(t, m, ls=ls, color=col, lw=1.4, label=f"{cname}, {lab}")
         axes[0].fill_between(t, m - se[c], m + se[c], color=col, alpha=0.15 if ls == "-" else 0.10, lw=0)
     m = res[:, c].mean(0)
-    axes[1].plot(t, m, color=col, lw=1.4, label=f"{cname}, residual = observed − predicted"); axes[1].fill_between(t, m - se_res[c], m + se_res[c], color=col, alpha=0.15, lw=0)
+    axes[1].plot(t, m, color=col, lw=1.4, label=f"{cname}, residual = observed − AR(1)-substituted"); axes[1].fill_between(t, m - se_res[c], m + se_res[c], color=col, alpha=0.15, lw=0)
 diff = res[:, 0] - res[:, 1]                                                     # (14 subjects, 14 windows): DMT − placebo residual difference
 se_diff = within_sem(diff)
 m = diff.mean(0)
@@ -268,7 +340,7 @@ axes[2].step(np.r_[0, t + 1.0], np.r_[step[0], step], where="pre", color="k", ls
 axes[2].fill_between(t[5:], pre_level + EXP - EXP_SD, pre_level + EXP + EXP_SD, color="0.5", alpha=0.15, lw=0, step="mid")
 axes[0].set_ylim(*YL_A); axes[1].set_ylim(*YL_B); axes[2].set_ylim(*YL_C)
 axes[0].set_ylabel("whole-brain mean sts (nats)"); axes[1].set_ylabel("residual (nats)"); axes[2].set_ylabel("DMT − placebo residual (nats)"); axes[2].set_xlabel("time in scan (min)")
-axes[0].set_title("a  observed sts and the prediction from each pair's measured (a_x, a_y, q)", loc="left", fontsize=9)
+axes[0].set_title("a  observed sts and the AR(1)-substituted estimate from each pair's measured (a_x, a_y, q)", loc="left", fontsize=9)
 axes[1].set_title("b  the residual (same units as a; same nats per unit height)", loc="left", fontsize=9)
 axes[2].set_title("c  the DMT − placebo residual difference against its calibrated expectation", loc="left", fontsize=9)
 axes[0].legend(frameon=False, fontsize=7.5, ncol=2, loc="lower right"); axes[1].legend(frameon=False, fontsize=7.5, loc="lower right"); axes[2].legend(frameon=False, fontsize=7.5, loc="upper left")
@@ -276,36 +348,37 @@ axes[1].axhline(0, color="k", lw=0.5); axes[2].axhline(0, color="k", lw=0.5)
 save(fig, "fig4_v2_residual_diagnostic")
 did_o, did_p, did_r = did_per_subject(obs).mean(), did_per_subject(pred).mean(), did_per_subject(res).mean()
 captions += ["## Figure 4", "",
-             f"The residual diagnostic by window (ts_gsr, W = 60, N = 14; lines are group means). Shading is ± 1 within-subject SEM (Cousineau, 2005; Morey, 2008): each subject's values are centred on that subject's own mean before the SEM across subjects is taken, with Morey's correction, so the bands show the uncertainty of within-subject comparisons across windows and runs and not the between-subject spread of the level, which the paper does not test; the same band is drawn on the dashed prediction lines. Grey band = pre-injection windows 1–4; hatched = window 5, excluded from the primary post set; dashed vertical line = injection at 8 min. (a) Observed whole-brain sts (solid) and the sts predicted from each pair's measured lag-1 autocorrelations a_x, a_y and lag-0 correlation q alone (dashed), DMT (red) and placebo (blue); y-range {YL_A[0]:.2f}–{YL_A[1]:.2f} nats. (b) The residual, observed minus predicted, per run, in the same units as (a) and with the same nats per unit height, so that the residual's modulation can be read against the size of the level and of the contrast. The prediction over-shoots the level by {abs(res.mean()):.3f} nats and the primary DiD by {abs(did_p) - abs(did_o):.4f} nats (observed {did_o:+.4f}, predicted {did_p:+.4f}, residual DiD {did_r:+.4f}). (c) The DMT − placebo difference of the residual per window (mean over subjects ± 1 within-subject SEM), with the calibrated expectation as the dashed step: the pre-injection mean of the difference, then that mean plus the residual DiD that the calibration gives for a pure autocorrelation change of the data's size ({EXP:+.4f} ± {EXP_SD:.4f}, condition (i) at W = 60, {EXP_SRC}; the grey band is ± 1 SD over replicate datasets). The observed post-injection difference lies above that step; Results 4 reads that excess against the three calibrated expectations, all of which lie inside the residual DiD's own interval, and against the direction a coupling change would move it. The dashed step, not zero, is the reference for reading the difference, because a positive residual DiD is what the diagnostic's own null produces. Source: `notes/review_results/partB/diag_series_ts_gsr_W60.npz`; the expectation from `notes/review_results/partB/calibration_filtered_tables.md` when present, otherwise `calibration_tables.md`.", ""]
+             f"The AR(1)-substituted estimate by window (ts_gsr, W = 60, N = 14; lines are group means). Shading is ± 1 within-subject SEM (Cousineau, 2005; Morey, 2008): each subject's values are centred on that subject's own mean before the SEM across subjects is taken, with Morey's correction, so the bands show the uncertainty of within-subject comparisons across windows and runs and not the between-subject spread of the level, which the paper does not test; the same band is drawn on the dashed lines. Grey band = pre-injection windows 1–4; hatched = window 5, excluded from the primary post set; dashed vertical line = injection at 8 min. (a) Observed whole-brain sts (solid) and the AR(1)-substituted sts (dashed): the sts of each pair's 4 × 4 matrix with its measured lag-1 autocorrelations a_x, a_y and lag-0 correlation q kept and its two cross-lag correlations replaced by a_y q and a_x q; DMT (red) and placebo (blue); y-range {YL_A[0]:.2f}–{YL_A[1]:.2f} nats. (b) The residual, observed minus AR(1)-substituted, per run, in the same units as (a) and with the same nats per unit height, so that the residual's modulation can be read against the size of the level and of the contrast. The AR(1)-substituted estimate exceeds the observed level by {abs(res.mean()):.3f} nats on average, and its primary DiD is larger in size by {abs(did_p) - abs(did_o):.4f} nats (observed {did_o:+.4f}, AR(1)-substituted {did_p:+.4f}, residual DiD {did_r:+.4f}). (c) The DMT − placebo difference of the residual per window (mean over subjects ± 1 within-subject SEM), with its expectation under a pure autocorrelation change as the dashed step: the pre-injection mean of the difference, then that mean plus the residual DiD that the calibration gives for an autocorrelation change of the data's size ({EXP:+.4f} ± {EXP_SD:.4f}, condition (i) at W = 60, {EXP_SRC}; the grey band is ± 1 SD over replicate datasets). The dashed step, not zero, is the reference for reading the difference, because a pure autocorrelation change itself produces a positive residual DiD; Results 4 gives the data's exact sign-flip p against this and the two other calibrated expectations, +0.0049 and +0.0054 ({P_EXP[0]:.3f}, {P_EXP[1]:.3f} and {P_EXP[2]:.3f}; B21 (b)). Source: `notes/review_results/partB/diag_series_ts_gsr_W60.npz`; the expectation from `notes/review_results/partB/calibration_filtered_tables.md` when present, otherwise `calibration_tables.md`; the p values from `inference_revision_tables.md` (b).", ""]
 
-# ------------------------------------------------------------------ Figure 5: lag dependence (Table 6)
+# ------------------------------------------------------------------ Figure 5: lag dependence (S14 Table)
 lag = rows("lag")
 TAUS = (1, 2, 3, 5)
 L = {}
 for tau in TAUS:
     s = [r for r in lag if r["label"] == f"sts tau{tau} ts_gsr W60" and r["set"] == "primary"][0]
     a = [r for r in lag if r["label"] == f"autocorr lag{tau} ts_gsr W60" and r["set"] == "primary"][0]
-    L[tau] = dict(sts=s, ac=a, r=pearsonr(np.asarray(s["did_subjects"], float), np.asarray(a["did_subjects"], float))[0])
+    L[tau] = dict(sts=s, ac=a, r=pearsonr(np.asarray(s["did_subjects"], float), np.asarray(a["did_subjects"], float))[0],
+                  ci=dict(sts=inv_ci(s["did_subjects"]), ac=inv_ci(a["did_subjects"])))
 fig, axes = plt.subplots(1, 2, figsize=(9.6, 3.7), gridspec_kw=dict(wspace=0.32, bottom=0.2))
 xt = np.arange(len(TAUS))
 for ax, key, col, ylab, title in ((axes[0], "sts", C_OBS, "MMI-sts DiD, W = 60 (nats)", "a  the sts contrast against the lag τ"),
                                   (axes[1], "ac", C_RES, "mean lag-τ autocorrelation DiD", "b  the lag-τ autocorrelation contrast")):
-    v = np.array([L[tau][key]["did"] for tau in TAUS]); lo = np.array([L[tau][key]["did_lo"] for tau in TAUS]); hi = np.array([L[tau][key]["did_hi"] for tau in TAUS])
+    v = np.array([L[tau][key]["did"] for tau in TAUS]); lo = np.array([L[tau]["ci"][key][0] for tau in TAUS]); hi = np.array([L[tau]["ci"][key][1] for tau in TAUS])
     ax.errorbar(xt, v, yerr=[v - lo, hi - v], fmt="o", color=col, capsize=3, lw=1.2, ms=5, zorder=3)
     ax.axhline(0, color="k", lw=0.5)
-    ax.set_xticks(xt); ax.set_xticklabels([f"τ = {tau}\nr_τ {L[tau]['ac']['pre_dmt']:+.2f}" for tau in TAUS], fontsize=8)
+    ax.set_xticks(xt); ax.set_xticklabels([um(f"τ = {tau}\nr_τ {L[tau]['ac']['pre_dmt']:+.2f}") for tau in TAUS], fontsize=8)
     ax.set_xlim(-0.6, len(TAUS) - 0.4)
     ax.set_ylabel(ylab); ax.set_title(title, loc="left", fontsize=9)
-axes[0].text(0.98, 0.04, "per-subject r(sts DiD, r_τ DiD), N = 14:\n" + ", ".join(f"{L[tau]['r']:+.2f}" for tau in TAUS) + "  (τ = " + ", ".join(str(tau) for tau in TAUS) + ")",
+axes[0].text(0.98, 0.04, um("per-subject r(sts DiD, r_τ DiD), N = 14:\n" + ", ".join(f"{L[tau]['r']:+.2f}" for tau in TAUS) + "  (τ = " + ", ".join(str(tau) for tau in TAUS) + ")"),
              transform=axes[0].transAxes, ha="right", va="bottom", fontsize=7.5, color="0.3")
 save(fig, "fig5_v2_lag_dependence")
 captions += ["## Figure 5", "",
-             "Lag dependence (Table 6; ts_gsr, W = 60, N = 14; points are group-mean primary DiDs, DMT minus placebo, post windows 6–14 minus pre 1–4; whiskers are subject-bootstrap 95 % CIs; the sign-flip p of every point is in Table 6). (a) The whole-brain MMI-sts DiD at τ = "
+             "Lag dependence (S14 Table; ts_gsr, W = 60, N = 14; points are group-mean primary DiDs, DMT minus placebo, post windows 6–14 minus pre 1–4; whiskers are inverted sign-flip 95 % intervals of the mean over subjects (B21); the exact p of every point is in S14 Table). (a) The whole-brain MMI-sts DiD at τ = "
              + ", ".join(f"{tau} ({L[tau]['sts']['did']:+.4f})" for tau in TAUS) + " nats, with r, the per-subject correlation between the sts DiD and the lag-τ autocorrelation DiD ("
              + ", ".join(f"{L[tau]['r']:+.3f}" for tau in TAUS) + "). (b) The mean regional lag-τ autocorrelation DiD at the same lags ("
-             + ", ".join(f"{L[tau]['ac']['did']:+.4f}" for tau in TAUS) + "); the x-axis labels give the DMT pre-injection mean r_τ (windows 1–4). The sts contrast is significant wherever the lag-τ autocorrelation contrast is significant by sign-flip (τ = 1, 2, 3) and null where it is not (τ = 5); the r_τ DiD grows with τ up to τ = 3 while the sts DiD shrinks with the atom, and at τ = 3 the per-subject tracking is only partial (Results 5). A longer lag reduces everything, the artefact included. Source: `notes/review_results/inference_rows_lag.pkl` (rows `sts tauN ts_gsr W60` and `autocorr lagN ts_gsr W60`, primary set).", ""]
+             + ", ".join(f"{L[tau]['ac']['did']:+.4f}" for tau in TAUS) + "); the x-axis labels give the DMT pre-injection mean r_τ (windows 1–4). Where the lag-τ autocorrelation contrast is negative (τ = 1, 2, 3) the sts contrast is negative, and at τ = 5, where the autocorrelation contrast is near zero, so is the sts contrast; the r_τ DiD grows in size with τ up to τ = 3 while the sts DiD shrinks with the atom, and at τ = 3 the per-subject tracking is only partial (Results 5). A longer lag reduces everything, the artefact included. Source: `notes/review_results/inference_rows_lag.pkl` (rows `sts tauN ts_gsr W60` and `autocorr lagN ts_gsr W60`, primary set).", ""]
 
-# ------------------------------------------------------------------ Figure 6: the regional map and the partialled contrast (B20)
+# ------------------------------------------------------------------ Figure 6: the regional map, the partialled contrast (B20) and the residual map's network means (B22 (e))
 reg = list(csv.reader(open(RR / "partB" / "regional_partial.csv")))
 hdr = reg[1]; body = [r for r in reg[2:] if r]
 col = {k: hdr.index(k) for k in hdr}
@@ -316,7 +389,7 @@ sts_res = np.array([float(r[col["sts_resid_win"]]) for r in body]); smr_res = np
 NETS = ["Vis", "SomMot", "DorsAttn", "SalVentAttn", "Limbic", "Cont", "Default", "Subcortex"]
 NETCOL = {"Vis": "#781286", "SomMot": "#4682B4", "DorsAttn": "#00760E", "SalVentAttn": "#C43AFA", "Limbic": "#DCF8A4", "Cont": "#E69422", "Default": "#CD3E4E", "Subcortex": "0.4"}
 sens = np.isin(net, ["Vis", "SomMot"]); assoc = np.isin(net, ["Default", "Cont"])
-fig, axes = plt.subplots(1, 2, figsize=(10.4, 4.0), gridspec_kw=dict(wspace=0.3, width_ratios=[1.35, 1]))
+fig, axes = plt.subplots(1, 3, figsize=(15.6, 4.0), gridspec_kw=dict(wspace=0.32, width_ratios=[1.35, 1, 1.25]))
 for n in NETS:
     m = net == n
     axes[0].scatter(r1_r[m], sts_r[m], s=22, color=NETCOL[n], edgecolor="0.3" if n == "Limbic" else "none", lw=0.4, label=f"{n} ({int(m.sum())})", zorder=3)
@@ -335,13 +408,31 @@ axes[1].axhline(0, color="k", lw=0.6)
 axes[1].set_xticks(xb); axes[1].set_xticklabels(["sts", "sts − rtr"])
 axes[1].set_ylabel("sensory − association contrast (nats)")
 axes[1].set_title("b  the sensory–association contrast of the group map", loc="left", fontsize=9)
-axes[1].set_ylim(-0.026, 0.007)
+axes[1].set_ylim(-0.026, 0.013)
 axes[1].legend(frameon=False, fontsize=7.5, loc="upper right")
 for k, c in enumerate(contr):
     axes[1].text(xb[k] - wb / 2, c[0] - 0.0012, f"{c[0]:+.4f}", ha="center", va="top", fontsize=7); axes[1].text(xb[k] + wb / 2, c[1] + 0.0008 if c[1] >= 0 else c[1] - 0.0012, f"{c[1]:+.4f}", ha="center", va="bottom" if c[1] >= 0 else "top", fontsize=7)
+AD = "partB/aligned_directed_tables.md"
+spin = {}
+for key, start in (("map", "| sts (unpartialled) |"), ("res", "| sts with regional r₁ partialled out (sts_resid_win) |")):
+    cells = [c.strip() for c in table_line(AD, start).split("|")]
+    spin[key] = dict(F=float(cells[2]), p=float(cells[3]), sm=num(cells[4]), sm_p=float(cells[5]), vd=num(cells[6]), vd_p=float(cells[7]), n_rot=int(cells[8]))
+F_res = f_oneway(*[sts_res[net == n] for n in NETS]).statistic; F_map = f_oneway(*[sts_r[net == n] for n in NETS]).statistic
+assert abs(F_res - spin["res"]["F"]) < 5e-4 and abs(F_map - spin["map"]["F"]) < 5e-4, "F differs from aligned_directed_tables.md (e)"
+nm = np.array([sts_res[net == n].mean() for n in NETS]); nse = np.array([sts_res[net == n].std(ddof=1) / np.sqrt((net == n).sum()) for n in NETS])
+xn = np.arange(len(NETS))
+axes[2].bar(xn, nm, 0.7, yerr=nse, color=[NETCOL[n] for n in NETS], edgecolor=["0.3" if n == "Limbic" else "none" for n in NETS], lw=0.4, capsize=2, error_kw=dict(lw=0.7))
+axes[2].axhline(0, color="k", lw=0.6)
+axes[2].set_xticks(xn); axes[2].set_xticklabels([f"{n} ({int((net == n).sum())})" for n in NETS], fontsize=7, rotation=40, ha="right", rotation_mode="anchor")
+axes[2].set_ylim(-0.033, 0.06)
+axes[2].set_ylabel("residual map, network mean ± SEM (nats)")
+axes[2].set_title("c  the residual map's network means", loc="left", fontsize=9)
+axes[2].text(0.02, 0.97, um(f"eight-class F = {spin['res']['F']:.2f}, spin p = {spin['res']['p']:.4f}\n(unpartialled map: F = {spin['map']['F']:.2f}, spin p = {spin['map']['p']:.4f})\n"
+             f"SomMot − Default {spin['res']['sm']:+.4f}, spin p = {spin['res']['sm_p']:.2f}\nVis − Default {spin['res']['vd']:+.4f}, spin p = {spin['res']['vd_p']:.2f}"),
+             transform=axes[2].transAxes, fontsize=7, va="top")
 save(fig, "fig6_v2_regional")
 captions += ["## Figure 6", "",
-             f"The regional map and regional autocorrelation (placebo run, pre-injection, ts_gsr, 115 regions, group means over 14 subjects). (a) Regional MMI-sts — the mean over a region's 114 pairs of the global-fit local sts, bins 1–8 — against the region's lag-1 autocorrelation r₁ (W = 60, windows 1–4), coloured by Yeo-7 network with the 16 subcortical parcels as one class (parcel counts in the legend); Pearson r = {r_reg:+.3f}, least-squares slope {b[0]:+.2f} nats per unit r₁. (b) The contrast between sensory cortex (visual and somatomotor networks, {int(sens.sum())} parcels) and association cortex (default-mode and frontoparietal control networks, {int(assoc.sum())} parcels) of the sts map and of the sts − rtr map, before partialling (grey) and after regressing regional r₁ out of the group map (green): sts {contr[0][0]:+.4f} → {contr[0][1]:+.4f} nats, sts − rtr {contr[1][0]:+.4f} → {contr[1][1]:+.4f}; the per-subject version and its sign-flip p are in Results 3, and no spin test is applied to the partialled map, whose two inputs are algebraically linked. Source: `notes/review_results/partB/regional_partial.csv` (partB20).", ""]
+             f"The regional map and regional autocorrelation (placebo run, pre-injection, ts_gsr, 115 regions, group means over 14 subjects). (a) Regional MMI-sts — the mean over a region's 114 pairs of the global-fit local sts, bins 1–8 — against the region's lag-1 autocorrelation r₁ (W = 60, windows 1–4), coloured by Yeo-7 network with the 16 subcortical parcels as one class (parcel counts in the legend); Pearson r = {r_reg:+.3f}, least-squares slope {b[0]:+.2f} nats per unit r₁. (b) The pre-defined contrast between sensory cortex (visual and somatomotor networks, {int(sens.sum())} parcels) and association cortex (default-mode and frontoparietal control networks, {int(assoc.sum())} parcels) of the sts map and of the sts − rtr map, before partialling (grey) and after regressing regional r₁ out of the group map (green): sts {contr[0][0]:+.4f} → {contr[0][1]:+.4f} nats, sts − rtr {contr[1][0]:+.4f} → {contr[1][1]:+.4f}; the per-subject version and its sign-flip p are in Results 3. (c) The network means of the map with regional r₁ partialled out (± SEM over the network's parcels; parcel counts under the labels), from {nm.min():+.4f} ({NETS[int(np.argmin(nm))]}) to {nm.max():+.4f} ({NETS[int(np.argmax(nm))]}), and the spin test of their structure (B22 (e); {spin['res']['n_rot']:,} rotations of the cortical parcels, each keeping its own class, the 16 subcortical values fixed): the eight-class one-way F is {spin['res']['F']:.3f}, spin p {spin['res']['p']:.4f}, against {spin['map']['F']:.3f}, spin p {spin['map']['p']:.4f}, for the unpartialled map; the residual map's somatomotor − default and visual − default contrasts are {spin['res']['sm']:+.5f} (spin p {spin['res']['sm_p']:.4f}) and {spin['res']['vd']:+.5f} ({spin['res']['vd_p']:.4f}). Partialling removes the pre-defined sensory–association contrast but not all network structure. Source: `notes/review_results/partB/regional_partial.csv` (partB20); `notes/review_results/partB/aligned_directed_tables.md` (B22 (e)).", ""]
 
-(FIG / "captions_v2.md").write_text("\n".join(captions) + "\n")
+(FIG / "captions_v2.md").write_text(um("\n".join(captions)) + "\n")
 print("wrote", FIG / "captions_v2.md")
