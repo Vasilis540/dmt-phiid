@@ -11,8 +11,10 @@
 #   11 regional (per-pair refit) ~540 s per variant (x2)           ~18 min
 #   everything else              seconds to a few minutes each
 #   TOTAL, sections 0–5          ~6 h single-core (≈ 21,000 s), no GPU, ~2 GB RAM.
-#   section 6 (review + Part B)  about an hour more (partB6 ≈ 15 min, partB2 ≈ 10 min, the matched
-#                                null and the residual null a few minutes each; see each script's docstring)
+#   section 6 (review + Part B)  about three hours more (≈ 10,600 s in the committed logs: B17 ≈ 56 min,
+#                                B17b ≈ 39 min, B16 ≈ 28 min, the rest seconds to minutes each; see each
+#                                script's docstring), of which B21–B24 (round 16) about 15 min
+#   TOTAL                        about nine hours (twelve minutes more with the deconvolution sandbox)
 # Every script is deterministic (SEED = 20261120) and writes the git SHA of the tree into
 # its output header; commit before running so the headers are clean, not "-dirty".
 #
@@ -83,7 +85,9 @@ step 12_figures                     scripts/12_figures.py
 #    under notes/review_results/deconv/ and scripts/01 rerun on it there — and are skipped unless it
 #    is present. Added 20 Sep 2026 (round 13): the seven computations B14–B20 of the plan of that date, each under
 #    its own pre-run entry in the record, at the nstep lines commented with the entry's name. Added 21 Sep 2026
-#    (round 14): B16b and B17b, under their pre-run entries of that date, likewise.
+#    (round 14): B16b and B17b, under their pre-run entries of that date, likewise. Added 23 Sep 2026 (round 16):
+#    B21–B24, under their pre-run entries of that date, after B20 and before the figures; each reads only files
+#    that earlier steps write or that no step regenerates (B21 and B22 need the .mat, B22 also the rotation file).
 nstep() {  # nstep <log path under notes/review_results, without .log> <script> [args...]
     local log="notes/review_results/$1.log"; shift
     echo "=== $(date '+%F %T')  $*   -> $log"
@@ -149,6 +153,14 @@ nstep partB/crosslag_budget_run     notes/partB12_crosslag_budget.py
 nstep partB/crosslag_budget_null_run notes/partB13_crosslag_budget_null.py
 # B20 (record, "The regional map with regional r₁ partialled out (B20): pre-run entry, 20 Sep 2026"): reads regional_sts_r1.csv
 nstep partB/regional_partial_run    notes/partB20_regional_partial.py
+# B21 (record, "Inverted sign-flip intervals, the residual against its calibrated expectations, the per-subject regressions and the correlation intervals (B21): pre-run entry, 23 Sep 2026")
+nstep partB/inference_revision_run  notes/partB21_inference_revision.py
+# B22 (record, "The aligned and directed cross-lag statistics without selection, the per-SD exchange rate and the network spin test (B22): pre-run entry, 23 Sep 2026")
+nstep partB/aligned_directed_run    notes/partB22_aligned_directed.py
+# B23 (record, "The residual's response to the alternatives of the direction argument, CCS-sts against autocorrelation, exposure across datasets and the unequal-coefficient grid (B23): pre-run entry, 23 Sep 2026"): no data
+nstep partB/diagnostic_alternatives_run notes/partB23_diagnostic_alternatives.py
+# B24 (record, "The pure-autocorrelation expectations of the new statistics on the band-passed generator (B24): pre-run entry, 23 Sep 2026"): no data
+nstep partB/bandpassed_expectations_run notes/partB24_bandpassed_expectations.py
 step 15_figures_v2                  scripts/15_figures_v2.py
 
 echo "=== all done in $(( ($(date +%s) - T0) / 60 )) min"
