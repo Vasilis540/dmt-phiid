@@ -1,0 +1,284 @@
+# The residual's response to the alternatives of the direction argument, CCS-sts against autocorrelation, exposure across datasets and the unequal-coefficient grid (partB23_diagnostic_alternatives.py)
+git=a9d9ca4
+
+No data. Seed 20261120, one generator, parts (a)–(f) in order; scale 1/1. residual = pool mean of sts(true matrix) − sts(AR(1) matrix of the measured a_x, a_y and q) (partB4's substitution). q pool: 20000 draws of N(0, 0.3424) clipped to ±0.8.
+Checks: 63 run, 0 failed.
+
+
+## (a) Population residual changes, closed form (pool means; the unperturbed residual is 0 on the AR(1) family)
+
+### a = 0.85
+
+| alternative | perturbation | residual change | share excluded (not positive definite) | notes |
+|---|---|---|---|---|
+| (a1) δ at fixed (a, q) | δ = +0.005 | +0.00105 | 0.0000 | |
+| (a1) δ at fixed (a, q) | δ = -0.005 | +0.00073 | 0.0000 | |
+| (a1) δ at fixed (a, q) | δ = +0.010 | +0.00393 | 0.0000 | |
+| (a1) δ at fixed (a, q) | δ = -0.010 | +0.00329 | 0.0000 | |
+| (a1) δ at fixed (a, q) | δ = +0.020 | +0.01609 | 0.0000 | |
+| (a1) δ at fixed (a, q) | δ = -0.020 | +0.01482 | 0.0000 | |
+| (a2) δ·sign(q) | δ = +0.005 × sign(q) | -0.01201 | 0.0000 | |
+| (a2) δ·sign(q) | δ = -0.005 × sign(q) | +0.01379 | 0.0000 | |
+| (a2) δ·sign(q) | δ = +0.010 × sign(q) | -0.02245 | 0.0000 | |
+| (a2) δ·sign(q) | δ = -0.010 × sign(q) | +0.02968 | 0.0000 | |
+| (a2) δ·sign(q) | δ = +0.020 × sign(q) | -0.03925 | 0.0000 | |
+| (a2) δ·sign(q) | δ = -0.020 × sign(q) | +0.07015 | 0.0000 | |
+| (a3) coupled family, r₁ and q held | c = +0.01 | +0.00237 | 0.0000 | grid step 0.001; step doubled: +0.00237 (difference 1.6e-16) |
+| (a3) coupled family, r₁ and q held | c = +0.01 × sign(q) | -0.01671 | 0.0000 | grid step 0.001; step doubled: -0.01671 (difference 5.1e-15) |
+| (a3) coupled family, r₁ and q held | c = -0.01 | +0.00188 | 0.0000 | grid step 0.001; step doubled: +0.00188 (difference 2.9e-16) |
+| (a3) coupled family, r₁ and q held | c = -0.01 × sign(q) | +0.02097 | 0.0000 | grid step 0.001; step doubled: +0.02097 (difference 4.9e-15) |
+| (a3) coupled family, r₁ and q held | c = +0.02 | +0.00912 | 0.0000 | grid step 0.001; step doubled: +0.00912 (difference 1.2e-16) |
+| (a3) coupled family, r₁ and q held | c = +0.02 × sign(q) | -0.02960 | 0.0000 | grid step 0.001; step doubled: -0.02960 (difference 1.0e-14) |
+| (a3) coupled family, r₁ and q held | c = -0.02 | +0.00813 | 0.0000 | grid step 0.001; step doubled: +0.00813 (difference 7.5e-16) |
+| (a3) coupled family, r₁ and q held | c = -0.02 × sign(q) | +0.04684 | 0.0000 | grid step 0.001; step doubled: +0.04684 (difference 9.7e-15) |
+
+(a4) B17's construction at a = 0.85: A = [[a, c], [c, a]], unit innovations with correlation q (the c = 0 lag-0 correlation).
+
+| c | Δr₁ | Δ mean q | Δ mean \|q\| | mean δ_sym | residual change | residual / (mean δ_sym)² |
+|---|---|---|---|---|---|---|
+| +0.01 | +0.00051 | +0.05437 | +0.00320 | +0.00885 | -0.00190 | -24.28 |
+| +0.02 | +0.00211 | +0.10899 | +0.01320 | +0.01755 | -0.00815 | -26.45 |
+| +0.03 | +0.00482 | +0.16409 | +0.03016 | +0.02597 | -0.01893 | -28.08 |
+| -0.02 | +0.00225 | -0.10891 | +0.01488 | -0.01753 | -0.00913 | -29.71 |
+
+(a5) shared slow component at a = 0.85 (λ = |q|, a_n = a − 0.06λ, a_s = a_n + 0.06): base residual -0.02724, base mean(sign(q)·δ_sym) +0.00950.
+
+| change | Δr₁ | Δ mean(sign(q)·δ_sym) | residual change | residual change / Δr₁ | share excluded |
+|---|---|---|---|---|---|
+| Δa_s = −0.01 | -0.00272 | -0.00158 | +0.00466 | -1.716 | 0.0000 |
+| Δa_s = −0.02 | -0.00543 | -0.00317 | +0.00928 | -1.708 | 0.0000 |
+| Δa_s = −0.03 | -0.00815 | -0.00475 | +0.01385 | -1.700 | 0.0000 |
+| λ → 0.9λ | -0.00163 | -0.00034 | +0.00471 | -2.892 | 0.0000 |
+
+(a6) pure Δa = −0.015 at a = 0.85: largest |residual| over the pool 0.0e+00.
+
+### a = 0.8632
+
+| alternative | perturbation | residual change | share excluded (not positive definite) | notes |
+|---|---|---|---|---|
+| (a1) δ at fixed (a, q) | δ = +0.005 | +0.00126 | 0.0000 | |
+| (a1) δ at fixed (a, q) | δ = -0.005 | +0.00091 | 0.0000 | |
+| (a1) δ at fixed (a, q) | δ = +0.010 | +0.00476 | 0.0000 | |
+| (a1) δ at fixed (a, q) | δ = -0.010 | +0.00407 | 0.0000 | |
+| (a1) δ at fixed (a, q) | δ = +0.020 | +0.01994 | 0.0000 | |
+| (a1) δ at fixed (a, q) | δ = -0.020 | +0.01856 | 0.0000 | |
+| (a2) δ·sign(q) | δ = +0.005 × sign(q) | -0.01307 | 0.0000 | |
+| (a2) δ·sign(q) | δ = -0.005 × sign(q) | +0.01524 | 0.0000 | |
+| (a2) δ·sign(q) | δ = +0.010 × sign(q) | -0.02425 | 0.0000 | |
+| (a2) δ·sign(q) | δ = -0.010 × sign(q) | +0.03308 | 0.0000 | |
+| (a2) δ·sign(q) | δ = +0.020 × sign(q) | -0.04170 | 0.0000 | |
+| (a2) δ·sign(q) | δ = -0.020 × sign(q) | +0.08019 | 0.0000 | |
+| (a3) coupled family, r₁ and q held | c = +0.01 | +0.00287 | 0.0000 | grid step 0.001; step doubled: +0.00287 (difference 1.8e-16) |
+| (a3) coupled family, r₁ and q held | c = +0.01 × sign(q) | -0.01807 | 0.0000 | grid step 0.001; step doubled: -0.01807 (difference 5.3e-15) |
+| (a3) coupled family, r₁ and q held | c = -0.01 | +0.00234 | 0.0000 | grid step 0.001; step doubled: +0.00234 (difference 2.9e-16) |
+| (a3) coupled family, r₁ and q held | c = -0.01 × sign(q) | +0.02328 | 0.0000 | grid step 0.001; step doubled: +0.02328 (difference 5.2e-15) |
+| (a3) coupled family, r₁ and q held | c = +0.02 | +0.01112 | 0.0000 | grid step 0.001; step doubled: +0.01112 (difference 1.8e-16) |
+| (a3) coupled family, r₁ and q held | c = +0.02 × sign(q) | -0.03149 | 0.0000 | grid step 0.001; step doubled: -0.03149 (difference 1.1e-14) |
+| (a3) coupled family, r₁ and q held | c = -0.02 | +0.01002 | 0.0000 | grid step 0.001; step doubled: +0.01002 (difference 7.4e-16) |
+| (a3) coupled family, r₁ and q held | c = -0.02 × sign(q) | +0.05263 | 0.0000 | grid step 0.001; step doubled: +0.05263 (difference 1.0e-14) |
+
+(a4) B17's construction at a = 0.8632: A = [[a, c], [c, a]], unit innovations with correlation q (the c = 0 lag-0 correlation).
+
+| c | Δr₁ | Δ mean q | Δ mean \|q\| | mean δ_sym | residual change | residual / (mean δ_sym)² |
+|---|---|---|---|---|---|---|
+| +0.01 | +0.00057 | +0.06012 | +0.00393 | +0.00884 | -0.00230 | -29.48 |
+| +0.02 | +0.00234 | +0.12056 | +0.01623 | +0.01751 | -0.00984 | -32.09 |
+| +0.03 | +0.00534 | +0.18162 | +0.03698 | +0.02582 | -0.02287 | -34.31 |
+| -0.02 | +0.00248 | -0.12046 | +0.01809 | -0.01748 | -0.01091 | -35.70 |
+
+(a5) shared slow component at a = 0.8632 (λ = |q|, a_n = a − 0.06λ, a_s = a_n + 0.06): base residual -0.02942, base mean(sign(q)·δ_sym) +0.00950.
+
+| change | Δr₁ | Δ mean(sign(q)·δ_sym) | residual change | residual change / Δr₁ | share excluded |
+|---|---|---|---|---|---|
+| Δa_s = −0.01 | -0.00272 | -0.00158 | +0.00502 | -1.850 | 0.0000 |
+| Δa_s = −0.02 | -0.00543 | -0.00317 | +0.01001 | -1.842 | 0.0000 |
+| Δa_s = −0.03 | -0.00815 | -0.00475 | +0.01495 | -1.834 | 0.0000 |
+| λ → 0.9λ | -0.00163 | -0.00034 | +0.00514 | -3.152 | 0.0000 |
+
+(a6) pure Δa = −0.015 at a = 0.8632: largest |residual| over the pool 0.0e+00.
+
+## (b) W = 60 simulation: changes against the unperturbed pairs (common random numbers; mean ± SE)
+
+3000 pairs, q ~ N(0, 0.3424) clipped to ±0.8, a = 0.85; runs of 840 samples after a burn-in of 200; 14 windows of 60; the other run an independent realisation. SE over pairs of each pair's 14-window mean; B's SE over the 14 windows.
+
+Unperturbed AR(1) pairs, levels: observed sts +0.71753; AR(1)-substituted sts +0.78780; residual -0.07027; r₁ +0.78638; A_other -0.00291; A_same -0.00117; D -0.01137; B +0.06122.
+
+| condition | pairs excluded | Δ observed sts | Δ AR(1)-substituted sts | Δ residual | Δ r₁ | Δ A_other | Δ A_same | Δ D | Δ B | residual change / Δr₁ |
+|---|---|---|---|---|---|---|---|---|---|---|
+| (i) Δa = −0.015 | 0 | -0.04240 ± 0.00011 | -0.04777 ± 0.00012 | +0.00537 ± 0.00009 | -0.01377 ± 0.00002 | +0.00001 ± 0.00004 | +0.00001 ± 0.00005 | +0.00015 ± 0.00007 | +0.00034 ± 0.00004 | -0.390 |
+| (a1) δ = +0.02 | 0 | +0.00521 ± 0.00078 | -0.00457 ± 0.00035 | +0.00978 ± 0.00093 | -0.00092 ± 0.00004 | +0.00041 ± 0.00034 | +0.00017 ± 0.00034 | +0.00032 ± 0.00014 | +0.00045 ± 0.00010 | -10.628 |
+| (a1) δ = −0.02 | 0 | +0.00608 ± 0.00079 | -0.00409 ± 0.00037 | +0.01016 ± 0.00095 | -0.00089 ± 0.00004 | +0.00059 ± 0.00034 | +0.00070 ± 0.00034 | +0.00041 ± 0.00013 | +0.00032 ± 0.00011 | -11.358 |
+| (a2) δ = +0.01 × sign(q) | 0 | -0.01064 ± 0.00028 | +0.00290 ± 0.00015 | -0.01354 ± 0.00030 | -0.00023 ± 0.00002 | +0.00782 ± 0.00011 | +0.00781 ± 0.00010 | -0.00007 ± 0.00006 | +0.01661 ± 0.00010 | +58.914 |
+| (a2) δ = −0.01 × sign(q) | 0 | +0.01339 ± 0.00033 | -0.00511 ± 0.00020 | +0.01850 ± 0.00038 | -0.00021 ± 0.00002 | -0.00748 ± 0.00010 | -0.00762 ± 0.00010 | +0.00039 ± 0.00014 | -0.01680 ± 0.00009 | -87.358 |
+| (a3) c = +0.02, r₁ and q held | 0 | +0.00335 ± 0.00047 | -0.00342 ± 0.00028 | +0.00677 ± 0.00055 | -0.00069 ± 0.00004 | +0.00014 ± 0.00031 | -0.00008 ± 0.00031 | +0.00010 ± 0.00009 | -0.00004 ± 0.00008 | -9.879 |
+| (a4) c = +0.02, B17's construction | 0 | -0.00011 ± 0.00040 | +0.00468 ± 0.00036 | -0.00479 ± 0.00065 | +0.00129 ± 0.00012 | +0.00387 ± 0.00034 | +0.00401 ± 0.00035 | +0.00003 ± 0.00007 | -0.00165 ± 0.00012 | -3.722 |
+| (a4) c = -0.02, B17's construction | 0 | +0.00006 ± 0.00040 | +0.00552 ± 0.00038 | -0.00546 ± 0.00066 | +0.00134 ± 0.00012 | +0.00405 ± 0.00033 | +0.00440 ± 0.00034 | -0.00010 ± 0.00012 | -0.00191 ± 0.00010 | -4.074 |
+| (a5) base, against the unperturbed AR(1) pairs (levels differ by construction) | 0 | -0.01423 | +0.00041 | -0.01464 | -0.00170 | +0.00793 | +0.00802 | -0.00027 | +0.02031 | — |
+| (a5) Δa_s = −0.03 (against the (a5) base) | 0 | -0.01470 ± 0.00020 | -0.02489 ± 0.00038 | +0.01020 ± 0.00023 | -0.00642 ± 0.00010 | -0.00371 ± 0.00006 | -0.00377 ± 0.00006 | +0.00008 ± 0.00005 | -0.01066 ± 0.00007 | -1.587 |
+| (a5) λ → 0.9λ (against the (a5) base) | 0 | +0.00354 ± 0.00016 | -0.00037 ± 0.00013 | +0.00391 ± 0.00012 | -0.00143 ± 0.00003 | -0.00010 ± 0.00005 | -0.00003 ± 0.00005 | +0.00019 ± 0.00008 | +0.01095 ± 0.00007 | -2.727 |
+
+Predictions (pre-run entry): (a4) within 2 SE of Table 7's AR(1) rows (the review's −0.0049 and −0.0052 at c = +0.02 and −0.02); (a1) ±0.02 +0.0066 and +0.0064; (a2) +0.01 −0.0102 and −0.01 +0.0135; (i) +0.003 to +0.007.
+
+## (c) Population CCS-sts (published mask) and MMI-sts on the symmetric AR(1) family
+
+One series of 1000000 samples per point, fitted globally; the same two standard-normal streams at every point.
+
+| r₁ | q | CCS-sts | MMI-sts (the fit) | MMI-sts (closed form) |
+|---|---|---|---|---|
+| 0.80 | 0.10 | -0.01535 | +1.01701 | +1.01844 |
+| 0.83 | 0.10 | -0.01577 | +1.16230 | +1.16418 |
+| 0.85 | 0.10 | -0.01597 | +1.27600 | +1.27831 |
+| 0.87 | 0.10 | -0.01607 | +1.40763 | +1.41048 |
+| 0.90 | 0.10 | -0.01585 | +1.65264 | +1.65666 |
+| 0.80 | 0.25 | -0.03041 | +1.00004 | +1.00124 |
+| 0.83 | 0.25 | -0.03135 | +1.14405 | +1.14564 |
+| 0.85 | 0.25 | -0.03175 | +1.25689 | +1.25883 |
+| 0.87 | 0.25 | -0.03189 | +1.38766 | +1.39005 |
+| 0.90 | 0.25 | -0.03130 | +1.63141 | +1.63476 |
+| 0.80 | 0.40 | -0.03412 | +0.96672 | +0.96764 |
+| 0.83 | 0.40 | -0.03558 | +1.10804 | +1.10925 |
+| 0.85 | 0.40 | -0.03613 | +1.21904 | +1.22051 |
+| 0.87 | 0.40 | -0.03637 | +1.34795 | +1.34974 |
+| 0.90 | 0.40 | -0.03547 | +1.58889 | +1.59133 |
+
+Central-difference slope of CCS-sts in r₁ at q = 0.25 (0.83 to 0.87): -0.0134 per unit r₁ (MMI-sts from the same fits: +6.0903). Change of CCS-sts from Δa = −0.015 at (0.85, 0.25): +0.00034 (MMI-sts: -0.08607).
+
+## (d) Exposure per unit of spectral difference: a flat band against the same band tilted by exp(−βf²), q = 0.25
+
+| band | TR (s) | r₁ flat | β | Δr₁ | Δsts | Δsts / Δr₁ |
+|---|---|---|---|---|---|---|
+| 0.008–0.09 Hz | 2 | 0.7807 | 100 | +0.03759 | +0.1652 | +4.39 |
+| 0.008–0.09 Hz | 2 | 0.7807 | 200 | +0.06887 | +0.3353 | +4.87 |
+| 0.008–0.09 Hz | 2 | 0.7807 | 400 | +0.11319 | +0.6581 | +5.81 |
+| 0.008–0.09 Hz | 1.838 | 0.8129 | 100 | +0.03221 | +0.1696 | +5.27 |
+| 0.008–0.09 Hz | 1.838 | 0.8129 | 200 | +0.05900 | +0.3436 | +5.82 |
+| 0.008–0.09 Hz | 1.838 | 0.8129 | 400 | +0.09690 | +0.6722 | +6.94 |
+| 0.008–0.09 Hz | 0.72 | 0.9699 | 100 | +0.00528 | +0.1904 | +36.02 |
+| 0.008–0.09 Hz | 0.72 | 0.9699 | 200 | +0.00966 | +0.3822 | +39.57 |
+| 0.008–0.09 Hz | 0.72 | 0.9699 | 400 | +0.01581 | +0.7379 | +46.66 |
+| 0.0025–0.05 Hz | 2 | 0.9321 | 100 | +0.00410 | +0.0599 | +14.61 |
+| 0.0025–0.05 Hz | 2 | 0.9321 | 200 | +0.00800 | +0.1208 | +15.09 |
+| 0.0025–0.05 Hz | 2 | 0.9321 | 400 | +0.01517 | +0.2440 | +16.09 |
+| 0.0025–0.05 Hz | 2.4 | 0.9031 | 100 | +0.00583 | +0.0586 | +10.06 |
+| 0.0025–0.05 Hz | 2.4 | 0.9031 | 200 | +0.01138 | +0.1182 | +10.39 |
+| 0.0025–0.05 Hz | 2.4 | 0.9031 | 400 | +0.02157 | +0.2392 | +11.09 |
+| 0.0025–0.05 Hz | 2.6 | 0.8868 | 100 | +0.00679 | +0.0579 | +8.52 |
+| 0.0025–0.05 Hz | 2.6 | 0.8868 | 200 | +0.01326 | +0.1168 | +8.81 |
+| 0.0025–0.05 Hz | 2.6 | 0.8868 | 400 | +0.02514 | +0.2364 | +9.40 |
+| 0.0025–0.05 Hz | 3 | 0.8510 | 100 | +0.00890 | +0.0563 | +6.32 |
+| 0.0025–0.05 Hz | 3 | 0.8510 | 200 | +0.01737 | +0.1136 | +6.54 |
+| 0.0025–0.05 Hz | 3 | 0.8510 | 400 | +0.03295 | +0.2303 | +6.99 |
+| 0.0025–0.05 Hz | 1.25 | 0.9732 | 100 | +0.00163 | +0.0617 | +37.86 |
+| 0.0025–0.05 Hz | 1.25 | 0.9732 | 200 | +0.00318 | +0.1243 | +39.08 |
+| 0.0025–0.05 Hz | 1.25 | 0.9732 | 400 | +0.00603 | +0.2508 | +41.62 |
+| 0.01–0.1 Hz | 2 | 0.7301 | 100 | +0.05468 | +0.1926 | +3.52 |
+| 0.01–0.1 Hz | 2 | 0.7301 | 200 | +0.09796 | +0.3908 | +3.99 |
+| 0.01–0.1 Hz | 2 | 0.7301 | 400 | +0.15397 | +0.7517 | +4.88 |
+| 0.01–0.1 Hz | 1 | 0.9284 | 100 | +0.01491 | +0.2249 | +15.08 |
+| 0.01–0.1 Hz | 1 | 0.9284 | 200 | +0.02663 | +0.4497 | +16.89 |
+| 0.01–0.1 Hz | 1 | 0.9284 | 400 | +0.04166 | +0.8477 | +20.35 |
+| 0.01–0.1 Hz | 1.2 | 0.8978 | 100 | +0.02120 | +0.2201 | +10.38 |
+| 0.01–0.1 Hz | 1.2 | 0.8978 | 200 | +0.03789 | +0.4410 | +11.64 |
+| 0.01–0.1 Hz | 1.2 | 0.8978 | 400 | +0.05930 | +0.8334 | +14.05 |
+| 0.01–0.08 Hz (this study) | 2 | 0.8174 | 100 | +0.02387 | +0.1257 | +5.27 |
+| 0.01–0.08 Hz (this study) | 2 | 0.8174 | 200 | +0.04484 | +0.2549 | +5.68 |
+| 0.01–0.08 Hz (this study) | 2 | 0.8174 | 400 | +0.07761 | +0.5071 | +6.53 |
+
+## (e) Population Δr₁ and Δsts under condition (i)
+
+Band-passed generator (B17b; β̄ = 185.4, σ_q = 0.2637, β̄_post = 105.7 from calibration_filtered_tables.md; filter edges 0.0064–0.080 Hz; 20000 pairs; exact circular lag-1 autocorrelation on the 840-sample grid): population r₁ 0.8678 → 0.8515 (Δr₁ -0.01629); population sts 1.3795 → 1.2669 (Δsts -0.11263).
+AR(1) generator (B17's (i), simulated: calibration.csv holds no window-level r₁; 3000 pairs): population Δr₁ −0.015 by construction; window-level Δr₁ DiD (windows 6–14 minus 1–4, DMT minus placebo) -0.01243 ± 0.00101 (SE over pairs).
+
+## (f) Unequal coefficients: mean a × q × |a_x − a_y| (0 to 0.10 in steps of 0.0005)
+
+| mean a | q | max \|str − min(xtx, yty)\| | min(rts − str) | max(sts − (xtx + yty + rtr)) | asymmetry at which sts − (xtx + yty) first turns negative |
+|---|---|---|---|---|---|
+| 0.80 | 0.05 | 3.3e-16 | +0.0e+00 | -2.2e-16 | 0.0005 |
+| 0.80 | 0.10 | 3.3e-16 | +1.1e-16 | +2.2e-16 | 0.0015 |
+| 0.80 | 0.25 | 2.8e-16 | +0.0e+00 | +0.0e+00 | 0.0095 |
+| 0.80 | 0.40 | 3.3e-16 | +0.0e+00 | -1.1e-16 | 0.0255 |
+| 0.80 | 0.50 | 3.3e-16 | +0.0e+00 | +3.3e-16 | 0.0420 |
+| 0.80 | 0.70 | 2.2e-16 | -1.1e-16 | +1.1e-16 | none |
+| 0.85 | 0.05 | 4.4e-16 | +2.2e-16 | +0.0e+00 | 0.0005 |
+| 0.85 | 0.10 | 4.4e-16 | +0.0e+00 | +0.0e+00 | 0.0015 |
+| 0.85 | 0.25 | 4.4e-16 | +0.0e+00 | +0.0e+00 | 0.0080 |
+| 0.85 | 0.40 | 4.4e-16 | +0.0e+00 | +0.0e+00 | 0.0210 |
+| 0.85 | 0.50 | 3.3e-16 | +0.0e+00 | -2.2e-16 | 0.0345 |
+| 0.85 | 0.70 | 3.3e-16 | -1.1e-16 | -2.2e-16 | 0.0915 |
+| 0.90 | 0.05 | 5.6e-16 | +0.0e+00 | +2.2e-16 | 0.0005 |
+| 0.90 | 0.10 | 5.6e-16 | +0.0e+00 | -6.7e-16 | 0.0010 |
+| 0.90 | 0.25 | 5.6e-16 | +0.0e+00 | +0.0e+00 | 0.0060 |
+| 0.90 | 0.40 | 5.6e-16 | -1.1e-16 | +4.4e-16 | 0.0150 |
+| 0.90 | 0.50 | 5.6e-16 | +0.0e+00 | -2.2e-16 | 0.0250 |
+| 0.90 | 0.70 | 4.4e-16 | -2.2e-16 | -4.4e-16 | 0.0680 |
+
+## Checks
+
+- ok: the copy of notes/partB19_exchange_rates.py l. 75–79 is verbatim (|difference| 0, tolerance 0)
+- ok: the copy of notes/partB15_directed_crosslag.py l. 70–92 is verbatim (|difference| 0, tolerance 0)
+- ok: the copy of notes/partB6_ccs_definition.py l. 51–80 is verbatim (|difference| 0, tolerance 0)
+- ok: the copy of notes/partB17_calibration.py l. 67–86 is verbatim (|difference| 0, tolerance 0)
+- ok: (a3) a = 0.85, c = 0.01: every grid solve holds r₁ and q to 1e-10 (|difference| 9.9e-13, tolerance 1e-10)
+- ok: (a3) a = 0.85: residual(−0.01, −q) = residual(0.01, q) at q = -0.800 (|difference| 0, tolerance 1e-08)
+- ok: (a3) a = 0.85: residual(−0.01, −q) = residual(0.01, q) at q = -0.400 (|difference| 0, tolerance 1e-08)
+- ok: (a3) a = 0.85: residual(−0.01, −q) = residual(0.01, q) at q = +0.000 (|difference| 2.22e-15, tolerance 1e-08)
+- ok: (a3) a = 0.85: residual(−0.01, −q) = residual(0.01, q) at q = +0.400 (|difference| 0, tolerance 1e-08)
+- ok: (a3) a = 0.85: residual(−0.01, −q) = residual(0.01, q) at q = +0.800 (|difference| 0, tolerance 1e-08)
+- ok: (a3) a = 0.85, c = +0.01 uniform: pool mean stable when the grid step is doubled (|difference| 1.55e-16, tolerance 1e-05)
+- ok: (a3) a = 0.85, c = +0.01 aligned: pool mean stable when the grid step is doubled (|difference| 5.07e-15, tolerance 1e-05)
+- ok: (a3) a = 0.85, c = -0.01 uniform: pool mean stable when the grid step is doubled (|difference| 2.87e-16, tolerance 1e-05)
+- ok: (a3) a = 0.85, c = -0.01 aligned: pool mean stable when the grid step is doubled (|difference| 4.94e-15, tolerance 1e-05)
+- ok: (a3) a = 0.85, c = 0.02: every grid solve holds r₁ and q to 1e-10 (|difference| 9.93e-13, tolerance 1e-10)
+- ok: (a3) a = 0.85: residual(−0.02, −q) = residual(0.02, q) at q = -0.800 (|difference| 0, tolerance 1e-08)
+- ok: (a3) a = 0.85: residual(−0.02, −q) = residual(0.02, q) at q = -0.400 (|difference| 0, tolerance 1e-08)
+- ok: (a3) a = 0.85: residual(−0.02, −q) = residual(0.02, q) at q = +0.000 (|difference| 0, tolerance 1e-08)
+- ok: (a3) a = 0.85: residual(−0.02, −q) = residual(0.02, q) at q = +0.400 (|difference| 0, tolerance 1e-08)
+- ok: (a3) a = 0.85: residual(−0.02, −q) = residual(0.02, q) at q = +0.800 (|difference| 0, tolerance 1e-08)
+- ok: (a3) a = 0.85, c = +0.02 uniform: pool mean stable when the grid step is doubled (|difference| 1.16e-16, tolerance 1e-05)
+- ok: (a3) a = 0.85, c = +0.02 aligned: pool mean stable when the grid step is doubled (|difference| 1.03e-14, tolerance 1e-05)
+- ok: (a3) a = 0.85, c = -0.02 uniform: pool mean stable when the grid step is doubled (|difference| 7.48e-16, tolerance 1e-05)
+- ok: (a3) a = 0.85, c = -0.02 aligned: pool mean stable when the grid step is doubled (|difference| 9.7e-15, tolerance 1e-05)
+- ok: (a4) a = 0.85: the batched Lyapunov matrix = coupled_corr4 (|difference| 3.33e-16, tolerance 1e-10)
+- ok: (a5) a = 0.85: base r₁ = a (|difference| 1.11e-16, tolerance 1e-12)
+- ok: (a6) a = 0.85: the residual of a pure Δa = −0.015 is zero (|difference| 0, tolerance 1e-12)
+- ok: (a3) a = 0.8632, c = 0.01: every grid solve holds r₁ and q to 1e-10 (|difference| 9.95e-13, tolerance 1e-10)
+- ok: (a3) a = 0.8632: residual(−0.01, −q) = residual(0.01, q) at q = -0.800 (|difference| 0, tolerance 1e-08)
+- ok: (a3) a = 0.8632: residual(−0.01, −q) = residual(0.01, q) at q = -0.400 (|difference| 1.11e-15, tolerance 1e-08)
+- ok: (a3) a = 0.8632: residual(−0.01, −q) = residual(0.01, q) at q = +0.000 (|difference| 0, tolerance 1e-08)
+- ok: (a3) a = 0.8632: residual(−0.01, −q) = residual(0.01, q) at q = +0.400 (|difference| 0, tolerance 1e-08)
+- ok: (a3) a = 0.8632: residual(−0.01, −q) = residual(0.01, q) at q = +0.800 (|difference| 0, tolerance 1e-08)
+- ok: (a3) a = 0.8632, c = +0.01 uniform: pool mean stable when the grid step is doubled (|difference| 1.83e-16, tolerance 1e-05)
+- ok: (a3) a = 0.8632, c = +0.01 aligned: pool mean stable when the grid step is doubled (|difference| 5.27e-15, tolerance 1e-05)
+- ok: (a3) a = 0.8632, c = -0.01 uniform: pool mean stable when the grid step is doubled (|difference| 2.87e-16, tolerance 1e-05)
+- ok: (a3) a = 0.8632, c = -0.01 aligned: pool mean stable when the grid step is doubled (|difference| 5.17e-15, tolerance 1e-05)
+- ok: (a3) a = 0.8632, c = 0.02: every grid solve holds r₁ and q to 1e-10 (|difference| 9.88e-13, tolerance 1e-10)
+- ok: (a3) a = 0.8632: residual(−0.02, −q) = residual(0.02, q) at q = -0.800 (|difference| 0, tolerance 1e-08)
+- ok: (a3) a = 0.8632: residual(−0.02, −q) = residual(0.02, q) at q = -0.400 (|difference| 0, tolerance 1e-08)
+- ok: (a3) a = 0.8632: residual(−0.02, −q) = residual(0.02, q) at q = +0.000 (|difference| 0, tolerance 1e-08)
+- ok: (a3) a = 0.8632: residual(−0.02, −q) = residual(0.02, q) at q = +0.400 (|difference| 0, tolerance 1e-08)
+- ok: (a3) a = 0.8632: residual(−0.02, −q) = residual(0.02, q) at q = +0.800 (|difference| 0, tolerance 1e-08)
+- ok: (a3) a = 0.8632, c = +0.02 uniform: pool mean stable when the grid step is doubled (|difference| 1.82e-16, tolerance 1e-05)
+- ok: (a3) a = 0.8632, c = +0.02 aligned: pool mean stable when the grid step is doubled (|difference| 1.06e-14, tolerance 1e-05)
+- ok: (a3) a = 0.8632, c = -0.02 uniform: pool mean stable when the grid step is doubled (|difference| 7.37e-16, tolerance 1e-05)
+- ok: (a3) a = 0.8632, c = -0.02 aligned: pool mean stable when the grid step is doubled (|difference| 1e-14, tolerance 1e-05)
+- ok: (a4) a = 0.8632: the batched Lyapunov matrix = coupled_corr4 (|difference| 3.33e-16, tolerance 1e-10)
+- ok: (a5) a = 0.8632: base r₁ = a (|difference| 2.22e-16, tolerance 1e-12)
+- ok: (a6) a = 0.8632: the residual of a pure Δa = −0.015 is zero (|difference| 0, tolerance 1e-12)
+- ok: (b) (a3) every per-pair solve holds r₁ and q to 1e-10 (|difference| 9.93e-13, tolerance 1e-10)
+- ok: (d) 0.008–0.09 Hz TR 2.0: flat r₁ by quadrature = the closed formula (|difference| 0, tolerance 1e-10)
+- ok: (d) 0.008–0.09 Hz TR 1.838: flat r₁ by quadrature = the closed formula (|difference| 2.22e-16, tolerance 1e-10)
+- ok: (d) 0.008–0.09 Hz TR 0.72: flat r₁ by quadrature = the closed formula (|difference| 4.44e-16, tolerance 1e-10)
+- ok: (d) 0.0025–0.05 Hz TR 2.0: flat r₁ by quadrature = the closed formula (|difference| 2.22e-16, tolerance 1e-10)
+- ok: (d) 0.0025–0.05 Hz TR 2.4: flat r₁ by quadrature = the closed formula (|difference| 0, tolerance 1e-10)
+- ok: (d) 0.0025–0.05 Hz TR 2.6: flat r₁ by quadrature = the closed formula (|difference| 3.33e-16, tolerance 1e-10)
+- ok: (d) 0.0025–0.05 Hz TR 3.0: flat r₁ by quadrature = the closed formula (|difference| 0, tolerance 1e-10)
+- ok: (d) 0.0025–0.05 Hz TR 1.25: flat r₁ by quadrature = the closed formula (|difference| 1.11e-16, tolerance 1e-10)
+- ok: (d) 0.01–0.1 Hz TR 2.0: flat r₁ by quadrature = the closed formula (|difference| 1.11e-16, tolerance 1e-10)
+- ok: (d) 0.01–0.1 Hz TR 1.0: flat r₁ by quadrature = the closed formula (|difference| 0, tolerance 1e-10)
+- ok: (d) 0.01–0.1 Hz TR 1.2: flat r₁ by quadrature = the closed formula (|difference| 1.11e-16, tolerance 1e-10)
+- ok: (d) 0.01–0.08 Hz (this study) TR 2.0: flat r₁ by quadrature = the closed formula (|difference| 1.11e-16, tolerance 1e-10)
+
+## Predictions and rule (pre-run entry, B23)
+
+Predictions: (a1) +0.0036 and +0.0037 at ±0.01, +0.0154 and +0.0158 at ±0.02; (a2) −0.0224 at +0.01 and +0.0297 at −0.01; (a3) +0.0029 at +0.01, +0.0102 at +0.02, +0.0070 at −0.02 (a 400-draw pool), the aligned version at first order; (a4) negative for either sign, about −22 δ_sym²; (a5) the residual rises as the shared component weakens, about −1.2 per unit Δr₁. (b) (a4) within 2 SE of Table 7's AR(1) rows; (a1) ±0.02 +0.0066 and +0.0064; (a2) +0.01 −0.0102, −0.01 +0.0135; (i) +0.003 to +0.007. (c) CCS-sts falls as r₁ rises at fixed q, slope at (0.85, 0.25) between −2 and −0.1. (d) Δsts within ±15 % across TR 0.72–2 s while Δr₁ varies about sevenfold (0.008–0.09 Hz: β = 100 +0.190/+0.165; 200 +0.382/+0.335; 400 +0.738/+0.658). (e) population Δr₁ −0.010 to −0.020, Δsts −0.08 to −0.15. (f) extremes zero to rounding; at a = 0.85 the sign change at about 0.008 (q 0.25), 0.035 (0.5), 0.09 (0.7); none within 0.10 at (0.80, 0.70). Several are values already computed on 22 Sep on other pools or designs (the pre-run entry lists them).
+Rule: (a) and (b) replace the direction argument; (c) replaces "does not follow autocorrelation"; (d) replaces "most exposed dataset"; (e) completes Table 5's Δr₁ column; (f) replaces Results 1's two wrong statements (Finding 12).
