@@ -5750,3 +5750,505 @@ entry fixes what it is and what counts as a pass before it is made.
    thirty-odd steps that print no time, the run is expected to take about nine hours, and about twelve minutes more
    if the deconvolution sandbox is present. The outcome entry records the actual wall-clock, the step count, the
    traceback count and the two comparisons' verdicts file by file.
+
+## The final end-to-end run of `run_all.sh`: first attempt, 21 Sep 2026, lost to a suspend, 23 Sep 2026 11:31 UTC (appended; nothing above edited)
+
+The run fixed by the pre-run entry of 21 Sep 2026 17:54 UTC ("The final end-to-end run of `run_all.sh`: pre-run
+entry") was started by V.S. at 0b8d1a4 as the root transient unit `runfinal` on 21 Sep 2026 at 21:36:24 EEST (18:36:24
+UTC), log `~/run_final_21.log`, with a heartbeat line every five minutes. It did not finish. It is recorded here as
+the first attempt; nothing it wrote is used.
+
+**What happened.** The heartbeat's last line is 23:11:25 EEST, at a log size of 8,249 bytes. The log holds two "=== "
+lines and ends inside step 2, `scripts/02_bias_check.py --n-runs 20000`, after that step's W = 60 tier lines. The
+cause: the lid was closed and the laptop suspended. `HandleLidSwitch=ignore` had been set before the run, but the
+machine had not been rebooted, so the setting was not in effect. On 22 Sep the unit was found inactive; the machine's
+last boot was at 22:40:39 EEST, before the second attempt below.
+
+**What the attempt left, and how it was cleared.** Nine paths under `results/` were copied to `~/aborted_run_21`
+together with the log and the heartbeat. Four were written by the aborted run: `results/bias_check.csv` and
+`results/bias_check_differential.csv` (modified), and the new step logs `results/run_00_verify.log` and
+`results/run_02_bias_check_n20000.log`. Five were untracked leftovers:
+`results/atoms_bins_local_115regions-all_ts_demean_global.npy`,
+`results/atoms_bins_local_115regions-all_ts_gsr_global.npy`, `results/run_15_figures_v2.log`, `results/run_all.log`
+and `results/run_tier_check_decay_windows.log`. The three output trees were then restored (`git restore --source=HEAD
+--staged --worktree` and `git clean -fd` on `results`, `notes/review_results` and `manuscript/figures`), and both
+clean-tree counts were 0.
+
+**The second attempt.** Started on 22 Sep 2026 at 22:48:41 EEST (19:48:41 UTC), after a reboot, with
+`HandleLidSwitch`, `HandleLidSwitchExternalPower` and `HandleLidSwitchDocked` all set to `ignore`, and run inside
+`systemd-inhibit --what=sleep:idle:handle-lid-switch --mode=block` as `runuser -u vilalius`; log `~/run_final_22.log`.
+The pre-run entry of 21 Sep governs it unchanged — the commit (0b8d1a4), what the outputs carry, the deconvolution
+branch, the pass rule, the figure differences and the expected shape of the run — and nothing in the repository
+changed between the two attempts. Its outcome is a later entry.
+
+## The independent review and the citation pass of 22 September 2026, 23 Sep 2026 11:31 UTC (appended; nothing above edited)
+
+`notes/review_2026-09-22/` (committed in ca2b58b) holds an independent referee report on the text at 0b8d1a4
+(`adversarial_review_2026-09-22.md`), a citation pass over the main text, S3 Text and S5 Text
+(`citation_pass_2026-09-22.md`), the planning session's verification of both with a disposition for every item
+(`review_verification_2026-09-22.md`), the reviewer's six check scripts (`refcheck/`) and a README. The three
+documents are committed byte-identical to the files the planning session produced:
+   - `adversarial_review_2026-09-22.md`: sha256 044f848438a2f2104b9b5b679378bbcb055dc36f05629eedd2fe303017d8880b
+   - `citation_pass_2026-09-22.md`: sha256 d2a132bff690f0c51d99606c0e0d89d3b5767c23e5b47ca94a2c17e9fb039ed0
+   - `review_verification_2026-09-22.md`: sha256 b2df2f7f8efe5d10e2dcc59ac1533a98f2a5cec9a1ba817d42cef0b5cf6fb395
+
+In `refcheck/` only the hard-coded sandbox paths were changed (the `sys.path.insert` lines of `var1.py` and
+`popdelta.py` and `B=` in `persub.py`, now resolved through `Path(__file__)`), and each file carries a two-line header
+saying so. The scripts are not run by `run_all.sh` and were not run in the writer's session; their printed values are
+quoted in the review and are not regenerated.
+
+**How they were produced.** The review and the citation pass were written by two separate Claude instances launched
+from the planning session on 22 Sep 2026; the verification is the planning session's own, 22–23 Sep. The review read
+the main text, S1–S5 Text, `manuscript/supplementary.md` and the committed result files; it opened
+`manuscript/analysis_record.md` and `manuscript/prespecification_summary.md` only to check claims about ordering, and
+did not open `notes/review_2026-09-20/` or any `notes/` file whose name contains review, adversarial, audit, plan,
+defence or companion. The citation pass read every cited work in full in the planning session's folder of PDFs, and
+looked on the web on 22 Sep for the seven entries that folder lacks. The PDFs, their text extracts and the rendered
+page images are not in the repository.
+
+**What they found.** The review: twenty findings — one fatal to claim (d) as stated (Finding 1, the residual
+diagnostic's direction argument), eight major, eight minor and three of presentation; its overall judgement "major
+revision, close to reject-and-resubmit". The citation pass: 119 sentence × cited-work pairs — 87 supported, 21
+supported with qualification, 6 not supported, 1 misattributed and 4 that could not be checked.
+
+**The verification.** Sixteen findings confirmed; two partly (8 and 19); two matters of judgement (16 and 20); none
+declined. One finding is the planning session's own, under Finding 8: every prewhitened CCS value of Results 7 and S11
+Table was computed with phyid's mask (`notes/partB16_prewhiten.py` l. 14, 127 and 134), where Methods says every CCS
+value in the paper is under the published definition. Two corrections to the review: Finding 3's cross-half value
+(−0.70) is the larger of two — `splithalf.log` gives r(res_even, r₁_odd) = −0.700 and r(res_odd, r₁_even) = −0.385, a
+mean of −0.54, against a ceiling of √(0.494 × 0.741) = 0.605; and Finding 19's "≤ 2.1 × 10⁻¹⁴ on every saved window
+and bin mean" is true as worded — those means reach 1.24 × 10⁻¹⁴, and the log's 2.21 × 10⁻¹⁴ is the per-region
+comparison (its item 4).
+
+**What follows, and when.** This round (round 16, Part A) records the review, withdraws the direction argument (the
+correction entry below) and fixes the four computations B21–B24 that the verification assigns (the pre-run entries
+below). Everything that changes the text of the paper — every disposition marked R16B, including the citation pass's
+A1–A26 and the dated note on "gyrification" in `notes/partB5_literature_v2.md` — waits for Stage B, which is
+commissioned after B21–B24 have run. No manuscript text changes in this round.
+
+## Correction: the direction argument of Results 4 is withdrawn (22 Sep 2026), 23 Sep 2026 11:31 UTC (appended; nothing above edited)
+
+**What is withdrawn.** The argument that the residual's DMT change is in a direction no coupling change produces: that
+a coupling change applied independently of sign(q) lowers the residual quadratically, for either sign of Δc, and so
+cannot raise it above the pure-autocorrelation expectation; that a coupling change correlated with sign(q) is bounded
+by that statistic's own DMT contrast; and hence the text's statements that the residual moved "in the direction that
+no coupling change produces" (Results 4 and the Discussion, in three wordings) and that its excess "is not
+attributable to coupling" (Results 4), and the abstract's "a residual that a coupling change of either sign would have
+lowered … the data carry no evidence of a change in lagged interaction".
+
+**Where it entered.** In the reading of the B17b outcome entry (21 Sep 2026 17:10 UTC, "Reading under the rule"),
+written for round 14's follow-up (the planning session's item B2 of that round), and from there into Results 4 and the
+Discussion by the follow-up commit (66e057a, bundle 24c). Round 15 (0b8d1a4; its item A.2) put it into the abstract.
+The Round 14 restructuring entry's list of claims (item 1) carries an earlier form of it.
+
+**Why it fails.** It generalised from B17's construction, which adds a VAR(1) cross-coefficient with a and the
+innovation correlation held at their c = 0 values and so moves each pair's lag-0 correlation and autocorrelation along
+with the coupling. At fixed (r₁, q) the response has the opposite sign. Population residual change in closed form at
+a = 0.85, averaged over q = +0.25 and −0.25 (the verification, Finding 1); each value is the same for either sign of
+the perturbation, which is δ in the second row and the coupling c in the others:
+
+   | construction | ±0.01 | ±0.02 | ±0.03 |
+   |---|---|---|---|
+   | B17's construction (VAR(1) coupling c; a and the innovation correlation held at their c = 0 values) | −0.00228 | −0.00919 | −0.02091 |
+   | δ added to both cross-lag entries at fixed (a, q) | +0.00227 | +0.00919 | +0.02110 |
+   | the coupled family of Results 1 (a and the innovation correlation re-solved so that r₁ and q are held) | +0.00200 | +0.00806 | +0.01846 |
+
+Two further alternatives move the residual at first order rather than second: a perturbation aligned with sign(q), and
+a change in a shared slow component, whose weakening raises the residual (x = √λ s + √(1 − λ) n_x, y = √λ s + √(1 − λ)
+n_y, λ = 0.25, a_n = 0.84, a_s falling from 0.90 to 0.87: r₁ 0.8550 → 0.8475, the aligned departure
++0.01125 → +0.00562, the population residual −0.0186 → −0.0096, a change of +0.0090, or −1.2 per unit of Δr₁).
+
+**The consequence.** On these data the residual cannot tell a change in lagged interaction from a pure autocorrelation
+change of a kind the two calibration generators do not represent. B21–B24 (pre-run entries below) quantify how far
+each alternative moves it, what the data's aligned and directed statistics are without selection, and what those
+statistics are under a pure autocorrelation change. The earlier entries that state the argument are not edited; this
+entry supersedes them where they state it.
+
+**The "bound".** The bound on the sign(q)-aligned case used the window-sign statistic
+(`notes/partB15_directed_crosslag.py` l. 121: the sign taken from each window's own q), which S9 Table marks
+superseded because the sign selects on the same samples as the deviation. On ts_demean that statistic's DiD is
+−0.00390 [−0.00633, −0.00137], p = 0.0128 (`notes/review_results/partB/directed_crosslag_tables.md`), in the
+residual-raising direction. No result file holds a selection-free version; B22 computes one.
+
+**Two dispositions of 20 September revised** (`review_verification_2026-09-22.md`, "A correction to the planning
+session's own earlier work"). The disposition of the 20 September review's item 13 gave the DMT run's own change as
+"the drug-only estimate" (Results 2); that is wrong, since the within-run change contains the time in the scanner as
+well as the drug (Finding 16 of 22 Sep). The disposition of its item 21 chose BCa intervals (B19 (d)); BCa corrects
+bias and skew, not the narrowness of percentile intervals at N = 14, and the interval consistent with the paper's
+exact test is the inverted sign-flip interval (Finding 13 of 22 Sep; B21).
+
+## Inverted sign-flip intervals, the residual against its calibrated expectations, the per-subject regressions and the correlation intervals (B21): pre-run entry, 23 Sep 2026 11:31 UTC (appended; nothing above edited)
+
+Round 16, Part A; appended before `notes/partB21_inference_revision.py` and `notes/rev_inference_inverted.py` are
+written, and before anything is run. The specification, the predictions and the rule are those of the round 16
+commission (the planning session's `prompt_round16.md`, B21, from Findings 3, 5 and 13 of the review of 22 Sep 2026),
+restated here; the commission's own text is not in the repository. Exploratory throughout: effect sizes and intervals,
+no threshold language (decision D1).
+
+**Specification.** (a) An interval for every mean over subjects the text quotes, by inverting the paper's own exact
+test. For a per-subject vector x (N = 14) and a candidate mean μ, p(μ) is the share of the 2^14 sign assignments s
+with |Σ sᵢ(xᵢ − μ)| ≥ |Σ(xᵢ − μ)| (relative tolerance 1e-12); the 95 % interval is {μ : p(μ) > 0.05}, its bounds found
+by bisection to 1e-7 outward from the mean after p has been checked for monotonicity on a 2,001-point grid (any
+non-monotonicity reported); negative/14 beside it. One function, in `notes/rev_inference_inverted.py`, imported by B21
+and B22; `notes/rev_inference.py` is not changed, since the final run's outputs rest on it. The quantities: (i) every
+row of every `notes/review_results/inference_rows_*.pkl`, all sets, from its per-subject DiDs; (ii) the per-run
+post − pre changes and the FD-residualised DiDs of Table 2 and S1 Table, recomputed per subject exactly as
+`rev_inference.Engine` computes them, their means checked against the committed values to 1e-12; (iii) every other
+mean over subjects the text quotes whose per-subject values are saved (the commission's examples: the run-level
+residual −0.0137 [−0.0145, −0.0130], the directed response −0.0064 [−0.0069, −0.0059], the regional per-subject r
++0.756 [+0.715, +0.790], the CCS co-information term +0.0174 [+0.0127, +0.0224], the S8 Table ratio DiD, the S11 Table
+whitened contrasts), and a list of those with no saved per-subject vector, which are not approximated. One row per
+quantity: label, set, source file, mean, exact p against 0, the committed percentile interval, the inverted interval,
+the t interval, the ratio of the inverted to the percentile width, and whether zero lies inside each. (b) The exact
+sign-flip p of the primary residual DiD (ts_gsr, W = 60) against each calibrated expectation, +0.0027, +0.0049 and
++0.0054 (the per-subject DiDs minus the expectation). (c) Per-subject regressions at W = 60, ts_gsr and ts_demean: the
+sts DiD on the r₁ DiD, and the residual DiD on the r₁ DiD; slope and intercept with t intervals, subject-bootstrap
+percentile intervals (10,000 draws) and the leave-one-out range; and a reliability-corrected slope, the OLS slope
+divided by 2r/(1 + r) with r the r₁ DiD's split-half reliability from `splithalf_tables.md`, labelled model-based. (d)
+Fisher-z 95 % intervals (n = 14) for the full-set r of the sts and r₁ DiDs; for r(AR(1)-substituted DiD, observed DiD)
+and r(residual DiD, r₁ DiD) in Table 4's four rows; for the two cross-half correlations and their mean (the Fisher-z
+interval of the mean an approximation, and said to be); for the two split-half reliabilities; for the lag correlations
+of Table 6; and for the CCS correlations of Table 3. And a subject-bootstrap interval (10,000 draws) for the
+disattenuated cross-half ratio, mean cross-half r / √(rel_sts × rel_r₁), all four correlations recomputed in every
+draw from the per-subject half DiDs as `notes/partB19_exchange_rates.py` (c) builds them, the full-sample values
+required to reproduce `exchange_rates_tables.md` (c); the per-subject half DiDs (sts and r₁, odd and even windows,
+both variants) written to `splithalf_subjects.csv`.
+
+**Predictions, and which values are already known.** (a) The inverted intervals are wider than the committed
+percentile intervals by 5–20 %, and exclude zero exactly when the exact p is below 0.05 (this part holds by
+construction; see Implementation). Four were computed by the planning session on 22 Sep (verification, Finding 13) and
+are known values, not predictions: the primary sts DiD [−0.1317, −0.0310], the residual DiD [+0.0005, +0.0226], the r₁
+DiD [−0.0261, −0.0037], the CCS-sts DiD at W = 60 on ts_gsr [−0.0001, +0.0088]. (b) Known (Finding 3): 0.108, 0.219
+and 0.251. (c) Known (Findings 3 and 5): sts on r₁, slope +4.263 [+3.408, +5.117] and intercept −0.0184 [−0.0390,
++0.0021] on ts_gsr, +4.922 and +0.0031 on ts_demean; residual on r₁, slope −0.753 [−1.133, −0.374] and intercept
++0.0005 on ts_gsr, −0.568 [−1.048, −0.088] on ts_demean; the corrected sts slopes about 5.0 (reliability 0.851) and
+5.9 (0.832). (d) The Fisher-z intervals of known correlations: 0.694 → [0.26, 0.90], 0.953 → [0.85, 0.99],
+−0.780 → [−0.93, −0.43], 0.989 → [0.96, 1.00]; and a prediction: the disattenuated ratio's interval is wide, with its
+lower limit below 0.7.
+
+**Rule.** Stage B reports the inverted interval wherever the text reports a percentile interval of a mean over
+subjects, and states the method once, in Methods; Fisher-z intervals are given beside the correlations; the
+calibration's replicate SDs keep their form; the p values against the calibrated expectations replace "inside its
+interval".
+
+**Implementation.** The inversion function (`signflip_inversion`) enumerates the sign assignments in `rev_inference`'s
+   order (`itertools.product((−1, 1), repeat=14)`) and evaluates p(μ) as the share with
+   |A_s − B_sμ| ≥ (1 − 1e-12)|A₊ − 14μ|, where A_s = Σ sᵢxᵢ, B_s = Σ sᵢ and A₊ is the all-plus assignment's sum from
+   the same product, so that the two all-equal assignments tie exactly. The grid spans [min x, max x] (outside it
+   every xᵢ − μ has one sign and p is 2/16,384); on each side the bound is bracketed between the outermost grid point
+   with p > 0.05 and its outward neighbour and bisected until the bracket is below 1e-7, the midpoint reported. Every
+   assignment's acceptance set is an interval containing the mean (the defining quadratic in μ is concave because
+   |B_s| < (1 − 1e-12)·14 whenever the signs are not all equal), so p cannot rise away from the mean and the grid
+   check is expected to find nothing; zero is outside the interval exactly when p(0) ≤ 0.05, and p(0) = 0.05 would
+   need 819.2 assignments, so "excludes zero iff p < 0.05" cannot fail. p(0) is reported beside the committed p, which
+   uses an absolute tolerance of 1e-12; any difference is listed. The t interval is the mean ± t(0.975, 13)·SD/√14.
+   (a)(i): the 738 rows of the eight pickles, from `did_subjects`, with their committed `did_lo`, `did_hi` and
+   `did_p`. (a)(ii): Table 2 and S1 Table — MMI-sts at W = 60 on both variants (primary and sensitivity sets; from
+   `results/atoms_win60_115regions-all_<variant>_window.npy`) and at W = 30 on ts_gsr (both sets;
+   `results/atoms_win30_115regions-all_ts_gsr_window.npy`) — the DMT and placebo post − pre changes, the FD DiD and
+   the FD-residualised DiD, with `rev_inference`'s own `window_sets`, `fd_windows`, `Engine.did` and
+   `Engine.residualise` (imported); checks: the recomputed per-subject DiD equals the pickle row's `did_subjects` to
+   1e-12, and the four means equal the pickle row's fields and the `results/primary_b_*.csv` values to 1e-12; the
+   committed intervals are the CSV's, the file both tables cite. The same recomputation, with the same checks against
+   the pickle rows, covers the other per-run and FD-residualised values the text quotes at 0b8d1a4 (found by matching
+   every bracketed interval of `draft_v2.md`, S1–S5 Text and `supplementary.md` against the pickle fields): the
+   residual DiD's per-run changes (S3 Text; from `diag_series_ts_gsr_W60.npz`), the FD-residualised CCS-sts DiD (S3
+   Text; `ccs_pub_atoms_win60_ts_gsr.npy`) and the FD-residualised r₁ DiD (S3 Text; `rev_series.autocorr_series` on
+   the .mat, as `notes/rev_run.py` builds it). The S11 Table's whitened contrasts are pickle rows
+   (`inference_rows_prewhiten.pkl`) and are covered by (a)(i). (a)(iii): a quantity counts as saved when its
+   per-subject values are written to a committed file, or follow from a committed per-subject window or bin series of
+   the quantity by the change or DiD formula of the script that produced it, with the mean checked against the
+   committed value (to 1e-12 where the committed file holds full precision, to its printed precision otherwise). Saved
+   on that definition: the run-level residual per subject and run (`crosslag_deviation.csv`, both variants; the mean
+   of the two runs per subject, as check C1 of 17 Sep computed the quoted interval); the directed response to δ_anti
+   per run (`directed_crosslag.csv`, six decimals; both variants); the three terms of the CCS decomposition and their
+   sum per run (`ccs_decomposition.csv`, six decimals; DiD = DMT − placebo, every variant, estimator and mask); the
+   cross-lag budget terms per run (`crosslag_budget.csv`: δ_run, δ_within, δ_pool, δ_means, ε, δ_60 and the
+   window-sign value; grand mean, DMT run and placebo run; both variants; the null-corrected primary row as the data
+   interval shifted by the null value of `crosslag_budget_null.csv`, configuration 0, mean over the two run types);
+   the superseded cross-lag statistics of S9 Table (`crosslag_deviation.csv`: the signed mean, the run-level and
+   W = 60 slopes on q); the S8 Table cells (ratio sts/TDMI DiD and within-run changes, the pre-injection shares, the
+   sts and TDMI DiDs; from the atom arrays as `scripts/14_proportionality.py` forms them; checked against
+   `results/proportionality.csv`); the S7 Table cells (mean r DiD and sts DiD per bin set, from
+   `results/global_fc_bins_115regions-all_<variant>.npy` and the global-fit atom arrays as
+   `scripts/09_global_fc_per_bin.py` forms them; checked against `results/global_fc_did_<variant>.csv` at its six
+   decimals); Robustness C's two quoted contrasts (S1 Text; `results/atoms_bins_115regions-all_ts_gsr_placebo.npy` as
+   `scripts/08_robustness_c_analysis.py` forms them; checked against `results/robustness_c_ts_gsr.csv`); the ΦR
+   placebo window 4 − window 1 value of S2 Text (raw series; ΦR from the W = 60 atom arrays by
+   `rev_series.phir_from_atoms`; checked against `notes/review_results/logs/phir_baseline_and_slope.log` at its
+   printed precision). Not saved, listed with the reason: the per-subject Spearman correlations of S2 Table (tier 2;
+   scripts/06 writes group means only, and the ratings are in the data clone), of S6 Table (EEG Lempel–Ziv; group
+   means only) and the per-subject workspace contrasts of S4 Table (scripts/11 writes the group values only); the
+   per-subject r(regional sts, regional r₁) of Results 3 (partB11 writes the mean only, and the per-subject regional
+   r₁ needs the .mat); the W = 60 sign(q)-weighted δ_sym DiD of Results 4 and the W = 60 RMS δ_anti DiD of S3 Text
+   (partB15 saves run means over all windows, not the pre and post means; both are recomputed with their inverted
+   intervals by B22); the deconvolved ΦR values of S2 Text (the deconvolution sandbox). Not a mean over subjects, and
+   so outside (a): S8 Table's ratio of group means (ii) and every correlation (handled by (d)). The committed
+   percentile interval of each saved quantity is read from the file that quotes it, and every row the text quotes is
+   marked with its file and line (found by the same matching, at the printed precision).
+   (b): the pickle row "diag residual sts ts_gsr W60", primary set; p(μ₀) from the inversion function, and beside it
+   `rev_inference.signflip_p` of x − μ₀. (c): x = the "autocorr <variant> W60" pickle DiDs, y = "sts <variant> W60"
+   and "diag residual sts <variant> W60" (primary set); OLS with intercept; t intervals on 12 df with the t-test p of
+   slope and intercept; bootstrap `np.random.default_rng(20261120)`, 10,000 resamples of the 14 subjects, a resample
+   with zero variance in x skipped and counted; leave-one-out over the 14 subjects; r parsed from
+   `splithalf_tables.md` ("autocorrelation +0.741" on ts_gsr, "+0.712" on ts_demean). The corrected slope assumes that
+   the r₁ DiD's measurement error is independent of the y's, which the shared windows do not guarantee; it is labelled
+   model-based for that reason.
+   (d): tanh(atanh r ± 1.959964/√11). The per-subject vectors are the pickles' DiDs, paired as the committed tables
+   pair them: Table 4's rows correlate each variant × W row of "diag predicted"/"diag observed" and "diag residual"
+   with the W = 60 "autocorr <variant> W60" contrast, as `partB4_diagnostic.py` does; Table 6's "sts tau<k> ts_gsr
+   W60" with "autocorr lag<k> ts_gsr W60"; Table 3's "CCSpub sts <variant> <estimator>" with "autocorr <variant> W60",
+   as `partB6_ccs_definition.py` does. Each recomputed r is checked against its committed value at the printed
+   precision. The half DiDs: observed sts from `diag_series_<variant>_W60.npz` and r₁ from
+   `rev_series.autocorr_series(ts[variant], 60, "window")`, with partB19's halves (odd = pre {1, 3}, post {7, 9, 11,
+   13}; even = pre {2, 4}, post {6, 8, 10, 12, 14}); the ceiling √(max(rel_sts, 0) × max(rel_r₁, 0)) as partB19;
+   bootstrap `np.random.default_rng(20261120)`, 10,000 draws, a draw whose ceiling is zero or whose correlations are
+   undefined counted and excluded.
+   Data: the r₁ series need `external/DMT_NCT/data/DMT_clean_mni_continuous_fullPreprocsch116.mat` and the FD rows
+   `FDlong.mat`; without them the script stops, unless it is run with `--committed-only`, which skips exactly the rows
+   and parts that need them and says so in its tables (for a check in a clone without the data; `run_all.sh` does not
+   use it).
+**Outputs and conventions.** `notes/review_results/partB/inference_revision_tables.md`, `inference_revision.csv` (one
+   row per quantity), `splithalf_subjects.csv` (one row per variant and subject) and the run log
+   `inference_revision_run.log` via `nstep`. Seed 20261120. Minutes. The script imports `rev_git.SHA`, prints
+   `git=<SHA>` as its first line and writes it after the title of every table and in the first line of each CSV; every
+   free choice is stated in its header; it runs alone from the repository root with the pinned environment; it is
+   added to section 6 of `run_all.sh` after `partB20_regional_partial.py` with an `nstep` line naming this entry. A
+   check in the writer's clone, which holds no data, runs it with `--committed-only`; its outputs are discarded and no
+   number from it is reported. The outcome is appended as a later entry after V.S. runs it; nothing is relabelled by
+   the outcome.
+
+## The aligned and directed cross-lag statistics without selection, the per-SD exchange rate and the network spin test (B22): pre-run entry, 23 Sep 2026 11:31 UTC (appended; nothing above edited)
+
+Round 16, Part A; appended before `notes/partB22_aligned_directed.py` is written, and before anything is run. The
+specification, the predictions and the rule are those of the round 16 commission (B22, from Findings 2, 7, 10 and 15
+of the review of 22 Sep 2026), restated here. Exploratory; no threshold language.
+
+**Specification.** Needs the time series; both variants; W = 60. Per subject, run, window and pair, the quantities of
+`partB15_directed_crosslag.py`: the window's 4 × 4 matrix (`PairPhiID`) and its deviations — a_x, a_y, q, δ_sym and
+δ_anti. First, the window-sign statistic of partB15 (the sign of each window's own q) is recomputed and its DiDs must
+reproduce −0.00119 (ts_gsr) and −0.00390 (ts_demean). (a) A_other(w) = the mean over pairs of sign(q̄_other)·δ_sym(w),
+with q̄_other the pair's lag-0 correlation over the whole other run of the same subject; A_same(w) the same with the
+sign from the whole same run. Reported: the DMT pre-injection level (windows 1–4), the post − pre change per run, the
+DiD with its exact p and inverted interval, negative/14, and the share of pairs whose sign differs between the two
+runs. (b) B(w) = the OLS slope of δ_sym on q across the 6,555 pairs of each window (partB10's W = 60 slope, kept per
+window); the same summaries. (c) D(w), the response of sts to δ_anti alone, and Sym(w), to δ_sym alone (partB15's
+`response()` per window, averaged over pairs); each DiD, and the DiD of their sum beside the residual DiD; the RMS
+δ_anti DiD must reproduce +0.00631, p = 0.0829 (ts_gsr). Per-window A_other, A_same, B, D, Sym and RMS δ_anti written
+to `aligned_directed.csv`, one row per variant, subject, run and window. (d) Within each window, the between-pair SD
+of pair r₁ (the mean of the two regions' within-window lag-1 autocorrelations) and of pair |q|; their means over the
+pre-injection windows 1–4 of both runs (8 × 14 windows); the closed-form per-SD ratio
+(6.0705 · SD_r₁)/(0.1892 · SD_|q|); a group-level version (each pair averaged over subjects and the eight pre windows
+first); and, over all 392 windows per variant, the mean unstandardised partial slopes of pair sts on (mean r₁, |q|,
+|a_x − a_y|) with the mean standardised coefficients, which must reproduce +0.661, −0.463 and −0.426 on ts_gsr. (e) A
+spin test of the network structure: the eight-class one-way ANOVA F (the seven Yeo networks and the subcortex, as
+partB20) of `sts_resid_win` in `regional_partial.csv` and of the `sts` map; 10,000 spins, the cortical values permuted
+with partB11's `perm_id` and its handling of region 20, the 16 subcortical values fixed; p = the share of
+F_spin ≥ F_obs; and the SomMot − Default and Vis − Default contrasts of the residual map, two-sided.
+
+**Predictions.** (a) ts_gsr: A_other level +0.001 to +0.004, DiD −0.003 to +0.001; ts_demean: level −0.001 to −0.004,
+DiD −0.005 to 0; A_same near A_other; on ts_gsr the level below the window-sign +0.0061 and near the run-sign +0.00245
+(`crosslag_budget.csv`, δ_60); on ts_demean the level of the sign of δ_run (−0.0026). (b) B level about +0.020
+(ts_gsr) and +0.024 (ts_demean); the DiD negative if a shared slow structure weakened under DMT, near B24's
+expectation if not. (c) D DiD −0.002 to −0.006 on ts_gsr; the directed part lowers the residual DiD; Sym's DiD exceeds
+the residual DiD. (d) Within windows SD r₁ 0.025–0.035, SD |q| 0.18–0.22, ratio 4–6; group level 0.010–0.016,
+0.12–0.18, ratio 2–4; unstandardised slopes +5 to +6 per unit r₁, −0.40 to −0.55 per unit |q|, −3 to −5 per unit
+asymmetry. (e) Spin p below 0.05 for the unpartialled F; 0.01–0.3 for the residual map's F; above 0.05 for both
+contrasts (the last two uncertain). Known from the verification of 22 Sep (Finding 7, one subject's pre windows):
+pair-window SDs 0.0290 (r₁) and 0.1957 (|q|), a ratio of 4.75, OLS +5.483 per unit r₁ and −0.472 per unit |q|.
+
+**Rule.** A_other is reported, with A_same and B beside it; the DiDs are read against B24's pure-autocorrelation
+expectations (quoted) and B23 (b)'s, and converted to residual-DiD equivalents with B23's two aligned conversions
+((a2), δ·sign(q), and (a5), the shared slow component); (d) replaces the per-SD ratio of the abstract and Results 1;
+(e) decides the network-structure statement. B23 and B24 run after B22, so the conversion and the comparison are made
+in the outcome entry.
+
+**Implementation.** ts_gsr and ts_demean, region 20 excluded, non-finite TRs dropped as `scripts/01` drops them;
+   windows of 60 TRs over the kept TRs as `partB4_diagnostic.py` forms them (a window with five kept TRs or fewer
+   skipped); the whole-run matrices from all kept TRs (partB15's run level). `deviations` and `response` (with
+   `with_deviation`) are copied verbatim from `partB15_directed_crosslag.py`, with their source line numbers, because
+   importing that script would run it. Per window: the observed sts and the AR(1)-substituted sts (partB4), the
+   residual, checked against `diag_series_<variant>_W60.npz` to 1e-10; A_other and A_same with q̄ = ½(C[0,1] + C[2,3])
+   of the pair's whole-run matrix (a pair whose q̄ is exactly 0 has sign 0); the window-sign statistic (the checks of
+   the specification, and its run means against `crosslag_deviation.csv`'s `w60_signq_weighted_mean_deviation` to
+   1e-10); B = `np.polyfit(q, δ_sym, 1)[0]`, algebraically partB10's slope of the stacked deviations on q, its run
+   means checked against `w60_slope_deviation_on_q` to 1e-10; D, Sym and their sum; the RMS δ_anti, its DiDs checked
+   against `directed_crosslag_tables.md` (ts_gsr +0.00631, p = 0.0829; ts_demean +0.00352, p = 0.2977). Every
+   statistic is summarised as the DMT pre-injection level (windows 1–4), the post − pre change per run (windows 6–14
+   minus 1–4) and the DiD, each with its mean, exact sign-flip p, inverted interval (`rev_inference_inverted`) and
+   negative/14.
+   (d): per window the SD (ddof = 1) over pairs of r₁ = ½(a_x + a_y) and of |q|; the ratio from the two means over the
+   112 pre-injection windows, with the mean of the per-window ratios beside it; the two derivatives recomputed in
+   closed form (central differences, h = 1e-4, at (0.85, 0.25), as partB19 (a)) and required to equal 6.0705 and
+   −0.1892 to four decimals. Group level: per pair the mean r₁ and |q| over the 14 subjects × 8 pre windows, their SDs
+   over the 6,555 pairs, the same ratio. Regression over the 392 windows: per window OLS with intercept of pair sts on
+   (r₁, |q|, |a_x − a_y|), unstandardised; and standardised as partB19 (b) (each regressor and sts z-scored with
+   ddof = 1 within the window); means over windows; the standardised means required to reproduce
+   `exchange_rates_tables.md` (b) at three decimals (+0.661, −0.463, −0.426 on ts_gsr; +0.594, −0.476, −0.413 on
+   ts_demean).
+   (e): the `sts` and `sts_resid_win` maps and the `network` column of `regional_partial.csv`; F over the eight
+   classes; `perm_id` read from `external/DMT_NCT/fxns/SpinTests/rotated_maps/rotated_Schaefer_100.mat` exactly as
+   partB11 reads it (h5py; transposed if needed; zero-based); per rotation the 100-parcel cortical vector (region 20
+   NaN, partB11's `cortical_vector`) indexed by `perm_id[:, r]`, each parcel keeping its own class and the NaN dropped
+   wherever it lands; the 16 subcortical values fixed; one direction (the classes are labels, so there is no second
+   map to rotate); the contrasts' p = the share of |d_spin| ≥ |d_obs|, and the same two contrasts of the unpartialled
+   map beside them. No random draws anywhere in the script.
+**Outputs and conventions.** `notes/review_results/partB/aligned_directed_tables.md`, `aligned_directed.csv` (one row
+   per variant, subject, run and window: A_other, A_same, the window-sign statistic, B, D, Sym, RMS δ_anti, the
+   residual, SD r₁ and SD |q|) and `aligned_directed_run.log` via `nstep`. Minutes (partB15, which does most of the
+   same window work, took 50 s). `rev_git.SHA` as in B21; added to section 6 of `run_all.sh` after B21 with an `nstep`
+   line naming this entry. Not run in the writer's session, which holds no data. The outcome is appended as a later
+   entry after V.S. runs it; nothing is relabelled by the outcome.
+
+## The residual's response to the alternatives of the direction argument, CCS-sts against autocorrelation, exposure across datasets and the unequal-coefficient grid (B23): pre-run entry, 23 Sep 2026 11:31 UTC (appended; nothing above edited)
+
+Round 16, Part A; appended before `notes/partB23_diagnostic_alternatives.py` is written, and before anything is run.
+The specification, the predictions and the rule are those of the round 16 commission (B23, from Findings 1, 8, 11, 12
+and 14 of the review of 22 Sep 2026), restated here. No data.
+
+**Specification.** A pool of 20,000 draws q ~ N(0, 0.3424) clipped to ±0.8; a = 0.85, with a = 0.8632 as a
+sensitivity; the residual is the pool mean of sts on the true 4 × 4 matrix minus the pool mean of sts on the AR(1)
+matrix of a_x = C[0,2], a_y = C[1,3] and q = the mean of C[0,1] and C[2,3] (partB4's substitution). (a) Population,
+closed form: (a1) δ added at fixed (a, q), δ = ±0.005, ±0.01, ±0.02; (a2) δ·sign(q), the same δ; (a3) the coupled
+family re-solved per pair (r₁ and q held), c = ±0.01 and ±0.02, uniform and c·sign(q), on a q grid fine enough for a
+pool-mean accuracy of 1e-5, with how that was ensured stated; (a4) B17's construction (c added, a and the innovation
+correlation held at their c = 0 values), c = +0.01, +0.02, +0.03 and −0.02, reporting Δr₁, Δ mean q, Δ mean |q|, the
+mean δ_sym and the residual change; (a5) a shared slow component, λ = |q|, x = √λ s + √(1 − λ) n_x and y = sign(q)√λ
+s + √(1 − λ) n_y, with s, n_x and n_y unit-variance AR(1) processes, a_s = a_n + 0.06 and a_n = 0.85 − 0.06λ (so that
+r₁ = 0.85), under Δa_s = −0.01, −0.02 and −0.03 (a_n fixed) and under λ → 0.9λ, reporting Δr₁, the change of
+mean(sign(q)·δ_sym), the residual change and the residual change per unit Δr₁; (a6) a pure Δa = −0.015, whose residual
+change is zero by construction (a check). (b) A W = 60 simulation of the unperturbed pairs and of (i) Δa = −0.015,
+(a1) ±0.02, (a2) ±0.01, (a3) +0.02 (one sign), (a4) +0.02 and −0.02 and (a5) Δa_s = −0.03 and λ → 0.9λ; 3,000 pairs
+per condition, runs of 840 samples after a burn-in of 200, 14 windows of 60; (a1)–(a4) and (i) simulated from the
+stable VAR(1) with A = Γ₁Γ₀⁻¹ and Σ = Γ₀ − AΓ₀Aᵀ, (a5) as components; the estimator exactly partB4's (past and future
+standardised, a 4 × 4 correlation per window, the AR(1)-substituted sts); changes against the unperturbed pairs in the
+observed sts, the AR(1)-substituted sts and the residual (SE over pairs of each pair's 14-window mean), A_other (the
+sign from an independent 840-sample realisation), A_same, B (SE over windows) and D; the residual change per unit Δr₁
+at window level for (i) and (a5). (c) Population CCS-sts (the published definition, the code of the `ccs_pub_*`
+arrays) with MMI-sts on the symmetric AR(1) grid r₁ ∈ {0.80, 0.83, 0.85, 0.87, 0.90} × q ∈ {0.10, 0.25, 0.40}, each
+point one simulated series of 10⁶ samples fitted globally; the central-difference slope in r₁ at q = 0.25 (0.83 to
+0.87); the change from Δa = −0.015 at (0.85, 0.25). (d) Exposure per unit of spectral difference: for each TR and band
+of `notes/partB5_literature_v2.md` Table B and the primary setting (0.01–0.08 Hz, TR 2 s), a flat ideal band against
+the same band tilted by exp(−βf²), β = 100, 200 and 400, at q = 0.25; r₁ from the band-limited cosine integral, sts in
+closed form; reported: r₁ of the flat band, Δr₁, Δsts and Δsts/Δr₁. (e) The population r₁ and sts of B17b's generator
+before and after (i) (the pool mean over per-pair (β, q) draws at the solved parameters, with the analytic lag-0 and
+lag-1 correlations of the filtered process), giving the population Δr₁ and Δsts; and the AR(1) generator's
+window-level Δr₁ under (i), from `calibration.csv` if it holds it, else by simulating B17's (i). (f) The
+unequal-coefficient grid: mean a ∈ {0.80, 0.85, 0.90} × q ∈ {0.05, 0.10, 0.25, 0.40, 0.50, 0.70} × |a_x − a_y| from 0
+to 0.10 in steps of 0.0005; max |str − min(xtx, yty)|, min(rts − str), max(sts − (xtx + yty + rtr)); and per (a, q)
+the asymmetry at which sts − (xtx + yty) first turns negative, or "none".
+
+**Predictions, and which values are already known.** (a1) +0.0036 and +0.0037 at ±0.01, +0.0154 and +0.0158 at ±0.02;
+(a2) −0.0224 at +0.01 and +0.0297 at −0.01; (a3) +0.0029 at +0.01, +0.0102 at +0.02 and +0.0070 at −0.02, the aligned
+version moving at first order; (a4) negative for either sign, about −22 δ_sym²; (a5) the residual rises as the shared
+component weakens, about −1.2 per unit Δr₁. (b) (a4) reproduces Table 7's AR(1) rows within 2 SE (the review's
+simulation: −0.0011, −0.0049, −0.0113 and −0.0052 at c = +0.01, +0.02, +0.03 and −0.02); (a1) ±0.02 +0.0066 and
++0.0064; (a2) +0.01 −0.0102 and −0.01 +0.0135; (i) +0.003 to +0.007. (c) CCS-sts falls as r₁ rises at fixed q; the
+slope at (0.85, 0.25) is between −2 and −0.1. (d) Δsts within ±15 % across TR 0.72–2 s while Δr₁ varies about
+sevenfold (on 0.008–0.09 Hz: β = 100, +0.190 at 0.72 s and +0.165 at 2 s; 200, +0.382 and +0.335; 400, +0.738 and
++0.658). (e) Population Δr₁ −0.010 to −0.020 and Δsts −0.08 to −0.15. (f) The grid extremes zero to rounding; at
+a = 0.85 the sign change at about 0.008 (q = 0.25), 0.035 (q = 0.5) and 0.09 (q = 0.7); none within 0.10 at (0.80,
+0.70). Already computed on 22 Sep, on other pools or designs, and so known rather than predicted: (a1) and (a2) (the
+review's `popdelta.py`, pool seed 11), (a3) (`popresid.py`, a 400-draw pool), the (a5) example at λ = 0.25 with
+a_n = 0.84 (the verification, Finding 1: +0.0090 for Δr₁ −0.0075), (b)'s (a1), (a2) and (a4) values (`winsim.py`,
+`winsim2.py`, 40,000 single-window pairs), (d) on 0.008–0.09 Hz (Finding 11) and (f) (Finding 12). B23 recomputes each
+on its own pool and design.
+
+**Rule.** (a) and (b) replace the direction argument; (c) replaces "does not follow autocorrelation"; (d) replaces
+"most exposed dataset"; (e) completes Table 5's Δr₁ column; (f) replaces Results 1's two wrong statements (Finding
+12).
+
+**Implementation.** One generator, `np.random.default_rng(20261120)`, parts in the order (a)–(f); the pool is its
+   first draw. Invalid matrices (not positive definite) are excluded from a pool mean and their share reported. (a1)
+   and (a2): the AR(1) matrix of (a, a, q) with δ or δ·sign(q) added to both cross-lag entries. (a3): `coupled_corr4`
+   of `partB19_exchange_rates.py` (copied verbatim with its source line numbers; importing that script would run it),
+   with (a, q_ε) solved at each grid point by least squares as partB19's `coupled_sts_matched` does; the residual is
+   computed on a grid of q from −0.8 to 0.8 in steps of 0.001 and interpolated at the pool's q by a cubic spline; the
+   accuracy statement is the change in each pool mean when the grid step is doubled to 0.002, required to be below
+   1e-5; c·sign(q) uses the family's invariance under (c, q) → (−c, −q), which is checked at five grid points. (a4):
+   A = [[a, c], [c, a]], unit innovations with correlation q (the c = 0 lag-0 correlation), Γ₀ from the discrete
+   Lyapunov equation; residual / δ_sym² beside the residual. (a5): the population matrix in closed form (corr(x_t,
+   x_{t+1}) = λa_s + (1 − λ)a_n, lag-0 correlation sign(q)λ, both cross-lag correlations sign(q)λa_s). (a6): the
+   largest absolute residual over the pool, required to be below 1e-12.
+   (b): q for the 3,000 pairs drawn from the same distribution; common random numbers — one set of standard-normal
+   innovations per pair for the main run and one for the independent other run, shared by every condition; per pair
+   the condition's population matrix gives Γ₀ and Γ₁, then A = Γ₁Γ₀⁻¹ and Σ = Γ₀ − AΓ₀Aᵀ (a pair whose Σ is not
+   positive definite, or whose A is not stable, is excluded and counted); z₀ = 0, 200 samples of burn-in, 840 kept;
+   the windows' 4 × 4 matrices by `review_v2_residual_null.window_corr` (partB4's estimator); per pair and window the
+   observed and AR(1)-substituted sts, the residual, r₁, δ_sym, δ_anti and D (partB15's `response`, copied as in B22);
+   A_other with the sign of the pair's whole-run lag-0 correlation in the other run, A_same with that of the main run;
+   B per window. A change is the mean over pairs of the per-pair difference of the 14-window means against the
+   unperturbed pairs (the same innovations), its SE the SD over pairs / √N; B's change has its SE over the 14 windows.
+   (a5) is simulated as three unit-variance AR(1) components with their own common innovations, and its changes are
+   taken against the (a5) model at its base parameters (λ = |q|, a_s = a_n + 0.06), whose levels are reported beside
+   the AR(1) pairs' levels.
+   (c): symmetric AR(1) pairs by `scipy.signal.lfilter` with a stationary start, the same two standard-normal streams
+   at every grid point (the second mixed with the first to correlation q); `PairPhiID` on the 2 × 10⁶ series (one
+   pair, fitted globally); CCS atoms by `atoms_ccs` under the published mask, `make_knowns` and `use_mask` copied
+   verbatim from `partB6_ccs_definition.py` with their source line numbers, the copy checked at run time against
+   partB6's own lines; MMI-sts from the same fit and in closed form beside it; the slope
+   (CCS-sts(0.87) − CCS-sts(0.83))/0.04 at q = 0.25; the change from Δa = −0.015 at (0.85, 0.25) from one more series
+   at 0.835.
+   (d): the eleven band and TR settings of Table B item 2 (0.008–0.09 Hz at TR 2, 1.838 and 0.72 s; 0.0025–0.05 Hz at
+   2, 2.4, 2.6, 3 and 1.25 s; 0.01–0.1 Hz at 2, 1.0 and 1.2 s) and the primary setting; r₁ = ∫S(f) cos(2πf·TR) df /
+   ∫S(f) df over the band by `scipy.integrate.quad`, S = 1 (flat) or exp(−βf²) with f in Hz; sts = the closed form at
+   (r₁, r₁, 0.25).
+   (e): `psd_weights` and `fit_filter` imported from `review_v2_residual_null.py` (importing it runs nothing); β̄, σ_q
+   and β̄_post read from the committed `calibration_filtered_tables.md` (185.4, 0.2637, 105.7); 20,000 pairs, β ~
+   N(β̄, 0.5β̄) clipped below at 5 and q ~ N(0, σ_q) clipped to ±0.95, as B17b; per pair r₁(β) = acov[1]/acov[0], acov
+   the inverse real FFT of the weights on the 840-sample grid (the exact lag-1 autocorrelation of the circularly
+   filtered run B17b generates), and sts in closed form at (r₁, r₁, q) (both members share the filter, so the pair's
+   population matrix is of AR(1) form); post: β·β̄_post/β̄. `calibration.csv` does not hold a window-level Δr₁ (its
+   columns are the sts, predicted, residual, δ_sym and δ_anti DiDs), so B17's (i) is simulated: `innov_corr` and
+   `simulate_run` copied verbatim from `partB17_calibration.py` with their line numbers, 3,000 pairs with a_x, a_y ~
+   N(0.85, 0.0125) and q from `scope_map_overlay_points.npz`, a DMT run with Δa = −0.015 from sample 300 and a placebo
+   run without; the window-level mean pair r₁ (½(a_x + a_y) per window, partB4's definition), its DiD (windows 6–14
+   minus 1–4, DMT minus placebo) with the SE over pairs.
+   (f): `atoms_from_corr(ar1_corr(a + d/2, a − d/2, q))` over the grid.
+**Outputs and conventions.** `notes/review_results/partB/diagnostic_alternatives_tables.md`,
+   `diagnostic_alternatives.csv` (one row per part, condition, a and quantity) and `diagnostic_alternatives_run.log`
+   via `nstep`. Minutes. `rev_git.SHA` as in B21; added to section 6 of `run_all.sh` after B22 with an `nstep` line
+   naming this entry. `--scale N` divides the pool, the pairs and the series lengths by N; the writer's session runs
+   it once at `--scale 20`, after this entry is committed, to check that it runs; the outputs are discarded and
+   nothing from them is quoted. The outcome is appended as a later entry after V.S. runs it; nothing is relabelled by
+   the outcome.
+
+## The pure-autocorrelation expectations of the new statistics on the band-passed generator (B24): pre-run entry, 23 Sep 2026 11:31 UTC (appended; nothing above edited)
+
+Round 16, Part A; appended before `notes/partB24_bandpassed_expectations.py` is written, and before anything is run.
+The specification, the prediction and the rule are those of the round 16 commission (B24), restated here. No data.
+
+**Specification.** B17b's generator at its solved parameters (β̄ = 185.4, σ_q = 0.2637, β̄_post = 105.7), condition
+(i) only: 20 replicates × 14 subjects × 2 runs × 840 samples × 300 pairs, the change spliced in at sample 300 of the
+DMT run. B17b's statistics, and A_other, A_same, B, D and Sym as B22 defines them. B17b's functions are imported, or
+copied verbatim with a comment giving their source lines if importing would run B17b. Checked first: (i) reproduces
+B17b within one replicate SD — sts DiD −0.0940 ± 0.0028, AR(1)-substituted DiD −0.0966 ± 0.0027, residual DiD
++0.0027 ± 0.0014, RMS δ_anti DiD +0.0064. Reported: each statistic's level and DiD, mean ± SD over replicates.
+
+**Prediction.** The check passes; the A_other DiD within ±0.0005, the A_same DiD within ±0.001, the B DiD within
+±0.003; the D DiD −0.002 to −0.006; Sym's DiD equal to the residual DiD minus D's within 0.001.
+
+**Rule.** These are the pure-autocorrelation expectations against which B22's DiDs are read.
+
+**Implementation.** `psd_weights` and `fit_filter` imported from `review_v2_residual_null.py`; `filtered`,
+   `draw_noise`, `draw_params`, `simulate_run`, `deviations`, `analyse_run`, `did`, `signflip_p`, `boot_ci` and `cell`
+   copied verbatim from `partB17b_calibration_filtered.py` with their source line numbers (importing it would run it),
+   and `response` (with `with_deviation`) from `partB15_directed_crosslag.py` likewise. The solved parameters are not
+   re-solved: β̄, σ_q and β̄_post are read from the committed `calibration_filtered_tables.md` (β̄ and β̄_post were
+   solved to xtol = 1, so their printed precision is finer than the solve's own), and lo and hi from `fit_filter` on
+   the placebo ACF as B17b takes them. One generator, `np.random.default_rng(20261120)`. Per replicate and subject,
+   one draw of (β, q) for the 300 pairs shared by the two runs, as B17b; the placebo run at the pre parameters, the
+   DMT run filtered at the pre and the post parameters and spliced at sample 300. Per run, besides `analyse_run`'s
+   window and bin series, the pair's whole-run q̄ (from the run's 840 samples) and, per W = 60 window, A_same, A_other
+   (the q̄ of the same subject's other run), B, D, Sym, the window-sign statistic and the window-level mean pair r₁.
+   Per replicate: B17b's DiDs at W = 60 and at the global fit (run-level and period-level prediction), the residual's
+   sign-flip p and bootstrap CI as B17b, and the DMT pre-injection level and DiD of each new statistic; each
+   summarised as mean ± SD over the replicates. The check compares the W = 60 sts, AR(1)-substituted, residual and RMS
+   δ_anti DiDs with B17b's committed means and SDs, read from `calibration_filtered_tables.md`; the table says whether
+   each lies within one SD, and a miss is reported, not a stop.
+**Outputs and conventions.** `notes/review_results/partB/bandpassed_expectations_tables.md`,
+   `bandpassed_expectations.csv` (one row per replicate and estimator) and `bandpassed_expectations_run.log` via
+   `nstep`. A few minutes. `rev_git.SHA` as in B21; added to section 6 of `run_all.sh` after B23 with an `nstep` line
+   naming this entry. `--n-rep N` sets the replicates; the writer's session runs it once with `--n-rep 1` (a
+   twentieth), after this entry is committed, to check that it runs; the outputs are discarded and nothing from them
+   is quoted. The outcome is appended as a later entry after V.S. runs it; nothing is relabelled by the outcome.
