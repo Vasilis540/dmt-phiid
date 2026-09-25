@@ -1,0 +1,43 @@
+# derived_r17.py; git=66c6331; seed=20261120
+1. sts DiD / regional r1 DiD (ratio of means): +5.522; Fieller 95 % [+4.45, +10.54]; subject bootstrap 95 % [+4.56, +8.21] (means -0.08087 / -0.01465)
+1. residual DiD / regional r1 DiD (ratio of means): -0.787; Fieller 95 % [-1.60, -0.08]; subject bootstrap 95 % [-1.35, -0.25] (means +0.01153 / -0.01465)
+   regional r1 DiD by subject: [-0.0161, -0.0024, -0.026, -0.02, 0.0005, -0.0186, -0.0084, -0.0642, -0.0312, -0.0201, -0.0143, -0.008, -0.0003, 0.0242]; largest fall: subject 8 (-0.0642)
+2. ts_gsr all 14: mean cross-half r 0.694, ceiling 0.729, ratio 0.951
+   without subject  1: mean cross-half r 0.712, ceiling 0.749, ratio 0.951
+   without subject  2: mean cross-half r 0.692, ceiling 0.726, ratio 0.953
+   without subject  3: mean cross-half r 0.686, ceiling 0.719, ratio 0.954
+   without subject  4: mean cross-half r 0.696, ceiling 0.726, ratio 0.958
+   without subject  5: mean cross-half r 0.691, ceiling 0.729, ratio 0.949
+   without subject  6: mean cross-half r 0.728, ceiling 0.750, ratio 0.970
+   without subject  7: mean cross-half r 0.693, ceiling 0.728, ratio 0.952
+   without subject  8: mean cross-half r 0.486, ceiling 0.542, ratio 0.897
+   without subject  9: mean cross-half r 0.693, ceiling 0.728, ratio 0.952
+   without subject 10: mean cross-half r 0.830, ceiling 0.863, ratio 0.962
+   without subject 11: mean cross-half r 0.755, ceiling 0.788, ratio 0.958
+   without subject 12: mean cross-half r 0.694, ceiling 0.728, ratio 0.953
+   without subject 13: mean cross-half r 0.680, ceiling 0.716, ratio 0.950
+   without subject 14: mean cross-half r 0.571, ceiling 0.621, ratio 0.921
+   ts_gsr: other twelve omissions, mean cross-half r 0.680-0.830; ratio 0.949-0.970
+2. ts_demean all 14: mean cross-half r 0.690, ceiling 0.699, ratio 0.987
+   without subject  1: mean cross-half r 0.707, ceiling 0.715, ratio 0.989
+   without subject  2: mean cross-half r 0.694, ceiling 0.699, ratio 0.993
+   without subject  3: mean cross-half r 0.691, ceiling 0.698, ratio 0.990
+   without subject  4: mean cross-half r 0.691, ceiling 0.704, ratio 0.982
+   without subject  5: mean cross-half r 0.681, ceiling 0.691, ratio 0.985
+   without subject  6: mean cross-half r 0.725, ceiling 0.725, ratio 0.999
+   without subject  7: mean cross-half r 0.708, ceiling 0.715, ratio 0.991
+   without subject  8: mean cross-half r 0.561, ceiling 0.572, ratio 0.981
+   without subject  9: mean cross-half r 0.672, ceiling 0.686, ratio 0.980
+   without subject 10: mean cross-half r 0.680, ceiling 0.690, ratio 0.984
+   without subject 11: mean cross-half r 0.832, ceiling 0.841, ratio 0.988
+   without subject 12: mean cross-half r 0.689, ceiling 0.699, ratio 0.986
+   without subject 13: mean cross-half r 0.704, ceiling 0.712, ratio 0.988
+   without subject 14: mean cross-half r 0.576, ceiling 0.587, ratio 0.981
+   ts_demean: other twelve omissions, mean cross-half r 0.672-0.832; ratio 0.980-0.999
+3. sensory - association contrast before partialling: -0.0202 [-0.0342, -0.0062] (t interval, 13 df, from mean ± SD)
+3. sensory - association contrast after partialling: +0.0007 [-0.0110, +0.0124] (t interval, 13 df, from mean ± SD)
+4. regional sts on regional r1: all 115 regions Pearson +0.863, slope +3.089; cortex (99) Pearson +0.807, Spearman +0.771, slope +2.286
+5. band-limit bound at TR 2 s: cos(2*pi*0.08*2) = 0.5358; flat 0.01-0.08 Hz: r1 = 0.8174
+   family at (0.85, 0.25): dsts/dr1 = 6.0705; drtr/dr1 = 0.0556; S'(a) = 3.0631
+   windowed estimator's own per-SD ratio: (5.126 x 0.0284)/(0.528 x 0.1957) = 1.41
+6. null pair r1 DiD: (0.8532 - 0.8625) - (0.8655 - 0.8602) = -0.0146; level ratios: 0.76 (all cells, W = 60), 0.67 (DMT pre)

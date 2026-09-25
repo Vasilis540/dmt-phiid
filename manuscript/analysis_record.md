@@ -6655,3 +6655,141 @@ is within its limit.
 **`sch116_to_yeo.csv`.** The two copies of the data clone's `sch116_to_yeo.csv` (the network labels of the 116
    parcels; no subject data) that remain in the writer's session after the .mat copies were deleted in round 16 are
    kept, by V.S.'s decision; they need not be deleted.
+
+## The review and the citation check of 24 September 2026, and their verification, 25 Sep 2026 16:34 UTC (appended; nothing above edited)
+
+Two reports on the text at 66c6331 (bundle 27, the shortened text), written on 24 Sep 2026 by two separate sessions of
+the same AI system launched from the planning session, neither holding any subject data; the planning session's
+verification of both, 24–25 Sep 2026; and the check scripts. Committed byte-identical in `notes/review_2026-09-24/`:
+`adversarial_review_2026-09-24.md` (sha256 2d1603f04c2b22cc97791159615b1e85b939a3807d9e11b4ccadd5b0ab5c7c53), `citation_pass_2026-09-24.md` (8dac4e094175ca9564ecc2294799ae15ffc81fdca1833ad31bc7f3f2e2f1c0d6),
+`review_verification_2026-09-24.md` (d0fec6feaca853bb6416989310d0dd0d3885ced08179bad9d0120187e3fc5a61), `README.md` (d95984c7d106e6b456a62f101abd090c572c240f68d8d7c570a367cb83698a83), and `checks/` (the review's
+own sign-flip enumeration and Gaussian-MMI ΦID, the citation check's sentence extractor, and the planning session's
+`derived_r17.py` with its output `derived_r17.out`, git=66c6331, seed 20261120; paths made repository-relative; none
+reads subject data; `run_all.sh` does not run them).
+
+**The review** (15 major items M1–M15, 44 minor items, 6 typos) found no discrepancy between the main text and the
+result files at printed precision (Tables 1–3, the primary, residual and substituted DiDs with their inverted
+intervals, the closed-form constants, the lag, ΦR, CCS and prewhitening rows). Its findings are matters of
+interpretation, completeness and presentation: the abstract and author summary claimed more than the results support
+(the per-SD ratio quoted only at the closed form's rates; "in close to the proportion" unquantified; "share their
+reliable variance" against a disattenuated interval of [0.62, 0.99]; the residual's p quoted at its smallest of three);
+the "refutation" was stated of synergy rather than of MMI-sts; the residual's rate was said to exceed the generators'
+where the data's slope interval contains the AR(1) generator's rate and ends at the null's; Methods misdescribed the finite-sample null as "the same
+construction with no change" (it carries the data's autocorrelation change, its own pair-r₁ DiD −0.0146); "every
+later computation was entered in the record ... before it was run" is false by the SI's own statements; Results 1
+called the residual pattern "the signature of lagged structure" where a stationary null reproduces most of its level;
+the main text carried computation labels, file paths, an overloaded r₁ and undefined symbols; the SI lacked the
+applicability table and the COBIDAS checklist and used process labels; the Ethics statement had lost the subject-code
+sentence of round 12; the AI-use statement overstated validation and misstated who ran the computations; the
+Limitations sentence of 90690f4 had been deleted; the CCS claims and the recommended null were wrong in form; the
+figures were not cited in ascending order. **The citation check** counted 51 changed citing sentences with an
+author–year citation against the writer's 91 (the check reads the 91 as probably counting every changed sentence that cites any
+source, record entries and commits included; both counts are recorded), and of 111 sentence × work pairs found 88 supported, 6 supported
+with qualification, 4 not supported, 0 misattributed and 13 not checkable locally: P1–P11 (the workspace account
+ties conscious level to ΦR, not synergy; its synergy is the whole-minus-max aggregate; Varley's scope; propofol
+sedation; Tarchi's regional classification; "anonymised" is unsupported, the release being pseudonymised; Afyouni's
+ρ = 0 assumption; CCS's double redundancy is Mediano et al.'s extension; Theiler et al. (1992) was checked against
+its bibliographic record only; two wording faults) and E1–E8 (the S5 history: EEST times unlabelled; d51966e is 16
+Sep and d507728 18 Sep; "26 items needing a change" is inexact; a heading of 44cec4f misdescribed; "dated to the
+minute" untrue before 15 Sep; two minute-level claims not in git; the Figures paragraph misdescribed the figures'
+commit).
+
+**The verification** re-derived every fact from committed files. Verdicts: major items 13 confirmed, 2 partly (M11:
+the single full run stays at the final commit; M15: the library packaging is declined); minor items 38 confirmed, 5
+partly (1, 4, 17, 27, 38), 1 judgement (2); typos 6 taken; P1–P11 and E1–E8 confirmed. Its own findings, V1–V12, include:
+the author summary's "integrated information built from it" is inaccurate (ΦR is measured in regions ranked by their
+synergy); a drafting session held copies of the data files by accident from 15 to 23 September 2026 (in its clone until 20
+September), with one 28-second test run on them on 20 September (recorded in the B19 outcome entry and the decision entry of 23 September), so the
+AI-use statement cannot say that the system's sessions held no data; the AR(1)-substituted matrix also sets the two
+lag-0 entries to their mean (partB4, l. 73–75; the lag-0 averaging alone moves the window-mean sts by +0.0005,
+`residual_source.log`); S11 Table's 0.8176 and S18 Table's 0.8174 are both right (the 840-sample grid and the
+continuous band); the coupling qualifier of item 33 is the tabulated range, up to c = +0.10.
+
+**Numbers derived for the revision** (`checks/derived_r17.out`; post hoc, computed in verifying the review, no
+pre-run entry; committed per-subject DiDs and CSVs only, seed 20261120): the ratio of the group-mean sts DiD to the
+group-mean whole-brain r₁ DiD, +5.52 per unit (Fieller 95 % [+4.45, +10.54]; subject bootstrap [+4.56, +8.21]), and
+of the residual DiD, −0.79 (Fieller [−1.60, −0.08]; bootstrap [−1.35, −0.25]); the leave-one-out cross-half table on
+both variants (without the subject whose r₁ fell most, −0.064, the mean cross-half r on ts_gsr is 0.486 against a
+ceiling of 0.542, ratio 0.897; without the subject whose r₁ rose most, +0.024, 0.571, 0.621 and 0.921; every other
+omission 0.68–0.83 and 0.949–0.970; on ts_demean every ratio 0.980–0.999); the t intervals (13 df) of the per-subject
+sensory − association contrast from the saved mean and SD, −0.0202 [−0.0342, −0.0062] before partialling and +0.0007
+[−0.0110, +0.0124] after; the cortex-only regional correlation, Pearson +0.807, Spearman +0.771, slope +2.29 (all 115:
++0.863, +3.09); the band-limit bound cos(2π · 0.08 · 2) = 0.5358 and the flat-band r₁ 0.8174; the null's own pair-r₁
+DiD, (0.8532 − 0.8625) − (0.8655 − 0.8602) = −0.0146, and its level ratios 0.76 (all cells) and 0.67 (DMT pre).
+
+**Two corrections to the entries of 23 Sep 2026 21:40 UTC.** (i) The B21 outcome entry attributes the seven exact-p
+differences to reading the committed p "from a four-decimal table". Their cause is that B21 recomputes those rows from
+`ccs_decomposition.csv`, which partB18 wrote at six decimals, while partB18's committed p came from full-precision
+values; the terms are of order 10⁻⁴–10⁻³ and six-decimal rounding moves assignments near a tie. (ii) The decision
+entry says the section budgets were "set with the decision". They were set in the Stage B commission; V.S.'s decision
+set the total (≤ 7,000 words), the abstract, the author summary and the counts of tables and figures.
+
+**Facts for the AI-use statement, from V.S. (24 Sep 2026).** The analyses before 18 September were run by V.S. with
+the system in working sessions, and he does not know which of the two executed each script; the early commits carry
+the system's trailers. From 18 September every result file committed was produced by V.S.'s runs on his own computer
+(the section-6 run of 20 Sep; B14–B20; B16b and B17b; B21–B24), from commands the system wrote; the exception
+recorded above (V2) is the 28-second test of 20 September, whose output was discarded.
+
+## Round 17: the review of 24 September 2026 applied (25 Sep 2026), 25 Sep 2026 16:34 UTC (appended; nothing above edited)
+
+Decision (V.S., 24–25 Sep 2026, under his standing instruction that every confirmed finding be applied): every
+disposition of `notes/review_2026-09-24/review_verification_2026-09-24.md` is applied to the text, the supporting
+information, the figures and this record; the limits of 23 Sep 2026 stand (Introduction through Methods ≤ 7,000
+words with headings, tables, captions, display equations and references excluded; abstract ≤ 300; author summary ≤
+200; three tables; six figures). PLOS Computational Biology sets no length limit for a Methods article (its 3,500-word
+limit is for Software articles; guidelines read 24 Sep 2026), so the 7,000 is V.S.'s limit. Bundle 28 (this commit,
+the text, the regenerated figures) implements it. The dispositions are the planning session's; V.S. supplied the facts
+of the AI-use statement.
+
+**The text.** The abstract and author summary are rewritten to the evidence (M1, M2, M13, V1: both per-SD ratios;
+the like-for-like comparison with the band-passed generator, −0.081 against −0.094 for the same fall of pair r₁; the
+disattenuated correlation with its interval; the residual as "falls by 0.0115 more than observed, against 0.003–0.005
+in simulated pure autocorrelation changes (p = 0.11–0.25)"; the family as "two AR(1) processes correlated only at lag
+0"; "these data's operating point"; CCS "near zero and nearly flat in r₁ on the family"; prewhitening "cannot fully
+remove"; the refutation scoped to MMI-sts; "integrated information, in regions ranked by their synergy"). The
+notation of r₁ is fixed (M7: regional r₁, whole-brain r₁, pair r₁; "pair-level a" withdrawn). The main text loses
+every computation label and file path outside Data and code availability, defines c, δ, δ_sym, A_other, λ, a_s and
+manufacture where first used, and cites every S-file (M7, M8, items 3, 5). Results 1 no longer calls the residual
+pattern the signature of lagged structure (M6). Results 2 scopes the refutation to the hypothesis as operationalised,
+names the global fit as the estimate seen before the test was written, gives the leverage of two subjects, the two
+rates with the Fieller interval and the like-for-like comparison (M1, M2, M3, item 26). Results 3 gives the cortex-only
+correlation, the t intervals of the partialled contrast, the residual map's F against the unpartialled map's, and the
+map's slope against the family's (item 28). Results 4 states what the AR(1)-substituted matrix replaces (item 29, V4),
+reads the residual's rate against the generators by the data's own intervals (M3), names the null's autocorrelation
+change (M4), and moves the construction-by-construction paragraph and the directed part to S3 Text §6. Results 6 is
+retitled and states CCS's relation to r₁ at its strength (M13). Results 7 gives the band-limit bound (item 24).
+Methods describes the null (M4), the calibration's coefficients (item 37), the sign-flip inversion's assumption and
+the t-interval method (item 36), the two inference deviations and every other deviation (M5), the literature search
+as the record has it (item 38), and the AI-use facts (M10); the Limitations sentence of 90690f4 is restored (M12).
+The recommended null is surrogates simulated from the AR(1)-substituted matrix or the two spectra and passed through
+the estimator; the substituted value itself is not a null (M14). The Ethics statement says "pseudonymised" (P6) and
+restores the subject-code sentence of round 12 in S1 Text (M9); the REC number stays a [TK] for the co-author note,
+now with the basis of secondary use. Word count after the revision: Introduction through Methods 6,972 with headings
+(6,852 without); abstract 300; author summary 200.
+
+**The supporting information.** S19 Table lists every prediction recorded before a computation with its outcome, and
+the post hoc computations the paper quotes (M5 (b)); S20 Table is the applicability table, Tables A and B of
+`notes/partB5_literature_v2.md` (M8); S4 Text becomes the COBIDAS checklist itself, brought up to the present
+structure (M8); S3 Text gains the leave-one-out table, the moved paragraphs, and the corrections of items 8–16; S5
+Text gains the corrections E1–E8 and P9 (the reference list's head note, whose content §5 already holds, leaves the
+main text), the result files whose headers carry -dirty or nogit, the data-copy disclosure, and the review of 24 September; S2 Text gains the deconvolution's
+parameters and what the repository can regenerate (M11). Process labels are replaced by dated descriptions, defined
+once in S5 Text §5 (M8).
+
+**The figures.** Renumbered by order of first citation: Fig 1 the scope map (formerly Fig 2), Fig 2 the atoms
+(formerly Fig 1), Fig 3 the per-subject DiDs, Fig 4 the regional map (formerly Fig 6), Fig 5 the AR(1)-substituted
+estimate by window (formerly Fig 4), Fig 6 the lag dependence (formerly Fig 5); files renamed accordingly. Fig 2's
+annotation follows the unequal-coefficient finding (item 17); Fig 5c's expectation band is visible and its legend
+names the generator, not a script (item 18); Fig 3's caption states that the generators' rates are per unit of pair
+r₁ on a whole-brain-r₁ axis, a 6 % scale difference (item 19); Fig 1's contour labels are moved and its caption lists
+every curve of panel c (item 20). Captions carry no labels or paths; provenance stays in a "Source" line of
+`captions_v2.md`, which the text does not reproduce (V8).
+
+**Layout.** PLOS order: Materials and methods → Data and code availability, Author contributions, Funding, Competing
+interests (kept in the file for the preprint; they move to the submission system at submission) → Acknowledgments →
+References → Supporting-information captions; tables and figure captions after the paragraph of first citation;
+"Fig N." labels; the "Manuscript for co-author review" line stays until the co-author review; the numbered citation
+form and the packaging of the SI as separate files are done at submission (item 2).
+
+**Not done in this round.** The single full run of `run_all.sh` (at the final commit, under a new pre-run entry); a
+DOI archive of the repository (at submission); the co-author items marked [TK].
