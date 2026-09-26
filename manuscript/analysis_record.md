@@ -6894,3 +6894,154 @@ with their captions, together with the pre-run entry of the final run, which is 
    lines a log adds, and the figures (V32, V43, V45, V46, V54). The four were run on a simulated run of the revised
    commit and on negative tests (the verification, section 6).
 5. **Unchanged**: every result file, every analysis script, `run_all.sh`, and the record above this entry.
+
+## The final end-to-end run of `run_all.sh` at the final commit: pre-run entry, 26 Sep 2026 07:56 UTC (appended; nothing above edited)
+
+This entry fixes, before the run, what the single end-to-end run of `run_all.sh` is, the conditions it runs under and
+what counts as a pass. It takes the place of the pre-run entry of 21 September 2026 (17:54 UTC), which was closed
+without an outcome on 23 September 2026 (15:36 UTC); what is unchanged from it is restated, so that this entry stands
+alone.
+
+1. **The commit.** The run is made at the commit that carries this entry, the third commit of the error-only
+   revision; nothing is committed between this entry and the run. It is made in V.S.'s repository folder, from the
+   pinned environment (`.venv`, `requirements.lock.txt`, Python 3.12.3), with `external/DMT_NCT/data/*.mat` present
+   at upstream 77af7aa, and with the working tree clean: no tracked file modified and no untracked file under
+   `results/`, `notes/review_results/` or `manuscript/figures/`.
+2. **The conditions.** Those of the second attempt of 22 September 2026 — a reboot first; `HandleLidSwitch`,
+   `HandleLidSwitchExternalPower` and `HandleLidSwitchDocked` set to `ignore`; a root transient systemd unit outside
+   the desktop session that runs `run_all.sh` as V.S.'s user (`runuser -u vilalius`) inside `systemd-inhibit` — with
+   the two that the entry closing the pre-run entry of 21 September added and the B21–B24 run of 23 September had:
+   `shutdown` in the inhibitor's list (`systemd-inhibit --what=sleep:idle:handle-lid-switch:shutdown --mode=block`)
+   and the charger connected. The lid stays open for the whole run; a heartbeat line every five minutes records the
+   log's size, the available memory, the battery charge and the charger state. The machine is not powered off, logged
+   out or suspended during the run, and any end-session or password dialog is cancelled. The run's standard output
+   and the heartbeat are written outside the repository and, after the comparisons of item 5, copied into the outputs
+   commit as `results/run_all_final.log` and `results/run_all_final_heartbeat.log`. `results/run_all_full.log`, the
+   partial log of the third attempt of 17 September 2026, stays as committed.
+3. **What the outputs carry.** Every regenerated table and report (`.md`, `.csv`, `.txt`) names
+   `git=<the run's commit>` in its first lines: the `scripts/` writers through their own SHA call (`-dirty` if
+   `scripts/` or the record has uncommitted changes), the `notes/` writers through `notes/rev_git.py` or, in B10–B13,
+   a copy of its test (`-dirty` if `scripts/`, `notes/*.py` or the record has uncommitted changes), and
+   `scripts/15_figures_v2.py`, since this revision, through `notes/rev_git.py` (until then it tested the whole tree,
+   which at its step, the last, holds every regenerated output as a modified tracked file). A `-dirty` or `nogit` tag
+   on a regenerated output is a failure of the run's conditions. Five files carry no SHA by design:
+   `notes/review_results/inference_rows_raw.csv` and `notes/review_results/partB/crosslag_deviation.csv`,
+   `crosslag_budget.csv`, `crosslag_budget_null.csv` and `regional_sts_r1.csv`. Four logs are not regenerated,
+   because section 6 runs their scripts with `nrun` and they are stdout captures of runs made outside `run_all.sh`:
+   `ccs_verify.log`, `ccs_run.log`, `lag_run.log` and `diag_run.log`.
+4. **The deconvolution items.** As on 21 September: the run is made without the sandbox of `notes/rev_deconv.py`,
+   `run_all.sh` prints "skipping the HRF-deconvolution items", the branch's eleven executions do not run, and their
+   committed outputs stay as committed and are not compared.
+5. **The rule for a pass.** Four comparisons against the run's commit, from
+   `notes/planning_checks_2026-09-16/reproduction_checks/`, all run on the working tree the run left and before
+   anything is added, restored or committed, since each compares the working tree with the commit and a restore
+   destroys the evidence:
+   - `6_committed_compare.py <SHA>` for the `.md`, `.csv` and `.txt` outputs: every CSV cell within 1e-9 of its
+     committed value, with no changed row or column; every text file the same line for line, in order, apart from its
+     git= lines, with every printed number within 1e-9 of its committed value (item 6 (g)); no changed line endings;
+     except the files of item 6 (a), (b), (d) and (e), whose differences are fixed there (revised in this revision:
+     it compared changed lines as unordered sets and set aside only the sign of a printed zero);
+   - `9_wrapper_compare.py <SHA>` for B21's two files of item 6 (a) and (b): PASS;
+   - `8_binary_compare.py <SHA>` for the `.npy`, `.npz` and `.pkl` outputs: identical, or every numeric entry within
+     1e-9 with the NaN pattern unchanged and every other entry equal (revised in this revision to compare the
+     list-of-dict pickles element by element; it compared them by their bytes);
+   - `10_logs_figures_compare.py <SHA>` (new) for the logs and the figures, which the other three do not read: with
+     blank lines set aside and git SHAs, dates and clock times, elapsed times, absolute paths and B21's count of
+     quoted intervals masked, every line of every committed log found, in order, in the regenerated log, with every
+     printed number within 1e-9 of its committed value, except the lines of items 6 (e) and 7; every line that only
+     the regenerated log has listed, for the outcome entry to account for, and blocking if it reports an error or a
+     failed check (item 6 (h)); every image (the six figures, the three figures of the first draft and the scope map
+     of `notes/review_results/partB/`) identical as a PNG or differing by anti-aliasing only (largest channel
+     difference at most 2 of 255, the trace of a plotted value that differs below 1e-9), every PDF identical apart
+     from its dates or taking its PNG's verdict.
+   A number that differs beyond these tolerances, a changed row or column, a `-dirty` or `nogit` header, a traceback,
+   a step that did not run or a figure that differs beyond anti-aliasing blocks the commit: it is investigated and
+   recorded in an entry of this record before anything else happens, the outputs are not committed, and no result of
+   the paper moves until the difference is explained. This is the rule, not a preference: such a difference means
+   that the code does not reproduce its own committed outputs or that the environment has changed, and either is a
+   finding about the paper. A committed log line reworded by a change of the printing script made after the run that
+   wrote the committed log (item 7) does not block if every number it prints is printed unchanged in the new wording;
+   it is recorded in the outcome entry.
+6. **The differences known in advance.**
+   (a) `notes/review_results/partB/inference_revision.csv` (B21) writes plain numbers where the committed file
+   (git=a9d9ca4) writes `np.float64(<value>)`. Correction to "B21, outcome" (23 September 2026, 21:40 UTC), which
+   says that the final run's file "will differ from 90690f4's only by the `np.float64` wrappers": B21 also computes
+   its column `quoted_at` from the manuscript text in the working tree (its lines 97–120), and the text has changed
+   since 90690f4. Recomputed from the text of this commit with B21's rule, `quoted_at` is non-empty in 10 of the 932
+   rows (202 at 90690f4) and differs from the committed column in 198 rows. `9_wrapper_compare.py` checks the
+   regenerated column against the texts of the run's commit and every other cell against the committed file, the
+   wrappers stripped.
+   (b) In `inference_revision_tables.md` the count of "(a) Summary" becomes 10 (202), and the table "(a) Quantities
+   quoted in the text, ..." lists 195 rows (270): the 194 Engine and saved rows as before and 1 pickle row (76).
+   Every other line is identical apart from the git= line; `9_wrapper_compare.py` checks the table row by row against
+   the regenerated CSV.
+   (c) `inference_revision_run.log` prints the same count, which `10_logs_figures_compare.py` masks.
+   (d) `results/bias_check_nonstat.csv` and `results/bias_check_nonstat_global.csv` gain 84 and 2 rows: the AR-shift
+   condition `nonstat_step_ar`, which f3b435d added to `scripts/02_bias_check.py` after these tables were written at
+   18ad8b4. Every row they hold must reproduce exactly (`6_committed_compare.py`: 84 and 2 rows in the new file not
+   in the old, all `nonstat_step_ar`; 0 rows of the old absent or changed). The regeneration of 15–16 September 2026
+   found exactly this (`notes/planning_checks_2026-09-16/reproduction_checks/2_compare_all.log`).
+   (e) `results/subject_alignment_check.txt` and its log `results/run_10_subject_alignment_check.log` carry a second
+   header line added by hand on 15 September 2026, when the participant codes were removed from them (the record's
+   data-governance note of that day); the files the script writes now print table row indices and lack that line.
+   Every other line must reproduce (the regeneration of 15–16 September 2026 found this for the report; it did not
+   compare the log). The committed log also has an empty line, its line 86, where the report has the row
+   "sts_gsrglobal_PCB FD_PCB -0.090 +0.008 0.0885 1/14", as the log has had since its first commit (cab580b); the
+   script prints each line of the report as it adds it (one function, `say`), so the regenerated log has that row (a
+   line added, item 6 (h)).
+   (f) The images: `scripts/15_figures_v2.py` is the version at which the committed figures were generated, the first
+   draft's figures come from `scripts/12_figures.py` unchanged since it generated them, and the scope map was
+   regenerated unchanged by the section-6 run of 20 September 2026 (`7_section6_headers.log` lists no changed image);
+   their inputs are regenerated. The PNGs are expected byte-identical, or differing by anti-aliasing only where a
+   plotted value differs below 1e-9; the PDFs identical apart from their dates or taking their PNG's verdict;
+   `captions_v2.md` and `captions.md` differ only in their git= line.
+   (g) Printed float noise. Several outputs print, as internal checks, the difference between two computations of the
+   same quantity, below 1e-13: among them `family_atoms_tables.md`, `aligned_directed_tables.md` and
+   `ccs_decomposition_tables.md` under `notes/review_results/partB/`, their logs, and
+   `notes/review_results/logs/phiid_fast_validate.log`. Some compare with binaries that the run regenerates on this
+   machine, where the committed ones come from another build (`diag_series_*_W60.npz`, committed at 3781e00), and the
+   section-6 run of 20 September 2026 found such lines changed in its logs (record, "The git SHA in the output
+   headers of the notes/ scripts: outcome", item 3). Such a value may change: a printed number within 1e-9 of its
+   committed value counts as reproduced, as a CSV cell does, and a printed zero that changes its sign is a case of
+   this rule.
+   (h) The logs. A log is the capture of a step's standard output and error; the committed logs of sections 0–5,
+   written on 13–14 September 2026, have not been compared with a regeneration before (the regeneration of 15–16
+   September compared the tables and reports), and at least one carries an artefact of its capture (item 6 (e)). The
+   rule asks of a log that it reproduce what the committed log reports: every non-blank committed line, in order,
+   under the masks and the 1e-9 rule for numbers. A line that only the regenerated log has is listed and accounted
+   for in the outcome entry, and blocks if it reports an error or a failed check.
+7. **The logs expected to differ in wording.** Two step logs of section 2 were written by
+   `scripts/01_synergy_timecourse.py` before changes to what it prints at the global fit:
+   `results/run_115_global_atoms.log` (committed at 33f0b33) and `results/run_115_global_atoms_ts_demean.log`
+   (committed at 84ea657 and rewritten at 8554b3d with the output of a run made before that commit's change to the
+   line). Their line 25, "samples/bin: min=28 max=30 median=30", is printed since 8554b3d as "samples/bin (evaluated
+   slots): min=28 max=30 median=30; empty slots=0"; and since 98149a9 the script prints, after the line naming the
+   `.npy` file it writes, a line naming the local-atoms file ("wrote
+   results/atoms_bins_local_115regions-all_<variant>_global.npy"), which the two logs lack. These two lines may
+   differ as stated; the three numbers of line 25 must be printed unchanged. The other scripts changed after their
+   committed logs were written (133f2c2 across `scripts/`, 380bf97 in `scripts/11_regional_analysis.py`, 6f34e89 in
+   `notes/partB21_inference_revision.py`) changed docstrings, comments, an error and an assertion message, the
+   dirty-tree test, a dead expression and the CSV writer, nothing that the logs print.
+8. **New files.** Files the run writes that no commit holds have no committed version and are not compared;
+   `6_committed_compare.py` lists them. Expected: `results/run_00_verify.log`,
+   `results/run_02_bias_check_n20000.log`, `results/run_tier_check_decay_windows.log`,
+   `results/run_15_figures_v2.log`, and `results/atoms_bins_local_115regions-all_ts_gsr_global.npy` and
+   `…_ts_demean_global.npy`, which `scripts/01_synergy_timecourse.py` writes since 98149a9 and no commit has held.
+   They are committed with the other outputs, so that the outputs commit holds everything the run writes.
+9. **What the run does not regenerate.** The superseded sanity runs listed in `run_all.sh`'s header
+   (`results/synergy_bins_20regions_*`, `results/synergy_bins_115regions-all_ts_gsr_global.*`,
+   `results/nonstat_n20000/`, `results/tier_check_decay_windows_n2000_18ad8b4.csv`), the four logs of item 3, the
+   deconvolution items of item 4, and every committed log that no step of `run_all.sh` writes: they are records of
+   earlier runs and stay as committed.
+10. **The expected shape of the run.** 65 steps without the deconvolution branch (69 step lines, of which four are
+   that branch, one of them a loop of eight), each announced by a "=== " line, the line "=== skipping the
+   HRF-deconvolution items: ..." at the branch's place, and at the end "=== all done in N min"; the last step is
+   `scripts/15_figures_v2.py`. About nine hours: about 21,500 s for sections 0–5 and 10,600 s for section 6 as
+   estimated on 21 September from the committed logs, and 531 s for B21–B24 on 23 September. The outcome entry
+   records the wall-clock, the step count, the traceback count and the verdicts of the four comparisons, file by
+   file.
+11. **After the run.** If the rule holds, one commit holds the outputs, the new files of item 8, the two files of
+   item 2, the outcome entry, the [TK]s that wait on the run filled within their lines (Data and code availability;
+   S5 Text §4) and S5 Text §6's list of commits. Those edits add no interval and no line, so B21's `quoted_at` column
+   stays valid for the committed text. If the rule does not hold, nothing is committed and an entry records the
+   difference first.
