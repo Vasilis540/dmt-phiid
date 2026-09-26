@@ -6793,3 +6793,104 @@ form and the packaging of the SI as separate files are done at submission (item 
 
 **Not done in this round.** The single full run of `run_all.sh` (at the final commit, under a new pre-run entry); a
 DOI archive of the repository (at submission); the co-author items marked [TK].
+
+## The error-only check of 25 September 2026 and its verification, 26 Sep 2026 07:53 UTC (appended; nothing above edited)
+
+A last read of the paper at ddae618 (the text of the revision of 25 September 2026, 7470eae, with its figures),
+restricted to outright errors and made before the final run of `run_all.sh` and the typesetting: the analysis, the
+interpretation and the wording choices were frozen. Two reads were made on 25 September 2026: a check by a separate
+session of the AI system, under a brief that confined it to text errors, numbers, cross-references and contradictions
+and had it report uncertain items apart; and an end-to-end read of the same files by the planning session, with a
+mechanical check of `manuscript/main_text_numbers.csv`. Neither read ran an analysis or held subject data. The
+revision prepared from them was audited twice before it was applied, by three further sessions (below). Committed in
+`notes/review_2026-09-25/`: `BRIEF.md` (the brief, its sandbox paths replaced by placeholders; sha256
+a79491b2306d414debe332dc063fac75c72c700d2e16d743262fe354db87e2d0), `findings.md` (the check's report, as written;
+4fad56d81798eaf7fbeee8b177e625c13fe0607b15f8cb266960716d8403de22), `verification_2026-09-25.md` (the verification;
+428b77248973c7289666a68a586542469dfc472d2ae49190de992ad90f5fd426), `README.md`
+(771ba2db3b33952f34a17ca6eedd5b868a05b627443b9e391c4ee2661d329e9b), `revision/` (the replacements that make the
+revision and the script that applies them) and `checks/` (the scripts of both reads; their outputs on the revised
+files are committed with the revised text).
+
+**The check** reported 41 findings: 10 on the text (T1–T10), 4 on numbers (N1–N4), 10 on cross-references (X1–X10),
+10 contradictions (C1–C10) and 7 uncertain items (U1–U7). It found S17 Table's 932 rows identical to
+`inference_revision.csv` and the S19 Table tally (52 predictions: 25 met, 13 partly met, 14 missed) correct.
+
+**The verification** re-derived every finding from the committed files: 40 confirmed and 1 partly (T5: 'Round 17' is
+not a full record title, but the other record titles it lists are the record's headings, which a citation must
+reproduce verbatim for the entry to be found). Among the confirmed: the Fig 2 caption's mirror and cross-prediction
+ranges (N1, N2); Results 6's +6.09, a central difference, where Results 1 gives the family's derivative +6.07 (C1);
+the Fig 6 caption's reading of τ = 5 (U1); the residual null's level quoted from two configurations, −0.037 in the
+main text and −0.035 in S3 Text (C3); 583 and 300 negative numbers written with the hyphen-minus in S3 Text and
+`supplementary.md` (T2, T7); S11 Table's +0.0192 for +0.0193 (N3); Fig 4c's +0.0088 for +0.00875 (N4); the rtr DiD
+given as −0.0091 and −0.0078 without their estimators (C8); S20 Table citing two works with no reference entry (X10).
+The read's own findings, V1–V24, include abbreviations used before their expansion (DiD, FD, VAR(1), SD, SEM, SE);
+N(μ, σ) written with the standard deviation; the Fig 1 caption's r₁, which is pair r₁; two rows of the numbers CSV
+naming the wrong cell; "regional r₁" for the whole-brain mean; the four attempts of 16–17 September missing from S5
+Text; subscripts printed literally in the figures. Ten more were found in preparing the revision and the final run
+(V25–V34), among them: `scripts/15_figures_v2.py` tested the whole tree for its SHA, so that at the final run's last
+step, with every regenerated output a modified tracked file, its captions would have read `-dirty` (V29);
+`8_binary_compare.py` compared the list-of-dict pickles by their bytes, so that float noise would have counted as a
+difference (V30); the B21 outcome entry's statement that the final run's `inference_revision.csv` will differ from
+90690f4's only by the `np.float64` wrappers omits the column `quoted_at`, which B21 computes from the manuscript text
+(V31); the pass rule of 21 September names logs that no comparison script reads (V32).
+
+**The audit of the revision.** The revision as prepared (its three commits built on a clone of ddae618) was read on
+25 September 2026 by two further sessions of the AI system under briefs restricted to errors, one reading every
+changed passage of the text with its consequences, the other the record entries of the revision and the comparison
+scripts of the final run. Their findings, verified against the files, are V35–V52, among them: the main text's +2 %
+of S16 Table printed without the ± that U7 gave it (V35); S3 Text's "near zero" at τ = 5, which U1 corrected in the
+Fig 6 caption only (V36); index labels printed over each other in Fig 3a (V40); the elapsed-time mask of
+`10_logs_figures_compare.py`, which missed "compute finished in 526.9s (2.9 ms/pair)", so that six logs would have
+been reported as changed (V43); a file regenerated without a SHA missing from the pre-run entry's list (V44);
+float-noise values that internal checks print below 1e-13 and that the run can change, which a rule requiring
+identical text would have counted as differences (V45); the comparisons' treatment of changed lines as unordered sets
+(V46); and two conditions of the second attempt at the final run missing from the pre-run entry (V52). Two more were
+found in verifying these: Fig 3b's annotation running past its axes (V53), and an empty line in the committed log of
+the subject-alignment check where the script prints a row of the report (V54). A second audit, of these corrections,
+by a third session on 26 September 2026, found seven more (V55–V61), among them the conditions of item 2 of the
+pre-run entry attributed to the wrong run (V55), the logs' comparison printing at most eight lines of each kind where
+the rule lists every line (V56), Fig 3 labels still about as near another subject's point as their own (V57), and
+three edge cases of the number rule and the line-ending check (V60). Section 5 of the verification lists what was
+judged not to be an error, with the reason.
+
+## The error-only revision: the check of 25 September 2026 applied, 26 Sep 2026 07:53 UTC (appended; nothing above edited)
+
+Decision (V.S., 25 September 2026): every confirmed finding of `notes/review_2026-09-25/verification_2026-09-25.md`
+is applied, and this revision is the last change to the text before the final run of `run_all.sh`. It is made in
+three commits: this one (the review folder, with the replacements that make the revision, and the two entries of this
+day); the text (`draft_v2.md`, S1–S5 Text, `supplementary.md`, `scripts/15_figures_v2.py`, `main_text_numbers.csv`,
+the comparison scripts of the final run, `CLAUDE.md`, `README.md`); and the figures regenerated at the text commit
+with their captions, together with the pre-run entry of the final run, which is made at that third commit.
+
+1. **The text** is changed by 131 verbatim replacements, each required to occur the stated number of times: 26 in
+   `draft_v2.md`, 4 in S1, 1 in S2, 27 in S3 (the last of them the minus-sign replacement, 583 characters), 3 in S4
+   and 10 in S5 Text, 36 in `supplementary.md` (the last the minus-sign replacement, 300 characters) and 24 in the
+   figure script; 11 more bring `CLAUDE.md` and `README.md` up to date. All are committed in
+   `notes/review_2026-09-25/revision/` with the script that applies them, the 131 each with the item of the
+   verification it applies. Each is a disposition of the verification, except three that only bring the text's
+   account of the reviews and of the final run up to date (Data and code availability: this day's review folder and
+   the [TK] of the final run's verdicts; S5 Text §4: the comparisons of the pre-run entry) and one that adds to T5's
+   fix S5 Text §5's sentence on this check (V39). No analysis, result, interpretation or claim moves. Introduction
+   through Methods is 6,984 words with headings (6,864 without; 6,972 and 6,852 before); the abstract and the author
+   summary are unchanged. S20 Table gains a reference note for Luppi et al. (2025) and Varley et al. (2023) (X10),
+   both records checked against Crossref on 25 September 2026 and the two Luppi et al. (2025) quotations against its
+   full text, version 1; S17 Table's source note says that its last column is B21's record at 90690f4 and that B21
+   regenerates that column from the text as it then stands (V33).
+2. **The numbers CSV** is rebuilt for the revised text: 1,191 rows (1,183), 675 of them data rows (667); the two
+   check scripts of the review folder find every source line and every value, and every held string denoting the
+   right cell.
+3. **The figure script** computes the Fig 2 caption's two ranges from the atoms, writes the Fig 1, Fig 4 and Fig 6
+   captions as the text has them, prints subscripts with mathtext, gives Fig 4b's labels their minus signs and Fig
+   4c's contrasts five decimals, puts Fig 5c's legend below its axis (the panel's range −0.04 to 0.06, the
+   equal-scale height rule kept), lowers Fig 2's annotation clear of the legend, places Fig 3's index labels clear of
+   each other and panel b's annotation inside its axes (V40, V53), asserts the Fig 6 caption's reading of the
+   intervals, and takes the SHA rule of `notes/rev_git.py` for the captions header (V29).
+4. **The comparison scripts of the final run** (`notes/planning_checks_2026-09-16/reproduction_checks/`):
+   `6_committed_compare.py` compares the text files line by line, in order, with every printed number within 1e-9 of
+   its committed value, and reports changed line endings (V45, V46); `8_binary_compare.py` compares pickles element
+   by element (V30); `9_wrapper_compare.py` (new) checks B21's two files against the differences fixed in advance
+   (V31); `10_logs_figures_compare.py` (new) compares the logs, asking every non-blank committed line to be
+   reproduced, in order, under masks for what changes between runs and the same rule for numbers, and listing the
+   lines a log adds, and the figures (V32, V43, V45, V46, V54). The four were run on a simulated run of the revised
+   commit and on negative tests (the verification, section 6).
+5. **Unchanged**: every result file, every analysis script, `run_all.sh`, and the record above this entry.

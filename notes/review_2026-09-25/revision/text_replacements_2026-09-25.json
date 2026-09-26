@@ -1,0 +1,1138 @@
+[
+ {
+  "id": "D01",
+  "file": "manuscript/draft_v2.md",
+  "why": "T1",
+  "old": "Integrated Information Decomposition (ΦID; Mediano",
+  "new": "Integrated information decomposition (ΦID; Mediano",
+  "count": 1
+ },
+ {
+  "id": "D02",
+  "file": "manuscript/draft_v2.md",
+  "why": "V1 (DiD first use)",
+  "old": "a DiD is (post − pre) on DMT minus (post − pre) on placebo",
+  "new": "a difference-in-differences (DiD) is (post − pre) on DMT minus (post − pre) on placebo",
+  "count": 1
+ },
+ {
+  "id": "D03",
+  "file": "manuscript/draft_v2.md",
+  "why": "V4 (SD first use)",
+  "old": "Per standard deviation of the pairs' variation within a window",
+  "new": "Per standard deviation (SD) of the pairs' variation within a window",
+  "count": 1
+ },
+ {
+  "id": "D04",
+  "file": "manuscript/draft_v2.md",
+  "why": "V25 (ts_gsr first use; caption)",
+  "old": "the overlay holds subject 1 only (ts_gsr; windows 1–4 of both runs,",
+  "new": "the overlay holds subject 1 only (ts_gsr, the variant with global signal regression; windows 1–4 of both runs,",
+  "count": 1
+ },
+ {
+  "id": "D05",
+  "file": "manuscript/draft_v2.md",
+  "why": "V7 (Fig 1 caption: the overlay's r₁ is pair r₁)",
+  "old": "r₁ = mean of the two regions' within-window lag-1 autocorrelations, q = the pair's within-window lag-0 correlation",
+  "new": "r₁ = pair r₁, the mean of the pair's two lag-1 correlations in its window's 4 × 4 matrix, q = the pair's within-window lag-0 correlation",
+  "count": 1
+ },
+ {
+  "id": "D06",
+  "file": "manuscript/draft_v2.md",
+  "why": "V3 (VAR(1) first use; caption)",
+  "old": "(c) sts against the coupling c of the symmetric VAR(1) pair",
+  "new": "(c) sts against the coupling c of the symmetric first-order vector autoregressive (VAR(1)) pair",
+  "count": 1
+ },
+ {
+  "id": "D07",
+  "file": "manuscript/draft_v2.md",
+  "why": "C3, V9",
+  "old": "reproduces most of its level (−0.037 against −0.049 at W = 60)",
+  "new": "reproduces most of its level (−0.031 to −0.036 against −0.045 to −0.053 in the four run × period cells at W = 60)",
+  "count": 1
+ },
+ {
+  "id": "D08",
+  "file": "manuscript/draft_v2.md",
+  "why": "N1, N2 (Fig 2 caption; computed in the script, FS07, FS08)",
+  "old": "the mirror atoms +0.0395 to +0.0400, the six cross-prediction atoms ±0.0231 where the substituted atoms are ±0.0027;",
+  "new": "the mirror atoms +0.0389 to +0.0400, the six cross-prediction atoms ±0.0230 to ±0.0231 where the substituted atoms are ±0.0024 to ±0.0027;",
+  "count": 1
+ },
+ {
+  "id": "D09",
+  "file": "manuscript/draft_v2.md",
+  "why": "V2, V25 (Table 2 caption)",
+  "old": "the phase-randomised p of Methods as a stationarity check).",
+  "new": "the phase-randomised p of Methods as a stationarity check; FD, framewise displacement; ts_demean, the variant without global signal regression).",
+  "count": 1
+ },
+ {
+  "id": "D10",
+  "file": "manuscript/draft_v2.md",
+  "why": "V5",
+  "old": "Whole-brain r₁ fell relative to placebo by −0.0146",
+  "new": "Whole-brain r₁ changed relative to placebo by −0.0146",
+  "count": 1
+ },
+ {
+  "id": "D11",
+  "file": "manuscript/draft_v2.md",
+  "why": "V4 (SEM first use; caption)",
+  "old": "(± SEM over the network's parcels;",
+  "new": "(± standard error of the mean, SEM, over the network's parcels;",
+  "count": 1
+ },
+ {
+  "id": "D12",
+  "file": "manuscript/draft_v2.md",
+  "why": "U6",
+  "old": "In simulations with a fall of about 0.015 in pair r₁ applied to the DMT run only",
+  "new": "In simulations with a fall of 0.012–0.015 in pair r₁ applied to the DMT run only",
+  "count": 1
+ },
+ {
+  "id": "D13",
+  "file": "manuscript/draft_v2.md",
+  "why": "V4 (SE first use; caption)",
+  "old": "over 3,000 pairs (± SE)",
+  "new": "over 3,000 pairs (± standard error, SE)",
+  "count": 1
+ },
+ {
+  "id": "D14",
+  "file": "manuscript/draft_v2.md",
+  "why": "X9",
+  "old": "nor excludes aligned structure as its source (S3 Text; S9 Table).",
+  "new": "nor excludes aligned structure as its source (S3 Text; S18 Table).",
+  "count": 1
+ },
+ {
+  "id": "D15",
+  "file": "manuscript/draft_v2.md",
+  "why": "U1 (Fig 6 caption; computed in the script, FS18, FS19)",
+  "old": "Where the lag-τ autocorrelation contrast is negative (τ = 1, 2, 3) the sts contrast is negative, and at τ = 5, where the autocorrelation contrast is near zero, so is the sts contrast;",
+  "new": "Where the interval of the lag-τ autocorrelation contrast excludes zero (τ = 1, 2, 3), the sts contrast is negative and its interval excludes zero too; at τ = 5, where the autocorrelation contrast's interval includes zero (p = 0.57), so does the sts contrast's (p = 0.37);",
+  "count": 1
+ },
+ {
+  "id": "D16",
+  "file": "manuscript/draft_v2.md",
+  "why": "C1",
+  "old": "against +6.09 for MMI-sts",
+  "new": "against +6.07 for MMI-sts",
+  "count": 1
+ },
+ {
+  "id": "D17",
+  "file": "manuscript/draft_v2.md",
+  "why": "X9 (S9 Table keeps a main-text citation)",
+  "old": "what acts inside the windows to produce the symmetric cross-lag departure is not identified,",
+  "new": "what acts inside the windows to produce the symmetric cross-lag departure is not identified (S9 Table),",
+  "count": 1
+ },
+ {
+  "id": "D18",
+  "file": "manuscript/draft_v2.md",
+  "why": "V6",
+  "old": "(a_x, a_y ~ N(0.85, 0.0125))",
+  "new": "(a_x, a_y ~ N(0.85, 0.0125²))",
+  "count": 1
+ },
+ {
+  "id": "D19",
+  "file": "manuscript/draft_v2.md",
+  "why": "V39 (the text's account of the reviews: this day's review folder)",
+  "old": "`notes/review_2026-09-22/`, `notes/review_2026-09-24/`)",
+  "new": "`notes/review_2026-09-22/`, `notes/review_2026-09-24/`, `notes/review_2026-09-25/`)",
+  "count": 1
+ },
+ {
+  "id": "D20",
+  "file": "manuscript/draft_v2.md",
+  "why": "V39 (the [TK] of the final run's verdicts names the comparisons of its pre-run entry)",
+  "old": "[TK: the commit, the date, the wall-clock, and the verdicts of 6_committed_compare and 8_binary_compare]",
+  "new": "[TK: the commit, the date, the wall-clock, and the verdicts of the comparisons its pre-run entry fixes]",
+  "count": 1
+ },
+ {
+  "id": "D21",
+  "file": "manuscript/draft_v2.md",
+  "why": "V8",
+  "old": "*bioRxiv*, 10.64898/2026.02.18.706630 (preprint;",
+  "new": "*bioRxiv*, 2026.02.18.706630. https://doi.org/10.64898/2026.02.18.706630 (preprint;",
+  "count": 1
+ },
+ {
+  "id": "D22",
+  "file": "manuscript/draft_v2.md",
+  "why": "T10",
+  "old": "(merge of pull request #4, 13 March 2026; the commit pinned in `requirements.lock.txt`)",
+  "new": "(merge of pull request #4, 13 March 2026; the commit of the pinned environment)",
+  "count": 1
+ },
+ {
+  "id": "D23",
+  "file": "manuscript/draft_v2.md",
+  "why": "T3",
+  "old": "Lempel-Ziv",
+  "new": "Lempel–Ziv",
+  "count": 2
+ },
+ {
+  "id": "D24",
+  "file": "manuscript/draft_v2.md",
+  "why": "V38 (VAR(1) expanded a second time)",
+  "old": "is the lag-0/lag-1 structure of a stable first-order vector autoregression, VAR(1) (S3 Text).",
+  "new": "is the lag-0/lag-1 structure of a stable VAR(1) (S3 Text).",
+  "count": 1
+ },
+ {
+  "id": "D25",
+  "file": "manuscript/draft_v2.md",
+  "why": "V41 (ΦR expanded a second time)",
+  "old": "goes with reduced integrated information (ΦR) within the workspace",
+  "new": "goes with reduced ΦR within the workspace",
+  "count": 1
+ },
+ {
+  "id": "D26",
+  "file": "manuscript/draft_v2.md",
+  "why": "V35 (U7's ± carried to the main text)",
+  "old": "and the 840-sample fit +29 % and +2 % (S16 Table)",
+  "new": "and the 840-sample fit +29 % and +2 % ± 2 % (S16 Table)",
+  "count": 1
+ },
+ {
+  "id": "S1-01",
+  "file": "manuscript/si/S1_Text.md",
+  "why": "C8",
+  "old": "(DiD −0.0078, positive in 4 of 14 subjects)",
+  "new": "(DiD −0.0078 at W = 60, positive in 4 of 14 subjects; −0.0091 at the global fit, bins 9–14 against 1–8, as the record evaluated it)",
+  "count": 1
+ },
+ {
+  "id": "S1-02",
+  "file": "manuscript/si/S1_Text.md",
+  "why": "T3",
+  "old": "Lempel-Ziv",
+  "new": "Lempel–Ziv",
+  "count": 2
+ },
+ {
+  "id": "S1-03",
+  "file": "manuscript/si/S1_Text.md",
+  "why": "T6",
+  "old": "the post-hoc proportionality check",
+  "new": "the post hoc proportionality check",
+  "count": 1
+ },
+ {
+  "id": "S1-04",
+  "file": "manuscript/si/S1_Text.md",
+  "why": "V28",
+  "old": "(record, 'Pre-registered analysis choices'",
+  "new": "(record, \"Pre-registered analysis choices\"",
+  "count": 2
+ },
+ {
+  "id": "S2-01",
+  "file": "manuscript/si/S2_Text.md",
+  "why": "V11",
+  "old": "deconvolution lowered the window-level r₁ from 0.848 to 0.783",
+  "new": "deconvolution lowered whole-brain r₁ from 0.848 to 0.783",
+  "count": 1
+ },
+ {
+  "id": "S3-01",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "X1",
+  "old": "# S3 Text. The supporting tables of the estimator account",
+  "new": "# S3 Text. The supporting analyses of the estimator account",
+  "count": 1
+ },
+ {
+  "id": "S3-02",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "X4",
+  "old": "against the fine central difference −1.7402 quoted in the main text",
+  "new": "against the fine central difference −1.7402 of the table above",
+  "count": 1
+ },
+ {
+  "id": "S3-03",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "X2",
+  "old": "(record, \"Part B, item 1\")",
+  "new": "(pre-specified as B1, with no prediction, in `notes/partB_prespec_2026-09-14.md`)",
+  "count": 1
+ },
+ {
+  "id": "S3-04",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "C2",
+  "old": "used for all derivative values quoted in this paper",
+  "new": "used for the derivative values quoted in this paper unless another point is named",
+  "count": 1
+ },
+ {
+  "id": "S3-05",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "X3",
+  "old": "on |q| ≤ 0.95 (`manuscript/figures/captions_v2.md`)",
+  "new": "on |q| ≤ 0.95 (the scope-map caption of `manuscript/figures/captions_v2.md` as generated at 48ea934; 6.55 also in `notes/partB1_scope_map.md`, item 2)",
+  "count": 1
+ },
+ {
+  "id": "S3-06",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "U4",
+  "old": "(a post hoc quantity; main text, Methods)",
+  "new": "(a post hoc quantity; S19 Table, Part B)",
+  "count": 1
+ },
+ {
+  "id": "S3-07",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "T6",
+  "old": "negative in 10 of 14; W = 60, post-hoc;",
+  "new": "negative in 10 of 14; W = 60, post hoc;",
+  "count": 1
+ },
+ {
+  "id": "S3-08",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "V13",
+  "old": "as the alternative (`notes/partB4_diagnostic.md`).",
+  "new": "as the alternative (`notes/partB_prespec_2026-09-14.md`, B4, in the wording of its restatement in `notes/partB4_diagnostic.md`).",
+  "count": 1
+ },
+ {
+  "id": "S3-09",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "V12",
+  "old": "neither branch applied: the interval [+0.0005, +0.0226] excludes zero,",
+  "new": "neither branch applied: the subject-bootstrap interval, [+0.0021, +0.0211], excludes zero (as does the inverted sign-flip interval, [+0.0005, +0.0226]),",
+  "count": 1
+ },
+ {
+  "id": "S3-10",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "T6",
+  "old": "A post-hoc supplement",
+  "new": "A post hoc supplement",
+  "count": 1
+ },
+ {
+  "id": "S3-11",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "T8",
+  "old": "the residual is more negative where pair a and |q| are higher (R² = 0.74 on pair a, pair |q| and the cross-lag scatter)",
+  "new": "the residual is more negative where pair r₁ and |q| are higher (R² = 0.74 on pair r₁, pair |q| and the cross-lag scatter)",
+  "count": 1
+ },
+ {
+  "id": "S3-12",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "C3, V9",
+  "old": "it gives a residual level of −0.035 (−3.0 %) against the observed −0.049 (−4.3 %) and",
+  "new": "it gives a residual level of −0.031 to −0.036 in the four run × period cells (−2.8 % to −3.0 % of sts) against the observed −0.045 to −0.053 (−0.049, −4.3 %, over all windows; `residual_source.log`) and",
+  "count": 1
+ },
+ {
+  "id": "S3-13",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "C3",
+  "old": "It gives a level of −8.5 %, −3.1 % and −0.34 % at W = 30, 60 and 840",
+  "new": "With a single filter fitted to the placebo autocorrelation function and one operating point per window length, it gives a level of −8.5 %, −3.1 % and −0.34 % at W = 30, 60 and 840",
+  "count": 1
+ },
+ {
+  "id": "S3-14",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "X6",
+  "old": "the residual's DiD sits in its symmetric part (main text, Results 4).",
+  "new": "the residual's DiD sits in its symmetric part (above).",
+  "count": 1
+ },
+ {
+  "id": "S3-15",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "C5",
+  "old": "(2) symmetric VAR(1), population a = 0.8632,",
+  "new": "(2) antisymmetric VAR(1), population a = 0.8632,",
+  "count": 3
+ },
+ {
+  "id": "S3-16",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "V6",
+  "old": "q ~ N(0, 0.266) clipped",
+  "new": "q ~ N(0, 0.266²) clipped",
+  "count": 3
+ },
+ {
+  "id": "S3-17",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "C4",
+  "old": "The filter (band-pass 0.01–0.08 Hz times exp(−βf²))",
+  "new": "The filter (a band-pass whose lower edge is fitted, 0.0064–0.080 Hz for the placebo function and 0.0030–0.080 Hz for the DMT-post function, times exp(−βf²))",
+  "count": 1
+ },
+ {
+  "id": "S3-18",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "T8",
+  "old": "so that the window-level mean pair a and |q| equal",
+  "new": "so that the window-level mean pair r₁ and |q| equal",
+  "count": 1
+ },
+ {
+  "id": "S3-19",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "V6",
+  "old": "a_x, a_y ~ N(0.85, 0.0125), q from",
+  "new": "a_x, a_y ~ N(0.85, 0.0125²), q from",
+  "count": 1
+ },
+ {
+  "id": "S3-20",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "V15",
+  "old": "(regional r₁ −0.0146)",
+  "new": "(whole-brain r₁ −0.0146)",
+  "count": 1
+ },
+ {
+  "id": "S3-21",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "U2",
+  "old": "and r₁ = 0.76: p = 1 is not a filter",
+  "new": "and a run-level r₁ of 0.76 (0.75 at W = 60): p = 1 is not a filter",
+  "count": 1
+ },
+ {
+  "id": "S3-22",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "C6, U7",
+  "old": "On two further matched pairs, whose analytic sts is 0.094 nats, an order of magnitude below the data's (the asymmetric VAR(1) pairs of S16 Table: lowered autocorrelation with the cross-coupling re-solved, and raised noise correlation with the autocorrelation re-solved), W = 60 returned −9 % and +16 % and the 840-sample fit +2 % and +1 % (S16 Table).",
+  "new": "The first two of these pairs, F1-i and F1-ii (the asymmetric VAR(1) pairs of S16 Table: lowered autocorrelation with the cross-coupling re-solved, and raised noise correlation with the autocorrelation re-solved), have an analytic sts of 0.094 nats, an order of magnitude below the data's; for them the 840-sample fit returned +2 % and +1 % ± 1 % (S16 Table).",
+  "count": 1
+ },
+ {
+  "id": "S3-23",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "X7",
+  "old": "(main text, Results 2; S8 Table: +0.0204",
+  "new": "(S8 Table: +0.0204",
+  "count": 1
+ },
+ {
+  "id": "S3-24",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "V14",
+  "old": "gives +32.8 against +0.06, which is the pair of values the Discussion quotes;",
+  "new": "gives +32.8 against +0.06, of which the Discussion quotes the first;",
+  "count": 1
+ },
+ {
+  "id": "S3-25",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "V16",
+  "old": "both fell under DMT: rtr by −0.0078,",
+  "new": "both fell under DMT: rtr by 0.0078,",
+  "count": 1
+ },
+ {
+  "id": "S3-26",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "V36 (U1 carried to S3 Text)",
+  "old": "at τ = 5 both are near zero (sts: W = 60 p = 0.3688,",
+  "new": "at τ = 5 the intervals of both include zero (autocorrelation contrast −0.0108, p = 0.5670; sts: W = 60 p = 0.3688,",
+  "count": 1
+ },
+ {
+  "id": "S4-01",
+  "file": "manuscript/si/S4_Text.md",
+  "why": "V17",
+  "old": "as they stand in the revision of 25 September 2026.",
+  "new": "as they stand in this version.",
+  "count": 1
+ },
+ {
+  "id": "S4-02",
+  "file": "manuscript/si/S4_Text.md",
+  "why": "C7, V37",
+  "old": "| R1 Effect sizes with uncertainty | reported | Every contrast is given as a mean DiD with an inverted sign-flip 95 % interval and exact p (Tables 1–3; Results 2–6). |",
+  "new": "| R1 Effect sizes with uncertainty | reported | Contrasts of the data are given as mean DiDs with inverted sign-flip 95 % intervals and exact p (Table 2; Results 2–6; intervals without p in Table 3's data rows). The exceptions are the atom DiDs of Table 1, which carry the number of negative subjects, and the contrasts whose per-subject values were not saved: the pair r₁ and pair \\|q\\| DiDs (point values), the regional contrast of Results 3 (t intervals from the saved mean and SD) and the in-band spectral centroid of Results 5 (a point value with p; its interval, in S3 Text, a subject-bootstrap percentile interval). |",
+  "count": 1
+ },
+ {
+  "id": "S4-03",
+  "file": "manuscript/si/S4_Text.md",
+  "why": "U3",
+  "old": "negative-of-14 counts in every table",
+  "new": "negative-of-14 counts in Tables 1 and 2 and in S17 Table",
+  "count": 1
+ },
+ {
+  "id": "S5-01",
+  "file": "manuscript/si/S5_Text.md",
+  "why": "T6",
+  "old": "or as a post-hoc check named as such in the record",
+  "new": "or as a post hoc check named as such in the record",
+  "count": 1
+ },
+ {
+  "id": "S5-02",
+  "file": "manuscript/si/S5_Text.md",
+  "why": "X5",
+  "old": "to within-subject bands on Figure 4 and to Figure 5,",
+  "new": "to within-subject bands on Figure 4 of the drafts of that day (now Fig 5) and to their Figure 5 (now Fig 6),",
+  "count": 1
+ },
+ {
+  "id": "S5-03",
+  "file": "manuscript/si/S5_Text.md",
+  "why": "V28",
+  "old": "; record, 'Stage B of round 16: the shortened text', 23 September 2026)",
+  "new": "; record, \"Stage B of round 16: the shortened text\", 23 September 2026)",
+  "count": 1
+ },
+ {
+  "id": "S5-04",
+  "file": "manuscript/si/S5_Text.md",
+  "why": "V19",
+  "old": "(the commission of 20 September had stated there was none there)",
+  "new": "(the task description given to that session on 20 September had stated that there was none)",
+  "count": 1
+ },
+ {
+  "id": "S5-05",
+  "file": "manuscript/si/S5_Text.md",
+  "why": "V28",
+  "old": "(record, 'B19, outcome', 21 September 2026;",
+  "new": "(record, \"B19, outcome\", 21 September 2026;",
+  "count": 1
+ },
+ {
+  "id": "S5-06",
+  "file": "manuscript/si/S5_Text.md",
+  "why": "V18",
+  "old": "The single full run of `run_all.sh` was attempted twice at 0b8d1a4,",
+  "new": "Four earlier attempts at the end-to-end run, on 16–17 September 2026 (three at d51966e, one at 0a25aaa), stopped inside step 2, two within minutes of the laptop's lid being closed and two for causes the system journal does not record; of what they wrote, the third attempt's log (`results/run_all_full.log`) and its two stationary bias tables, identical in every cell to the versions they replaced, were committed in 48ea934 (record, \"The attempts at the end-to-end run of `run_all.sh`, 16–18 September 2026\"). The single full run of `run_all.sh` was then attempted twice at 0b8d1a4,",
+  "count": 1
+ },
+ {
+  "id": "S5-07",
+  "file": "manuscript/si/S5_Text.md",
+  "why": "V39 (the comparisons of the final run's pre-run entry)",
+  "old": "The single full run of `run_all.sh` at the final commit, with `6_committed_compare.py` and `8_binary_compare.py` against the committed outputs, is pending",
+  "new": "The single full run of `run_all.sh` at the final commit, compared with the committed outputs under the rule of its pre-run entry (record, \"The final end-to-end run of `run_all.sh` at the final commit: pre-run entry\"), is pending",
+  "count": 1
+ },
+ {
+  "id": "S5-08",
+  "file": "manuscript/si/S5_Text.md",
+  "why": "T4",
+  "old": " The reference list was checked as follows. Every entry except the software was read in full (main article; supplementary materials only where named) on 20 September 2026 from the publisher's or preprint server's PDF, including the SI Appendix of Mediano et al. (2025); Arbabshirani et al. (2014) was read in its NIH author manuscript and Faes et al. (2025) in its arXiv version. The exceptions are seven entries added on 20 September: Cousineau (2005), Morey (2008) and Wu et al. (2021) were read in full on 22 September 2026 from the publishers' open-access pages, Tian et al. (2020) from its bioRxiv preprint (v2), and Váša et al. (2018) in its Methods and Results on the publisher's page; Alexander-Bloch et al. (2018) could not be obtained in full text and was checked against its abstract and bibliographic record only, and Theiler et al. (1992) against its bibliographic record only. Bibliographic details were checked against Crossref, the publisher page or the preprint server on 15, 17 and 20 September 2026.",
+  "new": "",
+  "count": 1
+ },
+ {
+  "id": "S5-09",
+  "file": "manuscript/si/S5_Text.md",
+  "why": "T5 (partly); V39 (the sentence on the check of 25 September)",
+  "old": "and the revision of 25 September 2026 applied them (record, 'Round 17').",
+  "new": "and the revision of 25 September 2026 applied them (record, \"Round 17: the review of 24 September 2026 applied\"). On 25 September 2026 a check of the revised text restricted to outright errors (`notes/review_2026-09-25/findings.md`: 41 findings, of which 10 on the text, 4 on numbers, 10 on cross-references, 10 on contradictions and 7 uncertain) and a separate end-to-end read of the same text were verified against the committed files (`verification_2026-09-25.md`: of the 41, 40 confirmed and 1 partly; 24 findings of the read, V1–V24; and 37 found in preparing the revision and the final run, V25–V61, 25 of them by two audits of the prepared revision by further sessions), and the error-only revision applied them (record, \"The error-only revision: the check of 25 September 2026 applied\").",
+  "count": 1
+ },
+ {
+  "id": "S5-10",
+  "file": "manuscript/si/S5_Text.md",
+  "why": "V20",
+  "old": "526090d (23 Sep, the shortened text) and 66c6331 (23 Sep, the figures regenerated at 526090d); the review folder of 24 September and this revision's text and figures are the three commits of 25 Sep 2026, which cannot name their own identifiers (the captions file's header names the commit at which the figures were generated).",
+  "new": "526090d (23 Sep, the shortened text); 66c6331 (23 Sep, the figures regenerated at 526090d); 371ccf5 (25 Sep, the review folder of 24 September and the record entries of the revision of 25 September 2026), 7470eae (25 Sep, the text of that revision) and ddae618 (25 Sep, the figures regenerated at 7470eae); the review folder of 25 September and the error-only revision's text and figures are the three commits that follow, which cannot name their own identifiers (the captions file's header names the commit at which the figures were generated).",
+  "count": 1
+ },
+ {
+  "id": "SU-01",
+  "file": "manuscript/supplementary.md",
+  "why": "V27",
+  "old": "and the intervals marked \"percentile\" are subject-bootstrap 95 % percentile intervals (10,000 draws) of quantities with no saved per-subject vector;",
+  "new": "and the intervals marked \"percentile\" are subject-bootstrap 95 % percentile intervals (10,000 draws), given for quantities with no saved per-subject vector and, in S19 Table, where a recorded outcome quoted one beside the inverted interval;",
+  "count": 1
+ },
+ {
+  "id": "SU-02",
+  "file": "manuscript/supplementary.md",
+  "why": "V21",
+  "old": "## S1 Table. Step contrast on the sensitivity windows 5–14 (bins 9–28) vs pre-injection windows 1–4, W = 60",
+  "new": "## S1 Table. Step contrast on the sensitivity windows 5–14 (bins 9–28) against pre-injection windows 1–4, W = 60",
+  "count": 1
+ },
+ {
+  "id": "SU-03",
+  "file": "manuscript/supplementary.md",
+  "why": "V21",
+  "old": "## S3 Table. Exploratory regional DiD: regions passing BH FDR (q = 0.05)",
+  "new": "## S3 Table. Exploratory regional DiD: regions passing Benjamini–Hochberg FDR (q = 0.05)",
+  "count": 1
+ },
+ {
+  "id": "SU-04",
+  "file": "manuscript/supplementary.md",
+  "why": "V21, T3",
+  "old": "## S6 Table. EEG Lempel-Ziv complexity vs ΦID quantities, global fit, 28 bins",
+  "new": "## S6 Table. EEG Lempel–Ziv complexity against the ΦID quantities, global fit, 28 bins",
+  "count": 1
+ },
+ {
+  "id": "SU-05",
+  "file": "manuscript/supplementary.md",
+  "why": "T6, V21",
+  "old": "## S8 Table. Post-hoc proportionality: sts / TDMI ratio DiD, four cells",
+  "new": "## S8 Table. Post hoc proportionality: the sts / TDMI ratio DiD in four cells",
+  "count": 1
+ },
+ {
+  "id": "SU-06",
+  "file": "manuscript/supplementary.md",
+  "why": "T6",
+  "old": "Post-hoc, specified after the primary result, reported regardless of outcome.",
+  "new": "Post hoc, specified after the primary result, reported regardless of outcome.",
+  "count": 1
+ },
+ {
+  "id": "SU-07",
+  "file": "manuscript/supplementary.md",
+  "why": "X8",
+  "old": "from 25 September 2026 Results 2 cites this table and gives the one cell whose interval excludes zero without the rule's labels",
+  "new": "from 25 September 2026 Results 2 only cites this table, without the rule's labels",
+  "count": 1
+ },
+ {
+  "id": "SU-08",
+  "file": "manuscript/supplementary.md",
+  "why": "U5, V22",
+  "old": "both at git 6b5181a, seed 20261120; definitions in Methods and `notes/rev_crosslag_budget.py`;",
+  "new": "both first computed at 6b5181a (their headers carry d507728, the regeneration of 20 September 2026), seed 20261120; definitions in S3 Text, section 6, and `notes/rev_crosslag_budget.py`;",
+  "count": 1
+ },
+ {
+  "id": "SU-09",
+  "file": "manuscript/supplementary.md",
+  "why": "V6",
+  "old": "(β₁ ~ N(6β̄, h·6β̄), β₂ ~ N(β̄/5, h·β̄/5),",
+  "new": "(β₁ ~ N(6β̄, (h·6β̄)²), β₂ ~ N(β̄/5, (h·β̄/5)²),",
+  "count": 1
+ },
+ {
+  "id": "SU-10",
+  "file": "manuscript/supplementary.md",
+  "why": "U5",
+  "old": "(`crosslag_deviation_tables.md`, sections A and B at git 9a19b10;",
+  "new": "(`crosslag_deviation_tables.md`, sections A and B, first computed at 9a19b10, header d507728;",
+  "count": 1
+ },
+ {
+  "id": "SU-11",
+  "file": "manuscript/supplementary.md",
+  "why": "V21",
+  "old": "## S10 Table. Calibration of the residual diagnostic at both estimators: the AR(1) generator and the band-passed generator",
+  "new": "## S10 Table. Calibration of the residual of the AR(1)-substituted estimate on the AR(1) and the band-passed generator, at both estimators",
+  "count": 1
+ },
+ {
+  "id": "SU-12",
+  "file": "manuscript/supplementary.md",
+  "why": "V6",
+  "old": "AR(1) generator: a_x, a_y ~ N(0.85, 0.0125); q from",
+  "new": "AR(1) generator: a_x, a_y ~ N(0.85, 0.0125²); q from",
+  "count": 1
+ },
+ {
+  "id": "SU-13",
+  "file": "manuscript/supplementary.md",
+  "why": "N3",
+  "old": "| −0.0298 | +0.0134 [+0.0077, +0.0192] | 0.0005 | 1 |",
+  "new": "| −0.0298 | +0.0134 [+0.0077, +0.0193] | 0.0005 | 1 |",
+  "count": 1
+ },
+ {
+  "id": "SU-14",
+  "file": "manuscript/supplementary.md",
+  "why": "V15",
+  "old": "| map projection: the mean regional r₁ change (−0.0146) through",
+  "new": "| map projection: the whole-brain r₁ change (−0.0146) through",
+  "count": 1
+ },
+ {
+  "id": "SU-15",
+  "file": "manuscript/supplementary.md",
+  "why": "V15",
+  "old": "−0.0146 (regional r₁)",
+  "new": "−0.0146 (whole-brain r₁)",
+  "count": 3
+ },
+ {
+  "id": "SU-16",
+  "file": "manuscript/supplementary.md",
+  "why": "V28",
+  "old": "(record, 'Stage B of round 16: the shortened text', 23 September 2026)",
+  "new": "(record, \"Stage B of round 16: the shortened text\", 23 September 2026)",
+  "count": 1
+ },
+ {
+  "id": "SU-17",
+  "file": "manuscript/supplementary.md",
+  "why": "V15",
+  "old": "+5.5, that is 0.0055 nats per 0.001, per unit of regional r₁)",
+  "new": "+5.5, that is 0.0055 nats per 0.001, per unit of whole-brain r₁)",
+  "count": 1
+ },
+ {
+  "id": "SU-18",
+  "file": "manuscript/supplementary.md",
+  "why": "V15",
+  "old": "−0.75 per unit of regional r₁ as the per-subject OLS slope",
+  "new": "−0.75 per unit of whole-brain r₁ as the per-subject OLS slope",
+  "count": 1
+ },
+ {
+  "id": "SU-19",
+  "file": "manuscript/supplementary.md",
+  "why": "U7",
+  "old": "(asymmetric VAR(1)) | +33 % | +16 % | +1 % |",
+  "new": "(asymmetric VAR(1)) | +33 % | +16 % | +1 % ± 1 % |",
+  "count": 1
+ },
+ {
+  "id": "SU-20",
+  "file": "manuscript/supplementary.md",
+  "why": "U7",
+  "old": "| −1 % ± 8 % | −8 % ± 6 % | +2 % |",
+  "new": "| −1 % ± 8 % | −8 % ± 6 % | +2 % ± 2 % |",
+  "count": 1
+ },
+ {
+  "id": "SU-21",
+  "file": "manuscript/supplementary.md",
+  "why": "V6",
+  "old": "q pool 20,000 draws of N(0, 0.3424) clipped",
+  "new": "q pool 20,000 draws of N(0, 0.3424²) clipped",
+  "count": 1
+ },
+ {
+  "id": "SU-22",
+  "file": "manuscript/supplementary.md",
+  "why": "V6",
+  "old": "3000 pairs, q ~ N(0, 0.3424) clipped",
+  "new": "3000 pairs, q ~ N(0, 0.3424²) clipped",
+  "count": 1
+ },
+ {
+  "id": "SU-23",
+  "file": "manuscript/supplementary.md",
+  "why": "C8",
+  "old": "rtr fell with sts (DiD −0.0091, positive in 4 of 14; r = 0.66 between the two time courses)",
+  "new": "rtr fell with sts (DiD −0.0091 at the global fit, bins 9–14 against 1–8, as the record evaluated it; −0.0078 at W = 60; positive in 4 of 14; r = 0.66 between the two time courses)",
+  "count": 1
+ },
+ {
+  "id": "SU-24",
+  "file": "manuscript/supplementary.md",
+  "why": "C8 (the same estimator label)",
+  "old": "| (ii) held (sts DiD −0.081); (i) held at the group mean only",
+  "new": "| At the global fit, bins 9–14 against 1–8: (ii) held (sts DiD −0.081); (i) held at the group mean only",
+  "count": 1
+ },
+ {
+  "id": "SU-25",
+  "file": "manuscript/supplementary.md",
+  "why": "C10",
+  "old": "ρ_S = −0.242 [−0.401, −0.076], one-sided p = 0.002",
+  "new": "ρ_S = −0.242 [−0.401, −0.076] (percentile), one-sided p = 0.002",
+  "count": 1
+ },
+ {
+  "id": "SU-26",
+  "file": "manuscript/supplementary.md",
+  "why": "C10",
+  "old": "Workspace minus non-workspace −0.0047 [−0.0079, −0.0013], p = 0.023",
+  "new": "Workspace minus non-workspace −0.0047 [−0.0079, −0.0013] (percentile), p = 0.023",
+  "count": 1
+ },
+ {
+  "id": "SU-27",
+  "file": "manuscript/supplementary.md",
+  "why": "C9",
+  "old": "CCS-sts small (\\|level\\| ≤ 0.04 nats), negative,",
+  "new": "CCS-sts small (\\|level\\| ≤ 0.04 nats under `phyid`'s mask, as recorded; ≤ 0.05 under the published definition), negative,",
+  "count": 1
+ },
+ {
+  "id": "SU-28",
+  "file": "manuscript/supplementary.md",
+  "why": "V23",
+  "old": "(the τ = 5 level above the τ = 3 level because r₅ is negative and the atoms are even in the autocorrelation)",
+  "new": "(the τ = 5 level above the τ = 3 level because \\|r₅\\| exceeds \\|r₃\\| and the atoms are even in the autocorrelation)",
+  "count": 1
+ },
+ {
+  "id": "SU-29",
+  "file": "manuscript/supplementary.md",
+  "why": "C10",
+  "old": "ts_gsr +0.00009 [+0.00005, +0.00013], p = 0.0004;",
+  "new": "ts_gsr +0.00009 [+0.00005, +0.00013] (percentile; inverted [+0.00004, +0.00014]), p = 0.0004;",
+  "count": 1
+ },
+ {
+  "id": "SU-30",
+  "file": "manuscript/supplementary.md",
+  "why": "V19",
+  "old": "the outcome entry corrects the commissioned sign",
+  "new": "the outcome entry corrects the sign the pre-run entry stated",
+  "count": 1
+ },
+ {
+  "id": "SU-31",
+  "file": "manuscript/supplementary.md",
+  "why": "C10",
+  "old": "| +0.00340 [+0.00300, +0.00380], 14 of 14:",
+  "new": "| +0.00340 [+0.00300, +0.00380] (percentile; inverted [+0.00294, +0.00386]), 14 of 14:",
+  "count": 1
+ },
+ {
+  "id": "SU-32",
+  "file": "manuscript/supplementary.md",
+  "why": "V26",
+  "old": "Methods, The AR(1)-substituted estimate; S3 Text §6;",
+  "new": "Methods, The AR(1)-substituted estimate and its calibration; S3 Text §6;",
+  "count": 1
+ },
+ {
+  "id": "SU-33",
+  "file": "manuscript/supplementary.md",
+  "why": "T3",
+  "old": "Lempel-Ziv",
+  "new": "Lempel–Ziv",
+  "count": 2
+ },
+ {
+  "id": "SU-35",
+  "file": "manuscript/supplementary.md",
+  "why": "V33",
+  "old": "(record, the B21 pre-run entry and outcome of 23 September 2026; B21 was run at a9d9ca4).",
+  "new": "(record, the B21 pre-run entry and outcome of 23 September 2026; B21 was run at a9d9ca4). The last column is B21's record, as committed at 90690f4, of where the text of 23 September 2026 quoted each committed percentile interval; B21 computes that column from the manuscript text as it stands when it runs, so the file regenerated at the final commit holds the same column for the final text.",
+  "count": 1
+ },
+ {
+  "id": "SU-34",
+  "file": "manuscript/supplementary.md",
+  "why": "X10",
+  "old": "and Luppi et al. 2022 report \"negligible effects\" of the step at TR 0.72 s.",
+  "new": "and Luppi et al. 2022 report \"negligible effects\" of the step at TR 0.72 s.\n\n### References cited only in this table\n\nLuppi, A. I., Uhrig, L., Tasserie, J., Shafiei, G., Legare, A., Muta, K., Hata, J., Okano, H., Golkowski, D., Ranft, A., Ilg, R., Jordan, D., Gini, S., Liu, Z.-Q., Yee, Y., Signorelli, C. M., Cofre, R., Destexhe, A., Menon, D., Stamatakis, E. A., Desrosiers, P., De Koninck, P., Connor, C. W., Gozzi, A., Fulcher, B. D., Jarraya, B., & Misic, B. (2025). Comprehensive profiling of anaesthetised brain dynamics across phylogeny. *bioRxiv*, 2025.03.22.644729. https://doi.org/10.1101/2025.03.22.644729 (preprint, posted 24 March 2025; bibliographic record checked against Crossref on 25 September 2026, which records no journal version; the two quotations of Table B, item 3, checked against its full text, version 1, on the same day)\n\nVarley, T. F., Pope, M., Faskowitz, J., & Sporns, O. (2023). Multivariate information theory uncovers synergistic subsystems of the human cerebral cortex. *Communications Biology*, 6(1), 451. https://doi.org/10.1038/s42003-023-04843-w (cited only as the source of the data of Varley (2024), row 10; bibliographic record checked against Crossref on 25 September 2026; not read)",
+  "count": 1
+ },
+ {
+  "id": "FS21",
+  "file": "scripts/15_figures_v2.py",
+  "why": "V29 (subprocess no longer used once the SHA comes from notes/rev_git.py)",
+  "old": "import subprocess\n",
+  "new": "",
+  "count": 1
+ },
+ {
+  "id": "FS01",
+  "file": "scripts/15_figures_v2.py",
+  "why": "the docstring's revision history (N1, N2, V7, U1, V24, V40, V53, V57, T9, N4, V29)",
+  "old": "paths, their provenance being the \"Source\" sentence at the end of each, which the main text does not reproduce).",
+  "new": "paths, their provenance being the \"Source\" sentence at the end of each, which the main text does not reproduce);\nthen the error-only check of 25 Sep 2026 applied (the Fig 2 caption's mirror and cross-prediction ranges computed\nfrom the atoms; the Fig 1 caption's r₁ named as pair r₁; the Fig 6 caption's τ = 5 sentence stated through the\nintervals and exact p; mathtext subscripts in legends, titles and labels; Fig 2's annotation lowered clear of the\nlegend; Fig 3's index labels placed nearest their own points, with a light backing, and panel b's annotation\nwithin its axes; Fig 4b's labels with minus signs and Fig 4c's contrasts at five decimals; Fig 5c's legend below\nthe axis; the SHA rule of notes/rev_git.py for the captions header).",
+  "count": 1
+ },
+ {
+  "id": "FS02",
+  "file": "scripts/15_figures_v2.py",
+  "why": "V29, V51 (the captions header would read -dirty at the final run's last step)",
+  "old": "try:\n    GIT = subprocess.check_output([\"git\", \"rev-parse\", \"--short\", \"HEAD\"], cwd=REPO, text=True).strip()\n    if subprocess.check_output([\"git\", \"status\", \"--porcelain\", \"--untracked-files=no\"], cwd=REPO, text=True).strip():\n        GIT += \"-dirty\"\nexcept Exception:\n    GIT = \"nogit\"\n",
+  "new": "# the SHA rule of the notes/ writers (notes/rev_git.py): -dirty only if scripts/, notes/*.py or the record have\n# uncommitted changes. The whole-tree test used until 25 Sep 2026 would tag the captions of the final run -dirty,\n# because by this last step of run_all.sh every regenerated output is a modified tracked file.\nfrom rev_git import SHA as GIT\n",
+  "count": 1
+ },
+ {
+  "id": "FS03",
+  "file": "scripts/15_figures_v2.py",
+  "why": "V25, V7, V3 (Fig 1 caption)",
+  "old": "the overlay holds subject 1 only (ts_gsr; windows 1–4 of both runs, {pool_r1.size:,} pair × window points; contours at the 50th, 80th and 95th percentiles of the occupied cells; r₁ = mean of the two regions' within-window lag-1 autocorrelations, q = the pair's within-window lag-0 correlation;",
+  "new": "the overlay holds subject 1 only (ts_gsr, the variant with global signal regression; windows 1–4 of both runs, {pool_r1.size:,} pair × window points; contours at the 50th, 80th and 95th percentiles of the occupied cells; r₁ = pair r₁, the mean of the pair's two lag-1 correlations in its window's 4 × 4 matrix, q = the pair's within-window lag-0 correlation;",
+  "count": 1
+ },
+ {
+  "id": "FS04",
+  "file": "scripts/15_figures_v2.py",
+  "why": "V3",
+  "old": "(c) sts against the coupling c of the symmetric VAR(1) pair x_{{t+1}}",
+  "new": "(c) sts against the coupling c of the symmetric first-order vector autoregressive (VAR(1)) pair x_{{t+1}}",
+  "count": 1
+ },
+ {
+  "id": "FS05",
+  "file": "scripts/15_figures_v2.py",
+  "why": "V24 (mathtext)",
+  "old": "label=\"AR(1)-substituted, from each pair's (a_x, a_y, q)\")",
+  "new": "label=\"AR(1)-substituted, from each pair's ($a_x$, $a_y$, $q$)\")",
+  "count": 1
+ },
+ {
+  "id": "FS06",
+  "file": "scripts/15_figures_v2.py",
+  "why": "V24 (mathtext)",
+  "old": "beyond\\nan asymmetry |a_x − a_y| of 0.008\\nat (0.85, 0.25))\")",
+  "new": "beyond\\nan asymmetry $|a_x - a_y|$ of 0.008\\nat (0.85, 0.25))\")",
+  "count": 1
+ },
+ {
+  "id": "FS20",
+  "file": "scripts/15_figures_v2.py",
+  "why": "V24 (Fig 2: the annotation clear of the legend's subscripts)",
+  "old": "xytext=(0.4, 0.60), fontsize=7.5",
+  "new": "xytext=(0.4, 0.57), fontsize=7.5",
+  "count": 1
+ },
+ {
+  "id": "FS07",
+  "file": "scripts/15_figures_v2.py",
+  "why": "N1, N2",
+  "old": "res_lvl = lvl_o - lvl_p; res_did = did_o.mean(0) - did_p.mean(0)\n",
+  "new": "res_lvl = lvl_o - lvl_p; res_did = did_o.mean(0) - did_p.mean(0)\n# the caption's ranges over the four mirror atoms and the six cross-prediction atoms (the error-only check of 25 Sep 2026)\nMIRROR, CROSS = [\"xts\", \"yts\", \"stx\", \"sty\"], [\"rtx\", \"rty\", \"xtr\", \"ytr\", \"xty\", \"ytx\"]\nmir = [res_lvl[IX[a]] for a in MIRROR]; cr_res = [abs(res_lvl[IX[a]]) for a in CROSS]; cr_sub = [abs(lvl_p[IX[a]]) for a in CROSS]\n",
+  "count": 1
+ },
+ {
+  "id": "FS08",
+  "file": "scripts/15_figures_v2.py",
+  "why": "N1, N2",
+  "old": "the mirror atoms {res_lvl[IX['xts']]:+.4f} to {res_lvl[IX['stx']]:+.4f}, the six cross-prediction atoms ±{abs(res_lvl[IX['rtx']]):.4f} where the substituted atoms are ±{abs(lvl_p[IX['rtx']]):.4f};",
+  "new": "the mirror atoms {min(mir):+.4f} to {max(mir):+.4f}, the six cross-prediction atoms ±{min(cr_res):.4f} to ±{max(cr_res):.4f} where the substituted atoms are ±{min(cr_sub):.4f} to ±{max(cr_sub):.4f};",
+  "count": 1
+ },
+ {
+  "id": "FS09",
+  "file": "scripts/15_figures_v2.py",
+  "why": "T9",
+  "old": "f\"{c[0]:+.4f}\", ha=\"center\", va=\"top\", fontsize=7)",
+  "new": "um(f\"{c[0]:+.4f}\"), ha=\"center\", va=\"top\", fontsize=7)",
+  "count": 1
+ },
+ {
+  "id": "FS10",
+  "file": "scripts/15_figures_v2.py",
+  "why": "T9",
+  "old": "f\"{c[1]:+.4f}\", ha=\"center\", va=\"bottom\" if c[1] >= 0",
+  "new": "um(f\"{c[1]:+.4f}\"), ha=\"center\", va=\"bottom\" if c[1] >= 0",
+  "count": 1
+ },
+ {
+  "id": "FS11",
+  "file": "scripts/15_figures_v2.py",
+  "why": "N4",
+  "old": "f\"SomMot − Default {spin['res']['sm']:+.4f}, spin p = {spin['res']['sm_p']:.2f}\\nVis − Default {spin['res']['vd']:+.4f}, spin p",
+  "new": "f\"SomMot − Default {spin['res']['sm']:+.5f}, spin p = {spin['res']['sm_p']:.2f}\\nVis − Default {spin['res']['vd']:+.5f}, spin p",
+  "count": 1
+ },
+ {
+  "id": "FS12",
+  "file": "scripts/15_figures_v2.py",
+  "why": "V4 (SEM first use; caption)",
+  "old": "(± SEM over the network's parcels;",
+  "new": "(± standard error of the mean, SEM, over the network's parcels;",
+  "count": 1
+ },
+ {
+  "id": "FS13",
+  "file": "scripts/15_figures_v2.py",
+  "why": "V24 (Fig 5c legend)",
+  "old": "YL_C = (-0.04, 0.10)                                                             # room above the curve for the legend",
+  "new": "YL_C = (-0.04, 0.06)                                                             # the legend sits below the axis",
+  "count": 1
+ },
+ {
+  "id": "FS14",
+  "file": "scripts/15_figures_v2.py",
+  "why": "V24 (mathtext)",
+  "old": "estimate from each pair's measured (a_x, a_y, q)\", loc=\"left\", fontsize=9)",
+  "new": "estimate from each pair's measured ($a_x$, $a_y$, $q$)\", loc=\"left\", fontsize=9)",
+  "count": 1
+ },
+ {
+  "id": "FS15",
+  "file": "scripts/15_figures_v2.py",
+  "why": "V24 (Fig 5c legend)",
+  "old": "axes[2].legend(frameon=False, fontsize=7.0, loc=\"upper left\", bbox_to_anchor=(0.0, 1.02))",
+  "new": "axes[2].legend(frameon=False, fontsize=7.0, loc=\"upper left\", bbox_to_anchor=(0.0, -0.42), borderaxespad=0.0)",
+  "count": 1
+ },
+ {
+  "id": "FS16",
+  "file": "scripts/15_figures_v2.py",
+  "why": "V24 (mathtext)",
+  "old": "um(f\"τ = {tau}\\nr_τ {L[tau]['ac']['pre_dmt']:+.2f}\")",
+  "new": "um(f\"τ = {tau}\\n$r_\\\\tau$ {L[tau]['ac']['pre_dmt']:+.2f}\")",
+  "count": 1
+ },
+ {
+  "id": "FS17",
+  "file": "scripts/15_figures_v2.py",
+  "why": "V24 (mathtext)",
+  "old": "um(\"per-subject r(sts DiD, r_τ DiD), N = 14:\\n\"",
+  "new": "um(\"per-subject r(sts DiD, $r_\\\\tau$ DiD), N = 14:\\n\"",
+  "count": 1
+ },
+ {
+  "id": "FS18",
+  "file": "scripts/15_figures_v2.py",
+  "why": "U1",
+  "old": "Where the lag-τ autocorrelation contrast is negative (τ = 1, 2, 3) the sts contrast is negative, and at τ = 5, where the autocorrelation contrast is near zero, so is the sts contrast;",
+  "new": "Where the interval of the lag-τ autocorrelation contrast excludes zero (τ = 1, 2, 3), the sts contrast is negative and its interval excludes zero too; at τ = 5, where the autocorrelation contrast's interval includes zero (p = \"\n        + f\"{L[5]['ac']['did_p']:.2f}), so does the sts contrast's (p = {L[5]['sts']['did_p']:.2f});\"\n        + \"",
+  "count": 1
+ },
+ {
+  "id": "FS19",
+  "file": "scripts/15_figures_v2.py",
+  "why": "U1 (the reading asserted)",
+  "old": "save(fig, \"fig6_v2_lag_dependence\")\n",
+  "new": "save(fig, \"fig6_v2_lag_dependence\")\n# the caption's reading of the whiskers, asserted so that a rerun cannot silently contradict it (the error-only check of 25 Sep 2026)\nassert all(L[t][\"ci\"][k][1] < 0 for t in (1, 2, 3) for k in (\"ac\", \"sts\")) and all(L[5][\"ci\"][k][0] < 0 < L[5][\"ci\"][k][1] for k in (\"ac\", \"sts\"))\n",
+  "count": 1
+ },
+ {
+  "id": "FS22",
+  "file": "scripts/15_figures_v2.py",
+  "why": "V40, V57 (Fig 3: index labels printed over each other or nearer another point than their own)",
+  "old": "fig, axes = plt.subplots(1, 3, figsize=(13.4, 4.1), gridspec_kw=dict(wspace=0.34))\nfor ax, (xv, yv, fit, rates, xl, yl, title) in zip((axes[0], axes[2]), (",
+  "new": "# index labels moved from their default place (3 pt right and up) so that each is nearer its own point than any\n# other (the two nearly coincident pairs of (a), 13 and 5 and 7 and 12, labelled on opposite sides) and clear of the\n# other labels and points and of the lines' crossing: in (a) subjects 1, 2, 3, 5, 6, 7, 10, 12 and 13; in (c)\n# subjects 2, 11 and 12. A light backing keeps the digits legible where a line passes under them.\nUL, LR, LL, LEFT, BELOW = ((-3, 3, \"right\", \"baseline\"), (3, -3, \"left\", \"top\"), (-3, -3, \"right\", \"top\"),\n                           (-4, 0, \"right\", \"center_baseline\"), (0, -4, \"center\", \"top\"))\nLABEL_AT = {(True, 13): UL, (True, 5): LR, (True, 7): LEFT, (True, 12): LR, (True, 1): LEFT, (True, 2): LR, (True, 3): LL,\n            (True, 6): UL, (True, 10): LR, (False, 2): LEFT, (False, 11): BELOW, (False, 12): LR}\nfig, axes = plt.subplots(1, 3, figsize=(13.4, 4.1), gridspec_kw=dict(wspace=0.34))\nfor ax, (xv, yv, fit, rates, xl, yl, title) in zip((axes[0], axes[2]), (",
+  "count": 1
+ },
+ {
+  "id": "FS23",
+  "file": "scripts/15_figures_v2.py",
+  "why": "V40, V57 (Fig 3: index labels printed over each other or nearer another point than their own)",
+  "old": "    for k in range(14):\n        ax.annotate(str(k + 1), (xv[k], yv[k]), xytext=(3, 3), textcoords=\"offset points\", fontsize=6.5, color=\"0.4\")\n",
+  "new": "    for k in range(14):\n        dx, dy, ha, va = LABEL_AT.get((ax is axes[0], k + 1), (3, 3, \"left\", \"baseline\"))\n        ax.annotate(str(k + 1), (xv[k], yv[k]), xytext=(dx, dy), textcoords=\"offset points\", fontsize=6.5, color=\"0.4\",\n                    ha=ha, va=va, bbox=dict(boxstyle=\"square,pad=0.05\", fc=\"white\", ec=\"none\", alpha=0.75))\n",
+  "count": 1
+ },
+ {
+  "id": "FS24",
+  "file": "scripts/15_figures_v2.py",
+  "why": "V53 (Fig 3b: the annotation ran past the axes)",
+  "old": "transform=axes[1].transAxes, fontsize=7.8, va=\"top\")",
+  "new": "transform=axes[1].transAxes, fontsize=7.0, va=\"top\")",
+  "count": 1
+ },
+ {
+  "id": "S3-99",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "T2",
+  "op": "minus",
+  "regex": "(?<=[\\s|(\\[,;/=])-(?=\\d)",
+  "count": 583
+ },
+ {
+  "id": "SU-99",
+  "file": "manuscript/supplementary.md",
+  "why": "T7",
+  "op": "minus",
+  "regex": "(?<=[\\s|(\\[,;/=])-(?=\\d)",
+  "count": 300
+ },
+ {
+  "id": "CL-01",
+  "file": "CLAUDE.md",
+  "why": "bookkeeping: CLAUDE.md, the current state",
+  "old": "## Current state (25 Sep 2026, round 17: the review of 24 September 2026 applied)",
+  "new": "## Current state (round 18, bundle 29: the error-only check of 25 September 2026 applied; the final run of `run_all.sh` next)",
+  "count": 1
+ },
+ {
+  "id": "CL-02",
+  "file": "CLAUDE.md",
+  "why": "bookkeeping: CLAUDE.md, the current state",
+  "old": " and revised on 25 Sep 2026 (round 17) to every confirmed finding of the adversarial review, the citation check and their verification of 24 Sep 2026 (`notes/review_2026-09-24/`; record, \"The review and the citation check of 24 September 2026, and their verification\" and \"Round 17: the review of 24 September 2026 applied (25 Sep 2026)\"):",
+  "new": ", revised on 25 Sep 2026 (round 17) to every confirmed finding of the adversarial review, the citation check and their verification of 24 Sep 2026 (`notes/review_2026-09-24/`; record, \"The review and the citation check of 24 September 2026, and their verification\" and \"Round 17: the review of 24 September 2026 applied (25 Sep 2026)\"), and corrected in round 18 (bundle 29) to the error-only check of 25 Sep 2026 and its verification (`notes/review_2026-09-25/`; record, \"The error-only check of 25 September 2026 and its verification\" and \"The error-only revision: the check of 25 September 2026 applied\"):",
+  "count": 1
+ },
+ {
+  "id": "CL-03",
+  "file": "CLAUDE.md",
+  "why": "bookkeeping: CLAUDE.md, the current state",
+  "old": "Introduction through Methods 6,972 words with headings (6,852 without)",
+  "new": "Introduction through Methods 6,984 words with headings (6,864 without)",
+  "count": 1
+ },
+ {
+  "id": "CL-04",
+  "file": "CLAUDE.md",
+  "why": "bookkeeping: CLAUDE.md, the current state",
+  "old": "(1,183 rows)",
+  "new": "(1,191 rows)",
+  "count": 1
+ },
+ {
+  "id": "CL-05",
+  "file": "CLAUDE.md",
+  "why": "bookkeeping: CLAUDE.md, the current state",
+  "old": "regenerated by `scripts/15_figures_v2.py` at the text commit of bundle 28 and committed with their captions in the next commit (the captions file names the commit)",
+  "new": "regenerated by `scripts/15_figures_v2.py` at the text commit of bundle 29 and committed with their captions in the next commit (the captions file names the commit)",
+  "count": 1
+ },
+ {
+  "id": "CL-06",
+  "file": "CLAUDE.md",
+  "why": "bookkeeping: CLAUDE.md, history and remaining work",
+  "old": "- Remaining work: the single end-to-end run of `run_all.sh` at the final commit, under a new pre-run entry written\n  for that commit, with the lid open for the whole run, `shutdown` in the inhibitor's `--what` list and the charger\n  connected (four attempts on 16–17 Sep stopped inside `02_bias_check`, two of them within minutes of the lid\n  closing; record, \"The attempts at the end-to-end run\"; two more at 0b8d1a4 on 21–23 Sep were ended by a power-off\n  from the desktop session; record, the entry closing the pre-run entry of 21 Sep) — V.S.; it regenerates and\n  commits every output under one SHA, with `6_committed_compare.py` and `8_binary_compare.py`, closes the Data and\n  code availability [TK], and regenerates the six figures and `captions_v2.md` at that commit, whose header then\n  names it, and replaces the result files whose headers carry -dirty or nogit (S5 Text §4 lists them); its outcome\n  entry follows. The final run's `inference_revision.csv` will differ from 90690f4's only by\n  the `np.float64` wrappers (the B21 outcome entry). The [TK] items in `draft_v2.md` (affiliations,\n  co-authors, the REC reference number, the co-authors' funding statements, contributions, competing interests, the\n  run sentence) and the acknowledgments wait for the co-authors; the REC reference number and the basis on which the\n  approval or the release covers secondary use come from C.T. Venue chosen (18 Sep 2026): PLOS Computational Biology,\n  Methods article type; preprint to bioRxiv (`notes/venue_options.md`). At submission: remove the \"Manuscript for\n  co-author review; not for citation or distribution.\" line from Data and code availability; move Funding, Competing\n  interests, Data and code availability and Author contributions from the file to the submission system's fields (they\n  stay in the file for the preprint); convert the author–year citations to the numbered form; package the Supporting\n  information items (S1–S5 Text, S1–S20 Table) as separate files; archive the repository with a DOI and cite it in Data\n  and code availability. Then a fresh review of the finished text, typesetting, and the note to C.T.\n",
+  "new": "- Round 18 (bundle 29; record, \"The error-only check of 25 September 2026 and its verification\", \"The error-only revision: the check of 25 September 2026 applied\" and the final run's pre-run entry): a check of the text at ddae618 restricted to outright errors, by a separate session (41 findings: 10 text, 4 numbers, 10 cross-references, 10 contradictions, 7 uncertain), and the planning session's end-to-end read, both verified against the committed files (`notes/review_2026-09-25/verification_2026-09-25.md`: 40 confirmed, 1 partly; the read's V1–V24; V25–V61 found in preparing the revision and the final run, V35–V52 by an audit of the prepared revision by two further sessions and V55–V61 by a second audit, of the corrections, by a third), applied by 131 verbatim replacements (`notes/review_2026-09-25/revision/`: 26 in `draft_v2.md`; S1–S5 Text; 36 in `supplementary.md`; 24 in the figure script) including the minus sign of 583 and 300 negative numbers in S3 Text and `supplementary.md`; `main_text_numbers.csv` rebuilt (1,191 rows); the figures regenerated (Figs 2–6 changed; Fig 3's index labels placed clear of each other; Fig 5c's legend below the axis); `15_figures_v2.py` given `rev_git.py`'s SHA rule; `6_committed_compare.py` and `8_binary_compare.py` revised and `9_wrapper_compare.py` and `10_logs_figures_compare.py` added for the final run; Introduction through Methods 6,984 words with headings.\n- Remaining work: the single end-to-end run of `run_all.sh` at the commit that carries its pre-run entry (record, \"The\n  final end-to-end run of `run_all.sh` at the final commit: pre-run entry\") — V.S., after a reboot with the lid switch\n  set to `ignore`, as a root transient unit that runs it as his user (`runuser -u vilalius`) inside `systemd-inhibit\n  --what=sleep:idle:handle-lid-switch:shutdown --mode=block`, with the charger connected and the lid open for the\n  whole run (four attempts on 16–17 Sep stopped inside `02_bias_check`, two of them within minutes of the lid closing;\n  record, \"The attempts at the end-to-end run\"; two more at 0b8d1a4 on 21–23 Sep were ended by a power-off from the\n  desktop session; record, the entry closing the pre-run entry of 21 Sep). Its pass rule: `6_committed_compare.py`\n  (revised on 25 Sep to compare the text files line by line, in order, with every printed number within 1e-9),\n  `8_binary_compare.py` (revised on 25 Sep to compare the list-of-dict pickles element by element),\n  `9_wrapper_compare.py` (B21's two files: the `np.float64` wrappers and the text-dependent `quoted_at`, non-empty in\n  10 rows against 202 at 90690f4) and `10_logs_figures_compare.py` (the logs, every non-blank committed line\n  reproduced in order under masks for what changes between runs, the added lines listed; and every tracked image), all\n  on the working tree before anything is touched, with the differences known in advance listed in the entry (the 84\n  and 2 AR-shift rows of the non-stationary bias tables; the hand-added line of the subject-alignment report and its\n  log, and the log's empty line 86; two lines of the two global-fit logs of section 2). Then bundle 30: the outputs,\n  the new files the run writes, the run's log and heartbeat as `results/run_all_final.log` and\n  `results/run_all_final_heartbeat.log`, the outcome entry, the run's [TK]s filled within their lines (Data and code\n  availability; S5 Text §4) and S5 Text §6's list of commits; then the typeset PDF and the note to C.T. The [TK] items\n  in `draft_v2.md` (affiliations, co-authors, the REC reference number, the co-authors' funding statements,\n  contributions, competing interests) and the acknowledgments wait for the co-authors; the REC reference number and\n  the basis on which the approval or the release covers secondary use come from C.T. Venue chosen (18 Sep 2026): PLOS\n  Computational Biology, Methods article type; preprint to bioRxiv (`notes/venue_options.md`). At submission: remove\n  the \"Manuscript for co-author review; not for citation or distribution.\" line from Data and code availability; move\n  Funding, Competing interests, Data and code availability and Author contributions from the file to the submission\n  system's fields (they stay in the file for the preprint); convert the author–year citations to the numbered form;\n  package the Supporting information items (S1–S5 Text, S1–S20 Table) as separate files; archive the repository with a\n  DOI and cite it in Data and code availability.\n",
+  "count": 1
+ },
+ {
+  "id": "CL-07",
+  "file": "CLAUDE.md",
+  "why": "bookkeeping: CLAUDE.md, the repository layout",
+  "old": "check scripts and derived_r17.out (review_2026-09-24/), the applicability",
+  "new": "check scripts and derived_r17.out (review_2026-09-24/), the error-only check of 25 Sep with its\n                                 verification, the revision's replacements and the check scripts\n                                 (review_2026-09-25/), the applicability",
+  "count": 1
+ },
+ {
+  "id": "CL-08",
+  "file": "CLAUDE.md",
+  "why": "bookkeeping: CLAUDE.md, the repository layout",
+  "old": "planning_checks_2026-09-16/ the planning\n                                 session's checks and V.S.'s reproduction checks; the regional",
+  "new": "planning_checks_2026-09-16/ the planning\n                                 session's checks and V.S.'s reproduction checks (reproduction_checks/:\n                                 6_committed_compare.py, 8_binary_compare.py, 9_wrapper_compare.py and\n                                 10_logs_figures_compare.py, the four comparisons of the final run); the regional",
+  "count": 1
+ },
+ {
+  "id": "RM-01",
+  "file": "README.md",
+  "why": "bookkeeping: README.md, the state of the paper",
+  "old": "**The paper is `manuscript/draft_v2.md`**, restructured on 21 Sep 2026 for a\njournal reader in the PLOS Computational Biology Methods-article order and\nshortened on 23 Sep 2026 and revised on 25 Sep 2026 to the adversarial review,\nthe citation check and their verification of 24 Sep 2026 (Introduction through\nMethods 6,972 words with headings; three tables and six figures, the captions in\nthe text), with its supporting information as five files under `manuscript/si/`\nand its tables S1–S20 in `manuscript/supplementary.md`; every number of the main\ntext is listed with its source file and line in `manuscript/main_text_numbers.csv`.\nB16b, B17b and B21–B24 have been run and their values are in the text; the [TK]\nmarks left are the co-author items and the sentence that will record the final\nfull run.\n",
+  "new": "**The paper is `manuscript/draft_v2.md`**, restructured on 21 Sep 2026 for a\njournal reader in the PLOS Computational Biology Methods-article order,\nshortened on 23 Sep 2026, revised on 25 Sep 2026 to the adversarial review, the\ncitation check and their verification of 24 Sep 2026, and corrected to the\nerror-only check of 25 Sep 2026 (Introduction through Methods 6,984 words with\nheadings; three tables and six figures, the captions in the text), with its\nsupporting information as five files under `manuscript/si/` and its tables\nS1–S20 in `manuscript/supplementary.md`; every number of the main text is listed\nwith its source file and line in `manuscript/main_text_numbers.csv`. B16b, B17b\nand B21–B24 have been run and their values are in the text; the [TK] marks left\nare the co-author items and the sentence that will record the final full run of\n`run_all.sh`, which is next.\n",
+  "count": 1
+ },
+ {
+  "id": "RM-02",
+  "file": "README.md",
+  "why": "bookkeeping: README.md, the repository layout",
+  "old": "`checks/derived_r17.py` with its output (`review_2026-09-24/`), ",
+  "new": "`checks/derived_r17.py` with its output (`review_2026-09-24/`), the error-only check of 25 Sep 2026 with its verification, the revision's replacements and the check scripts (`review_2026-09-25/`), ",
+  "count": 1
+ },
+ {
+  "id": "RM-03",
+  "file": "README.md",
+  "why": "bookkeeping: README.md, the repository layout (a stale statement)",
+  "old": "added 23 Sep 2026 under their pre-run entries, to be run by V.S.)",
+  "new": "added 23 Sep 2026 under their pre-run entries and run by V.S. that day, outputs at 90690f4)",
+  "count": 1
+ }
+]
