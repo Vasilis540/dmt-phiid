@@ -1,14 +1,19 @@
-"""8_binary_compare.py — compare every tracked binary output (.npy, .npz, .pkl) that the section-6
-verification run modified against its committed version at a reference commit.
+"""8_binary_compare.py — compare every tracked binary output (.npy, .npz, .pkl) that a run modified against its
+committed version at a reference commit.
 
 Usage (from the repository root, pinned environment):
-    .venv/bin/python notes/planning_checks_2026-09-16/reproduction_checks/8_binary_compare.py d507728
+    .venv/bin/python notes/planning_checks_2026-09-16/reproduction_checks/8_binary_compare.py <reference commit>
 
-For each modified tracked binary under notes/review_results/ and results/: the committed bytes are read
-with `git show <ref>:<path>`, both versions are loaded, and the largest absolute difference over all
-numeric entries is printed (NaN patterns must agree). DataFrames (.pkl) are compared column by column:
-numeric columns by largest absolute difference, other columns by equality. Nothing is written or changed.
-Companion of 6_committed_compare.py, which covers the .md, .csv and .txt outputs.
+For each modified tracked binary under notes/review_results/ and results/: the committed bytes are read with
+`git show <ref>:<path>`, both versions are loaded, and the largest absolute difference over all numeric entries is
+printed (NaN patterns must agree). Pickles are compared structurally: DataFrames column by column (numeric columns
+by largest absolute difference, other columns by equality), dicts key by key, lists and tuples element by element,
+arrays and floats numerically, and every other value (strings, integers, booleans, None) by equality. Nothing is
+written or changed. Companion of 6_committed_compare.py, which covers the .md, .csv and .txt outputs.
+
+Revised 25 Sep 2026 (the error-only check of that day): the inference-row pickles are lists of dicts, which the
+first version compared by their pickled bytes, so that a difference of 1e-13 in any float would have been
+reported as REAL; they are now compared element by element under the same 1e-9 rule as every other output.
 """
 import io
 import pickle
@@ -63,7 +68,7 @@ def compare_arrays(a, b):
 def compare_frames(a, b):
     import pandas as pd
     if not isinstance(a, pd.DataFrame) or not isinstance(b, pd.DataFrame):
-        return "identical" if pickle.dumps(a) == pickle.dumps(b) else "DIFFERS (non-DataFrame pickle)"
+        return "DIFFERS (DataFrame against another type)"
     if list(a.columns) != list(b.columns) or a.shape != b.shape:
         return f"SHAPE/COLUMNS {a.shape} vs {b.shape}"
     worst = 0.0
@@ -77,6 +82,38 @@ def compare_frames(a, b):
         elif not a[col].astype(str).equals(b[col].astype(str)):
             return f"DIFFERS in non-numeric column {col}"
     return f"max|diff| = {worst:.3g} over numeric columns"
+
+
+def compare_obj(a, b, where="obj"):
+    """Structural comparison of two unpickled objects. Returns (largest numeric difference, list of problems)."""
+    import pandas as pd
+    if isinstance(a, pd.DataFrame) or isinstance(b, pd.DataFrame):
+        r = compare_frames(a, b)
+        return (float(r.split("=")[1].split()[0]), []) if r.startswith("max|diff|") else (0.0, [f"{where}: {r}"])
+    if isinstance(a, dict) or isinstance(b, dict):
+        if not (isinstance(a, dict) and isinstance(b, dict)) or list(a) != list(b):
+            return 0.0, [f"{where}: keys or types differ"]
+        worst, probs = 0.0, []
+        for k in a:
+            w, p = compare_obj(a[k], b[k], f"{where}[{k!r}]")
+            worst, probs = max(worst, w), probs + p
+        return worst, probs
+    if isinstance(a, (list, tuple)) or isinstance(b, (list, tuple)):
+        if type(a) is not type(b) or len(a) != len(b):
+            return 0.0, [f"{where}: {type(a).__name__} of {len(a) if hasattr(a, '__len__') else '?'} against "
+                         f"{type(b).__name__} of {len(b) if hasattr(b, '__len__') else '?'}"]
+        worst, probs = 0.0, []
+        for i, (x, y) in enumerate(zip(a, b)):
+            w, p = compare_obj(x, y, f"{where}[{i}]")
+            worst, probs = max(worst, w), probs + p
+        return worst, probs
+    if isinstance(a, (np.ndarray, float, np.floating)) or isinstance(b, (np.ndarray, float, np.floating)):
+        r = compare_arrays(a, b)
+        if r.startswith("max|diff|"):
+            return float(r.split("=")[1].split()[0]), []
+        return 0.0, ([] if r == "identical" else [f"{where}: {r}"])
+    same = type(a) is type(b) and bool(a == b)
+    return 0.0, ([] if same else [f"{where}: {a!r} against {b!r}"])
 
 
 def main():
@@ -102,7 +139,16 @@ def main():
         for key in sorted(set(A) | set(B)):
             if key not in A or key not in B:
                 parts.append(f"{key}: MISSING"); flag = True; continue
-            r = compare_frames(A[key], B[key]) if path.endswith(".pkl") else compare_arrays(A[key], B[key])
+            if path.endswith(".pkl"):
+                w, probs = compare_obj(A[key], B[key])
+                worst = max(worst, w)
+                if probs:
+                    flag = True
+                    parts.append(f"{len(probs)} non-numeric difference(s), the first {probs[0]}")
+                else:
+                    parts.append(f"max|diff| = {w:.3g} over every numeric entry")
+                continue
+            r = compare_arrays(A[key], B[key])
             parts.append((key + ": " if key else "") + r)
             if r.startswith("max|diff|"):
                 worst = max(worst, float(r.split("=")[1].split()[0]))
