@@ -25,16 +25,17 @@ analyses were planned in dated record entries after the review computations had
 characterised the phenomenon, and the record says so.
 
 **The paper is `manuscript/draft_v2.md`**, restructured on 21 Sep 2026 for a
-journal reader in the PLOS Computational Biology Methods-article order and
-shortened on 23 Sep 2026 and revised on 25 Sep 2026 to the adversarial review,
-the citation check and their verification of 24 Sep 2026 (Introduction through
-Methods 6,972 words with headings; three tables and six figures, the captions in
-the text), with its supporting information as five files under `manuscript/si/`
-and its tables S1–S20 in `manuscript/supplementary.md`; every number of the main
-text is listed with its source file and line in `manuscript/main_text_numbers.csv`.
-B16b, B17b and B21–B24 have been run and their values are in the text; the [TK]
-marks left are the co-author items and the sentence that will record the final
-full run.
+journal reader in the PLOS Computational Biology Methods-article order,
+shortened on 23 Sep 2026, revised on 25 Sep 2026 to the adversarial review, the
+citation check and their verification of 24 Sep 2026, and corrected to the
+error-only check of 25 Sep 2026 (Introduction through Methods 6,984 words with
+headings; three tables and six figures, the captions in the text), with its
+supporting information as five files under `manuscript/si/` and its tables
+S1–S20 in `manuscript/supplementary.md`; every number of the main text is listed
+with its source file and line in `manuscript/main_text_numbers.csv`. B16b, B17b
+and B21–B24 have been run and their values are in the text; the [TK] marks left
+are the co-author items and the sentence that will record the final full run of
+`run_all.sh`, which is next.
 `manuscript/draft.md` is the superseded first draft, kept as a record.
 
 ## Repository layout
@@ -50,7 +51,7 @@ full run.
 | `manuscript/analysis_record.md` | the full pre-specification and results record, append-only, never retroactively edited (dated correction notes are appended, never edited in) |
 | `manuscript/prespecification_summary.md` | **the audit trail of the original analysis**: each decision with the commit that fixed it, and whether it changed later; it does not cover the review computations or Part B, whose plans and outcomes are dated entries in the record |
 | `scripts/00–15_*.py` | analysis scripts, numbered in execution order, each independently runnable (`14` proportionality, `15` the v2 figures) |
-| `notes/` | the first three adversarial reviews (`adversarial_review_*.md`) and the fourth, the verification of the correction note (`verification_correction_note_2026-09-15.md`; the fifth review is quoted in the record's entry of 15 Sep 2026, 18:14 UTC), the sixth review of 17 Sep 2026 with its checks (`fresh_review_2026-09-17/`), the citation audit against the full texts, the independent adversarial review, its verification and the plan to submission of 20 Sep 2026 (`review_2026-09-20/`), the independent review and the citation pass of 22 Sep 2026 with their verification and the reviewer's check scripts (`review_2026-09-22/`), the adversarial review and the citation check of 24 Sep 2026 with their verification, the reviewers' check scripts and `checks/derived_r17.py` with its output (`review_2026-09-24/`), the revised applicability table (`partB5_literature_v2.md`), the venue and preprint options (`venue_options.md`), the review computations (`rev_*.py`, `review_*.py`, `review_computations_2026-09-14.md`), the Part B plans and notes (`partB_prespec_2026-09-14.md`, `partB*.md`) and their scripts (`partB*.py`, including `partB10_crosslag_deviation.py` and `partB11_regional_sts_r1.py`, added 15 Sep 2026, and `partB14_family_atoms.py`–`partB20_regional_partial.py`, added 20 Sep 2026 under their pre-run entries and run by V.S. on 21 Sep 2026 (outputs at 96e2242; outcome entries of 21 Sep), and `partB16b_whitened_spectrum.py` and `partB17b_calibration_filtered.py`, added 21 Sep 2026 under their pre-run entries and run that day, outputs at ada6438, outcome entries of 21 Sep; and `partB21_inference_revision.py`–`partB24_bandpassed_expectations.py` with `rev_inference_inverted.py`, added 23 Sep 2026 under their pre-run entries, to be run by V.S.), the plain-language companion (`companion_plain_language.md`, retired 21 Sep 2026: its role is taken by the paper's Author summary and S5 Text) and the defence questions (`defence_questions.md`, rewritten 21 Sep 2026 to the restructured text); result files, tables and logs under `notes/review_results/` |
+| `notes/` | the first three adversarial reviews (`adversarial_review_*.md`) and the fourth, the verification of the correction note (`verification_correction_note_2026-09-15.md`; the fifth review is quoted in the record's entry of 15 Sep 2026, 18:14 UTC), the sixth review of 17 Sep 2026 with its checks (`fresh_review_2026-09-17/`), the citation audit against the full texts, the independent adversarial review, its verification and the plan to submission of 20 Sep 2026 (`review_2026-09-20/`), the independent review and the citation pass of 22 Sep 2026 with their verification and the reviewer's check scripts (`review_2026-09-22/`), the adversarial review and the citation check of 24 Sep 2026 with their verification, the reviewers' check scripts and `checks/derived_r17.py` with its output (`review_2026-09-24/`), the error-only check of 25 Sep 2026 with its verification, the revision's replacements and the check scripts (`review_2026-09-25/`), the revised applicability table (`partB5_literature_v2.md`), the venue and preprint options (`venue_options.md`), the review computations (`rev_*.py`, `review_*.py`, `review_computations_2026-09-14.md`), the Part B plans and notes (`partB_prespec_2026-09-14.md`, `partB*.md`) and their scripts (`partB*.py`, including `partB10_crosslag_deviation.py` and `partB11_regional_sts_r1.py`, added 15 Sep 2026, and `partB14_family_atoms.py`–`partB20_regional_partial.py`, added 20 Sep 2026 under their pre-run entries and run by V.S. on 21 Sep 2026 (outputs at 96e2242; outcome entries of 21 Sep), and `partB16b_whitened_spectrum.py` and `partB17b_calibration_filtered.py`, added 21 Sep 2026 under their pre-run entries and run that day, outputs at ada6438, outcome entries of 21 Sep; and `partB21_inference_revision.py`–`partB24_bandpassed_expectations.py` with `rev_inference_inverted.py`, added 23 Sep 2026 under their pre-run entries and run by V.S. that day, outputs at 90690f4), the plain-language companion (`companion_plain_language.md`, retired 21 Sep 2026: its role is taken by the paper's Author summary and S5 Text) and the defence questions (`defence_questions.md`, rewritten 21 Sep 2026 to the restructured text); result files, tables and logs under `notes/review_results/` |
 | `results/` | every table and array of the original analysis, with the script name and git SHA in its header; `run_*.log` are the run logs |
 | `run_all.sh` | regenerates everything in dependency order: the original analysis (about 6 h single-core) and, in its last section, the review and Part B computations and the v2 figures; about nine hours end to end, twelve minutes more with the HRF-deconvolution sandbox present |
 | `requirements.lock.txt` | pinned environment (Python 3.12) |

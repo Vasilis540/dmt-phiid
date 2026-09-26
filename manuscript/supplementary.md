@@ -1,8 +1,8 @@
 # Supplementary tables
 
-Companion to `manuscript/draft_v2.md`, which cites S1–S8 Tables from its S1 Text (the original pre-specified analysis; `manuscript/draft.md`, which they first accompanied, is kept as a record), S9–S11 Tables from S3 Text, and S12–S20 Tables, which carry material moved from the main text on 23 September 2026, the results of B21–B24, the record's predictions with their outcomes (S19 Table) and the applicability table (S20 Table). Every value is quoted from the named results file. Nats throughout; N = 14; sign-flip p exact over 2^14 assignments, two-sided; the interval of a mean over subjects is the inverted sign-flip 95 % interval of B21 (S17 Table), and the intervals marked "percentile" are subject-bootstrap 95 % percentile intervals (10,000 draws) of quantities with no saved per-subject vector; seed 20261120.
+Companion to `manuscript/draft_v2.md`, which cites S1–S8 Tables from its S1 Text (the original pre-specified analysis; `manuscript/draft.md`, which they first accompanied, is kept as a record), S9–S11 Tables from S3 Text, and S12–S20 Tables, which carry material moved from the main text on 23 September 2026, the results of B21–B24, the record's predictions with their outcomes (S19 Table) and the applicability table (S20 Table). Every value is quoted from the named results file. Nats throughout; N = 14; sign-flip p exact over 2^14 assignments, two-sided; the interval of a mean over subjects is the inverted sign-flip 95 % interval of B21 (S17 Table), and the intervals marked "percentile" are subject-bootstrap 95 % percentile intervals (10,000 draws), given for quantities with no saved per-subject vector and, in S19 Table, where a recorded outcome quoted one beside the inverted interval; seed 20261120.
 
-## S1 Table. Step contrast on the sensitivity windows 5–14 (bins 9–28) vs pre-injection windows 1–4, W = 60
+## S1 Table. Step contrast on the sensitivity windows 5–14 (bins 9–28) against pre-injection windows 1–4, W = 60
 
 Source: `results/primary_b_ts_gsr_win60.csv` (git e46df8a), `results/primary_b_ts_demean_win60.csv` (git f3b435d); the intervals are B21's inverted intervals (S17 Table), where the source files hold percentile intervals.
 
@@ -37,7 +37,7 @@ Source: as S1 Table. ρ_S = Spearman correlation. "Group-mean series" is the 14-
 
 W = 30 (ts_gsr, bins 11–28; check only, decides nothing): group-mean series ρ_S −0.9752 raw, −0.8535 FD-residualised; per-subject means −0.388 / −0.408 raw, −0.267 / −0.279 residualised, all p ≤ 0.002; control (a) clears on raw (−0.223 [−0.415, −0.043]) and is void on the residualised data (−0.146 [−0.337, +0.031]).
 
-## S3 Table. Exploratory regional DiD: regions passing BH FDR (q = 0.05)
+## S3 Table. Exploratory regional DiD: regions passing Benjamini–Hochberg FDR (q = 0.05)
 
 Source: `results/regional_analysis_<variant>.csv`, `results/regional_did_map_<variant>.csv` (git 4f7437b). Global fit; pre bins 1–8, post bins 11–28; group-mean DiD negative in 114 of 115 regions on both variants; the one positive region is subcortical parcel 104 (+0.028, p = 0.495 on ts_gsr; +0.019, p = 0.566 on ts_demean). BH thresholds: p = 0.00304 (ts_gsr, 7 regions), 0.00826 (ts_demean, 19 regions). All of them negative and cortical. **Exploratory.**
 
@@ -110,7 +110,7 @@ Source: `results/regional_analysis_<variant>.csv`. Spearman ρ between the group
 
 Receptor inter-correlations (Spearman, 115 regions): 1A–2A 0.532, 1B–2A 0.528, 2A–4 0.436, 2A–HTT −0.451, 1A–4 0.405, 1B–HTT −0.364, 1A–HTT −0.100, 4–HTT 0.068, 1B–4 0.056, 1A–1B −0.002.
 
-## S6 Table. EEG Lempel-Ziv complexity vs ΦID quantities, global fit, 28 bins
+## S6 Table. EEG Lempel–Ziv complexity against the ΦID quantities, global fit, 28 bins
 
 Source: `results/lz_vs_tdmi_<variant>.csv` (git 84ea657). Per-subject Spearman ρ across the 28 bins, group mean with subject-bootstrap percentile CI (no per-subject vector is saved); p against 1,000 phase-randomised surrogates of the LZ series (one-sided in the predicted direction; two-sided in brackets); "series" = ρ of the group-mean series with its two-sided p.
 
@@ -139,9 +139,9 @@ Source: `results/global_fc_did_<variant>.csv` (git 66b570e-dirty). Mean Pearson 
 
 Pre-injection mean r: ts_demean DMT 0.1905, PCB 0.1813; ts_gsr DMT −0.0020, PCB −0.0039 (GSR pins the mean near zero by construction; every ts_gsr bin lies within −0.0058 to −0.0008).
 
-## S8 Table. Post-hoc proportionality: sts / TDMI ratio DiD, four cells
+## S8 Table. Post hoc proportionality: the sts / TDMI ratio DiD in four cells
 
-Source: `results/proportionality.csv` (script `14_proportionality.py` at git dbf2311; interpretation rule recorded in the script docstring and in the project orientation file before the run). Post-hoc, specified after the primary result, reported regardless of outcome. Ratio = sts / TDMI (TDMI = Σ 16 atoms) per subject, condition and window (W = 60) or bin (global fit); DiD = (post − pre)_DMT − (post − pre)_PCB on the mean ratio over the window set; exact sign-flip p over 2^14 assignments, two-sided; the inverted sign-flip 95 % interval (B21; S17 Table). Windows: W = 60, pre 1–4, post 6–14; global fit, pre bins 1–8, post 11–28. Verdict by the pre-recorded rule, which was stated for the bootstrap CI (the inverted intervals give the same four verdicts): interval includes zero → proportional; interval below zero → more than proportional; interval above zero → less than proportional. (i) = sts share of TDMI at pre-injection baseline on the DMT run (subject mean, with CI); (ii) = sts DiD / TDMI DiD on the group means, with a subject-bootstrap percentile CI of the ratio of means (a ratio of group means, not a mean over subjects). (i) and (ii) are comparable within a cell, not across estimators: the windowed and global fits give different baseline shares because per-window finite-sample bias falls on sts and on the self-transfer atoms. No temporal null, no motion handling.
+Source: `results/proportionality.csv` (script `14_proportionality.py` at git dbf2311; interpretation rule recorded in the script docstring and in the project orientation file before the run). Post hoc, specified after the primary result, reported regardless of outcome. Ratio = sts / TDMI (TDMI = Σ 16 atoms) per subject, condition and window (W = 60) or bin (global fit); DiD = (post − pre)_DMT − (post − pre)_PCB on the mean ratio over the window set; exact sign-flip p over 2^14 assignments, two-sided; the inverted sign-flip 95 % interval (B21; S17 Table). Windows: W = 60, pre 1–4, post 6–14; global fit, pre bins 1–8, post 11–28. Verdict by the pre-recorded rule, which was stated for the bootstrap CI (the inverted intervals give the same four verdicts): interval includes zero → proportional; interval below zero → more than proportional; interval above zero → less than proportional. (i) = sts share of TDMI at pre-injection baseline on the DMT run (subject mean, with CI); (ii) = sts DiD / TDMI DiD on the group means, with a subject-bootstrap percentile CI of the ratio of means (a ratio of group means, not a mean over subjects). (i) and (ii) are comparable within a cell, not across estimators: the windowed and global fits give different baseline shares because per-window finite-sample bias falls on sts and on the self-transfer atoms. No temporal null, no motion handling.
 
 | estimator | variant | ratio DiD [CI], p, neg/14 | verdict | (i) baseline share [CI] | (ii) share of TDMI DiD [CI] | sts DiD (nats) | TDMI DiD (nats) |
 |---|---|---|---|---|---|---|---|
@@ -150,11 +150,11 @@ Source: `results/proportionality.csv` (script `14_proportionality.py` at git dbf
 | global fit | ts_gsr | +0.0204 [+0.0032, +0.0380], 0.0248, 4 | less than proportional | 0.9082 [0.8983, 0.9180] | 0.6584 [0.4864, 0.8174] | −0.0801 [−0.1362, −0.0251] | −0.1216 [−0.1998, −0.0439] |
 | global fit | ts_demean | +0.0071 [−0.0197, +0.0334], 0.5623, 5 | proportional | 0.8967 [0.8841, 0.9092] | 0.7867 [0.5004, 1.0127] | −0.1035 [−0.1784, −0.0267] | −0.1315 [−0.2104, −0.0524] |
 
-Within-condition ratio changes (post − pre): windowed ts_gsr DMT +0.0034 [−0.0009, +0.0077], p = 0.1097, PCB +0.0028 [−0.0038, +0.0098], p = 0.3990; windowed ts_demean DMT −0.0093 [−0.0231, +0.0039], p = 0.1621, PCB +0.0001 [−0.0081, +0.0085], p = 0.9712; global ts_gsr DMT +0.0167 [+0.0035, +0.0299], p = 0.0183, PCB −0.0037 [−0.0127, +0.0054], p = 0.3949; global ts_demean DMT +0.0015 [−0.0208, +0.0239], p = 0.8799, PCB −0.0056 [−0.0156, +0.0050], p = 0.2753. The sts DiD reproduces Table 2 of `draft_v2.md` and the TDMI DiD its Table 1, and both reproduce `results/windowed_atoms_did_ts_gsr_win60.csv`; the intervals are the inverted intervals the main text reports. On the symmetric family, under a common change of r₁ at the operating point (0.85, 0.25), sts carries 0.99 of the change in TDMI against a baseline share of 0.98 (closed form, TDMI = 2S and sts = 2S − C; main text, Results 1); unequal changes of a_x and a_y move that share. The less-than-proportional cell (the global fit on ts_gsr: sts carried 0.66 of the TDMI drop against a baseline share of 0.91) is not explained here (moved from the main text's Results 2). The main text of 23 September 2026 quoted this check in Results 2 with the verdicts of the rule; from 25 September 2026 Results 2 cites this table and gives the one cell whose interval excludes zero without the rule's labels (review of 24 September, item 25).
+Within-condition ratio changes (post − pre): windowed ts_gsr DMT +0.0034 [−0.0009, +0.0077], p = 0.1097, PCB +0.0028 [−0.0038, +0.0098], p = 0.3990; windowed ts_demean DMT −0.0093 [−0.0231, +0.0039], p = 0.1621, PCB +0.0001 [−0.0081, +0.0085], p = 0.9712; global ts_gsr DMT +0.0167 [+0.0035, +0.0299], p = 0.0183, PCB −0.0037 [−0.0127, +0.0054], p = 0.3949; global ts_demean DMT +0.0015 [−0.0208, +0.0239], p = 0.8799, PCB −0.0056 [−0.0156, +0.0050], p = 0.2753. The sts DiD reproduces Table 2 of `draft_v2.md` and the TDMI DiD its Table 1, and both reproduce `results/windowed_atoms_did_ts_gsr_win60.csv`; the intervals are the inverted intervals the main text reports. On the symmetric family, under a common change of r₁ at the operating point (0.85, 0.25), sts carries 0.99 of the change in TDMI against a baseline share of 0.98 (closed form, TDMI = 2S and sts = 2S − C; main text, Results 1); unequal changes of a_x and a_y move that share. The less-than-proportional cell (the global fit on ts_gsr: sts carried 0.66 of the TDMI drop against a baseline share of 0.91) is not explained here (moved from the main text's Results 2). The main text of 23 September 2026 quoted this check in Results 2 with the verdicts of the rule; from 25 September 2026 Results 2 only cites this table, without the rule's labels (review of 24 September, item 25).
 
 ## S9 Table. The cross-lag budget (S3 Text, section 6): data, finite-sample null, null-corrected terms and shares; the controls; the superseded values of 16 September 2026, 10:32 UTC
 
-Source: `notes/review_results/partB/crosslag_budget_tables.md` (data; `partB12_crosslag_budget.py`) and `crosslag_budget_null_tables.md` (null, controls, null-corrected budget and the reading under the rules; `partB13_crosslag_budget_null.py`), both at git 6b5181a, seed 20261120; definitions in Methods and `notes/rev_crosslag_budget.py`; the rules in the record's pre-run entry of 16 September 2026, 16:24 UTC, and the outcome of 16:37 UTC. Terms per subject and run are means over the 6,555 pairs, s = the sign of the pair's run-level q; grand mean = mean over subjects of the per-subject mean of the two runs, with the inverted sign-flip 95 % interval (B21; the ts_demean grand-mean δ_run interval [−0.00528, +0.00006], p = 0.053, includes zero, where the committed percentile interval did not); the null value is the mean over the two run types of ≥ 25,000 simulated pair-runs each (Monte-Carlo SE in parentheses); the null-corrected value is data minus null with the data interval shifted; the range is over the six null configurations (0 primary: heterogeneity 0.5, DMT-post/placebo ACF, mixture q solved to the run-level a, |q̂| and fraction |q̂| < 0.05; 1 heterogeneity 0.25; 2 heterogeneity 1.0; 3 placebo ACF for both run types; 4 Gaussian q; 5 mixture solved to the W = 60 window-level means). Identity (by construction): δ_run = δ_within + δ_pool + δ_means + ε, to 6.9 × 10⁻¹⁸. Nats-free (correlation units).
+Source: `notes/review_results/partB/crosslag_budget_tables.md` (data; `partB12_crosslag_budget.py`) and `crosslag_budget_null_tables.md` (null, controls, null-corrected budget and the reading under the rules; `partB13_crosslag_budget_null.py`), both first computed at 6b5181a (their headers carry d507728, the regeneration of 20 September 2026), seed 20261120; definitions in S3 Text, section 6, and `notes/rev_crosslag_budget.py`; the rules in the record's pre-run entry of 16 September 2026, 16:24 UTC, and the outcome of 16:37 UTC. Terms per subject and run are means over the 6,555 pairs, s = the sign of the pair's run-level q; grand mean = mean over subjects of the per-subject mean of the two runs, with the inverted sign-flip 95 % interval (B21; the ts_demean grand-mean δ_run interval [−0.00528, +0.00006], p = 0.053, includes zero, where the committed percentile interval did not); the null value is the mean over the two run types of ≥ 25,000 simulated pair-runs each (Monte-Carlo SE in parentheses); the null-corrected value is data minus null with the data interval shifted; the range is over the six null configurations (0 primary: heterogeneity 0.5, DMT-post/placebo ACF, mixture q solved to the run-level a, |q̂| and fraction |q̂| < 0.05; 1 heterogeneity 0.25; 2 heterogeneity 1.0; 3 placebo ACF for both run types; 4 Gaussian q; 5 mixture solved to the W = 60 window-level means). Identity (by construction): δ_run = δ_within + δ_pool + δ_means + ε, to 6.9 × 10⁻¹⁸. Nats-free (correlation units).
 
 | ts_gsr | δ_run | δ_within | δ_pool | δ_means | ε | δ_60 (run-level sign) | window-sign value |
 |---|---|---|---|---|---|---|---|
@@ -178,76 +178,76 @@ Source: `notes/review_results/partB/crosslag_budget_tables.md` (data; `partB12_c
 | controls (primary parameters; mean over run types) | δ_run | δ_within | δ_pool | δ_means | ε | shares within / pool / means / ε |
 |---|---|---|---|---|---|---|
 | (i) common drive: λ = 0.2, a_s − a_n = 0.10 (population d = +0.01600) | +0.01438 | +0.01291 | +0.00129 | +0.00027 | −0.00010 | 0.898 / 0.090 / 0.019 / −0.007 |
-| (ii) pooling: q and filter change at TR 240 (β₁ ~ N(6β̄, h·6β̄), β₂ ~ N(β̄/5, h·β̄/5), q₂ = q₁(1 − g), g ~ U(0.5, 1); δ_pool at 49 and 44 Monte-Carlo SEs) | +0.00131 | +0.00040 | +0.00095 | −0.00002 | −0.00001 | 0.303 / 0.723 / −0.015 / −0.011 |
+| (ii) pooling: q and filter change at TR 240 (β₁ ~ N(6β̄, (h·6β̄)²), β₂ ~ N(β̄/5, (h·β̄/5)²), q₂ = q₁(1 − g), g ~ U(0.5, 1); δ_pool at 49 and 44 Monte-Carlo SEs) | +0.00131 | +0.00040 | +0.00095 | −0.00002 | −0.00001 | 0.303 / 0.723 / −0.015 / −0.011 |
 
 Rule (e), the per-subject difference DMT − placebo, null-corrected at the primary configuration: δ_pool,c +0.00039 (exact sign-flip p = 0.0006, positive in 12 of 14; +0.00037 to +0.00041, p ≤ 0.0007, in the other configurations), 0.11 of the DMT-run δ_run,c (+0.00349) — "pooling is larger on the DMT run"; δ_within,c +0.00052 (p = 0.1368) and δ_means,c +0.00005 (p = 0.0112), reported with no rule. Reading under rules (a)–(f), the same in every configuration: finite sampling a minor part (F = δ_run,null / δ_run from 0.085 to 0.135); the within-window term most, pooling and the window means a minor part each; the null's q distribution is symmetric (fraction q̂ < 0 0.50) where the data's has 0.545 of pairs below zero.
 
-Superseded values of 16 September 2026, 10:32 UTC (`crosslag_deviation_tables.md`, sections A and B at git 9a19b10; record, correction note of 16 September, 16:24 UTC), reported here and no longer read: at W = 60 with the sign of each window's own q, `ts_gsr` +0.00611 [+0.00552, +0.00671] (DMT +0.00615, placebo +0.00608; slope of the deviation on q +0.0201) and `ts_demean` +0.00160 [−0.00040, +0.00367]; the finite-sample null with the same weight, homogeneous filter, +0.00348 at W = 60 (the four operating-point cells +0.00344, +0.00311, +0.00325, +0.00356) and +0.00662 at W = 30; the same null's run-level value +0.00025 ± 0.00005 at W = 840 (mean |q̂| 0.222 against the data's 0.1945). The readings drawn from them — "near zero: finite sampling removed" and "comparable to the run-level value (1.80 raw, 0.77–0.81 net): a stationary mechanism rather than pooling" — are superseded because the window's sign selects on the same samples as the deviation (about half of +0.00611 is that selection: the null's +0.00348), the null's run-level value was read at a different density of q̂ near zero (the null solved to the data gives +0.00029 to +0.00046), and the ratio compared two differently biased statistics without computing pooling; the budget above computes it.
+Superseded values of 16 September 2026, 10:32 UTC (`crosslag_deviation_tables.md`, sections A and B, first computed at 9a19b10, header d507728; record, correction note of 16 September, 16:24 UTC), reported here and no longer read: at W = 60 with the sign of each window's own q, `ts_gsr` +0.00611 [+0.00552, +0.00671] (DMT +0.00615, placebo +0.00608; slope of the deviation on q +0.0201) and `ts_demean` +0.00160 [−0.00040, +0.00367]; the finite-sample null with the same weight, homogeneous filter, +0.00348 at W = 60 (the four operating-point cells +0.00344, +0.00311, +0.00325, +0.00356) and +0.00662 at W = 30; the same null's run-level value +0.00025 ± 0.00005 at W = 840 (mean |q̂| 0.222 against the data's 0.1945). The readings drawn from them — "near zero: finite sampling removed" and "comparable to the run-level value (1.80 raw, 0.77–0.81 net): a stationary mechanism rather than pooling" — are superseded because the window's sign selects on the same samples as the deviation (about half of +0.00611 is that selection: the null's +0.00348), the null's run-level value was read at a different density of q̂ near zero (the null solved to the data gives +0.00029 to +0.00046), and the ratio compared two differently biased statistics without computing pooling; the budget above computes it.
 
 Earlier values of the same statistic, removed from Results 4 in the revision of 16 September and kept here (record, 15 September 2026, 15:36 and 18:18 UTC, and 16 September, 10:32 UTC; `crosslag_deviation_tables.md`): the signed mean over pairs, `ts_gsr` +0.00009 [+0.00004, +0.00014] (sign-flip p = 0.0004, positive in 13 of 14; pair-level SD of the deviation 0.0390) and `ts_demean` −0.00738 [−0.00920, −0.00563] (p = 0.0001, negative in 14 of 14), which on `ts_gsr` cancels between the 54.5 % of pairs with q < 0 (mean deviation −0.00304) and the pairs with q > 0 (+0.00384); the correlation across the 28 runs of the run-level statistic with the run-level residual, −0.767 (sign(q)-weighted) against −0.277 (signed) on `ts_gsr` and −0.969 against −0.890 on `ts_demean`; the slope of the deviation on q across pairs, +0.0163 [+0.0137, +0.0190] at the run level and +0.0201 [+0.0180, +0.0223] at W = 60 on `ts_gsr`, +0.0211 [+0.0191, +0.0230] and +0.0237 [+0.0216, +0.0258] on `ts_demean`; on `ts_demean` the run-level sign(q)-weighted mean −0.00262 (sign-flip p = 0.0532, positive in 5 of 14; −0.00582 among the q > 0 pairs, −0.01441 among the q < 0 pairs) and the W = 60 window-sign value +0.00160 (p = 0.1061); and the family-scale conversion at the operating point (0.85, 0.25), where a deviation of +0.006 gives a residual of −0.0103, +0.0034 gives −0.0061 (44 % of the observed −0.0137) and, at the pairs' mean run-level a and |q| (0.8666, 0.1945), −0.0051 (37 %).
 
 
-## S10 Table. Calibration of the residual diagnostic at both estimators: the AR(1) generator and the band-passed generator
+## S10 Table. Calibration of the residual of the AR(1)-substituted estimate on the AR(1) and the band-passed generator, at both estimators
 
-Source: `notes/review_results/partB/calibration_tables.md` (B17; record, pre-run entry 20 Sep 2026, outcome 21 Sep 2026) and `calibration_filtered_tables.md` (B17b; pre-run entry 21 Sep 2026). N_PAIRS = 300 per subject, 14 subjects × 2 runs × 840 samples, the change from sample 300 of the DMT run only, 50 replicates per condition (± is the SD over replicates); DiD = windows 6–14 minus 1–4 (bins 11–28 minus 1–8), DMT minus placebo. At the global fit two AR(1)-substituted estimates are tabulated: the pipeline's run-level one (constant across a run's bins, so its DiD is zero and the residual DiD equals the observed DiD) and a period-level one from (a_x, a_y, q) measured on the pre and the post samples separately. "residual p" is the exact sign-flip p of the residual DiD against zero (mean over replicates; share of replicates below 0.05): that a test against zero tests the wrong null, since a pure autocorrelation change moves the residual's expectation away from zero, is what the calibration establishes (main text, Results 4). The coupling rows calibrate one construction of coupling, the VAR(1) cross-coefficient with the innovations held; B23 gives the others (S18 Table). AR(1) generator: a_x, a_y ~ N(0.85, 0.0125); q from the data's window-level pool; Δa = −0.015 in population; coupling as a VAR(1) cross-coefficient.
+Source: `notes/review_results/partB/calibration_tables.md` (B17; record, pre-run entry 20 Sep 2026, outcome 21 Sep 2026) and `calibration_filtered_tables.md` (B17b; pre-run entry 21 Sep 2026). N_PAIRS = 300 per subject, 14 subjects × 2 runs × 840 samples, the change from sample 300 of the DMT run only, 50 replicates per condition (± is the SD over replicates); DiD = windows 6–14 minus 1–4 (bins 11–28 minus 1–8), DMT minus placebo. At the global fit two AR(1)-substituted estimates are tabulated: the pipeline's run-level one (constant across a run's bins, so its DiD is zero and the residual DiD equals the observed DiD) and a period-level one from (a_x, a_y, q) measured on the pre and the post samples separately. "residual p" is the exact sign-flip p of the residual DiD against zero (mean over replicates; share of replicates below 0.05): that a test against zero tests the wrong null, since a pure autocorrelation change moves the residual's expectation away from zero, is what the calibration establishes (main text, Results 4). The coupling rows calibrate one construction of coupling, the VAR(1) cross-coefficient with the innovations held; B23 gives the others (S18 Table). AR(1) generator: a_x, a_y ~ N(0.85, 0.0125²); q from the data's window-level pool; Δa = −0.015 in population; coupling as a VAR(1) cross-coefficient.
 
 | condition | estimator | sts level (pre) | sts DiD | AR(1)-substituted DiD | residual DiD | residual p (mean; share < 0.05) | δ_sym DiD | RMS δ_anti DiD |
 |---|---|---|---|---|---|---|---|---|
-| (i) Δa = −0.015, Δc = 0 | W60 | 0.7152 | -0.0422 ± 0.0034 | -0.0471 ± 0.0036 | +0.0049 ± 0.0017 | 0.056; 0.82 | +0.00014 ± 0.00065 | +0.00130 ± 0.00050 |
-| (i) Δa = −0.015, Δc = 0 | global (run-level substitution) | 1.1317 | -0.0675 ± 0.0058 | -0.0000 ± 0.0000 | -0.0675 ± 0.0058 | 0.000; 1.00 | — | — |
-| (i) Δa = −0.015, Δc = 0 | global (period-level substitution) | 1.1317 | -0.0675 ± 0.0058 | -0.0764 ± 0.0048 | +0.0089 ± 0.0028 | 0.046; 0.62 | — | — |
-| (ii) Δc = +0.01 | W60 | 0.7153 | +0.0010 ± 0.0036 | +0.0020 ± 0.0037 | -0.0010 ± 0.0018 | 0.460; 0.08 | +0.00758 ± 0.00072 | -0.00014 ± 0.00065 |
-| (ii) Δc = +0.01 | global (run-level substitution) | 1.1390 | +0.0003 ± 0.0049 | -0.0000 ± 0.0000 | +0.0003 ± 0.0049 | 0.537; 0.04 | — | — |
-| (ii) Δc = +0.01 | global (period-level substitution) | 1.1390 | +0.0003 ± 0.0049 | +0.0028 ± 0.0040 | -0.0025 ± 0.0027 | 0.461; 0.12 | — | — |
-| (ii) Δc = +0.02 | W60 | 0.7154 | +0.0002 ± 0.0039 | +0.0053 ± 0.0037 | -0.0052 ± 0.0016 | 0.055; 0.76 | +0.01480 ± 0.00069 | -0.00037 ± 0.00063 |
-| (ii) Δc = +0.02 | global (run-level substitution) | 1.1446 | -0.0033 ± 0.0050 | -0.0000 ± 0.0000 | -0.0033 ± 0.0050 | 0.403; 0.14 | — | — |
-| (ii) Δc = +0.02 | global (period-level substitution) | 1.1446 | -0.0033 ± 0.0050 | +0.0092 ± 0.0039 | -0.0124 ± 0.0029 | 0.010; 0.92 | — | — |
-| (ii) Δc = +0.03 | W60 | 0.7152 | +0.0001 ± 0.0031 | +0.0110 ± 0.0034 | -0.0109 ± 0.0017 | 0.001; 1.00 | +0.02210 ± 0.00071 | -0.00083 ± 0.00055 |
-| (ii) Δc = +0.03 | global (run-level substitution) | 1.1512 | -0.0080 ± 0.0037 | -0.0000 ± 0.0000 | -0.0080 ± 0.0037 | 0.206; 0.26 | — | — |
-| (ii) Δc = +0.03 | global (period-level substitution) | 1.1512 | -0.0080 ± 0.0037 | +0.0198 ± 0.0035 | -0.0278 ± 0.0027 | 0.000; 1.00 | — | — |
-| (ii) Δc = −0.02 | W60 | 0.7152 | -0.0002 ± 0.0038 | +0.0053 ± 0.0037 | -0.0055 ± 0.0018 | 0.039; 0.80 | -0.01495 ± 0.00066 | -0.00027 ± 0.00059 |
-| (ii) Δc = −0.02 | global (run-level substitution) | 1.1438 | -0.0045 ± 0.0050 | +0.0000 ± 0.0000 | -0.0045 ± 0.0050 | 0.408; 0.14 | — | — |
-| (ii) Δc = −0.02 | global (period-level substitution) | 1.1438 | -0.0045 ± 0.0050 | +0.0089 ± 0.0041 | -0.0134 ± 0.0033 | 0.009; 0.94 | — | — |
-| (iii) Δa = −0.015, Δc = +0.02 | W60 | 0.7153 | -0.0419 ± 0.0035 | -0.0427 ± 0.0033 | +0.0009 ± 0.0016 | 0.521; 0.00 | +0.01500 ± 0.00080 | +0.00093 ± 0.00056 |
-| (iii) Δa = −0.015, Δc = +0.02 | global (run-level substitution) | 1.1364 | -0.0694 ± 0.0049 | -0.0000 ± 0.0000 | -0.0694 ± 0.0049 | 0.000; 1.00 | — | — |
-| (iii) Δa = −0.015, Δc = +0.02 | global (period-level substitution) | 1.1364 | -0.0694 ± 0.0049 | -0.0687 ± 0.0040 | -0.0006 ± 0.0035 | 0.525; 0.10 | — | — |
-| (iv) a_x − a_y = 0.03, Δa = −0.015 | W60 | 0.7131 | -0.0422 ± 0.0036 | -0.0473 ± 0.0038 | +0.0051 ± 0.0018 | 0.052; 0.72 | +0.00013 ± 0.00071 | +0.00130 ± 0.00056 |
-| (iv) a_x − a_y = 0.03, Δa = −0.015 | global (run-level substitution) | 1.1127 | -0.0677 ± 0.0046 | +0.0000 ± 0.0000 | -0.0677 ± 0.0046 | 0.000; 1.00 | — | — |
-| (iv) a_x − a_y = 0.03, Δa = −0.015 | global (period-level substitution) | 1.1127 | -0.0677 ± 0.0046 | -0.0746 ± 0.0045 | +0.0069 ± 0.0030 | 0.114; 0.64 | — | — |
+| (i) Δa = −0.015, Δc = 0 | W60 | 0.7152 | −0.0422 ± 0.0034 | −0.0471 ± 0.0036 | +0.0049 ± 0.0017 | 0.056; 0.82 | +0.00014 ± 0.00065 | +0.00130 ± 0.00050 |
+| (i) Δa = −0.015, Δc = 0 | global (run-level substitution) | 1.1317 | −0.0675 ± 0.0058 | −0.0000 ± 0.0000 | −0.0675 ± 0.0058 | 0.000; 1.00 | — | — |
+| (i) Δa = −0.015, Δc = 0 | global (period-level substitution) | 1.1317 | −0.0675 ± 0.0058 | −0.0764 ± 0.0048 | +0.0089 ± 0.0028 | 0.046; 0.62 | — | — |
+| (ii) Δc = +0.01 | W60 | 0.7153 | +0.0010 ± 0.0036 | +0.0020 ± 0.0037 | −0.0010 ± 0.0018 | 0.460; 0.08 | +0.00758 ± 0.00072 | −0.00014 ± 0.00065 |
+| (ii) Δc = +0.01 | global (run-level substitution) | 1.1390 | +0.0003 ± 0.0049 | −0.0000 ± 0.0000 | +0.0003 ± 0.0049 | 0.537; 0.04 | — | — |
+| (ii) Δc = +0.01 | global (period-level substitution) | 1.1390 | +0.0003 ± 0.0049 | +0.0028 ± 0.0040 | −0.0025 ± 0.0027 | 0.461; 0.12 | — | — |
+| (ii) Δc = +0.02 | W60 | 0.7154 | +0.0002 ± 0.0039 | +0.0053 ± 0.0037 | −0.0052 ± 0.0016 | 0.055; 0.76 | +0.01480 ± 0.00069 | −0.00037 ± 0.00063 |
+| (ii) Δc = +0.02 | global (run-level substitution) | 1.1446 | −0.0033 ± 0.0050 | −0.0000 ± 0.0000 | −0.0033 ± 0.0050 | 0.403; 0.14 | — | — |
+| (ii) Δc = +0.02 | global (period-level substitution) | 1.1446 | −0.0033 ± 0.0050 | +0.0092 ± 0.0039 | −0.0124 ± 0.0029 | 0.010; 0.92 | — | — |
+| (ii) Δc = +0.03 | W60 | 0.7152 | +0.0001 ± 0.0031 | +0.0110 ± 0.0034 | −0.0109 ± 0.0017 | 0.001; 1.00 | +0.02210 ± 0.00071 | −0.00083 ± 0.00055 |
+| (ii) Δc = +0.03 | global (run-level substitution) | 1.1512 | −0.0080 ± 0.0037 | −0.0000 ± 0.0000 | −0.0080 ± 0.0037 | 0.206; 0.26 | — | — |
+| (ii) Δc = +0.03 | global (period-level substitution) | 1.1512 | −0.0080 ± 0.0037 | +0.0198 ± 0.0035 | −0.0278 ± 0.0027 | 0.000; 1.00 | — | — |
+| (ii) Δc = −0.02 | W60 | 0.7152 | −0.0002 ± 0.0038 | +0.0053 ± 0.0037 | −0.0055 ± 0.0018 | 0.039; 0.80 | −0.01495 ± 0.00066 | −0.00027 ± 0.00059 |
+| (ii) Δc = −0.02 | global (run-level substitution) | 1.1438 | −0.0045 ± 0.0050 | +0.0000 ± 0.0000 | −0.0045 ± 0.0050 | 0.408; 0.14 | — | — |
+| (ii) Δc = −0.02 | global (period-level substitution) | 1.1438 | −0.0045 ± 0.0050 | +0.0089 ± 0.0041 | −0.0134 ± 0.0033 | 0.009; 0.94 | — | — |
+| (iii) Δa = −0.015, Δc = +0.02 | W60 | 0.7153 | −0.0419 ± 0.0035 | −0.0427 ± 0.0033 | +0.0009 ± 0.0016 | 0.521; 0.00 | +0.01500 ± 0.00080 | +0.00093 ± 0.00056 |
+| (iii) Δa = −0.015, Δc = +0.02 | global (run-level substitution) | 1.1364 | −0.0694 ± 0.0049 | −0.0000 ± 0.0000 | −0.0694 ± 0.0049 | 0.000; 1.00 | — | — |
+| (iii) Δa = −0.015, Δc = +0.02 | global (period-level substitution) | 1.1364 | −0.0694 ± 0.0049 | −0.0687 ± 0.0040 | −0.0006 ± 0.0035 | 0.525; 0.10 | — | — |
+| (iv) a_x − a_y = 0.03, Δa = −0.015 | W60 | 0.7131 | −0.0422 ± 0.0036 | −0.0473 ± 0.0038 | +0.0051 ± 0.0018 | 0.052; 0.72 | +0.00013 ± 0.00071 | +0.00130 ± 0.00056 |
+| (iv) a_x − a_y = 0.03, Δa = −0.015 | global (run-level substitution) | 1.1127 | −0.0677 ± 0.0046 | +0.0000 ± 0.0000 | −0.0677 ± 0.0046 | 0.000; 1.00 | — | — |
+| (iv) a_x − a_y = 0.03, Δa = −0.015 | global (period-level substitution) | 1.1127 | −0.0677 ± 0.0046 | −0.0746 ± 0.0045 | +0.0069 ± 0.0030 | 0.114; 0.64 | — | — |
 
 Band-passed generator (the same conditions on series with the data's spectrum and window-level operating point; the (ii) rows read by their δ_sym DiD, not by c, because this construction injects about a thirtieth of the AR(1) generator's lagged structure at the same c). Source: `notes/review_results/partB/calibration_filtered_tables.md` and `calibration_filtered.csv` (B17b; record, pre-run entry 21 Sep 2026, outcome 21 Sep 2026). The generator was solved once and held fixed at β̄ = 185.4, σ_q = 0.2637, β̄_post = 105.7 and δ = 82.6, giving a realised window-level mean a of 0.8637, mean |q| 0.2844, post-injection a 0.8483 and a_x − a_y 0.0300.
 
 | condition | estimator | sts level (pre) | sts DiD | AR(1)-substituted DiD | residual DiD | residual p (mean; share < 0.05) | δ_sym DiD | RMS δ_anti DiD |
 |---|---|---|---|---|---|---|---|---|
-| (i) Δa (post filter) | W60 | 1.1883 | -0.0940 ± 0.0028 | -0.0966 ± 0.0027 | +0.0027 ± 0.0014 | 0.136; 0.54 | -0.00005 ± 0.00030 | +0.00641 ± 0.00104 |
-| (i) Δa (post filter) | global (run-level substitution) | 1.3262 | -0.1046 ± 0.0035 | +0.0000 ± 0.0000 | -0.1046 ± 0.0035 | 0.000; 1.00 | — | — |
-| (i) Δa (post filter) | global (period-level substitution) | 1.3262 | -0.1046 ± 0.0035 | -0.1089 ± 0.0030 | +0.0043 ± 0.0020 | 0.116; 0.62 | — | — |
-| (ii) Δc = +0.01 | W60 | 1.1878 | +0.0001 ± 0.0029 | -0.0002 ± 0.0025 | +0.0003 ± 0.0011 | 0.464; 0.04 | +0.00025 ± 0.00031 | -0.00021 ± 0.00096 |
-| (ii) Δc = +0.01 | global (run-level substitution) | 1.3349 | -0.0003 ± 0.0034 | -0.0000 ± 0.0000 | -0.0003 ± 0.0034 | 0.494; 0.08 | — | — |
-| (ii) Δc = +0.01 | global (period-level substitution) | 1.3349 | -0.0003 ± 0.0034 | -0.0002 ± 0.0024 | -0.0002 ± 0.0021 | 0.459; 0.06 | — | — |
-| (ii) Δc = +0.02 | W60 | 1.1878 | +0.0002 ± 0.0025 | +0.0004 ± 0.0026 | -0.0002 ± 0.0012 | 0.517; 0.04 | +0.00045 ± 0.00024 | -0.00002 ± 0.00103 |
-| (ii) Δc = +0.02 | global (run-level substitution) | 1.3353 | -0.0001 ± 0.0034 | +0.0000 ± 0.0000 | -0.0001 ± 0.0034 | 0.569; 0.02 | — | — |
-| (ii) Δc = +0.02 | global (period-level substitution) | 1.3353 | -0.0001 ± 0.0034 | -0.0000 ± 0.0028 | -0.0001 ± 0.0020 | 0.477; 0.04 | — | — |
-| (ii) Δc = +0.03 | W60 | 1.1883 | -0.0009 ± 0.0028 | -0.0005 ± 0.0026 | -0.0004 ± 0.0012 | 0.453; 0.06 | +0.00069 ± 0.00024 | -0.00018 ± 0.00096 |
-| (ii) Δc = +0.03 | global (run-level substitution) | 1.3361 | -0.0010 ± 0.0041 | -0.0000 ± 0.0000 | -0.0010 ± 0.0041 | 0.440; 0.16 | — | — |
-| (ii) Δc = +0.03 | global (period-level substitution) | 1.3361 | -0.0010 ± 0.0041 | -0.0005 ± 0.0028 | -0.0005 ± 0.0022 | 0.390; 0.08 | — | — |
-| (ii) Δc = −0.02 | W60 | 1.1879 | -0.0002 ± 0.0026 | +0.0000 ± 0.0024 | -0.0002 ± 0.0012 | 0.469; 0.04 | -0.00044 ± 0.00030 | +0.00019 ± 0.00077 |
-| (ii) Δc = −0.02 | global (run-level substitution) | 1.3354 | -0.0004 ± 0.0039 | -0.0000 ± 0.0000 | -0.0004 ± 0.0039 | 0.422; 0.14 | — | — |
-| (ii) Δc = −0.02 | global (period-level substitution) | 1.3354 | -0.0004 ± 0.0039 | -0.0004 ± 0.0027 | -0.0000 ± 0.0019 | 0.518; 0.04 | — | — |
-| (iii) Δa and Δc = +0.02 | W60 | 1.1875 | -0.0944 ± 0.0026 | -0.0971 ± 0.0026 | +0.0027 ± 0.0011 | 0.115; 0.50 | +0.00060 ± 0.00031 | +0.00645 ± 0.00092 |
-| (iii) Δa and Δc = +0.02 | global (run-level substitution) | 1.3255 | -0.1055 ± 0.0028 | +0.0000 ± 0.0000 | -0.1055 ± 0.0028 | 0.000; 1.00 | — | — |
-| (iii) Δa and Δc = +0.02 | global (period-level substitution) | 1.3255 | -0.1055 ± 0.0028 | -0.1091 ± 0.0024 | +0.0036 ± 0.0014 | 0.132; 0.44 | — | — |
-| (iv) a_x − a_y = 0.03 with Δa | W60 | 1.1668 | -0.0889 ± 0.0026 | -0.0920 ± 0.0027 | +0.0031 ± 0.0012 | 0.064; 0.62 | -0.00002 ± 0.00028 | +0.00592 ± 0.00108 |
-| (iv) a_x − a_y = 0.03 with Δa | global (run-level substitution) | 1.2526 | -0.0913 ± 0.0028 | -0.0000 ± 0.0000 | -0.0913 ± 0.0028 | 0.000; 1.00 | — | — |
-| (iv) a_x − a_y = 0.03 with Δa | global (period-level substitution) | 1.2526 | -0.0913 ± 0.0028 | -0.1014 ± 0.0028 | +0.0101 ± 0.0016 | 0.001; 1.00 | — | — |
+| (i) Δa (post filter) | W60 | 1.1883 | −0.0940 ± 0.0028 | −0.0966 ± 0.0027 | +0.0027 ± 0.0014 | 0.136; 0.54 | −0.00005 ± 0.00030 | +0.00641 ± 0.00104 |
+| (i) Δa (post filter) | global (run-level substitution) | 1.3262 | −0.1046 ± 0.0035 | +0.0000 ± 0.0000 | −0.1046 ± 0.0035 | 0.000; 1.00 | — | — |
+| (i) Δa (post filter) | global (period-level substitution) | 1.3262 | −0.1046 ± 0.0035 | −0.1089 ± 0.0030 | +0.0043 ± 0.0020 | 0.116; 0.62 | — | — |
+| (ii) Δc = +0.01 | W60 | 1.1878 | +0.0001 ± 0.0029 | −0.0002 ± 0.0025 | +0.0003 ± 0.0011 | 0.464; 0.04 | +0.00025 ± 0.00031 | −0.00021 ± 0.00096 |
+| (ii) Δc = +0.01 | global (run-level substitution) | 1.3349 | −0.0003 ± 0.0034 | −0.0000 ± 0.0000 | −0.0003 ± 0.0034 | 0.494; 0.08 | — | — |
+| (ii) Δc = +0.01 | global (period-level substitution) | 1.3349 | −0.0003 ± 0.0034 | −0.0002 ± 0.0024 | −0.0002 ± 0.0021 | 0.459; 0.06 | — | — |
+| (ii) Δc = +0.02 | W60 | 1.1878 | +0.0002 ± 0.0025 | +0.0004 ± 0.0026 | −0.0002 ± 0.0012 | 0.517; 0.04 | +0.00045 ± 0.00024 | −0.00002 ± 0.00103 |
+| (ii) Δc = +0.02 | global (run-level substitution) | 1.3353 | −0.0001 ± 0.0034 | +0.0000 ± 0.0000 | −0.0001 ± 0.0034 | 0.569; 0.02 | — | — |
+| (ii) Δc = +0.02 | global (period-level substitution) | 1.3353 | −0.0001 ± 0.0034 | −0.0000 ± 0.0028 | −0.0001 ± 0.0020 | 0.477; 0.04 | — | — |
+| (ii) Δc = +0.03 | W60 | 1.1883 | −0.0009 ± 0.0028 | −0.0005 ± 0.0026 | −0.0004 ± 0.0012 | 0.453; 0.06 | +0.00069 ± 0.00024 | −0.00018 ± 0.00096 |
+| (ii) Δc = +0.03 | global (run-level substitution) | 1.3361 | −0.0010 ± 0.0041 | −0.0000 ± 0.0000 | −0.0010 ± 0.0041 | 0.440; 0.16 | — | — |
+| (ii) Δc = +0.03 | global (period-level substitution) | 1.3361 | −0.0010 ± 0.0041 | −0.0005 ± 0.0028 | −0.0005 ± 0.0022 | 0.390; 0.08 | — | — |
+| (ii) Δc = −0.02 | W60 | 1.1879 | −0.0002 ± 0.0026 | +0.0000 ± 0.0024 | −0.0002 ± 0.0012 | 0.469; 0.04 | −0.00044 ± 0.00030 | +0.00019 ± 0.00077 |
+| (ii) Δc = −0.02 | global (run-level substitution) | 1.3354 | −0.0004 ± 0.0039 | −0.0000 ± 0.0000 | −0.0004 ± 0.0039 | 0.422; 0.14 | — | — |
+| (ii) Δc = −0.02 | global (period-level substitution) | 1.3354 | −0.0004 ± 0.0039 | −0.0004 ± 0.0027 | −0.0000 ± 0.0019 | 0.518; 0.04 | — | — |
+| (iii) Δa and Δc = +0.02 | W60 | 1.1875 | −0.0944 ± 0.0026 | −0.0971 ± 0.0026 | +0.0027 ± 0.0011 | 0.115; 0.50 | +0.00060 ± 0.00031 | +0.00645 ± 0.00092 |
+| (iii) Δa and Δc = +0.02 | global (run-level substitution) | 1.3255 | −0.1055 ± 0.0028 | +0.0000 ± 0.0000 | −0.1055 ± 0.0028 | 0.000; 1.00 | — | — |
+| (iii) Δa and Δc = +0.02 | global (period-level substitution) | 1.3255 | −0.1055 ± 0.0028 | −0.1091 ± 0.0024 | +0.0036 ± 0.0014 | 0.132; 0.44 | — | — |
+| (iv) a_x − a_y = 0.03 with Δa | W60 | 1.1668 | −0.0889 ± 0.0026 | −0.0920 ± 0.0027 | +0.0031 ± 0.0012 | 0.064; 0.62 | −0.00002 ± 0.00028 | +0.00592 ± 0.00108 |
+| (iv) a_x − a_y = 0.03 with Δa | global (run-level substitution) | 1.2526 | −0.0913 ± 0.0028 | −0.0000 ± 0.0000 | −0.0913 ± 0.0028 | 0.000; 1.00 | — | — |
+| (iv) a_x − a_y = 0.03 with Δa | global (period-level substitution) | 1.2526 | −0.0913 ± 0.0028 | −0.1014 ± 0.0028 | +0.0101 ± 0.0016 | 0.001; 1.00 | — | — |
 
 Population reference for the AR(1) conditions (closed form at the drawn (a_x, a_y, q); 20,000 draws of B17's distributions and its q pool):
 
 | condition | population sts, pre | population sts, post | population change | B17 W60 level (pre) | B17 W60 sts DiD | B17 global level (pre) | B17 global sts DiD |
 |---|---|---|---|---|---|---|---|
-| (i) | 1.1936 | 1.1121 | -0.0816 | 0.7152 | -0.0422 | 1.1317 | -0.0675 |
-| (iv) | 1.1474 | 1.0699 | -0.0775 | 0.7131 | -0.0422 | 1.1127 | -0.0677 |
-| (iv) − (i), pre level | -0.0463 | — | — | -0.0021 | — | -0.0190 | — |
+| (i) | 1.1936 | 1.1121 | −0.0816 | 0.7152 | −0.0422 | 1.1317 | −0.0675 |
+| (iv) | 1.1474 | 1.0699 | −0.0775 | 0.7131 | −0.0422 | 1.1127 | −0.0677 |
+| (iv) − (i), pre level | −0.0463 | — | — | −0.0021 | — | −0.0190 | — |
 
 Note. The residual DiD under a pure autocorrelation change is +0.0027 ± 0.0014 on the band-passed generator against +0.0049 ± 0.0017 on AR(1) pairs; the main text quotes both. The window-level change of pair r₁ under (i) is −0.01540 ± 0.00035 on the band-passed generator (B24) and −0.01243 ± 0.00101 on AR(1) pairs (B23 (e)); the band-passed generator's population change is Δr₁ = −0.01629 and Δsts = −0.11263 (B23 (e); S13 Table). At the global fit with a period-level AR(1)-substituted estimate, condition (iv) leaves +0.0101 ± 0.0016 with a sign-flip p below 0.05 in every replicate, so the global-fit residual is not a safe read when the pairs are asymmetric.
 
@@ -273,7 +273,7 @@ Source: `notes/review_results/inference_rows_prewhiten.csv` and `partB/prewhiten
 | AR(1) | ts_gsr | W = 60 | CCS-sts (`phyid`'s mask) | −0.0552 | −0.0057 [−0.0098, −0.0017] | 0.0065 | 12 |
 | AR(1) | ts_gsr | W = 60 | lag-1 autocorrelation of the whitened series | 0.7506 | −0.0196 [−0.0291, −0.0106] | 0.0010 | 12 |
 | AR(1) | ts_gsr | global fit | MMI-sts | 0.8043 | −0.0559 [−0.0903, −0.0239] | 0.0015 | 13 |
-| AR(1) | ts_gsr | global fit | CCS-sts (`phyid`'s mask) | −0.0298 | +0.0134 [+0.0077, +0.0192] | 0.0005 | 1 |
+| AR(1) | ts_gsr | global fit | CCS-sts (`phyid`'s mask) | −0.0298 | +0.0134 [+0.0077, +0.0193] | 0.0005 | 1 |
 | AR(1) | ts_gsr | global fit | lag-1 autocorrelation of the whitened series (run-standardised bins) | 0.9215 | −0.3164 [−0.4375, −0.2019] | 0.0004 | 13 |
 | AR(1) | ts_demean | W = 60 | MMI-sts | 0.6822 | −0.0784 [−0.1110, −0.0465] | 0.0004 | 13 |
 | AR(1) | ts_demean | W = 60 | CCS-sts (`phyid`'s mask) | −0.0469 | +0.0035 [−0.0057, +0.0137] | 0.5170 | 5 |
@@ -302,7 +302,7 @@ The AR(1)-substituted estimate on the AR(p)-whitened series, ts_gsr, W = 60: obs
 | ar1 | 0.996 (0.002) | 0.001 (0.001) | 0.003 (0.001) | +0.7483 (0.0091) | +0.7426 (0.0131) | 839.0 |
 | arp | 0.670 (0.070) | 0.006 (0.002) | 0.324 (0.070) | +0.3011 (0.1061) | +0.2583 (0.1153) | 835.0 |
 | p10 | 0.457 (0.042) | 0.008 (0.002) | 0.535 (0.042) | +0.0346 (0.0584) | +0.0739 (0.0855) | 830.0 |
-| p20 | 0.387 (0.018) | 0.012 (0.002) | 0.600 (0.017) | -0.0024 (0.0089) | +0.0323 (0.0445) | 820.0 |
+| p20 | 0.387 (0.018) | 0.012 (0.002) | 0.600 (0.017) | −0.0024 (0.0089) | +0.0323 (0.0445) | 820.0 |
 
 Note. The AR(p ≤ 5) whitening leaves 65.5 % of the power in band and 33.8 % above it, where the raw series has 0.1 % above it; at fixed orders 10 and 20 the above-band share rises to 51.2 % and 59.7 % while the run-level r₁ falls to 0.09 and 0.00; no atoms were computed at those orders. Of the AR(p)-whitened contrast, −0.026, the AR(1)-substituted estimate carries −0.019 (row 'prewhiten arp diag predicted sts ts_gsr W60', S17 Table). Reference values: the raw in-band share is 0.992, ideal flat-spectrum noise on the band at TR 2 s has r₁ = 0.8176 on the 840-sample frequency grid (`rev_extra.log`; the continuous-band value, 0.8174, is S18 Table's), and the band is 0.28 of the Nyquist range.
 
@@ -326,17 +326,17 @@ Moved from the main text (Table 5 of the drafts of 21–22 September) on 23 Sept
 
 | quantity | value | population Δr₁ | window-level Δr₁ | what it answers |
 |---|---|---|---|---|
-| map projection: the mean regional r₁ change (−0.0146) through ∂sts/∂r₁ = 5.99 at the pairs' point (0.848, 0.24) | −0.087 | — | −0.0146 (regional r₁) | the mean change passed through the slope at one point |
-| the AR(1)-substituted estimate from each window's (a_x, a_y, q), W = 60 | −0.0924 | — | −0.0155 (pair r₁); −0.0146 (regional r₁) | each pair's own point, averaged over pairs, at the windowed estimator |
+| map projection: the whole-brain r₁ change (−0.0146) through ∂sts/∂r₁ = 5.99 at the pairs' point (0.848, 0.24) | −0.087 | — | −0.0146 (whole-brain r₁) | the mean change passed through the slope at one point |
+| the AR(1)-substituted estimate from each window's (a_x, a_y, q), W = 60 | −0.0924 | — | −0.0155 (pair r₁); −0.0146 (whole-brain r₁) | each pair's own point, averaged over pairs, at the windowed estimator |
 | true change of sts under the whole autocorrelation-function change at fixed q (Gaussian process with the placebo and the post-DMT function) | −0.069 | −0.010 | — | the population change before any estimator |
 | — what the W = 60 estimator returns of it | −0.056 | | — | the estimator's shrinkage of that change |
 | simulated Δa = −0.015 on AR(1) pairs (condition (i)): population closed form | −0.0816 (1.1936 → 1.1121) | −0.015 (by construction) | | a known population change of the family |
 | — W = 60 estimator / global fit | −0.042 / −0.068 | | −0.01243 ± 0.00101 (W = 60; B23 (e)) | what the two estimators return of it |
 | the same on the band-passed generator: population (B23 (e)) | −0.1126 (1.3795 → 1.2669) | −0.0163 (0.8678 → 0.8515) | | the population change on series with the data's spectrum |
 | — W = 60 estimator / global fit (B17b) | −0.0940 / −0.1046 | | −0.01540 ± 0.00035 (W = 60; B24) | what the two estimators return of it |
-| observed DiD: W = 60 / global fit | −0.0809 / −0.0801 | — | −0.0155 (pair r₁); −0.0146 (regional r₁) | the data |
+| observed DiD: W = 60 / global fit | −0.0809 / −0.0801 | — | −0.0155 (pair r₁); −0.0146 (whole-brain r₁) | the data |
 
-Note. Rates taken within one simulation, per unit of window-level pair r₁ (record, 'Stage B of round 16: the shortened text', 23 September 2026): sts changes by +6.13 on the band-passed generator (B24: −0.09441 for −0.01540) and by +3.08 on AR(1) pairs (B23 (b) (i), a whole-run change against the unperturbed pairs: −0.04240 for −0.01377), against +5.2 in the data (−0.0809 for −0.0155; +5.5, that is 0.0055 nats per 0.001, per unit of regional r₁). The residual changes by −0.18 on the band-passed generator (B24: +0.00279 for −0.01540), −0.39 on AR(1) pairs (B23 (b) (i)), −0.37 under the finite-sample null (+0.0054 for its own −0.0146; `notes/review_results/logs/review_v2_residual_null.log`) and −1.59 and −2.73 under a weakening of a shared slow component's autocorrelation and of its weight (B23 (b), (a5)), against −0.74 in the data (+0.0115 for −0.0155) and −0.75 per unit of regional r₁ as the per-subject OLS slope (B21 (c)). The data's pair r₁ change is `residual_source.log`'s (12 of 14 subjects negative).
+Note. Rates taken within one simulation, per unit of window-level pair r₁ (record, "Stage B of round 16: the shortened text", 23 September 2026): sts changes by +6.13 on the band-passed generator (B24: −0.09441 for −0.01540) and by +3.08 on AR(1) pairs (B23 (b) (i), a whole-run change against the unperturbed pairs: −0.04240 for −0.01377), against +5.2 in the data (−0.0809 for −0.0155; +5.5, that is 0.0055 nats per 0.001, per unit of whole-brain r₁). The residual changes by −0.18 on the band-passed generator (B24: +0.00279 for −0.01540), −0.39 on AR(1) pairs (B23 (b) (i)), −0.37 under the finite-sample null (+0.0054 for its own −0.0146; `notes/review_results/logs/review_v2_residual_null.log`) and −1.59 and −2.73 under a weakening of a shared slow component's autocorrelation and of its weight (B23 (b), (a5)), against −0.74 in the data (+0.0115 for −0.0155) and −0.75 per unit of whole-brain r₁ as the per-subject OLS slope (B21 (c)). The data's pair r₁ change is `residual_source.log`'s (12 of 14 subjects negative).
 
 ## S14 Table. Lag dependence
 
@@ -367,13 +367,13 @@ Moved from the main text (Table 8 of the drafts of 21–22 September) on 23 Sept
 | matched pair | W = 30 | W = 60 | 840 samples |
 |---|---|---|---|
 | lowered autocorrelation, cross-coupling re-solved (asymmetric VAR(1)) | −6 % | −9 % | +2 % |
-| raised noise correlation, autocorrelation re-solved (asymmetric VAR(1)) | +33 % | +16 % | +1 % |
+| raised noise correlation, autocorrelation re-solved (asymmetric VAR(1)) | +33 % | +16 % | +1 % ± 1 % |
 | raised noise correlation, autocorrelation re-solved (VAR(1) at a = 0.87) | +6 % ± 8 % | +7 % ± 8 % | +29 % |
-| post-DMT autocorrelation function tilted back to the placebo r₁ (Gaussian process) | −1 % ± 8 % | −8 % ± 6 % | +2 % |
+| post-DMT autocorrelation function tilted back to the placebo r₁ (Gaussian process) | −1 % ± 8 % | −8 % ± 6 % | +2 % ± 2 % |
 
 ## S17 Table. Every interval of a mean over subjects, by method (B21)
 
-Source: `notes/review_results/partB/inference_revision.csv` and `inference_revision_tables.md` (record, the B21 pre-run entry and outcome of 23 September 2026; B21 was run at a9d9ca4). All 932 quantities with a saved per-subject vector: the 738 rows of the eight `notes/review_results/inference_rows_*.pkl` (every window set and field), 36 recomputations of the per-run changes and FD-residualised DiDs of Table 2 and S1 Table ("engine"), and 158 other saved per-subject quantities ("saved"). For each: the mean over the 14 subjects; the exact sign-flip p against zero (relative tolerance 1e-12) beside the committed p; the committed subject-bootstrap percentile interval (10,000 draws); the inverted sign-flip interval {μ : p(μ) > 0.05}, which the paper reports; the t interval, mean ± t(0.975, 13)·SD/√14; the ratio of the inverted to the percentile width; whether zero lies inside the percentile, inverted and t interval; and negative/14. The inverted interval excludes zero exactly when p ≤ 0.05 (932 of 932), and the monotonicity grid found no point where p rose away from the mean.
+Source: `notes/review_results/partB/inference_revision.csv` and `inference_revision_tables.md` (record, the B21 pre-run entry and outcome of 23 September 2026; B21 was run at a9d9ca4). The last column is B21's record, as committed at 90690f4, of where the text of 23 September 2026 quoted each committed percentile interval; B21 computes that column from the manuscript text as it stands when it runs, so the file regenerated at the final commit holds the same column for the final text. All 932 quantities with a saved per-subject vector: the 738 rows of the eight `notes/review_results/inference_rows_*.pkl` (every window set and field), 36 recomputations of the per-run changes and FD-residualised DiDs of Table 2 and S1 Table ("engine"), and 158 other saved per-subject quantities ("saved"). For each: the mean over the 14 subjects; the exact sign-flip p against zero (relative tolerance 1e-12) beside the committed p; the committed subject-bootstrap percentile interval (10,000 draws); the inverted sign-flip interval {μ : p(μ) > 0.05}, which the paper reports; the t interval, mean ± t(0.975, 13)·SD/√14; the ratio of the inverted to the percentile width; whether zero lies inside the percentile, inverted and t interval; and negative/14. The inverted interval excludes zero exactly when p ≤ 0.05 (932 of 932), and the monotonicity grid found no point where p rose away from the mean.
 
 Note. The width ratio has median 1.143 (quartiles 1.127–1.156) and range 1.039–1.288. That range includes three S9 Table cross-lag budget cells whose committed limits were printed at five decimals, so that their percentile widths carry rounding of the order of the widths themselves (δ_means on ts_gsr, DMT run, 1.288; δ_means on ts_demean, placebo run, 1.039; ε on ts_demean, grand mean, 1.231); the other 929 ratios lie in 1.072–1.191, so that the percentile intervals were narrower by 6.7–16.1 % (median 12.5 %). Zero-inclusion differs between the percentile and the inverted interval for 39 quantities (marked "changes"): nine of them were quoted in the text and are rewritten there as effect and interval, and the other 30 are reported here. The exact p differs from the committed p by more than the committed p's precision for seven quantities, all rows of the CCS decomposition (B18), none of which is quoted in the text; all seven were recomputed from the six-decimal per-run values of `ccs_decomposition.csv`: the interaction Δs Δc̄ on ts_gsr at W = 60, code mask 0.5227 (committed 0.5233) and published mask 0.1176 (0.1178), and at the global fit, code mask 0.0592 (0.0588); on ts_demean at W = 60 the selected share s, code mask 0.5748 (0.5747) and published mask 0.8015 (0.8014), the share term c̄_pre Δs, published mask 0.5244 (0.5240), and the interaction, published mask 0.6897 (0.6893). Bias-corrected and accelerated (BCa) intervals for the 29 intervals the drafts of 20–22 September quoted differed from their percentile intervals by less than 10 % of their width (largest ratio 1.04; B19 (d); S3 Text, section 5); BCa corrects bias and skew, not the narrowness of percentile intervals at N = 14, and is not used. Quantity labels are those of the result files, in which "predicted" names the AR(1)-substituted estimate and "diag" its computation (B4). Quantities with no saved per-subject vector keep their subject-bootstrap percentile intervals and are marked "percentile" where they are quoted: S2 Table's group means of the per-subject Spearman ρ, S6 Table's Lempel–Ziv correlations, S4 Table's workspace contrasts, the mean per-subject r(regional sts, regional r₁) of Results 3, +0.756 [+0.715, +0.790], the deconvolved ΦR values of S2 Text and the spectral centroid of S3 Text, section 9; S8 Table's share (ii) of the TDMI DiD is a ratio of group means, not a mean over subjects, and keeps its percentile interval (e.g. 0.7797 [0.6531, 0.9362]). "quoted at" names the file and line of the text at 90690f4 where the committed interval was quoted.
 
@@ -1314,7 +1314,7 @@ Note. The width ratio has median 1.143 (quartiles 1.127–1.156) and range 1.039
 
 ## S18 Table. The residual's response to changes in lagged structure, CCS-sts on the family, exposure per unit of spectral difference, the unequal-coefficient grid, and the pure-autocorrelation expectations of the new statistics (B23, B24)
 
-Source: `notes/review_results/partB/diagnostic_alternatives_tables.md` and `diagnostic_alternatives.csv` (B23) and `bandpassed_expectations_tables.md` and `bandpassed_expectations.csv` (B24), both at a9d9ca4 (record, their pre-run entries and outcome entries of 23 September 2026). No data. B23: seed 20261120, one generator, parts (a)–(f) in order; the residual is the pool mean of sts on the true 4 × 4 matrix minus that on the AR(1) matrix of the measured a_x, a_y and q (the main text's substitution); q pool 20,000 draws of N(0, 0.3424) clipped to ±0.8; 63 checks, 0 failed. Its run log carries two `fsolve` RuntimeWarnings ("not making good progress", "xtol … too small"), which are expected: the (a3) polish keeps a point only if it improves on the least-squares solution, and every solve held r₁ and q to 10⁻¹⁰ (worst 9.95 × 10⁻¹³). Part (b) gives the (a5) base as differences from the unperturbed AR(1) pairs, so its levels are the sums (for example observed sts 0.71753 − 0.01423 = 0.70330), and the (a5) changes are taken against that base. B24: B17b's generator at its solved parameters, condition (i) only, 20 replicates; 10 checks, 0 failed. B23 and B24 were re-run independently by a separate session of the AI system at a9d9ca4: `diagnostic_alternatives.csv` was reproduced byte for byte, the tables differ only in floating-point quantities near 10⁻¹⁶, and `bandpassed_expectations.csv` is identical apart from the sign of seven zeros.
+Source: `notes/review_results/partB/diagnostic_alternatives_tables.md` and `diagnostic_alternatives.csv` (B23) and `bandpassed_expectations_tables.md` and `bandpassed_expectations.csv` (B24), both at a9d9ca4 (record, their pre-run entries and outcome entries of 23 September 2026). No data. B23: seed 20261120, one generator, parts (a)–(f) in order; the residual is the pool mean of sts on the true 4 × 4 matrix minus that on the AR(1) matrix of the measured a_x, a_y and q (the main text's substitution); q pool 20,000 draws of N(0, 0.3424²) clipped to ±0.8; 63 checks, 0 failed. Its run log carries two `fsolve` RuntimeWarnings ("not making good progress", "xtol … too small"), which are expected: the (a3) polish keeps a point only if it improves on the least-squares solution, and every solve held r₁ and q to 10⁻¹⁰ (worst 9.95 × 10⁻¹³). Part (b) gives the (a5) base as differences from the unperturbed AR(1) pairs, so its levels are the sums (for example observed sts 0.71753 − 0.01423 = 0.70330), and the (a5) changes are taken against that base. B24: B17b's generator at its solved parameters, condition (i) only, 20 replicates; 10 checks, 0 failed. B23 and B24 were re-run independently by a separate session of the AI system at a9d9ca4: `diagnostic_alternatives.csv` was reproduced byte for byte, the tables differ only in floating-point quantities near 10⁻¹⁶, and `bandpassed_expectations.csv` is identical apart from the sign of seven zeros.
 
 ### B23
 
@@ -1325,43 +1325,43 @@ Source: `notes/review_results/partB/diagnostic_alternatives_tables.md` and `diag
 | alternative | perturbation | residual change | share excluded (not positive definite) | notes |
 |---|---|---|---|---|
 | (a1) δ at fixed (a, q) | δ = +0.005 | +0.00105 | 0.0000 | |
-| (a1) δ at fixed (a, q) | δ = -0.005 | +0.00073 | 0.0000 | |
+| (a1) δ at fixed (a, q) | δ = −0.005 | +0.00073 | 0.0000 | |
 | (a1) δ at fixed (a, q) | δ = +0.010 | +0.00393 | 0.0000 | |
-| (a1) δ at fixed (a, q) | δ = -0.010 | +0.00329 | 0.0000 | |
+| (a1) δ at fixed (a, q) | δ = −0.010 | +0.00329 | 0.0000 | |
 | (a1) δ at fixed (a, q) | δ = +0.020 | +0.01609 | 0.0000 | |
-| (a1) δ at fixed (a, q) | δ = -0.020 | +0.01482 | 0.0000 | |
-| (a2) δ·sign(q) | δ = +0.005 × sign(q) | -0.01201 | 0.0000 | |
-| (a2) δ·sign(q) | δ = -0.005 × sign(q) | +0.01379 | 0.0000 | |
-| (a2) δ·sign(q) | δ = +0.010 × sign(q) | -0.02245 | 0.0000 | |
-| (a2) δ·sign(q) | δ = -0.010 × sign(q) | +0.02968 | 0.0000 | |
-| (a2) δ·sign(q) | δ = +0.020 × sign(q) | -0.03925 | 0.0000 | |
-| (a2) δ·sign(q) | δ = -0.020 × sign(q) | +0.07015 | 0.0000 | |
+| (a1) δ at fixed (a, q) | δ = −0.020 | +0.01482 | 0.0000 | |
+| (a2) δ·sign(q) | δ = +0.005 × sign(q) | −0.01201 | 0.0000 | |
+| (a2) δ·sign(q) | δ = −0.005 × sign(q) | +0.01379 | 0.0000 | |
+| (a2) δ·sign(q) | δ = +0.010 × sign(q) | −0.02245 | 0.0000 | |
+| (a2) δ·sign(q) | δ = −0.010 × sign(q) | +0.02968 | 0.0000 | |
+| (a2) δ·sign(q) | δ = +0.020 × sign(q) | −0.03925 | 0.0000 | |
+| (a2) δ·sign(q) | δ = −0.020 × sign(q) | +0.07015 | 0.0000 | |
 | (a3) coupled family, r₁ and q held | c = +0.01 | +0.00237 | 0.0000 | grid step 0.001; step doubled: +0.00237 (difference 1.6e-16) |
-| (a3) coupled family, r₁ and q held | c = +0.01 × sign(q) | -0.01671 | 0.0000 | grid step 0.001; step doubled: -0.01671 (difference 5.1e-15) |
-| (a3) coupled family, r₁ and q held | c = -0.01 | +0.00188 | 0.0000 | grid step 0.001; step doubled: +0.00188 (difference 2.9e-16) |
-| (a3) coupled family, r₁ and q held | c = -0.01 × sign(q) | +0.02097 | 0.0000 | grid step 0.001; step doubled: +0.02097 (difference 4.9e-15) |
+| (a3) coupled family, r₁ and q held | c = +0.01 × sign(q) | −0.01671 | 0.0000 | grid step 0.001; step doubled: −0.01671 (difference 5.1e-15) |
+| (a3) coupled family, r₁ and q held | c = −0.01 | +0.00188 | 0.0000 | grid step 0.001; step doubled: +0.00188 (difference 2.9e-16) |
+| (a3) coupled family, r₁ and q held | c = −0.01 × sign(q) | +0.02097 | 0.0000 | grid step 0.001; step doubled: +0.02097 (difference 4.9e-15) |
 | (a3) coupled family, r₁ and q held | c = +0.02 | +0.00912 | 0.0000 | grid step 0.001; step doubled: +0.00912 (difference 1.2e-16) |
-| (a3) coupled family, r₁ and q held | c = +0.02 × sign(q) | -0.02960 | 0.0000 | grid step 0.001; step doubled: -0.02960 (difference 1.0e-14) |
-| (a3) coupled family, r₁ and q held | c = -0.02 | +0.00813 | 0.0000 | grid step 0.001; step doubled: +0.00813 (difference 7.5e-16) |
-| (a3) coupled family, r₁ and q held | c = -0.02 × sign(q) | +0.04684 | 0.0000 | grid step 0.001; step doubled: +0.04684 (difference 9.7e-15) |
+| (a3) coupled family, r₁ and q held | c = +0.02 × sign(q) | −0.02960 | 0.0000 | grid step 0.001; step doubled: −0.02960 (difference 1.0e-14) |
+| (a3) coupled family, r₁ and q held | c = −0.02 | +0.00813 | 0.0000 | grid step 0.001; step doubled: +0.00813 (difference 7.5e-16) |
+| (a3) coupled family, r₁ and q held | c = −0.02 × sign(q) | +0.04684 | 0.0000 | grid step 0.001; step doubled: +0.04684 (difference 9.7e-15) |
 
 (a4) B17's construction at a = 0.85: A = [[a, c], [c, a]], unit innovations with correlation q (the c = 0 lag-0 correlation).
 
 | c | Δr₁ | Δ mean q | Δ mean \|q\| | mean δ_sym | residual change | residual / (mean δ_sym)² |
 |---|---|---|---|---|---|---|
-| +0.01 | +0.00051 | +0.05437 | +0.00320 | +0.00885 | -0.00190 | -24.28 |
-| +0.02 | +0.00211 | +0.10899 | +0.01320 | +0.01755 | -0.00815 | -26.45 |
-| +0.03 | +0.00482 | +0.16409 | +0.03016 | +0.02597 | -0.01893 | -28.08 |
-| -0.02 | +0.00225 | -0.10891 | +0.01488 | -0.01753 | -0.00913 | -29.71 |
+| +0.01 | +0.00051 | +0.05437 | +0.00320 | +0.00885 | −0.00190 | −24.28 |
+| +0.02 | +0.00211 | +0.10899 | +0.01320 | +0.01755 | −0.00815 | −26.45 |
+| +0.03 | +0.00482 | +0.16409 | +0.03016 | +0.02597 | −0.01893 | −28.08 |
+| −0.02 | +0.00225 | −0.10891 | +0.01488 | −0.01753 | −0.00913 | −29.71 |
 
-(a5) shared slow component at a = 0.85 (λ = |q|, a_n = a − 0.06λ, a_s = a_n + 0.06): base residual -0.02724, base mean(sign(q)·δ_sym) +0.00950.
+(a5) shared slow component at a = 0.85 (λ = |q|, a_n = a − 0.06λ, a_s = a_n + 0.06): base residual −0.02724, base mean(sign(q)·δ_sym) +0.00950.
 
 | change | Δr₁ | Δ mean(sign(q)·δ_sym) | residual change | residual change / Δr₁ | share excluded |
 |---|---|---|---|---|---|
-| Δa_s = −0.01 | -0.00272 | -0.00158 | +0.00466 | -1.716 | 0.0000 |
-| Δa_s = −0.02 | -0.00543 | -0.00317 | +0.00928 | -1.708 | 0.0000 |
-| Δa_s = −0.03 | -0.00815 | -0.00475 | +0.01385 | -1.700 | 0.0000 |
-| λ → 0.9λ | -0.00163 | -0.00034 | +0.00471 | -2.892 | 0.0000 |
+| Δa_s = −0.01 | −0.00272 | −0.00158 | +0.00466 | −1.716 | 0.0000 |
+| Δa_s = −0.02 | −0.00543 | −0.00317 | +0.00928 | −1.708 | 0.0000 |
+| Δa_s = −0.03 | −0.00815 | −0.00475 | +0.01385 | −1.700 | 0.0000 |
+| λ → 0.9λ | −0.00163 | −0.00034 | +0.00471 | −2.892 | 0.0000 |
 
 (a6) pure Δa = −0.015 at a = 0.85: largest |residual| over the pool 0.0e+00.
 
@@ -1370,65 +1370,65 @@ Source: `notes/review_results/partB/diagnostic_alternatives_tables.md` and `diag
 | alternative | perturbation | residual change | share excluded (not positive definite) | notes |
 |---|---|---|---|---|
 | (a1) δ at fixed (a, q) | δ = +0.005 | +0.00126 | 0.0000 | |
-| (a1) δ at fixed (a, q) | δ = -0.005 | +0.00091 | 0.0000 | |
+| (a1) δ at fixed (a, q) | δ = −0.005 | +0.00091 | 0.0000 | |
 | (a1) δ at fixed (a, q) | δ = +0.010 | +0.00476 | 0.0000 | |
-| (a1) δ at fixed (a, q) | δ = -0.010 | +0.00407 | 0.0000 | |
+| (a1) δ at fixed (a, q) | δ = −0.010 | +0.00407 | 0.0000 | |
 | (a1) δ at fixed (a, q) | δ = +0.020 | +0.01994 | 0.0000 | |
-| (a1) δ at fixed (a, q) | δ = -0.020 | +0.01856 | 0.0000 | |
-| (a2) δ·sign(q) | δ = +0.005 × sign(q) | -0.01307 | 0.0000 | |
-| (a2) δ·sign(q) | δ = -0.005 × sign(q) | +0.01524 | 0.0000 | |
-| (a2) δ·sign(q) | δ = +0.010 × sign(q) | -0.02425 | 0.0000 | |
-| (a2) δ·sign(q) | δ = -0.010 × sign(q) | +0.03308 | 0.0000 | |
-| (a2) δ·sign(q) | δ = +0.020 × sign(q) | -0.04170 | 0.0000 | |
-| (a2) δ·sign(q) | δ = -0.020 × sign(q) | +0.08019 | 0.0000 | |
+| (a1) δ at fixed (a, q) | δ = −0.020 | +0.01856 | 0.0000 | |
+| (a2) δ·sign(q) | δ = +0.005 × sign(q) | −0.01307 | 0.0000 | |
+| (a2) δ·sign(q) | δ = −0.005 × sign(q) | +0.01524 | 0.0000 | |
+| (a2) δ·sign(q) | δ = +0.010 × sign(q) | −0.02425 | 0.0000 | |
+| (a2) δ·sign(q) | δ = −0.010 × sign(q) | +0.03308 | 0.0000 | |
+| (a2) δ·sign(q) | δ = +0.020 × sign(q) | −0.04170 | 0.0000 | |
+| (a2) δ·sign(q) | δ = −0.020 × sign(q) | +0.08019 | 0.0000 | |
 | (a3) coupled family, r₁ and q held | c = +0.01 | +0.00287 | 0.0000 | grid step 0.001; step doubled: +0.00287 (difference 1.8e-16) |
-| (a3) coupled family, r₁ and q held | c = +0.01 × sign(q) | -0.01807 | 0.0000 | grid step 0.001; step doubled: -0.01807 (difference 5.3e-15) |
-| (a3) coupled family, r₁ and q held | c = -0.01 | +0.00234 | 0.0000 | grid step 0.001; step doubled: +0.00234 (difference 2.9e-16) |
-| (a3) coupled family, r₁ and q held | c = -0.01 × sign(q) | +0.02328 | 0.0000 | grid step 0.001; step doubled: +0.02328 (difference 5.2e-15) |
+| (a3) coupled family, r₁ and q held | c = +0.01 × sign(q) | −0.01807 | 0.0000 | grid step 0.001; step doubled: −0.01807 (difference 5.3e-15) |
+| (a3) coupled family, r₁ and q held | c = −0.01 | +0.00234 | 0.0000 | grid step 0.001; step doubled: +0.00234 (difference 2.9e-16) |
+| (a3) coupled family, r₁ and q held | c = −0.01 × sign(q) | +0.02328 | 0.0000 | grid step 0.001; step doubled: +0.02328 (difference 5.2e-15) |
 | (a3) coupled family, r₁ and q held | c = +0.02 | +0.01112 | 0.0000 | grid step 0.001; step doubled: +0.01112 (difference 1.8e-16) |
-| (a3) coupled family, r₁ and q held | c = +0.02 × sign(q) | -0.03149 | 0.0000 | grid step 0.001; step doubled: -0.03149 (difference 1.1e-14) |
-| (a3) coupled family, r₁ and q held | c = -0.02 | +0.01002 | 0.0000 | grid step 0.001; step doubled: +0.01002 (difference 7.4e-16) |
-| (a3) coupled family, r₁ and q held | c = -0.02 × sign(q) | +0.05263 | 0.0000 | grid step 0.001; step doubled: +0.05263 (difference 1.0e-14) |
+| (a3) coupled family, r₁ and q held | c = +0.02 × sign(q) | −0.03149 | 0.0000 | grid step 0.001; step doubled: −0.03149 (difference 1.1e-14) |
+| (a3) coupled family, r₁ and q held | c = −0.02 | +0.01002 | 0.0000 | grid step 0.001; step doubled: +0.01002 (difference 7.4e-16) |
+| (a3) coupled family, r₁ and q held | c = −0.02 × sign(q) | +0.05263 | 0.0000 | grid step 0.001; step doubled: +0.05263 (difference 1.0e-14) |
 
 (a4) B17's construction at a = 0.8632: A = [[a, c], [c, a]], unit innovations with correlation q (the c = 0 lag-0 correlation).
 
 | c | Δr₁ | Δ mean q | Δ mean \|q\| | mean δ_sym | residual change | residual / (mean δ_sym)² |
 |---|---|---|---|---|---|---|
-| +0.01 | +0.00057 | +0.06012 | +0.00393 | +0.00884 | -0.00230 | -29.48 |
-| +0.02 | +0.00234 | +0.12056 | +0.01623 | +0.01751 | -0.00984 | -32.09 |
-| +0.03 | +0.00534 | +0.18162 | +0.03698 | +0.02582 | -0.02287 | -34.31 |
-| -0.02 | +0.00248 | -0.12046 | +0.01809 | -0.01748 | -0.01091 | -35.70 |
+| +0.01 | +0.00057 | +0.06012 | +0.00393 | +0.00884 | −0.00230 | −29.48 |
+| +0.02 | +0.00234 | +0.12056 | +0.01623 | +0.01751 | −0.00984 | −32.09 |
+| +0.03 | +0.00534 | +0.18162 | +0.03698 | +0.02582 | −0.02287 | −34.31 |
+| −0.02 | +0.00248 | −0.12046 | +0.01809 | −0.01748 | −0.01091 | −35.70 |
 
-(a5) shared slow component at a = 0.8632 (λ = |q|, a_n = a − 0.06λ, a_s = a_n + 0.06): base residual -0.02942, base mean(sign(q)·δ_sym) +0.00950.
+(a5) shared slow component at a = 0.8632 (λ = |q|, a_n = a − 0.06λ, a_s = a_n + 0.06): base residual −0.02942, base mean(sign(q)·δ_sym) +0.00950.
 
 | change | Δr₁ | Δ mean(sign(q)·δ_sym) | residual change | residual change / Δr₁ | share excluded |
 |---|---|---|---|---|---|
-| Δa_s = −0.01 | -0.00272 | -0.00158 | +0.00502 | -1.850 | 0.0000 |
-| Δa_s = −0.02 | -0.00543 | -0.00317 | +0.01001 | -1.842 | 0.0000 |
-| Δa_s = −0.03 | -0.00815 | -0.00475 | +0.01495 | -1.834 | 0.0000 |
-| λ → 0.9λ | -0.00163 | -0.00034 | +0.00514 | -3.152 | 0.0000 |
+| Δa_s = −0.01 | −0.00272 | −0.00158 | +0.00502 | −1.850 | 0.0000 |
+| Δa_s = −0.02 | −0.00543 | −0.00317 | +0.01001 | −1.842 | 0.0000 |
+| Δa_s = −0.03 | −0.00815 | −0.00475 | +0.01495 | −1.834 | 0.0000 |
+| λ → 0.9λ | −0.00163 | −0.00034 | +0.00514 | −3.152 | 0.0000 |
 
 (a6) pure Δa = −0.015 at a = 0.8632: largest |residual| over the pool 0.0e+00.
 
 ### (b) W = 60 simulation: changes against the unperturbed pairs (common random numbers; mean ± SE)
 
-3000 pairs, q ~ N(0, 0.3424) clipped to ±0.8, a = 0.85; runs of 840 samples after a burn-in of 200; 14 windows of 60; the other run an independent realisation. SE over pairs of each pair's 14-window mean; B's SE over the 14 windows.
+3000 pairs, q ~ N(0, 0.3424²) clipped to ±0.8, a = 0.85; runs of 840 samples after a burn-in of 200; 14 windows of 60; the other run an independent realisation. SE over pairs of each pair's 14-window mean; B's SE over the 14 windows.
 
-Unperturbed AR(1) pairs, levels: observed sts +0.71753; AR(1)-substituted sts +0.78780; residual -0.07027; r₁ +0.78638; A_other -0.00291; A_same -0.00117; D -0.01137; B +0.06122.
+Unperturbed AR(1) pairs, levels: observed sts +0.71753; AR(1)-substituted sts +0.78780; residual −0.07027; r₁ +0.78638; A_other −0.00291; A_same −0.00117; D −0.01137; B +0.06122.
 
 | condition | pairs excluded | Δ observed sts | Δ AR(1)-substituted sts | Δ residual | Δ r₁ | Δ A_other | Δ A_same | Δ D | Δ B | residual change / Δr₁ |
 |---|---|---|---|---|---|---|---|---|---|---|
-| (i) Δa = −0.015 | 0 | -0.04240 ± 0.00011 | -0.04777 ± 0.00012 | +0.00537 ± 0.00009 | -0.01377 ± 0.00002 | +0.00001 ± 0.00004 | +0.00001 ± 0.00005 | +0.00015 ± 0.00007 | +0.00034 ± 0.00004 | -0.390 |
-| (a1) δ = +0.02 | 0 | +0.00521 ± 0.00078 | -0.00457 ± 0.00035 | +0.00978 ± 0.00093 | -0.00092 ± 0.00004 | +0.00041 ± 0.00034 | +0.00017 ± 0.00034 | +0.00032 ± 0.00014 | +0.00045 ± 0.00010 | -10.628 |
-| (a1) δ = −0.02 | 0 | +0.00608 ± 0.00079 | -0.00409 ± 0.00037 | +0.01016 ± 0.00095 | -0.00089 ± 0.00004 | +0.00059 ± 0.00034 | +0.00070 ± 0.00034 | +0.00041 ± 0.00013 | +0.00032 ± 0.00011 | -11.358 |
-| (a2) δ = +0.01 × sign(q) | 0 | -0.01064 ± 0.00028 | +0.00290 ± 0.00015 | -0.01354 ± 0.00030 | -0.00023 ± 0.00002 | +0.00782 ± 0.00011 | +0.00781 ± 0.00010 | -0.00007 ± 0.00006 | +0.01661 ± 0.00010 | +58.914 |
-| (a2) δ = −0.01 × sign(q) | 0 | +0.01339 ± 0.00033 | -0.00511 ± 0.00020 | +0.01850 ± 0.00038 | -0.00021 ± 0.00002 | -0.00748 ± 0.00010 | -0.00762 ± 0.00010 | +0.00039 ± 0.00014 | -0.01680 ± 0.00009 | -87.358 |
-| (a3) c = +0.02, r₁ and q held | 0 | +0.00335 ± 0.00047 | -0.00342 ± 0.00028 | +0.00677 ± 0.00055 | -0.00069 ± 0.00004 | +0.00014 ± 0.00031 | -0.00008 ± 0.00031 | +0.00010 ± 0.00009 | -0.00004 ± 0.00008 | -9.879 |
-| (a4) c = +0.02, B17's construction | 0 | -0.00011 ± 0.00040 | +0.00468 ± 0.00036 | -0.00479 ± 0.00065 | +0.00129 ± 0.00012 | +0.00387 ± 0.00034 | +0.00401 ± 0.00035 | +0.00003 ± 0.00007 | -0.00165 ± 0.00012 | -3.722 |
-| (a4) c = -0.02, B17's construction | 0 | +0.00006 ± 0.00040 | +0.00552 ± 0.00038 | -0.00546 ± 0.00066 | +0.00134 ± 0.00012 | +0.00405 ± 0.00033 | +0.00440 ± 0.00034 | -0.00010 ± 0.00012 | -0.00191 ± 0.00010 | -4.074 |
-| (a5) base, against the unperturbed AR(1) pairs (levels differ by construction) | 0 | -0.01423 | +0.00041 | -0.01464 | -0.00170 | +0.00793 | +0.00802 | -0.00027 | +0.02031 | — |
-| (a5) Δa_s = −0.03 (against the (a5) base) | 0 | -0.01470 ± 0.00020 | -0.02489 ± 0.00038 | +0.01020 ± 0.00023 | -0.00642 ± 0.00010 | -0.00371 ± 0.00006 | -0.00377 ± 0.00006 | +0.00008 ± 0.00005 | -0.01066 ± 0.00007 | -1.587 |
-| (a5) λ → 0.9λ (against the (a5) base) | 0 | +0.00354 ± 0.00016 | -0.00037 ± 0.00013 | +0.00391 ± 0.00012 | -0.00143 ± 0.00003 | -0.00010 ± 0.00005 | -0.00003 ± 0.00005 | +0.00019 ± 0.00008 | +0.01095 ± 0.00007 | -2.727 |
+| (i) Δa = −0.015 | 0 | −0.04240 ± 0.00011 | −0.04777 ± 0.00012 | +0.00537 ± 0.00009 | −0.01377 ± 0.00002 | +0.00001 ± 0.00004 | +0.00001 ± 0.00005 | +0.00015 ± 0.00007 | +0.00034 ± 0.00004 | −0.390 |
+| (a1) δ = +0.02 | 0 | +0.00521 ± 0.00078 | −0.00457 ± 0.00035 | +0.00978 ± 0.00093 | −0.00092 ± 0.00004 | +0.00041 ± 0.00034 | +0.00017 ± 0.00034 | +0.00032 ± 0.00014 | +0.00045 ± 0.00010 | −10.628 |
+| (a1) δ = −0.02 | 0 | +0.00608 ± 0.00079 | −0.00409 ± 0.00037 | +0.01016 ± 0.00095 | −0.00089 ± 0.00004 | +0.00059 ± 0.00034 | +0.00070 ± 0.00034 | +0.00041 ± 0.00013 | +0.00032 ± 0.00011 | −11.358 |
+| (a2) δ = +0.01 × sign(q) | 0 | −0.01064 ± 0.00028 | +0.00290 ± 0.00015 | −0.01354 ± 0.00030 | −0.00023 ± 0.00002 | +0.00782 ± 0.00011 | +0.00781 ± 0.00010 | −0.00007 ± 0.00006 | +0.01661 ± 0.00010 | +58.914 |
+| (a2) δ = −0.01 × sign(q) | 0 | +0.01339 ± 0.00033 | −0.00511 ± 0.00020 | +0.01850 ± 0.00038 | −0.00021 ± 0.00002 | −0.00748 ± 0.00010 | −0.00762 ± 0.00010 | +0.00039 ± 0.00014 | −0.01680 ± 0.00009 | −87.358 |
+| (a3) c = +0.02, r₁ and q held | 0 | +0.00335 ± 0.00047 | −0.00342 ± 0.00028 | +0.00677 ± 0.00055 | −0.00069 ± 0.00004 | +0.00014 ± 0.00031 | −0.00008 ± 0.00031 | +0.00010 ± 0.00009 | −0.00004 ± 0.00008 | −9.879 |
+| (a4) c = +0.02, B17's construction | 0 | −0.00011 ± 0.00040 | +0.00468 ± 0.00036 | −0.00479 ± 0.00065 | +0.00129 ± 0.00012 | +0.00387 ± 0.00034 | +0.00401 ± 0.00035 | +0.00003 ± 0.00007 | −0.00165 ± 0.00012 | −3.722 |
+| (a4) c = −0.02, B17's construction | 0 | +0.00006 ± 0.00040 | +0.00552 ± 0.00038 | −0.00546 ± 0.00066 | +0.00134 ± 0.00012 | +0.00405 ± 0.00033 | +0.00440 ± 0.00034 | −0.00010 ± 0.00012 | −0.00191 ± 0.00010 | −4.074 |
+| (a5) base, against the unperturbed AR(1) pairs (levels differ by construction) | 0 | −0.01423 | +0.00041 | −0.01464 | −0.00170 | +0.00793 | +0.00802 | −0.00027 | +0.02031 | — |
+| (a5) Δa_s = −0.03 (against the (a5) base) | 0 | −0.01470 ± 0.00020 | −0.02489 ± 0.00038 | +0.01020 ± 0.00023 | −0.00642 ± 0.00010 | −0.00371 ± 0.00006 | −0.00377 ± 0.00006 | +0.00008 ± 0.00005 | −0.01066 ± 0.00007 | −1.587 |
+| (a5) λ → 0.9λ (against the (a5) base) | 0 | +0.00354 ± 0.00016 | −0.00037 ± 0.00013 | +0.00391 ± 0.00012 | −0.00143 ± 0.00003 | −0.00010 ± 0.00005 | −0.00003 ± 0.00005 | +0.00019 ± 0.00008 | +0.01095 ± 0.00007 | −2.727 |
 
 
 ### (c) Population CCS-sts (published mask) and MMI-sts on the symmetric AR(1) family
@@ -1437,23 +1437,23 @@ One series of 1000000 samples per point, fitted globally; the same two standard-
 
 | r₁ | q | CCS-sts | MMI-sts (the fit) | MMI-sts (closed form) |
 |---|---|---|---|---|
-| 0.80 | 0.10 | -0.01535 | +1.01701 | +1.01844 |
-| 0.83 | 0.10 | -0.01577 | +1.16230 | +1.16418 |
-| 0.85 | 0.10 | -0.01597 | +1.27600 | +1.27831 |
-| 0.87 | 0.10 | -0.01607 | +1.40763 | +1.41048 |
-| 0.90 | 0.10 | -0.01585 | +1.65264 | +1.65666 |
-| 0.80 | 0.25 | -0.03041 | +1.00004 | +1.00124 |
-| 0.83 | 0.25 | -0.03135 | +1.14405 | +1.14564 |
-| 0.85 | 0.25 | -0.03175 | +1.25689 | +1.25883 |
-| 0.87 | 0.25 | -0.03189 | +1.38766 | +1.39005 |
-| 0.90 | 0.25 | -0.03130 | +1.63141 | +1.63476 |
-| 0.80 | 0.40 | -0.03412 | +0.96672 | +0.96764 |
-| 0.83 | 0.40 | -0.03558 | +1.10804 | +1.10925 |
-| 0.85 | 0.40 | -0.03613 | +1.21904 | +1.22051 |
-| 0.87 | 0.40 | -0.03637 | +1.34795 | +1.34974 |
-| 0.90 | 0.40 | -0.03547 | +1.58889 | +1.59133 |
+| 0.80 | 0.10 | −0.01535 | +1.01701 | +1.01844 |
+| 0.83 | 0.10 | −0.01577 | +1.16230 | +1.16418 |
+| 0.85 | 0.10 | −0.01597 | +1.27600 | +1.27831 |
+| 0.87 | 0.10 | −0.01607 | +1.40763 | +1.41048 |
+| 0.90 | 0.10 | −0.01585 | +1.65264 | +1.65666 |
+| 0.80 | 0.25 | −0.03041 | +1.00004 | +1.00124 |
+| 0.83 | 0.25 | −0.03135 | +1.14405 | +1.14564 |
+| 0.85 | 0.25 | −0.03175 | +1.25689 | +1.25883 |
+| 0.87 | 0.25 | −0.03189 | +1.38766 | +1.39005 |
+| 0.90 | 0.25 | −0.03130 | +1.63141 | +1.63476 |
+| 0.80 | 0.40 | −0.03412 | +0.96672 | +0.96764 |
+| 0.83 | 0.40 | −0.03558 | +1.10804 | +1.10925 |
+| 0.85 | 0.40 | −0.03613 | +1.21904 | +1.22051 |
+| 0.87 | 0.40 | −0.03637 | +1.34795 | +1.34974 |
+| 0.90 | 0.40 | −0.03547 | +1.58889 | +1.59133 |
 
-Central-difference slope of CCS-sts in r₁ at q = 0.25 (0.83 to 0.87): -0.0134 per unit r₁ (MMI-sts from the same fits: +6.0903). Change of CCS-sts from Δa = −0.015 at (0.85, 0.25): +0.00034 (MMI-sts: -0.08607).
+Central-difference slope of CCS-sts in r₁ at q = 0.25 (0.83 to 0.87): −0.0134 per unit r₁ (MMI-sts from the same fits: +6.0903). Change of CCS-sts from Δa = −0.015 at (0.85, 0.25): +0.00034 (MMI-sts: −0.08607).
 
 ### (d) Exposure per unit of spectral difference: a flat band against the same band tilted by exp(−βf²), q = 0.25
 
@@ -1500,31 +1500,31 @@ Central-difference slope of CCS-sts in r₁ at q = 0.25 (0.83 to 0.87): -0.0134 
 
 ### (e) Population Δr₁ and Δsts under condition (i)
 
-Band-passed generator (B17b; β̄ = 185.4, σ_q = 0.2637, β̄_post = 105.7 from calibration_filtered_tables.md; filter edges 0.0064–0.080 Hz; 20000 pairs; exact circular lag-1 autocorrelation on the 840-sample grid): population r₁ 0.8678 → 0.8515 (Δr₁ -0.01629); population sts 1.3795 → 1.2669 (Δsts -0.11263).
-AR(1) generator (B17's (i), simulated: calibration.csv holds no window-level r₁; 3000 pairs): population Δr₁ −0.015 by construction; window-level Δr₁ DiD (windows 6–14 minus 1–4, DMT minus placebo) -0.01243 ± 0.00101 (SE over pairs).
+Band-passed generator (B17b; β̄ = 185.4, σ_q = 0.2637, β̄_post = 105.7 from calibration_filtered_tables.md; filter edges 0.0064–0.080 Hz; 20000 pairs; exact circular lag-1 autocorrelation on the 840-sample grid): population r₁ 0.8678 → 0.8515 (Δr₁ −0.01629); population sts 1.3795 → 1.2669 (Δsts −0.11263).
+AR(1) generator (B17's (i), simulated: calibration.csv holds no window-level r₁; 3000 pairs): population Δr₁ −0.015 by construction; window-level Δr₁ DiD (windows 6–14 minus 1–4, DMT minus placebo) −0.01243 ± 0.00101 (SE over pairs).
 
 ### (f) Unequal coefficients: mean a × q × |a_x − a_y| (0 to 0.10 in steps of 0.0005)
 
 | mean a | q | max \|str − min(xtx, yty)\| | min(rts − str) | max(sts − (xtx + yty + rtr)) | asymmetry at which sts − (xtx + yty) first turns negative |
 |---|---|---|---|---|---|
-| 0.80 | 0.05 | 3.3e-16 | +0.0e+00 | -2.2e-16 | 0.0005 |
+| 0.80 | 0.05 | 3.3e-16 | +0.0e+00 | −2.2e-16 | 0.0005 |
 | 0.80 | 0.10 | 3.3e-16 | +1.1e-16 | +2.2e-16 | 0.0015 |
 | 0.80 | 0.25 | 2.8e-16 | +0.0e+00 | +0.0e+00 | 0.0095 |
-| 0.80 | 0.40 | 3.3e-16 | +0.0e+00 | -1.1e-16 | 0.0255 |
+| 0.80 | 0.40 | 3.3e-16 | +0.0e+00 | −1.1e-16 | 0.0255 |
 | 0.80 | 0.50 | 3.3e-16 | +0.0e+00 | +3.3e-16 | 0.0420 |
-| 0.80 | 0.70 | 2.2e-16 | -1.1e-16 | +1.1e-16 | none |
+| 0.80 | 0.70 | 2.2e-16 | −1.1e-16 | +1.1e-16 | none |
 | 0.85 | 0.05 | 4.4e-16 | +2.2e-16 | +0.0e+00 | 0.0005 |
 | 0.85 | 0.10 | 4.4e-16 | +0.0e+00 | +0.0e+00 | 0.0015 |
 | 0.85 | 0.25 | 4.4e-16 | +0.0e+00 | +0.0e+00 | 0.0080 |
 | 0.85 | 0.40 | 4.4e-16 | +0.0e+00 | +0.0e+00 | 0.0210 |
-| 0.85 | 0.50 | 3.3e-16 | +0.0e+00 | -2.2e-16 | 0.0345 |
-| 0.85 | 0.70 | 3.3e-16 | -1.1e-16 | -2.2e-16 | 0.0915 |
+| 0.85 | 0.50 | 3.3e-16 | +0.0e+00 | −2.2e-16 | 0.0345 |
+| 0.85 | 0.70 | 3.3e-16 | −1.1e-16 | −2.2e-16 | 0.0915 |
 | 0.90 | 0.05 | 5.6e-16 | +0.0e+00 | +2.2e-16 | 0.0005 |
-| 0.90 | 0.10 | 5.6e-16 | +0.0e+00 | -6.7e-16 | 0.0010 |
+| 0.90 | 0.10 | 5.6e-16 | +0.0e+00 | −6.7e-16 | 0.0010 |
 | 0.90 | 0.25 | 5.6e-16 | +0.0e+00 | +0.0e+00 | 0.0060 |
-| 0.90 | 0.40 | 5.6e-16 | -1.1e-16 | +4.4e-16 | 0.0150 |
-| 0.90 | 0.50 | 5.6e-16 | +0.0e+00 | -2.2e-16 | 0.0250 |
-| 0.90 | 0.70 | 4.4e-16 | -2.2e-16 | -4.4e-16 | 0.0680 |
+| 0.90 | 0.40 | 5.6e-16 | −1.1e-16 | +4.4e-16 | 0.0150 |
+| 0.90 | 0.50 | 5.6e-16 | +0.0e+00 | −2.2e-16 | 0.0250 |
+| 0.90 | 0.70 | 4.4e-16 | −2.2e-16 | −4.4e-16 | 0.0680 |
 
 
 ### B24
@@ -1533,8 +1533,8 @@ AR(1) generator (B17's (i), simulated: calibration.csv holds no window-level r�
 
 | DiD | B24 (mean ± SD) | B17b (committed) | within one of B17b's SDs |
 |---|---|---|---|
-| observed sts | -0.09441 ± 0.00222 | -0.09400 ± 0.00280 | yes |
-| AR(1)-substituted sts | -0.09719 ± 0.00205 | -0.09660 ± 0.00270 | yes |
+| observed sts | −0.09441 ± 0.00222 | −0.09400 ± 0.00280 | yes |
+| AR(1)-substituted sts | −0.09719 ± 0.00205 | −0.09660 ± 0.00270 | yes |
 | residual | +0.00279 ± 0.00122 | +0.00270 ± 0.00140 | yes |
 | RMS δ_anti | +0.00669 ± 0.00100 | +0.00641 ± 0.00104 | yes |
 
@@ -1542,24 +1542,24 @@ AR(1) generator (B17's (i), simulated: calibration.csv holds no window-level r�
 
 | estimator | sts level (pre) | sts DiD | AR(1)-substituted DiD | residual DiD | residual p (mean; share < 0.05) | δ_sym DiD | RMS δ_anti DiD |
 |---|---|---|---|---|---|---|---|
-| W60 | 1.1881 | -0.0944 ± 0.0022 | -0.0972 ± 0.0020 | +0.0028 ± 0.0012 | 0.121; 0.70 | -0.00008 ± 0.00032 | +0.00669 ± 0.00100 |
-| global (run-level substitution) | 1.3261 | -0.1050 ± 0.0031 | +0.0000 ± 0.0000 | -0.1050 ± 0.0031 | 0.000; 1.00 | — | — |
-| global (period-level substitution) | 1.3261 | -0.1050 ± 0.0031 | -0.1091 ± 0.0028 | +0.0041 ± 0.0016 | 0.112; 0.50 | — | — |
+| W60 | 1.1881 | −0.0944 ± 0.0022 | −0.0972 ± 0.0020 | +0.0028 ± 0.0012 | 0.121; 0.70 | −0.00008 ± 0.00032 | +0.00669 ± 0.00100 |
+| global (run-level substitution) | 1.3261 | −0.1050 ± 0.0031 | +0.0000 ± 0.0000 | −0.1050 ± 0.0031 | 0.000; 1.00 | — | — |
+| global (period-level substitution) | 1.3261 | −0.1050 ± 0.0031 | −0.1091 ± 0.0028 | +0.0041 ± 0.0016 | 0.112; 0.50 | — | — |
 
 ### B22's statistics under a pure autocorrelation change (W = 60)
 
 | statistic | DMT pre-injection level | DiD |
 |---|---|---|
-| A_other (sign from the other run) | -0.00028 ± 0.00019 | +0.00001 ± 0.00031 |
-| A_same (sign from the same run) | -0.00001 ± 0.00018 | +0.00004 ± 0.00037 |
-| window-sign statistic (selected) | +0.00340 ± 0.00015 | -0.00087 ± 0.00033 |
-| B, slope of δ_sym on q | +0.01092 ± 0.00045 | -0.00263 ± 0.00077 |
-| D, response to δ_anti alone | -0.03508 ± 0.00030 | -0.00100 ± 0.00041 |
-| Sym, response to δ_sym alone | -0.00030 ± 0.00049 | +0.00373 ± 0.00092 |
-| D + Sym | -0.03538 ± 0.00056 | +0.00273 ± 0.00114 |
-| window-level mean pair r₁ | +0.86339 ± 0.00028 | -0.01540 ± 0.00035 |
+| A_other (sign from the other run) | −0.00028 ± 0.00019 | +0.00001 ± 0.00031 |
+| A_same (sign from the same run) | −0.00001 ± 0.00018 | +0.00004 ± 0.00037 |
+| window-sign statistic (selected) | +0.00340 ± 0.00015 | −0.00087 ± 0.00033 |
+| B, slope of δ_sym on q | +0.01092 ± 0.00045 | −0.00263 ± 0.00077 |
+| D, response to δ_anti alone | −0.03508 ± 0.00030 | −0.00100 ± 0.00041 |
+| Sym, response to δ_sym alone | −0.00030 ± 0.00049 | +0.00373 ± 0.00092 |
+| D + Sym | −0.03538 ± 0.00056 | +0.00273 ± 0.00114 |
+| window-level mean pair r₁ | +0.86339 ± 0.00028 | −0.01540 ± 0.00035 |
 
-Sym's DiD minus (the residual DiD − D's DiD): -0.00006 ± 0.00017.
+Sym's DiD minus (the residual DiD − D's DiD): −0.00006 ± 0.00017.
 
 ## S19 Table. Every prediction recorded before a computation, with its outcome, and the post hoc computations the paper quotes
 
@@ -1575,18 +1575,18 @@ Source: `manuscript/analysis_record.md` (the pre-registered section and the pre-
 | Pre-registered analysis choices, the tier assignment (13 Sep 2026) | Expected outcome "tier 1 FAIL, tier 2 PASS (R 0.95–0.98 with lower bounds ≥ 0.87) → outcome tier 2" | Tier 2 R 0.964–0.990 with lower bounds 0.903–0.964 in the four deciding cells; the noise-correlation tier-1 intervals straddled 0.80, so tier 2 was assigned by the escalation rule fixed at 18ad8b4, and the tier-disagreement rule gave tier 2 on both window sets: "tier 2 is the claimed tier on the primary windows 6–14" (the tier-1 point estimates passed, against the expectation) | met (tier 2 as expected; R's upper limit 0.990 above the stated 0.98) | S1 Text; S2 Table |
 | Pre-registered analysis choices, the W = 30 positive control (febf599, 13 Sep 2026) | W = 30 gives "the same sign as W = 60 and a smaller magnitude", the W = 30 / W = 60 ratio "about one-third to two-thirds"; the opposite sign or a larger magnitude is inconsistent with the shrinkage model | Same sign, smaller magnitude; ratio 0.0686 / 0.0809 = 0.85, "outside the predicted range"; the inconsistency criterion not met; listed under "Predictions that failed" in `prespecification_summary.md` | missed (the ratio; the sign and the smaller magnitude held) | S1 Text (in summary); Results 2 (the W = 30 contrast) |
 | The AR-shift step condition (f3b435d, 13 Sep 2026) | If the W = 30 / W = 60 step-recovery ratio on the autocorrelation-shift condition is near the observed 0.85, the shrinkage model is confirmed on the matching shift type; if it is again ≈ 0.4–0.6, the shift type is not the explanation | Ratio 0.59 / 0.60: "the prediction's first branch fails"; the third clause (W = 60 recovery 57 % against 84 %) also triggered; the diagnostic run with it found that this condition does not match the data either | missed | not quoted |
-| The redundancy prediction (33f0b33, 13 Sep 2026, before rtr was examined) | Under a redundancy-dominance reading rtr "should increase under DMT while sts decreases, with a mirrored time course" | rtr fell with sts (DiD −0.0091, positive in 4 of 14; r = 0.66 between the two time courses): "FAILED" | missed | S1 Text |
-| The ts_demean prediction (13 Sep 2026, before any computation on ts_demean) | (i) rtr rises under DMT on ts_demean if the global-connectivity effect is real and GSR removed it; (ii) the sts decrease survives the variant change; both hold → the ts_gsr rtr failure is attributed to GSR and rtr is reported per variant | (ii) held (sts DiD −0.081); (i) held at the group mean only (rtr DiD +0.0137, positive in 7 of 14, peaking at the injection bin with the same bump on placebo): the "both hold" branch, applied with those caveats | met (the recorded mapping; (i) at the group mean only) | S1 Text (in summary: the reading unsupported on either variant) |
-| The EEG Lempel-Ziv prediction (13 Sep 2026, before any correlation) | Whole-brain TDMI under DMT anti-correlates with EEG Lempel-Ziv complexity across the 28 bins | ρ_S = −0.242 [−0.401, −0.076], one-sided p = 0.002 (ts_gsr; −0.214, p = 0.004 on ts_demean); nothing on placebo: "prediction holds descriptively" on both variants | met | S1 Text; S6 Table |
-| The regional ΦR check after deconvolution (14 Sep 2026, 11:37 UTC, before any regional number; `notes/regional_phir_deconv_2026-09-14.md`) | If the deconvolved ΦR increase reflected the workspace structure, the per-region increase would be larger inside the Default/Control proxy than outside it | Workspace minus non-workspace −0.0047 [−0.0079, −0.0013], p = 0.023, positive in 4 of 14: "opposite in sign to the prediction, and in neither recorded branch" | missed | S2 Text |
-| B2, the CCS comparison (477cccc, 14 Sep 2026) | An outcome mapping: if CCS-sts tracks r₁ (per-subject correlation above 0.8) and has the self-prediction structure, the artefact is a property of Gaussian PID and the claim broad; if CCS-sts is small, near zero or uncorrelated with r₁, it is MMI-specific and the claim narrow | CCS-sts small (\|level\| ≤ 0.04 nats), negative, uncorrelated with r₁ per subject, per window and per pair: the "MMI-specific, claim narrow" branch | branch mapping, no predicted branch: the narrow branch obtained | Results 6; S3 Text §5; S15 Table |
-| B3, the lag dependence (477cccc, 14 Sep 2026) | r_τ falls with τ and the artefact weakens (smaller sts level, smaller \|DiD\|); whether any τ moves the pairs to where q contributes comparably | r_τ 0.848, 0.513, 0.139, −0.202 at τ = 1, 2, 3, 5; sts level 1.155, 0.180, 0.026, 0.042 (the τ = 5 level above the τ = 3 level because r₅ is negative and the atoms are even in the autocorrelation); \|DiD\| 0.081, 0.043, 0.0043, 0.0024: "as predicted"; no τ moves the pairs to such a point | met | Results 5; S3 Text §9; S14 Table |
+| The redundancy prediction (33f0b33, 13 Sep 2026, before rtr was examined) | Under a redundancy-dominance reading rtr "should increase under DMT while sts decreases, with a mirrored time course" | rtr fell with sts (DiD −0.0091 at the global fit, bins 9–14 against 1–8, as the record evaluated it; −0.0078 at W = 60; positive in 4 of 14; r = 0.66 between the two time courses): "FAILED" | missed | S1 Text |
+| The ts_demean prediction (13 Sep 2026, before any computation on ts_demean) | (i) rtr rises under DMT on ts_demean if the global-connectivity effect is real and GSR removed it; (ii) the sts decrease survives the variant change; both hold → the ts_gsr rtr failure is attributed to GSR and rtr is reported per variant | At the global fit, bins 9–14 against 1–8: (ii) held (sts DiD −0.081); (i) held at the group mean only (rtr DiD +0.0137, positive in 7 of 14, peaking at the injection bin with the same bump on placebo): the "both hold" branch, applied with those caveats | met (the recorded mapping; (i) at the group mean only) | S1 Text (in summary: the reading unsupported on either variant) |
+| The EEG Lempel–Ziv prediction (13 Sep 2026, before any correlation) | Whole-brain TDMI under DMT anti-correlates with EEG Lempel–Ziv complexity across the 28 bins | ρ_S = −0.242 [−0.401, −0.076] (percentile), one-sided p = 0.002 (ts_gsr; −0.214, p = 0.004 on ts_demean); nothing on placebo: "prediction holds descriptively" on both variants | met | S1 Text; S6 Table |
+| The regional ΦR check after deconvolution (14 Sep 2026, 11:37 UTC, before any regional number; `notes/regional_phir_deconv_2026-09-14.md`) | If the deconvolved ΦR increase reflected the workspace structure, the per-region increase would be larger inside the Default/Control proxy than outside it | Workspace minus non-workspace −0.0047 [−0.0079, −0.0013] (percentile), p = 0.023, positive in 4 of 14: "opposite in sign to the prediction, and in neither recorded branch" | missed | S2 Text |
+| B2, the CCS comparison (477cccc, 14 Sep 2026) | An outcome mapping: if CCS-sts tracks r₁ (per-subject correlation above 0.8) and has the self-prediction structure, the artefact is a property of Gaussian PID and the claim broad; if CCS-sts is small, near zero or uncorrelated with r₁, it is MMI-specific and the claim narrow | CCS-sts small (\|level\| ≤ 0.04 nats under `phyid`'s mask, as recorded; ≤ 0.05 under the published definition), negative, uncorrelated with r₁ per subject, per window and per pair: the "MMI-specific, claim narrow" branch | branch mapping, no predicted branch: the narrow branch obtained | Results 6; S3 Text §5; S15 Table |
+| B3, the lag dependence (477cccc, 14 Sep 2026) | r_τ falls with τ and the artefact weakens (smaller sts level, smaller \|DiD\|); whether any τ moves the pairs to where q contributes comparably | r_τ 0.848, 0.513, 0.139, −0.202 at τ = 1, 2, 3, 5; sts level 1.155, 0.180, 0.026, 0.042 (the τ = 5 level above the τ = 3 level because \|r₅\| exceeds \|r₃\| and the atoms are even in the autocorrelation); \|DiD\| 0.081, 0.043, 0.0043, 0.0024: "as predicted"; no τ moves the pairs to such a point | met | Results 5; S3 Text §9; S14 Table |
 | B4, the residual of the AR(1)-substituted estimate (477cccc, 14 Sep 2026) | "The residual DiD is expected near zero"; the alternative, "a residual DiD that is significant and uncorrelated with r₁", to be reported as exploratory | +0.0115 [+0.0021, +0.0211] (percentile; inverted [+0.0005, +0.0226]), p = 0.042, and correlated with r₁ at −0.78: "neither outcome obtained as worded"; the branch rule tests the wrong null and is not applied (the calibration replaces it) | missed (neither branch, as worded) | Results 4; Table 3; S3 Text §6; S12 Table; Methods, Pre-registration and deviations |
 | B6, the CCS definition check (15 Sep 2026, 07:30 UTC) | "Expectation, not a prediction": the masks select different samples; a rule fixes what counts as agreement (every level and primary DiD within 0.001 nats, no p crossing 0.05) | The two definitions differ (level differences 0.002–0.012 nats); the rule's second branch: every CCS value is the published-definition value | rule only, no prediction: the definitions differ | S3 Text §1–2 |
 | B7, the split-half test of the residual–CCS correlation (15 Sep 2026, 07:30 UTC) | A rule: not window noise if both cross-half correlations are positive and their mean is at least half the within-half mean; estimation noise otherwise | Mean cross-half 0.319 against half the within-half mean 0.41: the estimation-noise branch; the correction note of 15 Sep 2026, 10:05 UTC records that the threshold lay above the reliability ceiling (0.39), so the rule could not discriminate and the reading is undetermined | rule only, no prediction: the noise branch obtained; the rule's flaw recorded | S3 Text §6; Methods, Pre-registration and deviations |
-| The run-level mean cross-lag deviation (15 Sep 2026, 15:35 UTC) | If pooling of non-stationary segments explains the run-level residual, the signed deviation is negative on ts_gsr and near zero on ts_demean; if near zero on both, pooling does not explain it | ts_gsr +0.00009 [+0.00005, +0.00013], p = 0.0004; ts_demean −0.00738: "neither recorded branch obtained", and the outcome entry corrects the commissioned sign (on the family a positive deviation lowers sts) | missed (neither branch) | S3 Text §6; S9 Table (superseded values) |
+| The run-level mean cross-lag deviation (15 Sep 2026, 15:35 UTC) | If pooling of non-stationary segments explains the run-level residual, the signed deviation is negative on ts_gsr and near zero on ts_demean; if near zero on both, pooling does not explain it | ts_gsr +0.00009 [+0.00005, +0.00013] (percentile; inverted [+0.00004, +0.00014]), p = 0.0004; ts_demean −0.00738: "neither recorded branch obtained", and the outcome entry corrects the sign the pre-run entry stated (on the family a positive deviation lowers sts) | missed (neither branch) | S3 Text §6; S9 Table (superseded values) |
 | The regional sts–r₁ test (15 Sep 2026, 15:35 UTC) | If the spatial-map exposure is real on these data, regional sts correlates positively with regional r₁ | Pearson +0.863 over 115 regions, Spearman +0.771 on the cortex, spin p < 0.0001: "the predicted branch obtained" | met | Results 3; S3 Text §4; Fig 4 |
-| The sign(q)-weighted cross-lag deviation (15 Sep 2026, 18:14 UTC) | If pooling operates as described, the sign(q)-weighted mean on ts_gsr is positive and of order +0.006 (within a factor of two, +0.003 to +0.012, with a CI excluding zero); near zero or far below means pooling does not account for the run-level residual | +0.00340 [+0.00300, +0.00380], 14 of 14: "positive, CI excluding zero, and of the order required"; the statistic, which selects its sign on the samples it averages, was later superseded by A_other (B22, 23 Sep 2026) | met | S3 Text §6; S9 Table |
+| The sign(q)-weighted cross-lag deviation (15 Sep 2026, 18:14 UTC) | If pooling operates as described, the sign(q)-weighted mean on ts_gsr is positive and of order +0.006 (within a factor of two, +0.003 to +0.012, with a CI excluding zero); near zero or far below means pooling does not account for the run-level residual | +0.00340 [+0.00300, +0.00380] (percentile; inverted [+0.00294, +0.00386]), 14 of 14: "positive, CI excluding zero, and of the order required"; the statistic, which selects its sign on the samples it averages, was later superseded by A_other (B22, 23 Sep 2026) | met | S3 Text §6; S9 Table |
 | The W = 60 statistic and the finite-sample null (16 Sep 2026, 10:23 UTC) | Two reading rules: the W = 60 value "markedly smaller" than the run-level +0.00340 (ratio below 0.5) if pooling is the source, "comparable" (0.5–2) if a stationary mechanism; the null's value "near zero" (below a tenth) removes finite sampling, "comparable" (at least half) makes the statistic undiagnostic | Ratio 1.80: "comparable"; the null at W = 840 +0.00025, 7.3 %: "near zero"; both readings superseded by the correction note of 16 Sep 2026, 16:24 UTC (the W = 60 statistic selected its sign on its own samples; the null was read at the wrong q̂ density) and replaced by the budget | rule only, no prediction: the "comparable" and "near zero" branches obtained, then superseded | S3 Text §6; S9 Table (superseded values) |
 | The cross-lag budget (16 Sep 2026, 16:24 UTC) | Reading rules (a)–(f) for the null-corrected budget; "no prediction is made of which obtains"; V.S.'s expectation, recorded with no rule, that common slow drive is more likely than pooling or interaction | Finite sampling "a minor part" (8–14 %); δ_within "most" (83–84 %); pooling and the window means minor parts; pooling larger on the DMT run (+0.00039, p = 0.0006) | rule only, no prediction: δ_within most | S3 Text §6; S9 Table |
 | The git SHA in the output headers, the verification run (18 Sep 2026, 15:46 UTC) | The rule for the run: every regenerated output identical to the committed version apart from the header line and the SHA; any other difference a defect | 22 files compared; CSVs identical or differing below 10⁻⁹ (largest 7.9 × 10⁻¹³), text files changed only on git-SHA lines and the sign of a printed zero: "held" | met | S5 Text §4 |
@@ -1635,7 +1635,7 @@ Of 52 recorded predictions, 25 were met, 13 partly met, 14 missed and 0 could no
 | computation | where quoted | what it is |
 |---|---|---|
 | The review computations of 14 September 2026 (`notes/review_computations_2026-09-14.md`): the lag-1 autocorrelation contrast and its collinearity with the sts contrast, ΦR with full inference, the trend corrections, the pooled autocorrelation function | Results 2, 4 and 6; Table 3; Methods, Estimator; S2 Text; S3 Text §4–6 | Computations of the first adversarial review, run before the estimator account existed and with no pre-run entry; the r₁ contrast is the account's input, not its evidence (S3 Text §4) |
-| The finite-sample null of the residual (`notes/review_v2_residual_null.py`, 15 September 2026) | Results 1 and 4; Table 3, row 5; Methods, The AR(1)-substituted estimate; S3 Text §6; S9 and S12 Tables | Written and run by the second review before any record entry and with no recorded rule; one simulation, no replicate SD |
+| The finite-sample null of the residual (`notes/review_v2_residual_null.py`, 15 September 2026) | Results 1 and 4; Table 3, row 5; Methods, The AR(1)-substituted estimate and its calibration; S3 Text §6; S9 and S12 Tables | Written and run by the second review before any record entry and with no recorded rule; one simulation, no replicate SD |
 | The sts-matched null (manufacture; `notes/rev_sts_matched_null.py`, 14 September 2026) | Results 7; S3 Text §9; S16 Table | A post hoc computation of the first review; four matched pairs of equal analytic sts |
 | The spectral centroid (`notes/rev_extra.py`, 14 September 2026) | Results 5; S3 Text §9 | A post hoc quantity of the first review; its interval is a subject-bootstrap percentile interval (no per-subject vector saved) |
 | Global functional connectivity per bin (`scripts/09_global_fc_per_bin.py`, 13 September 2026) | S3 Text §4 (the signed mean correlation on ts_demean); S7 Table | A computation with no pre-specification entry |
@@ -1676,3 +1676,9 @@ Source: `notes/partB5_literature_v2.md` (revised from the full texts on 20 Septe
 3. Direction of the autocorrelation change in the conditions studied, from the sources read: Huang et al. 2018, *J Neurosci* 38:2304 (TR 2 s; propofol sedation n = 23, deep anaesthesia n = 12, DoC n = 21) — "a graded global increase of AC1 from wakefulness to light and deep sedation, followed by a decrease during transition and return to baseline in recovery"; "all of these parameters decreased in deep anesthesia and in patients with DOC" (both quotations confirmed against the PDF on 20 Sep 2026). Luppi et al. 2025 bioRxiv 2025.03.22.644729 (hctsa on human sevoflurane n = 15 TR 1.838 s, macaque, marmoset, mouse) — anaesthesia "reduces the value of features related to linear and nonlinear temporal autocorrelation", "faster decay of autocorrelation under anaesthesia". For AD, schizophrenia, ASD, ADHD and TUS no source was read here; the intrinsic-timescale literature on these conditions exists but was not consulted, so those cells say "not determined here".
 
 4. HRF deconvolution and the map (this repository, S2 Text, rsHRF / Wu et al. 2013): the three deconvolving Luppi studies (rows 1–3) all name the Wu et al. 2013 method (rsHRF v2.2 in rows 1 and 3); Tarchi et al. 2026 (row 9) names "standard SPM methods". On this repository's data deconvolution takes the run-level r₁ from 0.866 to 0.790 (ts_gsr), removes ~30 % of the sts level, leaves sts ≈ xtx + yty (0.924 vs 0.968 at the global fit), leaves the sts contrast unchanged (−0.0782 vs −0.0809 at W = 60) and makes the autocorrelation contrast larger (−0.0220 vs −0.0146). On these data, therefore, deconvolved series remain in the r₁-dominated region and the map's reading applies to them as to the raw series; whether that holds for the deconvolved series of rows 1–3 and 9 is not determined, and Luppi et al. 2022 report "negligible effects" of the step at TR 0.72 s.
+
+### References cited only in this table
+
+Luppi, A. I., Uhrig, L., Tasserie, J., Shafiei, G., Legare, A., Muta, K., Hata, J., Okano, H., Golkowski, D., Ranft, A., Ilg, R., Jordan, D., Gini, S., Liu, Z.-Q., Yee, Y., Signorelli, C. M., Cofre, R., Destexhe, A., Menon, D., Stamatakis, E. A., Desrosiers, P., De Koninck, P., Connor, C. W., Gozzi, A., Fulcher, B. D., Jarraya, B., & Misic, B. (2025). Comprehensive profiling of anaesthetised brain dynamics across phylogeny. *bioRxiv*, 2025.03.22.644729. https://doi.org/10.1101/2025.03.22.644729 (preprint, posted 24 March 2025; bibliographic record checked against Crossref on 25 September 2026, which records no journal version; the two quotations of Table B, item 3, checked against its full text, version 1, on the same day)
+
+Varley, T. F., Pope, M., Faskowitz, J., & Sporns, O. (2023). Multivariate information theory uncovers synergistic subsystems of the human cerebral cortex. *Communications Biology*, 6(1), 451. https://doi.org/10.1038/s42003-023-04843-w (cited only as the source of the data of Varley (2024), row 10; bibliographic record checked against Crossref on 25 September 2026; not read)
