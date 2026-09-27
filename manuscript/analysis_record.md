@@ -7532,3 +7532,81 @@ spaces reduced to two.
    planning session made these checks on the tree they give with this commit's text. On that tree,
    `notes/review_2026-09-25/checks/check_numbers.py` prints "rows 1192, data rows 676, flagged 12", the twelve rows
    flagged being the sign-wording rows of `check_numbers.out`, and `check_cells.py` prints "flagged 0".
+
+## The error-only read of 26 September 2026 and its corrections, 27 Sep 2026 14:23 UTC (appended; nothing above edited)
+
+On 26 September 2026, while the final run of `run_all.sh` was in progress, the text of c25a310, with the pending edits
+of the outputs commit applied (their facts of the run taken from a simulated run), was read once more, restricted to
+outright errors, by four separate sessions of the AI system, A–C under one brief and D under a brief of its own: A,
+the main text, `manuscript/figures/captions_v2.md` and the six figures; B, S1–S5 Text; C, S1–S20 Table; D, the typeset
+PDFs of the paper and of its supporting information, for layout only. The planning session verified every finding
+against the committed files, and further sessions audited the prepared corrections twice before they were delivered;
+no analysis was run on the data. The documents are in `notes/review_2026-09-26/`: `BRIEF.md` (sha256
+20bbe6c33bdab206e6ab9683bfe93e24a8863c578162951d229a97e700a4b515), `findings_A.md` (sha256
+338bf804c325a6a78a8bfd1187e4085ee897d93317f8fc98a699c4de0fcb7bef), `findings_B.md` (sha256
+e948da0fa3e1ee31d6518de0ce4fdf802e01c47ad3e1a0e74501b1273d8580ac), `findings_C.md` (sha256
+8b06d39ac3bbed6ea68a9ba84d3c216c9d66578c4819760db95fb0186c21f654), `findings_D.md` (sha256
+b0c1eed68dff007d52b837717b9b62c222337ad1cf3d68b8129fe95d183ca8df), `verification_2026-09-26.md` (sha256
+9dee4a2169a4642230442a2663a164919d27d75cf35fb4414457f224cc91d1a0), `README.md` (sha256
+20daa1ded779c3be8d16da38cd4b32173573a9e2d94ec2c1a772d651e60c8561).
+
+1. **The findings and the verdicts.** A gave 8 findings, B 28 and C 13, 45 of them distinct: 42 confirmed and 3 judged
+   not to be errors (the figures' annotations, which round their captions' values correctly; S5 Text §5's key to the
+   record's labels; the pre-registered rule's "four specification changes"), with the reasons in the verification,
+   section 6. Verifying them found five more (V1–V5), and the audits of the prepared corrections four more (V6–V9: S3
+   Text's opening statement of what the record holds; three more bare "a" for a measured lag-1 correlation; the
+   statements that every other CCS value uses the published definition, which passed over `phyid`'s values given for
+   comparison; S5 Text §6 without PhiID's commit), besides corrections of the prepared text itself (the verification,
+   section 5). None changes a result, a conclusion, or a data value of the main text's tables.
+2. **In the outputs commit.** Two of them (B-U4, V4) concerned the pending text of the outputs commit, S5 Text §4's
+   account of the four comparisons and of the headers the run wrote; that text was corrected before the commit
+   (13705b9), so that it takes the four comparisons of the pre-run entry one by one, in its order, with the
+   differences fixed for each, and names the five CSV files that carry no header.
+3. **The corrections** (this commit, whose parent is 13705b9): 73 verbatim replacements
+   (`notes/review_2026-09-26/revision/text_replacements_2026-09-26.json`, C01–C73), each naming the finding it
+   applies. Nine are in the main text: the reference note of Tarchi et al. (2026), which sends the reader to S20
+   Table; Results 4's sentence on the three expectations, whose finite-sample null is solved to the data's pair r₁ in
+   each run and period rather than changed on the DMT run only, and its "grows with pair r₁ and |q|" for "grows with a
+   and |q|"; Methods' "carries approximately the data's fall of pair r₁" (its own DiD −0.0146 against the data's
+   −0.0155) and its sentence on the CCS values computed with `phyid`'s mask, which now names those S3 Text, S17 and
+   S19 Tables label as `phyid`'s; Data and code availability's sentence on the headers and its list of review folders,
+   which now includes this read's; and Table 3's labels of its two generator rows, the band-passed generator's change
+   being a window-level fall of 0.015 in pair r₁ and that of the AR(1) pairs a population change of their coefficient
+   a. The main text's Introduction through Methods stays within the 7,000 words of the decision entry of 23 September
+   2026. Sixty-four are in the supporting information: pointers to the wrong section or file; numbers rounded twice
+   (S3 Text's +0.005 and 0.028, now at the table's four decimals, and −0.0150; S2 Table's −0.408) and a ratio
+   misrounded (−24 for −24.6); the sign of five zero limits (S9 and S17 Tables); two dates (S19 Table: 18ad8b4, 12
+   September 2026); a bare "a" for pair r₁ or for a region's r₁ (S3 Text; S9, S10 and S19 Tables); statements that
+   left out an exception (the CCS values computed with `phyid`'s mask; the files that carry no commit; the
+   computations B1–B5, whose plans and outcomes are in `notes/`, not in the record; the 14 September review's CCS
+   decomposition, made with `phyid`'s mask) or misdescribed their object (B1–B13's numbering, in S3 Text and S19
+   Table; the Part B plans' commit; B21's engine rows and its column "quoted at"; the sign of S2 Table's cells); two
+   percentile intervals unmarked; three record titles carrying process labels, quoted in five places and now cited by
+   date, time and what the entry records, since several entries share two of those times; S5 Text §5's account of the
+   reviews, which now includes this read; and S5 Text §6's commits, the outputs commit named, nine commits the
+   supporting information names added, and the commit of the MATLAB reference that `phyid` pins.
+4. **The numbers table.** The contexts of the 26 rows whose context the edits reached recomputed; the band-passed
+   row's number made 0.015, the window-level fall of pair r₁ that the row now states, and sourced to the generator's
+   target (`calibration_filtered_tables.md`, line 4); one row added, for the −0.015 of Table 3's AR(1) row
+   (`calibration_tables.md`, line 8); no data value changed; 1,193 rows.
+5. **Checks** on the corrected tree: no line added or removed in any manuscript file; the intervals B21 reads, with
+   their rounded values, files and lines, unchanged, so that the column `quoted_at` the final run regenerated from the
+   text of c25a310 holds for this text too (recomputed from it, equal in every row); `check_numbers.py` prints "rows
+   1193, data rows 676, flagged 12", the twelve sign-wording rows of `check_numbers.out`, `check_cells.py` "flagged 0"
+   and `tablecheck.py` 0 rows with a wrong cell count; no process label is left outside S5 Text §5's key; Introduction
+   through Methods 6,997 words with headings (6,984 before). The outputs are in `notes/review_2026-09-26/checks/`.
+6. **The layout faults** (D: 6 in the paper's PDF, 14 in the supporting information's) are faults of the typesetting,
+   which is outside the repository; they are corrected there, and the PDFs for the co-authors are typeset from this
+   commit. Re-checks of the PDFs typeset after the corrections found further faults of the typesetting, corrected
+   there too, and one of the prepared text: in C35, `<SHA>` stood outside a code span, where the typesetting drops it
+   as a tag (now in code). Each of the six figures exceeds PLOS Computational Biology's dimensions (at most 7.5 inches
+   wide and 8.75 inches high at 300 dpi, lettering of 8–12 pt): Figs 1–4 and 6 their width, Fig 5 their height. They
+   are redrawn to them at submission, from the same result files, under an entry of their own.
+7. **What this entry revises.** The verification of 25 September 2026 kept three record titles carrying process labels
+   verbatim (its T5 and V49); they are cited here by date, time and what the entry records. The review of 24 September
+   2026 corrected S3 Text's sentence on the directed and symmetric parts of the residual (its typo "L116"); the
+   correction, accepted then, was not applied when the sentence moved from the main text to S3 Text on 25 September,
+   and is applied here (C20). Earlier entries of this record give four of the values corrected here, and stand as
+   written: S2 Table's −0.408 (line 1661 of this file; −0.407, C42), S3 Text's −0.0150 (lines 5053 and 5558; −0.0149,
+   C24) and its fourth ratio (line 5559, "−17, −24, −22 and −24"; −25, C25), and "the file was moved" (line 5111; "the
+   files were moved", C36).
