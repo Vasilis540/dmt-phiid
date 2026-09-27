@@ -1,4 +1,4 @@
-# script=02_bias_check.py tau=1 kind=gaussian redundancy=MMI n_windows=2000 burn_in=200 seed=20261120 git=18ad8b4 n_runs=20000 n_boot=2000 m_decide=1338/742 threshold=0.8
+# script=02_bias_check.py tau=1 kind=gaussian redundancy=MMI n_windows=2000 burn_in=200 seed=20261120 git=c25a310 n_runs=20000 n_boot=2000 m_decide=1338/742 threshold=0.8
 condition,window,M,n_pairs,n_decay_windows,S_boot,S_boot_lo,S_boot_hi,S_analytic,S_analytic_lo,S_analytic_hi,R,R_lo,R_hi,rho_truth_vs_intensity,threshold,decides,passed_adjacent,passed_adjacent_boot,passed_fulldecay,undetermined
 nonstat_decay_coupling,30,1338,18,19,0.712694,0.555556,0.888889,0.709659,0.537480,0.843945,0.957653,0.907018,0.989474,-1.000000,0.800000,0,0,0,1,0
 nonstat_decay_coupling,30,742,18,19,0.667083,0.500000,0.833333,0.666042,0.528905,0.783896,0.938484,0.866667,0.982456,-1.000000,0.800000,0,0,0,1,0

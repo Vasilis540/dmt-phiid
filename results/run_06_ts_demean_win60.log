@@ -1,4 +1,4 @@
-variant=ts_demean W=60 windows=14 sts from atoms_win60_115regions-all_ts_demean_window.npy; local from atoms_win60_local_115regions-all_ts_demean_window.npy; git=f3b435d
+variant=ts_demean W=60 windows=14 sts from atoms_win60_115regions-all_ts_demean_window.npy; local from atoms_win60_local_115regions-all_ts_demean_window.npy; git=c25a310
 pre=[1 2 3 4] primary post/decay=[ 6  7  8  9 10 11 12 13 14] sensitivity=[ 5  6  7  8  9 10 11 12 13 14]
 
 generating 1000 phase-randomised surrogates per subject and condition ...

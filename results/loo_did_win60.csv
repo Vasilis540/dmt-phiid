@@ -1,4 +1,4 @@
-# script=13_loo_did.py git=17dbfcb seed=20261120 window_trs=60 pre=[np.int64(1), np.int64(2), np.int64(3), np.int64(4)] post=[np.int64(6), np.int64(7), np.int64(8), np.int64(9), np.int64(10), np.int64(11), np.int64(12), np.int64(13), np.int64(14)] n_boot=10000 signflip=exact 2^n two-sided; POST-HOC robustness check
+# script=13_loo_did.py git=c25a310 seed=20261120 window_trs=60 pre=[np.int64(1), np.int64(2), np.int64(3), np.int64(4)] post=[np.int64(6), np.int64(7), np.int64(8), np.int64(9), np.int64(10), np.int64(11), np.int64(12), np.int64(13), np.int64(14)] n_boot=10000 signflip=exact 2^n two-sided; POST-HOC robustness check
 variant,dropped_subject,n,mean_did,ci_lo,ci_hi,p_signflip,n_negative,ci_includes_zero,dropped_subject_did
 ts_gsr,none,14,-0.08086620932182391,-0.12532941231764907,-0.036546928396967854,0.0037841796875,13,False,nan
 ts_gsr,1,13,-0.08082908035801126,-0.12945752175375816,-0.03307141986390329,0.0068359375,12,False,-0.08134888585138844

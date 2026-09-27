@@ -1,4 +1,4 @@
-# script=14_proportionality.py git=dbf2311 seed=20261120 n_boot=10000 signflip=exact 2^14 two-sided; POST-HOC analysis specified after the primary result; interpretation rule in the script docstring
+# script=14_proportionality.py git=c25a310 seed=20261120 n_boot=10000 signflip=exact 2^14 two-sided; POST-HOC analysis specified after the primary result; interpretation rule in the script docstring
 estimator,variant,statistic,value,ci_lo,ci_hi,p,note
 windowed_W60,ts_gsr,ratio sts/TDMI: DiD,0.0005340954855786451,-0.00814580723209913,0.008329151879620399,0.913818359375,negative in 6/14; proportional (CI includes zero)
 windowed_W60,ts_gsr,ratio sts/TDMI: DMT post - pre,0.0033833771040534533,-0.00037599927434291315,0.006984146619707663,0.1097412109375,

@@ -1,4 +1,4 @@
-# script=08_robustness_c_analysis.py variant=ts_gsr placebo_fit_trs=420 pre_bins=1-8 post_primary=11-28 post_sensitivity=9-28 matched_bins=15-28 n_boot=10000 seed=20261120 placebo_file=atoms_bins_115regions-all_ts_gsr_placebo.npy global_file=atoms_bins_115regions-all_ts_gsr_global.npy git=2af901c
+# script=08_robustness_c_analysis.py variant=ts_gsr placebo_fit_trs=420 pre_bins=1-8 post_primary=11-28 post_sensitivity=9-28 matched_bins=15-28 n_boot=10000 seed=20261120 placebo_file=atoms_bins_115regions-all_ts_gsr_placebo.npy global_file=atoms_bins_115regions-all_ts_gsr_global.npy git=c25a310
 estimator,contrast,atom,level_a,level_b,label_a,label_b,diff_mean,ci_lo,ci_hi,p_signflip,n_negative,diff_over_level_b
 placebo-fitted,"(i) within-DMT step, primary (bins 11-28)",sts,1.3041390615951045,1.3549088336359476,DMT post,DMT pre,-0.05076977204084294,-0.10469015294546627,0.013748360414200047,0.1337890625,11,-0.03747098755316281
 placebo-fitted,"(i) within-DMT step, primary (bins 11-28)",rtr,0.014764675419988901,0.018127265325503517,DMT post,DMT pre,-0.0033625899055146195,-0.007488327312082814,0.0005105610094493442,0.1358642578125,9,-0.18549901737156912

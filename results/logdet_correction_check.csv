@@ -1,4 +1,4 @@
-# script=04_logdet_correction_check.py tables_commit=18ad8b4 n_windows_empirical=500 seed=20261120 branch='W=60 uncorrected (fallback)' git=8554b3d-dirty
+# script=04_logdet_correction_check.py tables_commit=18ad8b4 n_windows_empirical=500 seed=20261120 branch='W=60 uncorrected (fallback)' git=c25a310
 analytic,atom,bias_corrected,bias_plugin,change,condition,corrected_over_analytic,corrected_over_true,diff_bias_corrected,diff_bias_plugin,max_abs_dev,n_windows,section,selections_changed,true_diff,value,window
 ,rtr,,,,,,,,,,,constant,,,-0.018861219478655045,30
 ,rtx,,,,,,,,,,,constant,,,0.0,30

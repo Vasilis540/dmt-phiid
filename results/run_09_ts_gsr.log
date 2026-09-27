@@ -1,4 +1,4 @@
-variant=ts_gsr regions=115 pairs=6555 git=66b570e-dirty
+variant=ts_gsr regions=115 pairs=6555 git=c25a310
 bins with fewer than 30 TRs (subject, cond, bin0, n): [(2, 1, 27, np.int64(29))]
 
 mean pairwise Pearson r per bin, 14-subject group mean

@@ -1,4 +1,4 @@
-# partB15_directed_crosslag.py; run level and W = 60; git=f1f5fcc
+# partB15_directed_crosslag.py; run level and W = 60; git=c25a310
 variant,subject,run,rms_anti_run,rms_sym_run,resp_anti_run,resp_sym_run,resp_both_run,residual_run,mean_a,mean_abs_q,rms_anti_w60_mean,signq_sym_w60_mean
 ts_gsr,1,DMT,0.042285,0.009553,-0.007592,-0.008650,-0.016603,-0.016596,0.85717,0.19884,0.116552,0.006199
 ts_gsr,1,PCB,0.039447,0.009093,-0.006613,-0.005436,-0.012226,-0.012233,0.86462,0.18973,0.111365,0.005260

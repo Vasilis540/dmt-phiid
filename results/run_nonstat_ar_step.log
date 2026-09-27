@@ -3,7 +3,7 @@
 
 NON-STATIONARY conditions
 [nonstat_step_ar] true sts per bin: 1.384 1.384 1.384 1.384 1.384 1.384 1.384 1.384 1.328 1.328 1.328 1.328 1.328 1.328 1.328 1.328 1.328 1.328 1.328 1.328 1.328 1.328 1.328 1.328 1.328 1.328 1.328 1.328
-    simulated + estimated 2000 runs (100s)
+    simulated + estimated 2000 runs (97s)
     W= 30 sts pre/post-switch means: true 1.3844->1.3284 (Δ -0.0560)  est 0.4869->0.4685 (Δ -0.0184, 33% of true)
     W= 60 sts pre/post-switch means: true 1.3844->1.3284 (Δ -0.0560)  est 0.8084->0.7774 (Δ -0.0311, 55% of true)
     global fit sts: est 1.2694  regimes pre 1.3844 / peak 1.3284  weighted-mean truth 1.3444  mixture-cov truth 1.3447
@@ -24,4 +24,4 @@ wrote results/nonstat_ar_step/bias_check_nonstat.csv
 wrote results/nonstat_ar_step/bias_check_nonstat_global.csv
 wrote results/nonstat_ar_step/bias_check_nonstat_tracking.csv
 wrote results/nonstat_ar_step/bias_check_nonstat_criterion.csv
-total 100.0s
+total 97.4s

@@ -1,0 +1,84 @@
+# The CCS agreement-share arrays of the final run: investigation (11_ccs_agree_share_check.py)
+script sha256 b189eb919c4e38c9048fbf7cf5befef8e7d0bd08a6ccc030a7ee55e59a98dae1
+started 2026-09-27 06:51:02 UTC; repository HEAD c25a3104a0841e936af6a19e68f5e49c50b7d943; reference c25a3104a0841e936af6a19e68f5e49c50b7d943
+this process: python 3.12.3; numpy 2.5.3; scipy 1.18.1; machine x86_64; cpu 13th Gen Intel(R) Core(TM) i5-13420H; numpy_features_on ['X86_V2', 'X86_V3', 'AVX2', 'FMA3']; blas openblas 0.3.34.106.0 Haswell; OPENBLAS_CORETYPE ; NPY_DISABLE_CPU_FEATURES 
+patterns of kept redundancies (R_xyta, R_xytb, R_xytab, R_abtx, R_abty, R_abtxy) under which D is identically zero: (0, 0, 0, 1, 1, 1), (1, 1, 1, 0, 0, 0) (2 of 64)
+
+## The arrays
+notes/review_results/partB/ccs_agree_share_ts_gsr.npy: regenerated sha256 2f8d244747305ce6…, committed sha256 a48b3f40689cf332…; NaN pattern the same; max|diff| 4.4e-05; entries that differ 400 of 420
+notes/review_results/partB/ccs_atoms_win60_ts_gsr.npy: regenerated sha256 c435f55e9d6582e8…, committed sha256 a7012829a5f81003…; NaN pattern the same; max|diff| 3.33e-16; entries that differ 5304 of 6272
+notes/review_results/partB/ccs_agree_share_ts_demean.npy: regenerated sha256 5e2ad2b917aa29bb…, committed sha256 021d05f9934191b0…; NaN pattern the same; max|diff| 3.62e-05; entries that differ 399 of 420
+notes/review_results/partB/ccs_atoms_win60_ts_demean.npy: regenerated sha256 e02df61211ce9031…, committed sha256 bb68e5869eb2fb25…; NaN pattern the same; max|diff| 3.33e-16; entries that differ 5246 of 6272
+
+## The regeneration of 16 September 2026 (stash)
+stash entries: 1; the regeneration of 16 September: stash@{0}
+   identical to 16 Sep          notes/review_results/inference_rows_ccs.pkl
+   identical to 16 Sep          notes/review_results/inference_rows_ccs_pub.pkl
+   identical to 16 Sep          notes/review_results/inference_rows_diag.pkl
+   identical to 16 Sep          notes/review_results/inference_rows_lag.pkl
+   identical to 16 Sep          notes/review_results/inference_rows_raw.pkl
+   identical to 16 Sep          notes/review_results/partB/ccs_agree_share_ts_demean.npy
+   identical to 16 Sep          notes/review_results/partB/ccs_agree_share_ts_gsr.npy
+   identical to 16 Sep          notes/review_results/partB/ccs_atoms_bins_ts_demean.npy
+   identical to 16 Sep          notes/review_results/partB/ccs_atoms_bins_ts_gsr.npy
+   identical to 16 Sep          notes/review_results/partB/ccs_atoms_win60_ts_demean.npy
+   identical to 16 Sep          notes/review_results/partB/ccs_atoms_win60_ts_gsr.npy
+   identical to 16 Sep          notes/review_results/partB/ccs_pub8_atoms_win60_ts_gsr.npy
+   identical to 16 Sep          notes/review_results/partB/ccs_pubD_atoms_win60_ts_gsr.npy
+   identical to 16 Sep          notes/review_results/partB/ccs_pub_atoms_bins_ts_demean.npy
+   identical to 16 Sep          notes/review_results/partB/ccs_pub_atoms_bins_ts_gsr.npy
+   identical to 16 Sep          notes/review_results/partB/ccs_pub_atoms_win60_ts_demean.npy
+   identical to 16 Sep          notes/review_results/partB/ccs_pub_atoms_win60_ts_gsr.npy
+   identical to 16 Sep          notes/review_results/partB/diag_series_ts_demean_W30.npz
+   identical to 16 Sep          notes/review_results/partB/diag_series_ts_demean_W60.npz
+   identical to 16 Sep          notes/review_results/partB/diag_series_ts_gsr_W30.npz
+   identical to 16 Sep          notes/review_results/partB/diag_series_ts_gsr_W60.npz
+   identical to 16 Sep          notes/review_results/partB/lag_atoms_bins_tau1.npy
+   identical to 16 Sep          notes/review_results/partB/lag_atoms_bins_tau2.npy
+   identical to 16 Sep          notes/review_results/partB/lag_atoms_bins_tau3.npy
+   identical to 16 Sep          notes/review_results/partB/lag_atoms_bins_tau5.npy
+   identical to 16 Sep          notes/review_results/partB/lag_atoms_win60_tau1.npy
+   identical to 16 Sep          notes/review_results/partB/lag_atoms_win60_tau2.npy
+   identical to 16 Sep          notes/review_results/partB/lag_atoms_win60_tau3.npy
+   identical to 16 Sep          notes/review_results/partB/lag_atoms_win60_tau5.npy
+   identical to 16 Sep          notes/review_results/partB/scope_map_overlay_points.npz
+binaries the run modified: 30; identical to 16 Sep 30
+
+## Pass 1: this process (the run's configuration)
+   done in 624 s
+
+## Pass 2: a child process with other numerical kernels
+   OPENBLAS_CORETYPE=Nehalem; NPY_DISABLE_CPU_FEATURES=X86_V3
+   child process: python 3.12.3; numpy 2.5.3; scipy 1.18.1; machine x86_64; cpu 13th Gen Intel(R) Core(TM) i5-13420H; numpy_features_on ['X86_V2', 'AVX2', 'FMA3']; blas openblas 0.3.34.106.0 Nehalem; OPENBLAS_CORETYPE Nehalem; NPY_DISABLE_CPU_FEATURES X86_V3
+   done in 675 s
+
+## Fit by fit (11_ccs_agree_share_cells.csv has every fit)
+ts_gsr: 420 fits (28 global), N from 380,190 to 5,499,645 pair-samples
+   samples of the two patterns 1,190,745 of 305,580,990 (0.3897%); ambiguous 96,487 (0.0316%; per fit at most 0.0993%), of which kept here 37,336; exactly zero D 285,701
+   largest |D| on the two patterns 3.22e-15; smallest |D| elsewhere 1.22e-09; samples of the patterns with |D| >= 1e-12: 0; other samples with |D| < 1e-12: 0
+   D summed in reverse order: decisions changed 38,596 (at ambiguous samples 38,596, elsewhere 0), in 420 fits
+   recomputed shares and atoms equal to the regenerated arrays: 420 of 420 fits
+   committed against this process: fits whose count differs 395 of 420; largest |k_c - k| 65; committed count outside its bracket in 0 fits
+   median |k_c - k| over those fits 3; largest |k_c - k| / ambiguous samples 0.094
+   the largest difference: subject 3 PCB window 4: committed 0.308617, here 0.308573 (difference +4.4e-05); k_c - k = +17 of N = 386,745; ambiguous samples 181, of which kept here 73
+   child process: local MIs changed in 420 of 420 fits; masks identical (four signs, patterns, decisions at non-ambiguous samples) in 420 of 420; counts differ in 406 fits, largest |dk| 44, largest share difference 6.21e-05; largest atom difference 5.6e-16
+ts_demean: 420 fits (28 global), N from 380,190 to 5,499,645 pair-samples
+   samples of the two patterns 1,136,526 of 305,580,990 (0.3719%); ambiguous 111,045 (0.0363%; per fit at most 0.1220%), of which kept here 43,069; exactly zero D 292,606
+   largest |D| on the two patterns 3.55e-15; smallest |D| elsewhere 2.53e-10; samples of the patterns with |D| >= 1e-12: 0; other samples with |D| < 1e-12: 0
+   D summed in reverse order: decisions changed 44,279 (at ambiguous samples 44,279, elsewhere 0), in 420 fits
+   recomputed shares and atoms equal to the regenerated arrays: 420 of 420 fits
+   committed against this process: fits whose count differs 388 of 420; largest |k_c - k| 44; committed count outside its bracket in 0 fits
+   median |k_c - k| over those fits 3; largest |k_c - k| / ambiguous samples 0.213
+   the largest difference: subject 11 PCB window 1: committed 0.281134, here 0.281170 (difference -3.62e-05); k_c - k = -14 of N = 386,745; ambiguous samples 168, of which kept here 81
+   child process: local MIs changed in 420 of 420 fits; masks identical (four signs, patterns, decisions at non-ambiguous samples) in 420 of 420; counts differ in 398 fits, largest |dk| 37, largest share difference 7.5e-05; largest atom difference 5.6e-16
+
+## Predictions
+holds     (1) the regenerated arrays reproduce exactly on this machine
+holds     (2) |D| < 1e-12 exactly at the samples of the two patterns
+holds     (3) reordering D changes decisions at ambiguous samples only
+holds     (4) other kernels: identical masks, counts differing only at ambiguous samples
+holds     (5) every committed count an integer within its bracket
+holds     (6) the two arrays byte-identical to the regeneration of 16 September
+fits: 840 computed, 0 skipped as by the run
+VERDICT: every prediction tested holds
+finished 2026-09-27 07:12:43 UTC

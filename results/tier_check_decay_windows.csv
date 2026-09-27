@@ -1,4 +1,4 @@
-# script=05_tier_check_decay_windows.py tables=results n_draws=2000 threshold=0.8 seed=20261120 git=b7e4595
+# script=05_tier_check_decay_windows.py tables=results n_draws=2000 threshold=0.8 seed=20261120 git=c25a310
 condition,window,M,window_set,first_window,last_window,n_pairs,S_analytic,S_lo,S_hi,R_point,R_lo,R_hi,sign_truth_vs_f,S_pass,S_straddles,R_pass,R_straddles
 nonstat_decay_coupling,60,1338,prereg,5,14,9,0.922672111111111,0.8514735555555555,0.9661591111111112,0.9999999999999999,0.9636363636363635,0.9999999999999999,-1.0,1,0,1,0
 nonstat_decay_coupling,60,1338,primary,6,14,8,0.9248017500000001,0.8591228750000001,0.966214125,1.0,0.9500000000000001,1.0,-1.0,1,0,1,0

@@ -1,5 +1,5 @@
 # Ground-truth calibration of the residual diagnostic (partB17_calibration.py)
-git=f1f5fcc
+git=c25a310
 
 N_PAIRS = 300 independent VAR(1) pairs per subject, 14 subjects × 2 runs × 840 samples, burn-in 200; a_x, a_y ~ N(0.85, 0.0125); q from the data's window-level q (scope_map_overlay_points.npz, pre_w1to4_q, 52440 values); change at sample 300 of the DMT run only; W = 60; bins of 30; 50 replicates per condition; bootstrap 1000 draws; sign-flip exact over 2^14; seed 20261120. DiD = windows 6–14 minus 1–4 (bins 11–28 minus 1–8), DMT minus placebo, mean over subjects. At the global fit two predictions are tabulated: the pipeline's run-level prediction (constant across a run's bins, so its DiD is zero and the residual DiD equals the observed DiD, as partB4 records for the data) and a period-level prediction from (a_x, a_y, q) measured on the pre (samples 0–299) and post (samples 300–839) samples of each run separately, which is the reading the recorded prediction (i) refers to.
 

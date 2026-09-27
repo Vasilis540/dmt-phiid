@@ -1,4 +1,4 @@
-# partB22_aligned_directed.py; one row per variant, subject, run and W = 60 window; git=a9d9ca4
+# partB22_aligned_directed.py; one row per variant, subject, run and W = 60 window; git=c25a310
 variant,subject,run,window,A_other,A_same,winsign,B,D,Sym,D_plus_Sym,Both,rms_anti,residual,sd_r1,sd_absq
 ts_gsr,1,DMT,1,-0.00061600468,-0.0012493973,0.0052594551,0.015828319,-0.040775286,-0.00058526449,-0.04136055,-0.043394314,0.11935378,-0.041897677,0.027639196,0.18943446
 ts_gsr,1,DMT,2,0.0026237407,0.0044950461,0.0064152697,0.019151888,-0.045541271,-0.015138891,-0.060680162,-0.063533226,0.1163234,-0.063537755,0.029224176,0.2067994

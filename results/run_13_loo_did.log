@@ -1,4 +1,4 @@
-13_loo_did.py git=17dbfcb seed=20261120 W=60 pre=[np.int64(1), np.int64(2), np.int64(3), np.int64(4)] post=[np.int64(6), np.int64(7), np.int64(8), np.int64(9), np.int64(10), np.int64(11), np.int64(12), np.int64(13), np.int64(14)]
+13_loo_did.py git=c25a310 seed=20261120 W=60 pre=[np.int64(1), np.int64(2), np.int64(3), np.int64(4)] post=[np.int64(6), np.int64(7), np.int64(8), np.int64(9), np.int64(10), np.int64(11), np.int64(12), np.int64(13), np.int64(14)]
 
 ts_gsr: full 14-subject DiD -0.0809 [-0.1253, -0.0365] p=0.0038; negative in 13/14
   per-subject DiD: -0.081 -0.045 -0.157 -0.138 -0.012 -0.054 -0.065 -0.280 -0.132 -0.153 -0.041 -0.068 -0.003 +0.095

@@ -3,26 +3,26 @@
   [qc] regions entering ΦID: 115 (selected 116, excluded 1)
 variant=ts_gsr  regions=115/116 (all)  pairs=6555  subjects=14  conditions=('DMT', 'PCB')
 TRs=840  bins=28  TRs/bin=30  tau=1  fit_mode=global
-  subject  1/14 done  (38.2s elapsed)
-  subject  2/14 done  (76.0s elapsed)
+  subject  1/14 done  (21.2s elapsed)
+  subject  2/14 done  (42.5s elapsed)
   [warn] s=2 PCB: dropped 1 non-finite TR(s) (tail)
-  subject  3/14 done  (114.4s elapsed)
-  subject  4/14 done  (152.0s elapsed)
-  subject  5/14 done  (189.4s elapsed)
-  subject  6/14 done  (226.2s elapsed)
-  subject  7/14 done  (264.0s elapsed)
-  subject  8/14 done  (301.5s elapsed)
-  subject  9/14 done  (339.4s elapsed)
-  subject 10/14 done  (377.3s elapsed)
-  subject 11/14 done  (415.1s elapsed)
-  subject 12/14 done  (452.4s elapsed)
-  subject 13/14 done  (489.6s elapsed)
-  subject 14/14 done  (526.9s elapsed)
-compute finished in 526.9s (2.9 ms/pair)
+  subject  3/14 done  (63.9s elapsed)
+  subject  4/14 done  (85.3s elapsed)
+  subject  5/14 done  (106.6s elapsed)
+  subject  6/14 done  (128.0s elapsed)
+  subject  7/14 done  (149.4s elapsed)
+  subject  8/14 done  (170.8s elapsed)
+  subject  9/14 done  (192.2s elapsed)
+  subject 10/14 done  (213.6s elapsed)
+  subject 11/14 done  (234.9s elapsed)
+  subject 12/14 done  (256.2s elapsed)
+  subject 13/14 done  (277.5s elapsed)
+  subject 14/14 done  (299.0s elapsed)
+compute finished in 299.0s (1.6 ms/pair)
 
 array shape: (14, 2, 28, 16)  (atoms: rtr, rtx, rty, rts, xtr, xtx, xty, xts, ytr, ytx, yty, yts, str, stx, sty, sts)
 finite fraction: 1.000
-samples/bin: min=28 max=30 median=30
+samples/bin (evaluated slots): min=28 max=30 median=30; empty slots=0
 sts global mean=1.2884  std=0.1077  min=0.9053  max=1.7496
 
 mean synergy (sts) across subjects, per bin:
@@ -34,4 +34,5 @@ mean synergy (sts) across subjects, per bin:
  1.339 1.352 1.299 1.334]
 
 wrote results/atoms_bins_115regions-all_ts_gsr_global.npy
+wrote results/atoms_bins_local_115regions-all_ts_gsr_global.npy
 wrote results/atoms_bins_115regions-all_ts_gsr_global.csv

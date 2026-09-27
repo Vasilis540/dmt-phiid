@@ -1,6 +1,6 @@
-git=f1f5fcc
+git=c25a310
 # The regional sts and sts − rtr maps with regional r₁ partialled out (partB20_regional_partial.py)
-git=f1f5fcc
+git=c25a310
 
 Group maps from regional_sts_r1.csv (partB11: placebo run, pre-injection; ts_gsr; 115 regions); OLS with intercept on regional r₁ (windowed W = 60 windows 1–4; whole-span TRs 0–239 as a sensitivity); Yeo-7 networks from the parcel names, the 16 subcortical parcels as one class; sensory = Vis + SomMot (31 parcels), association = Default + Cont (37 parcels). No spin test (the maps are algebraically linked). Seed 20261120.
 

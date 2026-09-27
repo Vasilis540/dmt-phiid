@@ -1,5 +1,5 @@
 # The aligned and directed cross-lag statistics without selection, the per-SD exchange rate and the network spin test (partB22_aligned_directed.py)
-git=a9d9ca4
+git=c25a310
 
 Exploratory; no threshold language. Per subject, run and W = 60 window, over the 6,555 pairs (region 20 excluded; non-finite TRs dropped as scripts/01): partB15's deviations of the window's 4 × 4 matrix. A_other = mean of sign(q̄_other)·δ_sym, q̄_other the pair's lag-0 correlation over the whole other run of the same subject; A_same with the whole same run's q̄; the window-sign statistic takes the sign of the window's own q (partB15, selected on the same samples). B = OLS slope of δ_sym on q across pairs. D and Sym = the closed-form response of the pair-mean sts to δ_anti alone and to δ_sym alone (partB15's response). Level = DMT windows 1–4; change = windows 6–14 minus 1–4; DiD = DMT minus placebo. Each cell: mean over subjects [inverted sign-flip 95 % interval], exact sign-flip p, negative/14.
 
@@ -68,7 +68,7 @@ Rotations: perm_id of the Schaefer-100 rotation file, one direction (the classes
 - ok: the copy of notes/partB15_directed_crosslag.py l. 70–92 is verbatim (|difference| 0, tolerance 0)
 - ok: (d) ∂sts/∂r₁ at (0.85, 0.25) = 6.0705 (|difference| 0, tolerance 1e-09)
 - ok: (d) ∂sts/∂q at (0.85, 0.25) = −0.1892 (|difference| 0, tolerance 1e-09)
-- ok: ts_gsr residual per window = diag_series res (|difference| 6.66e-16, tolerance 1e-10)
+- ok: ts_gsr residual per window = diag_series res (|difference| 0, tolerance 1e-10)
 - ok: ts_gsr winsign run means = crosslag_deviation.csv w60_signq_weighted_mean_deviation (|difference| 1.73e-18, tolerance 1e-10)
 - ok: ts_gsr B run means = crosslag_deviation.csv w60_slope_deviation_on_q (|difference| 1.39e-17, tolerance 1e-10)
 - ok: ts_gsr winsign DiD = directed_crosslag_tables.md (5 decimals) (|difference| 6.65e-07, tolerance 5e-06)
@@ -76,7 +76,7 @@ Rotations: perm_id of the Schaefer-100 rotation file, one direction (the classes
 - ok: ts_gsr rms_anti DiD = directed_crosslag_tables.md (5 decimals) (|difference| 3.09e-06, tolerance 5e-06)
 - ok: ts_gsr rms_anti DiD sign-flip p = directed_crosslag_tables.md (4 decimals) (|difference| 1.43e-05, tolerance 5e-05)
 - ok: ts_gsr (d) mean standardised coefficients = exchange_rates_tables.md (b) (3 decimals) (|difference| 0.000404, tolerance 0.0005)
-- ok: ts_demean residual per window = diag_series res (|difference| 4.44e-16, tolerance 1e-10)
+- ok: ts_demean residual per window = diag_series res (|difference| 0, tolerance 1e-10)
 - ok: ts_demean winsign run means = crosslag_deviation.csv w60_signq_weighted_mean_deviation (|difference| 1.73e-18, tolerance 1e-10)
 - ok: ts_demean B run means = crosslag_deviation.csv w60_slope_deviation_on_q (|difference| 2.08e-17, tolerance 1e-10)
 - ok: ts_demean winsign DiD = directed_crosslag_tables.md (5 decimals) (|difference| 2.77e-06, tolerance 5e-06)

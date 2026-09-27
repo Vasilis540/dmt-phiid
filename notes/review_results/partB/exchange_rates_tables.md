@@ -1,5 +1,5 @@
 # Exchange rates in data units, the within-window regression, the cross-half correlation and BCa intervals (partB19_exchange_rates.py)
-git=f1f5fcc
+git=c25a310
 
 ## (a) Exchange rates at the operating point (r₁, q) = (0.85, 0.25), closed form, central differences h = 1e-4
 

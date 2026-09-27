@@ -1,4 +1,4 @@
-14_proportionality.py git=dbf2311 seed=20261120 n_boot=10000 signflip=exact 2^14 two-sided; POST-HOC
+14_proportionality.py git=c25a310 seed=20261120 n_boot=10000 signflip=exact 2^14 two-sided; POST-HOC
 
 == windowed_W60, ts_gsr: atoms_win60_115regions-all_ts_gsr_window.npy, windows 1-4 vs 6-14
   ratio sts/TDMI: DiD                                  +0.0005 [-0.0081, +0.0083]  p=0.9138  negative in 6/14; proportional (CI includes zero)

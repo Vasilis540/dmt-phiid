@@ -1,4 +1,4 @@
-# partB14_family_atoms.py; ts_gsr W60; level = DMT windows 1–4; DiD = windows 6–14 minus 1–4, DMT minus placebo; git=f1f5fcc
+# partB14_family_atoms.py; ts_gsr W60; level = DMT windows 1–4; DiD = windows 6–14 minus 1–4, DMT minus placebo; git=c25a310
 atom,observed_level,predicted_level,residual_level,observed_did,predicted_did,residual_did,observed_did_neg,predicted_did_neg,residual_did_neg
 rtr,0.038810,0.050402,-0.011592,-0.007771,-0.008565,0.000794,10,10,4
 rtx,0.025808,0.002746,0.023062,-0.001178,-0.000344,-0.000835,9,10,8

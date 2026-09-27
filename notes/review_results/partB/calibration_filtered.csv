@@ -1,4 +1,4 @@
-# partB17b_calibration_filtered.py; one row per condition × estimator × replicate; git=106bd33
+# partB17b_calibration_filtered.py; one row per condition × estimator × replicate; git=c25a310
 condition,estimator,replicate,sts_level_pre,sts_did,pred_did,res_did,res_p,res_ci_lo,res_ci_hi,sym_did,anti_did
 (i) Δa (post filter),W60,1,1.189797,-0.094493,-0.097217,0.002724,0.0399,0.000508,0.004886,-0.000043,0.006317
 (i) Δa (post filter),global (run-level prediction),1,1.328675,-0.104782,0.000000,-0.104782,0.0001,-0.108874,-0.099576,nan,nan

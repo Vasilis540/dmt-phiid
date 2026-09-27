@@ -1,5 +1,5 @@
 # Family checks (partB5_family_checks.py)
-git=d507728
+git=c25a310
 
 (0.85, 0.25): levels sts 1.2588, xtx+yty 1.2357, TDMI 1.2819, rtr 0.0231, rts+str 1.2357, mirrors -2.4715, PhiR 0.0231
    d/dr1: sts +6.071, xtx+yty +6.015, TDMI +6.126, rtr +0.056, rts+str +6.015, mirrors -12.030, PhiR +0.056

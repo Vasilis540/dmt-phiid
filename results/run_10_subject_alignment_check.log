@@ -1,5 +1,4 @@
-# subject alignment check — 10_subject_alignment_check.py, git=66b570e-dirty, seed=20261120
-# participant codes removed from this report on 15 Sep 2026 (data governance; record, "Data-governance note, 15 Sep 2026"); the script now prints table row indices; every number is unchanged
+# subject alignment check — 10_subject_alignment_check.py, git=c25a310, seed=20261120
 
 ## A. How the original MATLAB indexes each file
   01_gen_time_resolved_ce.m:30: for i = 1:nsub
@@ -83,12 +82,14 @@
   sts_gsrglobal_PCB      LZ_PCB                   -0.013   +0.007  0.7333  0/14
   TDMI_gsrglobal_PCB     LZ_PCB                   -0.025   +0.014  0.5069  0/14
   sts_gsrglobal_DMT      FD_DMT                   -0.033   -0.003  0.6291  0/14
-
+  sts_gsrglobal_PCB      FD_PCB                   -0.090   +0.008  0.0885  1/14
   TDMI_gsrglobal_DMT     FD_DMT                   -0.105   -0.003  0.0887  0/14
   TDMI_gsrglobal_PCB     FD_PCB                   -0.111   +0.008  0.0434  0/14
 
 ## F. TR-level FD versus DVARS (raw `ts`), matched vs mismatched
   DMT: diag mean +0.045 (min -0.104), off-diag mean -0.023 (max +0.228); argmax==self 4/14
+/home/vilalius/dmt-phiid/scripts/10_subject_alignment_check.py:254: RuntimeWarning: Mean of empty slice
+  D.append(np.sqrt(np.nanmean(d ** 2, 0)))
   PCB: diag mean +0.060 (min -0.160), off-diag mean +0.006 (max +0.195); argmax==self 4/14
   Reading: the distributed timeseries are denoised and band-passed (motion regressors, scrubbing with
   interpolation per the LZ filename), so frame-to-frame signal change no longer tracks FD in any
