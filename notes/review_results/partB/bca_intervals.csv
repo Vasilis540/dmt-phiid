@@ -1,4 +1,4 @@
-# partB19_exchange_rates.py; BCa and percentile intervals of the per-subject DiDs; git=f1f5fcc
+# partB19_exchange_rates.py; BCa and percentile intervals of the per-subject DiDs; git=c25a310
 quantity,did,signflip_p,committed_lo,committed_hi,pct_lo,pct_hi,bca_lo,bca_hi,z0,accel,differs_gt_10pct
 sts ts_gsr W60 [primary],-0.080866,0.0038,-0.126108,-0.037693,-0.125329,-0.036547,-0.127960,-0.038378,-0.0248,-0.0133,0
 sts ts_demean W60 [primary],-0.103112,0.0026,-0.155846,-0.052239,-0.154425,-0.050178,-0.155444,-0.051316,-0.0110,-0.0049,0

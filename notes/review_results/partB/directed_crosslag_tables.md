@@ -1,5 +1,5 @@
 # The directed (antisymmetric) cross-lag component (partB15_directed_crosslag.py)
-git=f1f5fcc
+git=c25a310
 
 Per pair d_xy = corr(x_t, y_{t+1}) − a_y q and d_yx = corr(y_t, x_{t+1}) − a_x q; δ_sym = (d_xy + d_yx)/2 (partB10's d), δ_anti = (d_xy − d_yx)/2. Run level from the whole-run 4 × 4 matrices; W = 60 from each window's own. Seed 20261120; subject bootstrap 10000 draws; exact sign-flip p over 2^14 assignments. Region 20 excluded.
 

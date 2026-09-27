@@ -7045,3 +7045,490 @@ alone.
    S5 Text §4) and S5 Text §6's list of commits. Those edits add no interval and no line, so B21's `quoted_at` column
    stays valid for the committed text. If the rule does not hold, nothing is committed and an entry records the
    difference first.
+
+## The final end-to-end run of `run_all.sh` at the final commit: the difference in the two CCS agreement-share arrays, 27 Sep 2026 13:32 UTC (appended; nothing above edited)
+
+Item 5 of "The final end-to-end run of `run_all.sh` at the final commit: pre-run entry" (26 Sep 2026, 07:56 UTC;
+committed in c25a310) says that a number differing beyond the tolerances of its four comparisons blocks the commit: it
+is investigated and recorded in an entry of this record before anything else happens, the outputs are not committed,
+and no result of the paper moves until the difference is explained; and item 11 says that, if the rule does not hold,
+nothing is committed and an entry records the difference first. One comparison found such a difference, and this is
+that entry. Nothing was added, restored or committed before it: the working tree stayed as the run left it, and the
+check of this entry's item 4 read it without writing to it. The outcome entry, which follows, reports the run and all
+four comparisons. Where this entry names an item without saying whose, the item is the pre-run entry's. Lines that the
+scripts printed are quoted with their leading spaces dropped and runs of three or more spaces reduced to two.
+
+1. **The difference.** `8_binary_compare.py c25a310`, which `final_run_evidence.sh` ran on the working tree the run
+   left, printed "binary outputs modified by the run under ('notes/review_results/', 'results/'): 30 (compared against
+   c25a310)": 28 of them within 1e-9 of their committed versions (the largest difference 1.67e-12, the outcome entry's
+   item 4 (iii)) and two beyond it, "REAL  notes/review_results/partB/ccs_agree_share_ts_demean.npy  max|diff| =
+   3.62e-05" and "REAL  notes/review_results/partB/ccs_agree_share_ts_gsr.npy  max|diff| = 4.4e-05"; "summary:
+   {'identical': 0, 'noise (<1e-9)': 28, 'REAL': 2}". The evidence script's summary marked it:
+   "DIFFERS  8_binary_compare: no REAL difference  [summary: {'identical': 0, 'noise (<1e-9)': 28, 'REAL': 2}]".
+
+2. **The two arrays.** `notes/partB2_ccs_run.py` (B2, "MMI or Gaussian PID? — CCS verification and the CCS atoms on
+   the DMT data", `notes/partB2_ccs.md`) wrote them on 14 September 2026 (committed in 709415d); each holds, for the
+   14 subjects, the two runs and 15 fits (the 14 windows of W = 60 and the global fit), the share of the fit's
+   pair-samples at which phyid's CCS mask keeps the double co-information D (S3 Text §2 calls it c) as the double
+   redundancy, that is, the samples at which the signs of I_xta, I_xtb, I_yta, I_ytb and D agree
+   (`notes/rev_phiid_fast.py`, `ccs_local_knowns`); the entry for a fit is the mean over its 6,555 pairs of each
+   pair's share. No analysis script reads them (only the comparison `8_binary_compare.py` and this entry's check load
+   their values), and no value of them is quoted in `draft_v2.md`, `supplementary.md`, S1–S5 Text or
+   `main_text_numbers.csv`. `partB/ccs_tables.md` prints their mean (over subjects, runs and, at W = 60, windows) for
+   each variant and estimator and, for each variant, the shares of two windows of subject 1 (DMT window 6 and placebo
+   window 2), all to three decimals, and `partB/ccs_definition_check.log` prints the shares of those two windows of
+   `ts_gsr` under each of four masks and, on their first 800 pairs, the shares of samples that phyid's mask and the
+   published definition's each select, that both and that either select, and the share on which they disagree, also to
+   three; the run reproduced these printed values unchanged (the outcome entry's item 4). Every other CCS array the
+   run wrote, the atoms of both masks among them, is identical to its committed version or within 1e-9 of it (the
+   outcome entry's item 4 (iii)), and every table from which the paper quotes a CCS value reproduced its committed
+   values.
+
+3. **The explanation.** D = −I_xta − I_xtb − I_yta − I_ytb + I_xtab + I_ytab + I_xyta + I_xytb − I_xytab + R_xyta +
+   R_xytb − R_xytab + R_abtx + R_abty − R_abtxy, each single-target CCS redundancy R being its co-information where
+   four signs agree and 0 elsewhere (Ince, 2017, as phyid implements it). Of the 64 patterns of kept and zeroed
+   redundancies, exactly two make D identically zero as a function of the nine local mutual informations: R_xyta,
+   R_xytb and R_xytab kept with R_abtx, R_abty and R_abtxy zeroed, and the reverse (the check of this entry's item 4
+   derives them with integer arithmetic and prints "patterns of kept redundancies (R_xyta, R_xytb, R_xytab, R_abtx,
+   R_abty, R_abtxy) under which D is identically zero: (0, 0, 0, 1, 1, 1), (1, 1, 1, 0, 0, 0) (2 of 64)"). At a sample
+   in either pattern the computed D is the rounding residual of fifteen terms that cancel, and its sign is set by the
+   last bits of the arithmetic; where the other four signs also agree (an ambiguous sample), whether the mask keeps
+   the sample is therefore set by the machine and the numerical build that compute it, not by the data. What the mask
+   keeps at an ambiguous sample is D, a rounding residual there, so the decision changes the atoms at that sample by
+   that residual only; the share counts it. The code that computes the arrays is the same at 709415d as at c25a310
+   (`rev_phiid_fast.py` unchanged; `partB2_ccs_run.py` changed only to name its commit in the headers of its outputs),
+   and so are the data (upstream 77af7aa); since the laptop's pinned `.venv` reproduces its own arrays byte for byte
+   (this entry's item 5, predictions (1) and (6)), the arrays of 709415d, a commit made in a session of the AI system
+   (its trailers name the session), were computed in another environment, as the record found of the committed tables
+   of that time ("The end-to-end run of `run_all.sh` and its reproduction checks", 16 Sep 2026, item 2: "the
+   difference between the NumPy/SciPy builds of the sessions that produced the committed files and the `.venv`").
+
+4. **The check.** The planning session wrote
+   `notes/planning_checks_2026-09-16/reproduction_checks/11_ccs_agree_share_check.py` (sha256
+   b189eb919c4e38c9048fbf7cf5befef8e7d0bd08a6ccc030a7ee55e59a98dae1), whose docstring states the explanation and six
+   predictions, fixed before it ran, and tested it in its own session on synthetic data (no subject data): on data of
+   the DMT data's shape, where it ran to its end in 25 minutes and printed every prediction as holding; and, on copies
+   restricted to the first 30 of the 116 regions (29 once region 20 is set aside, 406 pairs), on six faults, each of
+   which it reported or refused: a copy of an earlier revision before V.S. ran the check (26 September 2026) and a
+   copy of this one, differing from it only in that restriction, after he ran it (27 September 2026). V.S. ran it on
+   27 September 2026, with the repository as the working directory and the script and its outputs outside it, on the
+   working tree the run left
+   (`cd ~/dmt-phiid && .venv/bin/python ~/Downloads/11_ccs_agree_share_check.py c25a310 ~/ccs_agree_share_check`); it
+   stops if `rev_phiid_fast.py` or `partB2_ccs_run.py` differs from the reference commit's, writes nothing in the
+   repository, and goes twice through the fits of `partB2_ccs_run.py`, computing each as that script does (its
+   regions, its windows, its rule for skipping a fit, and `PairPhiID` and `ccs_local_knowns` of `rev_phiid_fast.py`,
+   which it imports): as the run did (624 s), and in a child process of itself in which only the numerical kernels
+   differ (OpenBLAS forced to its Nehalem kernels and NumPy's X86_V3 dispatch group disabled; 675 s). Its report and
+   its table of fits are committed beside it (`11_ccs_agree_share_check.log`, `11_ccs_agree_share_cells.csv`). The
+   report names HEAD and the reference as c25a310, and the leading sixteen digits of the sha256 it prints for the
+   regenerated arrays are those of the evidence's `outputs.sha256`, so that it read the files the comparisons read.
+   Its environment: Python 3.12.3, numpy 2.5.3, scipy 1.18.1, on 13th Gen Intel(R) Core(TM) i5-13420H; NumPy's
+   features X86_V2, X86_V3, AVX2 and FMA3 on; OpenBLAS 0.3.34.106.0 with its Haswell kernels; in the child, NumPy's
+   X86_V2, AVX2 and FMA3 on (X86_V3 disabled) and OpenBLAS's Nehalem kernels. Its docstring calls the groups the child
+   disables "NumPy's AVX2 and AVX-512 dispatch groups", X86_V3 and X86_V4 in its code (the laptop has the first), and
+   puts the D kept at an ambiguous sample "of the order of 1e-16", where on these data, in the run's configuration,
+   |D| is below 3.6e-15 at the samples of the two patterns (this entry's item 5).
+
+5. **What it found.** It printed "holds  (1) the regenerated arrays reproduce exactly on this machine"; "holds  (2)
+   |D| < 1e-12 exactly at the samples of the two patterns"; "holds  (3) reordering D changes decisions at ambiguous
+   samples only"; "holds  (4) other kernels: identical masks, counts differing only at ambiguous samples"; "holds  (5)
+   every committed count an integer within its bracket"; "holds  (6) the two arrays byte-identical to the regeneration
+   of 16 September"; "fits: 840 computed, 0 skipped as by the run"; and "VERDICT: every prediction tested holds". In
+   numbers, over both variants (the report gives each): (1) every one of the 840 fits recomputed gave exactly the
+   regenerated share and, for the windows, the regenerated W = 60 atom means, and the run skips no fit; (2) the
+   samples of the two patterns, 2,327,271 of 611,161,980 pair-samples (0.381 %), are exactly those with |D| < 1e-12:
+   the largest |D| among them 3.55e-15, the smallest among the others 2.53e-10; 578,307 of them have D exactly 0; the
+   ambiguous samples number 207,532 (0.034 %; in any one fit at most 0.1221 %, the largest share being 472 of 386,745
+   pair-samples, `ts_demean`, subject 14, PCB, window 5), of which the mask keeps 80,405 on the laptop; (3) summing
+   D's fifteen terms in the reverse order changed the decision at 82,875 samples, in 840 fits, every one of them
+   ambiguous; (4) in the child process the local mutual informations changed in 840 of the 840 fits, and in every fit
+   the samples at which the signs of I_xta, I_xtb, I_yta and I_ytb agree, the samples of the two patterns and the
+   decisions at every sample that is not ambiguous were identical to the first pass's, sample by sample; the counts of
+   kept samples differed in 804 fits, by at most 44 samples of a fit and 7.5e-05 in a share, and the atoms by at most
+   5.6e-16; (5) every committed share times its fit's N is an integer within 1e-6, and that count lies between the
+   number of samples the mask keeps on the laptop at the samples that are not ambiguous and that number plus the fit's
+   ambiguous samples; the committed count differs from the laptop's in 783 of the 840 fits, by at most 65 samples and
+   at most 21.3 % of the fit's ambiguous samples; the largest difference in share, 4.4e-05, is that of `ts_gsr`,
+   subject 3 (subject index 2), PCB, window 4 (the committed count 17 above the laptop's, of N = 386,745 pair-samples,
+   of which 181 are ambiguous); (6) V.S.'s regeneration of 15–16 September 2026, stashed on 16 September ("section-6
+   rerun at d145e1c", `notes/planning_checks_2026-09-16/reproduction_checks/4_stash_pull.log`), was found as
+   stash@{0}, and the run's two arrays are byte-identical to the regeneration's, written on 16 September; of the
+   binaries the run modified the report prints "binaries the run modified: 30; identical to 16 Sep 30".
+
+6. **The conclusion.** The difference is explained. The two arrays count, at ambiguous samples, a decision set by the
+   arithmetic of the machine and not by the data, and the committed and regenerated arrays were computed in different
+   environments. On the laptop the arrays reproduce exactly (predictions 1 and 6), and so does every one of the 30
+   `.npy`, `.npz` and `.pkl` outputs that `8_binary_compare.py` found modified: all are byte-identical to V.S.'s
+   regeneration of 15–16 September 2026, stashed on 16 September, so that none of these differences arises from one
+   run to the next on the laptop; each is a difference between the laptop's output and a committed file last changed
+   on 14 or 15 September 2026 (in 709415d, 6a5f8c6, 24bde59, 3781e00 or 9318997). A change of numerical kernels alone,
+   the code and the data unchanged, changes the two arrays in the same manner, at ambiguous samples only, by up to
+   7.5e-05 in a share (prediction 4), where the committed arrays differ from the regenerated ones by up to 4.4e-05;
+   and the committed counts lie, in every fit, within the range that the decisions at the samples that are not
+   ambiguous allow (prediction 5). The arrays of the same shares under the published definition's mask, whose fifth
+   sign is that of the full mutual information and not D's (`partB/ccs_pub_agree_share_ts_gsr.npy` and
+   `…_ts_demean.npy`, written by B6 and last committed in 9318997), were rewritten by the run byte for byte. On these
+   data every decision but those at the ambiguous samples was the same under both orders of summation and both sets of
+   kernels, and at every sample outside the two patterns |D| is at least 2.5e-10 in both passes (the report prints the
+   smallest such |D| of the first pass; that of the second is in the check's `fits_child_process.json`, which is not
+   committed); the ambiguous samples are at most 0.1221 % of a fit's pair-samples. This is a property of the mask's
+   definition, which tests the sign of D also where D is identically zero, whatever code computes it; it is not an
+   error of the repository's code. The decisions at ambiguous samples change an atom at a sample only by ±D there
+   (below 3.6e-15 in the run's configuration), and any mean of the atoms by no more. No number of the paper is taken
+   from the two arrays. Two groups of its numbers depend on phyid's mask decisions, the ambiguous ones among them: S3
+   Text §1's shares of 26–28 % and disagreement of 6–7 % in two windows (`ccs_definition_check.log`, section 0), whole
+   percents of values that the log has printed alike since its first commit (9318997, 15 September 2026), the final
+   run included; and S17 Table's rows for the share that phyid's mask selects, for the mean double co-information of
+   the samples it rejects (c̄_rej) and for the three terms of B18's decomposition built on the two (B18 recomputes the
+   mask; `partB/ccs_decomposition.csv`, through B21's `inference_revision.csv`), which the final run reproduced (the
+   Table's rows for CCS-sts itself, an atom, change only by ±D). From the check's table, the W = 60 DiD of that share
+   moves by 3.1e-06 on `ts_gsr` and 4.7e-06 on `ts_demean` when the committed arrays' counts replace the laptop's, and
+   by 1.2e-07 and 1.5e-06 under the child's kernels. The planning session recomputed the share's two W = 60 rows from
+   the check's table with its own implementation of B18's bootstrap and sign-flip p and of B21's sign-flip inversion
+   and t interval, which gives the printed rows exactly from the laptop's counts: with the committed arrays' counts,
+   eleven printed values would change, in the row of `ts_gsr` the DiD, the lower bounds of the percentile, inverted
+   and t intervals and the width ratio (−0.02040, −0.03211, −0.03456, −0.03441 and 1.161 for −0.02039, −0.03210,
+   −0.03455, −0.03440 and 1.162), and in the row of `ts_demean` the exact p and B18's p (0.5756 for 0.5748 and 0.5747)
+   and the percentile and inverted intervals ([−0.01520, +0.00763] and [−0.01694, +0.00980] for [−0.01521, +0.00762]
+   and [−0.01693, +0.00979]). The check's table gives each fit's counts summed over its pairs, and the global fit's as
+   a whole, not by bin; so it gives neither that share's DiD at the global fit nor the changes of c̄_rej and of the
+   three terms, which B18 computes pair by pair (c̄_rej is the mean over pairs of each pair's mean over its rejected
+   samples, which counts summed over pairs do not determine). No result of the paper moves.
+
+7. **What follows.** The choice between committing the two arrays as the run wrote them and keeping their committed
+   versions was V.S.'s; on 27 September 2026 he left it to the planning session, which chose to commit the outputs as
+   the run wrote them, the two arrays included: the outputs commit then holds everything the run writes (item 8), the
+   laptop reproduces those arrays exactly, the committed versions were computed in an environment that the repository
+   does not record, and no number of the paper is taken from them. Beyond what item 11 lists, the outputs commit
+   holds, for this investigation, this entry and, under `notes/planning_checks_2026-09-16/reproduction_checks/`, the
+   check's script, report and table; its other additions are listed in the outcome entry's item 10, and the four
+   comparison scripts are unchanged. A run of `partB2_ccs_run.py` on another machine or with another numerical build
+   can differ from the committed arrays at the ambiguous samples, which on these data are at most 0.1221 % of a fit's
+   pair-samples (on the laptop, a change of kernels alone changed a share by up to 7.5e-05); Data and code
+   availability and S5 Text §4 say so, and S5 Text §4 names the rows of S17 Table that depend on the decisions and
+   gives what the committed arrays' counts would change in the share's two rows computed at W = 60.
+
+## The final end-to-end run of `run_all.sh` at the final commit: outcome, 27 Sep 2026 13:32 UTC (appended; nothing above edited)
+
+Outcome of "The final end-to-end run of `run_all.sh` at the final commit: pre-run entry" (26 Sep 2026, 07:56 UTC;
+committed in c25a310). Where this entry names an item without saying whose, the item is the pre-run entry's. This
+entry is appended in the commit that holds the run's outputs (item 11) and was written before that commit, which it
+cannot name. Times are UTC unless marked EEST, the laptop's local time, in which the run's step lines and heartbeat
+are stamped. Lines that the scripts printed are quoted with their leading spaces dropped and runs of three or more
+spaces reduced to two.
+
+1. **The run.** V.S. restarted his laptop (it booted at 26 Sep 2026, 11:56 UTC, between 91 and 93 s before the unit
+   started, by the clock and the uptime of the heartbeat's lines, which count whole seconds) and started the run with
+   the planning session's `final_run_start.sh` (this entry's item 8): the root transient unit `runfinal` ran
+   `run_all.sh` at c25a310, in his repository folder, as vilalius (`runuser -u vilalius`) inside
+   `systemd-inhibit --what=sleep:idle:handle-lid-switch:shutdown --mode=block`, from 26 Sep 2026, 11:58:23 UTC to 26
+   Sep 2026, 19:54:22 UTC (14:58:23 to 22:54:22 EEST), when its main process exited with status 0 (`Result=success`).
+   The run's standard output and error, committed here as `results/run_all_final.log` (4,927 lines), hold the 65 step
+   lines, one for each of the 65 steps of item 10, from "=== 2026-09-26 14:58:23  scripts/00_verify.py  ->
+   results/run_00_verify.log" to "=== 2026-09-26 22:54:10  scripts/15_figures_v2.py  -> results/run_15_figures_v2.log"
+   (EEST), and the line "=== skipping the HRF-deconvolution items:
+   notes/review_results/deconv/DMT_clean_mni_continuous_fullPreprocsch116.mat not present (see notes/rev_deconv.py)"
+   in the branch's place, and end with "=== all done in 475 min" and "=== unit exit 0". They hold no traceback and no
+   "CHECK FAILED"; `scripts/00_verify.py` printed "ALL CHECKS PASSED" and no "[FAIL]"; B21, B22, B23 and B24 printed
+   1,025, 22, 63 and 10 checks run, 0 failed. Timed by the step lines and the unit's exit, sections 0–5 took 19,019 s
+   and section 6 9,540 s, of which B21–B24 took 518 s (item 10: about 21,500 and 10,600 s as estimated from the
+   committed logs, and 531 s for B21–B24 on 23 September 2026).
+
+2. **The tree, the environment and the start script's checks (items 1, 2 and 4).** Before starting the unit,
+   `final_run_start.sh` checked the following, and would not have started it after any failure: that it ran as
+   vilalius; that master was checked out and that it and origin/master were at c25a310; that no tracked file was
+   modified or staged, that no file under `scripts/`, no `notes/*.py` and not the record was changed or untracked,
+   that no untracked or ignored file lay under `results/`, `notes/review_results/` or `manuscript/figures/`, and that
+   no untracked `manuscript/si/S*_Text.md` existed; that the deconvolution sandbox was absent; that `external/DMT_NCT`
+   was at upstream commit 77af7aa (the prefix the script compares) with no modified or missing tracked file, and five
+   named `.mat` files present and not empty (four under `data/` and
+   `fxns/SpinTests/rotated_maps/rotated_Schaefer_100.mat`); that `.venv/bin/python -I` gave Python 3.12.3, numpy
+   2.5.3, scipy 1.18.1 and matplotlib 3.11.1, and that `pip freeze` was identical to `requirements.lock.txt` (121
+   packages); that logind's `HandleLidSwitch`, `HandleLidSwitchExternalPower` and `HandleLidSwitchDocked` in effect
+   were `ignore` and the charger connected (this entry's item 3); that the laptop had been restarted after master last
+   moved and less than an hour earlier; that no unit of an earlier start was loaded and no log, heartbeat or saved
+   status of one existed; that at least 2 GB of disk were free; that no automatic update (`apt-daily.service` or
+   `apt-daily-upgrade.service`) and no `dpkg`, `apt` or `apt-get` process was running; and, after pausing the two
+   update timers (this entry's item 3), that both were inactive. It saved the tree's git status before starting the
+   unit. After the run, `final_run_evidence.sh` found HEAD at c25a310 and nothing staged; under the three output
+   folders, only modified (177) and new (6) files, the new files being the six of item 8 (`results/run_00_verify.log`,
+   `results/run_02_bias_check_n20000.log`, `results/run_tier_check_decay_windows.log`,
+   `results/run_15_figures_v2.log`, `results/atoms_bins_local_115regions-all_ts_gsr_global.npy`,
+   `results/atoms_bins_local_115regions-all_ts_demean_global.npy`); and outside them, against the saved status, one
+   file changed: `notes/review_computations_2026-09-14.md`, the report of the review computations of 14 September
+   2026, which section 6 rewrites (`notes/rev_assemble.py` fills its tables from the inference CSVs and writes its
+   `git=` line), as the section-6 run of 20 September 2026 did (its commit, a75d015, holds the report with that run's
+   outputs). The script's check "nothing changed outside the output folders", which the planning session wrote on the
+   assumption that every output lies under the three folders, marked this file as a difference, one of the two
+   expectations of its summary so marked ("SUMMARY: 2 expectation(s) marked DIFFERS."; the other is the difference of
+   the two arrays that the preceding entry investigates). The report is an output of the run like the others: it
+   differs from its committed version on its `git=` line only, which names c25a310 (it is among the text files that
+   `6_committed_compare.py` counts as changed only on git-SHA lines, this entry's item 4 (i), and
+   `final_run_commit.sh` checked that its sha256 is that of c25a310's version with that line naming c25a310, this
+   entry's item 10), and it is committed with them, since the outputs commit holds everything the run writes (item 8).
+   None of the files that item 9 says the run does not regenerate changed; and the environment was unchanged
+   ("versions: 3.12.3 2.5.3 1.18.1 3.11.1"; `pip freeze` identical to `requirements.lock.txt`).
+
+3. **The conditions (item 2).** At the start, the script read `HandleLidSwitch`, `HandleLidSwitchExternalPower` and
+   `HandleLidSwitchDocked` from logind as in effect, `ignore` all three, and found the charger connected (a power
+   supply of type Mains or USB online). The heartbeat, committed here as `results/run_all_final_heartbeat.log`, has 95
+   lines, the first 300 s after the first step and the last 57 s before the log's last write, 300 to 301 s apart by
+   the uptime they record, so that the machine neither slept nor stalled; every line reads "charger connected", the
+   battery stood between 99 and 100 % (Full, then Not charging) and the available memory between 10 and 11 GB. In the
+   system journal, logind recorded one message from the unit's start to the log's last write, at 19:16:57 EEST, that
+   it was watching the buttons of an input device, the media controls (AVRCP) of a Bluetooth speaker then connected,
+   and no lid, suspend, power-key or power-off event, and the kernel recorded no out-of-memory kill and no suspend.
+   Beyond item 2, as a precaution against an unattended upgrade changing the environment during the run, the start
+   script paused `apt-daily.timer` and `apt-daily-upgrade.timer` until the next restart: when the evidence was
+   collected (26 Sep 2026, 21:06 UTC) they were both inactive, and dpkg's log has no line from the unit's start to the
+   log's last write. The machine: Ubuntu 24.04.3 LTS, Linux 6.14.0-32-generic, 13th Gen Intel(R) Core(TM) i5-13420H,
+   12 CPUs, 15 GiB of memory.
+
+4. **The comparisons (item 5).** V.S. ran them with `final_run_evidence.sh` (this entry's item 8) on the working tree
+   the run left, before anything was added, restored or committed, each with `.venv/bin/python -I` against c25a310,
+   and each ran to its end with exit status 0. (i) `6_committed_compare.py c25a310` printed "compared against c25a310:
+   82 files (54 CSV, 28 text)"; "CSV identical in every cell: 51"; "CSV differing only by less than 1e-9: 0"; "CSV
+   with a real difference: 1", namely "notes/review_results/partB/inference_revision.csv: max 6.01e-15, 0 numbers >
+   1e-9, 0 empty-cell changes, text cells {'quoted_at': 198, 'committed_mean': 798, 'pct_lo': 801, 'pct_hi': 800,
+   't_lo': 932, 't_hi': 932, 'width_ratio': 781}" (item 6 (a): the `quoted_at` column, and the `np.float64` wrappers
+   of the committed file, which make the comparison read those six columns as text); "CSV whose rows or columns
+   changed: 2", namely "results/bias_check_nonstat.csv: old (336, 12) new (420, 12); rows in new not in old 84
+   {'nonstat_step_ar': 84}; old rows absent or changed in new 0" and "results/bias_check_nonstat_global.csv: old (8,
+   12) new (10, 12); rows in new not in old 2 {'nonstat_step_ar': 2}; old rows absent or changed in new 0" (item 6
+   (d)); "text files changed only on git-SHA lines: 25; there and in printed numbers within 1e-9: 1
+   (aligned_directed_tables.md: 2 line(s))"; "text files with other changes: 2", namely
+   "notes/review_results/partB/inference_revision_tables.md (199 committed line(s) not reproduced, 124 line(s) added,
+   besides SHA lines; up to ten of each)" and "results/subject_alignment_check.txt (1 committed line(s) not
+   reproduced, 0 line(s) added, besides SHA lines; up to ten of each)" (items 6 (b) and 6 (e): the ten lines of each
+   kind it prints for the first are rows of table (a) and the count line of "(a) Summary", and the one line not
+   reproduced in the second is the line added by hand); "files whose line endings changed: 0"; "SHA in the headers of
+   the regenerated files: {'c25a310': 82}"; "other files changed by the run, by extension: {'pdf': 9, 'png': 2, 'pkl':
+   5, 'log': 55, 'npy': 20, 'npz': 5}"; and "untracked files under the output folders: 6", the six of item 8. (ii)
+   `9_wrapper_compare.py c25a310` printed "1. notes/review_results/partB/inference_revision.csv: 932 rows, 26 columns;
+   largest numeric difference 2.13e-14; quoted_at changed in 198 rows, non-empty in 10 (committed: 202); quoted_at
+   rows not matching the texts at c25a310: 0"; "verdict: PASS"; "2.
+   notes/review_results/partB/inference_revision_tables.md: table (a) 270 rows committed, 195 regenerated (pickle rows
+   76 → 1); matched count [202] → [10]"; "verdict: PASS"; "9_wrapper_compare: PASS". (iii)
+   `8_binary_compare.py c25a310` printed "binary outputs modified by the run under ('notes/review_results/',
+   'results/'): 30 (compared against c25a310)"; "noise (<1e-9)  notes/review_results/inference_rows_ccs.pkl  max|diff|
+   = 1.07e-13 over every numeric entry"; "noise (<1e-9)  notes/review_results/inference_rows_ccs_pub.pkl  max|diff| =
+   4e-14 over every numeric entry"; "noise (<1e-9)  notes/review_results/inference_rows_diag.pkl  max|diff| = 5.77e-15
+   over every numeric entry"; "noise (<1e-9)  notes/review_results/inference_rows_lag.pkl  max|diff| = 5.42e-14 over
+   every numeric entry"; "noise (<1e-9)  notes/review_results/inference_rows_raw.pkl  max|diff| = 7.89e-13 over every
+   numeric entry"; "REAL  notes/review_results/partB/ccs_agree_share_ts_demean.npy  max|diff| = 3.62e-05";
+   "REAL  notes/review_results/partB/ccs_agree_share_ts_gsr.npy  max|diff| = 4.4e-05"; "noise
+   (<1e-9)  notes/review_results/partB/ccs_atoms_bins_ts_demean.npy  max|diff| = 1.11e-15"; "noise
+   (<1e-9)  notes/review_results/partB/ccs_atoms_bins_ts_gsr.npy  max|diff| = 8.88e-16"; "noise
+   (<1e-9)  notes/review_results/partB/ccs_atoms_win60_ts_demean.npy  max|diff| = 3.33e-16"; "noise
+   (<1e-9)  notes/review_results/partB/ccs_atoms_win60_ts_gsr.npy  max|diff| = 3.33e-16"; "noise
+   (<1e-9)  notes/review_results/partB/ccs_pub8_atoms_win60_ts_gsr.npy  max|diff| = 4.44e-16"; "noise
+   (<1e-9)  notes/review_results/partB/ccs_pubD_atoms_win60_ts_gsr.npy  max|diff| = 4.44e-16"; "noise
+   (<1e-9)  notes/review_results/partB/ccs_pub_atoms_bins_ts_demean.npy  max|diff| = 8.33e-16"; "noise
+   (<1e-9)  notes/review_results/partB/ccs_pub_atoms_bins_ts_gsr.npy  max|diff| = 1.11e-15"; "noise
+   (<1e-9)  notes/review_results/partB/ccs_pub_atoms_win60_ts_demean.npy  max|diff| = 4.44e-16"; "noise
+   (<1e-9)  notes/review_results/partB/ccs_pub_atoms_win60_ts_gsr.npy  max|diff| = 3.33e-16"; "noise
+   (<1e-9)  notes/review_results/partB/diag_series_ts_demean_W30.npz  local_obs: max|diff| = 4e-15; local_res:
+   max|diff| = 2.29e-14; obs: max|diff| = 3.33e-16; pred: max|diff| = 2.2e-14; pred_sym: max|diff| = 4.44e-16; r2:
+   max|diff| = 1.67e-12; res: max|diff| = 2.19e-14; xcorr_dev: max|diff| = 2.78e-17; xcorr_r: max|diff| = 4.44e-16";
+   "noise (<1e-9)  notes/review_results/partB/diag_series_ts_demean_W60.npz  local_obs: max|diff| = 3.77e-15;
+   local_res: max|diff| = 3.77e-15; obs: max|diff| = 2.22e-16; pred: max|diff| = 2.22e-16; pred_sym: max|diff| =
+   4.44e-16; r2: max|diff| = 9.99e-16; res: max|diff| = 4.44e-16; xcorr_dev: max|diff| = 2.78e-17; xcorr_r: max|diff|
+   = 5.55e-16"; "noise (<1e-9)  notes/review_results/partB/diag_series_ts_gsr_W30.npz  local_obs: max|diff| =
+   3.33e-15; local_res: max|diff| = 5.55e-15; obs: max|diff| = 2.22e-16; pred: max|diff| = 4.44e-15; pred_sym:
+   max|diff| = 6.66e-16; r2: max|diff| = 2.73e-13; res: max|diff| = 4.22e-15; xcorr_dev: max|diff| = 2.78e-17;
+   xcorr_r: max|diff| = 5.55e-16"; "noise (<1e-9)  notes/review_results/partB/diag_series_ts_gsr_W60.npz  local_obs:
+   max|diff| = 2.78e-15; local_res: max|diff| = 2.78e-15; obs: max|diff| = 4.44e-16; pred: max|diff| = 4.44e-16;
+   pred_sym: max|diff| = 6.66e-16; r2: max|diff| = 4.66e-15; res: max|diff| = 6.66e-16; xcorr_dev: max|diff| =
+   4.16e-17; xcorr_r: max|diff| = 6.66e-16"; "noise
+   (<1e-9)  notes/review_results/partB/lag_atoms_bins_tau1.npy  max|diff| = 2e-15"; "noise
+   (<1e-9)  notes/review_results/partB/lag_atoms_bins_tau2.npy  max|diff| = 4.44e-16"; "noise
+   (<1e-9)  notes/review_results/partB/lag_atoms_bins_tau3.npy  max|diff| = 1.25e-16"; "noise
+   (<1e-9)  notes/review_results/partB/lag_atoms_bins_tau5.npy  max|diff| = 1.67e-16"; "noise
+   (<1e-9)  notes/review_results/partB/lag_atoms_win60_tau1.npy  max|diff| = 8.88e-16"; "noise
+   (<1e-9)  notes/review_results/partB/lag_atoms_win60_tau2.npy  max|diff| = 1.67e-16"; "noise
+   (<1e-9)  notes/review_results/partB/lag_atoms_win60_tau3.npy  max|diff| = 3.12e-17"; "noise
+   (<1e-9)  notes/review_results/partB/lag_atoms_win60_tau5.npy  max|diff| = 5.55e-17"; "noise
+   (<1e-9)  notes/review_results/partB/scope_map_overlay_points.npz  dmt_w6_q: max|diff| = 2.22e-16; dmt_w6_r1:
+   max|diff| = 0; dmt_w6_sts: max|diff| = 2.22e-15; pcb_w2_q: max|diff| = 3.33e-16; pcb_w2_r1: max|diff| = 0;
+   pcb_w2_sts: max|diff| = 2.66e-15; pre_w1to4_q: max|diff| = 4.44e-16; pre_w1to4_r1: max|diff| = 0; pre_w1to4_sts:
+   max|diff| = 9.1e-15"; "summary: {'identical': 0, 'noise (<1e-9)': 28, 'REAL': 2}"; the two lines marked REAL are
+   the difference that the preceding entry investigates. (iv) `10_logs_figures_compare.py c25a310` printed "logs
+   modified by the run: 55; every committed line reproduced: 52 (0 of them with added lines); with committed lines not
+   reproduced: 3", the logs whose committed lines were not all reproduced being
+   `results/run_10_subject_alignment_check.log`, `results/run_115_global_atoms.log` and
+   `results/run_115_global_atoms_ts_demean.log`, in each of which the committed lines not reproduced are those of
+   items 6 (e) and 7 and no other, and the added lines are those of the same items and, in the first, the two of this
+   entry's item 6 (items 6 (e) and 7 as found: this entry's item 5); "images modified by the run: 11; anti-aliasing:
+   8, identical: 3", with "manuscript/figures/fig1_v2_scope_map.pdf: differs beyond its dates; its PNG: not modified
+   by the run"; "manuscript/figures/fig2_v2_atoms_observed_substituted.pdf: differs beyond its dates; its PNG: not
+   modified by the run"; "manuscript/figures/fig3_v2_per_subject.pdf: differs beyond its dates; its PNG: 2 pixels
+   differ, largest channel difference 1 (anti-aliasing only)"; "manuscript/figures/fig3_v2_per_subject.png: 2 pixels
+   differ, largest channel difference 1 (anti-aliasing only)"; "manuscript/figures/fig4_v2_regional.pdf: differs
+   beyond its dates; its PNG: 70 pixels differ, largest channel difference 1 (anti-aliasing only)";
+   "manuscript/figures/fig4_v2_regional.png: 70 pixels differ, largest channel difference 1 (anti-aliasing only)";
+   "manuscript/figures/fig5_v2_residual_diagnostic.pdf: differs beyond its dates; its PNG: not modified by the run";
+   "manuscript/figures/fig6_v2_lag_dependence.pdf: differs beyond its dates; its PNG: not modified by the run"; and
+   "10_logs_figures_compare: committed log lines not reproduced, or images or line endings differing: listed above",
+   which the three logs above give it. File by file, every output the run changed and not named in (i)–(iv) is one of:
+   a table, report or captions file changed only on the line that names its commit (25: 22 tables of
+   `notes/review_results/partB/` and the report of the review computations on their `git=` line, and `captions.md` and
+   `captions_v2.md` on their line "Generated by … at git c25a310, …"); a CSV identical in every cell (51: 48 changed
+   only in the SHA of their header; `notes/review_results/partB/calibration.csv` also in 12 zeros printed with the
+   other sign, this entry's item 5 (g); `results/atoms_bins_115regions-all_ts_gsr_global.csv` and
+   `…_ts_demean_global.csv` also in their header, which gained "window_trs=na placebo_fit_trs=na", printed by
+   `scripts/01_synergy_timecourse.py` since 8554b3d, the commit of item 7's reworded line, and set aside by the
+   comparison with every comment line); a log whose every non-blank committed line is reproduced in order under the
+   masks and the 1e-9 rule of item 5, with no line added (52); a PDF identical to its committed version apart from its
+   dates (3, the first draft's figures). The four can be re-run on a clone with the pinned environment: check out
+   c25a310, restore this commit's three output folders and the report of the review computations into the working tree
+   only
+   (`git restore --source=<this commit> --worktree -- results notes/review_results manuscript/figures notes/review_computations_2026-09-14.md`),
+   set aside `results/run_all_final.log` and `results/run_all_final_heartbeat.log`, and run them from the repository
+   root.
+
+5. **The differences known in advance (items 6 and 7), as found.** (a) and (b): as fixed, and checked by (ii) of this
+   entry's item 4: `quoted_at` changed in 198 rows and non-empty in 10, every other cell within 1e-9 of the committed
+   one with the wrappers stripped (the largest difference 2.13e-14); table (a) 270 rows to 195, the pickle rows 76 to
+   1, the count 202 to 10. (c): `inference_revision_run.log` prints the same count, masked. (d): the 84 and 2
+   `nonstat_step_ar` rows, no committed row absent or changed. (e): the report and its log without the line added by
+   hand, the log with the row "sts_gsrglobal_PCB  FD_PCB  -0.090  +0.008  0.0885  1/14" at its place. (f): the images
+   as in this entry's item 4 (iv); `captions_v2.md` and `captions.md` changed only on the line that names the commit
+   ("Generated by … at git c25a310, …"). (g): besides B21's CSV of (a), printed numbers changed within 1e-9 in one
+   table or report (`aligned_directed_tables.md`, 2 lines), in one CSV (`partB/calibration.csv`, which
+   `6_committed_compare.py` counts as identical in every cell), and in one log (`aligned_directed_run.log`), which
+   `10_logs_figures_compare.py` accepts under the same rule. None of these values is quoted in the paper. The values
+   that changed are B22's check of its residual against `diag_series` (6.66e-16 and 4.44e-16, now 0: the run
+   regenerated `diag_series` on the same machine) and zeros of `partB/calibration.csv` printed with the other sign;
+   the values of the same printed size that a search of the paper's texts found, in S3 Text §3 (4.4 × 10⁻¹⁶) and in
+   S18 and S19 Tables of `supplementary.md` (4.4e-16, +4.4e-16, −4.4e-16, −6.7e-16 and 6.7 × 10⁻¹⁶), and the main
+   text's bound of 7 × 10⁻¹⁶ (Materials and methods, The closed form), which the search did not report, give the
+   extremes of B23's grid of unequal coefficients, on lines that did not change. (h): every non-blank committed line
+   reproduced, in order, in 52 of the 55 logs the run changed, and in the other three apart from the lines of items 6
+   (e) and 7. Item 7: in each of the two global-fit logs, line 25 reworded with its three numbers unchanged
+   ("samples/bin (evaluated slots): min=28 max=30 median=30; empty slots=0") and the line naming the local-atoms file
+   added.
+
+6. **The lines only the regenerated logs have (item 6 (h)).** Besides those of items 6 (e) and 7,
+   `10_logs_figures_compare.py` lists 2, none of which reports an error or a failed check:
+   `results/run_10_subject_alignment_check.log`, "PATH RuntimeWarning: Mean of empty slice" (a warning, not an error:
+   numpy's `nanmean` prints it at line 254 of `scripts/10_subject_alignment_check.py`, whose path the comparison
+   masks, where section F averages over the regions a frame-to-frame change that is not finite in any of the 116
+   regions, the change into the time point that the report's section C documents ("The subject-index-2 PCB TR-839
+   defect across files"), and the script then drops the NaN it returns (`ok = np.isfinite(D[i])`); `run_all.sh` writes
+   a step's standard error into its log, whereas the committed log, whose header names 66b570e-dirty, was written on
+   13 September 2026 and committed in cab580b, before `run_all.sh` existed (it was first committed in f62c4ac, on 14
+   September 2026), was edited by hand on 15 September (item 6 (e)), and has no line of standard error, so that it
+   lacks a warning that section F's code, unchanged since cab580b, prints on these data at every run; the report the
+   step wrote reproduced its committed version, as item 6 (e) fixes); `results/run_10_subject_alignment_check.log`,
+   "D.append(np.sqrt(np.nanmean(d ** 2, 0)))" (the source line that the warning quotes, printed with it).
+
+7. **The rule (item 5): held, but for the two arrays of the preceding entry.** Beyond the differences of items 6 (a),
+   (b), (d) and (e), every table and report is the same line for line, in order, apart from the lines that name its
+   commit, with every printed number within 1e-9 of its committed value; every CSV cell is within 1e-9 of its
+   committed value, no CSV row or column changed and no file's line endings changed; every `.npy`, `.npz` and `.pkl`
+   output with a committed version but `partB/ccs_agree_share_ts_gsr.npy` and `partB/ccs_agree_share_ts_demean.npy` is
+   identical or within 1e-9, with its NaN pattern and non-numeric entries unchanged, and those two differ from their
+   committed versions by up to 4.4e-05 and 3.62e-05; every non-blank committed log line is reproduced, in order,
+   beyond items 6 (e) and 7, and no added line reports an error or a failed check; every figure is identical or
+   differs by anti-aliasing only, and every PDF is identical apart from its dates or takes its PNG's verdict; no
+   output names `-dirty` or gains `nogit`; every table and report the run wrote names `git=c25a310`, apart from the
+   five files of item 3, which carry no SHA by design; no step failed and no traceback was printed. The rule blocked
+   the commit (items 5 and 11): nothing was committed, the difference was investigated and recorded in an entry before
+   anything else happened, and no result of the paper was to move until it was explained. The preceding entry ("The
+   final end-to-end run of `run_all.sh` at the final commit: the difference in the two CCS agreement-share arrays")
+   records it, explains it, finds that no result of the paper moves, and records the decision, which V.S. left to the
+   planning session, to commit the outputs as the run wrote them. The outputs are committed.
+
+8. **The command files.** The planning session wrote the commands V.S. ran for this run, each with the output to
+   expect: `final_run_steps.md` (sha256 1077c42a7c21ecbec7192d3f09485d4d4a84460e92f1034d4f636de19a44842e), the steps;
+   `final_run_pull.sh` (697b781507129b4c332653ceaa8ece4ec74497a9073e4fce0910f8343eb9c493), which checked bundle 29 and
+   master before merging and pushing it; `final_run_start.sh`
+   (b76424955cfc6ea7ca2202fdf90e5e037a0d8f200f34b91e44ba5c8e7e42dfc9), the checks of items 1, 2 and 4, before the
+   restart (`--check`) and at the start, the pause of the update timers and the unit, whose heartbeat line it writes;
+   and `final_run_evidence.sh` (ad3765fd22e6024d46d6447b1fe9da61bcc9c6a1c5037b11b71bfff525ec44c3), which ran the four
+   comparisons, read the system's journal and dpkg's log, and wrote the evidence V.S. sent, with a summary that marked
+   each expectation of the pre-run entry it could read off the files. V.S. checked the sha256 of the three scripts and
+   of bundle 29 before using them, as `final_run_steps.md` asks and as the output he sent on 26 September 2026 shows.
+   The planning session tested them on a copy of the repository with stand-ins for the system's commands and
+   placeholder files, since no data is present in its session: 36 faults of the start script, in both modes; the pull
+   script in six cases; the start end to end with stand-in runs of 305, 310 and 610 s; and the evidence script on a
+   simulated run and in 40 cases, of which it flagged the 32 faults and none of the 8 legitimate variations; on the
+   run itself it marked two differences, one an error of its own check and not of the run (this entry's item 2), the
+   other the difference of the two arrays that the preceding entry investigates. Two audits by separate sessions (15
+   findings, then 11) were applied in full, and a third found nothing further. Two incidents in the planning session's
+   work for this run are recorded here, neither touching data: in one test the stand-in for the unit ran the test
+   repository's own `run_all.sh`, whose `scripts/00_verify.py` read a placeholder file and stopped at once with a
+   traceback; and, in checking the figures of bundle 29 run to run, the planning session started
+   `scripts/12_figures.py`, which stopped at once, before writing anything, because `intensity_ratings.mat`, which it
+   reads, is not in the session. The placeholders were deleted, and a search of the session's file system found no
+   `.mat` file other than scipy's own test files (the synthetic files of the tests of the preceding entry's check were
+   made later).
+
+9. **The commit the run was made at.** Before V.S. pushed bundle 29 (sha256
+   ac3a1ae0916985b713e64ad1f388e1a12c6552d8572006a45ee791ab85ecd143), the planning session compared its three commits
+   (03c558b, b02d5ba, c25a310) with its own build of them: every file was byte-identical apart from the three times in
+   the record's headings, the commit named in the captions file and the PDFs' creation dates. The writer's session had
+   noted that its runs did not compare the figures' PDFs run to run; the planning session ran
+   `scripts/15_figures_v2.py` twice at b02d5ba, and the PDFs of the two runs differ only in their CreationDate and
+   equal c25a310's apart from it, so that c25a310's message ("the PDFs differ only in their CreationDate") holds.
+
+10. **The outputs commit (item 11).** This commit holds the 177 outputs the run changed under the three output
+   folders, the report of the review computations it rewrote outside them (this entry's item 2) and the six new files
+   of item 8; the log and the heartbeat, copied from V.S.'s home folder after the comparisons, as
+   `results/run_all_final.log` and `results/run_all_final_heartbeat.log`; this entry and the preceding one, with the
+   check that entry describes, its report and its table of fits
+   (`notes/planning_checks_2026-09-16/reproduction_checks/11_ccs_agree_share_check.py`,
+   `11_ccs_agree_share_check.log`, `11_ccs_agree_share_cells.csv`); the [TK]s that waited on the run, filled within
+   their lines (Data and code availability; S5 Text §4); and S5 Text §6's list of commits. Beyond the list of item 11,
+   which did not foresee them, it holds the edits of the text that the run made necessary: in Data and code
+   availability, "is executed … at the final commit" made "was executed" without "at the final commit", since commits
+   follow c25a310, the sentence filled with the commit, the machine, the date, the wall-clock and the commit that
+   holds the outputs, the figures among them, and followed by a new sentence on the comparisons' outcome and the two
+   arrays, the two wall-clock figures (8 and 475 min) said to be rounded down to the minute, and the sentence on the
+   committed figures made to say that the figures of each revision were written at its text commit and committed in
+   the next from the revision of 23 September 2026 on, and that the final run rewrote them; in the S5 Text caption,
+   the run itself beside its earlier attempts, and the result files whose headers carry, or before the run carried,
+   `-dirty` or `nogit`; in S5 Text §4, four statements about headers and commits that the run made out of date put in
+   the past, the plan of 23 September for the run ("moved to the final commit") told as what happened, the statement
+   of what the single full run regenerates put in the past, with the header it names made `run_all.sh`'s, and "at the
+   final commit" dropped from the filled sentence, which with the sentences that follow it reports the run, the
+   comparisons, the difference in the two arrays and its explanation, the rows of S17 Table that depend on the same
+   decisions, the headers of the outputs, which now name c25a310, and the commit that holds the outputs; in §6, whose
+   list now names 03c558b, b02d5ba and c25a310, the closing parenthesis, which sent the reader to the captions file
+   for the commit of the figures, made "(its parent is c25a310)", for the one commit that follows; in
+   `supplementary.md`, a sentence of the head note saying that the commit given with a source file is the one its
+   header named when its values were quoted, and that the final run reproduced the committed values apart from the two
+   arrays, two statements that the cross-lag tables' headers carry d507728 (S9 Table's source note and its note on the
+   superseded values) made "regenerated at d507728", S17 Table's source note made to name the file the final run
+   regenerated, and S19 Table's row for the pre-run entry of this run, a prediction whose outcome this entry records
+   (the rule held but for the two arrays: partly met), with S19 Table's count, now 53 predictions, 14 of them partly
+   met, which the main text's section on pre-registration also gives, and in S19 Table's source note the checks of the
+   pipeline's reproduction, which S5 Text reports, set outside its Part B. In `manuscript/main_text_numbers.csv` it
+   holds the row of the wall-clock that Data and code availability now quotes, the recomputed context of the two other
+   rows of that paragraph whose context the rewritten sentences changed, 67 locators moved to the lines of the
+   regenerated files that hold them (`inference_revision_tables.md`; B21's table (a) is 75 rows shorter, so the rows
+   that locate the tables after it moved up by 75 lines), 43 held strings replaced by the regenerated values, which
+   differ from the committed ones by less than 1e-9 and leave unchanged the numbers and the bounds that the text
+   states (`inference_revision.csv`), the five rows of S19 Table's count, moved to the count's new line (line 1632 of
+   `supplementary.md`) with its new numbers, 53 and 14, the notes of four rows that locate B21's inverted intervals,
+   which since rounds 16 and 17 gave the bounds as −0.13171, −0.03104, −0.00241 and +0.03410 where the file's values
+   are, to five decimals, −0.13174, −0.03102, −0.00240 and +0.03411 (the numbers the text prints, −0.132, −0.031,
+   −0.0024 and +0.0341, were right), the locators of eleven rows into `scripts/15_figures_v2.py`, which since b02d5ba
+   named the lines that the script had before that commit (138, 166, 176 and 405, now 141, 169, 179 and 421) and the
+   head note's sentence on this commit. As every round does, it brings `README.md` and `CLAUDE.md` up to date. No code
+   of the analysis changed (the one script added is the check of the preceding entry), and no result file was edited
+   by hand. V.S. made the commit with the planning session's `final_run_commit.sh`, which, before committing, checked
+   that the evidence folder was the one the planning session had checked, that the outputs and the two logs were those
+   the evidence recorded, that the report of the review computations was c25a310's with its `git=` line naming
+   c25a310, and that the writer's commit it added them to was one commit on c25a310 whose files were those the
+   planning session built; and which checked the outputs commit file by file again before pushing it.
+
+11. **Checks of this commit's text.** One line was added to `supplementary.md`, S19 Table's new row, after every line
+   that B21 locates, and none was added to or removed from `draft_v2.md` or S1–S5 Text; the intervals these texts
+   quote by B21's pattern (a number followed by a bracketed pair) are the same, with their files and lines, before and
+   after this commit's edits (459 matches), so that B21's `quoted_at` column, computed from the text at c25a310, holds
+   for the committed text: recomputed from it with B21's rule, it differs from the regenerated column in 0 of 932
+   rows. V.S. sent the regenerated text outputs with the evidence, their sha256 those of `outputs.sha256`, and the
+   planning session made these checks on the tree they give with this commit's text. On that tree,
+   `notes/review_2026-09-25/checks/check_numbers.py` prints "rows 1192, data rows 676, flagged 12", the twelve rows
+   flagged being the sign-wording rows of `check_numbers.out`, and `check_cells.py` prints "flagged 0".

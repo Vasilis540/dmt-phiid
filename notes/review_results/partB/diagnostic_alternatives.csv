@@ -1,4 +1,4 @@
-# partB23_diagnostic_alternatives.py; one row per part, condition, a and quantity; git=a9d9ca4
+# partB23_diagnostic_alternatives.py; one row per part, condition, a and quantity; git=c25a310
 part,condition,a,quantity,value,se
 a_a1,"δ = +0.005",0.85,"residual change",0.001048540007,nan
 a_a1,"δ = -0.005",0.85,"residual change",0.000732553631,nan

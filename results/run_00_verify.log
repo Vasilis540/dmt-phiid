@@ -1,0 +1,34 @@
+==============================================================
+DATA
+==============================================================
+  [PASS] data directory present  external/DMT_NCT/data
+  [PASS] variant 'ts' present
+  [PASS] variant 'ts_demean' present
+  [PASS] variant 'ts_gsr' present
+  [PASS] variant 'ts_z' present
+  [PASS] shape is (14 subjects, 2 conditions)  (14, 2)
+  [PASS] timeseries is (116 regions, 840 TRs)  (116, 840)
+  [PASS] timeseries is finite
+  [PASS] DMT ratings are (14, 28)  (14, 28)
+  [PASS] ratings are per-subject, not group-mean
+  [PASS] TRs divide evenly into rating bins  30 TRs per bin
+  [PASS] DMT intensity exceeds placebo  DMT 2.81 vs PCB 0.03
+  [PASS] structural connectome is (116, 116)
+  [PASS] 5-HT2A map present and (116, 1)
+  [PASS] framewise displacement is (840, 14)
+
+==============================================================
+METHOD
+==============================================================
+  [PASS] phyid imports
+  [PASS] returns 16 atoms  (16, 839)
+  [PASS] atoms are finite
+  [PASS] synergy atom 'sts' present
+  [PASS] redundancy atom 'rtr' present
+  [INFO] 1.7 ms/pair
+  [INFO] full pairwise run ~5.2 min single-core
+  [PASS] full run under 60 min
+
+==============================================================
+ALL CHECKS PASSED
+==============================================================

@@ -1,4 +1,4 @@
-12_figures.py  seed=20261120  git=1fb074f
+12_figures.py  seed=20261120  git=c25a310
 
 == Figure 1: whole-brain mean sts per window, ts_gsr, W=60
   source: atoms_win60_115regions-all_ts_gsr_window.npy; pre-injection means DMT 1.1554 PCB 1.1378 (match primary_b_ts_gsr_win60.csv)

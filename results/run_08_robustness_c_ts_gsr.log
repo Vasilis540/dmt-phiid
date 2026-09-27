@@ -1,4 +1,4 @@
-variant=ts_gsr  placebo-fitted=atoms_bins_115regions-all_ts_gsr_placebo.npy  global=atoms_bins_115regions-all_ts_gsr_global.npy  git=2af901c
+variant=ts_gsr  placebo-fitted=atoms_bins_115regions-all_ts_gsr_placebo.npy  global=atoms_bins_115regions-all_ts_gsr_global.npy  git=c25a310
 PCB scored on bins 15-28 only (fit on TRs 0-419); DMT scored on bins 1-28. Both out-of-sample under the placebo-fitted model.
 
 [placebo-fitted]  (i) within-DMT step, primary (bins 11-28) minus bins 1-8

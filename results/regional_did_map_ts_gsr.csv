@@ -1,4 +1,4 @@
-# 11_regional_analysis.py EXPLORATORY variant=ts_gsr regions=115 excluded_regions=20 pre=bins1-8 post=bins11-28 signflip=exact2^14 two-sided fdr=BH q=0.05 spin=rotated_Schaefer_100 (10000 rotations, cortical only) bootstrap=10000 seed=20261120 git=4f7437b
+# 11_regional_analysis.py EXPLORATORY variant=ts_gsr regions=115 excluded_regions=20 pre=bins1-8 post=bins11-28 signflip=exact2^14 two-sided fdr=BH q=0.05 spin=rotated_Schaefer_100 (10000 rotations, cortical only) bootstrap=10000 seed=20261120 git=c25a310
 orig_index,name,yeo_network,did_mean,did_sd,p_signflip,bh_significant,n_neg_of_14
 0,LH_Vis_1,1,-0.128329,0.219173,0.04810,0,11
 1,LH_Vis_2,1,-0.076962,0.160344,0.09192,0,11

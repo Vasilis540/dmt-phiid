@@ -1,5 +1,5 @@
 # Family-predicted sixteen atoms per pair, asymmetric diagonal family (partB14_family_atoms.py)
-git=f1f5fcc
+git=c25a310
 
 Per window and pair: observed MMI atoms (PairPhiID.atoms_mean) and predicted atoms atoms_from_corr(ar1_corr(a_x, a_y, q)) from the window's measured (a_x, a_y, q), averaged over the 6,555 pairs; level = DMT windows 1–4, DiD = windows 6–14 minus 1–4, DMT minus placebo (mean over 14 subjects; in brackets the number of subjects with a negative DiD). W = 60; seed 20261120; region 20 excluded.
 

@@ -1,4 +1,4 @@
-# 09_global_fc_per_bin.py variant=ts_demean regions=115 pairs=6555 pre=bins1-8 sign-flip exact 2^14 two-sided; bootstrap 10000 draws seed=20261120; sts from atoms_bins_115regions-all_ts_demean_global.npy; git=66b570e-dirty
+# 09_global_fc_per_bin.py variant=ts_demean regions=115 pairs=6555 pre=bins1-8 sign-flip exact 2^14 two-sided; bootstrap 10000 draws seed=20261120; sts from atoms_bins_115regions-all_ts_demean_global.npy; git=c25a310
 section,quantity,name,value,ci_lo,ci_hi,p_signflip,n_neg,n_pos
 per_bin,mean_r,DMT_bin1,0.200792,,,,,
 per_bin,mean_r,PCB_bin1,0.210182,,,,,

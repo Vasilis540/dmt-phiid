@@ -1,4 +1,4 @@
-# 11_regional_analysis.py EXPLORATORY variant=ts_gsr regions=115 excluded_regions=20 pre=bins1-8 post=bins11-28 signflip=exact2^14 two-sided fdr=BH q=0.05 spin=rotated_Schaefer_100 (10000 rotations, cortical only) bootstrap=10000 seed=20261120 git=4f7437b
+# 11_regional_analysis.py EXPLORATORY variant=ts_gsr regions=115 excluded_regions=20 pre=bins1-8 post=bins11-28 signflip=exact2^14 two-sided fdr=BH q=0.05 spin=rotated_Schaefer_100 (10000 rotations, cortical only) bootstrap=10000 seed=20261120 git=c25a310
 section,name,value,ci_lo,ci_hi,p,note
 consistency,max_abs_diff_sts_vs_saved_pairmean,0.000000,,,,""
 consistency,max_abs_diff_rtr_vs_saved_pairmean,0.000000,,,,""

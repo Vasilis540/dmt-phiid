@@ -1,4 +1,4 @@
-# script=02_bias_check.py tau=1 kind=gaussian redundancy=MMI n_windows=2000 burn_in=200 seed=20261120 git=18ad8b4 n_runs=20000 n_boot=2000 m_decide=1338/742 threshold=0.8
+# script=02_bias_check.py tau=1 kind=gaussian redundancy=MMI n_windows=2000 burn_in=200 seed=20261120 git=c25a310 n_runs=20000 n_boot=2000 m_decide=1338/742 threshold=0.8
 condition,atom,global_est_mean,global_est_sd,global_est_ci_lo,global_est_ci_hi,regime_pre,regime_peak,weighted_mean_of_bin_truths,mixture_cov_truth,n_pre_bins,n_post_bins
 nonstat_step_coupling,sts,0.045909,0.010781,0.045760,0.046059,0.094214,0.038026,0.054080,0.046313,8,20
 nonstat_step_coupling,rtr,0.062363,0.017154,0.062126,0.062601,0.013658,0.085980,0.065316,0.062769,8,20
@@ -8,3 +8,5 @@ nonstat_decay_coupling,sts,0.062203,0.019431,0.061934,0.062472,0.094214,0.038026
 nonstat_decay_coupling,rtr,0.029053,0.011010,0.028900,0.029205,0.013658,0.085980,0.030340,0.028628,8,20
 nonstat_decay_noisecorr,sts,0.067083,0.022686,0.066768,0.067397,0.094214,0.039612,0.072672,0.064574,8,20
 nonstat_decay_noisecorr,rtr,0.022067,0.008965,0.021943,0.022192,0.013658,0.046892,0.022454,0.021481,8,20
+nonstat_step_ar,sts,1.268019,0.095461,1.266696,1.269342,1.384438,1.328420,1.344425,1.344706,8,20
+nonstat_step_ar,rtr,0.018051,0.016122,0.017828,0.018275,0.016268,0.014496,0.015002,0.015014,8,20

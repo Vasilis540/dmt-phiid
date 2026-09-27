@@ -1,4 +1,4 @@
-git=a9d9ca4
+git=c25a310
 /home/vilalius/dmt-phiid/notes/partB23_diagnostic_alternatives.py:174: RuntimeWarning: The iteration is not making good progress, as measured by the 
  improvement from the last ten iterations.
   x2 = fsolve(f, x, xtol=1e-14)
@@ -6,7 +6,7 @@ git=a9d9ca4
  solution is possible.
   x2 = fsolve(f, x, xtol=1e-14)
    (a) done (27s)
-   (b) (i) Δa = −0.015 done (39s)
+   (b) (i) Δa = −0.015 done (38s)
    (b) (a1) δ = +0.02 done (39s)
    (b) (a1) δ = −0.02 done (40s)
    (b) (a2) δ = +0.01 × sign(q) done (41s)
@@ -15,10 +15,10 @@ git=a9d9ca4
    (b) (a4) c = +0.02, B17's construction done (44s)
    (b) (a4) c = -0.02, B17's construction done (45s)
    (b) done (48s)
-   (c) done (58s)
-   (e) done (59s)
+   (c) done (57s)
+   (e) done (58s)
 # The residual's response to the alternatives of the direction argument, CCS-sts against autocorrelation, exposure across datasets and the unequal-coefficient grid (partB23_diagnostic_alternatives.py)
-git=a9d9ca4
+git=c25a310
 
 No data. Seed 20261120, one generator, parts (a)–(f) in order; scale 1/1. residual = pool mean of sts(true matrix) − sts(AR(1) matrix of the measured a_x, a_y and q) (partB4's substitution). q pool: 20000 draws of N(0, 0.3424) clipped to ±0.8.
 Checks: 63 run, 0 failed.
@@ -302,4 +302,4 @@ AR(1) generator (B17's (i), simulated: calibration.csv holds no window-level r�
 Predictions: (a1) +0.0036 and +0.0037 at ±0.01, +0.0154 and +0.0158 at ±0.02; (a2) −0.0224 at +0.01 and +0.0297 at −0.01; (a3) +0.0029 at +0.01, +0.0102 at +0.02, +0.0070 at −0.02 (a 400-draw pool), the aligned version at first order; (a4) negative for either sign, about −22 δ_sym²; (a5) the residual rises as the shared component weakens, about −1.2 per unit Δr₁. (b) (a4) within 2 SE of Table 7's AR(1) rows; (a1) ±0.02 +0.0066 and +0.0064; (a2) +0.01 −0.0102, −0.01 +0.0135; (i) +0.003 to +0.007. (c) CCS-sts falls as r₁ rises at fixed q, slope at (0.85, 0.25) between −2 and −0.1. (d) Δsts within ±15 % across TR 0.72–2 s while Δr₁ varies about sevenfold (0.008–0.09 Hz: β = 100 +0.190/+0.165; 200 +0.382/+0.335; 400 +0.738/+0.658). (e) population Δr₁ −0.010 to −0.020, Δsts −0.08 to −0.15. (f) extremes zero to rounding; at a = 0.85 the sign change at about 0.008 (q 0.25), 0.035 (0.5), 0.09 (0.7); none within 0.10 at (0.80, 0.70). Several are values already computed on 22 Sep on other pools or designs (the pre-run entry lists them).
 Rule: (a) and (b) replace the direction argument; (c) replaces "does not follow autocorrelation"; (d) replaces "most exposed dataset"; (e) completes Table 5's Δr₁ column; (f) replaces Results 1's two wrong statements (Finding 12).
    checks: 63 run, 0 failed
-done (59s)
+done (58s)

@@ -1,5 +1,5 @@
 # Diagnostic tables (partB4_diagnostic.py)
-git=d507728
+git=c25a310
 
 ## ts_gsr, W = 60
 

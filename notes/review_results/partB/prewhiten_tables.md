@@ -1,5 +1,5 @@
 # The atoms and the DMT contrast after prewhitening (partB16_prewhiten.py)
-git=f1f5fcc
+git=c25a310
 
 Whitening per region and run: 'arp' = residuals of the region's AR(p) fit, p by BIC over 1–5; 'ar1' = p = 1. The first p TRs of each run are dropped (non-finite). Atoms as partB2_ccs_run.py (MMI: PairPhiID.atoms_mean / atoms_bins; CCS: atoms_ccs, phyid's mask); inference as the primary (rev_inference.Engine, seed 20261120); the diagnostic as partB4 (per-pair AR(1) prediction from the whitened window's a_x, a_y, q). Level = DMT pre-injection (windows 1–4; bins 1–8); DiD = post minus pre, DMT minus placebo.
 

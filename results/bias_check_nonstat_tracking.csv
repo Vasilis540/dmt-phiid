@@ -1,4 +1,4 @@
-# script=02_bias_check.py tau=1 kind=gaussian redundancy=MMI n_windows=2000 burn_in=200 seed=20261120 git=18ad8b4 n_runs=20000 n_boot=2000 m_decide=1338/742 threshold=0.8
+# script=02_bias_check.py tau=1 kind=gaussian redundancy=MMI n_windows=2000 burn_in=200 seed=20261120 git=c25a310 n_runs=20000 n_boot=2000 m_decide=1338/742 threshold=0.8
 condition,window,M,pair,true_diff,est_diff_mean,est_diff_se,est_diff_sd_pooled,p_correct_sign_boot,p_correct_sign_analytic,p_analytic_lo,p_analytic_hi
 nonstat_decay_coupling,30,1338,10->11,0.001430,0.001132,0.000465,0.001798,0.743500,0.735610,0.548913,0.872194
 nonstat_decay_coupling,30,1338,11->12,0.002214,0.002150,0.000488,0.001887,0.877500,0.872798,0.736555,0.950187

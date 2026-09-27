@@ -1,4 +1,4 @@
-# 09_global_fc_per_bin.py variant=ts_gsr regions=115 pairs=6555 excluded_regions=20 bin_trs=30 git=66b570e-dirty
+# 09_global_fc_per_bin.py variant=ts_gsr regions=115 pairs=6555 excluded_regions=20 bin_trs=30 git=c25a310
 subject,condition,bin,mean_r,n_tr
 0,DMT,1,-0.000458,30
 0,DMT,2,0.001558,30

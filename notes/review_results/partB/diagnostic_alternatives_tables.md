@@ -1,5 +1,5 @@
 # The residual's response to the alternatives of the direction argument, CCS-sts against autocorrelation, exposure across datasets and the unequal-coefficient grid (partB23_diagnostic_alternatives.py)
-git=a9d9ca4
+git=c25a310
 
 No data. Seed 20261120, one generator, parts (a)–(f) in order; scale 1/1. residual = pool mean of sts(true matrix) − sts(AR(1) matrix of the measured a_x, a_y and q) (partB4's substitution). q pool: 20000 draws of N(0, 0.3424) clipped to ±0.8.
 Checks: 63 run, 0 failed.

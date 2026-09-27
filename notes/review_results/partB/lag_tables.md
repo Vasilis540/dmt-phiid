@@ -1,5 +1,5 @@
 # Lag-dependence tables (partB3_lag.py)
-git=d507728
+git=c25a310
 
 ## Summary across τ (ts_gsr)
 
