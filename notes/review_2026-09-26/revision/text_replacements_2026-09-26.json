@@ -1,0 +1,706 @@
+[
+ {
+  "id": "C01",
+  "file": "manuscript/draft_v2.md",
+  "why": "A-X1 (= B-U11): the deconvolution statement of Tarchi et al. is in S20 Table, not S3 Text",
+  "old": "(read in full on 20 September 2026; a deconvolving study, see S3 Text)",
+  "new": "(read in full on 20 September 2026; a deconvolving study, see S20 Table)",
+  "count": 1
+ },
+ {
+  "id": "C02",
+  "file": "manuscript/draft_v2.md",
+  "why": "A-C1 and A-U1: the finite-sample null is solved to each run and period, not given a fall applied to the DMT run only; its clause no longer falls under that description",
+  "old": "the residual DiD is +0.0027 ± 0.0014 on a band-passed generator with the data's spectrum, +0.0049 ± 0.0017 on AR(1) pairs, and +0.0054 on a finite-sample null that carries the data's fall of pair r₁ (Methods); the data's residual DiD is not distinguished from these (exact p = 0.108, 0.219 and 0.251).",
+  "new": "the residual DiD is +0.0027 ± 0.0014 on a band-passed generator with the data's spectrum and +0.0049 ± 0.0017 on AR(1) pairs; on a finite-sample null solved to the data's pair r₁ in each run and period it is +0.0054 (Methods). The data's residual DiD is not distinguished from these three (exact p = 0.108, 0.219 and 0.251).",
+  "count": 1
+ },
+ {
+  "id": "C03",
+  "file": "manuscript/draft_v2.md",
+  "why": "A-U1: the null's own DiD of pair r₁ (−0.0146) is close to the data's (−0.0155), not equal to it",
+  "old": "so that it carries the data's fall of pair r₁ (its own DiD −0.0146)",
+  "new": "so that it carries approximately the data's fall of pair r₁ (its own DiD −0.0146)",
+  "count": 1
+ },
+ {
+  "id": "C04",
+  "file": "manuscript/draft_v2.md",
+  "why": "A-U2 and V1: no notes/ output carries -dirty; the headers are those of the result tables and reports, with exceptions S5 Text now lists",
+  "old": "The `notes/` outputs name the producing commit in their headers (`git=<SHA>`; `-dirty` where the tree had uncommitted changes; `nogit` for files written outside a commit; S5 Text lists both kinds).",
+  "new": "The result tables and reports name the producing commit in their headers (`git=<SHA>`; `-dirty` where the tree had uncommitted changes; `nogit` for files written outside a commit); S5 Text lists the files of the last two kinds and those that carry none.",
+  "count": 1
+ },
+ {
+  "id": "C05",
+  "file": "manuscript/draft_v2.md",
+  "why": "V3 (worded as the audit's U5 proposes): the band-passed generator's change is a window-level fall of pair r₁ reached by a filter tilt (its target 0.8632 → 0.8482), not a change of an AR coefficient; the AR(1) pairs' is a population change of a",
+  "old": "| pure autocorrelation change (Δa = −0.015), band-passed generator |",
+  "new": "| pure autocorrelation change (window-level fall of 0.015 in pair r₁), band-passed generator |",
+  "count": 1
+ },
+ {
+  "id": "C06",
+  "file": "manuscript/draft_v2.md",
+  "why": "V3: as C05, for the AR(1) row",
+  "old": "| the same, AR(1) pairs |",
+  "new": "| the same (population Δa = −0.015), AR(1) pairs |",
+  "count": 1
+ },
+ {
+  "id": "C65",
+  "file": "manuscript/draft_v2.md",
+  "why": "V7 (audit U3): a bare \"a\" for the pairs' measured lag-1 correlation, which the paper calls pair r₁",
+  "old": "by an amount that grows with a and |q|.",
+  "new": "by an amount that grows with pair r₁ and |q|.",
+  "count": 1
+ },
+ {
+  "id": "C66",
+  "file": "manuscript/draft_v2.md",
+  "why": "V8 (audit U4; second audit F1): phyid's values are given beside the published ones for comparison in S3 Text and S17 and S19 Tables, labelled so (the sentence kept within the 7,000 words of Introduction through Methods)",
+  "old": "The prewhitened CCS values of S11 Table were computed with phyid's mask; every other CCS value in the paper uses the published definition.",
+  "new": "The prewhitened CCS values of S11 Table, and those S3 Text, S17 and S19 Tables label as phyid's, use phyid's mask; every other one uses the published definition.",
+  "count": 1
+ },
+ {
+  "id": "C67",
+  "file": "manuscript/draft_v2.md",
+  "why": "the audit's X1: the folder of this read listed with the other review folders, as the revision of 25 September listed its own (its V39)",
+  "old": "`notes/review_2026-09-24/`, `notes/review_2026-09-25/`)",
+  "new": "`notes/review_2026-09-24/`, `notes/review_2026-09-25/`, `notes/review_2026-09-26/`)",
+  "count": 1
+ },
+ {
+  "id": "C07",
+  "file": "manuscript/si/S1_Text.md",
+  "why": "B-X1: S5 Text says nothing about the codes or the history; the record's entry does",
+  "old": "which carries nothing the public source release does not (S5 Text).",
+  "new": "which carries nothing the public source release does not (record, \"Git history and the participant codes\", 15 September 2026).",
+  "count": 1
+ },
+ {
+  "id": "C08",
+  "file": "manuscript/si/S2_Text.md",
+  "why": "B-X2 and B-X3: the committed rev_extra.log, regenerated without the sandbox, no longer holds these values; they are in the review computations and in the log as committed at 9318997",
+  "old": "The share of power inside 0.01–0.08 Hz and the run-level r₁ of the deconvolved series are in `rev_extra.log`.",
+  "new": "The share of the deconvolved series' power inside 0.01–0.08 Hz (99.1 %) and their run-level r₁ (0.866 → 0.790 on ts_gsr, 0.856 → 0.776 on ts_demean) are in `notes/review_computations_2026-09-14.md`, section 3, and in `rev_extra.log` as committed at 9318997; the log's later regenerations, made without the sandbox, do not hold them.",
+  "count": 1
+ },
+ {
+  "id": "C09",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "B-U1: the record does not number B1-B13; B1-B5 were planned in one notes file, not under pre-run entries (the record's entries of B6 on are stated at the paragraph's opening, C63, as the audit's C1 asks)",
+  "old": "The computations are numbered as the record numbers them (B1–B24, B16b, B17b), each under a pre-run entry and an outcome entry at the dates given;",
+  "new": "The computations are numbered as their scripts in `notes/` are (B1–B24, B16b, B17b); B1–B5 were planned together in `notes/partB_prespec_2026-09-14.md`, committed before any of them was run, with their outcomes in `notes/partB1_scope_map.md` to `partB5_literature.md`;",
+  "count": 1
+ },
+ {
+  "id": "C63",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "V6 (audit C1): B1-B5 were planned and reported in notes/ files, the post hoc computations of the reviews have no pre-run entry, and not every pre-run entry records a rule and a prediction (B8 neither; S19 Table)",
+  "old": "the record `manuscript/analysis_record.md` holds the pre-run entry (rule and prediction) and the outcome entry of every computation, under the dates given.",
+  "new": "the record `manuscript/analysis_record.md` holds the pre-run entry and the outcome entry of every numbered computation from B6 on, under the dates given.",
+  "count": 1
+ },
+ {
+  "id": "C10",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "B-U10: the main text's reference list carries the pinned commit of phyid",
+  "old": "the main text carries none outside Data and code availability.",
+  "new": "the main text carries none outside Data and code availability and the reference list.",
+  "count": 1
+ },
+ {
+  "id": "C11",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "B-C1: the prewhitened CCS values use phyid's mask (section 8; main text, Redundancy functions)",
+  "old": "which is why the published values are used throughout.",
+  "new": "which is why the published values are used throughout, apart from the prewhitened series (section 8).",
+  "count": 1
+ },
+ {
+  "id": "C12",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "B-X5: the DiD is defined in the main text's Results; section 5 of this text does not define it",
+  "old": "(DiD; The DMT contrast, below)",
+  "new": "(DiD; main text, Results)",
+  "count": 1
+ },
+ {
+  "id": "C13",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "B-C1: as C11; and V8 (audit U4; second audit F1, F5): phyid's values given beside the published ones for comparison (sections 1 and 6; S17 and S19 Tables) are the other exception; phyid's values for the data are in two files",
+  "old": "all CCS values in this paper are under the published definition, with `phyid`'s beside them in `notes/review_results/partB/ccs_pub_tables.md`.",
+  "new": "apart from the prewhitened values of section 8 (S11 Table), computed with `phyid`'s mask, and `phyid`'s values given beside the published ones for comparison and labelled so (sections 1 and 6; S17 and S19 Tables), every CCS value in this paper is under the published definition; `phyid`'s values for the data are beside the published ones in `notes/review_results/partB/ccs_pub_tables.md` and `ccs_decomposition_tables.md`.",
+  "count": 1
+ },
+ {
+  "id": "C14",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "B-N1: +0.004498 and 0.027480 (closed form; the table prints +0.0045 and 0.0275) round to +0.004 and 0.027, not +0.005 and 0.028; both pairs now at the table's four decimals",
+  "old": "(at c = +0.02, sts − (xtx + yty) = +0.005 while rtr = 0.028) and for c < 0 it exceeds rtr (at c = −0.02, +0.059 against rtr = 0.019)",
+  "new": "(at c = +0.02, sts − (xtx + yty) = +0.0045 while rtr = 0.0275) and for c < 0 it exceeds rtr (at c = −0.02, +0.0586 against rtr = 0.0191)",
+  "count": 1
+ },
+ {
+  "id": "C15",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "A-X2: Results 6 quotes only the first of the two correlations",
+  "old": "Under CCS the same correlations are −0.011 and −0.018 (main text, Results 6).",
+  "new": "Under CCS the same correlations are −0.011 and −0.018 (`ccs_pub_tables.md`; section 5; the first in main text, Results 6).",
+  "count": 1
+ },
+ {
+  "id": "C16",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "B-U3: the two grid counts had no named source",
+  "old": "on |q| ≤ 0.95 (0 of 18,336 grid points) and on r ∈ [−0.95, 0.95]² (0 of 36,481).",
+  "new": "on |q| ≤ 0.95 (0 of 18,336 grid points; `notes/partB1_scope_map.md`, item 2) and on r ∈ [−0.95, 0.95]² (0 of 36,481; `notes/fresh_review_2026-09-17/checks/check_A1_atoms_family.log`).",
+  "count": 1
+ },
+ {
+  "id": "C17",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "B-T3: a measured pair lag-1 correlation is pair r₁ in the paper's notation",
+  "old": "that over-shoot shrinking as a and |q| fall under DMT",
+  "new": "that over-shoot shrinking as pair r₁ and |q| fall under DMT",
+  "count": 1
+ },
+ {
+  "id": "C18",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "B-T3: as C17",
+  "old": "solved to the data's run-level mean a, mean |q̂| and fraction |q̂| < 0.05",
+  "new": "solved to the data's run-level mean pair r₁, mean |q̂| and fraction |q̂| < 0.05",
+  "count": 1
+ },
+ {
+  "id": "C19",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "B-T3: as C17",
+  "old": "at the pairs' run-level mean point (a 0.8666, |q| 0.1945)",
+  "new": "at the pairs' run-level mean point (pair r₁ 0.8666, |q| 0.1945)",
+  "count": 1
+ },
+ {
+  "id": "C64",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "V7 (audit U3): a bare \"a\" for the windows' measured lag-1 correlation, which the paper's notation calls r₁",
+  "old": "pooling of windows that differ in a, q or variance under one fit",
+  "new": "pooling of windows that differ in r₁, q or variance under one fit",
+  "count": 1
+ },
+ {
+  "id": "C20",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "B-T2: the residual is the sum of the two responses, about half from each (the fix of 24 September, accepted then, not applied when the sentence moved here)",
+  "old": "is about half the directed and half the symmetric part of the cross-lag departure (above)",
+  "new": "is about half directed and half symmetric (above)",
+  "count": 1
+ },
+ {
+  "id": "C21",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "B-T3: as C17",
+  "old": "β̄ = 185.4 (realised window-level mean a 0.8637 against a target of 0.8632)",
+  "new": "β̄ = 185.4 (realised window-level mean pair r₁ 0.8637 against a target of 0.8632)",
+  "count": 1
+ },
+ {
+  "id": "C22",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "B-T3: as C17",
+  "old": "β̄_post = 105.7 (post-injection a 0.8483 against 0.8482)",
+  "new": "β̄_post = 105.7 (post-injection pair r₁ 0.8483 against 0.8482)",
+  "count": 1
+ },
+ {
+  "id": "C23",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "B-C2: condition (i) of the band-passed generator is a window-level target (B17b pre-run entry: 'unlike B17's population Δa'); its population change is the Δr₁ −0.01629 the paragraph gives",
+  "old": "an sts DiD of −0.0940 for a population Δa of −0.015 (per unit of pair r₁, the basis",
+  "new": "an sts DiD of −0.0940 for a window-level fall of 0.015 in pair r₁ (per unit of pair r₁, the basis",
+  "count": 1
+ },
+ {
+  "id": "C24",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "B-N3: the Δc = −0.02 row's δ_sym DiD is −0.014949 (−0.01495 in the table), −0.0149 at four decimals",
+  "old": "(+0.0076, +0.0148, +0.0221, −0.0150; ratios 30 to 34)",
+  "new": "(+0.0076, +0.0148, +0.0221, −0.0149; ratios 30 to 34)",
+  "count": 1
+ },
+ {
+  "id": "C25",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "B-N2: the fourth ratio is −24.6 (−0.00550 / 0.01495²; −24.63 from the unrounded means)",
+  "old": "(the four rows give −17, −24, −22 and −24)",
+  "new": "(the four rows give −17, −24, −22 and −25)",
+  "count": 1
+ },
+ {
+  "id": "C26",
+  "file": "manuscript/si/S3_Text.md",
+  "why": "B-X4: partB/family_checks.log holds the derivatives at (0.97, 0.25) (+32.774 and +0.064)",
+  "old": "no output file holds them, since the scope map's grid stops at r₁ = 0.95",
+  "new": "`partB/family_checks.log` holds them, the scope map's grid stopping at r₁ = 0.95",
+  "count": 1
+ },
+ {
+  "id": "C27",
+  "file": "manuscript/si/S4_Text.md",
+  "why": "B-U5: 'OHBM 2016' read as a citation without a reference entry",
+  "old": "(COBIDAS, OHBM 2016; summarised in Nichols et al., 2017,",
+  "new": "(COBIDAS, released in 2016; summarised in Nichols et al., 2017,",
+  "count": 1
+ },
+ {
+  "id": "C28",
+  "file": "manuscript/si/S4_Text.md",
+  "why": "B-U7: S1 Text names the pinned commit without its hash; the hash is in S5 Text §6 and the reference",
+  "old": "Matplotlib 3.11.1, `phyid` at commit 6c5f2e9d…, `requirements.lock.txt`;",
+  "new": "Matplotlib 3.11.1; `phyid` at commit 6c5f2e9d… (S5 Text §6; main text, References); `requirements.lock.txt`;",
+  "count": 1
+ },
+ {
+  "id": "C29",
+  "file": "manuscript/si/S4_Text.md",
+  "why": "B-U6: S1 Text describes the codes' form; it does not state them",
+  "old": "the subject codes of the released ratings table are stated (S1 Text)",
+  "new": "the subject codes of the released ratings table are described (S1 Text)",
+  "count": 1
+ },
+ {
+  "id": "C30",
+  "file": "manuscript/si/S5_Text.md",
+  "why": "B-U10: as C10",
+  "old": "Outside Data and code availability the main text carries no commit identifier, timestamp or file path",
+  "new": "Outside Data and code availability and the reference list the main text carries no commit identifier, timestamp or file path",
+  "count": 1
+ },
+ {
+  "id": "C31",
+  "file": "manuscript/si/S5_Text.md",
+  "why": "B-U8: the entry \"Git history and the participant codes\" of 15 September carries no time",
+  "old": "(append-only; entries dated to the day until 14 September 2026 and to the minute, UTC, from 15 September)",
+  "new": "(append-only; entries dated to the day until 14 September 2026 and to the minute, UTC, from 15 September, apart from one entry of 15 September dated to the day)",
+  "count": 1
+ },
+ {
+  "id": "C32",
+  "file": "manuscript/si/S5_Text.md",
+  "why": "B-C3: the five Part B plans were committed together, in 477cccc, before B1 was run",
+  "old": "and were committed one by one before each was run.",
+  "new": "and were committed together, in one commit (477cccc), before any of them was run.",
+  "count": 1
+ },
+ {
+  "id": "C33",
+  "file": "manuscript/si/S5_Text.md",
+  "why": "B-X6: Results 6 gives one reason; S3 Text §5 gives the reasons and the rule",
+  "old": "for the reasons the main text gives (Results 6).",
+  "new": "for the reasons S3 Text §5 gives (main text, Results 6).",
+  "count": 1
+ },
+ {
+  "id": "C34",
+  "file": "manuscript/si/S5_Text.md",
+  "why": "A-T2, B-T1, C-T1: a process label in a quoted record title; the entry is cited by its date and time and what it records, as S5 Text §4 cites the correction entry; five entries share 23 September 21:40 UTC and two 25 September 16:34 UTC, so the entry is named as §4 and §6 name it, the decision entry (audit X2)",
+  "old": "Finding 9; record, \"Stage B of round 16: the shortened text\", 23 September 2026)",
+  "new": "Finding 9; record, the decision entry of 23 September 2026, 21:40 UTC)",
+  "count": 1
+ },
+ {
+  "id": "C35",
+  "file": "manuscript/si/S5_Text.md",
+  "why": "V1: the five CSVs without a header, the files written only with the deconvolution sandbox (the regional report among them, audit U1) and the logs that print no commit are exceptions to 'every result file'; `at git <SHA>` set in code, as `git=<SHA>` is",
+  "old": "Every result file names the commit at which it was produced (`git=<SHA>` in its header; `-dirty` where the tree had uncommitted changes; `nogit` for files written outside a commit; the list is below).",
+  "new": "Every result table and report names the commit at which it was produced (`git=<SHA>` in its header, `at git <SHA>` in the two captions files; `-dirty` where the tree had uncommitted changes; `nogit` for files written outside a commit; the list is below), apart from five CSV files that carry no header by design (named below) and those that `run_all.sh` writes only with the deconvolution sandbox present (`notes/review_results/inference_rows_deconv.csv`, `inference_rows_w30.csv`, the sixteen regional ΦR tables under `notes/review_results/regional/` and the report `notes/regional_phir_deconv_2026-09-14.md`), which carry none; a log names the commit where its script prints one.",
+  "count": 1
+ },
+ {
+  "id": "C68",
+  "file": "manuscript/si/S5_Text.md",
+  "why": "the audit's X1: the read of 26 September, which §6 names (C40), described in §5 as every other review is, as the revision of 25 September described its own (its V39)",
+  "old": "and the error-only revision applied them (record, \"The error-only revision: the check of 25 September 2026 applied\").",
+  "new": "and the error-only revision applied them (record, \"The error-only revision: the check of 25 September 2026 applied\"). On 26 September 2026, while the final run was in progress, the text of c25a310 with the pending edits of the outputs commit was read once more, restricted to outright errors, by four further sessions, three on the text and one on the layout of the typeset PDFs (`notes/review_2026-09-26/`: 45 distinct findings on the text, 42 of them confirmed, and 20 faults of the typesetting); the findings were verified against the committed files (`verification_2026-09-26.md`, with nine errors found in verifying them and in two audits of the prepared corrections by further sessions, V1–V9), and the commit that follows the outputs commit applies the corrections (record, \"The error-only read of 26 September 2026 and its corrections\").",
+  "count": 1
+ },
+ {
+  "id": "C69",
+  "file": "manuscript/si/S5_Text.md",
+  "why": "V9 (audit U2): S3 Text §2 names the MATLAB reference that phyid pins, pmediano/PhiID at a633cc1; §6 lists every commit identifier the text rests on, the external ones included",
+  "old": "Software: phyid at 6c5f2e9d33c985efbdf875d45cb5a2a6a5cdbf44 (`requirements.lock.txt`).",
+  "new": "Software: phyid at 6c5f2e9d33c985efbdf875d45cb5a2a6a5cdbf44 (`requirements.lock.txt`), and the MATLAB reference it pins, pmediano/PhiID at a633cc1 (S3 Text §2).",
+  "count": 1
+ },
+ {
+  "id": "C72",
+  "file": "manuscript/si/S5_Text.md",
+  "why": "V8 (second audit F1): the review of 14 September computed its CCS decomposition with phyid's mask (notes/adversarial_review_2026-09-14.md, item 5 and section 4.1)",
+  "old": "a CCS decomposition on 400 random pairs showing an sts increase in 14 of 14 subjects",
+  "new": "a CCS decomposition with phyid's mask on 400 random pairs showing an sts increase in 14 of 14 subjects",
+  "count": 1
+ },
+ {
+  "id": "C36",
+  "file": "manuscript/si/S5_Text.md",
+  "why": "B-T4: the clone held the data files (plural)",
+  "old": "the file was moved out of the clone for the rest of that session",
+  "new": "the files were moved out of the clone for the rest of that session",
+  "count": 1
+ },
+ {
+  "id": "C37",
+  "file": "manuscript/si/S5_Text.md",
+  "why": "A-T2, B-T1: as C34",
+  "old": "(record, \"Round 14: the restructuring\")",
+  "new": "(record, the restructuring's entry, 21 September 2026, 15:12 UTC)",
+  "count": 1
+ },
+ {
+  "id": "C38",
+  "file": "manuscript/si/S5_Text.md",
+  "why": "A-T2, B-T1: as C34",
+  "old": "(record, \"Stage B of round 16: the shortened text\", 23 September 2026)",
+  "new": "(record, the decision entry of 23 September 2026, 21:40 UTC)",
+  "count": 1
+ },
+ {
+  "id": "C39",
+  "file": "manuscript/si/S5_Text.md",
+  "why": "A-T2, B-T1: as C34; of the two entries of 25 September 16:34 UTC, the one that applies the review (audit X2)",
+  "old": "(record, \"Round 17: the review of 24 September 2026 applied\")",
+  "new": "(record, the entry applying them, 25 September 2026, 16:34 UTC)",
+  "count": 1
+ },
+ {
+  "id": "C40",
+  "file": "manuscript/si/S5_Text.md",
+  "why": "B-U2 and V5: the outputs commit named now that it exists; the nine commits the supporting information names outside the list",
+  "old": "; the outputs of that run, with the entry on its two CCS agreement-share arrays and the check it describes, the outcome entry and the sentences that report the run, are the commit that follows, which cannot name its own identifier (its parent is c25a310).",
+  "new": "; 13705b9 (27 Sep, the outputs of that run, with the entry on its two CCS agreement-share arrays and the check it describes, the outcome entry and the sentences that report the run); the corrections of the error-only read of 26 September 2026 are the commit that follows, which cannot name its own identifier (its parent is 13705b9). The supporting information also names nine commits where it cites a file, a rule, a prediction or an attempt at the end-to-end run made at them: e01c836 (12 Sep), 8554b3d, ac1fdc0, f3b435d, 66b570e and 4f7437b (13 Sep), dbf2311 (14 Sep), 9a19b10 (16 Sep) and 0a25aaa (17 Sep).",
+  "count": 1
+ },
+ {
+  "id": "C41",
+  "file": "manuscript/supplementary.md",
+  "why": "C-U1: three differences of correlations are positive; every ρ_S of sts is negative",
+  "old": "Sign is negative in every cell against the pre-specified positive direction.",
+  "new": "Every ρ_S of sts is negative, against the pre-specified positive direction.",
+  "count": 1
+ },
+ {
+  "id": "C42",
+  "file": "manuscript/supplementary.md",
+  "why": "C-N1: −0.40749 (results/primary_b_ts_gsr_win30.csv, line 76) is −0.407; −0.408 rounded the log's −0.4075",
+  "old": "per-subject means −0.388 / −0.408 raw",
+  "new": "per-subject means −0.388 / −0.407 raw",
+  "count": 1
+ },
+ {
+  "id": "C43",
+  "file": "manuscript/supplementary.md",
+  "why": "B-T3 extended (V2): as C17",
+  "old": "mixture q solved to the run-level a, |q̂| and fraction |q̂| < 0.05",
+  "new": "mixture q solved to the run-level pair r₁, |q̂| and fraction |q̂| < 0.05",
+  "count": 1
+ },
+ {
+  "id": "C44",
+  "file": "manuscript/supplementary.md",
+  "why": "C-N2: the inverted lower limit is −4.998e-06, printed −0.00000 in S17 Table",
+  "old": "| +0.00001 [+0.00000, +0.00003] |",
+  "new": "| +0.00001 [−0.00000, +0.00003] |",
+  "count": 1
+ },
+ {
+  "id": "C45",
+  "file": "manuscript/supplementary.md",
+  "why": "C-N2: the inverted lower limit is −4.538e-06",
+  "old": "| +0.00002 [+0.00000, +0.00005] |",
+  "new": "| +0.00002 [−0.00000, +0.00005] |",
+  "count": 1
+ },
+ {
+  "id": "C46",
+  "file": "manuscript/supplementary.md",
+  "why": "C-N2: the inverted upper limit is −6.82e-07; the interval excludes zero (p = 0.0479)",
+  "old": "| −0.00007 [−0.00014, +0.00000] |",
+  "new": "| −0.00007 [−0.00014, −0.00000] |",
+  "count": 1
+ },
+ {
+  "id": "C47",
+  "file": "manuscript/supplementary.md",
+  "why": "C-N2: the committed percentile lower limit is −0.00000 (crosslag_budget_tables.md, line 17)",
+  "old": "| 0.1365 (0.1365) | [+0.00000, +0.00003] |",
+  "new": "| 0.1365 (0.1365) | [−0.00000, +0.00003] |",
+  "count": 1
+ },
+ {
+  "id": "C48",
+  "file": "manuscript/supplementary.md",
+  "why": "C-N2: as C47",
+  "old": "| 0.1078 (—) | [+0.00000, +0.00004] |",
+  "new": "| 0.1078 (—) | [−0.00000, +0.00004] |",
+  "count": 1
+ },
+ {
+  "id": "C49",
+  "file": "manuscript/supplementary.md",
+  "why": "B-T3 extended (V2): as C17",
+  "old": "at the pairs' mean run-level a and |q| (0.8666, 0.1945)",
+  "new": "at the pairs' mean run-level pair r₁ and |q| (0.8666, 0.1945)",
+  "count": 1
+ },
+ {
+  "id": "C50",
+  "file": "manuscript/supplementary.md",
+  "why": "B-T3 extended (V2): as C17",
+  "old": "giving a realised window-level mean a of 0.8637, mean |q| 0.2844, post-injection a 0.8483 and a_x − a_y 0.0300",
+  "new": "giving a realised window-level mean pair r₁ of 0.8637, mean |q| 0.2844, post-injection pair r₁ 0.8483 and a_x − a_y 0.0300",
+  "count": 1
+ },
+ {
+  "id": "C51",
+  "file": "manuscript/supplementary.md",
+  "why": "C-U3: the same quantities as S10 Table's −0.0422 and −0.0675, at its precision",
+  "old": "| — W = 60 estimator / global fit | −0.042 / −0.068 |",
+  "new": "| — W = 60 estimator / global fit | −0.0422 / −0.0675 |",
+  "count": 1
+ },
+ {
+  "id": "C52",
+  "file": "manuscript/supplementary.md",
+  "why": "C-X1: the sts-matched null is section 5 of the review computations of 14 September",
+  "old": "(`notes/rev_sts_matched_null.py`; review of 14 September, section 5; a post hoc computation)",
+  "new": "(`notes/rev_sts_matched_null.py`; review computations of 14 September, section 5; a post hoc computation)",
+  "count": 1
+ },
+ {
+  "id": "C53",
+  "file": "manuscript/supplementary.md",
+  "why": "C-N4: 24 of the 36 engine rows are Table 2 and S1 Table quantities, 12 S3 Text's; the fields include the FD DiD",
+  "old": "36 recomputations of the per-run changes and FD-residualised DiDs of Table 2 and S1 Table (\"engine\")",
+  "new": "36 recomputations of the per-run changes, the FD DiDs and the FD-residualised DiDs of Table 2, S1 Table and S3 Text (\"engine\")",
+  "count": 1
+ },
+ {
+  "id": "C54",
+  "file": "manuscript/supplementary.md",
+  "why": "C-U2: the text at 90690f4 is that of 21 September (0b8d1a4); S8 Table's 'main text of 23 September 2026' is the shortened text",
+  "old": "of where the text of 23 September 2026 quoted each committed percentile interval",
+  "new": "of where the drafts of 21–22 September (the text at 90690f4) quoted each committed percentile interval",
+  "count": 1
+ },
+ {
+  "id": "C55",
+  "file": "manuscript/supplementary.md",
+  "why": "C-X2: B21 matched quoted intervals by their printed values; four rows carry another quantity's lines, one of them among the 'changes' rows",
+  "old": "\"quoted at\" names the file and line of the text at 90690f4 where the committed interval was quoted.",
+  "new": "\"quoted at\" names the file and line of the text at 90690f4 where the committed interval was quoted. B21 matched each quoted interval to the quantities by its printed values, so a quantity whose committed mean and interval equal another's carries that one's lines as well: rows 839 and 868 (δ_wd, equal there to δ_run) and rows 843 and 873 (δ_means on the placebo run, equal on the two variants); row 868 is why the column marks ten of the 39 \"changes\" rows, of which nine were quoted.",
+  "count": 1
+ },
+ {
+  "id": "C70",
+  "file": "manuscript/supplementary.md",
+  "why": "V8 (audit U4): S17 Table's CCS rows under phyid's mask and under the published definition, told apart by their labels",
+  "old": "and 158 other saved per-subject quantities (\"saved\").",
+  "new": "and 158 other saved per-subject quantities (\"saved\"). The rows \"CCS sts\", \"CCS rtr\" and \"CCS xtx+yty\", the prewhitened series' \"prewhiten ar1 CCS sts\" and \"prewhiten arp CCS sts\", and the decomposition rows marked \"(code mask)\" use `phyid`'s mask; the rows \"CCSpub …\" and those marked \"(pub mask)\" use the published definition (S3 Text §2).",
+  "count": 1
+ },
+ {
+  "id": "C71",
+  "file": "manuscript/supplementary.md",
+  "why": "V7 (audit U3): the window-level scatter of a region's lag-1 correlation, which the paper's notation calls regional r₁ (the pre-run entry's \"a\")",
+  "old": "(about −0.07 for the window-level scatter of a)",
+  "new": "(about −0.07 for the window-level scatter of regional r₁)",
+  "count": 1
+ },
+ {
+  "id": "C73",
+  "file": "manuscript/supplementary.md",
+  "why": "B-U1 in S19 Table (second audit F2): the labels are those of the computations' scripts, not the record's (S3 Text, C09)",
+  "old": "Labels B1–B24, B16b and B17b are the record's (S3 Text).",
+  "new": "Labels B1–B24, B16b and B17b are those of the computations' scripts in `notes/` (S3 Text).",
+  "count": 1
+ },
+ {
+  "id": "C56",
+  "file": "manuscript/supplementary.md",
+  "why": "C-U2: as C54",
+  "old": "quoted in the text of 23 September 2026 (file:line at 90690f4)",
+  "new": "quoted in the drafts of 21–22 September (file:line at 90690f4)",
+  "count": 1
+ },
+ {
+  "id": "C57",
+  "file": "manuscript/supplementary.md",
+  "why": "C-N3: the prediction entered git at 18ad8b4, 12 September 2026",
+  "old": "| Pre-registered analysis choices, the prediction for the 20,000-run repeat (13 Sep 2026) |",
+  "new": "| Pre-registered analysis choices, the prediction for the 20,000-run repeat (18ad8b4, 12 Sep 2026) |",
+  "count": 1
+ },
+ {
+  "id": "C58",
+  "file": "manuscript/supplementary.md",
+  "why": "C-N3: as C57",
+  "old": "| Pre-registered analysis choices, the tier assignment (13 Sep 2026) |",
+  "new": "| Pre-registered analysis choices, the tier assignment (18ad8b4, 12 Sep 2026) |",
+  "count": 1
+ },
+ {
+  "id": "C59",
+  "file": "manuscript/supplementary.md",
+  "why": "C-C1: 0.76 is the run-level r₁ (0.7572), 0.75 the W = 60 value (0.7506), as S3 Text §8 labels them",
+  "old": "AR(1) residual 0.996 in band, r₁ 0.76;",
+  "new": "AR(1) residual 0.996 in band, run-level r₁ 0.76;",
+  "count": 1
+ },
+ {
+  "id": "C60",
+  "file": "manuscript/supplementary.md",
+  "why": "C-C2: subject-bootstrap percentile intervals, which the head note requires to be marked",
+  "old": "the ratio +0.951 [+0.617, +0.991] on ts_gsr (met) and +0.987 [+0.901, +1.069] on ts_demean",
+  "new": "the ratio +0.951 [+0.617, +0.991] (percentile) on ts_gsr (met) and +0.987 [+0.901, +1.069] (percentile) on ts_demean",
+  "count": 1
+ },
+ {
+  "id": "C61",
+  "file": "manuscript/supplementary.md",
+  "why": "C-X3: Table 3 carries the pair r₁ DiD, not the pair |q| DiD",
+  "old": "Results 2 and 4; Table 3 (the pair r₁ and \\|q\\| DiDs); S3 Text §6; S13 Table",
+  "new": "Results 2 and 4; Table 3 (the pair r₁ DiD); S3 Text §6; S13 Table",
+  "count": 1
+ },
+ {
+  "id": "C62",
+  "file": "manuscript/supplementary.md",
+  "why": "A-T2, B-T1, C-T1: as C34",
+  "old": "(record, \"Stage B of round 16: the shortened text\", 23 September 2026)",
+  "new": "(record, the decision entry of 23 September 2026, 21:40 UTC)",
+  "count": 1
+ },
+ {
+  "id": "N01",
+  "file": "manuscript/main_text_numbers.csv",
+  "why": "the numbers table (contexts, the added row, the head note)",
+  "old": "# Every number of the main text of manuscript/draft_v2.md (title to Materials and methods, the six figure captions and the three table captions and bodies, the Data and code availability statement, and the Supporting-information captions), one row per occurrence, in reading order. category: data (checked against the named file at the named line, at the printed precision), design (a fixed setting of the analysis, located in the named file), literature (a value of a cited work, located in the literature table), bound (a stated bound, checked to hold against the file's value), derived (computed from quoted values; the derivation is given), label (a name, index, date or formula constant, not a quantity). As revised in the error-only revision that applied the check of 25 September 2026, and in the commit of the final run's outputs, which added the row of the run's wall-clock, recomputed the context of the two rows of Data and code availability whose context the rewritten sentences changed, moved 67 locators to the lines of the regenerated files and took 43 held strings from them (the files' values changed by less than 1e-9; the numbers the text prints are unchanged), updated the five rows of S19 Table's count, which the table's new row for the final run changes, and corrected the notes of four rows that gave B21's inverted-interval bounds wrongly in their fifth decimal and the locators of eleven rows into `scripts/15_figures_v2.py`, whose lines b02d5ba had moved (the numbers the text prints were right).\n",
+  "new": "# Every number of the main text of manuscript/draft_v2.md (title to Materials and methods, the six figure captions and the three table captions and bodies, the Data and code availability statement, and the Supporting-information captions), one row per occurrence, in reading order. category: data (checked against the named file at the named line, at the printed precision), design (a fixed setting of the analysis, located in the named file), literature (a value of a cited work, located in the literature table), bound (a stated bound, checked to hold against the file's value), derived (computed from quoted values; the derivation is given), label (a name, index, date or formula constant, not a quantity). As revised in the error-only revision that applied the check of 25 September 2026, and in the commit of the final run's outputs, which added the row of the run's wall-clock, recomputed the context of the two rows of Data and code availability whose context the rewritten sentences changed, moved 67 locators to the lines of the regenerated files and took 43 held strings from them (the files' values changed by less than 1e-9; the numbers the text prints are unchanged), updated the five rows of S19 Table's count, which the table's new row for the final run changes, and corrected the notes of four rows that gave B21's inverted-interval bounds wrongly in their fifth decimal and the locators of eleven rows into `scripts/15_figures_v2.py`, whose lines b02d5ba had moved (the numbers the text prints were right). The corrections of the error-only read of 26 September 2026 recomputed the context of the rows whose context the edits reached (26), added the row of the population change on AR(1) pairs that Table 3 now states, and restated the band-passed row, whose number is now the window-level fall of 0.015 in pair r₁, with the generator's target as its source.\n",
+  "count": 1
+ },
+ {
+  "id": "N02",
+  "file": "manuscript/main_text_numbers.csv",
+  "why": "the numbers table (contexts, the added row, the head note)",
+  "old": "Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry,paragraph 2,1,0.012,data,notes/review_results/partB/diagnostic_alternatives_tables.md,line 190; the line holds -0.01243; anchor: window-level Δr₁ DiD,\"the AR(1) generator's window-level pair r₁ change under condition (i), −0.01243 (Table 3), the smallest of the three\",ok,nt that grows with a and |q|. In simulations with a fall of 0.012–0.015 in pair r₁ applied to the DMT run\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,paragraph 2,1,0.015,data,notes/review_results/partB/bandpassed_expectations_tables.md,line 36; the line holds -0.01540; anchor: | window-level mean pair r₁ |,\"the band-passed generator's window-level pair r₁ change, −0.01540 (Table 3), the largest of the three; the null's is −0.0146\",ok,t grows with a and |q|. In simulations with a fall of 0.012–0.015 in pair r₁ applied to the DMT run only \r\n",
+  "new": "Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry,paragraph 2,1,0.012,data,notes/review_results/partB/diagnostic_alternatives_tables.md,line 190; the line holds -0.01243; anchor: window-level Δr₁ DiD,\"the AR(1) generator's window-level pair r₁ change under condition (i), −0.01243 (Table 3), the smallest of the three\",ok,t grows with pair r₁ and |q|. In simulations with a fall of 0.012–0.015 in pair r₁ applied to the DMT run\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,paragraph 2,1,0.015,data,notes/review_results/partB/bandpassed_expectations_tables.md,line 36; the line holds -0.01540; anchor: | window-level mean pair r₁ |,\"the band-passed generator's window-level pair r₁ change, −0.01540 (Table 3), the largest of the three; the null's is −0.0146\",ok,s with pair r₁ and |q|. In simulations with a fall of 0.012–0.015 in pair r₁ applied to the DMT run only \r\n",
+  "count": 1
+ },
+ {
+  "id": "N03",
+  "file": "manuscript/main_text_numbers.csv",
+  "why": "the numbers table (contexts, the added row, the head note)",
+  "old": "Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry,paragraph 2,1,+0.0049,data,notes/review_results/partB/calibration_tables.md,\"line 8; the line holds +0.0049; anchor: (i) Δa = −0.015, Δc = 0 | W60\",residual DiD +0.0049 ± 0.0017,ok,\" 0.0014 on a band-passed generator with the data's spectrum, +0.0049 ± 0.0017 on AR(1) pairs, and +0.0054 o\"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,paragraph 2,1,0.0017,data,notes/review_results/partB/calibration_tables.md,\"line 8; the line holds 0.0017; anchor: | (i) Δa = −0.015, Δc = 0 | W60 |\",\"B17 (i), residual DiD\",ok,\" a band-passed generator with the data's spectrum, +0.0049 ± 0.0017 on AR(1) pairs, and +0.0054 on a finit\"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,paragraph 2,1,1,label,,,AR(1): a name,ok,\"d generator with the data's spectrum, +0.0049 ± 0.0017 on AR(1) pairs, and +0.0054 on a finite-sample\"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,paragraph 2,1,+0.0054,data,notes/review_results/logs/review_v2_residual_null.log,line 16; the line holds +0.0054; anchor: null residual change: DMT +0.0041,DiD +0.0054,ok,\"th the data's spectrum, +0.0049 ± 0.0017 on AR(1) pairs, and +0.0054 on a finite-sample null that carries t\"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,paragraph 2,1,0.108,data,notes/review_results/partB/inference_revision_tables.md,line 234; the line holds 0.1079; anchor: | +0.0027 | 0.1079,B21 (b),ok,\"ta's residual DiD is not distinguished from these (exact p = 0.108, 0.219 and 0.251). Per unit of pair r₁\"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,paragraph 2,1,0.219,data,notes/review_results/partB/inference_revision_tables.md,line 235; the line holds 0.2188; anchor: | +0.0049 | 0.2188,B21 (b),ok,\"sidual DiD is not distinguished from these (exact p = 0.108, 0.219 and 0.251). Per unit of pair r₁ these \"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,paragraph 2,1,0.251,data,notes/review_results/partB/inference_revision_tables.md,line 236; the line holds 0.2506; anchor: | +0.0054 | 0.2506,B21 (b),ok,\" is not distinguished from these (exact p = 0.108, 0.219 and 0.251). Per unit of pair r₁ these correspond\"\r\n",
+  "new": "Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry,paragraph 2,1,+0.0049,data,notes/review_results/partB/calibration_tables.md,\"line 8; the line holds +0.0049; anchor: (i) Δa = −0.015, Δc = 0 | W60\",residual DiD +0.0049 ± 0.0017,ok,0014 on a band-passed generator with the data's spectrum and +0.0049 ± 0.0017 on AR(1) pairs; on a finite-s\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,paragraph 2,1,0.0017,data,notes/review_results/partB/calibration_tables.md,\"line 8; the line holds 0.0017; anchor: | (i) Δa = −0.015, Δc = 0 | W60 |\",\"B17 (i), residual DiD\",ok,band-passed generator with the data's spectrum and +0.0049 ± 0.0017 on AR(1) pairs; on a finite-sample nul\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,paragraph 2,1,1,label,,,AR(1): a name,ok,enerator with the data's spectrum and +0.0049 ± 0.0017 on AR(1) pairs; on a finite-sample null solved\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,paragraph 2,1,+0.0054,data,notes/review_results/logs/review_v2_residual_null.log,line 16; the line holds +0.0054; anchor: null residual change: DMT +0.0041,DiD +0.0054,ok,ll solved to the data's pair r₁ in each run and period it is +0.0054 (Methods). The data's residual DiD is \r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,paragraph 2,1,0.108,data,notes/review_results/partB/inference_revision_tables.md,line 234; the line holds 0.1079; anchor: | +0.0027 | 0.1079,B21 (b),ok,\"esidual DiD is not distinguished from these three (exact p = 0.108, 0.219 and 0.251). Per unit of pair r₁\"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,paragraph 2,1,0.219,data,notes/review_results/partB/inference_revision_tables.md,line 235; the line holds 0.2188; anchor: | +0.0049 | 0.2188,B21 (b),ok,\" DiD is not distinguished from these three (exact p = 0.108, 0.219 and 0.251). Per unit of pair r₁ these \"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,paragraph 2,1,0.251,data,notes/review_results/partB/inference_revision_tables.md,line 236; the line holds 0.2506; anchor: | +0.0054 | 0.2506,B21 (b),ok,\"t distinguished from these three (exact p = 0.108, 0.219 and 0.251). Per unit of pair r₁ these correspond\"\r\n",
+  "count": 1
+ },
+ {
+  "id": "N04",
+  "file": "manuscript/main_text_numbers.csv",
+  "why": "the numbers table (contexts, the added row, the head note)",
+  "old": "Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry,\"Table 3, body\",1,−0.00026,data,notes/review_results/partB/aligned_directed_tables.md,line 37; the line holds -0.00026; anchor: | A_other (sign from the other run) |,,ok,\"] | — | −0.02157 [−0.03314, −0.01020] | −0.00249 [−0.00474, −0.00026] | | pure autocorrelation change (Δa = \"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,\"Table 3, body\",1,−0.015,design,notes/review_results/partB/calibration_filtered_tables.md,line 8; anchor: (i) Δa (post filter),Δa = −0.015,ok,\" [−0.00474, −0.00026] | | pure autocorrelation change (Δa = −0.015), band-passed generator | +0.0027 ± 0.0\"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,\"Table 3, body\",1,+0.0027,data,notes/review_results/partB/calibration_filtered_tables.md,line 8; the line holds 0.0027; anchor: (i) Δa (post filter) | W60,+0.0027 ± 0.0014,ok,\"tocorrelation change (Δa = −0.015), band-passed generator | +0.0027 ± 0.0014 | 0 | −0.01540 ± 0.00035 | +0.\"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,\"Table 3, body\",1,0.0014,data,notes/review_results/partB/calibration_filtered_tables.md,line 8; the line holds 0.0014; anchor: | (i) Δa (post filter) | W60 |,,ok,\"ion change (Δa = −0.015), band-passed generator | +0.0027 ± 0.0014 | 0 | −0.01540 ± 0.00035 | +0.00001 ± 0\"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,\"Table 3, body\",1,0,data,notes/review_results/partB/diagnostic_alternatives_tables.md,line 53; the line holds −0.015; anchor: (a6) pure Δa = −0.015 at a = 0.85,zero by construction,ok,\"e (Δa = −0.015), band-passed generator | +0.0027 ± 0.0014 | 0 | −0.01540 ± 0.00035 | +0.00001 ± 0.000\"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,\"Table 3, body\",1,−0.01540,data,notes/review_results/partB/bandpassed_expectations_tables.md,line 36; the line holds -0.01540; anchor: | window-level mean pair r₁ |,,ok,\"a = −0.015), band-passed generator | +0.0027 ± 0.0014 | 0 | −0.01540 ± 0.00035 | +0.00001 ± 0.00031 | | the \"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,\"Table 3, body\",1,0.00035,data,notes/review_results/partB/bandpassed_expectations_tables.md,line 36; the line holds 0.00035; anchor: | window-level mean pair r₁ |,,ok,\", band-passed generator | +0.0027 ± 0.0014 | 0 | −0.01540 ± 0.00035 | +0.00001 ± 0.00031 | | the same, AR(1\"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,\"Table 3, body\",1,+0.00001,data,notes/review_results/partB/bandpassed_expectations_tables.md,line 29; the line holds +0.00001; anchor: | A_other (sign from the other run) |,,ok,\"sed generator | +0.0027 ± 0.0014 | 0 | −0.01540 ± 0.00035 | +0.00001 ± 0.00031 | | the same, AR(1) pairs | +\"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,\"Table 3, body\",1,0.00031,data,notes/review_results/partB/bandpassed_expectations_tables.md,line 29; the line holds 0.00031; anchor: | A_other (sign from the other run) |,,ok,\"or | +0.0027 ± 0.0014 | 0 | −0.01540 ± 0.00035 | +0.00001 ± 0.00031 | | the same, AR(1) pairs | +0.0049 ± 0\"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,\"Table 3, body\",1,1,label,,,AR(1) in the header,ok,\" | −0.01540 ± 0.00035 | +0.00001 ± 0.00031 | | the same, AR(1) pairs | +0.0049 ± 0.0017 | 0 | −0.0124\"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,\"Table 3, body\",1,+0.0049,data,notes/review_results/partB/calibration_tables.md,\"line 8; the line holds +0.0049; anchor: (i) Δa = −0.015, Δc = 0 | W60\",+0.0049 ± 0.0017,ok,\" ± 0.00035 | +0.00001 ± 0.00031 | | the same, AR(1) pairs | +0.0049 ± 0.0017 | 0 | −0.01243 ± 0.00101 | +0.\"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,\"Table 3, body\",1,0.0017,data,notes/review_results/partB/calibration_tables.md,\"line 8; the line holds 0.0017; anchor: | (i) Δa = −0.015, Δc = 0 | W60 |\",,ok,\" | +0.00001 ± 0.00031 | | the same, AR(1) pairs | +0.0049 ± 0.0017 | 0 | −0.01243 ± 0.00101 | +0.00001 ± 0\"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,\"Table 3, body\",2,0,data,notes/review_results/partB/diagnostic_alternatives_tables.md,line 53; the line holds −0.015; anchor: (a6) pure Δa = −0.015 at a = 0.85,zero by construction,ok,\"01 ± 0.00031 | | the same, AR(1) pairs | +0.0049 ± 0.0017 | 0 | −0.01243 ± 0.00101 | +0.00001 ± 0.000\"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,\"Table 3, body\",1,−0.01243,data,notes/review_results/partB/diagnostic_alternatives_tables.md,line 190; the line holds -0.01243; anchor: window-level Δr₁ DiD,,ok,\" 0.00031 | | the same, AR(1) pairs | +0.0049 ± 0.0017 | 0 | −0.01243 ± 0.00101 | +0.00001 ± 0.00004 | | fini\"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,\"Table 3, body\",1,0.00101,data,notes/review_results/partB/diagnostic_alternatives_tables.md,line 190; the line holds 0.00101; anchor: window-level Δr₁ DiD,,ok,\"| the same, AR(1) pairs | +0.0049 ± 0.0017 | 0 | −0.01243 ± 0.00101 | +0.00001 ± 0.00004 | | finite-sample \"\r\n",
+  "new": "Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry,\"Table 3, body\",1,−0.00026,data,notes/review_results/partB/aligned_directed_tables.md,line 37; the line holds -0.00026; anchor: | A_other (sign from the other run) |,,ok,\"] | — | −0.02157 [−0.03314, −0.01020] | −0.00249 [−0.00474, −0.00026] | | pure autocorrelation change (windo\"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,\"Table 3, body\",1,0.015,design,notes/review_results/partB/calibration_filtered_tables.md,line 4; anchor: target 0.8482,\"the window-level fall of pair r₁ that condition (i) targets, 0.8632 → 0.8482 (B17b)\",ok,\"0026] | | pure autocorrelation change (window-level fall of 0.015 in pair r₁), band-passed generator | +0\"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,\"Table 3, body\",1,+0.0027,data,notes/review_results/partB/calibration_filtered_tables.md,line 8; the line holds 0.0027; anchor: (i) Δa (post filter) | W60,+0.0027 ± 0.0014,ok,\"ow-level fall of 0.015 in pair r₁), band-passed generator | +0.0027 ± 0.0014 | 0 | −0.01540 ± 0.00035 | +0.\"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,\"Table 3, body\",1,0.0014,data,notes/review_results/partB/calibration_filtered_tables.md,line 8; the line holds 0.0014; anchor: | (i) Δa (post filter) | W60 |,,ok,\"all of 0.015 in pair r₁), band-passed generator | +0.0027 ± 0.0014 | 0 | −0.01540 ± 0.00035 | +0.00001 ± 0\"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,\"Table 3, body\",1,0,data,notes/review_results/partB/diagnostic_alternatives_tables.md,line 53; the line holds −0.015; anchor: (a6) pure Δa = −0.015 at a = 0.85,zero by construction,ok,\"015 in pair r₁), band-passed generator | +0.0027 ± 0.0014 | 0 | −0.01540 ± 0.00035 | +0.00001 ± 0.000\"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,\"Table 3, body\",1,−0.01540,data,notes/review_results/partB/bandpassed_expectations_tables.md,line 36; the line holds -0.01540; anchor: | window-level mean pair r₁ |,,ok,\"in pair r₁), band-passed generator | +0.0027 ± 0.0014 | 0 | −0.01540 ± 0.00035 | +0.00001 ± 0.00031 | | the \"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,\"Table 3, body\",1,0.00035,data,notes/review_results/partB/bandpassed_expectations_tables.md,line 36; the line holds 0.00035; anchor: | window-level mean pair r₁ |,,ok,\", band-passed generator | +0.0027 ± 0.0014 | 0 | −0.01540 ± 0.00035 | +0.00001 ± 0.00031 | | the same (popu\"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,\"Table 3, body\",1,+0.00001,data,notes/review_results/partB/bandpassed_expectations_tables.md,line 29; the line holds +0.00001; anchor: | A_other (sign from the other run) |,,ok,sed generator | +0.0027 ± 0.0014 | 0 | −0.01540 ± 0.00035 | +0.00001 ± 0.00031 | | the same (population Δa =\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,\"Table 3, body\",1,0.00031,data,notes/review_results/partB/bandpassed_expectations_tables.md,line 29; the line holds 0.00031; anchor: | A_other (sign from the other run) |,,ok,\"or | +0.0027 ± 0.0014 | 0 | −0.01540 ± 0.00035 | +0.00001 ± 0.00031 | | the same (population Δa = −0.015), \"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,\"Table 3, body\",1,−0.015,design,notes/review_results/partB/calibration_tables.md,\"line 8; anchor: (i) Δa = −0.015, Δc = 0\",B17 (i): Δa = −0.015 in population,ok,\" 0.00035 | +0.00001 ± 0.00031 | | the same (population Δa = −0.015), AR(1) pairs | +0.0049 ± 0.0017 | 0 | \"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,\"Table 3, body\",1,1,label,,,AR(1) in the header,ok,\"0.00001 ± 0.00031 | | the same (population Δa = −0.015), AR(1) pairs | +0.0049 ± 0.0017 | 0 | −0.0124\"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,\"Table 3, body\",1,+0.0049,data,notes/review_results/partB/calibration_tables.md,\"line 8; the line holds +0.0049; anchor: (i) Δa = −0.015, Δc = 0 | W60\",+0.0049 ± 0.0017,ok,\".00031 | | the same (population Δa = −0.015), AR(1) pairs | +0.0049 ± 0.0017 | 0 | −0.01243 ± 0.00101 | +0.\"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,\"Table 3, body\",1,0.0017,data,notes/review_results/partB/calibration_tables.md,\"line 8; the line holds 0.0017; anchor: | (i) Δa = −0.015, Δc = 0 | W60 |\",,ok,\" the same (population Δa = −0.015), AR(1) pairs | +0.0049 ± 0.0017 | 0 | −0.01243 ± 0.00101 | +0.00001 ± 0\"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,\"Table 3, body\",2,0,data,notes/review_results/partB/diagnostic_alternatives_tables.md,line 53; the line holds −0.015; anchor: (a6) pure Δa = −0.015 at a = 0.85,zero by construction,ok,\" (population Δa = −0.015), AR(1) pairs | +0.0049 ± 0.0017 | 0 | −0.01243 ± 0.00101 | +0.00001 ± 0.000\"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,\"Table 3, body\",1,−0.01243,data,notes/review_results/partB/diagnostic_alternatives_tables.md,line 190; the line holds -0.01243; anchor: window-level Δr₁ DiD,,ok,\"pulation Δa = −0.015), AR(1) pairs | +0.0049 ± 0.0017 | 0 | −0.01243 ± 0.00101 | +0.00001 ± 0.00004 | | fini\"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,\"Table 3, body\",1,0.00101,data,notes/review_results/partB/diagnostic_alternatives_tables.md,line 190; the line holds 0.00101; anchor: window-level Δr₁ DiD,,ok,\" = −0.015), AR(1) pairs | +0.0049 ± 0.0017 | 0 | −0.01243 ± 0.00101 | +0.00001 ± 0.00004 | | finite-sample \"\r\n",
+  "count": 1
+ },
+ {
+  "id": "N05",
+  "file": "manuscript/main_text_numbers.csv",
+  "why": "the numbers table (contexts, the added row, the head note)",
+  "old": "Materials and methods / The AR(1)-substituted estimate and its calibration,paragraph 1,1,−0.0146,data,notes/review_2026-09-24/checks/derived_r17.out,line 43; the line holds -0.0146; anchor: null pair r1 DiD: (0.8532 - 0.8625) - (0.8655 - 0.8602) = -0.0146,the null's own pair-r₁ DiD,ok, so that it carries the data's fall of pair r₁ (its own DiD −0.0146); its +0.0054 is from a single simulati\r\nMaterials and methods / The AR(1)-substituted estimate and its calibration,paragraph 1,1,+0.0054,data,notes/review_results/logs/review_v2_residual_null.log,line 16; the line holds +0.0054; anchor: null residual change: DMT +0.0041,DiD +0.0054,ok,\"rries the data's fall of pair r₁ (its own DiD −0.0146); its +0.0054 is from a single simulation, without a \"\r\n",
+  "new": "Materials and methods / The AR(1)-substituted estimate and its calibration,paragraph 1,1,−0.0146,data,notes/review_2026-09-24/checks/derived_r17.out,line 43; the line holds -0.0146; anchor: null pair r1 DiD: (0.8532 - 0.8625) - (0.8655 - 0.8602) = -0.0146,the null's own pair-r₁ DiD,ok,rries approximately the data's fall of pair r₁ (its own DiD −0.0146); its +0.0054 is from a single simulati\r\nMaterials and methods / The AR(1)-substituted estimate and its calibration,paragraph 1,1,+0.0054,data,notes/review_results/logs/review_v2_residual_null.log,line 16; the line holds +0.0054; anchor: null residual change: DMT +0.0041,DiD +0.0054,ok,\"ately the data's fall of pair r₁ (its own DiD −0.0146); its +0.0054 is from a single simulation, without a \"\r\n",
+  "count": 1
+ },
+ {
+  "id": "N06",
+  "file": "manuscript/analysis_record.md",
+  "why": "the record's entry of the read of 26 September 2026",
+  "old": "   flagged being the sign-wording rows of `check_numbers.out`, and `check_cells.py` prints \"flagged 0\".\n",
+  "new": "   flagged being the sign-wording rows of `check_numbers.out`, and `check_cells.py` prints \"flagged 0\".\n\n## The error-only read of 26 September 2026 and its corrections, «ENTRY_TIME» (appended; nothing above edited)\n\nOn 26 September 2026, while the final run of `run_all.sh` was in progress, the text of c25a310, with the pending edits\nof the outputs commit applied (their facts of the run taken from a simulated run), was read once more, restricted to\noutright errors, by four separate sessions of the AI system, A–C under one brief and D under a brief of its own: A,\nthe main text, `manuscript/figures/captions_v2.md` and the six figures; B, S1–S5 Text; C, S1–S20 Table; D, the typeset\nPDFs of the paper and of its supporting information, for layout only. The planning session verified every finding\nagainst the committed files, and further sessions audited the prepared corrections twice before they were delivered;\nno analysis was run on the data. The documents are in `notes/review_2026-09-26/`: `BRIEF.md` (sha256\n20bbe6c33bdab206e6ab9683bfe93e24a8863c578162951d229a97e700a4b515), `findings_A.md` (sha256\n338bf804c325a6a78a8bfd1187e4085ee897d93317f8fc98a699c4de0fcb7bef), `findings_B.md` (sha256\ne948da0fa3e1ee31d6518de0ce4fdf802e01c47ad3e1a0e74501b1273d8580ac), `findings_C.md` (sha256\n8b06d39ac3bbed6ea68a9ba84d3c216c9d66578c4819760db95fb0186c21f654), `findings_D.md` (sha256\nb0c1eed68dff007d52b837717b9b62c222337ad1cf3d68b8129fe95d183ca8df), `verification_2026-09-26.md` (sha256\n9dee4a2169a4642230442a2663a164919d27d75cf35fb4414457f224cc91d1a0), `README.md` (sha256\n20daa1ded779c3be8d16da38cd4b32173573a9e2d94ec2c1a772d651e60c8561).\n\n1. **The findings and the verdicts.** A gave 8 findings, B 28 and C 13, 45 of them distinct: 42 confirmed and 3 judged\n   not to be errors (the figures' annotations, which round their captions' values correctly; S5 Text §5's key to the\n   record's labels; the pre-registered rule's \"four specification changes\"), with the reasons in the verification,\n   section 6. Verifying them found five more (V1–V5), and the audits of the prepared corrections four more (V6–V9: S3\n   Text's opening statement of what the record holds; three more bare \"a\" for a measured lag-1 correlation; the\n   statements that every other CCS value uses the published definition, which passed over `phyid`'s values given for\n   comparison; S5 Text §6 without PhiID's commit), besides corrections of the prepared text itself (the verification,\n   section 5). None changes a result, a conclusion, or a data value of the main text's tables.\n2. **In the outputs commit.** Two of them (B-U4, V4) concerned the pending text of the outputs commit, S5 Text §4's\n   account of the four comparisons and of the headers the run wrote; that text was corrected before the commit\n   (13705b9), so that it takes the four comparisons of the pre-run entry one by one, in its order, with the\n   differences fixed for each, and names the five CSV files that carry no header.\n3. **The corrections** (this commit, whose parent is 13705b9): 73 verbatim replacements\n   (`notes/review_2026-09-26/revision/text_replacements_2026-09-26.json`, C01–C73), each naming the finding it\n   applies. Nine are in the main text: the reference note of Tarchi et al. (2026), which sends the reader to S20\n   Table; Results 4's sentence on the three expectations, whose finite-sample null is solved to the data's pair r₁ in\n   each run and period rather than changed on the DMT run only, and its \"grows with pair r₁ and |q|\" for \"grows with a\n   and |q|\"; Methods' \"carries approximately the data's fall of pair r₁\" (its own DiD −0.0146 against the data's\n   −0.0155) and its sentence on the CCS values computed with `phyid`'s mask, which now names those S3 Text, S17 and\n   S19 Tables label as `phyid`'s; Data and code availability's sentence on the headers and its list of review folders,\n   which now includes this read's; and Table 3's labels of its two generator rows, the band-passed generator's change\n   being a window-level fall of 0.015 in pair r₁ and that of the AR(1) pairs a population change of their coefficient\n   a. The main text's Introduction through Methods stays within the 7,000 words of the decision entry of 23 September\n   2026. Sixty-four are in the supporting information: pointers to the wrong section or file; numbers rounded twice\n   (S3 Text's +0.005 and 0.028, now at the table's four decimals, and −0.0150; S2 Table's −0.408) and a ratio\n   misrounded (−24 for −24.6); the sign of five zero limits (S9 and S17 Tables); two dates (S19 Table: 18ad8b4, 12\n   September 2026); a bare \"a\" for pair r₁ or for a region's r₁ (S3 Text; S9, S10 and S19 Tables); statements that\n   left out an exception (the CCS values computed with `phyid`'s mask; the files that carry no commit; the\n   computations B1–B5, whose plans and outcomes are in `notes/`, not in the record; the 14 September review's CCS\n   decomposition, made with `phyid`'s mask) or misdescribed their object (B1–B13's numbering, in S3 Text and S19\n   Table; the Part B plans' commit; B21's engine rows and its column \"quoted at\"; the sign of S2 Table's cells); two\n   percentile intervals unmarked; three record titles carrying process labels, quoted in five places and now cited by\n   date, time and what the entry records, since several entries share two of those times; S5 Text §5's account of the\n   reviews, which now includes this read; and S5 Text §6's commits, the outputs commit named, nine commits the\n   supporting information names added, and the commit of the MATLAB reference that `phyid` pins.\n4. **The numbers table.** The contexts of the 26 rows whose context the edits reached recomputed; the band-passed\n   row's number made 0.015, the window-level fall of pair r₁ that the row now states, and sourced to the generator's\n   target (`calibration_filtered_tables.md`, line 4); one row added, for the −0.015 of Table 3's AR(1) row\n   (`calibration_tables.md`, line 8); no data value changed; 1,193 rows.\n5. **Checks** on the corrected tree: no line added or removed in any manuscript file; the intervals B21 reads, with\n   their rounded values, files and lines, unchanged, so that the column `quoted_at` the final run regenerated from the\n   text of c25a310 holds for this text too (recomputed from it, equal in every row); `check_numbers.py` prints \"rows\n   1193, data rows 676, flagged 12\", the twelve sign-wording rows of `check_numbers.out`, `check_cells.py` \"flagged 0\"\n   and `tablecheck.py` 0 rows with a wrong cell count; no process label is left outside S5 Text §5's key; Introduction\n   through Methods 6,997 words with headings (6,984 before). The outputs are in `notes/review_2026-09-26/checks/`.\n6. **The layout faults** (D: 6 in the paper's PDF, 14 in the supporting information's) are faults of the typesetting,\n   which is outside the repository; they are corrected there, and the PDFs for the co-authors are typeset from this\n   commit. Re-checks of the PDFs typeset after the corrections found further faults of the typesetting, corrected\n   there too, and one of the prepared text: in C35, `<SHA>` stood outside a code span, where the typesetting drops it\n   as a tag (now in code). Each of the six figures exceeds PLOS Computational Biology's dimensions (at most 7.5 inches\n   wide and 8.75 inches high at 300 dpi, lettering of 8–12 pt): Figs 1–4 and 6 their width, Fig 5 their height. They\n   are redrawn to them at submission, from the same result files, under an entry of their own.\n7. **What this entry revises.** The verification of 25 September 2026 kept three record titles carrying process labels\n   verbatim (its T5 and V49); they are cited here by date, time and what the entry records. The review of 24 September\n   2026 corrected S3 Text's sentence on the directed and symmetric parts of the residual (its typo \"L116\"); the\n   correction, accepted then, was not applied when the sentence moved from the main text to S3 Text on 25 September,\n   and is applied here (C20). Earlier entries of this record give four of the values corrected here, and stand as\n   written: S2 Table's −0.408 (line 1661 of this file; −0.407, C42), S3 Text's −0.0150 (lines 5053 and 5558; −0.0149,\n   C24) and its fourth ratio (line 5559, \"−17, −24, −22 and −24\"; −25, C25), and \"the file was moved\" (line 5111; \"the\n   files were moved\", C36).\n",
+  "count": 1
+ },
+ {
+  "id": "B01",
+  "file": "CLAUDE.md",
+  "why": "bookkeeping",
+  "old": "## Current state (round 19, bundle 30: the final run of `run_all.sh` made at c25a310 and its outputs committed; the typeset PDF and the note to C.T. and S.P.S. next)",
+  "new": "## Current state (round 20, bundle 31: the error-only read of 26 September 2026 applied after the outputs commit of the final run of `run_all.sh`; the typeset PDF and the note to C.T. and S.P.S. next)",
+  "count": 1
+ },
+ {
+  "id": "B02",
+  "file": "CLAUDE.md",
+  "why": "bookkeeping",
+  "old": "and \"The error-only revision: the check of 25 September 2026 applied\"):",
+  "new": "and \"The error-only revision: the check of 25 September 2026 applied\"), and in round 20 (bundle 31) to the error-only read of 26 Sep 2026 and its verification (`notes/review_2026-09-26/`; record, \"The error-only read of 26 September 2026 and its corrections\"):",
+  "count": 1
+ },
+ {
+  "id": "B03",
+  "file": "CLAUDE.md",
+  "why": "bookkeeping",
+  "old": "Introduction through Methods 6,984 words with headings (6,864 without)",
+  "new": "Introduction through Methods 6,997 words with headings (6,877 without)",
+  "count": 1
+ },
+ {
+  "id": "B04",
+  "file": "CLAUDE.md",
+  "why": "bookkeeping",
+  "old": "_numbers.csv` (1,192 rows). The figures",
+  "new": "_numbers.csv` (1,193 rows). The figures",
+  "count": 1
+ },
+ {
+  "id": "B05",
+  "file": "CLAUDE.md",
+  "why": "bookkeeping",
+  "old": "\n- Remaining work: the typeset PDF of the paper and its supporting information from the final commit, and the note to C.T.\n  and S.P.S. When the co-author items are filled: check that Data and code availability's sentence on the final run (at\n  c25a310, its outputs in the commit that follows) still describes the commits that follow it; and make exact its\n  sentence \"The `notes/` outputs name the producing commit in their headers (...; S5 Text lists both kinds)\", since\n  the `-dirty` files S5 Text lists are under `results/`. The [TK] items\n",
+  "new": "\n- Round 20 (bundle 31; record, \"The error-only read of 26 September 2026 and its corrections\"): a last read of the whole paper restricted to outright errors, made on 26 Sep 2026 while the final run was in progress, by four separate sessions of the AI system (the main text with its captions and figures; S1–S5 Text; S1–S20 Table; the typeset PDFs, for layout only), and verified against the committed files by the planning session (`notes/review_2026-09-26/verification_2026-09-26.md`: of 45 distinct text findings, 42 confirmed and 3 judged not to be errors; V1–V5 found in verifying them and V6–V9 by two audits of the prepared corrections). Two of them corrected the outputs commit's own text before it was made (S5 Text §4's four comparisons and headers); the rest are applied in the commit after the outputs commit (13705b9) by 73 verbatim replacements (`notes/review_2026-09-26/revision/`): nine in the main text (the Tarchi et al. reference note; Results 4's sentence on the three expectations and its \"pair r₁\" for \"a\"; Methods' null \"approximately\" and its sentence on the CCS values under phyid's mask; Data and code availability's sentence on the headers, the item deferred in round 19, and its list of review folders; Table 3's two generator labels) and 64 in the supporting information (pointers, second roundings, the sign of five zero limits, two dates, \"a\" for pair r₁ or regional r₁, omitted exceptions, the origin of the labels B1–B24, three record titles with process labels now cited by date, time and what the entry records, S5 Text §5's account of the reviews, S5 Text §6's commits). No result, conclusion or data value of the main text's tables changed; `main_text_numbers.csv` 1,193 rows (contexts recomputed, one row added); Introduction through Methods 6,997 words with headings. The layout faults the read found are the typesetting's, outside the repository.\n- Remaining work: the typeset PDF of the paper and its supporting information from the final commit, and the note to C.T.\n  and S.P.S. When the co-author items are filled: check that Data and code availability's sentence on the final run (at\n  c25a310, its outputs in the commit that follows) still describes the commits that follow it. The [TK] items\n",
+  "count": 1
+ },
+ {
+  "id": "B06",
+  "file": "CLAUDE.md",
+  "why": "bookkeeping",
+  "old": "  package the Supporting information items (S1–S5 Text, S1–S20 Table) as separate files; archive the repository with a\n  DOI and cite it in Data and code availability.\n",
+  "new": "  package the Supporting information items (S1–S5 Text, S1–S20 Table) as separate files; redraw the six figures to the\n  journal's dimensions (TIFF or EPS; at most 7.5 inches wide and 8.75 inches high at 300 dpi; Arial, Times or Symbol at\n  8–12 pt), from the same result files, under a record entry of their own; archive the repository with a DOI and cite it\n  in Data and code availability.\n",
+  "count": 1
+ },
+ {
+  "id": "B07",
+  "file": "README.md",
+  "why": "bookkeeping",
+  "old": "and corrected to the\nerror-only check of 25 Sep 2026 (Introduction through Methods 6,984 words with\nheadings; three tables and six figures, the captions in the text), with its\n",
+  "new": "and corrected to the\nerror-only check of 25 Sep 2026 and the error-only read of 26 Sep 2026\n(Introduction through Methods 6,997 words with headings; three tables and six\nfigures, the captions in the text), with its\n",
+  "count": 1
+ },
+ {
+  "id": "B08",
+  "file": "README.md",
+  "why": "bookkeeping",
+  "old": "(`review_2026-09-25/`), ",
+  "new": "(`review_2026-09-25/`), the error-only read of 26 Sep 2026 with its verification, the corrections' replacements and the checks' outputs (`review_2026-09-26/`), ",
+  "count": 1
+ },
+ {
+  "id": "B09",
+  "file": "CLAUDE.md",
+  "why": "bookkeeping (the file layout; the audit's T1)",
+  "old": "                                 (review_2026-09-25/), the applicability\n",
+  "new": "                                 (review_2026-09-25/), the error-only read of 26 Sep with its\n                                 verification, the corrections' replacements and the checks'\n                                 outputs (review_2026-09-26/), the applicability\n",
+  "count": 1
+ }
+]
