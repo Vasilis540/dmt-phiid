@@ -16,6 +16,7 @@ Outputs (notes/review_results/partB/): family_atoms_tables.md, family_atoms_<var
 (14, 2, 14, 16)), family_atoms_ts_gsr_W60.csv (one row per atom), family_atoms_run.log via run_all.sh's nstep.
 Run from the repository root: .venv/bin/python notes/partB14_family_atoms.py   (about the time of partB4)
 """
+import re
 import sys
 import time
 from pathlib import Path
@@ -30,6 +31,17 @@ print(f"git={SHA}", flush=True)
 
 REPO = Path(__file__).resolve().parents[1]
 OUT = REPO / "notes" / "review_results" / "partB"
+
+
+def diag_res_w60():
+    """The diagnostic's W = 60 residual level on ts_gsr as diag_tables.md prints it (B26: read, not held here)."""
+    try:
+        m = re.search(r"## ts_gsr, W = 60\n\nLevels \(all subjects, runs, windows\): observed sts [\d.]+, predicted \(AR\(1\) from a_x, a_y, q\) [\d.]+, residual ([+-]\d+\.\d+) ", (OUT / "diag_tables.md").read_text(encoding="utf-8"))
+    except (OSError, UnicodeError):
+        m = None
+    return m.group(1).replace("-", "−") if m else "CHECK FAILED (not read)"
+
+
 MAT = REPO / "external" / "DMT_NCT" / "data" / "DMT_clean_mni_continuous_fullPreprocsch116.mat"
 REGIONS = np.array([r for r in range(116) if r != 20])
 IX = {n: i for i, n in enumerate(ATOMS)}
@@ -70,7 +82,7 @@ for var in ("ts_gsr", "ts_demean"):
                 ax, ay = pp.C[:, 0, 2], pp.C[:, 1, 3]
                 q = 0.5 * (pp.C[:, 0, 1] + pp.C[:, 2, 3])
                 obs[s, c, w] = pp.atoms_mean().mean(0)
-                pred[s, c, w] = atoms_from_corr(ar1_corr(ax, ay, q)).mean(0)
+                pred[s, c, w] = np.nanmean(atoms_from_corr(ar1_corr(ax, ay, q)), axis=0)  # B26: NaN where not positive definite
         print(f"   {var}: subject {s + 1}/14 done ({time.time() - t0:.0f}s)", flush=True)
     np.savez(OUT / f"family_atoms_{var}_W60.npz", obs=obs, pred=pred)
     res = obs - pred
@@ -99,7 +111,7 @@ for var in ("ts_gsr", "ts_demean"):
               f"Ordering rts = str below xtx, yty: predicted {'yes' if order_p else 'no'} (rts {lvl_p[IX['rts']]:+.4f}, str {lvl_p[IX['str']]:+.4f}, xtx {lvl_p[IX['xtx']]:+.4f}, yty {lvl_p[IX['yty']]:+.4f}); "
               f"observed {'yes' if order_o else 'no'} (rts {lvl_o[IX['rts']]:+.4f}, str {lvl_o[IX['str']]:+.4f}, xtx {lvl_o[IX['xtx']]:+.4f}, yty {lvl_o[IX['yty']]:+.4f}).",
               f"Mirror atoms (xts, yts, stx, sty): predicted {np.array2string(mir_p, precision=4, floatmode='fixed')} against −rts predicted {-lvl_p[IX['rts']]:+.4f}; observed {np.array2string(mir_o, precision=4, floatmode='fixed')} against −rts observed {-lvl_o[IX['rts']]:+.4f}.",
-              f"sts residual, all subjects, runs and windows: {np.nanmean(res[..., IX['sts']]):+.4f} (the diagnostic's, diag_tables.md: −0.0489 on ts_gsr); observed sts level {lvl_o[IX['sts']]:.4f}, predicted {lvl_p[IX['sts']]:.4f}; "
+              f"sts residual, all subjects, runs and windows: {np.nanmean(res[..., IX['sts']]):+.4f} (the diagnostic's, diag_tables.md: {diag_res_w60()} on ts_gsr); observed sts level {lvl_o[IX['sts']]:.4f}, predicted {lvl_p[IX['sts']]:.4f}; "
               f"sts DiD observed {d_o[:, IX['sts']].mean():+.4f}, predicted {d_p[:, IX['sts']].mean():+.4f}, residual {d_r[:, IX['sts']].mean():+.4f}.",
               f"Largest |residual level| over the sixteen atoms: {ATOMS[int(np.argmax(np.abs(lvl_o - lvl_p)))]} ({(lvl_o - lvl_p)[int(np.argmax(np.abs(lvl_o - lvl_p)))]:+.4f}); largest |residual DiD|: {ATOMS[int(np.argmax(np.abs(d_r.mean(0))))]} ({d_r.mean(0)[int(np.argmax(np.abs(d_r.mean(0))))]:+.4f}).", ""]
     summary[var] = dict(ex_o=ex_o, ex_p=ex_p, order_p=order_p, order_o=order_o, sign_match=(np.sign(ex_o) == np.sign(ex_p)), res_sts=float(np.nanmean(res[..., IX["sts"]])))
@@ -122,7 +134,7 @@ for var in ("ts_gsr", "ts_demean"):
             kept = np.where(np.all(np.isfinite(X), axis=0))[0]
             pp = PairPhiID(X[:, kept])
             ax, ay = pp.C[:, 0, 2], pp.C[:, 1, 3]; q = 0.5 * (pp.C[:, 0, 1] + pp.C[:, 2, 3])
-            pred_run[s, c] = atoms_from_corr(ar1_corr(ax, ay, q)).mean(0)
+            pred_run[s, c] = np.nanmean(atoms_from_corr(ar1_corr(ax, ay, q)), axis=0)
     lvl_o = A[:, 0, PRE_B].mean((0, 1)); lvl_p = pred_run[:, 0].mean(0)
     for a, n in enumerate(ATOMS):
         lines.append(f"| {var} | {n} | {lvl_o[a]:+.4f} | {lvl_p[a]:+.4f} | {lvl_o[a] - lvl_p[a]:+.4f} |")

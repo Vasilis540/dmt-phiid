@@ -53,7 +53,9 @@ lines += ["", f"Symmetric family, 2,000 draws a ~ U(0, 0.95), q ~ U(−0.9, 0.9)
           f"max |ΦR − rtr| = {np.abs(phir(At) - At[:, IX['rtr']]).max():.1e}"]
 ax = rng.uniform(0, 0.95, 2000); ay = rng.uniform(0, 0.95, 2000); q2 = rng.uniform(-0.9, 0.9, 2000)
 At2 = atoms_from_corr(ar1_corr(ax, ay, q2)); d = phir(At2) - At2[:, IX["rtr"]]
-lines.append(f"Unequal a_x, a_y (2,000 draws, same seed stream): ΦR − rtr min {d.min():+.3f}, max {d.max():+.3f}, mean {d.mean():+.3f}, share |ΦR − rtr| > 0.01: {(np.abs(d) > 0.01).mean():.2f}")
+ok = np.isfinite(d)                     # B26: the draws whose AR(1) matrix is positive definite; the others are the lag covariance of no process
+lines.append(f"Unequal a_x, a_y (2,000 draws, same seed stream; {int((~ok).sum())} not positive definite and excluded, {int(ok.sum())} kept): "
+             f"ΦR − rtr min {d[ok].min():+.3f}, max {d[ok].max():+.3f}, mean {d[ok].mean():+.3f}, share |ΦR − rtr| > 0.01: {(np.abs(d[ok]) > 0.01).mean():.2f}")
 # derivative ratio at the studies' implied r1 for |q| = 0.25 and 0.6
 lines += ["", "Ratio |dsts/dr1| / |dsts/dq| at the implied operating points:"]
 for r in (0.78, 0.85, 0.93, 0.97):

@@ -75,12 +75,36 @@ def cell(target_a, target_q, lo, hi, W=60, n_pairs=3000, T=3000, bsd=0.5, label=
         X, Y = gen(n_pairs, T, betas, lo, hi, q); return residual(window_corr(X, Y, W))
     bmean = brentq(lambda b: stats(b, 0.27)[2].mean() - target_a, 20, 800, xtol=3)
     qsd = brentq(lambda s: stats(bmean, s)[3].mean() - target_q, 0.05, 0.9, xtol=0.005)
-    obs, pred, a, aq = stats(bmean, qsd); res = obs - pred
-    print(f"{label:9s}: window a={a.mean():.4f} (SD {a.std():.3f}) |q|={aq.mean():.4f}  obs sts={obs.mean():.4f}  AR(1) pred={pred.mean():.4f}  residual={res.mean():+.4f} ({100*res.mean()/obs.mean():+.1f} %)")
-    return res.mean(), obs.mean()
+    obs, pred, a, aq = stats(bmean, qsd); res_m = obs.mean() - np.nanmean(pred)   # B26: the substituted mean over the pairs where it exists
+    print(f"{label:9s}: window a={a.mean():.4f} (SD {a.std():.3f}) |q|={aq.mean():.4f}  obs sts={obs.mean():.4f}  AR(1) pred={np.nanmean(pred):.4f}  residual={res_m:+.4f} ({100*res_m/obs.mean():+.1f} %)")
+    return res_m, obs.mean()
+
+def data_refs():
+    """The data's values the log prints beside the null's, read from the outputs of partB4_diagnostic.py, which section 6
+    of run_all.sh runs before this script (B26: they were held here as numbers, which the correction can change): the
+    residual as a share of the observed sts at W = 30 and W = 60 and at the global fit (ts_gsr, diag_tables.md), and the
+    residual's DMT and placebo changes, their DiD and its interval (ts_gsr, W = 60, primary windows, inference_rows_diag.csv)."""
+    import csv, re
+    rr = os.path.join(os.path.dirname(os.path.abspath(__file__)), "review_results")
+    try:
+        t = open(os.path.join(rr, "partB", "diag_tables.md"), encoding="utf-8").read()
+        pc = {W: re.search(r"## ts_gsr, W = " + str(W) + r"\n\nLevels \(all subjects, runs, windows\): .*?\(([+-]\d+\.\d) % of observed\)", t).group(1) for W in (30, 60)}
+        run = re.search(r"\nts_gsr: run-level observed sts .*?\(residual [+-]\d+\.\d+, ([+-]\d+\.\d) %\)", t).group(1)
+        a = f"W30 {pc[30]} %, W60 {pc[60]} %, run-level {run} %"
+    except (OSError, AttributeError) as e:
+        a = f"CHECK FAILED (not read: {type(e).__name__})"
+    try:
+        with open(os.path.join(rr, "inference_rows_diag.csv"), encoding="utf-8") as fh:
+            row = [x for x in csv.DictReader(l for l in fh if not l.startswith("#")) if x["label"] == "diag residual sts ts_gsr W60" and x["set"] == "primary"][0]
+        f = {k: float(row[k]) for k in ("dmt_change", "pcb_change", "did", "did_lo", "did_hi")}
+        b = f"DMT {f['dmt_change']:+.4f}, PCB {f['pcb_change']:+.4f}, DiD {f['did']:+.4f} [{f['did_lo']:+.4f}, {f['did_hi']:+.4f}]"
+    except (OSError, IndexError, KeyError, ValueError) as e:
+        b = f"CHECK FAILED (not read: {type(e).__name__})"
+    return a, b
 
 if __name__ == "__main__":
     print(f"git={SHA}", flush=True)
+    DATA = data_refs()
     fits = {k: fit_filter(t) for k, t in TARGET_ACF.items()}
     for k, b in fits.items():
         print(f"filter fitted to the {k} ACF: beta={b[1]:.0f} lo={b[2]:.4f} hi={b[3]:.3f}; lags 1-6 {np.round(b[4][1:],3)} (target {TARGET_ACF[k]})")
@@ -88,11 +112,11 @@ if __name__ == "__main__":
     for W in (30, 60, 840):
         betas = np.clip(rng.normal(200, 100, 2000), 5, None); q = np.clip(rng.normal(0, 0.27, 2000), -0.95, 0.95)
         X, Y = gen(2000, 8400, betas, fits["placebo"][2], fits["placebo"][3], q); obs, pred, a, aq = residual(window_corr(X, Y, W))
-        print(f"W={W:3d}: a={a.mean():.3f} |q|={aq.mean():.3f} residual={(obs-pred).mean():+.4f} ({100*(obs-pred).mean()/obs.mean():+.2f} %)   [data: W30 -9.7 %, W60 -4.3 %, run-level -1.1 %]")
+        print(f"W={W:3d}: a={a.mean():.3f} |q|={aq.mean():.3f} residual={obs.mean()-np.nanmean(pred):+.4f} ({100*(obs.mean()-np.nanmean(pred))/obs.mean():+.2f} %)   [data: {DATA[0]}]")
     print("\n== residual at the four operating points of residual_source.log (W = 60) ==")
     out = {}
     for name, (ta, tq, acf) in CELLS.items():
         out[name] = cell(ta, tq, fits[acf][2], fits[acf][3], label=name)
     dmt = out["DMT post"][0] - out["DMT pre"][0]; pcb = out["PCB post"][0] - out["PCB pre"][0]
     print(f"\nnull residual change: DMT {dmt:+.4f}, PCB {pcb:+.4f}, DiD {dmt-pcb:+.4f}")
-    print( "data (residual_source.log): DMT +0.0077, PCB -0.0038, DiD +0.0115 [+0.0021, +0.0211]")
+    print(f"data (inference_rows_diag.csv): {DATA[1]}")

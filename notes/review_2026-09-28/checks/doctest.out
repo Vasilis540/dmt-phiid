@@ -1,0 +1,65 @@
+Trying:
+    import numpy as np
+Expecting nothing
+ok
+Trying:
+    from ar1_diagnostic import diagnose, closed_form, atoms_from_corr, ar1_corr
+Expecting nothing
+ok
+Trying:
+    rng = np.random.default_rng(20261120)
+Expecting nothing
+ok
+Trying:
+    n, a, q = 200_000, 0.85, 0.25
+Expecting nothing
+ok
+Trying:
+    e = rng.multivariate_normal([0, 0], [[1, q], [q, 1]], size=n)
+Expecting nothing
+ok
+Trying:
+    x, y = np.zeros(n), np.zeros(n)
+Expecting nothing
+ok
+Trying:
+    for t in range(1, n):
+        x[t] = a * x[t - 1] + e[t, 0]; y[t] = a * y[t - 1] + e[t, 1]
+Expecting nothing
+ok
+Trying:
+    d = diagnose(x, y)
+Expecting nothing
+ok
+Trying:
+    round(closed_form(0.85, 0.25)["sts"], 4)
+Expecting:
+    1.2588
+ok
+Trying:
+    abs(d["sts"] - 1.2588) < 0.03, abs(d["residual"]) < 0.01
+Expecting:
+    (True, True)
+ok
+Trying:
+    bool(np.isnan(atoms_from_corr(ar1_corr(0.96, 0.75, 0.87))).all())
+Expecting:
+    True
+ok
+11 items had no tests:
+    ar1_diagnostic._mutual_informations
+    ar1_diagnostic._positive_definite
+    ar1_diagnostic._summary
+    ar1_diagnostic.ar1_corr
+    ar1_diagnostic.atoms_from_corr
+    ar1_diagnostic.closed_form
+    ar1_diagnostic.diagnose
+    ar1_diagnostic.diagnose_pairs
+    ar1_diagnostic.diagnose_windows
+    ar1_diagnostic.exchange_rates
+    ar1_diagnostic.lag_corr
+1 items passed all tests:
+  11 tests in ar1_diagnostic
+11 tests in 12 items.
+11 passed and 0 failed.
+Test passed.

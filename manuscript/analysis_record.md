@@ -7610,3 +7610,440 @@ b0c1eed68dff007d52b837717b9b62c222337ad1cf3d68b8129fe95d183ca8df), `verification
    written: S2 Table's −0.408 (line 1661 of this file; −0.407, C42), S3 Text's −0.0150 (lines 5053 and 5558; −0.0149,
    C24) and its fourth ratio (line 5559, "−17, −24, −22 and −24"; −25, C25), and "the file was moved" (line 5111; "the
    files were moved", C36).
+
+## The citation crosscheck of 28 September 2026 and the revision it led to, 29 Sep 2026 05:59 UTC (appended; nothing above edited)
+
+On 28 September 2026, after the text of d108d66 had been typeset for the co-authors, V.S. asked for every citation to be
+checked against the work it cites, claim by claim, with the passage of the work that supports each claim, then whether
+the calculations and the software were complete, and for everything that would contribute to the paper's quality to be
+included. This entry records the crosscheck, the revision it and the completeness check led to, the audits of the
+prepared revision and the files that hold them; the pre-run entries of B25 and B26 follow it. No analysis was run on the
+data.
+
+1. **The crosscheck.** A claim is one place where the text at d108d66 attributes something to a cited work: a sentence
+   of the main text or the supporting information, or a cell of S4 Text or S20 Table (a sentence citing three works
+   gives three claims). There are 271 (C001–C271). Eight sessions of the AI system, one per group of works, and the
+   planning session (which checked the group of Luppi et al. 2024 and 2026 after that group's session stopped on a usage
+   limit, and the works not among V.S.'s PDFs) took for each claim the passages of the work that bear on it, word for
+   word, with their PDF pages, and gave a verdict: 194 SUPPORTED, 59 SUPPORTED WITH QUALIFICATION, 2 NOT SUPPORTED (two
+   table cells: the macaque sample of Luppi et al. 2026 in S20 Table row 5; the parcellation given for Varley 2024 in
+   row 10), 2 CANNOT CHECK (Theiler et al., 1992, whose full text is not open) and 14 NOT A CONTENT CLAIM; and whether
+   the work states the point as its own (252 claims) or only by citing another (1: Kay & Ince, 2018, cited beside
+   Barrett, 2015, for the univariate-target reduction; 18 not applicable). Each of the 759 passages taken from a PDF was
+   found again, word for word, on its stated page by a script of the planning session, written separately from the seven
+   group sessions that copied 639 of them; the other 120 (Luppi et al., 2024, 2026) the planning session cut from the
+   page texts itself. The script normalises soft hyphens, zero-width characters, ligatures, line-break hyphens and white
+   space, and searches the raw and the layout text of each page and, for pp. 33–41 of Luppi et al. (2026), its OCR. 33
+   passages do not come from a PDF of the cited work: publishers' and journals' pages, PubMed, bioRxiv (the preprint of
+   Tian et al., 2020; Luppi et al., 2025), `phyid`'s code at its pinned commit, the data release and, for Theiler et al.
+   (1992), its abstract and Prichard & Theiler (1994), each with its source. The planning session read every verdict
+   other than a plain SUPPORTED, re-checked against the PDF the claims behind each proposed change, and spot-checked a
+   random sample of the plain ones. The full document with the passages (`citation_crosscheck.md`, 93,000 words, and
+   `citation_crosscheck.xlsx`) is held by V.S.; the repository holds, in `notes/review_2026-09-28/`, every claim with
+   its location, wording, attribution, verdict, firsthand status, note and the PDF pages of its passages
+   (`crosscheck_claims.csv`), without the passages, which are verbatim excerpts of the cited works, and the 51 proposed
+   changes (`proposals.json`).
+2. **The changes it proposed** (P01–P50 and P26b; `revision/text_replacements_2026-09-28.json`), applied as proposed but
+   for two: P48 says "the release's repository" where it proposed "the release", with "at that commit", because the
+   licence field of the Zenodo record of the data release could not be read (its page was refused on 28 September 2026),
+   and "bundled third-party plotting functions" for "third-party plotting functions it bundles"; and P13 leaves out the
+   figure number "(Fig. 3e)", which was read in version 2 of the preprint of Luppi et al. (2025), whereas S20 Table's
+   reference note records the quotations as checked against version 1, and says "in the caption of an example macaque
+   time series" for "of an example macaque time series (Fig. 3e)". P11 removes, with the reference entry, the blank line
+   before it. Class A, an attribution or fact wrong or incomplete (P01–P13): the competing-interests statement, which
+   named only Luppi et al. (2022, 2024) where the group's members also authored Luppi et al. (2023, 2026), and in which
+   C.T. is the first author of Timmermann et al. (2023) and S.P.S. a co-author of Luppi et al. (2026); the synergy of
+   Luppi et al. (2024), which that study calls the persistent synergy but writes as the whole-minus-max synergy of its
+   Eq. 5; what the earlier closed forms do not give (Mediano et al., 2021, Eq. 2, name the four atoms that sum to the
+   self-information; they do not give the atoms' values); the joint-target nodes, which are ordinary PIDs with a
+   bivariate target, not ΦID's extension, and Kay & Ince (2018) cited for their own point (CCS and their dependency PID
+   depend on the source–source marginal); S20 Table's macaque sample of Luppi et al. (2026) (five in each of two
+   datasets); its row 10, which gave details of the data of Varley (2024) from a work not read (Varley et al., 2023,
+   whose reference entry is removed); and the quotation of Luppi et al. (2025), which is the caption of one example time
+   series. Class B, the work says less than or something slightly different from the text (P14–P47, P26b): wording of
+   the main text (Luppi et al. 2023's CCS "in its primary analysis"; Varley's Eqs. 4–6 and 12; "exact" Gaussian
+   decompositions; Murray et al.'s macaque areas, sensory to prefrontal; "in part"; Afyouni et al.'s auto- and
+   cross-correlation functions), S3 Text (the pointwise atoms' lower-case symbols; "word for word" where the preprint
+   writes i(x; y); Down et al.'s "occasionally"; "in one study used CCS"; the phase-randomised surrogate of Luppi et al.
+   2022's Table 1; "temporal autocorrelation"), S20 Table's cells (titles in full, pages, a quotation as printed, the
+   parcellations, the smoothing kernel as printed, what each study states and does not state) and S4 Text's cells (what
+   Timmermann et al. 2023 report of recruitment, demographics, instructions and acquisition, and what they do not).
+   Class C, found on 27 September in checking the software and data facts (P48–P50): the data release's repository
+   carries no licence of its own at 77af7aa, its three licence files belonging to the third-party plotting functions it
+   bundles; `phyid`'s pinned commit is the merge of 14 March 2026, not 13 March. Every change to S20 Table is made also
+   in `notes/partB5_literature_v2.md`, whose Tables A and B S20 Table transcribes.
+3. **The completeness check.** Software: every computation of the paper ran in Python (3.12.3; NumPy 2.5.3, SciPy
+   1.18.1, pandas 3.0.5, which builds, reads and writes the tables of the review and Part B computations under
+   `notes/review_results/`, h5py 3.16.0, which reads the spin-test rotations, Matplotlib 3.11.1, `phyid` at 6c5f2e9;
+   rsHRF 1.7.0 and joblib 1.6.0 in the deconvolution sandbox); no MATLAB code was run, the MATLAB scripts of the data
+   release and of `phyid`'s pinned reference having been read only. S1 Text's software line named four of these and S4
+   Text's item S8 five; they now name all, and that no MATLAB code was run. Calculations: the closed form of Results 1
+   was re-derived by an implementation written from the lattice definitions alone, without `phyid` or the repository's
+   code (`checks/phiid_indep.py`, output `checks/phiid_indep.out`): every identity of Results 1 to at most 5 × 10⁻¹⁶
+   over a grid of (a, q); ∂sts/∂r₁ = 6.0705 and ∂sts/∂q = −0.1892 at (0.85, 0.25); at q = 0 with unequal coefficients
+   sts = 2 min(S_x, S_y) and rtr = 0, as the paper states; the excess sts − (xtx + yty) +0.0049 at an asymmetry of 0.006
+   and −0.0012 at 0.008, consistent with the change of sign at 0.008 that the paper states. `phyid`'s own tests, which
+   compare its modes with reference outputs they download from OSF, had not been run in the repository; they are now run
+   by its continuous-integration workflow.
+4. **The readiness items.** PLOS Computational Biology requires a clearly specified licence for the code and asks for a
+   persistent identifier: `LICENSE` (MIT, the code), `LICENSE-CC-BY-4.0.md` (CC BY 4.0 for the result files and the text
+   outside `manuscript/`; the manuscript, a draft for co-author review, not yet licensed, its licence to be set with its
+   preprint; the data not included; the file of parcel names copied from CBIG under CBIG's MIT notice, now in
+   `data/LICENSE-CBIG.md`), `CITATION.cff`, and Data and code availability's sentences on them, with a [TK] for the
+   archive's DOI at submission. `tools/ar1_diagnostic.py` puts a pair's MMI-sts beside its AR(1)-substituted estimate
+   for any two series, in one fit, in windows or for every pair of a region × sample array, with the closed form and its
+   exchange rates; where the measured a_x, a_y and q are those of no AR(1) pair, the substituted matrix is not positive
+   definite and the tool returns NaN, as the paper's code now does (B26). `tests/` (pytest; 107 tests) checks the tool
+   against `phyid` and `notes/rev_phiid_fast.py` (the window means to 10⁻¹⁰, the lattice solve on 500 random correlation
+   matrices to 10⁻¹², the substituted estimate as `notes/partB4_diagnostic.py` computes it, the NaN exactly where no
+   AR(1) pair exists, the input checks) and the closed form and the numbers Results 1 quotes against the tool's lattice
+   solve; `.github/workflows/tests.yml` runs these tests, the tool's doctest, the self-tests of B25 and B26 and
+   `phyid`'s own tests at the pinned commit on every push, with NumPy, SciPy, pytest, `phyid` and its build backend
+   pinned. `README.md` shows how to apply the tool and run the tests, and its opening paragraph now gives the primary
+   contrast's inverted sign-flip interval. The planning session ran the tests with Python 3.12.3, NumPy 2.5.3, SciPy
+   1.18.1 and `phyid` at 6c5f2e9: 107 passed; the doctest passed.
+5. **Named where the literature uses it.** On the symmetric family str + stx + sty + sts = S for every q (Results 1).
+   This sum is the whole-minus-max synergy of Luppi et al. (2024, Eq. 5), I(X_t−τ, Y_t−τ; X_t, Y_t) − max[I(X_t−τ; X_t,
+   Y_t), I(Y_t−τ; X_t, Y_t)], which is how they write the synergy by whose rank they define the workspace (they call it
+   the persistent synergy, p. 6), and, with the Gaussian estimator under MMI, the emergence capacity of Luppi et al.
+   (2023), whose primary estimator is binarised (B25); on the family it depends on r₁ alone. Results 1 now names the
+   first; S20 Table's Table B item 1 states the identity, and rows 2 and 3, which read "the map was not evaluated for
+   the emergence atoms" and "Contrasted quantity is ΦR, not sts", state what it implies for each, row 3 for both
+   readings of the workspace's synergy (Eq. 5 as written, S; the persistent synergy sts, 2S − C).
+6. **Why r₁ fell** is not identified by these data; the Limitations now say so (neural, haemodynamic, cardiac,
+   respiratory or motion effects could each lower it; the account needs only that it did), and that the two redundancy
+   functions were examined on the data (B25 examines binarised estimators on the family).
+7. **Length.** The changes above change Introduction through Methods by +61 words, net of the Limitations' sentence on
+   ground truth, which they take out (24 words). The condensations then take out of the body what the figure captions,
+   the supporting information or another subsection hold: Results 1's values of sts along the coupling c (Fig 1's
+   caption; −30), Results 3's F of the partialled map, the unpartialled map's spin p, the network means and the
+   contrasts' spin p values (Fig 4's caption; −23) and the Methods' second statement of when the primary statistic was
+   fixed (the subsection it cites; −18); and the ground-truth clause, shortened, is joined to the Discussion's first
+   sentence (+7). Introduction through Methods: 6,994 words with headings (6,997 before), within the 7,000 words of the
+   decision entry of 23 September 2026.
+8. **The numbers table.** The contexts of the 24 rows whose context the edits reached recomputed; 13 rows deleted, for
+   the numbers the condensations take out of the body (Results 1, paragraph 9: 1.2588, 0, 1.2155, 1.2569, +0.10, 1.4111,
+   −0.05; Results 3, paragraph 1: 8.15, 0.056, −0.024, +0.021, 0.22, 0.31); 3 rows added, two labels for Varley's Eqs.
+   4–6 and one for the licence's version, 4.0; the rows of the rewritten paragraph of Results 1 put in reading order,
+   and its row of "+0.05" made a derived row (the coupling at which sts is lowest among the coupled family's rows with
+   positive c; its locator had pointed at the row of c = −0.05); no data value changed; 1,183 rows.
+9. **Checks** on the revised tree: no line added to or removed from the main text or S1–S5 Text (S20 Table loses the two
+   lines of the reference entry of Varley et al., 2023, the last in `supplementary.md`); the intervals B21 reads, with
+   their rounded values, files and lines, unchanged, and its column `quoted_at` recomputed from this text equal to the
+   committed one; `check_numbers.py` prints "rows 1183, data rows 666, flagged 12" (the twelve sign-wording rows of
+   `check_numbers.out`), `check_cells.py` "flagged 0", `tablecheck.py` no row with a wrong cell count; no process label
+   in the manuscript files; the 13 verbatim copies between scripts equal their sources; the tests, the tool's doctest
+   and the self-tests of B25 and B26 passed. The outputs of the four text checks, of the tests, of the doctest and of
+   the two self-tests are in `notes/review_2026-09-28/checks/`.
+10. **The audits.** Before the revision was given to the writer's session, three further sessions audited it: the text
+    edits and the entries; B25's script, its pre-run entry and `b25_fill.py`; the tool, the tests, the workflow and the
+    licences. Their findings (16, 14 and 13) and what was done with each are in `notes/review_2026-09-28/audit/`. Among
+    them: the licence first prepared covered the manuscript, which the co-authors have not yet reviewed and whose first
+    line forbids its distribution; `b25_fill.py` would have stated a re-run of B25 before it was made; a failed check on
+    a quantity that carries no prediction could have stopped B25's report; and the tool raised for a whole call where
+    one pair's substituted matrix was not positive definite, where `notes/rev_phiid_fast.py` returned a value computed
+    from |det|: a fault of the paper's code, corrected in this commit, whose effect on the data B26 measures (its
+    pre-run entry follows). A fourth session audited that correction, B26's script and the draft of its entry (19
+    findings, `findings_b26code.md`): among them, a sentence of the draft misstated which of B23's matrices fail; values
+    quoted by scripts from other outputs could have gone stale; B4's lines for subject 1 did not follow the rule; the
+    counts could not be read per site, nor could a failed step be run again under the wrappers; and a note added to
+    B23's table would have moved the lines that the numbers table locates. The corrected revision was audited again, in
+    a second round, by two sessions: one of the text, the entries and B26's preview (29 findings, `findings2_text.md`),
+    one of the correction, B26's script, the scripts that start the run and collect its evidence and the planning
+    session's scripts that package the revision and check the writer's commits (16 findings, `findings2_code.md`). Among
+    them: the start script would have refused to start the run (it looked for a comma where the self-test prints a
+    semicolon); a step that failed could not have been run again, since a step of section 6 rewrites a file outside the
+    output folders, and the later steps that read its outputs would not have been run again (the script's `--from` now
+    runs a step and every later one); the preview listed a draft's change to B23's table, and B26's pre-run entry quoted
+    the counts of one path of the matrices where it named the preview's totals; the evidence would not have held the
+    binary outputs; and wording of the main text and S1 and S4 Text (E09–E11, C01, C03, P48, D02, D03). A third round,
+    by two sessions again (`findings3_text.md`, 23 findings; `findings3_code.md`, 9), found among others that a run
+    interrupted by a power loss would have left no counts (the script now writes them before the first step and after
+    every step, and the start script can resume a run with `--from`), that the runner kept the ordinals of the calls
+    that held matrices that are not positive definite for the first 2,000 per site only, that the preview missed three
+    quotations of B17's values in S19 Table and S3 Text, and that rule (i) did not list one rewording of this commit;
+    its corrections include wording of the main text, S1 Text and the README (C03, D02, E12, E13). A fourth round, by
+    two sessions that verified the third's corrections (`findings4_text.md`, 10 findings; `findings4_code.md`, 8), found
+    that two steps that read the data also evaluate substituted matrices of synthetic series, whose outputs the
+    correction changes whatever the data (B10's replay of the null and B15's finite-sample null with lead–lag asymmetry,
+    whose five lines S3 Text §6 transcribes), and that a run could have been resumed only once (each resumed run now has
+    its own unit and files, and `--from` requires every earlier step to have run to its end). A fifth round, by two
+    sessions that verified the fourth's corrections (`findings5_text.md`, 9 findings; `findings5_code.md`, 5), found
+    that B26's entry gave the failing matrices of B15's null as counts of pairs where they are counts of pair-windows,
+    that the preview gave a wrong cause for the figure step's stop in the rehearsal and wrong sources for two of the
+    files it changed, and that the review folder's README had not been made again. What was done with each finding of
+    the five rounds is in `dispositions.md`.
+11. **The documents** in `notes/review_2026-09-28/`: `README.md` (sha256
+    5d50a9e3286ce4eb172394f6a0e23a617f472c53ba8f0c19d481182381065b4a), `crosscheck_claims.csv` (sha256
+    942858b08699b075935caae11cbbca3726d81a6e774b77f5b622b7d7778278b1), `proposals.json` (sha256
+    4031a825f9425cd79444433af3a75020fe7bc902767a1e274739127df0e0e1ee), `checks/phiid_indep.py` (sha256
+    6c3d1362a7113b77205241c9555d38343b16778d84ddebc77408878909dbab16), `checks/phiid_indep.out` (sha256
+    02980e4b38a3569b113efc715b2013b55667887a50b191061e0194df4b04f15f), `checks/b26_preview.md` (sha256
+    20b39a62a3e56d91c0e826d4a428be96dfb072aa548b9f59fe3c299454485323), `checks/b26_changes.py` (sha256
+    5218f9a0c7fc6d1842e6c268f9a98f62422da18f3a3e13ddca8ce9f723f5da22), `revision/b25_fill.py` (sha256
+    a27a94728bbebf6238fd1e3b7b14d605c4f11c74be7be253b117f5ed05d8c8b2), `audit/findings2_code.md` (sha256
+    05e86febd72a96fe40c5637f0b7ca02ff2cb2fbccfaa1a2c53807508c19bb163), `audit/findings2_text.md` (sha256
+    16a3bc837e4cb4376d60ef092e65a60111c9a12c75cedf989e5ecce47c18f36d), `audit/findings3_code.md` (sha256
+    9b372d943ba052352fb3dbfc3e8abf94e4ea03c8aa8d6ebfba49466adac1d916), `audit/findings3_text.md` (sha256
+    4accd66c21997a5ec56bf56c5fe5223a76a96fc4394918c596be0eb8f51b222d), `audit/findings4_code.md` (sha256
+    e9a7919a82abd2665bbb1a87ee76ef9bb7a02e618d72c34fa0609370d189a48b), `audit/findings4_text.md` (sha256
+    fdb15d1ca0e563f1ad2beda4b89f2abadbe54ab2c7d303fc3ff4921397cb91b6), `audit/findings5_code.md` (sha256
+    3fb1f858fadd849acdf8bc172d74d2dbd718a7223f09a7ed408db6c51c6e553b), `audit/findings5_text.md` (sha256
+    5adc29d8f975312099213bdf6dc319514af2f80cfe1cac4d21a00cb5c7c8a1b3), `audit/findings_b25.md` (sha256
+    80d5741341dd3c447e505c85536d48e88c4eb379623a27226d8f15ac6aad0f8e), `audit/findings_b26code.md` (sha256
+    cc612c4bccc6183a826c752794f70a170fefc7a083b89d54369ffd35f9dc8b60), `audit/findings_ci.md` (sha256
+    7c5624093e10dffb3cc4101b6feaadcb34c5e95fd58aaafb5b10401aa3bf377a), `audit/findings_text.md` (sha256
+    d61faf6a86631bb319bf08441396be4cb4f893cf47dceab39ca6958dae20a328), `audit/dispositions.md` (sha256
+    36aeca3287683eca80fa3f228787675b6c88415df453a71696d07d39800d60f6).
+
+## The binarised estimators on the AR(1) family (B25): pre-run entry, 29 Sep 2026 05:59 UTC (appended; nothing above edited)
+
+Appended with `notes/partB25_binarised.py` in the commit of the revision that followed the citation crosscheck of 28
+September 2026, before the script is run on the family. No data.
+
+**Question.** Two studies of S20 Table use binarised signals. Luppi et al. (2022) replicated their gradient "if synergy
+and redundancy are computed from discretized rather than continuous data", on mean-binarised signals with the plug-in
+estimator (their pp. 3, 14); the primary quantity of Luppi et al. (2023) is the emergence capacity computed with Ince's
+CCS partial information decomposition on mean-binarised signals with the plug-in estimator (their p. 12), which S20
+Table places outside the map. B25 asks whether the self-information carries the binarised estimators on the symmetric
+AR(1) family as it carries the Gaussian-MMI atoms.
+
+**Specification.** As the script's docstring states it. The family of Results 1; the estimators: `phyid`'s discrete
+path (each of x_t, y_t, x_{t+1}, y_{t+1} binarised at its own mean, plug-in probabilities, local entropies in bits)
+under MMI and under CCS, the CCS double redundancy under the published mask and under `phyid`'s; the emergence capacity
+str + stx + sty + sts, which under MMI is the whole-minus-max synergy and under CCS does not depend on the mask; and
+Luppi et al. (2023)'s emergence capacity as we read their Methods: the synergy of x_t and y_t about the joint future,
+taken as one four-state target (the paper does not state the target; this is our reading of "emergence capacity"), in
+Ince's decomposition, whose redundancy is his Iccs on the maximum-entropy distribution that keeps the three pairwise
+marginals (Ince, 2017, Definition 2), computed as Ince's toolbox computes it (`Iccs.m`, `calc_pi.m` and `mme2.py` of
+github.com/robince/partial-info-decomp, the repository Luppi et al. (2023, p. 12) print and link, at 3220716; read, not
+run). At finite length each of the four lagged series is binarised at its own mean, as `phyid` does, where Luppi et al.
+binarise each signal once, which differs by O(1/T). Nats (bits × ln 2). (a) The long-series limit: the pattern
+probabilities are the orthant probabilities of the Gaussian family (closed forms up to three variables; the
+four-variable one by Plackett's reduction, by numerical quadrature to about 10⁻¹³), on the grid r₁ ∈ {0.60, 0.65, …,
+0.95} × q ∈ {0.10, 0.25, 0.50}, with the rates ∂/∂r₁ and ∂/∂q at (0.85, 0.25) by central differences (step 10⁻⁴, and
+10⁻³ beside it). (b) Finite length: T ∈ {160, 300, 840} samples, 1,000 replicate pairs per point from a stationary
+start with common random numbers across the grid, `phyid`'s calc_PhiID(kind="discrete") under MMI and CCS, the
+published-mask CCS atoms from its local mutual informations, and Luppi et al. (2023)'s emergence capacity from the
+plug-in pattern frequencies of `phyid`'s binarisation; replicate means and SEs. (c) The checks the docstring lists,
+among them `phyid` on ten series of 10⁵ samples at the operating point against the limit and the agreement of the rates
+at the two steps, both for the quantities that are smooth on the family (MMI-sts, its emergence capacity, 2A, TDMI and
+MMI's rtr, whose MMI selections are strict or exact ties there). The four CCS quantities jump wherever a sign mask
+changes; for them the same comparisons are reported, not checked, and a rate whose two steps differ by more than 1 % (+
+10⁻⁶) is reported as not differentiable on the 10⁻³ scale.
+
+**What is known before the run.** (i) On the symmetric family in the long-series limit, with A = I(x_t; x_{t+1}) of the
+binarised series (= I(y_t; y_{t+1})), B = I(x_t; y_{t+1}) (= I(y_t; x_{t+1})), F = I(x_t; x_{t+1}, y_{t+1}), which the
+family's symmetries and its time reversal make equal to I(y_t; x_{t+1}, y_{t+1}) and to I(x_t, y_t; x_{t+1}), and T =
+I(x_t, y_t; x_{t+1}, y_{t+1}), the MMI lattice gives sts = T − 2F + 2A − B and emergence capacity T − F for 0 < q < 1,
+where B < A settles every MMI selection; for the Gaussian atoms F = A and T = 2A, which gives Results 1's sts = 2S − C
+and emergence capacity S. At finite length the plug-in probabilities break these equalities. (ii) At q = 0 both are
+exact: sts = 2A and emergence capacity A, with A = 1 − H₂(arccos(r₁)/π) bits, which rises with r₁; q = 0 is not on the
+grid. (iii) In preparing this entry the planning session evaluated one function of the family: the derivative of the
+binarised pair information f(ρ) = 1 − H₂(arccos(ρ)/π) at ρ = 0.85 and at ρ = 0.2125 (1.34 and 0.13 bits per unit), the
+ingredients of 2A − B at the operating point; nothing else of the family was computed, binarised or simulated. (iv) The
+script was run before this entry only with `--selftest`, which evaluates no point of the family: 54 checks, 0 failed —
+the four-variable reduction against Genz on 20 random correlation matrices (largest difference 9.8 × 10⁻⁹) and the
+three-variable one against its closed form (2.8 × 10⁻¹⁷); Ince's CCS decomposition reproducing, to the four decimals of
+his toolbox's `examples2d_output.txt`, the twelve decompositions it prints, seven of which Ince (2017, Tables 6, 8–11
+and 13) also publishes; the limit against `phyid` on two random stable VAR(1) pairs with lagged coupling, ten series of
+10⁵ samples each, within 4 SE + 2 × 10⁻⁴ nats for every quantity; `phyid`'s CCS atoms recomputed from its local mutual
+informations to 10⁻¹²; the maximum-entropy fits' marginals within 10⁻¹² (five of the 54 fits from the solution's
+support). The audit of the script by a separate session evaluated nothing binarised on the family either
+(`notes/review_2026-09-28/audit/`).
+
+**Predictions.** (a) In the long-series limit binarised MMI-sts and its emergence capacity rise with r₁ at every step of
+the grid at each q: 42 steps (7 per curve, 2 quantities, 3 values of q). Met if all 42 rise; partly met if at least 21
+do; missed otherwise. (b) At (0.85, 0.25), in the limit, ∂(MMI-sts)/∂r₁ is positive and, per standard deviation of the
+pairs' variation within a window (0.0284 for pair r₁ and 0.1957 for |q|; S3 Text §4, B22 (d); 0.196 in the main text,
+Results 1), exceeds |∂(MMI-sts)/∂q| (a per-unit ratio above 6.89). Met if both hold; partly met if the derivative is
+positive and the per-SD ratio is not above 1; missed if the derivative is not positive. (c) At 160, 300 and 840 samples
+the replicate means of binarised MMI-sts and its emergence capacity rise with r₁ at every step, q and length: 126 steps.
+Met if all 126 rise; partly met if at least 63 do; missed otherwise. (d) No prediction for the CCS quantities (sts under
+either mask, the emergence capacity, Luppi et al. (2023)'s emergence capacity), nor for the sign of the finite-sample
+bias of MMI-sts, on which two effects act in opposite directions: the plug-in mutual informations are biased upward, and
+the minima that MMI takes between candidates equal on the symmetric family (the double redundancy, R_xytab and R_abtxy)
+downward.
+
+**Rule.** The outputs are `notes/review_results/partB/binarised_tables.md` (its header carries the commit, the time of
+the run and the sha256 of `binarised.csv`), `binarised.csv` and `binarised_run.log`, each with the commit; the verdicts
+follow the criteria above, mechanically, from the values in `binarised.csv`. The text that reports B25 is fixed now,
+before the run: `notes/review_2026-09-28/revision/b25_fill.py`, committed with this entry, writes from the outputs alone
+S3 Text §11, S19 Table's four rows for B25 and its count of predictions, the labels B1–B25 of S3 Text and S19 Table, the
+count in Methods, S20 Table's row 2 (and `notes/partB5_literature_v2.md`), the Discussion's pointer to S3 Text, S3
+Text's caption, the numbers table's rows, S5 Text's run inventory and list of commits, Data and code availability's list
+of the computations and its sentence on the run, `CLAUDE.md` and `README.md`, and the outcome entry. It stops without
+writing if an output is missing, carries another commit or does not match the sha256 the tables give, or if B25 reports
+a failed check. The checks that can stop it are those of the method (the reductions, the pattern probabilities, the
+binarised pair information 1 − H₂(arccos(r₁)/π) bits, the family's symmetries, the recomputation of `phyid`'s CCS atoms,
+the maximum-entropy fits, the verbatim copy) and those of the smooth quantities; a comparison of a CCS quantity is
+reported, not checked, and does not stop the verdicts of (a)–(c). The result is reported whatever it is. The run is made
+in the writer's session at this commit, with the command in the script's docstring; a separate session re-runs it at the
+same commit, and the commit that follows that re-run records its result; the text `b25_fill.py` writes states no result
+of the re-run and names it only as still to be made.
+
+## The matrices that are not positive definite (B26): pre-run entry, 29 Sep 2026 05:59 UTC (appended; nothing above edited)
+
+Appended in the commit of the revision that followed the citation crosscheck of 28 September 2026, with the correction
+of the code that it describes and `notes/partB26_positive_definite.py`, before that script is run. The run reads the
+data, through the steps it runs.
+
+**The fault.** The AR(1)-substituted estimate of a pair (Methods; Results 4) is the sts of `ar1_corr(a_x, a_y, q)`, the
+lag-1 correlation matrix of two AR(1) processes with the pair's measured lag-1 autocorrelations and lag-0 correlation.
+That matrix is positive definite if and only if |q| < 1 and (1 − a_x²)(1 − a_y²) > q²(1 − a_x a_y)²; where the measured
+values violate this, no pair of AR(1) processes has them, and the estimate does not exist. Until this commit
+`notes/rev_phiid_fast.py`, which computes the atoms of the substituted estimate and of every Part B computation, took
+the logarithm of |det| of each block (`np.linalg.slogdet`, its sign discarded), so that such a matrix still yielded
+sixteen numbers, and they entered the means over pairs. The matrices with measured cross-lag deviations added (B15, B22,
+B23, B24), the partial substitutions of `notes/partB4_residual_source.py` and the matrices of measured or drawn values
+in B5, B17 and B17b can fail in the same way. The audit of 28 September 2026 of the repository's new tool, which had no
+data, found the fault: on a stable VAR(1) pair and on a pair sharing a slow signal under unequal noise, `rev_phiid_fast`
+gave the substituted sts 3.08 and −0.28 nats against observed values of 0.43 and 0.001. Only B23 checked positive
+definiteness, of its population matrices and of the processes it simulates, not of the matrices it substitutes on the
+simulated windows.
+
+**The correction, in this commit.** `rev_phiid_fast.atoms_from_corr` returns NaN for a matrix that is not positive
+definite (smallest eigenvalue ≤ 0, or a non-finite entry), as `tools/ar1_diagnostic.py` does; the other matrices of a
+batch are computed as before, to the last bit. Each computation that averages such atoms takes its means over the
+matrices where they exist, by one rule: (1) a substituted mean over pairs, pair-windows or draws is over those whose
+matrix is positive definite, and the observed mean, which the fault does not reach, stays over all of them, so that the
+residual is the observed mean minus the substituted mean over the pairs where it exists; (2) a correlation of observed
+and substituted values (B4's R² and its lines for subject 1, B19's) is over the pairs where both exist; (3) a response
+to the cross-lag deviations (B15, B22, B23's D, B24) is over the pairs, or pair-windows, whose four matrices, the AR(1)
+matrix and the three with deviations, are all positive definite; (4) in B23's simulation (b), whose per-pair values are
+means over a pair's 14 windows, a pair is left out of a quantity's mean where the quantity does not exist in one of its
+windows, so that its residual is taken per pair, the other quantities keeping their pairs, and the pairs left out are
+printed in brackets. B17b's population reference leaves out a draw whose AR(1) matrix fails before the shift, in both of
+its means (the shifted matrix cannot fail: its q is built from |q_ε| ≤ 0.999). `partB4_diagnostic.py` prints, on the
+level line of each variant and window length, how many of its pair-windows have no substituted estimate; those are the
+numbers the text quotes. The values that three scripts held as quotations of other outputs that the correction can
+change are now read from those outputs (the diagnostic's W = 60 residual in `partB14_family_atoms.py` and
+`partB15_directed_crosslag.py`; the data's residual shares and changes in the null's log), a read that fails printing
+CHECK FAILED, and B10's statement of the null's logged residuals takes the null's corrected value at W = 30 (below).
+B21's three expectations (+0.0027, +0.0049 and +0.0054: B17b's and B17's (i) residual DiDs at W = 60 and the null's DiD)
+and the look-up of B21's rows by them in `scripts/15_figures_v2.py` stay held as numbers: the corrected steps reproduce
+them at their printed precision (below), and the evidence of the run compares them with the regenerated outputs. Two
+sentences of B15's and B22's outputs now name the pairs over which the residual and the responses are taken, and B15's
+label of its run-level residual names it as its own. Edited: `rev_phiid_fast.py`, `partB4_diagnostic.py`,
+`partB4_residual_source.py`, `partB5_family_checks.py`, `partB10_crosslag_deviation.py`, `partB14_family_atoms.py`,
+`partB15_directed_crosslag.py`, `partB16_prewhiten.py`, `partB17_calibration.py`, `partB17b_calibration_filtered.py`,
+`partB19_exchange_rates.py`, `partB22_aligned_directed.py`, `partB23_diagnostic_alternatives.py`,
+`partB24_bandpassed_expectations.py` and `review_v2_residual_null.py` (the entries F01–F52 of
+`notes/review_2026-09-28/revision/text_replacements_2026-09-28.json`); the lines that other scripts copy and check
+verbatim are changed in place, identically in every copy, and no edit adds a line to an output that the numbers table
+locates by line. The other callers of `atoms_from_corr` in `run_all.sh` (`partB1_scope_map.py`, `partB3_lag.py`,
+`partB8_coupling_map.py`, `partB12_crosslag_budget.py`, `scripts/15_figures_v2.py`) give it only symmetric AR(1)
+matrices with |q| < 1, the population matrices of stable processes or sample correlation matrices, all positive
+definite; their calls are unchanged. Outside `run_all.sh`, `tests/test_ar1_diagnostic.py` checks the tool against it,
+NaN included, and the checks of the reviews of 16 and 22 September 2026 that call it
+(`notes/planning_checks_2026-09-16/reviewer/`, `notes/review_2026-09-22/refcheck/`), whose results the text does not
+quote, are records of their time and are not re-run. Where no matrix is left out, every output equals d108d66's, on the
+machine that wrote d108d66's outputs, but for the lines these edits reword and differences in the last bit of a mean
+(below 10⁻¹⁵); on another machine the unchanged computations differ from them by float noise (the preview's comparisons
+allow 10⁻⁹). The alternative to rule (1), the residual over the pairs where both estimates exist, differs from it only
+through the pairs left out: at the null's W = 30, −8.50 % against −8.51 %.
+
+**What is known before the run.** (i) The planning session ran the six steps of section 6 that call `rev_phiid_fast`
+with matrices that can fail and read no data (B5, the null of `review_v2_residual_null.py`, B23, B24, B17, B17b) with
+the corrected code (Python 3.12.3, NumPy 2.5.3), under the script's wrappers, and compared their outputs with those of
+d108d66; the counts per path and site, every changed line and cell (listed by
+`notes/review_2026-09-28/checks/b26_changes.py`), and the numbers of the main text and of the supporting information
+whose source changed are in `notes/review_2026-09-28/checks/b26_preview.md`. B5: 171 of its 2,000 draws with unequal
+coefficients are not positive definite; over the 1,829 others ΦR − rtr runs from +0.000 to +4.585, mean +0.094, and
+exceeds 0.01 in absolute value in a share of 0.53, where d108d66's line, which S20 Table's Table B item 1 reports, has
+−1.362 to +4.585, mean +0.091, share 0.57: its negative values came from matrices of no process. The null: 115 of the
+560,000 substituted matrices at W = 30, none in the final evaluations at W = 60 and 840 or in the four cells
+(`checks/b26_null_sections.out`), and 11 more among the evaluations of the cells' root searches, which use a and |q|
+only (126 of the 10,010,000 substituted matrices the wrappers counted in all); its W = 30 residual becomes −0.0885
+(−8.51 %) from −0.0886 (−8.52 %), and nothing else in its log changes but the file its last line names. B23: 172 of the
+4,336,546 matrices it evaluates (4,336,530 through `atoms_from_corr`, 16 sample matrices), all in simulation (b): 109
+AR(1) matrices (its line 200), 61 with the antisymmetric deviation added (line 201) and 2 with the symmetric one (line
+202); by condition, 16 in the unperturbed pairs, 8 to 28 in each of the eight conditions of (i) and (a1)–(a4) and 6 to 8
+in each of (a5)'s three; to them the code before the correction gave sts from −1.2746 to +3.3136. A quantity of (b) that
+rests on a substituted matrix (the AR(1)-substituted sts, the residual, D) is now a mean over the pairs where it exists
+in all 14 windows, 5 to 20 of the 3,000 pairs being left out per condition (the brackets of its table), and the other
+quantities keep all their pairs; the changes reach Table 3, Fig 3 (c), S13, S18 and S19 Tables and S3 Text, 11 numbers
+of the main text change at their printed precision, and B23's verdicts stand by their criteria. B24: none of its
+17,640,000 matrices (12,264,000 through `atoms_from_corr`); its outputs are unchanged. B17: 11,494 of the 41,160,000
+substituted matrices of its windows (its line 104), to which the code before the correction gave sts from −3.1618 to
++5.8239; its (i) residual DiD at W = 60 is 0.0049320 against 0.0048988 with the code before (+0.0049 printed), and other
+values of its W = 60 rows change, p-values and shares by up to 0.016 and 0.02, DiDs and SEs by 0.0001 (S10 Table and S3
+Text §7 transcribe them, S19 Table's rows B17 (ii) and (iv) and S3 Text §7's ratios quote them; the preview lists each).
+B17b: 23 of the 60,260,000 matrices it passes to `atoms_from_corr`: 15 of the 41,160,000 of its windows (its line 166),
+and 8 of the 5,100,000 of the null's function it imports (line 69), these 8 in the calibration draws that solve its
+generator's parameters, which use the windows' a, |q| and a_x − a_y and discard the substituted sts; the code before had
+given the 23 sts from +0.8434 to +2.7796. Its (i) residual DiD at W = 60 is 0.0026692 against 0.0026686 with the code
+before (+0.0027 printed), and two p-values of its table move in their third decimal. Two steps that read the data
+evaluate substituted matrices of synthetic series in sections that use no data, and the correction changes those
+sections' outputs whatever the data: B10 replays the null's first section and cells with the null's draws (126 matrices
+not positive definite, as in the null: 115 at W = 30 and 11 in the cells' root searches), and its W = 30 line becomes
+−0.0885 (−8.51 %), as the null's; B15's finite-sample null with lead–lag asymmetry has 4 matrices not positive definite
+in its root searches, which use a and |q| only; of the 150,000 pair-windows (3,000 pairs × 50 windows) of each of its
+five configurations, the substituted matrices of 1, 0, 33, 81 and 88 are not positive definite, and 1, 11, 36, 91 and
+120 are left out of the responses (the matrices with a deviation added fail too); each of its five lines changes, the
+residuals by up to 0.0001 and the responses by up to 0.0003 (S3 Text §6 transcribes them). In the rehearsal (iii)
+d108d66's code printed these lines on the synthetic series exactly as committed from the data; the preview lists the new
+ones. Fig 3 (c) draws B23's AR(1) rate, −0.387 for −0.390 (its caption prints −0.39 either way). (ii) The steps that
+read the data were not run on the data. Subject 1's saved pair-window points (`scope_map_overlay_points.npz`, 52,440
+pre-injection pair-windows) reach |q| = 0.986; the asymmetry |a_x − a_y| that the condition allows, about √(1 − q²)(1 −
+r₁²), is below 0.05 in 2 of them and below 0.10 in 83 (the points hold pair r₁ and q, not a_x and a_y), and the
+window-level scatter of one region's a is about 0.03 (`exchange_rates_tables.md`): the count on the data cannot be taken
+to be zero. (iii) Section 6 was rehearsed on synthetic series with the layout of the data file (not the data), twice
+from clones of d108d66 on the same series: with d108d66's code, each step as `run_all.sh` runs it, and with the
+corrected code under this script (B17 and B17b left out, having been run for (i)). In both runs 35 of the 37 steps ran
+to their end, B13 and the figure step stopping at the same point on these series; the runner counted matrices that are
+not positive definite in ten steps (18,974 of B4's 46,986,240 on these series). `b26_changes.py` between the two runs'
+outputs found changes in 40 of 337 files: B13's log only in the runner's frames in its traceback, each of the others in
+a step that counted such matrices or that reads a changed output of one (B6, B7, B21, the figure step); no other step
+changed an output, and beyond these the only differences are the lines this commit rewords and the runner's frames in
+the tracebacks of the two steps that stopped (the preview's section 3).
+
+**The run.** `notes/partB26_positive_definite.py` runs the steps of section 6 of `run_all.sh`, in its order and with its
+arguments, except B25 (no data, no atoms from `rev_phiid_fast`, its outputs tied to its own pre-run entry) and, as
+`run_all.sh` does, the HRF-deconvolution steps when their sandbox is absent; in place, each step's output written where
+`run_all.sh` writes it; each step under wrappers of `rev_phiid_fast._logdets` and `atoms_from_corr` that return what the
+functions return and count, per step and site (the calling line and column, with the frames of the repository that led
+to it), the matrices, those that are not positive definite, those with a non-finite entry, those that are nearly
+singular (smallest eigenvalue in (0, 10⁻³]), every call that held matrices that are not positive definite or not finite
+(from which a step's loop gives each one's window) and, for those that pass through `atoms_from_corr` and are not
+positive definite, the sts that the code before this commit gave them. A data window, or a whole run, evaluated by
+several steps (B4, B4's residual source, B10, B14, B15, B19, B22) is counted in each, so the counts of different steps
+are not to be added; the number of the data's pair-windows without a substituted estimate is B4's, and its whole-run
+pairs without one are in the site rows of B4's run-level line. Its tables:
+`notes/review_results/partB/positive_definite_tables.md` (the commit, the time of the run, the versions and the sha256
+of `positive_definite.csv` in its header), made from `positive_definite.csv` alone, and `positive_definite_run.log`; the
+CSV and the tables are written before the first step and after every step, so that an interrupted run leaves the counts
+of the steps it finished. Its `--selftest` checks the wrappers and the child mode and runs in the continuous-integration
+workflow; its `--from` re-runs a step and every later step under the same wrappers, after a complete or an interrupted
+run (any number of times), once every earlier step has run to its end, and replaces their rows; the CSV's first line
+records each interruption and re-run. Run by V.S. on his machine at this commit, or at a later one that changes none of
+the steps' scripts, from a clean tree, with the command in the script's docstring; about three hours.
+
+**Rule.** No prediction. (i) The regenerated outputs are compared with those committed at the commit of the run, as the
+final run's were (its pre-run entry of 26 September 2026, item 5): `6_committed_compare.py`, `8_binary_compare.py` and
+`10_logs_figures_compare.py` of `notes/planning_checks_2026-09-16/reproduction_checks/` (its fourth,
+`9_wrapper_compare.py`, was for a change of B21's writer made before that run, and B21's committed outputs are now that
+run's own), and `notes/review_2026-09-28/checks/b26_changes.py`, which lists every changed line and cell in full and,
+for each changed array, the number of entries that changed, the largest change and the first 2,000 entries, and for each
+image the pixels that differ (the files themselves are in the evidence). Every difference other than the commit, the
+times, float noise below 10⁻⁹ and the rewordings of this commit (B5's line, B10's statement of the null's value, the
+brackets and note of B23's table, B4's count on its level lines and its lines for subject 1, the two sentences of B15
+and B22, B15's label of its run-level residual, the label of the null's last line) must trace to matrices the tables
+count, in the step itself or in an earlier step's output that it reads; one that does not is a fault, found and
+corrected before anything is read or committed. B21's check of the run-level residual against the log of 17 September
+2026 (`check_C1_residual_vs_null.log`), which the run does not regenerate, fails if that residual changes at its fifth
+decimal; such a failure is read as the change it reports. (ii) The outputs are committed as the run writes them, with
+its tables, in the commit that follows the run; the outcome entry lists per step and site the matrices left out and the
+sts the code before gave them; every number of the text computed from an output that changed is replaced by the run's
+value, the numbers table's locators follow the lines of the regenerated outputs (a line can move: B21's table (a) lists
+only the rows whose intervals the text quotes), and a verdict that rests on a changed number is read again by its own
+criterion, the values before staying in the record. (iii) S3 Text states the rule at the start of §6, on the residual of
+the AR(1)-substituted estimate, with B4's numbers of pair-windows left out, and of whole-run pairs, or that none of the
+data's was; if the pair-windows left out change a number of the main text at its printed precision, the main text says
+so where it quotes that number, within the 7,000 words (the outcome entry names the words taken out for it). (iv) A step
+that does not run to its end is reported with its error; if the cause is outside the code, that step and every later
+step are run again at the same commit with `--from` before (i)–(iii); otherwise the code is corrected under an entry of
+this record and the run is made again. (v) Matrices that are positive definite but nearly singular are reported, not
+left out: the estimate exists there. A sample correlation matrix (the PairPhiID path) that is not positive definite is
+not expected (a sample of more than four points is positive definite unless its series are collinear) and is not
+corrected; if the tables report one, the outcome entry says what it means before anything is read.

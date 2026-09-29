@@ -263,12 +263,21 @@ def ccs_local_knowns(mi_loc):
 def atoms_from_corr(C):
     """(n, 16) Gaussian-MMI atoms (phyid definitions) from (n, 4, 4) correlation matrices of
     [x_t, y_t, x_{t+τ}, y_{t+τ}] — the analytic atoms of a Gaussian process with that lag
-    covariance, or the plug-in (time-mean) atoms of a sample with that correlation matrix."""
+    covariance, or the plug-in (time-mean) atoms of a sample with that correlation matrix.
+    A matrix that is not positive definite (smallest eigenvalue ≤ 0, or a non-finite entry) is the
+    lag covariance of no process and has no atoms: its row is NaN (B26). Until B26, _logdets took
+    log |det| of every block, so that such a matrix yielded sixteen numbers. The rows of the other
+    matrices are computed as before, in the same batch (placeholders stand in for the rows without
+    atoms), so that their values are unchanged to the last bit."""
     C = np.asarray(C, float)
     if C.ndim == 2:
         C = C[None]
-    mi = _plugin_mis(C)
-    return _assemble(mi, _mmi_choice(mi)) @ _MINV_T
+    ok = np.isfinite(C).all(axis=(1, 2))
+    ok[ok] = np.linalg.eigvalsh(C[ok]).min(axis=1) > 0
+    mi = _plugin_mis(np.where(ok[:, None, None], C, np.eye(4)))
+    out = _assemble(mi, _mmi_choice(mi)) @ _MINV_T
+    out[~ok] = np.nan
+    return out
 
 
 def ar1_corr(a_x, a_y, q):

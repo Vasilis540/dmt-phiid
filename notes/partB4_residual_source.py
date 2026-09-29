@@ -47,10 +47,10 @@ for s in range(14):
             pp = PairPhiID(X[:, in_w]); C = pp.C.copy()
             ax, ay = C[:, 0, 2], C[:, 1, 3]; q = 0.5 * (C[:, 0, 1] + C[:, 2, 3])
             obs[s, c, w] = pp.atoms_mean()[:, S].mean()
-            pred[s, c, w] = atoms_from_corr(ar1_corr(ax, ay, q))[:, S].mean()
+            pred[s, c, w] = np.nanmean(atoms_from_corr(ar1_corr(ax, ay, q))[:, S])  # B26: NaN where not positive definite
             CA = C.copy(); CA[:, 0, 3] = CA[:, 3, 0] = ay * q; CA[:, 1, 2] = CA[:, 2, 1] = ax * q          # cross-lag substitution only
             CB = C.copy(); CB[:, 0, 1] = CB[:, 1, 0] = q; CB[:, 2, 3] = CB[:, 3, 2] = q                   # lag-0 substitution only
-            p_cross[s, c, w] = atoms_from_corr(CA)[:, S].mean(); p_lag0[s, c, w] = atoms_from_corr(CB)[:, S].mean()
+            p_cross[s, c, w] = np.nanmean(atoms_from_corr(CA)[:, S]); p_lag0[s, c, w] = np.nanmean(atoms_from_corr(CB)[:, S])
             dev = np.r_[C[:, 0, 3] - ay * q, C[:, 1, 2] - ax * q]
             dev_signed[s, c, w] = dev.mean(); dev_abs[s, c, w] = np.abs(dev).mean(); dev_sd[s, c, w] = dev.std()
             lag0_gap[s, c, w] = np.abs(C[:, 0, 1] - C[:, 2, 3]).mean(); a_mean[s, c, w] = (0.5 * (ax + ay)).mean(); q_abs[s, c, w] = np.abs(q).mean()

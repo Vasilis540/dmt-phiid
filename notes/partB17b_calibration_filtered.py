@@ -163,17 +163,17 @@ def analyse_run(X):
     for w in range(14):
         pp = PairPhiID(X[:, w * W:(w + 1) * W], pairs=PAIRS)
         ax, ay, q, sym, anti = deviations(pp.C)
-        obs_w[w] = pp.atoms_mean()[:, S].mean(); pred_w[w] = atoms_from_corr(ar1_corr(ax, ay, q))[:, S].mean()
+        obs_w[w] = pp.atoms_mean()[:, S].mean(); pred_w[w] = np.nanmean(atoms_from_corr(ar1_corr(ax, ay, q))[:, S])
         sym_w[w] = sym.mean(); anti_w[w] = np.sqrt(np.mean(anti ** 2))
     pp = PairPhiID(X, pairs=PAIRS)
     ax, ay, q, sym, anti = deviations(pp.C)
     obs_b = np.nanmean(pp.atoms_bins(np.arange(pp.n) // 30, 28)[..., S], axis=1)
-    pred_b = np.full(28, atoms_from_corr(ar1_corr(ax, ay, q))[:, S].mean())          # the pipeline's run-level prediction, constant across bins
+    pred_b = np.full(28, np.nanmean(atoms_from_corr(ar1_corr(ax, ay, q))[:, S]))      # the pipeline's run-level prediction, constant across bins
     pred_bp = np.empty(28)                                                            # period-level prediction: (a_x, a_y, q) measured on the pre and on the post samples
     for lo, hi, sl in ((0, CHANGE_AT, slice(0, CHANGE_AT // 30)), (CHANGE_AT, T, slice(CHANGE_AT // 30, 28))):
         pq = PairPhiID(X[:, lo:hi], pairs=PAIRS)
         axp, ayp, qp, _, _ = deviations(pq.C)
-        pred_bp[sl] = atoms_from_corr(ar1_corr(axp, ayp, qp))[:, S].mean()
+        pred_bp[sl] = np.nanmean(atoms_from_corr(ar1_corr(axp, ayp, qp))[:, S])
     return obs_w, pred_w, sym_w, anti_w, obs_b, pred_b, pred_bp
 
 
@@ -246,7 +246,8 @@ for cond, asym in (("(i)", False), ("(iv)", True)):
     else:
         ax, ay = rng.normal(0.85, 0.0125, N_POP), rng.normal(0.85, 0.0125, N_POP)
     qt = rng.choice(Q_POOL, N_POP); qe = qe_from_q(ax, ay, qt)
-    pre = sts_of(ax, ay, qt).mean(); post = sts_of(ax - 0.015, ay - 0.015, q_from_qe(ax - 0.015, ay - 0.015, qe)).mean()
+    s_pre = sts_of(ax, ay, qt); ok = np.isfinite(s_pre)                          # B26: the draws whose AR(1) matrix is positive definite
+    pre = s_pre[ok].mean(); post = sts_of(ax - 0.015, ay - 0.015, q_from_qe(ax - 0.015, ay - 0.015, qe))[ok].mean()
     pop[cond] = (pre, post)
 b17 = {}
 try:

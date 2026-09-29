@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this code or its results, please cite it as below."
+type: software
+title: "The Gaussian-MMI synergy atom of integrated information decomposition is mostly self-prediction: code, record and results"
+authors:
+  - family-names: Sampalis
+    given-names: Vasilis
+    email: sampalisvasilis@gmail.com
+repository-code: "https://github.com/Vasilis540/dmt-phiid"
+license: MIT
+abstract: >-
+  Analysis code, pre-specification record and results of a secondary analysis of DMT fMRI data with integrated
+  information decomposition (Gaussian model, minimum-mutual-information redundancy): the sixteen atoms of two AR(1)
+  processes with no lagged interaction in closed form, the DMT contrast, and a tool that puts each synergy value beside
+  its AR(1)-substituted estimate (tools/ar1_diagnostic.py). The code is under the MIT licence; the text and result
+  files outside manuscript/ are under CC BY 4.0 (LICENSE-CC-BY-4.0.md).
+keywords:
+  - integrated information decomposition
+  - partial information decomposition
+  - synergy
+  - autocorrelation
+  - fMRI
+  - DMT

@@ -1,0 +1,2243 @@
+# B26: what is known before the run
+
+Written by the planning session for the pre-run entry of B26 (record, "The matrices that are not positive definite (B26): pre-run entry"). Python 3.12.3, NumPy 2.5.3, SciPy 1.18.1. The corrected code is d108d66's with the correction of that entry applied (the entries F01–F52 of `revision/text_replacements_2026-09-28.json`) and `notes/partB26_positive_definite.py`. Each step was run from the root of a clone of d108d66 carrying it, under that script's `--child` wrappers, and its outputs are compared with d108d66's by `notes/review_2026-09-28/checks/b26_changes.py`: every line of a text output and every cell of a CSV that differs is listed, a line agreeing when it is identical once git SHAs, dates, times, durations and paths are masked and each pair of numbers is within 10⁻⁹ (as in `10_logs_figures_compare.py`), a cell when its values are within 10⁻⁹. On this machine even d108d66's code changes some last digits of the committed outputs, which were written on V.S.'s machine; the tolerance sets those aside.
+
+## 1. What the correction changes whatever the data
+
+The steps of section 6 that call `rev_phiid_fast` with matrices that can fail and read no data; then the sections on synthetic series of two steps that read the data, and a figure that draws a changed value.
+
+Tree: a clone of d108d66 with the correction applied and committed (75a7dd0); B5, the null of `review_v2_residual_null.py` and B23 run there, in section 6's order, under the runner's `--child` wrappers; its `rev_phiid_fast.py` and these steps' scripts are commit A's byte for byte, and its runner's wrappers count the matrices as commit A's do (commit A's runner keeps the ordinal of every call that held a matrix that is not positive definite, where 75a7dd0's kept the first 2,000 per site; no site here had more than nine).
+
+### B5, `notes/partB5_family_checks.py`
+
+Matrices evaluated by `rev_phiid_fast`: 4,047 (4,047 through atoms_from_corr, 171 of them not positive definite); nearly singular (smallest eigenvalue in (0, 10⁻³]): 3. By calling line: `notes/partB5_family_checks.py` line 27, 2,047 (0 not positive definite); `notes/partB5_family_checks.py` line 55, 2,000 (171 not positive definite).
+
+- `notes/partB5_family_checks.py` line 55:6, atoms_from_corr: 171 of 2,000 not positive definite, smallest eigenvalue -0.248.
+- the sts that the code before the correction gave the 171 matrices of `notes/partB5_family_checks.py` line 55:6: -2.2555 to +2.0550.
+
+- `notes/review_results/partB/family_checks.log`: 1 line(s) differ (committed l., then regenerated l.)
+  - l. 18 → l. 18
+    − Unequal a_x, a_y (2,000 draws, same seed stream): ΦR − rtr min -1.362, max +4.585, mean +0.091, share |ΦR − rtr| > 0.01: 0.57
+    + Unequal a_x, a_y (2,000 draws, same seed stream; 171 not positive definite and excluded, 1829 kept): ΦR − rtr min +0.000, max +4.585, mean +0.094, share |ΦR − rtr| > 0.01: 0.53
+
+### The null, `notes/review_v2_residual_null.py`
+
+Matrices evaluated by `rev_phiid_fast`: 20,020,000 (20,020,000 through atoms_from_corr, 126 of them not positive definite); nearly singular (smallest eigenvalue in (0, 10⁻³]): 1,210. By calling line: `notes/review_v2_residual_null.py` line 67, 10,010,000 (0 not positive definite); `notes/review_v2_residual_null.py` line 69, 10,010,000 (126 not positive definite).
+
+The null's evaluations replayed with the corrected code, counting per section (`notes/review_2026-09-28/checks/b26_null_sections.py`, its output `b26_null_sections.out`):
+
+- homogeneous filter, W = 30: 560,000 substituted matrices, 115 not positive definite; residual by rule (1) -0.088518 (-8.5121 %); over the pairs where both exist -0.088440 (-8.5040 %)
+- homogeneous filter, W = 60: 280,000 substituted matrices, 0 not positive definite; residual by rule (1) -0.037317 (-3.0961 %); over the pairs where both exist -0.037317 (-3.0961 %)
+- homogeneous filter, W = 840: 20,000 substituted matrices, 0 not positive definite; residual by rule (1) -0.004543 (-0.3355 %); over the pairs where both exist -0.004543 (-0.3355 %)
+- cell DMT pre (W = 60): 150,000 substituted matrices, 0 not positive definite; residual by rule (1) -0.035349 (-2.9867 %); over the pairs where both exist -0.035349 (-2.9867 %)
+- cell DMT post (W = 60): 150,000 substituted matrices, 0 not positive definite; residual by rule (1) -0.031286 (-2.7737 %); over the pairs where both exist -0.031286 (-2.7737 %)
+- cell PCB pre (W = 60): 150,000 substituted matrices, 0 not positive definite; residual by rule (1) -0.035023 (-3.0012 %); over the pairs where both exist -0.035023 (-3.0012 %)
+- cell PCB post (W = 60): 150,000 substituted matrices, 0 not positive definite; residual by rule (1) -0.036361 (-3.0241 %); over the pairs where both exist -0.036361 (-3.0241 %)
+- null residual DiD +0.005400
+
+- `notes/review_v2_residual_null.py` line 69:11 (reached from notes/review_v2_residual_null.py:114), atoms_from_corr: 115 of 860,000 not positive definite, smallest eigenvalue -0.0152.
+- `notes/review_v2_residual_null.py` line 69:11 (reached from notes/review_v2_residual_null.py:75 < notes/review_v2_residual_null.py:76), atoms_from_corr: 6 of 4,500,000 not positive definite, smallest eigenvalue -0.00226.
+- `notes/review_v2_residual_null.py` line 69:11 (reached from notes/review_v2_residual_null.py:75 < notes/review_v2_residual_null.py:77), atoms_from_corr: 5 of 4,050,000 not positive definite, smallest eigenvalue -0.000951.
+- by the frames that reached them: notes/review_v2_residual_null.py:114, 115; notes/review_v2_residual_null.py:75 < notes/review_v2_residual_null.py:76, 6; notes/review_v2_residual_null.py:75 < notes/review_v2_residual_null.py:77, 5.
+- the sts that the code before the correction gave the 115 matrices of `notes/review_v2_residual_null.py` line 69:11 (reached from notes/review_v2_residual_null.py:114): -1.4798 to +5.9903.
+- the sts that the code before the correction gave the 6 matrices of `notes/review_v2_residual_null.py` line 69:11 (reached from notes/review_v2_residual_null.py:75 < notes/review_v2_residual_null.py:76): +1.4531 to +3.5723.
+- the sts that the code before the correction gave the 5 matrices of `notes/review_v2_residual_null.py` line 69:11 (reached from notes/review_v2_residual_null.py:75 < notes/review_v2_residual_null.py:77): +1.2805 to +2.6023.
+
+- `notes/review_results/logs/review_v2_residual_null.log`: 2 line(s) differ (committed l., then regenerated l.)
+  - l. 6 → l. 6
+    − W= 30: a=0.856 |q|=0.354 residual=-0.0886 (-8.52 %)   [data: W30 -9.7 %, W60 -4.3 %, run-level -1.1 %]
+    + W= 30: a=0.856 |q|=0.354 residual=-0.0885 (-8.51 %)   [data: W30 -9.7 %, W60 -4.3 %, run-level -1.1 %]
+  - l. 17 → l. 17
+    − data (residual_source.log): DMT +0.0077, PCB -0.0038, DiD +0.0115 [+0.0021, +0.0211]
+    + data (inference_rows_diag.csv): DMT +0.0077, PCB -0.0038, DiD +0.0115 [+0.0021, +0.0211]
+
+### B23, `notes/partB23_diagnostic_alternatives.py`
+
+Matrices evaluated by `rev_phiid_fast`: 4,336,546 (16 through PairPhiID, 0 of them not positive definite; 4,336,530 through atoms_from_corr, 172 of them not positive definite); nearly singular (smallest eigenvalue in (0, 10⁻³]): 66. By calling line: `notes/partB23_diagnostic_alternatives.py` line 119, 2,316,912 (0 not positive definite); `notes/partB23_diagnostic_alternatives.py` line 200, 504,000 (109 not positive definite); `notes/partB23_diagnostic_alternatives.py` line 201, 504,000 (61 not positive definite); `notes/partB23_diagnostic_alternatives.py` line 202, 504,000 (2 not positive definite); `notes/partB23_diagnostic_alternatives.py` line 203, 504,000 (0 not positive definite); `notes/partB23_diagnostic_alternatives.py` line 509, 16 (0 not positive definite); `notes/partB23_diagnostic_alternatives.py` line 603, 3,618 (0 not positive definite).
+
+- `notes/partB23_diagnostic_alternatives.py` line 200:11 (reached from notes/partB23_diagnostic_alternatives.py:406 < notes/partB23_diagnostic_alternatives.py:423), atoms_from_corr: 95 of 378,000 not positive definite, smallest eigenvalue -0.0404.
+- `notes/partB23_diagnostic_alternatives.py` line 201:13 (reached from notes/partB23_diagnostic_alternatives.py:406 < notes/partB23_diagnostic_alternatives.py:423), atoms_from_corr: 53 of 378,000 not positive definite, smallest eigenvalue -0.0195.
+- `notes/partB23_diagnostic_alternatives.py` line 202:12 (reached from notes/partB23_diagnostic_alternatives.py:406 < notes/partB23_diagnostic_alternatives.py:423), atoms_from_corr: 2 of 378,000 not positive definite, smallest eigenvalue -0.00173.
+- `notes/partB23_diagnostic_alternatives.py` line 200:11 (reached from notes/partB23_diagnostic_alternatives.py:406 < notes/partB23_diagnostic_alternatives.py:486), atoms_from_corr: 14 of 126,000 not positive definite, smallest eigenvalue -0.00661.
+- `notes/partB23_diagnostic_alternatives.py` line 201:13 (reached from notes/partB23_diagnostic_alternatives.py:406 < notes/partB23_diagnostic_alternatives.py:486), atoms_from_corr: 8 of 126,000 not positive definite, smallest eigenvalue -0.00158.
+- by the frames that reached them: notes/partB23_diagnostic_alternatives.py:406 < notes/partB23_diagnostic_alternatives.py:423, 150; notes/partB23_diagnostic_alternatives.py:406 < notes/partB23_diagnostic_alternatives.py:486, 22.
+- by call, of those reached from notes/partB23_diagnostic_alternatives.py:423 (the calls in the order of the script): the unperturbed pairs 16; (i) Δa = −0.015 8; (a1) δ = +0.02 19; (a1) δ = −0.02 28; (a2) δ = +0.01 × sign(q) 9; (a2) δ = −0.01 × sign(q) 25; (a3) c = +0.02, r₁ and q held 12; (a4) c = +0.02 17; (a4) c = −0.02 16.
+- by call, of those reached from notes/partB23_diagnostic_alternatives.py:486 (the calls in the order of the script): (a5) base 8; (a5) Δa_s = −0.03 8; (a5) λ → 0.9λ 6.
+- the sts that the code before the correction gave the 95 matrices of `notes/partB23_diagnostic_alternatives.py` line 200:11 (reached from notes/partB23_diagnostic_alternatives.py:406 < notes/partB23_diagnostic_alternatives.py:423): -1.2746 to +3.3136.
+- the sts that the code before the correction gave the 53 matrices of `notes/partB23_diagnostic_alternatives.py` line 201:13 (reached from notes/partB23_diagnostic_alternatives.py:406 < notes/partB23_diagnostic_alternatives.py:423): -0.4202 to +2.4620.
+- the sts that the code before the correction gave the 2 matrices of `notes/partB23_diagnostic_alternatives.py` line 202:12 (reached from notes/partB23_diagnostic_alternatives.py:406 < notes/partB23_diagnostic_alternatives.py:423): -1.1907 to -0.5849.
+- the sts that the code before the correction gave the 14 matrices of `notes/partB23_diagnostic_alternatives.py` line 200:11 (reached from notes/partB23_diagnostic_alternatives.py:406 < notes/partB23_diagnostic_alternatives.py:486): +0.0364 to +2.7357.
+- the sts that the code before the correction gave the 8 matrices of `notes/partB23_diagnostic_alternatives.py` line 201:13 (reached from notes/partB23_diagnostic_alternatives.py:406 < notes/partB23_diagnostic_alternatives.py:486): +1.2083 to +2.9789.
+
+In simulation (b) a quantity that rests on a substituted matrix is a mean over the pairs where it exists in all 14 windows: 5 to 20 of its 3,000 pairs are left out per condition (the brackets of its table).
+
+- `notes/review_results/partB/diagnostic_alternatives_tables.md`: 13 line(s) differ (committed l., then regenerated l.)
+  - l. 102 → l. 102
+    − 3000 pairs, q ~ N(0, 0.3424) clipped to ±0.8, a = 0.85; runs of 840 samples after a burn-in of 200; 14 windows of 60; the other run an independent realisation. SE over pairs of each pair's 14-window mean; B's SE over the 14 windows.
+    + 3000 pairs, q ~ N(0, 0.3424) clipped to ±0.8, a = 0.85; runs of 840 samples after a burn-in of 200; 14 windows of 60; the other run an independent realisation. SE over pairs of each pair's 14-window mean; B's SE over the 14 windows. A number in brackets after a mean: the pairs left out of it because the quantity does not exist for them, one of their windows' matrices not being positive definite (B26); the column 'pairs excluded' counts the pairs left out of every quantity, and the last column divides the residual's change by r₁'s over the residual's pairs.
+  - l. 104 → l. 104
+    − Unperturbed AR(1) pairs, levels: observed sts +0.71753; AR(1)-substituted sts +0.78780; residual -0.07027; r₁ +0.78638; A_other -0.00291; A_same -0.00117; D -0.01137; B +0.06122.
+    + Unperturbed AR(1) pairs, levels: observed sts +0.71753; AR(1)-substituted sts +0.78788 [11]; residual -0.06998 [11]; r₁ +0.78638; A_other -0.00291; A_same -0.00117; D -0.01138 [11]; B +0.06122.
+  - l. 108 → l. 108
+    − | (i) Δa = −0.015 | 0 | -0.04240 ± 0.00011 | -0.04777 ± 0.00012 | +0.00537 ± 0.00009 | -0.01377 ± 0.00002 | +0.00001 ± 0.00004 | +0.00001 ± 0.00005 | +0.00015 ± 0.00007 | +0.00034 ± 0.00004 | -0.390 |
+    + | (i) Δa = −0.015 | 0 | -0.04240 ± 0.00011 | -0.04775 ± 0.00010 [11] | +0.00532 ± 0.00006 [11] | -0.01377 ± 0.00002 | +0.00001 ± 0.00004 | +0.00001 ± 0.00005 | +0.00017 ± 0.00001 [11] | +0.00034 ± 0.00004 | -0.387 |
+  - l. 109 → l. 109
+    − | (a1) δ = +0.02 | 0 | +0.00521 ± 0.00078 | -0.00457 ± 0.00035 | +0.00978 ± 0.00093 | -0.00092 ± 0.00004 | +0.00041 ± 0.00034 | +0.00017 ± 0.00034 | +0.00032 ± 0.00014 | +0.00045 ± 0.00010 | -10.628 |
+    + | (a1) δ = +0.02 | 0 | +0.00521 ± 0.00078 | -0.00450 ± 0.00034 [20] | +0.00931 ± 0.00091 [20] | -0.00092 ± 0.00004 | +0.00041 ± 0.00034 | +0.00017 ± 0.00034 | +0.00017 ± 0.00005 [20] | +0.00045 ± 0.00010 | -10.112 |
+  - l. 110 → l. 110
+    − | (a1) δ = −0.02 | 0 | +0.00608 ± 0.00079 | -0.00409 ± 0.00037 | +0.01016 ± 0.00095 | -0.00089 ± 0.00004 | +0.00059 ± 0.00034 | +0.00070 ± 0.00034 | +0.00041 ± 0.00013 | +0.00032 ± 0.00011 | -11.358 |
+    + | (a1) δ = −0.02 | 0 | +0.00608 ± 0.00079 | -0.00381 ± 0.00035 [19] | +0.00951 ± 0.00092 [19] | -0.00089 ± 0.00004 | +0.00059 ± 0.00034 | +0.00070 ± 0.00034 | +0.00016 ± 0.00005 [19] | +0.00032 ± 0.00011 | -10.713 |
+  - l. 111 → l. 111
+    − | (a2) δ = +0.01 × sign(q) | 0 | -0.01064 ± 0.00028 | +0.00290 ± 0.00015 | -0.01354 ± 0.00030 | -0.00023 ± 0.00002 | +0.00782 ± 0.00011 | +0.00781 ± 0.00010 | -0.00007 ± 0.00006 | +0.01661 ± 0.00010 | +58.914 |
+    + | (a2) δ = +0.01 × sign(q) | 0 | -0.01064 ± 0.00028 | +0.00292 ± 0.00015 [12] | -0.01348 ± 0.00029 [12] | -0.00023 ± 0.00002 | +0.00782 ± 0.00011 | +0.00781 ± 0.00010 | -0.00008 ± 0.00002 [12] | +0.01661 ± 0.00010 | +57.951 |
+  - l. 112 → l. 112
+    − | (a2) δ = −0.01 × sign(q) | 0 | +0.01339 ± 0.00033 | -0.00511 ± 0.00020 | +0.01850 ± 0.00038 | -0.00021 ± 0.00002 | -0.00748 ± 0.00010 | -0.00762 ± 0.00010 | +0.00039 ± 0.00014 | -0.01680 ± 0.00009 | -87.358 |
+    + | (a2) δ = −0.01 × sign(q) | 0 | +0.01339 ± 0.00033 | -0.00489 ± 0.00017 [16] | +0.01808 ± 0.00036 [16] | -0.00021 ± 0.00002 | -0.00748 ± 0.00010 | -0.00762 ± 0.00010 | +0.00011 ± 0.00007 [16] | -0.01680 ± 0.00009 | -85.875 |
+  - l. 113 → l. 113
+    − | (a3) c = +0.02, r₁ and q held | 0 | +0.00335 ± 0.00047 | -0.00342 ± 0.00028 | +0.00677 ± 0.00055 | -0.00069 ± 0.00004 | +0.00014 ± 0.00031 | -0.00008 ± 0.00031 | +0.00010 ± 0.00009 | -0.00004 ± 0.00008 | -9.879 |
+    + | (a3) c = +0.02, r₁ and q held | 0 | +0.00335 ± 0.00047 | -0.00338 ± 0.00028 [13] | +0.00678 ± 0.00055 [13] | -0.00069 ± 0.00004 | +0.00014 ± 0.00031 | -0.00008 ± 0.00031 | +0.00009 ± 0.00003 [13] | -0.00004 ± 0.00008 | -9.830 |
+  - l. 114 → l. 114
+    − | (a4) c = +0.02, B17's construction | 0 | -0.00011 ± 0.00040 | +0.00468 ± 0.00036 | -0.00479 ± 0.00065 | +0.00129 ± 0.00012 | +0.00387 ± 0.00034 | +0.00401 ± 0.00035 | +0.00003 ± 0.00007 | -0.00165 ± 0.00012 | -3.722 |
+    + | (a4) c = +0.02, B17's construction | 0 | -0.00011 ± 0.00040 | +0.00466 ± 0.00036 [12] | -0.00471 ± 0.00064 [12] | +0.00129 ± 0.00012 | +0.00387 ± 0.00034 | +0.00401 ± 0.00035 | -0.00005 ± 0.00003 [12] | -0.00165 ± 0.00012 | -3.750 |
+  - l. 115 → l. 115
+    − | (a4) c = -0.02, B17's construction | 0 | +0.00006 ± 0.00040 | +0.00552 ± 0.00038 | -0.00546 ± 0.00066 | +0.00134 ± 0.00012 | +0.00405 ± 0.00033 | +0.00440 ± 0.00034 | -0.00010 ± 0.00012 | -0.00191 ± 0.00010 | -4.074 |
+    + | (a4) c = -0.02, B17's construction | 0 | +0.00006 ± 0.00040 | +0.00565 ± 0.00037 [16] | -0.00565 ± 0.00065 [16] | +0.00134 ± 0.00012 | +0.00405 ± 0.00033 | +0.00440 ± 0.00034 | -0.00019 ± 0.00011 [16] | -0.00191 ± 0.00010 | -4.130 |
+  - l. 116 → l. 116
+    − | (a5) base, against the unperturbed AR(1) pairs (levels differ by construction) | 0 | -0.01423 | +0.00041 | -0.01464 | -0.00170 | +0.00793 | +0.00802 | -0.00027 | +0.02031 | — |
+    + | (a5) base, against the unperturbed AR(1) pairs (levels differ by construction) | 0 | -0.01423 | +0.00039 [16] | -0.01442 [16] | -0.00170 | +0.00793 | +0.00802 | -0.00028 [16] | +0.02031 | — |
+  - l. 117 → l. 117
+    − | (a5) Δa_s = −0.03 (against the (a5) base) | 0 | -0.01470 ± 0.00020 | -0.02489 ± 0.00038 | +0.01020 ± 0.00023 | -0.00642 ± 0.00010 | -0.00371 ± 0.00006 | -0.00377 ± 0.00006 | +0.00008 ± 0.00005 | -0.01066 ± 0.00007 | -1.587 |
+    + | (a5) Δa_s = −0.03 (against the (a5) base) | 0 | -0.01470 ± 0.00020 | -0.02482 ± 0.00038 [6] | +0.01012 ± 0.00023 [6] | -0.00642 ± 0.00010 | -0.00371 ± 0.00006 | -0.00377 ± 0.00006 | +0.00004 ± 0.00002 [6] | -0.01066 ± 0.00007 | -1.581 |
+  - l. 118 → l. 118
+    − | (a5) λ → 0.9λ (against the (a5) base) | 0 | +0.00354 ± 0.00016 | -0.00037 ± 0.00013 | +0.00391 ± 0.00012 | -0.00143 ± 0.00003 | -0.00010 ± 0.00005 | -0.00003 ± 0.00005 | +0.00019 ± 0.00008 | +0.01095 ± 0.00007 | -2.727 |
+    + | (a5) λ → 0.9λ (against the (a5) base) | 0 | +0.00354 ± 0.00016 | -0.00043 ± 0.00011 [5] | +0.00394 ± 0.00010 [5] | -0.00143 ± 0.00003 | -0.00010 ± 0.00005 | -0.00003 ± 0.00005 | +0.00021 ± 0.00002 [5] | +0.01095 ± 0.00007 | -2.762 |
+- `notes/review_results/partB/diagnostic_alternatives.csv`: 70 cell(s) differ (line in the file, its row's text cells, column: committed → regenerated)
+  - l. 116 (b · (i) Δa = −0.015 · Δ AR(1)-substituted sts), value: -0.04776852175 → -0.04774842349
+  - l. 116 (b · (i) Δa = −0.015 · Δ AR(1)-substituted sts), se: 0.000120425 → 0.000101533
+  - l. 117 (b · (i) Δa = −0.015 · Δ residual), value: 0.005369091302 → 0.005321756338
+  - l. 117 (b · (i) Δa = −0.015 · Δ residual), se: 8.87961e-05 → 6.19788e-05
+  - l. 121 (b · (i) Δa = −0.015 · Δ D), value: 0.0001462894083 → 0.0001677846915
+  - l. 121 (b · (i) Δa = −0.015 · Δ D), se: 6.9645e-05 → 1.19763e-05
+  - l. 123 (b · (i) Δa = −0.015 · residual change / Δr₁), value: -0.3899706562 → -0.3865673345
+  - l. 125 (b · (a1) δ = +0.02 · Δ AR(1)-substituted sts), value: -0.004568372983 → -0.004496583322
+  - l. 125 (b · (a1) δ = +0.02 · Δ AR(1)-substituted sts), se: 0.000348631 → 0.000337574
+  - l. 126 (b · (a1) δ = +0.02 · Δ residual), value: 0.0097772702 → 0.009314216345
+  - l. 126 (b · (a1) δ = +0.02 · Δ residual), se: 0.000930884 → 0.000910076
+  - l. 130 (b · (a1) δ = +0.02 · Δ D), value: 0.0003169820674 → 0.000170888517
+  - l. 130 (b · (a1) δ = +0.02 · Δ D), se: 0.000137503 → 4.52376e-05
+  - l. 132 (b · (a1) δ = +0.02 · residual change / Δr₁), value: -10.62813369 → -10.11233358
+  - l. 134 (b · (a1) δ = −0.02 · Δ AR(1)-substituted sts), value: -0.004086516552 → -0.003809187912
+  - l. 134 (b · (a1) δ = −0.02 · Δ AR(1)-substituted sts), se: 0.000370591 → 0.00034935
+  - l. 135 (b · (a1) δ = −0.02 · Δ residual), value: 0.01016339895 → 0.009505306536
+  - l. 135 (b · (a1) δ = −0.02 · Δ residual), se: 0.000954184 → 0.000923941
+  - l. 139 (b · (a1) δ = −0.02 · Δ D), value: 0.0004058370575 → 0.0001606011419
+  - l. 139 (b · (a1) δ = −0.02 · Δ D), se: 0.000131716 → 5.20407e-05
+  - l. 141 (b · (a1) δ = −0.02 · residual change / Δr₁), value: -11.35847332 → -10.71306761
+  - l. 143 (b · (a2) δ = +0.01 × sign(q) · Δ AR(1)-substituted sts), value: 0.002897706818 → 0.002921504229
+  - l. 143 (b · (a2) δ = +0.01 × sign(q) · Δ AR(1)-substituted sts), se: 0.000153467 → 0.000145484
+  - l. 144 (b · (a2) δ = +0.01 × sign(q) · Δ residual), value: -0.01354265375 → -0.0134754269
+  - l. 144 (b · (a2) δ = +0.01 × sign(q) · Δ residual), se: 0.000301333 → 0.000294162
+  - l. 148 (b · (a2) δ = +0.01 × sign(q) · Δ D), value: -7.070927337e-05 → -8.304867309e-05
+  - l. 148 (b · (a2) δ = +0.01 × sign(q) · Δ D), se: 6.41226e-05 → 2.27508e-05
+  - l. 150 (b · (a2) δ = +0.01 × sign(q) · residual change / Δr₁), value: 58.91368789 → 57.95050407
+  - l. 152 (b · (a2) δ = −0.01 × sign(q) · Δ AR(1)-substituted sts), value: -0.005111187172 → -0.004894011016
+  - l. 152 (b · (a2) δ = −0.01 × sign(q) · Δ AR(1)-substituted sts), se: 0.000195458 → 0.000172861
+  - l. 153 (b · (a2) δ = −0.01 × sign(q) · Δ residual), value: 0.01849717867 → 0.01807963329
+  - l. 153 (b · (a2) δ = −0.01 × sign(q) · Δ residual), se: 0.000384623 → 0.000363857
+  - l. 157 (b · (a2) δ = −0.01 × sign(q) · Δ D), value: 0.0003946445063 → 0.0001062927859
+  - l. 157 (b · (a2) δ = −0.01 × sign(q) · Δ D), se: 0.000135884 → 7.05265e-05
+  - l. 159 (b · (a2) δ = −0.01 × sign(q) · residual change / Δr₁), value: -87.35848719 → -85.87482542
+  - l. 161 (b · (a3) c = +0.02, r₁ and q held · Δ AR(1)-substituted sts), value: -0.003421095563 → -0.003383080744
+  - l. 161 (b · (a3) c = +0.02, r₁ and q held · Δ AR(1)-substituted sts), se: 0.000284469 → 0.000276161
+  - l. 162 (b · (a3) c = +0.02, r₁ and q held · Δ residual), value: 0.006772300562 → 0.006775159013
+  - l. 162 (b · (a3) c = +0.02, r₁ and q held · Δ residual), se: 0.000553529 → 0.00054864
+  - l. 166 (b · (a3) c = +0.02, r₁ and q held · Δ D), value: 0.0001046455867 → 9.314806713e-05
+  - l. 166 (b · (a3) c = +0.02, r₁ and q held · Δ D), se: 9.09805e-05 → 3.39498e-05
+  - l. 168 (b · (a3) c = +0.02, r₁ and q held · residual change / Δr₁), value: -9.878536691 → -9.830023953
+  - l. 170 (b · (a4) c = +0.02, B17's construction · Δ AR(1)-substituted sts), value: 0.004675360188 → 0.004658872151
+  - l. 170 (b · (a4) c = +0.02, B17's construction · Δ AR(1)-substituted sts), se: 0.000362257 → 0.000357151
+  - l. 171 (b · (a4) c = +0.02, B17's construction · Δ residual), value: -0.004787932497 → -0.004713851118
+  - l. 171 (b · (a4) c = +0.02, B17's construction · Δ residual), se: 0.000645626 → 0.000642041
+  - l. 175 (b · (a4) c = +0.02, B17's construction · Δ D), value: 3.110608177e-05 → -4.562790895e-05
+  - l. 175 (b · (a4) c = +0.02, B17's construction · Δ D), se: 6.61605e-05 → 3.22221e-05
+  - l. 177 (b · (a4) c = +0.02, B17's construction · residual change / Δr₁), value: -3.721522437 → -3.750008845
+  - l. 179 (b · (a4) c = -0.02, B17's construction · Δ AR(1)-substituted sts), value: 0.005516027417 → 0.005653211102
+  - l. 179 (b · (a4) c = -0.02, B17's construction · Δ AR(1)-substituted sts), se: 0.000383754 → 0.000372176
+  - l. 180 (b · (a4) c = -0.02, B17's construction · Δ residual), value: -0.005458535055 → -0.005647467028
+  - l. 180 (b · (a4) c = -0.02, B17's construction · Δ residual), se: 0.000659427 → 0.000648932
+  - l. 184 (b · (a4) c = -0.02, B17's construction · Δ D), value: -9.753287229e-05 → -0.0001910329545
+  - l. 184 (b · (a4) c = -0.02, B17's construction · Δ D), se: 0.000118801 → 0.00010599
+  - l. 186 (b · (a4) c = -0.02, B17's construction · residual change / Δr₁), value: -4.074087039 → -4.130124308
+  - l. 188 (b · (a5) Δa_s = −0.03 (against the (a5) base) · Δ AR(1)-substituted sts), value: -0.02489353788 → -0.02481507567
+  - l. 188 (b · (a5) Δa_s = −0.03 (against the (a5) base) · Δ AR(1)-substituted sts), se: 0.000381941 → 0.000380084
+  - l. 189 (b · (a5) Δa_s = −0.03 (against the (a5) base) · Δ residual), value: 0.01019619755 → 0.01012459466
+  - l. 189 (b · (a5) Δa_s = −0.03 (against the (a5) base) · Δ residual), se: 0.000229522 → 0.000225595
+  - l. 193 (b · (a5) Δa_s = −0.03 (against the (a5) base) · Δ D), value: 7.596165066e-05 → 3.992723533e-05
+  - l. 193 (b · (a5) Δa_s = −0.03 (against the (a5) base) · Δ D), se: 4.98808e-05 → 1.79883e-05
+  - l. 195 (b · (a5) Δa_s = −0.03 (against the (a5) base) · residual change / Δr₁), value: -1.587339193 → -1.581267788
+  - l. 197 (b · (a5) λ → 0.9λ (against the (a5) base) · Δ AR(1)-substituted sts), value: -0.0003685915011 → -0.0004281641081
+  - l. 197 (b · (a5) λ → 0.9λ (against the (a5) base) · Δ AR(1)-substituted sts), se: 0.000131999 → 0.000111164
+  - l. 198 (b · (a5) λ → 0.9λ (against the (a5) base) · Δ residual), value: 0.003911029585 → 0.003937497529
+  - l. 198 (b · (a5) λ → 0.9λ (against the (a5) base) · Δ residual), se: 0.000121024 → 0.00010387
+  - l. 202 (b · (a5) λ → 0.9λ (against the (a5) base) · Δ D), value: 0.0001902440558 → 0.0002089684755
+  - l. 202 (b · (a5) λ → 0.9λ (against the (a5) base) · Δ D), se: 7.83266e-05 → 1.51222e-05
+  - l. 204 (b · (a5) λ → 0.9λ (against the (a5) base) · residual change / Δr₁), value: -2.726596953 → -2.761974669
+- `notes/review_results/partB/diagnostic_alternatives_run.log`: 13 line(s) differ (committed l., then regenerated l.)
+  - l. 121 → l. 121
+    − 3000 pairs, q ~ N(0, 0.3424) clipped to ±0.8, a = 0.85; runs of 840 samples after a burn-in of 200; 14 windows of 60; the other run an independent realisation. SE over pairs of each pair's 14-window mean; B's SE over the 14 windows.
+    + 3000 pairs, q ~ N(0, 0.3424) clipped to ±0.8, a = 0.85; runs of 840 samples after a burn-in of 200; 14 windows of 60; the other run an independent realisation. SE over pairs of each pair's 14-window mean; B's SE over the 14 windows. A number in brackets after a mean: the pairs left out of it because the quantity does not exist for them, one of their windows' matrices not being positive definite (B26); the column 'pairs excluded' counts the pairs left out of every quantity, and the last column divides the residual's change by r₁'s over the residual's pairs.
+  - l. 123 → l. 123
+    − Unperturbed AR(1) pairs, levels: observed sts +0.71753; AR(1)-substituted sts +0.78780; residual -0.07027; r₁ +0.78638; A_other -0.00291; A_same -0.00117; D -0.01137; B +0.06122.
+    + Unperturbed AR(1) pairs, levels: observed sts +0.71753; AR(1)-substituted sts +0.78788 [11]; residual -0.06998 [11]; r₁ +0.78638; A_other -0.00291; A_same -0.00117; D -0.01138 [11]; B +0.06122.
+  - l. 127 → l. 127
+    − | (i) Δa = −0.015 | 0 | -0.04240 ± 0.00011 | -0.04777 ± 0.00012 | +0.00537 ± 0.00009 | -0.01377 ± 0.00002 | +0.00001 ± 0.00004 | +0.00001 ± 0.00005 | +0.00015 ± 0.00007 | +0.00034 ± 0.00004 | -0.390 |
+    + | (i) Δa = −0.015 | 0 | -0.04240 ± 0.00011 | -0.04775 ± 0.00010 [11] | +0.00532 ± 0.00006 [11] | -0.01377 ± 0.00002 | +0.00001 ± 0.00004 | +0.00001 ± 0.00005 | +0.00017 ± 0.00001 [11] | +0.00034 ± 0.00004 | -0.387 |
+  - l. 128 → l. 128
+    − | (a1) δ = +0.02 | 0 | +0.00521 ± 0.00078 | -0.00457 ± 0.00035 | +0.00978 ± 0.00093 | -0.00092 ± 0.00004 | +0.00041 ± 0.00034 | +0.00017 ± 0.00034 | +0.00032 ± 0.00014 | +0.00045 ± 0.00010 | -10.628 |
+    + | (a1) δ = +0.02 | 0 | +0.00521 ± 0.00078 | -0.00450 ± 0.00034 [20] | +0.00931 ± 0.00091 [20] | -0.00092 ± 0.00004 | +0.00041 ± 0.00034 | +0.00017 ± 0.00034 | +0.00017 ± 0.00005 [20] | +0.00045 ± 0.00010 | -10.112 |
+  - l. 129 → l. 129
+    − | (a1) δ = −0.02 | 0 | +0.00608 ± 0.00079 | -0.00409 ± 0.00037 | +0.01016 ± 0.00095 | -0.00089 ± 0.00004 | +0.00059 ± 0.00034 | +0.00070 ± 0.00034 | +0.00041 ± 0.00013 | +0.00032 ± 0.00011 | -11.358 |
+    + | (a1) δ = −0.02 | 0 | +0.00608 ± 0.00079 | -0.00381 ± 0.00035 [19] | +0.00951 ± 0.00092 [19] | -0.00089 ± 0.00004 | +0.00059 ± 0.00034 | +0.00070 ± 0.00034 | +0.00016 ± 0.00005 [19] | +0.00032 ± 0.00011 | -10.713 |
+  - l. 130 → l. 130
+    − | (a2) δ = +0.01 × sign(q) | 0 | -0.01064 ± 0.00028 | +0.00290 ± 0.00015 | -0.01354 ± 0.00030 | -0.00023 ± 0.00002 | +0.00782 ± 0.00011 | +0.00781 ± 0.00010 | -0.00007 ± 0.00006 | +0.01661 ± 0.00010 | +58.914 |
+    + | (a2) δ = +0.01 × sign(q) | 0 | -0.01064 ± 0.00028 | +0.00292 ± 0.00015 [12] | -0.01348 ± 0.00029 [12] | -0.00023 ± 0.00002 | +0.00782 ± 0.00011 | +0.00781 ± 0.00010 | -0.00008 ± 0.00002 [12] | +0.01661 ± 0.00010 | +57.951 |
+  - l. 131 → l. 131
+    − | (a2) δ = −0.01 × sign(q) | 0 | +0.01339 ± 0.00033 | -0.00511 ± 0.00020 | +0.01850 ± 0.00038 | -0.00021 ± 0.00002 | -0.00748 ± 0.00010 | -0.00762 ± 0.00010 | +0.00039 ± 0.00014 | -0.01680 ± 0.00009 | -87.358 |
+    + | (a2) δ = −0.01 × sign(q) | 0 | +0.01339 ± 0.00033 | -0.00489 ± 0.00017 [16] | +0.01808 ± 0.00036 [16] | -0.00021 ± 0.00002 | -0.00748 ± 0.00010 | -0.00762 ± 0.00010 | +0.00011 ± 0.00007 [16] | -0.01680 ± 0.00009 | -85.875 |
+  - l. 132 → l. 132
+    − | (a3) c = +0.02, r₁ and q held | 0 | +0.00335 ± 0.00047 | -0.00342 ± 0.00028 | +0.00677 ± 0.00055 | -0.00069 ± 0.00004 | +0.00014 ± 0.00031 | -0.00008 ± 0.00031 | +0.00010 ± 0.00009 | -0.00004 ± 0.00008 | -9.879 |
+    + | (a3) c = +0.02, r₁ and q held | 0 | +0.00335 ± 0.00047 | -0.00338 ± 0.00028 [13] | +0.00678 ± 0.00055 [13] | -0.00069 ± 0.00004 | +0.00014 ± 0.00031 | -0.00008 ± 0.00031 | +0.00009 ± 0.00003 [13] | -0.00004 ± 0.00008 | -9.830 |
+  - l. 133 → l. 133
+    − | (a4) c = +0.02, B17's construction | 0 | -0.00011 ± 0.00040 | +0.00468 ± 0.00036 | -0.00479 ± 0.00065 | +0.00129 ± 0.00012 | +0.00387 ± 0.00034 | +0.00401 ± 0.00035 | +0.00003 ± 0.00007 | -0.00165 ± 0.00012 | -3.722 |
+    + | (a4) c = +0.02, B17's construction | 0 | -0.00011 ± 0.00040 | +0.00466 ± 0.00036 [12] | -0.00471 ± 0.00064 [12] | +0.00129 ± 0.00012 | +0.00387 ± 0.00034 | +0.00401 ± 0.00035 | -0.00005 ± 0.00003 [12] | -0.00165 ± 0.00012 | -3.750 |
+  - l. 134 → l. 134
+    − | (a4) c = -0.02, B17's construction | 0 | +0.00006 ± 0.00040 | +0.00552 ± 0.00038 | -0.00546 ± 0.00066 | +0.00134 ± 0.00012 | +0.00405 ± 0.00033 | +0.00440 ± 0.00034 | -0.00010 ± 0.00012 | -0.00191 ± 0.00010 | -4.074 |
+    + | (a4) c = -0.02, B17's construction | 0 | +0.00006 ± 0.00040 | +0.00565 ± 0.00037 [16] | -0.00565 ± 0.00065 [16] | +0.00134 ± 0.00012 | +0.00405 ± 0.00033 | +0.00440 ± 0.00034 | -0.00019 ± 0.00011 [16] | -0.00191 ± 0.00010 | -4.130 |
+  - l. 135 → l. 135
+    − | (a5) base, against the unperturbed AR(1) pairs (levels differ by construction) | 0 | -0.01423 | +0.00041 | -0.01464 | -0.00170 | +0.00793 | +0.00802 | -0.00027 | +0.02031 | — |
+    + | (a5) base, against the unperturbed AR(1) pairs (levels differ by construction) | 0 | -0.01423 | +0.00039 [16] | -0.01442 [16] | -0.00170 | +0.00793 | +0.00802 | -0.00028 [16] | +0.02031 | — |
+  - l. 136 → l. 136
+    − | (a5) Δa_s = −0.03 (against the (a5) base) | 0 | -0.01470 ± 0.00020 | -0.02489 ± 0.00038 | +0.01020 ± 0.00023 | -0.00642 ± 0.00010 | -0.00371 ± 0.00006 | -0.00377 ± 0.00006 | +0.00008 ± 0.00005 | -0.01066 ± 0.00007 | -1.587 |
+    + | (a5) Δa_s = −0.03 (against the (a5) base) | 0 | -0.01470 ± 0.00020 | -0.02482 ± 0.00038 [6] | +0.01012 ± 0.00023 [6] | -0.00642 ± 0.00010 | -0.00371 ± 0.00006 | -0.00377 ± 0.00006 | +0.00004 ± 0.00002 [6] | -0.01066 ± 0.00007 | -1.581 |
+  - l. 137 → l. 137
+    − | (a5) λ → 0.9λ (against the (a5) base) | 0 | +0.00354 ± 0.00016 | -0.00037 ± 0.00013 | +0.00391 ± 0.00012 | -0.00143 ± 0.00003 | -0.00010 ± 0.00005 | -0.00003 ± 0.00005 | +0.00019 ± 0.00008 | +0.01095 ± 0.00007 | -2.727 |
+    + | (a5) λ → 0.9λ (against the (a5) base) | 0 | +0.00354 ± 0.00016 | -0.00043 ± 0.00011 [5] | +0.00394 ± 0.00010 [5] | -0.00143 ± 0.00003 | -0.00010 ± 0.00005 | -0.00003 ± 0.00005 | +0.00021 ± 0.00002 [5] | +0.01095 ± 0.00007 | -2.762 |
+
+Tree: a second clone of d108d66 with the correction (49fa0bd), where B24, B17 and B17b were run, in that order, under an earlier version of the wrappers that counts the same matrices; its scripts for these steps, `rev_phiid_fast.py` and `rev_git.py` are 75a7dd0's byte for byte, and its `review_v2_residual_null.py`, whose functions B24 and B17b import, differs from 75a7dd0's only in `data_refs` and the script's `__main__` block, which they do not execute. B24 ran before B17b there, reading B17b's committed tables; the corrected B17b prints the same generator parameters (β̄, σ_q, β̄_post, the filter's edges) and the same (i) row, which are all B24 reads from them. The three steps' outputs were copied into the first clone for the comparisons.
+
+### B17, `notes/partB17_calibration.py`
+
+Matrices evaluated by `rev_phiid_fast`: 99,960,000 (49,980,000 through PairPhiID, 0 of them not positive definite; 49,980,000 through atoms_from_corr, 11,494 of them not positive definite); nearly singular (smallest eigenvalue in (0, 10⁻³]): 5,290. By calling line: `notes/partB17_calibration.py` line 102, 41,160,000 (0 not positive definite); `notes/partB17_calibration.py` line 104, 41,160,000 (11,494 not positive definite); `notes/partB17_calibration.py` line 106, 2,940,000 (0 not positive definite); `notes/partB17_calibration.py` line 109, 2,940,000 (0 not positive definite); `notes/partB17_calibration.py` line 112, 5,880,000 (0 not positive definite); `notes/partB17_calibration.py` line 114, 5,880,000 (0 not positive definite).
+
+- `notes/partB17_calibration.py` line 104, atoms_from_corr: 11,494 of 41,160,000 not positive definite, smallest eigenvalue -0.0395.
+- the sts that the code before the correction gave the 11,494 matrices of `notes/partB17_calibration.py` line 104: -3.1618 to +5.8239.
+
+- `notes/review_results/partB/calibration_tables.md`: 7 line(s) differ (committed l., then regenerated l.)
+  - l. 8 → l. 8
+    − | (i) Δa = −0.015, Δc = 0 | W60 | 0.7152 | -0.0422 ± 0.0034 | -0.0471 ± 0.0036 | +0.0049 ± 0.0017 | 0.056; 0.82 | +0.00014 ± 0.00065 | +0.00130 ± 0.00050 |
+    + | (i) Δa = −0.015, Δc = 0 | W60 | 0.7152 | -0.0422 ± 0.0034 | -0.0471 ± 0.0036 | +0.0049 ± 0.0017 | 0.055; 0.80 | +0.00014 ± 0.00065 | +0.00130 ± 0.00050 |
+  - l. 11 → l. 11
+    − | (ii) Δc = +0.01 | W60 | 0.7153 | +0.0010 ± 0.0036 | +0.0020 ± 0.0037 | -0.0010 ± 0.0018 | 0.460; 0.08 | +0.00758 ± 0.00072 | -0.00014 ± 0.00065 |
+    + | (ii) Δc = +0.01 | W60 | 0.7153 | +0.0010 ± 0.0036 | +0.0020 ± 0.0037 | -0.0010 ± 0.0018 | 0.459; 0.10 | +0.00758 ± 0.00072 | -0.00014 ± 0.00065 |
+  - l. 14 → l. 14
+    − | (ii) Δc = +0.02 | W60 | 0.7154 | +0.0002 ± 0.0039 | +0.0053 ± 0.0037 | -0.0052 ± 0.0016 | 0.055; 0.76 | +0.01480 ± 0.00069 | -0.00037 ± 0.00063 |
+    + | (ii) Δc = +0.02 | W60 | 0.7154 | +0.0002 ± 0.0039 | +0.0054 ± 0.0037 | -0.0052 ± 0.0016 | 0.052; 0.76 | +0.01480 ± 0.00069 | -0.00037 ± 0.00063 |
+  - l. 17 → l. 17
+    − | (ii) Δc = +0.03 | W60 | 0.7152 | +0.0001 ± 0.0031 | +0.0110 ± 0.0034 | -0.0109 ± 0.0017 | 0.001; 1.00 | +0.02210 ± 0.00071 | -0.00083 ± 0.00055 |
+    + | (ii) Δc = +0.03 | W60 | 0.7152 | +0.0001 ± 0.0031 | +0.0110 ± 0.0033 | -0.0108 ± 0.0017 | 0.001; 1.00 | +0.02210 ± 0.00071 | -0.00083 ± 0.00055 |
+  - l. 20 → l. 20
+    − | (ii) Δc = −0.02 | W60 | 0.7152 | -0.0002 ± 0.0038 | +0.0053 ± 0.0037 | -0.0055 ± 0.0018 | 0.039; 0.80 | -0.01495 ± 0.00066 | -0.00027 ± 0.00059 |
+    + | (ii) Δc = −0.02 | W60 | 0.7152 | -0.0002 ± 0.0038 | +0.0054 ± 0.0037 | -0.0056 ± 0.0018 | 0.037; 0.80 | -0.01495 ± 0.00066 | -0.00027 ± 0.00059 |
+  - l. 23 → l. 23
+    − | (iii) Δa = −0.015, Δc = +0.02 | W60 | 0.7153 | -0.0419 ± 0.0035 | -0.0427 ± 0.0033 | +0.0009 ± 0.0016 | 0.521; 0.00 | +0.01500 ± 0.00080 | +0.00093 ± 0.00056 |
+    + | (iii) Δa = −0.015, Δc = +0.02 | W60 | 0.7153 | -0.0419 ± 0.0035 | -0.0428 ± 0.0033 | +0.0009 ± 0.0016 | 0.505; 0.00 | +0.01500 ± 0.00080 | +0.00093 ± 0.00056 |
+  - l. 26 → l. 26
+    − | (iv) a_x − a_y = 0.03, Δa = −0.015 | W60 | 0.7131 | -0.0422 ± 0.0036 | -0.0473 ± 0.0038 | +0.0051 ± 0.0018 | 0.052; 0.72 | +0.00013 ± 0.00071 | +0.00130 ± 0.00056 |
+    + | (iv) a_x − a_y = 0.03, Δa = −0.015 | W60 | 0.7131 | -0.0422 ± 0.0036 | -0.0472 ± 0.0038 | +0.0051 ± 0.0017 | 0.051; 0.70 | +0.00013 ± 0.00071 | +0.00130 ± 0.00056 |
+- `notes/review_results/partB/calibration.csv`: 1,698 cell(s) differ (line in the file, its row's text cells, column: committed → regenerated)
+  - l. 3 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.045428 → -0.045542
+  - l. 3 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.005170 → 0.005284
+  - l. 3 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0117 → 0.0101
+  - l. 3 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.001717 → 0.001770
+  - l. 3 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.008119 → 0.008239
+  - l. 6 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.053527 → -0.053531
+  - l. 6 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.005177 → 0.005181
+  - l. 6 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0404 → 0.0358
+  - l. 6 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.000727 → 0.000788
+  - l. 6 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.009732 → 0.009544
+  - l. 9 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.050595 → -0.050215
+  - l. 9 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.003529 → 0.003149
+  - l. 9 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.1057 → 0.1504
+  - l. 9 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: -0.000035 → -0.000437
+  - l. 9 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.007211 → 0.007045
+  - l. 12 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.041881 → -0.041915
+  - l. 12 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.004004 → 0.004038
+  - l. 12 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0121 → 0.0090
+  - l. 12 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.001667 → 0.001788
+  - l. 12 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.006481 → 0.006480
+  - l. 15 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.046434 → -0.046536
+  - l. 15 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.003483 → 0.003585
+  - l. 15 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0166 → 0.0161
+  - l. 15 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.001070 → 0.001145
+  - l. 15 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.006465 → 0.006663
+  - l. 18 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.045600 → -0.045648
+  - l. 18 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.006124 → 0.006172
+  - l. 18 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.003472 → 0.003552
+  - l. 18 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.008660 → 0.008835
+  - l. 21 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.048899 → -0.048775
+  - l. 21 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.004595 → 0.004471
+  - l. 21 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0352 → 0.0424
+  - l. 21 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.001009 → 0.000735
+  - l. 21 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.007951 → 0.007921
+  - l. 24 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.044603 → -0.044915
+  - l. 24 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.004245 → 0.004556
+  - l. 24 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0300 → 0.0234
+  - l. 24 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.001137 → 0.001459
+  - l. 24 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.007393 → 0.007714
+  - l. 27 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.047629 → -0.047790
+  - l. 27 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.008700 → 0.008861
+  - l. 27 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.006153 → 0.006273
+  - l. 27 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.011068 → 0.011270
+  - l. 30 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.052819 → -0.052984
+  - l. 30 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.006735 → 0.006900
+  - l. 30 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0062 → 0.0057
+  - l. 30 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.002793 → 0.002880
+  - l. 30 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.010261 → 0.010470
+  - l. 33 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.048456 → -0.048597
+  - l. 33 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.003827 → 0.003968
+  - l. 33 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0259 → 0.0194
+  - l. 33 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.001115 → 0.001321
+  - l. 33 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.006820 → 0.006787
+  - l. 36 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.046955 → -0.047023
+  - l. 36 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.003232 → 0.003301
+  - l. 36 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0490 → 0.0472
+  - l. 36 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.000453 → 0.000468
+  - l. 36 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.006035 → 0.006169
+  - l. 39 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.045562 → -0.045425
+  - l. 39 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.005878 → 0.005741
+  - l. 39 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0248 → 0.0272
+  - l. 39 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.001555 → 0.001359
+  - l. 39 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.009971 → 0.009836
+  - l. 42 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.045571 → -0.045698
+  - l. 42 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.005974 → 0.006101
+  - l. 42 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0040 → 0.0044
+  - l. 42 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.003046 → 0.003054
+  - l. 42 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.008923 → 0.009137
+  - l. 45 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.043662 → -0.043991
+  - l. 45 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.004755 → 0.005084
+  - l. 45 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0214 → 0.0154
+  - l. 45 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.001501 → 0.001819
+  - l. 45 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.008186 → 0.008538
+  - l. 48 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.053893 → -0.053962
+  - l. 48 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.009394 → 0.009464
+  - l. 48 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0005 → 0.0002
+  - l. 48 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.005596 → 0.006103
+  - l. 48 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.013480 → 0.013165
+  - l. 51 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.050883 → -0.050772
+  - l. 51 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.005539 → 0.005428
+  - l. 51 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0017 → 0.0011
+  - l. 51 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.003180 → 0.003252
+  - l. 51 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.007854 → 0.007626
+  - l. 54 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.048192 → -0.047981
+  - l. 54 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.005491 → 0.005279
+  - l. 54 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0497 → 0.0515
+  - l. 54 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.000733 → 0.000701
+  - l. 54 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.011066 → 0.010654
+  - l. 57 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.050853 → -0.050747
+  - l. 57 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.008010 → 0.007904
+  - l. 57 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0035 → 0.0029
+  - l. 57 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.003688 → 0.003737
+  - l. 57 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.012067 → 0.011851
+  - l. 60 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.048127 → -0.048028
+  - l. 60 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.003392 → 0.003293
+  - l. 60 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0509 → 0.0613
+  - l. 60 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.000433 → 0.000295
+  - l. 60 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.006566 → 0.006531
+  - l. 63 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.043536 → -0.043431
+  - l. 63 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.005642 → 0.005536
+  - l. 63 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0012 → 0.0007
+  - l. 63 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.003316 → 0.003253
+  - l. 63 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.007792 → 0.007676
+  - l. 66 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.052286 → -0.052740
+  - l. 66 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.006369 → 0.006823
+  - l. 66 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0006 → 0.0005
+  - l. 66 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.004106 → 0.004489
+  - l. 66 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.008651 → 0.009309
+  - l. 69 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.040383 → -0.040585
+  - l. 69 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.004247 → 0.004449
+  - l. 69 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0095 → 0.0107
+  - l. 69 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.001554 → 0.001606
+  - l. 69 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.006681 → 0.006985
+  - l. 72 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.050841 → -0.050483
+  - l. 72 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.002756 → 0.002398
+  - l. 72 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.1196 → 0.1791
+  - l. 72 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: -0.000467 → -0.000998
+  - l. 72 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.005805 → 0.005551
+  - l. 75 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.044751 → -0.044499
+  - l. 75 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.002807 → 0.002555
+  - l. 75 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0503 → 0.0750
+  - l. 75 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.000303 → 0.000154
+  - l. 75 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.005560 → 0.005212
+  - l. 78 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.040152 → -0.040287
+  - l. 78 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.005679 → 0.005814
+  - l. 78 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0298 → 0.0261
+  - l. 78 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.001379 → 0.001600
+  - l. 78 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.009943 → 0.010106
+  - l. 81 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.048221 → -0.048422
+  - l. 81 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.005601 → 0.005802
+  - l. 81 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0109 → 0.0112
+  - l. 81 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.001911 → 0.002026
+  - l. 81 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.009067 → 0.009356
+  - l. 84 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.045906 → -0.045891
+  - l. 84 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.006572 → 0.006557
+  - l. 84 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0004 → 0.0007
+  - l. 84 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.003885 → 0.003850
+  - l. 84 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.009543 → 0.009628
+  - l. 87 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.047004 → -0.046993
+  - l. 87 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.002801 → 0.002789
+  - l. 87 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.1228 → 0.1271
+  - l. 87 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: -0.000302 → -0.000313
+  - l. 87 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.005933 → 0.005947
+  - l. 90 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.042611 → -0.042757
+  - l. 90 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.002022 → 0.002168
+  - l. 90 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.3489 → 0.3118
+  - l. 90 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: -0.001923 → -0.001632
+  - l. 90 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.005918 → 0.006045
+  - l. 93 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.041988 → -0.041978
+  - l. 93 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.006834 → 0.006824
+  - l. 93 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0018 → 0.0012
+  - l. 93 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.003896 → 0.003864
+  - l. 93 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.010087 → 0.009949
+  - l. 96 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.039900 → -0.039936
+  - l. 96 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.001322 → 0.001359
+  - l. 96 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.5712 → 0.5623
+  - l. 96 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: -0.002877 → -0.002817
+  - l. 96 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.005598 → 0.005684
+  - l. 99 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.041828 → -0.041606
+  - l. 99 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.004158 → 0.003935
+  - l. 99 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0426 → 0.0443
+  - l. 99 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.000881 → 0.000775
+  - l. 99 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.007772 → 0.007511
+  - l. 102 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.050328 → -0.050382
+  - l. 102 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.007159 → 0.007213
+  - l. 102 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0007 → 0.0006
+  - l. 102 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.004240 → 0.004358
+  - l. 102 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.010049 → 0.009973
+  - l. 105 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.044198 → -0.044241
+  - l. 105 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.001122 → 0.001165
+  - l. 105 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.4731 → 0.4631
+  - l. 105 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: -0.001628 → -0.001603
+  - l. 105 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.004010 → 0.004094
+  - l. 108 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.051939 → -0.051949
+  - l. 108 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.005408 → 0.005418
+  - l. 108 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0188 → 0.0186
+  - l. 108 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.001496 → 0.001480
+  - l. 108 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.009474 → 0.009475
+  - l. 111 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.046687 → -0.046566
+  - l. 111 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.005444 → 0.005322
+  - l. 111 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0110 → 0.0148
+  - l. 111 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.001729 → 0.001523
+  - l. 111 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.008355 → 0.008364
+  - l. 114 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.049552 → -0.049473
+  - l. 114 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.006155 → 0.006076
+  - l. 114 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0057 → 0.0062
+  - l. 114 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.002594 → 0.002442
+  - l. 114 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.009280 → 0.009214
+  - l. 117 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.047945 → -0.048167
+  - l. 117 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.003907 → 0.004128
+  - l. 117 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0358 → 0.0294
+  - l. 117 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.000898 → 0.001060
+  - l. 117 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.007000 → 0.007269
+  - l. 120 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.049370 → -0.049439
+  - l. 120 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.003387 → 0.003456
+  - l. 120 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.001489 → 0.001472
+  - l. 120 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.005298 → 0.005489
+  - l. 123 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.040127 → -0.040196
+  - l. 123 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.003616 → 0.003685
+  - l. 123 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0432 → 0.0464
+  - l. 123 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.000618 → 0.000553
+  - l. 123 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.006304 → 0.006526
+  - l. 126 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.048066 → -0.048458
+  - l. 126 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.001988 → 0.002380
+  - l. 126 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.2648 → 0.1677
+  - l. 126 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: -0.001437 → -0.000882
+  - l. 126 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.005072 → 0.005329
+  - l. 129 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.046802 → -0.046805
+  - l. 129 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.004456 → 0.004458
+  - l. 129 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.001283 → 0.001331
+  - l. 129 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.007681 → 0.007726
+  - l. 132 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.051451 → -0.051415
+  - l. 132 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.004840 → 0.004804
+  - l. 132 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0326 → 0.0363
+  - l. 132 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.000847 → 0.000757
+  - l. 132 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.008288 → 0.008319
+  - l. 135 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.047191 → -0.047397
+  - l. 135 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.005439 → 0.005645
+  - l. 135 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0273 → 0.0175
+  - l. 135 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.001444 → 0.001907
+  - l. 135 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.009624 → 0.009639
+  - l. 138 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.047288 → -0.047388
+  - l. 138 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.005323 → 0.005423
+  - l. 138 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0074 → 0.0051
+  - l. 138 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.002130 → 0.002343
+  - l. 138 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.008813 → 0.008781
+  - l. 141 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.044151 → -0.044181
+  - l. 141 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.005483 → 0.005513
+  - l. 141 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0170 → 0.0154
+  - l. 141 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.001795 → 0.001826
+  - l. 141 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.008809 → 0.008782
+  - l. 144 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.050498 → -0.050365
+  - l. 144 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.006204 → 0.006071
+  - l. 144 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.002604 → 0.002497
+  - l. 144 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.009854 → 0.009702
+  - l. 147 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.049046 → -0.049074
+  - l. 147 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.005464 → 0.005492
+  - l. 147 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0026 → 0.0016
+  - l. 147 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.002696 → 0.002773
+  - l. 147 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.008764 → 0.008662
+  - l. 150 ((i) Δa = −0.015, Δc = 0 · W60), pred_did: -0.050334 → -0.050436
+  - l. 150 ((i) Δa = −0.015, Δc = 0 · W60), res_did: 0.005482 → 0.005584
+  - l. 150 ((i) Δa = −0.015, Δc = 0 · W60), res_p: 0.0172 → 0.0170
+  - l. 150 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_lo: 0.001840 → 0.001798
+  - l. 150 ((i) Δa = −0.015, Δc = 0 · W60), res_ci_hi: 0.009214 → 0.009451
+  - l. 153 ((ii) Δc = +0.01 · W60), pred_did: 0.000336 → 0.000723
+  - l. 153 ((ii) Δc = +0.01 · W60), res_did: -0.000887 → -0.001274
+  - l. 153 ((ii) Δc = +0.01 · W60), res_p: 0.7073 → 0.5790
+  - l. 153 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.004990 → -0.005265
+  - l. 153 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.003665 → 0.003304
+  - l. 156 ((ii) Δc = +0.01 · W60), pred_did: 0.001492 → 0.001406
+  - l. 156 ((ii) Δc = +0.01 · W60), res_did: -0.004881 → -0.004795
+  - l. 156 ((ii) Δc = +0.01 · W60), res_p: 0.0088 → 0.0073
+  - l. 156 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.007825 → -0.007516
+  - l. 156 ((ii) Δc = +0.01 · W60), res_ci_hi: -0.001921 → -0.001982
+  - l. 159 ((ii) Δc = +0.01 · W60), pred_did: 0.002217 → 0.002174
+  - l. 159 ((ii) Δc = +0.01 · W60), res_did: -0.001927 → -0.001883
+  - l. 159 ((ii) Δc = +0.01 · W60), res_p: 0.2102 → 0.2224
+  - l. 159 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.004707 → -0.004614
+  - l. 159 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.000968 → 0.001040
+  - l. 162 ((ii) Δc = +0.01 · W60), pred_did: -0.001569 → -0.001369
+  - l. 162 ((ii) Δc = +0.01 · W60), res_did: -0.004121 → -0.004321
+  - l. 162 ((ii) Δc = +0.01 · W60), res_p: 0.1180 → 0.0931
+  - l. 162 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.008619 → -0.008670
+  - l. 162 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.000648 → 0.000291
+  - l. 165 ((ii) Δc = +0.01 · W60), pred_did: 0.003794 → 0.003777
+  - l. 165 ((ii) Δc = +0.01 · W60), res_did: -0.002498 → -0.002480
+  - l. 165 ((ii) Δc = +0.01 · W60), res_p: 0.1531 → 0.1628
+  - l. 165 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.005726 → -0.005854
+  - l. 165 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.000485 → 0.000530
+  - l. 168 ((ii) Δc = +0.01 · W60), pred_did: 0.010292 → 0.010058
+  - l. 168 ((ii) Δc = +0.01 · W60), res_did: 0.001151 → 0.001385
+  - l. 168 ((ii) Δc = +0.01 · W60), res_p: 0.6656 → 0.6108
+  - l. 168 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.003002 → -0.002939
+  - l. 168 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.005722 → 0.006075
+  - l. 171 ((ii) Δc = +0.01 · W60), pred_did: 0.003250 → 0.003335
+  - l. 171 ((ii) Δc = +0.01 · W60), res_did: -0.000171 → -0.000256
+  - l. 171 ((ii) Δc = +0.01 · W60), res_p: 0.9442 → 0.9165
+  - l. 171 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.004839 → -0.005012
+  - l. 171 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.004237 → 0.004135
+  - l. 174 ((ii) Δc = +0.01 · W60), pred_did: -0.001427 → -0.001031
+  - l. 174 ((ii) Δc = +0.01 · W60), res_did: 0.000452 → 0.000056
+  - l. 174 ((ii) Δc = +0.01 · W60), res_p: 0.7849 → 0.9720
+  - l. 174 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.002511 → -0.002808
+  - l. 174 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.003751 → 0.003170
+  - l. 177 ((ii) Δc = +0.01 · W60), pred_did: 0.001059 → 0.000963
+  - l. 177 ((ii) Δc = +0.01 · W60), res_did: -0.000348 → -0.000252
+  - l. 177 ((ii) Δc = +0.01 · W60), res_p: 0.8077 → 0.8521
+  - l. 177 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.002998 → -0.002638
+  - l. 177 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.002453 → 0.002386
+  - l. 180 ((ii) Δc = +0.01 · W60), pred_did: -0.002836 → -0.002741
+  - l. 180 ((ii) Δc = +0.01 · W60), res_did: 0.001007 → 0.000912
+  - l. 180 ((ii) Δc = +0.01 · W60), res_p: 0.6610 → 0.6825
+  - l. 180 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.003023 → -0.003066
+  - l. 180 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.005329 → 0.005132
+  - l. 183 ((ii) Δc = +0.01 · W60), pred_did: 0.002842 → 0.003090
+  - l. 183 ((ii) Δc = +0.01 · W60), res_did: 0.000583 → 0.000335
+  - l. 183 ((ii) Δc = +0.01 · W60), res_p: 0.7101 → 0.8384
+  - l. 183 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.002271 → -0.002674
+  - l. 183 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.003528 → 0.003427
+  - l. 186 ((ii) Δc = +0.01 · W60), pred_did: 0.000831 → 0.000750
+  - l. 186 ((ii) Δc = +0.01 · W60), res_did: -0.002279 → -0.002198
+  - l. 186 ((ii) Δc = +0.01 · W60), res_p: 0.1743 → 0.1813
+  - l. 186 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.005100 → -0.004942
+  - l. 186 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.001035 → 0.001013
+  - l. 189 ((ii) Δc = +0.01 · W60), pred_did: -0.000967 → -0.001247
+  - l. 189 ((ii) Δc = +0.01 · W60), res_did: -0.000181 → 0.000099
+  - l. 189 ((ii) Δc = +0.01 · W60), res_p: 0.9005 → 0.9459
+  - l. 189 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.002824 → -0.002586
+  - l. 189 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.002567 → 0.002864
+  - l. 192 ((ii) Δc = +0.01 · W60), pred_did: 0.004832 → 0.004790
+  - l. 192 ((ii) Δc = +0.01 · W60), res_did: 0.001043 → 0.001085
+  - l. 192 ((ii) Δc = +0.01 · W60), res_p: 0.4146 → 0.3943
+  - l. 192 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.001340 → -0.001297
+  - l. 192 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.003305 → 0.003243
+  - l. 195 ((ii) Δc = +0.01 · W60), pred_did: 0.007842 → 0.007688
+  - l. 195 ((ii) Δc = +0.01 · W60), res_did: -0.003145 → -0.002991
+  - l. 195 ((ii) Δc = +0.01 · W60), res_p: 0.1704 → 0.1848
+  - l. 195 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.007091 → -0.006873
+  - l. 195 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.001097 → 0.001163
+  - l. 198 ((ii) Δc = +0.01 · W60), pred_did: -0.001771 → -0.001534
+  - l. 198 ((ii) Δc = +0.01 · W60), res_did: -0.000486 → -0.000722
+  - l. 198 ((ii) Δc = +0.01 · W60), res_p: 0.7836 → 0.6818
+  - l. 198 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.003865 → -0.003967
+  - l. 198 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.002611 → 0.002266
+  - l. 201 ((ii) Δc = +0.01 · W60), pred_did: 0.000550 → 0.000914
+  - l. 201 ((ii) Δc = +0.01 · W60), res_did: -0.000379 → -0.000744
+  - l. 201 ((ii) Δc = +0.01 · W60), res_p: 0.8313 → 0.6851
+  - l. 201 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.003394 → -0.003864
+  - l. 201 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.003003 → 0.002766
+  - l. 204 ((ii) Δc = +0.01 · W60), pred_did: -0.002604 → -0.002512
+  - l. 204 ((ii) Δc = +0.01 · W60), res_did: -0.000644 → -0.000737
+  - l. 204 ((ii) Δc = +0.01 · W60), res_p: 0.6998 → 0.6660
+  - l. 204 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.003734 → -0.003806
+  - l. 204 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.002547 → 0.002426
+  - l. 207 ((ii) Δc = +0.01 · W60), pred_did: 0.003855 → 0.003890
+  - l. 207 ((ii) Δc = +0.01 · W60), res_did: -0.001375 → -0.001410
+  - l. 207 ((ii) Δc = +0.01 · W60), res_p: 0.3394 → 0.3329
+  - l. 207 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.004068 → -0.004036
+  - l. 207 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.001150 → 0.001107
+  - l. 210 ((ii) Δc = +0.01 · W60), pred_did: 0.000830 → 0.000864
+  - l. 210 ((ii) Δc = +0.01 · W60), res_did: -0.003061 → -0.003095
+  - l. 210 ((ii) Δc = +0.01 · W60), res_p: 0.1130 → 0.1414
+  - l. 210 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.006395 → -0.006856
+  - l. 210 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.000324 → 0.000644
+  - l. 213 ((ii) Δc = +0.01 · W60), pred_did: 0.000032 → -0.000065
+  - l. 213 ((ii) Δc = +0.01 · W60), res_did: -0.001334 → -0.001237
+  - l. 213 ((ii) Δc = +0.01 · W60), res_p: 0.3440 → 0.3929
+  - l. 213 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.003905 → -0.003803
+  - l. 213 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.001140 → 0.001371
+  - l. 216 ((ii) Δc = +0.01 · W60), pred_did: 0.008980 → 0.008808
+  - l. 216 ((ii) Δc = +0.01 · W60), res_did: -0.004968 → -0.004796
+  - l. 216 ((ii) Δc = +0.01 · W60), res_p: 0.0065 → 0.0061
+  - l. 216 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.007762 → -0.007445
+  - l. 216 ((ii) Δc = +0.01 · W60), res_ci_hi: -0.002141 → -0.002053
+  - l. 219 ((ii) Δc = +0.01 · W60), pred_did: 0.001437 → 0.001557
+  - l. 219 ((ii) Δc = +0.01 · W60), res_did: -0.004222 → -0.004342
+  - l. 219 ((ii) Δc = +0.01 · W60), res_p: 0.0508 → 0.0463
+  - l. 219 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.007875 → -0.007953
+  - l. 219 ((ii) Δc = +0.01 · W60), res_ci_hi: -0.000494 → -0.000568
+  - l. 222 ((ii) Δc = +0.01 · W60), pred_did: -0.000164 → -0.000185
+  - l. 222 ((ii) Δc = +0.01 · W60), res_did: -0.002626 → -0.002606
+  - l. 222 ((ii) Δc = +0.01 · W60), res_p: 0.1963 → 0.2057
+  - l. 222 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.006518 → -0.006519
+  - l. 222 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.000786 → 0.000841
+  - l. 225 ((ii) Δc = +0.01 · W60), pred_did: 0.006603 → 0.006586
+  - l. 225 ((ii) Δc = +0.01 · W60), res_did: -0.001178 → -0.001161
+  - l. 225 ((ii) Δc = +0.01 · W60), res_p: 0.5092 → 0.5084
+  - l. 225 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.004486 → -0.004481
+  - l. 225 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.001950 → 0.002000
+  - l. 228 ((ii) Δc = +0.01 · W60), pred_did: 0.006563 → 0.006531
+  - l. 228 ((ii) Δc = +0.01 · W60), res_did: -0.002013 → -0.001981
+  - l. 228 ((ii) Δc = +0.01 · W60), res_p: 0.1437 → 0.1344
+  - l. 228 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.004601 → -0.004439
+  - l. 228 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.000130 → 0.000113
+  - l. 231 ((ii) Δc = +0.01 · W60), pred_did: -0.002007 → -0.002010
+  - l. 231 ((ii) Δc = +0.01 · W60), res_did: 0.003075 → 0.003079
+  - l. 231 ((ii) Δc = +0.01 · W60), res_p: 0.1780 → 0.1658
+  - l. 231 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.000904 → -0.000820
+  - l. 231 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.007123 → 0.006986
+  - l. 234 ((ii) Δc = +0.01 · W60), pred_did: 0.002276 → 0.002087
+  - l. 234 ((ii) Δc = +0.01 · W60), res_did: 0.001097 → 0.001286
+  - l. 234 ((ii) Δc = +0.01 · W60), res_p: 0.4939 → 0.4628
+  - l. 234 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.001903 → -0.002037
+  - l. 234 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.003750 → 0.004339
+  - l. 237 ((ii) Δc = +0.01 · W60), pred_did: 0.001832 → 0.002217
+  - l. 237 ((ii) Δc = +0.01 · W60), res_did: -0.001057 → -0.001442
+  - l. 237 ((ii) Δc = +0.01 · W60), res_p: 0.3284 → 0.1565
+  - l. 237 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.002981 → -0.003194
+  - l. 237 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.000759 → 0.000216
+  - l. 240 ((ii) Δc = +0.01 · W60), pred_did: -0.003337 → -0.003346
+  - l. 240 ((ii) Δc = +0.01 · W60), res_did: 0.002990 → 0.002999
+  - l. 240 ((ii) Δc = +0.01 · W60), res_p: 0.1412 → 0.1342
+  - l. 240 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.000552 → -0.000520
+  - l. 240 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.006617 → 0.006540
+  - l. 243 ((ii) Δc = +0.01 · W60), pred_did: 0.006362 → 0.006158
+  - l. 243 ((ii) Δc = +0.01 · W60), res_did: 0.000046 → 0.000251
+  - l. 243 ((ii) Δc = +0.01 · W60), res_p: 0.9753 → 0.8418
+  - l. 243 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.002197 → -0.001854
+  - l. 243 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.002442 → 0.002615
+  - l. 246 ((ii) Δc = +0.01 · W60), pred_did: -0.000466 → -0.000417
+  - l. 246 ((ii) Δc = +0.01 · W60), res_did: -0.001466 → -0.001515
+  - l. 246 ((ii) Δc = +0.01 · W60), res_p: 0.5032 → 0.4734
+  - l. 246 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.005681 → -0.005562
+  - l. 246 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.002114 → 0.001874
+  - l. 249 ((ii) Δc = +0.01 · W60), pred_did: -0.001801 → -0.002069
+  - l. 249 ((ii) Δc = +0.01 · W60), res_did: -0.000494 → -0.000226
+  - l. 249 ((ii) Δc = +0.01 · W60), res_p: 0.8269 → 0.9148
+  - l. 249 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.004852 → -0.004540
+  - l. 249 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.003603 → 0.003794
+  - l. 252 ((ii) Δc = +0.01 · W60), pred_did: 0.000102 → 0.000159
+  - l. 252 ((ii) Δc = +0.01 · W60), res_did: -0.001623 → -0.001680
+  - l. 252 ((ii) Δc = +0.01 · W60), res_p: 0.4219 → 0.4027
+  - l. 252 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.005610 → -0.005509
+  - l. 252 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.002215 → 0.001997
+  - l. 255 ((ii) Δc = +0.01 · W60), pred_did: 0.007343 → 0.007288
+  - l. 255 ((ii) Δc = +0.01 · W60), res_did: -0.000799 → -0.000744
+  - l. 255 ((ii) Δc = +0.01 · W60), res_p: 0.6869 → 0.7012
+  - l. 255 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.004485 → -0.004236
+  - l. 255 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.002765 → 0.002718
+  - l. 258 ((ii) Δc = +0.01 · W60), pred_did: 0.002298 → 0.002301
+  - l. 258 ((ii) Δc = +0.01 · W60), res_did: -0.001040 → -0.001044
+  - l. 258 ((ii) Δc = +0.01 · W60), res_p: 0.6177 → 0.6132
+  - l. 258 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.004951 → -0.004879
+  - l. 258 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.002664 → 0.002731
+  - l. 261 ((ii) Δc = +0.01 · W60), pred_did: 0.010852 → 0.011123
+  - l. 261 ((ii) Δc = +0.01 · W60), res_did: -0.003557 → -0.003828
+  - l. 261 ((ii) Δc = +0.01 · W60), res_p: 0.0450 → 0.0287
+  - l. 261 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.006512 → -0.006629
+  - l. 261 ((ii) Δc = +0.01 · W60), res_ci_hi: -0.000778 → -0.001116
+  - l. 264 ((ii) Δc = +0.01 · W60), pred_did: 0.004835 → 0.004790
+  - l. 264 ((ii) Δc = +0.01 · W60), res_did: -0.003116 → -0.003071
+  - l. 264 ((ii) Δc = +0.01 · W60), res_p: 0.0649 → 0.0613
+  - l. 264 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.006211 → -0.006092
+  - l. 264 ((ii) Δc = +0.01 · W60), res_ci_hi: -0.000280 → -0.000356
+  - l. 267 ((ii) Δc = +0.01 · W60), pred_did: 0.000845 → 0.000966
+  - l. 267 ((ii) Δc = +0.01 · W60), res_did: 0.001403 → 0.001282
+  - l. 267 ((ii) Δc = +0.01 · W60), res_p: 0.4021 → 0.4404
+  - l. 267 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.001402 → -0.001515
+  - l. 267 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.004409 → 0.004227
+  - l. 270 ((ii) Δc = +0.01 · W60), pred_did: -0.005152 → -0.004914
+  - l. 270 ((ii) Δc = +0.01 · W60), res_did: 0.000521 → 0.000283
+  - l. 270 ((ii) Δc = +0.01 · W60), res_p: 0.7812 → 0.8835
+  - l. 270 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.003277 → -0.003684
+  - l. 270 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.003895 → 0.003708
+  - l. 273 ((ii) Δc = +0.01 · W60), pred_did: 0.001618 → 0.001654
+  - l. 273 ((ii) Δc = +0.01 · W60), res_did: -0.001448 → -0.001484
+  - l. 273 ((ii) Δc = +0.01 · W60), res_p: 0.4064 → 0.4041
+  - l. 273 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.004816 → -0.004857
+  - l. 273 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.001663 → 0.001509
+  - l. 276 ((ii) Δc = +0.01 · W60), pred_did: -0.002610 → -0.002825
+  - l. 276 ((ii) Δc = +0.01 · W60), res_did: -0.001887 → -0.001672
+  - l. 276 ((ii) Δc = +0.01 · W60), res_p: 0.3149 → 0.3611
+  - l. 276 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.005191 → -0.004900
+  - l. 276 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.001348 → 0.001597
+  - l. 279 ((ii) Δc = +0.01 · W60), pred_did: 0.001275 → 0.001213
+  - l. 279 ((ii) Δc = +0.01 · W60), res_did: 0.001208 → 0.001269
+  - l. 279 ((ii) Δc = +0.01 · W60), res_p: 0.2780 → 0.2147
+  - l. 279 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.000735 → -0.000553
+  - l. 279 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.003191 → 0.003093
+  - l. 282 ((ii) Δc = +0.01 · W60), pred_did: 0.001675 → 0.002140
+  - l. 282 ((ii) Δc = +0.01 · W60), res_did: -0.001221 → -0.001686
+  - l. 282 ((ii) Δc = +0.01 · W60), res_p: 0.4591 → 0.2704
+  - l. 282 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.004181 → -0.004330
+  - l. 282 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.001972 → 0.001340
+  - l. 285 ((ii) Δc = +0.01 · W60), pred_did: -0.000789 → -0.000332
+  - l. 285 ((ii) Δc = +0.01 · W60), res_did: 0.000461 → 0.000004
+  - l. 285 ((ii) Δc = +0.01 · W60), res_p: 0.7487 → 0.9978
+  - l. 285 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.002477 → -0.002805
+  - l. 285 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.003125 → 0.002697
+  - l. 288 ((ii) Δc = +0.01 · W60), pred_did: 0.007615 → 0.007820
+  - l. 288 ((ii) Δc = +0.01 · W60), res_did: 0.000873 → 0.000668
+  - l. 288 ((ii) Δc = +0.01 · W60), res_p: 0.5809 → 0.6870
+  - l. 288 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.002102 → -0.002520
+  - l. 288 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.003847 → 0.003759
+  - l. 291 ((ii) Δc = +0.01 · W60), pred_did: -0.002402 → -0.002335
+  - l. 291 ((ii) Δc = +0.01 · W60), res_did: 0.000311 → 0.000244
+  - l. 291 ((ii) Δc = +0.01 · W60), res_p: 0.8794 → 0.9026
+  - l. 291 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.003579 → -0.003541
+  - l. 291 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.003949 → 0.003723
+  - l. 294 ((ii) Δc = +0.01 · W60), pred_did: 0.001960 → 0.002129
+  - l. 294 ((ii) Δc = +0.01 · W60), res_did: -0.001007 → -0.001176
+  - l. 294 ((ii) Δc = +0.01 · W60), res_p: 0.5908 → 0.5338
+  - l. 294 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.004548 → -0.004769
+  - l. 294 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.002510 → 0.002270
+  - l. 297 ((ii) Δc = +0.01 · W60), pred_did: 0.002313 → 0.002237
+  - l. 297 ((ii) Δc = +0.01 · W60), res_did: -0.000446 → -0.000370
+  - l. 297 ((ii) Δc = +0.01 · W60), res_p: 0.7987 → 0.8274
+  - l. 297 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.003510 → -0.003415
+  - l. 297 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.002662 → 0.002635
+  - l. 300 ((ii) Δc = +0.01 · W60), pred_did: 0.007655 → 0.007593
+  - l. 300 ((ii) Δc = +0.01 · W60), res_did: -0.003315 → -0.003254
+  - l. 300 ((ii) Δc = +0.01 · W60), res_p: 0.0275 → 0.0176
+  - l. 300 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.005511 → -0.005230
+  - l. 300 ((ii) Δc = +0.01 · W60), res_ci_hi: -0.000686 → -0.001054
+  - l. 303 ((ii) Δc = +0.02 · W60), pred_did: 0.006854 → 0.006969
+  - l. 303 ((ii) Δc = +0.02 · W60), res_did: -0.005460 → -0.005575
+  - l. 303 ((ii) Δc = +0.02 · W60), res_p: 0.0303 → 0.0278
+  - l. 303 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.009389 → -0.009469
+  - l. 303 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.001305 → -0.001494
+  - l. 306 ((ii) Δc = +0.02 · W60), pred_did: 0.009882 → 0.009813
+  - l. 306 ((ii) Δc = +0.02 · W60), res_did: -0.003694 → -0.003625
+  - l. 306 ((ii) Δc = +0.02 · W60), res_p: 0.0758 → 0.0624
+  - l. 306 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.006880 → -0.006605
+  - l. 306 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.000206 → -0.000387
+  - l. 309 ((ii) Δc = +0.02 · W60), pred_did: 0.005243 → 0.005347
+  - l. 309 ((ii) Δc = +0.02 · W60), res_did: -0.005548 → -0.005652
+  - l. 309 ((ii) Δc = +0.02 · W60), res_p: 0.0098 → 0.0094
+  - l. 309 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.008762 → -0.008947
+  - l. 309 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.002218 → -0.002246
+  - l. 312 ((ii) Δc = +0.02 · W60), pred_did: 0.005568 → 0.005782
+  - l. 312 ((ii) Δc = +0.02 · W60), res_did: -0.006186 → -0.006400
+  - l. 312 ((ii) Δc = +0.02 · W60), res_p: 0.0044 → 0.0032
+  - l. 312 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.009103 → -0.009278
+  - l. 312 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.002511 → -0.002983
+  - l. 315 ((ii) Δc = +0.02 · W60), pred_did: 0.007177 → 0.007244
+  - l. 315 ((ii) Δc = +0.02 · W60), res_did: -0.005572 → -0.005639
+  - l. 315 ((ii) Δc = +0.02 · W60), res_p: 0.0035 → 0.0021
+  - l. 315 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.008259 → -0.008275
+  - l. 315 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.002747 → -0.002903
+  - l. 318 ((ii) Δc = +0.02 · W60), pred_did: -0.000697 → -0.000550
+  - l. 318 ((ii) Δc = +0.02 · W60), res_did: -0.000255 → -0.000402
+  - l. 318 ((ii) Δc = +0.02 · W60), res_p: 0.8542 → 0.7809
+  - l. 318 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.002972 → -0.003172
+  - l. 318 ((ii) Δc = +0.02 · W60), res_ci_hi: 0.002264 → 0.002131
+  - l. 321 ((ii) Δc = +0.02 · W60), pred_did: 0.008450 → 0.008684
+  - l. 321 ((ii) Δc = +0.02 · W60), res_did: -0.006751 → -0.006985
+  - l. 321 ((ii) Δc = +0.02 · W60), res_p: 0.0009 → 0.0004
+  - l. 321 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.009761 → -0.009931
+  - l. 321 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.003867 → -0.004226
+  - l. 324 ((ii) Δc = +0.02 · W60), pred_did: 0.010154 → 0.010281
+  - l. 324 ((ii) Δc = +0.02 · W60), res_did: -0.003805 → -0.003933
+  - l. 324 ((ii) Δc = +0.02 · W60), res_p: 0.0189 → 0.0166
+  - l. 324 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.006344 → -0.006528
+  - l. 324 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.000950 → -0.001134
+  - l. 327 ((ii) Δc = +0.02 · W60), pred_did: 0.001850 → 0.001672
+  - l. 327 ((ii) Δc = +0.02 · W60), res_did: -0.006515 → -0.006337
+  - l. 327 ((ii) Δc = +0.02 · W60), res_p: 0.0031 → 0.0039
+  - l. 327 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.009675 → -0.009546
+  - l. 327 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.003289 → -0.003131
+  - l. 330 ((ii) Δc = +0.02 · W60), pred_did: -0.001214 → -0.001030
+  - l. 330 ((ii) Δc = +0.02 · W60), res_did: -0.006957 → -0.007140
+  - l. 330 ((ii) Δc = +0.02 · W60), res_p: 0.0005 → 0.0004
+  - l. 330 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.009584 → -0.009812
+  - l. 330 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.004265 → -0.004441
+  - l. 333 ((ii) Δc = +0.02 · W60), pred_did: 0.003820 → 0.003537
+  - l. 333 ((ii) Δc = +0.02 · W60), res_did: -0.007272 → -0.006989
+  - l. 333 ((ii) Δc = +0.02 · W60), res_p: 0.0024 → 0.0029
+  - l. 333 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.011730 → -0.011502
+  - l. 333 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.003026 → -0.002911
+  - l. 336 ((ii) Δc = +0.02 · W60), pred_did: 0.011817 → 0.011983
+  - l. 336 ((ii) Δc = +0.02 · W60), res_did: -0.004739 → -0.004905
+  - l. 336 ((ii) Δc = +0.02 · W60), res_p: 0.0370 → 0.0365
+  - l. 336 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.008620 → -0.008900
+  - l. 336 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.000830 → -0.000897
+  - l. 339 ((ii) Δc = +0.02 · W60), pred_did: 0.002478 → 0.002855
+  - l. 339 ((ii) Δc = +0.02 · W60), res_did: -0.006623 → -0.006999
+  - l. 339 ((ii) Δc = +0.02 · W60), res_p: 0.0033 → 0.0029
+  - l. 339 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.009770 → -0.010335
+  - l. 339 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.003454 → -0.003756
+  - l. 342 ((ii) Δc = +0.02 · W60), pred_did: 0.005107 → 0.004871
+  - l. 342 ((ii) Δc = +0.02 · W60), res_did: -0.007242 → -0.007006
+  - l. 342 ((ii) Δc = +0.02 · W60), res_p: 0.0042 → 0.0082
+  - l. 342 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.011520 → -0.011386
+  - l. 342 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.003170 → -0.002955
+  - l. 345 ((ii) Δc = +0.02 · W60), pred_did: 0.004584 → 0.004727
+  - l. 345 ((ii) Δc = +0.02 · W60), res_did: -0.004522 → -0.004666
+  - l. 345 ((ii) Δc = +0.02 · W60), res_p: 0.0101 → 0.0104
+  - l. 345 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.007208 → -0.007513
+  - l. 345 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.001779 → -0.001840
+  - l. 348 ((ii) Δc = +0.02 · W60), pred_did: 0.006067 → 0.006156
+  - l. 348 ((ii) Δc = +0.02 · W60), res_did: -0.005489 → -0.005578
+  - l. 348 ((ii) Δc = +0.02 · W60), res_p: 0.0258 → 0.0186
+  - l. 348 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.009369 → -0.009203
+  - l. 348 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.001298 → -0.001701
+  - l. 351 ((ii) Δc = +0.02 · W60), pred_did: 0.010982 → 0.010593
+  - l. 351 ((ii) Δc = +0.02 · W60), res_did: -0.006157 → -0.005768
+  - l. 351 ((ii) Δc = +0.02 · W60), res_p: 0.0126 → 0.0164
+  - l. 351 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.010419 → -0.009928
+  - l. 351 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.002469 → -0.002133
+  - l. 354 ((ii) Δc = +0.02 · W60), pred_did: 0.003604 → 0.003702
+  - l. 354 ((ii) Δc = +0.02 · W60), res_did: -0.004696 → -0.004794
+  - l. 354 ((ii) Δc = +0.02 · W60), res_p: 0.0680 → 0.0527
+  - l. 354 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.009187 → -0.008980
+  - l. 354 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.000336 → -0.000625
+  - l. 357 ((ii) Δc = +0.02 · W60), pred_did: 0.008517 → 0.008785
+  - l. 357 ((ii) Δc = +0.02 · W60), res_did: -0.003836 → -0.004103
+  - l. 357 ((ii) Δc = +0.02 · W60), res_p: 0.1102 → 0.0933
+  - l. 357 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.007652 → -0.007997
+  - l. 357 ((ii) Δc = +0.02 · W60), res_ci_hi: 0.000227 → -0.000118
+  - l. 360 ((ii) Δc = +0.02 · W60), pred_did: 0.001406 → 0.001208
+  - l. 360 ((ii) Δc = +0.02 · W60), res_did: -0.002325 → -0.002127
+  - l. 360 ((ii) Δc = +0.02 · W60), res_p: 0.2451 → 0.2870
+  - l. 360 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.005875 → -0.005740
+  - l. 360 ((ii) Δc = +0.02 · W60), res_ci_hi: 0.001584 → 0.001753
+  - l. 363 ((ii) Δc = +0.02 · W60), pred_did: 0.010319 → 0.010287
+  - l. 363 ((ii) Δc = +0.02 · W60), res_did: -0.004175 → -0.004143
+  - l. 363 ((ii) Δc = +0.02 · W60), res_p: 0.0067 → 0.0056
+  - l. 363 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.006793 → -0.006637
+  - l. 363 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.001834 → -0.001932
+  - l. 366 ((ii) Δc = +0.02 · W60), pred_did: 0.007150 → 0.007111
+  - l. 366 ((ii) Δc = +0.02 · W60), res_did: -0.005748 → -0.005709
+  - l. 366 ((ii) Δc = +0.02 · W60), res_p: 0.0167 → 0.0151
+  - l. 366 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.009404 → -0.009202
+  - l. 366 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.002069 → -0.002174
+  - l. 369 ((ii) Δc = +0.02 · W60), pred_did: 0.007434 → 0.007620
+  - l. 369 ((ii) Δc = +0.02 · W60), res_did: -0.006949 → -0.007135
+  - l. 369 ((ii) Δc = +0.02 · W60), res_p: 0.0094 → 0.0061
+  - l. 369 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.011004 → -0.011100
+  - l. 369 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.002662 → -0.003037
+  - l. 372 ((ii) Δc = +0.02 · W60), pred_did: 0.010637 → 0.010526
+  - l. 372 ((ii) Δc = +0.02 · W60), res_did: -0.005007 → -0.004897
+  - l. 372 ((ii) Δc = +0.02 · W60), res_p: 0.0005 → 0.0006
+  - l. 372 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.007277 → -0.007148
+  - l. 372 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.002826 → -0.002803
+  - l. 375 ((ii) Δc = +0.02 · W60), pred_did: 0.007591 → 0.007789
+  - l. 375 ((ii) Δc = +0.02 · W60), res_did: -0.003509 → -0.003707
+  - l. 375 ((ii) Δc = +0.02 · W60), res_p: 0.2279 → 0.2124
+  - l. 375 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.008668 → -0.008988
+  - l. 375 ((ii) Δc = +0.02 · W60), res_ci_hi: 0.002162 → 0.001909
+  - l. 378 ((ii) Δc = +0.02 · W60), pred_did: 0.002696 → 0.002787
+  - l. 378 ((ii) Δc = +0.02 · W60), res_did: -0.003096 → -0.003186
+  - l. 378 ((ii) Δc = +0.02 · W60), res_p: 0.1411 → 0.1276
+  - l. 378 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.006777 → -0.006885
+  - l. 378 ((ii) Δc = +0.02 · W60), res_ci_hi: 0.000630 → 0.000484
+  - l. 381 ((ii) Δc = +0.02 · W60), pred_did: 0.011110 → 0.011067
+  - l. 381 ((ii) Δc = +0.02 · W60), res_did: -0.007262 → -0.007219
+  - l. 381 ((ii) Δc = +0.02 · W60), res_p: 0.0031 → 0.0038
+  - l. 381 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.011345 → -0.011279
+  - l. 381 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.003450 → -0.003335
+  - l. 384 ((ii) Δc = +0.02 · W60), pred_did: 0.002807 → 0.002921
+  - l. 384 ((ii) Δc = +0.02 · W60), res_did: -0.003793 → -0.003907
+  - l. 384 ((ii) Δc = +0.02 · W60), res_p: 0.1011 → 0.0964
+  - l. 384 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.008051 → -0.008174
+  - l. 384 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.000123 → -0.000263
+  - l. 387 ((ii) Δc = +0.02 · W60), pred_did: 0.006452 → 0.005995
+  - l. 387 ((ii) Δc = +0.02 · W60), res_did: -0.008706 → -0.008248
+  - l. 387 ((ii) Δc = +0.02 · W60), res_p: 0.0004 → 0.0005
+  - l. 387 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.011747 → -0.011253
+  - l. 387 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.005683 → -0.005255
+  - l. 390 ((ii) Δc = +0.02 · W60), pred_did: 0.011140 → 0.011145
+  - l. 390 ((ii) Δc = +0.02 · W60), res_did: -0.004033 → -0.004038
+  - l. 390 ((ii) Δc = +0.02 · W60), res_p: 0.0786 → 0.0654
+  - l. 390 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.007902 → -0.007712
+  - l. 390 ((ii) Δc = +0.02 · W60), res_ci_hi: 0.000064 → -0.000108
+  - l. 393 ((ii) Δc = +0.02 · W60), pred_did: 0.005307 → 0.005177
+  - l. 393 ((ii) Δc = +0.02 · W60), res_did: -0.003219 → -0.003088
+  - l. 393 ((ii) Δc = +0.02 · W60), res_p: 0.1333 → 0.1353
+  - l. 393 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.006922 → -0.006544
+  - l. 393 ((ii) Δc = +0.02 · W60), res_ci_hi: 0.000641 → 0.000624
+  - l. 396 ((ii) Δc = +0.02 · W60), pred_did: 0.006446 → 0.006491
+  - l. 396 ((ii) Δc = +0.02 · W60), res_did: -0.006920 → -0.006965
+  - l. 396 ((ii) Δc = +0.02 · W60), res_p: 0.0249 → 0.0192
+  - l. 396 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.011917 → -0.011783
+  - l. 396 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.002079 → -0.002298
+  - l. 399 ((ii) Δc = +0.02 · W60), pred_did: 0.001068 → 0.000893
+  - l. 399 ((ii) Δc = +0.02 · W60), res_did: -0.004835 → -0.004660
+  - l. 399 ((ii) Δc = +0.02 · W60), res_p: 0.0092 → 0.0084
+  - l. 399 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.007983 → -0.007638
+  - l. 399 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.001665 → -0.001643
+  - l. 402 ((ii) Δc = +0.02 · W60), pred_did: -0.003479 → -0.003215
+  - l. 402 ((ii) Δc = +0.02 · W60), res_did: -0.004619 → -0.004883
+  - l. 402 ((ii) Δc = +0.02 · W60), res_p: 0.0364 → 0.0249
+  - l. 402 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.008176 → -0.008542
+  - l. 402 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.000708 → -0.001118
+  - l. 405 ((ii) Δc = +0.02 · W60), pred_did: -0.000553 → -0.000906
+  - l. 405 ((ii) Δc = +0.02 · W60), res_did: -0.006118 → -0.005765
+  - l. 405 ((ii) Δc = +0.02 · W60), res_p: 0.0010 → 0.0004
+  - l. 405 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.009726 → -0.009027
+  - l. 405 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.002808 → -0.002724
+  - l. 408 ((ii) Δc = +0.02 · W60), pred_did: 0.007027 → 0.007069
+  - l. 408 ((ii) Δc = +0.02 · W60), res_did: -0.004763 → -0.004806
+  - l. 408 ((ii) Δc = +0.02 · W60), res_p: 0.0214 → 0.0200
+  - l. 408 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.008222 → -0.008284
+  - l. 408 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.001312 → -0.001292
+  - l. 411 ((ii) Δc = +0.02 · W60), pred_did: 0.005570 → 0.005424
+  - l. 411 ((ii) Δc = +0.02 · W60), res_did: -0.003525 → -0.003379
+  - l. 411 ((ii) Δc = +0.02 · W60), res_p: 0.0281 → 0.0317
+  - l. 411 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.005764 → -0.005634
+  - l. 411 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.000816 → -0.000657
+  - l. 414 ((ii) Δc = +0.02 · W60), pred_did: -0.001858 → -0.002046
+  - l. 414 ((ii) Δc = +0.02 · W60), res_did: -0.005258 → -0.005069
+  - l. 414 ((ii) Δc = +0.02 · W60), res_p: 0.0078 → 0.0101
+  - l. 414 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.008458 → -0.008281
+  - l. 414 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.001995 → -0.001819
+  - l. 417 ((ii) Δc = +0.02 · W60), pred_did: 0.001778 → 0.001772
+  - l. 417 ((ii) Δc = +0.02 · W60), res_did: -0.004105 → -0.004099
+  - l. 417 ((ii) Δc = +0.02 · W60), res_p: 0.0164 → 0.0165
+  - l. 417 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.006550 → -0.006541
+  - l. 417 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.001339 → -0.001356
+  - l. 420 ((ii) Δc = +0.02 · W60), pred_did: 0.005006 → 0.005007
+  - l. 420 ((ii) Δc = +0.02 · W60), res_did: -0.005437 → -0.005439
+  - l. 420 ((ii) Δc = +0.02 · W60), res_p: 0.0129 → 0.0110
+  - l. 420 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.009019 → -0.008995
+  - l. 420 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.001902 → -0.001988
+  - l. 423 ((ii) Δc = +0.02 · W60), pred_did: 0.007660 → 0.007987
+  - l. 423 ((ii) Δc = +0.02 · W60), res_did: -0.005118 → -0.005445
+  - l. 423 ((ii) Δc = +0.02 · W60), res_p: 0.0345 → 0.0179
+  - l. 423 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.009842 → -0.009856
+  - l. 423 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.001036 → -0.001547
+  - l. 426 ((ii) Δc = +0.02 · W60), pred_did: 0.001000 → 0.000815
+  - l. 426 ((ii) Δc = +0.02 · W60), res_did: -0.003555 → -0.003370
+  - l. 426 ((ii) Δc = +0.02 · W60), res_p: 0.0894 → 0.1095
+  - l. 426 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.007283 → -0.007093
+  - l. 426 ((ii) Δc = +0.02 · W60), res_ci_hi: 0.000398 → 0.000658
+  - l. 429 ((ii) Δc = +0.02 · W60), pred_did: 0.003954 → 0.004156
+  - l. 429 ((ii) Δc = +0.02 · W60), res_did: -0.004562 → -0.004764
+  - l. 429 ((ii) Δc = +0.02 · W60), res_p: 0.0110 → 0.0074
+  - l. 429 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.007131 → -0.007263
+  - l. 429 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.001868 → -0.002251
+  - l. 432 ((ii) Δc = +0.02 · W60), pred_did: 0.006232 → 0.006611
+  - l. 432 ((ii) Δc = +0.02 · W60), res_did: -0.007764 → -0.008143
+  - l. 432 ((ii) Δc = +0.02 · W60), res_p: 0.0035 → 0.0027
+  - l. 432 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.011644 → -0.012016
+  - l. 432 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.003870 → -0.004111
+  - l. 435 ((ii) Δc = +0.02 · W60), pred_did: 0.001685 → 0.001524
+  - l. 435 ((ii) Δc = +0.02 · W60), res_did: -0.006869 → -0.006708
+  - l. 435 ((ii) Δc = +0.02 · W60), res_p: 0.0009 → 0.0015
+  - l. 435 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.010540 → -0.010358
+  - l. 435 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.003420 → -0.003239
+  - l. 438 ((ii) Δc = +0.02 · W60), pred_did: 0.007633 → 0.007625
+  - l. 438 ((ii) Δc = +0.02 · W60), res_did: -0.006818 → -0.006810
+  - l. 438 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.009377 → -0.009183
+  - l. 438 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.004284 → -0.004336
+  - l. 441 ((ii) Δc = +0.02 · W60), pred_did: 0.007941 → 0.007739
+  - l. 441 ((ii) Δc = +0.02 · W60), res_did: -0.002637 → -0.002436
+  - l. 441 ((ii) Δc = +0.02 · W60), res_p: 0.1787 → 0.1849
+  - l. 441 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.006345 → -0.006036
+  - l. 441 ((ii) Δc = +0.02 · W60), res_ci_hi: 0.000730 → 0.000673
+  - l. 444 ((ii) Δc = +0.02 · W60), pred_did: 0.004234 → 0.004239
+  - l. 444 ((ii) Δc = +0.02 · W60), res_did: -0.004631 → -0.004635
+  - l. 444 ((ii) Δc = +0.02 · W60), res_p: 0.0222 → 0.0270
+  - l. 444 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.008068 → -0.008278
+  - l. 444 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.001478 → -0.001320
+  - l. 447 ((ii) Δc = +0.02 · W60), pred_did: 0.002647 → 0.002704
+  - l. 447 ((ii) Δc = +0.02 · W60), res_did: -0.005686 → -0.005743
+  - l. 447 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.008119 → -0.008191
+  - l. 447 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.003306 → -0.003310
+  - l. 450 ((ii) Δc = +0.02 · W60), pred_did: 0.008909 → 0.008667
+  - l. 450 ((ii) Δc = +0.02 · W60), res_did: -0.005719 → -0.005478
+  - l. 450 ((ii) Δc = +0.02 · W60), res_p: 0.0081 → 0.0096
+  - l. 450 ((ii) Δc = +0.02 · W60), res_ci_lo: -0.009316 → -0.008943
+  - l. 450 ((ii) Δc = +0.02 · W60), res_ci_hi: -0.002211 → -0.001991
+  - l. 453 ((ii) Δc = +0.03 · W60), pred_did: 0.005375 → 0.005649
+  - l. 453 ((ii) Δc = +0.03 · W60), res_did: -0.009596 → -0.009871
+  - l. 453 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.012776 → -0.013017
+  - l. 453 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.006209 → -0.006643
+  - l. 456 ((ii) Δc = +0.03 · W60), pred_did: 0.015277 → 0.015444
+  - l. 456 ((ii) Δc = +0.03 · W60), res_did: -0.012627 → -0.012795
+  - l. 456 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.016321 → -0.016315
+  - l. 456 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.009181 → -0.009128
+  - l. 459 ((ii) Δc = +0.03 · W60), pred_did: 0.016563 → 0.016775
+  - l. 459 ((ii) Δc = +0.03 · W60), res_did: -0.010126 → -0.010338
+  - l. 459 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.013126 → -0.013415
+  - l. 459 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.007131 → -0.007381
+  - l. 462 ((ii) Δc = +0.03 · W60), pred_did: 0.010900 → 0.010835
+  - l. 462 ((ii) Δc = +0.03 · W60), res_did: -0.009236 → -0.009171
+  - l. 462 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.013353 → -0.013240
+  - l. 462 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.005438 → -0.005356
+  - l. 465 ((ii) Δc = +0.03 · W60), pred_did: 0.012838 → 0.012828
+  - l. 465 ((ii) Δc = +0.03 · W60), res_did: -0.011419 → -0.011409
+  - l. 465 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.015217 → -0.015091
+  - l. 465 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.007432 → -0.007604
+  - l. 468 ((ii) Δc = +0.03 · W60), pred_did: 0.014893 → 0.014674
+  - l. 468 ((ii) Δc = +0.03 · W60), res_did: -0.011790 → -0.011570
+  - l. 468 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.015716 → -0.015417
+  - l. 468 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.007331 → -0.007264
+  - l. 471 ((ii) Δc = +0.03 · W60), pred_did: 0.014695 → 0.014500
+  - l. 471 ((ii) Δc = +0.03 · W60), res_did: -0.010853 → -0.010658
+  - l. 471 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.014193 → -0.013915
+  - l. 471 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.007620 → -0.007464
+  - l. 474 ((ii) Δc = +0.03 · W60), pred_did: 0.016977 → 0.016855
+  - l. 474 ((ii) Δc = +0.03 · W60), res_did: -0.012308 → -0.012186
+  - l. 474 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.015007 → -0.014803
+  - l. 474 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.009644 → -0.009434
+  - l. 477 ((ii) Δc = +0.03 · W60), pred_did: 0.013994 → 0.013945
+  - l. 477 ((ii) Δc = +0.03 · W60), res_did: -0.013273 → -0.013223
+  - l. 477 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.017330 → -0.017295
+  - l. 477 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.008625 → -0.008645
+  - l. 480 ((ii) Δc = +0.03 · W60), pred_did: 0.010176 → 0.010021
+  - l. 480 ((ii) Δc = +0.03 · W60), res_did: -0.013902 → -0.013748
+  - l. 480 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.017699 → -0.017355
+  - l. 480 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.010840 → -0.010646
+  - l. 483 ((ii) Δc = +0.03 · W60), pred_did: 0.012177 → 0.011938
+  - l. 483 ((ii) Δc = +0.03 · W60), res_did: -0.010822 → -0.010583
+  - l. 483 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.013940 → -0.013708
+  - l. 483 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.007612 → -0.007398
+  - l. 486 ((ii) Δc = +0.03 · W60), pred_did: 0.007812 → 0.007509
+  - l. 486 ((ii) Δc = +0.03 · W60), res_did: -0.009432 → -0.009128
+  - l. 486 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.011280 → -0.010961
+  - l. 486 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.007671 → -0.007313
+  - l. 489 ((ii) Δc = +0.03 · W60), pred_did: 0.006687 → 0.006667
+  - l. 489 ((ii) Δc = +0.03 · W60), res_did: -0.009827 → -0.009807
+  - l. 489 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.014086 → -0.014103
+  - l. 489 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.006312 → -0.006200
+  - l. 492 ((ii) Δc = +0.03 · W60), pred_did: 0.005022 → 0.005087
+  - l. 492 ((ii) Δc = +0.03 · W60), res_did: -0.006647 → -0.006713
+  - l. 492 ((ii) Δc = +0.03 · W60), res_p: 0.0046 → 0.0035
+  - l. 492 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.010852 → -0.011003
+  - l. 492 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.002874 → -0.003017
+  - l. 495 ((ii) Δc = +0.03 · W60), pred_did: 0.010763 → 0.010488
+  - l. 495 ((ii) Δc = +0.03 · W60), res_did: -0.012276 → -0.012001
+  - l. 495 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.015599 → -0.015172
+  - l. 495 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.008640 → -0.008541
+  - l. 498 ((ii) Δc = +0.03 · W60), pred_did: 0.008585 → 0.008691
+  - l. 498 ((ii) Δc = +0.03 · W60), res_did: -0.012959 → -0.013065
+  - l. 498 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.015742 → -0.015590
+  - l. 498 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.010108 → -0.010331
+  - l. 501 ((ii) Δc = +0.03 · W60), pred_did: 0.008639 → 0.008881
+  - l. 501 ((ii) Δc = +0.03 · W60), res_did: -0.012086 → -0.012328
+  - l. 501 ((ii) Δc = +0.03 · W60), res_p: 0.0005 → 0.0004
+  - l. 501 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.016418 → -0.016529
+  - l. 501 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.007358 → -0.007563
+  - l. 504 ((ii) Δc = +0.03 · W60), pred_did: 0.011982 → 0.011858
+  - l. 504 ((ii) Δc = +0.03 · W60), res_did: -0.013508 → -0.013384
+  - l. 504 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.015941 → -0.015763
+  - l. 504 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.010935 → -0.010944
+  - l. 507 ((ii) Δc = +0.03 · W60), pred_did: 0.008039 → 0.008024
+  - l. 507 ((ii) Δc = +0.03 · W60), res_did: -0.012908 → -0.012893
+  - l. 507 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.018393 → -0.018169
+  - l. 507 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.008255 → -0.008256
+  - l. 510 ((ii) Δc = +0.03 · W60), pred_did: 0.007529 → 0.007496
+  - l. 510 ((ii) Δc = +0.03 · W60), res_did: -0.008995 → -0.008961
+  - l. 510 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.012092 → -0.012039
+  - l. 510 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.005338 → -0.005370
+  - l. 513 ((ii) Δc = +0.03 · W60), pred_did: 0.017964 → 0.018030
+  - l. 513 ((ii) Δc = +0.03 · W60), res_did: -0.012830 → -0.012897
+  - l. 513 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.016471 → -0.016666
+  - l. 513 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.009047 → -0.008938
+  - l. 516 ((ii) Δc = +0.03 · W60), pred_did: 0.011571 → 0.011412
+  - l. 516 ((ii) Δc = +0.03 · W60), res_did: -0.010237 → -0.010078
+  - l. 516 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.014613 → -0.014211
+  - l. 516 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.006998 → -0.007121
+  - l. 519 ((ii) Δc = +0.03 · W60), pred_did: 0.010403 → 0.010183
+  - l. 519 ((ii) Δc = +0.03 · W60), res_did: -0.012829 → -0.012609
+  - l. 519 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.016098 → -0.015845
+  - l. 519 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.008698 → -0.008546
+  - l. 522 ((ii) Δc = +0.03 · W60), pred_did: 0.009532 → 0.009450
+  - l. 522 ((ii) Δc = +0.03 · W60), res_did: -0.007828 → -0.007745
+  - l. 522 ((ii) Δc = +0.03 · W60), res_p: 0.0001 → 0.0002
+  - l. 522 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.010862 → -0.010720
+  - l. 522 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.004805 → -0.004894
+  - l. 525 ((ii) Δc = +0.03 · W60), pred_did: 0.006544 → 0.006667
+  - l. 525 ((ii) Δc = +0.03 · W60), res_did: -0.012232 → -0.012354
+  - l. 525 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.015022 → -0.015111
+  - l. 525 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.009368 → -0.009433
+  - l. 528 ((ii) Δc = +0.03 · W60), pred_did: 0.010825 → 0.011015
+  - l. 528 ((ii) Δc = +0.03 · W60), res_did: -0.009117 → -0.009308
+  - l. 528 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.012013 → -0.012131
+  - l. 528 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.005919 → -0.006258
+  - l. 531 ((ii) Δc = +0.03 · W60), pred_did: 0.007662 → 0.007308
+  - l. 531 ((ii) Δc = +0.03 · W60), res_did: -0.008196 → -0.007842
+  - l. 531 ((ii) Δc = +0.03 · W60), res_p: 0.0013 → 0.0017
+  - l. 531 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.011788 → -0.011404
+  - l. 531 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.004506 → -0.004228
+  - l. 534 ((ii) Δc = +0.03 · W60), pred_did: 0.019153 → 0.018893
+  - l. 534 ((ii) Δc = +0.03 · W60), res_did: -0.009050 → -0.008790
+  - l. 534 ((ii) Δc = +0.03 · W60), res_p: 0.0006 → 0.0005
+  - l. 534 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.013056 → -0.012587
+  - l. 534 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.005432 → -0.005208
+  - l. 537 ((ii) Δc = +0.03 · W60), pred_did: 0.014628 → 0.014603
+  - l. 537 ((ii) Δc = +0.03 · W60), res_did: -0.011915 → -0.011890
+  - l. 537 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.016346 → -0.016272
+  - l. 537 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.007693 → -0.007632
+  - l. 540 ((ii) Δc = +0.03 · W60), pred_did: 0.006322 → 0.006536
+  - l. 540 ((ii) Δc = +0.03 · W60), res_did: -0.007630 → -0.007844
+  - l. 540 ((ii) Δc = +0.03 · W60), res_p: 0.0016 → 0.0017
+  - l. 540 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.011210 → -0.011484
+  - l. 540 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.004059 → -0.004327
+  - l. 543 ((ii) Δc = +0.03 · W60), pred_did: 0.013293 → 0.013019
+  - l. 543 ((ii) Δc = +0.03 · W60), res_did: -0.010628 → -0.010354
+  - l. 543 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.013899 → -0.013541
+  - l. 543 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.007846 → -0.007533
+  - l. 546 ((ii) Δc = +0.03 · W60), pred_did: 0.011115 → 0.011152
+  - l. 546 ((ii) Δc = +0.03 · W60), res_did: -0.009224 → -0.009261
+  - l. 546 ((ii) Δc = +0.03 · W60), res_p: 0.0052 → 0.0051
+  - l. 546 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.014624 → -0.014586
+  - l. 546 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.004023 → -0.004193
+  - l. 549 ((ii) Δc = +0.03 · W60), pred_did: 0.008550 → 0.008560
+  - l. 549 ((ii) Δc = +0.03 · W60), res_did: -0.010513 → -0.010523
+  - l. 549 ((ii) Δc = +0.03 · W60), res_p: 0.0004 → 0.0002
+  - l. 549 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.013879 → -0.013845
+  - l. 549 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.007259 → -0.007274
+  - l. 552 ((ii) Δc = +0.03 · W60), pred_did: 0.011487 → 0.011426
+  - l. 552 ((ii) Δc = +0.03 · W60), res_did: -0.011652 → -0.011592
+  - l. 552 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.014569 → -0.014486
+  - l. 552 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.008261 → -0.008262
+  - l. 555 ((ii) Δc = +0.03 · W60), pred_did: 0.013483 → 0.013448
+  - l. 555 ((ii) Δc = +0.03 · W60), res_did: -0.009857 → -0.009822
+  - l. 555 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.012977 → -0.012797
+  - l. 555 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.006678 → -0.006823
+  - l. 558 ((ii) Δc = +0.03 · W60), pred_did: 0.012169 → 0.012313
+  - l. 558 ((ii) Δc = +0.03 · W60), res_did: -0.012109 → -0.012254
+  - l. 558 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.017061 → -0.017136
+  - l. 558 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.007702 → -0.007805
+  - l. 561 ((ii) Δc = +0.03 · W60), pred_did: 0.007524 → 0.007316
+  - l. 561 ((ii) Δc = +0.03 · W60), res_did: -0.010157 → -0.009948
+  - l. 561 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.012800 → -0.012497
+  - l. 561 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.007443 → -0.007304
+  - l. 564 ((ii) Δc = +0.03 · W60), pred_did: 0.012871 → 0.012734
+  - l. 564 ((ii) Δc = +0.03 · W60), res_did: -0.010762 → -0.010625
+  - l. 564 ((ii) Δc = +0.03 · W60), res_p: 0.0005 → 0.0006
+  - l. 564 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.015383 → -0.015210
+  - l. 564 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.006512 → -0.006366
+  - l. 567 ((ii) Δc = +0.03 · W60), pred_did: 0.009686 → 0.009977
+  - l. 567 ((ii) Δc = +0.03 · W60), res_did: -0.011415 → -0.011706
+  - l. 567 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.014434 → -0.014758
+  - l. 567 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.008374 → -0.008645
+  - l. 570 ((ii) Δc = +0.03 · W60), pred_did: 0.005894 → 0.005924
+  - l. 570 ((ii) Δc = +0.03 · W60), res_did: -0.008212 → -0.008242
+  - l. 570 ((ii) Δc = +0.03 · W60), res_p: 0.0035 → 0.0038
+  - l. 570 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.012259 → -0.012315
+  - l. 570 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.003705 → -0.003610
+  - l. 573 ((ii) Δc = +0.03 · W60), pred_did: 0.005686 → 0.005818
+  - l. 573 ((ii) Δc = +0.03 · W60), res_did: -0.009324 → -0.009456
+  - l. 573 ((ii) Δc = +0.03 · W60), res_p: 0.0037 → 0.0033
+  - l. 573 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.013142 → -0.013242
+  - l. 573 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.003910 → -0.004099
+  - l. 576 ((ii) Δc = +0.03 · W60), pred_did: 0.012958 → 0.012959
+  - l. 576 ((ii) Δc = +0.03 · W60), res_did: -0.010213 → -0.010215
+  - l. 576 ((ii) Δc = +0.03 · W60), res_p: 0.0005 → 0.0002
+  - l. 576 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.013517 → -0.013547
+  - l. 576 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.006867 → -0.007146
+  - l. 579 ((ii) Δc = +0.03 · W60), pred_did: 0.008916 → 0.009022
+  - l. 579 ((ii) Δc = +0.03 · W60), res_did: -0.010265 → -0.010371
+  - l. 579 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.013366 → -0.013419
+  - l. 579 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.006950 → -0.007125
+  - l. 582 ((ii) Δc = +0.03 · W60), pred_did: 0.011819 → 0.011970
+  - l. 582 ((ii) Δc = +0.03 · W60), res_did: -0.012628 → -0.012779
+  - l. 582 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.015876 → -0.015920
+  - l. 582 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.009021 → -0.009126
+  - l. 585 ((ii) Δc = +0.03 · W60), pred_did: 0.008624 → 0.008555
+  - l. 585 ((ii) Δc = +0.03 · W60), res_did: -0.009192 → -0.009123
+  - l. 585 ((ii) Δc = +0.03 · W60), res_p: 0.0015 → 0.0013
+  - l. 585 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.013123 → -0.012945
+  - l. 585 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.004775 → -0.004706
+  - l. 588 ((ii) Δc = +0.03 · W60), pred_did: 0.012015 → 0.011696
+  - l. 588 ((ii) Δc = +0.03 · W60), res_did: -0.011206 → -0.010887
+  - l. 588 ((ii) Δc = +0.03 · W60), res_p: 0.0001 → 0.0002
+  - l. 588 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.014352 → -0.014201
+  - l. 588 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.008388 → -0.007959
+  - l. 591 ((ii) Δc = +0.03 · W60), pred_did: 0.014243 → 0.014099
+  - l. 591 ((ii) Δc = +0.03 · W60), res_did: -0.013821 → -0.013677
+  - l. 591 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.017039 → -0.016802
+  - l. 591 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.010640 → -0.010669
+  - l. 594 ((ii) Δc = +0.03 · W60), pred_did: 0.010996 → 0.011032
+  - l. 594 ((ii) Δc = +0.03 · W60), res_did: -0.009967 → -0.010003
+  - l. 594 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.013416 → -0.013566
+  - l. 594 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.006678 → -0.006612
+  - l. 597 ((ii) Δc = +0.03 · W60), pred_did: 0.014425 → 0.014253
+  - l. 597 ((ii) Δc = +0.03 · W60), res_did: -0.012100 → -0.011928
+  - l. 597 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.016463 → -0.016294
+  - l. 597 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.008432 → -0.008148
+  - l. 600 ((ii) Δc = +0.03 · W60), pred_did: 0.010454 → 0.010376
+  - l. 600 ((ii) Δc = +0.03 · W60), res_did: -0.013002 → -0.012924
+  - l. 600 ((ii) Δc = +0.03 · W60), res_p: 0.0002 → 0.0004
+  - l. 600 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.016864 → -0.016844
+  - l. 600 ((ii) Δc = +0.03 · W60), res_ci_hi: -0.009058 → -0.009047
+  - l. 603 ((ii) Δc = −0.02 · W60), pred_did: 0.006868 → 0.006896
+  - l. 603 ((ii) Δc = −0.02 · W60), res_did: -0.006688 → -0.006716
+  - l. 603 ((ii) Δc = −0.02 · W60), res_p: 0.0079 → 0.0066
+  - l. 603 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.010522 → -0.010422
+  - l. 603 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.002890 → -0.002962
+  - l. 606 ((ii) Δc = −0.02 · W60), pred_did: 0.008285 → 0.008209
+  - l. 606 ((ii) Δc = −0.02 · W60), res_did: -0.006201 → -0.006125
+  - l. 606 ((ii) Δc = −0.02 · W60), res_p: 0.0029 → 0.0034
+  - l. 606 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.010383 → -0.010306
+  - l. 606 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.002775 → -0.002666
+  - l. 609 ((ii) Δc = −0.02 · W60), pred_did: 0.003001 → 0.003102
+  - l. 609 ((ii) Δc = −0.02 · W60), res_did: -0.004377 → -0.004477
+  - l. 609 ((ii) Δc = −0.02 · W60), res_p: 0.0212 → 0.0135
+  - l. 609 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.007648 → -0.007481
+  - l. 609 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.001195 → -0.001478
+  - l. 612 ((ii) Δc = −0.02 · W60), pred_did: 0.007414 → 0.007764
+  - l. 612 ((ii) Δc = −0.02 · W60), res_did: -0.007574 → -0.007925
+  - l. 612 ((ii) Δc = −0.02 · W60), res_p: 0.0005 → 0.0004
+  - l. 612 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.010612 → -0.010845
+  - l. 612 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.004656 → -0.005136
+  - l. 615 ((ii) Δc = −0.02 · W60), pred_did: -0.002060 → -0.002348
+  - l. 615 ((ii) Δc = −0.02 · W60), res_did: -0.006227 → -0.005939
+  - l. 615 ((ii) Δc = −0.02 · W60), res_p: 0.0135 → 0.0145
+  - l. 615 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.010371 → -0.010034
+  - l. 615 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.001963 → -0.001748
+  - l. 618 ((ii) Δc = −0.02 · W60), pred_did: -0.001883 → -0.001654
+  - l. 618 ((ii) Δc = −0.02 · W60), res_did: -0.006729 → -0.006958
+  - l. 618 ((ii) Δc = −0.02 · W60), res_p: 0.0100 → 0.0084
+  - l. 618 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.010410 → -0.010611
+  - l. 618 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.002534 → -0.002793
+  - l. 621 ((ii) Δc = −0.02 · W60), pred_did: 0.002435 → 0.002543
+  - l. 621 ((ii) Δc = −0.02 · W60), res_did: -0.005988 → -0.006096
+  - l. 621 ((ii) Δc = −0.02 · W60), res_p: 0.0001 → 0.0002
+  - l. 621 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.007820 → -0.008110
+  - l. 621 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.004221 → -0.004163
+  - l. 624 ((ii) Δc = −0.02 · W60), pred_did: -0.001067 → -0.001280
+  - l. 624 ((ii) Δc = −0.02 · W60), res_did: -0.003594 → -0.003381
+  - l. 624 ((ii) Δc = −0.02 · W60), res_p: 0.0774 → 0.1002
+  - l. 624 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.007020 → -0.006923
+  - l. 624 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.000253 → 0.000111
+  - l. 627 ((ii) Δc = −0.02 · W60), pred_did: 0.000967 → 0.001031
+  - l. 627 ((ii) Δc = −0.02 · W60), res_did: -0.006830 → -0.006894
+  - l. 627 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.009516 → -0.009645
+  - l. 627 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.004284 → -0.004313
+  - l. 630 ((ii) Δc = −0.02 · W60), pred_did: 0.005251 → 0.005203
+  - l. 630 ((ii) Δc = −0.02 · W60), res_did: -0.001142 → -0.001094
+  - l. 630 ((ii) Δc = −0.02 · W60), res_p: 0.6215 → 0.6241
+  - l. 630 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.005228 → -0.004925
+  - l. 630 ((ii) Δc = −0.02 · W60), res_ci_hi: 0.003453 → 0.003333
+  - l. 633 ((ii) Δc = −0.02 · W60), pred_did: -0.001683 → -0.001590
+  - l. 633 ((ii) Δc = −0.02 · W60), res_did: -0.005529 → -0.005622
+  - l. 633 ((ii) Δc = −0.02 · W60), res_p: 0.0034 → 0.0028
+  - l. 633 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.008435 → -0.008461
+  - l. 633 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.002501 → -0.002669
+  - l. 636 ((ii) Δc = −0.02 · W60), pred_did: 0.003490 → 0.003516
+  - l. 636 ((ii) Δc = −0.02 · W60), res_did: -0.004074 → -0.004100
+  - l. 636 ((ii) Δc = −0.02 · W60), res_p: 0.0876 → 0.0841
+  - l. 636 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.008003 → -0.007989
+  - l. 636 ((ii) Δc = −0.02 · W60), res_ci_hi: 0.000029 → -0.000019
+  - l. 639 ((ii) Δc = −0.02 · W60), pred_did: 0.005812 → 0.005597
+  - l. 639 ((ii) Δc = −0.02 · W60), res_did: -0.007460 → -0.007245
+  - l. 639 ((ii) Δc = −0.02 · W60), res_p: 0.0021 → 0.0024
+  - l. 639 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.011923 → -0.011812
+  - l. 639 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.003384 → -0.003164
+  - l. 642 ((ii) Δc = −0.02 · W60), pred_did: 0.002231 → 0.002096
+  - l. 642 ((ii) Δc = −0.02 · W60), res_did: -0.002967 → -0.002832
+  - l. 642 ((ii) Δc = −0.02 · W60), res_p: 0.0417 → 0.0342
+  - l. 642 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.005245 → -0.004937
+  - l. 642 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.000518 → -0.000555
+  - l. 645 ((ii) Δc = −0.02 · W60), pred_did: 0.007732 → 0.007858
+  - l. 645 ((ii) Δc = −0.02 · W60), res_did: -0.002944 → -0.003069
+  - l. 645 ((ii) Δc = −0.02 · W60), res_p: 0.1833 → 0.1581
+  - l. 645 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.006817 → -0.006882
+  - l. 645 ((ii) Δc = −0.02 · W60), res_ci_hi: 0.001165 → 0.000914
+  - l. 648 ((ii) Δc = −0.02 · W60), pred_did: 0.006086 → 0.006005
+  - l. 648 ((ii) Δc = −0.02 · W60), res_did: -0.009200 → -0.009120
+  - l. 648 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.012353 → -0.012234
+  - l. 648 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.006471 → -0.006446
+  - l. 651 ((ii) Δc = −0.02 · W60), pred_did: 0.002576 → 0.002541
+  - l. 651 ((ii) Δc = −0.02 · W60), res_did: -0.004032 → -0.003997
+  - l. 651 ((ii) Δc = −0.02 · W60), res_p: 0.0197 → 0.0181
+  - l. 651 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.007155 → -0.007030
+  - l. 651 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.001116 → -0.001113
+  - l. 654 ((ii) Δc = −0.02 · W60), res_p: 0.0031 → 0.0042
+  - l. 654 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.009707 → -0.009845
+  - l. 654 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.002743 → -0.002729
+  - l. 657 ((ii) Δc = −0.02 · W60), pred_did: 0.003139 → 0.003029
+  - l. 657 ((ii) Δc = −0.02 · W60), res_did: -0.005527 → -0.005416
+  - l. 657 ((ii) Δc = −0.02 · W60), res_p: 0.0061 → 0.0056
+  - l. 657 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.008705 → -0.008434
+  - l. 657 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.002463 → -0.002543
+  - l. 660 ((ii) Δc = −0.02 · W60), pred_did: 0.005026 → 0.005074
+  - l. 660 ((ii) Δc = −0.02 · W60), res_did: -0.006816 → -0.006864
+  - l. 660 ((ii) Δc = −0.02 · W60), res_p: 0.0077 → 0.0079
+  - l. 660 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.010803 → -0.010772
+  - l. 660 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.002996 → -0.003049
+  - l. 663 ((ii) Δc = −0.02 · W60), pred_did: 0.012794 → 0.012889
+  - l. 663 ((ii) Δc = −0.02 · W60), res_did: -0.006929 → -0.007024
+  - l. 663 ((ii) Δc = −0.02 · W60), res_p: 0.0017 → 0.0016
+  - l. 663 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.010629 → -0.010437
+  - l. 663 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.003816 → -0.003991
+  - l. 666 ((ii) Δc = −0.02 · W60), pred_did: 0.006916 → 0.007416
+  - l. 666 ((ii) Δc = −0.02 · W60), res_did: -0.002680 → -0.003180
+  - l. 666 ((ii) Δc = −0.02 · W60), res_p: 0.0302 → 0.0177
+  - l. 666 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.004760 → -0.005297
+  - l. 666 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.000667 → -0.001141
+  - l. 669 ((ii) Δc = −0.02 · W60), pred_did: 0.006897 → 0.006883
+  - l. 669 ((ii) Δc = −0.02 · W60), res_did: -0.004342 → -0.004328
+  - l. 669 ((ii) Δc = −0.02 · W60), res_p: 0.0072 → 0.0078
+  - l. 669 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.007002 → -0.007014
+  - l. 669 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.001809 → -0.001798
+  - l. 672 ((ii) Δc = −0.02 · W60), pred_did: 0.003414 → 0.003721
+  - l. 672 ((ii) Δc = −0.02 · W60), res_did: -0.006327 → -0.006634
+  - l. 672 ((ii) Δc = −0.02 · W60), res_p: 0.0016 → 0.0015
+  - l. 672 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.009953 → -0.010168
+  - l. 672 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.002961 → -0.003222
+  - l. 675 ((ii) Δc = −0.02 · W60), pred_did: 0.006107 → 0.006197
+  - l. 675 ((ii) Δc = −0.02 · W60), res_did: -0.006193 → -0.006283
+  - l. 675 ((ii) Δc = −0.02 · W60), res_p: 0.0045 → 0.0034
+  - l. 675 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.009372 → -0.009305
+  - l. 675 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.002852 → -0.003174
+  - l. 678 ((ii) Δc = −0.02 · W60), pred_did: 0.000936 → 0.001222
+  - l. 678 ((ii) Δc = −0.02 · W60), res_did: -0.005114 → -0.005399
+  - l. 678 ((ii) Δc = −0.02 · W60), res_p: 0.0023 → 0.0021
+  - l. 678 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.007688 → -0.007904
+  - l. 678 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.002547 → -0.002688
+  - l. 681 ((ii) Δc = −0.02 · W60), pred_did: 0.009323 → 0.009538
+  - l. 681 ((ii) Δc = −0.02 · W60), res_did: -0.006088 → -0.006302
+  - l. 681 ((ii) Δc = −0.02 · W60), res_p: 0.0150 → 0.0140
+  - l. 681 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.009841 → -0.010015
+  - l. 681 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.001993 → -0.002311
+  - l. 684 ((ii) Δc = −0.02 · W60), pred_did: 0.004885 → 0.004785
+  - l. 684 ((ii) Δc = −0.02 · W60), res_did: -0.009490 → -0.009390
+  - l. 684 ((ii) Δc = −0.02 · W60), res_p: 0.0001 → 0.0002
+  - l. 684 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.011969 → -0.011796
+  - l. 684 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.006983 → -0.006918
+  - l. 687 ((ii) Δc = −0.02 · W60), pred_did: -0.000094 → 0.000110
+  - l. 687 ((ii) Δc = −0.02 · W60), res_did: -0.005845 → -0.006049
+  - l. 687 ((ii) Δc = −0.02 · W60), res_p: 0.0276 → 0.0206
+  - l. 687 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.009976 → -0.010090
+  - l. 687 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.001395 → -0.001778
+  - l. 690 ((ii) Δc = −0.02 · W60), pred_did: 0.005962 → 0.005678
+  - l. 690 ((ii) Δc = −0.02 · W60), res_did: -0.003783 → -0.003499
+  - l. 690 ((ii) Δc = −0.02 · W60), res_p: 0.0734 → 0.0975
+  - l. 690 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.007781 → -0.007442
+  - l. 690 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.000358 → -0.000021
+  - l. 693 ((ii) Δc = −0.02 · W60), pred_did: 0.009945 → 0.010005
+  - l. 693 ((ii) Δc = −0.02 · W60), res_did: -0.003618 → -0.003678
+  - l. 693 ((ii) Δc = −0.02 · W60), res_p: 0.1171 → 0.1055
+  - l. 693 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.008013 → -0.007994
+  - l. 693 ((ii) Δc = −0.02 · W60), res_ci_hi: 0.000246 → 0.000162
+  - l. 696 ((ii) Δc = −0.02 · W60), pred_did: 0.006832 → 0.006758
+  - l. 696 ((ii) Δc = −0.02 · W60), res_did: -0.004049 → -0.003975
+  - l. 696 ((ii) Δc = −0.02 · W60), res_p: 0.0758 → 0.0734
+  - l. 696 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.008006 → -0.007751
+  - l. 696 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.000394 → -0.000470
+  - l. 699 ((ii) Δc = −0.02 · W60), pred_did: 0.001363 → 0.001327
+  - l. 699 ((ii) Δc = −0.02 · W60), res_did: -0.002880 → -0.002844
+  - l. 699 ((ii) Δc = −0.02 · W60), res_p: 0.1016 → 0.0894
+  - l. 699 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.006037 → -0.005785
+  - l. 699 ((ii) Δc = −0.02 · W60), res_ci_hi: 0.000140 → 0.000020
+  - l. 702 ((ii) Δc = −0.02 · W60), pred_did: 0.009905 → 0.009870
+  - l. 702 ((ii) Δc = −0.02 · W60), res_did: -0.005162 → -0.005126
+  - l. 702 ((ii) Δc = −0.02 · W60), res_p: 0.0042 → 0.0013
+  - l. 702 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.007838 → -0.007797
+  - l. 702 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.001931 → -0.002380
+  - l. 705 ((ii) Δc = −0.02 · W60), pred_did: 0.003004 → 0.003260
+  - l. 705 ((ii) Δc = −0.02 · W60), res_did: -0.006548 → -0.006804
+  - l. 705 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.008821 → -0.009139
+  - l. 705 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.004028 → -0.004192
+  - l. 708 ((ii) Δc = −0.02 · W60), pred_did: 0.005429 → 0.005601
+  - l. 708 ((ii) Δc = −0.02 · W60), res_did: -0.002753 → -0.002925
+  - l. 708 ((ii) Δc = −0.02 · W60), res_p: 0.1321 → 0.1187
+  - l. 708 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.005945 → -0.006130
+  - l. 708 ((ii) Δc = −0.02 · W60), res_ci_hi: 0.000285 → 0.000183
+  - l. 711 ((ii) Δc = −0.02 · W60), pred_did: 0.002549 → 0.002851
+  - l. 711 ((ii) Δc = −0.02 · W60), res_did: -0.003283 → -0.003585
+  - l. 711 ((ii) Δc = −0.02 · W60), res_p: 0.0297 → 0.0157
+  - l. 711 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.005766 → -0.006120
+  - l. 711 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.000766 → -0.001110
+  - l. 714 ((ii) Δc = −0.02 · W60), pred_did: 0.008364 → 0.008774
+  - l. 714 ((ii) Δc = −0.02 · W60), res_did: -0.007153 → -0.007564
+  - l. 714 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.009734 → -0.010227
+  - l. 714 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.004525 → -0.004764
+  - l. 717 ((ii) Δc = −0.02 · W60), pred_did: 0.007456 → 0.007375
+  - l. 717 ((ii) Δc = −0.02 · W60), res_did: -0.003387 → -0.003306
+  - l. 717 ((ii) Δc = −0.02 · W60), res_p: 0.0452 → 0.0482
+  - l. 717 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.006128 → -0.006051
+  - l. 717 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.000463 → -0.000330
+  - l. 720 ((ii) Δc = −0.02 · W60), pred_did: 0.005765 → 0.005587
+  - l. 720 ((ii) Δc = −0.02 · W60), res_did: -0.004894 → -0.004716
+  - l. 720 ((ii) Δc = −0.02 · W60), res_p: 0.0347 → 0.0403
+  - l. 720 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.009354 → -0.009096
+  - l. 720 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.000790 → -0.000587
+  - l. 723 ((ii) Δc = −0.02 · W60), pred_did: 0.004276 → 0.004137
+  - l. 723 ((ii) Δc = −0.02 · W60), res_did: -0.004054 → -0.003916
+  - l. 723 ((ii) Δc = −0.02 · W60), res_p: 0.0701 → 0.0728
+  - l. 723 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.007940 → -0.007679
+  - l. 723 ((ii) Δc = −0.02 · W60), res_ci_hi: 0.000009 → 0.000002
+  - l. 726 ((ii) Δc = −0.02 · W60), pred_did: 0.003406 → 0.003509
+  - l. 726 ((ii) Δc = −0.02 · W60), res_did: -0.005720 → -0.005824
+  - l. 726 ((ii) Δc = −0.02 · W60), res_p: 0.0063 → 0.0044
+  - l. 726 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.008903 → -0.008982
+  - l. 726 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.002414 → -0.002663
+  - l. 729 ((ii) Δc = −0.02 · W60), pred_did: 0.006523 → 0.006556
+  - l. 729 ((ii) Δc = −0.02 · W60), res_did: -0.006879 → -0.006912
+  - l. 729 ((ii) Δc = −0.02 · W60), res_p: 0.0028 → 0.0022
+  - l. 729 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.009535 → -0.009355
+  - l. 729 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.003745 → -0.003831
+  - l. 732 ((ii) Δc = −0.02 · W60), pred_did: 0.009259 → 0.009426
+  - l. 732 ((ii) Δc = −0.02 · W60), res_did: -0.007474 → -0.007641
+  - l. 732 ((ii) Δc = −0.02 · W60), res_p: 0.0006 → 0.0005
+  - l. 732 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.010691 → -0.010469
+  - l. 732 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.004754 → -0.005080
+  - l. 735 ((ii) Δc = −0.02 · W60), pred_did: 0.012642 → 0.012329
+  - l. 735 ((ii) Δc = −0.02 · W60), res_did: -0.009138 → -0.008826
+  - l. 735 ((ii) Δc = −0.02 · W60), res_p: 0.0024 → 0.0029
+  - l. 735 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.013123 → -0.012775
+  - l. 735 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.004725 → -0.004426
+  - l. 738 ((ii) Δc = −0.02 · W60), pred_did: 0.009395 → 0.009299
+  - l. 738 ((ii) Δc = −0.02 · W60), res_did: -0.008301 → -0.008206
+  - l. 738 ((ii) Δc = −0.02 · W60), res_p: 0.0027 → 0.0031
+  - l. 738 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.012601 → -0.012595
+  - l. 738 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.003791 → -0.003661
+  - l. 741 ((ii) Δc = −0.02 · W60), pred_did: 0.001429 → 0.001922
+  - l. 741 ((ii) Δc = −0.02 · W60), res_did: -0.006364 → -0.006857
+  - l. 741 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.007821 → -0.008438
+  - l. 741 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.004904 → -0.005316
+  - l. 744 ((ii) Δc = −0.02 · W60), pred_did: 0.009278 → 0.009292
+  - l. 744 ((ii) Δc = −0.02 · W60), res_did: -0.005877 → -0.005892
+  - l. 744 ((ii) Δc = −0.02 · W60), res_p: 0.0088 → 0.0084
+  - l. 744 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.009605 → -0.009617
+  - l. 744 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.002392 → -0.002419
+  - l. 747 ((ii) Δc = −0.02 · W60), pred_did: 0.013012 → 0.012947
+  - l. 747 ((ii) Δc = −0.02 · W60), res_did: -0.005851 → -0.005785
+  - l. 747 ((ii) Δc = −0.02 · W60), res_p: 0.0067 → 0.0062
+  - l. 747 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.009135 → -0.009038
+  - l. 747 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.002371 → -0.002372
+  - l. 750 ((ii) Δc = −0.02 · W60), pred_did: 0.010394 → 0.010512
+  - l. 750 ((ii) Δc = −0.02 · W60), res_did: -0.005120 → -0.005238
+  - l. 750 ((ii) Δc = −0.02 · W60), res_p: 0.0204 → 0.0167
+  - l. 750 ((ii) Δc = −0.02 · W60), res_ci_lo: -0.008933 → -0.008927
+  - l. 750 ((ii) Δc = −0.02 · W60), res_ci_hi: -0.001487 → -0.001696
+  - l. 753 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.041470 → -0.041123
+  - l. 753 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: -0.000514 → -0.000860
+  - l. 753 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.7140 → 0.5137
+  - l. 753 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.003261 → -0.003397
+  - l. 753 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.002089 → 0.001646
+  - l. 756 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.049251 → -0.049125
+  - l. 756 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.000373 → 0.000247
+  - l. 756 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.8785 → 0.9198
+  - l. 756 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.003876 → -0.004151
+  - l. 756 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.005277 → 0.005315
+  - l. 759 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.038667 → -0.038593
+  - l. 759 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: -0.001543 → -0.001618
+  - l. 759 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.4653 → 0.4357
+  - l. 759 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.005514 → -0.005530
+  - l. 759 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.002243 → 0.002083
+  - l. 762 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.046262 → -0.046528
+  - l. 762 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.000039 → 0.000305
+  - l. 762 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.9873 → 0.8807
+  - l. 762 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.003704 → -0.003324
+  - l. 762 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.003346 → 0.003594
+  - l. 765 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.044851 → -0.044727
+  - l. 765 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: -0.001206 → -0.001330
+  - l. 765 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.5421 → 0.5092
+  - l. 765 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.004700 → -0.004987
+  - l. 765 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.002326 → 0.002235
+  - l. 768 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.048994 → -0.048939
+  - l. 768 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.002683 → 0.002629
+  - l. 768 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.1174 → 0.1292
+  - l. 768 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.000115 → -0.000170
+  - l. 768 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.005766 → 0.005714
+  - l. 771 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.045050 → -0.045080
+  - l. 771 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.000191 → 0.000222
+  - l. 771 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.9139 → 0.8979
+  - l. 771 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.002942 → -0.002929
+  - l. 771 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.003333 → 0.003364
+  - l. 774 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.040290 → -0.040207
+  - l. 774 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: -0.000162 → -0.000244
+  - l. 774 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.9249 → 0.8817
+  - l. 774 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.003548 → -0.003547
+  - l. 774 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.003010 → 0.002884
+  - l. 777 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.041044 → -0.041265
+  - l. 777 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: -0.000833 → -0.000612
+  - l. 777 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.6110 → 0.7092
+  - l. 777 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.003876 → -0.003636
+  - l. 777 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.002040 → 0.002165
+  - l. 780 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.042905 → -0.043112
+  - l. 780 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.001647 → 0.001854
+  - l. 780 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.4202 → 0.3538
+  - l. 780 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.001965 → -0.001829
+  - l. 780 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.005335 → 0.005608
+  - l. 783 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.040463 → -0.040425
+  - l. 783 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: -0.001308 → -0.001346
+  - l. 783 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.5570 → 0.5402
+  - l. 783 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.005303 → -0.005238
+  - l. 783 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.002776 → 0.002720
+  - l. 786 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.041995 → -0.042476
+  - l. 786 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.000404 → 0.000885
+  - l. 786 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.7869 → 0.5706
+  - l. 786 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.002359 → -0.001934
+  - l. 786 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.003192 → 0.003817
+  - l. 789 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.043654 → -0.043552
+  - l. 789 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.000397 → 0.000295
+  - l. 789 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.8452 → 0.8820
+  - l. 789 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.003382 → -0.003588
+  - l. 789 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.004309 → 0.004203
+  - l. 792 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.039607 → -0.039553
+  - l. 792 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.002011 → 0.001956
+  - l. 792 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.2653 → 0.2788
+  - l. 792 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.000732 → -0.000736
+  - l. 792 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.005112 → 0.005039
+  - l. 795 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.048805 → -0.049038
+  - l. 795 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: -0.000947 → -0.000715
+  - l. 795 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.7283 → 0.7953
+  - l. 795 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.005314 → -0.005022
+  - l. 795 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.003855 → 0.004059
+  - l. 798 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.046112 → -0.046006
+  - l. 798 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: -0.000345 → -0.000450
+  - l. 798 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.8140 → 0.7502
+  - l. 798 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.002829 → -0.002854
+  - l. 798 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.002530 → 0.002354
+  - l. 801 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.040964 → -0.041035
+  - l. 801 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.001353 → 0.001424
+  - l. 801 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.4841 → 0.4482
+  - l. 801 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.002444 → -0.002264
+  - l. 801 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.004563 → 0.004534
+  - l. 804 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.039615 → -0.039707
+  - l. 804 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.002845 → 0.002937
+  - l. 804 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.1353 → 0.1141
+  - l. 804 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.000367 → -0.000155
+  - l. 804 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.006282 → 0.006277
+  - l. 807 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.040934 → -0.041074
+  - l. 807 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.000390 → 0.000529
+  - l. 807 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.7087 → 0.6102
+  - l. 807 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.001329 → -0.001152
+  - l. 807 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.002336 → 0.002410
+  - l. 810 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.040600 → -0.040863
+  - l. 810 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.002261 → 0.002524
+  - l. 810 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.1490 → 0.1213
+  - l. 810 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.000488 → -0.000310
+  - l. 810 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.004947 → 0.005274
+  - l. 813 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.044172 → -0.044133
+  - l. 813 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.000750 → 0.000712
+  - l. 813 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.5525 → 0.5614
+  - l. 813 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.001586 → -0.001578
+  - l. 813 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.003014 → 0.003017
+  - l. 816 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.038509 → -0.038433
+  - l. 816 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.000072 → -0.000005
+  - l. 816 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.9567 → 0.9983
+  - l. 816 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.002200 → -0.002401
+  - l. 816 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.002529 → 0.002618
+  - l. 819 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.047649 → -0.047621
+  - l. 819 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.004050 → 0.004022
+  - l. 819 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.0565 → 0.0549
+  - l. 819 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: 0.000419 → 0.000525
+  - l. 819 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.007989 → 0.007901
+  - l. 822 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.046149 → -0.045802
+  - l. 822 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.003814 → 0.003467
+  - l. 822 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.0507 → 0.0770
+  - l. 822 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: 0.000538 → 0.000096
+  - l. 822 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.007085 → 0.006856
+  - l. 825 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.035578 → -0.035461
+  - l. 825 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.001589 → 0.001472
+  - l. 825 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.4314 → 0.4586
+  - l. 825 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.001708 → -0.001924
+  - l. 825 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.005202 → 0.005089
+  - l. 828 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.043603 → -0.043249
+  - l. 828 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.000461 → 0.000107
+  - l. 828 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.8374 → 0.9636
+  - l. 828 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.003514 → -0.003748
+  - l. 828 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.004451 → 0.004033
+  - l. 831 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.038238 → -0.038085
+  - l. 831 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.001235 → 0.001081
+  - l. 831 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.4424 → 0.4904
+  - l. 831 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.001811 → -0.001924
+  - l. 831 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.004142 → 0.003896
+  - l. 834 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.043929 → -0.044164
+  - l. 834 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.000248 → 0.000483
+  - l. 834 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.9194 → 0.8300
+  - l. 834 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.004472 → -0.003839
+  - l. 834 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.004294 → 0.004324
+  - l. 837 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.045022 → -0.044739
+  - l. 837 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.000985 → 0.000703
+  - l. 837 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.6217 → 0.7196
+  - l. 837 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.002768 → -0.002932
+  - l. 837 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.004309 → 0.003788
+  - l. 840 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.042333 → -0.042599
+  - l. 840 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: -0.001308 → -0.001042
+  - l. 840 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.4680 → 0.5645
+  - l. 840 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.004529 → -0.004336
+  - l. 840 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.002137 → 0.002455
+  - l. 843 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.042961 → -0.042624
+  - l. 843 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.002642 → 0.002306
+  - l. 843 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.2488 → 0.2927
+  - l. 843 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.001703 → -0.001631
+  - l. 843 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.006819 → 0.006329
+  - l. 846 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.040348 → -0.040279
+  - l. 846 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.000204 → 0.000136
+  - l. 846 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.9205 → 0.9430
+  - l. 846 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.003182 → -0.003177
+  - l. 846 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.004041 → 0.003825
+  - l. 849 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.045941 → -0.046238
+  - l. 849 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.002190 → 0.002486
+  - l. 849 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.2124 → 0.1588
+  - l. 849 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.000905 → -0.000683
+  - l. 849 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.005712 → 0.005930
+  - l. 852 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.039001 → -0.038733
+  - l. 852 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.004059 → 0.003791
+  - l. 852 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.0829 → 0.0962
+  - l. 852 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: 0.000093 → -0.000092
+  - l. 852 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.007616 → 0.007313
+  - l. 855 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.043770 → -0.043996
+  - l. 855 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: -0.001799 → -0.001573
+  - l. 855 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.4056 → 0.4779
+  - l. 855 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.005906 → -0.005779
+  - l. 855 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.001301 → 0.001621
+  - l. 858 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.040720 → -0.040574
+  - l. 858 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.000224 → 0.000078
+  - l. 858 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.9152 → 0.9690
+  - l. 858 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.003656 → -0.003786
+  - l. 858 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.004192 → 0.003989
+  - l. 861 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.043136 → -0.043387
+  - l. 861 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.001894 → 0.002146
+  - l. 861 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.1801 → 0.1293
+  - l. 861 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.000736 → -0.000289
+  - l. 861 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.004357 → 0.004600
+  - l. 864 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.042578 → -0.042892
+  - l. 864 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.000927 → 0.001241
+  - l. 864 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.6045 → 0.4861
+  - l. 864 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.002106 → -0.001904
+  - l. 864 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.004362 → 0.004583
+  - l. 867 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.036674 → -0.036766
+  - l. 867 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.001894 → 0.001986
+  - l. 867 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.3655 → 0.3344
+  - l. 867 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.001742 → -0.001639
+  - l. 867 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.005889 → 0.005835
+  - l. 870 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.046735 → -0.046657
+  - l. 870 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.003036 → 0.002958
+  - l. 870 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.1489 → 0.1506
+  - l. 870 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.000803 → -0.000826
+  - l. 870 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.006432 → 0.006353
+  - l. 873 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.041761 → -0.042140
+  - l. 873 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.003539 → 0.003917
+  - l. 873 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.1227 → 0.0802
+  - l. 873 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.000567 → -0.000070
+  - l. 873 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.007423 → 0.007516
+  - l. 876 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.043293 → -0.043156
+  - l. 876 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.001595 → 0.001459
+  - l. 876 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.4387 → 0.4843
+  - l. 876 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.002389 → -0.002539
+  - l. 876 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.005021 → 0.004969
+  - l. 879 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.041143 → -0.041172
+  - l. 879 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.002091 → 0.002120
+  - l. 879 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.3466 → 0.3320
+  - l. 879 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.002011 → -0.002008
+  - l. 879 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.005992 → 0.005942
+  - l. 882 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.043841 → -0.043976
+  - l. 882 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.000958 → 0.001093
+  - l. 882 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.6512 → 0.6066
+  - l. 882 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.002712 → -0.002561
+  - l. 882 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.005125 → 0.005211
+  - l. 885 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.042153 → -0.042505
+  - l. 885 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.000111 → 0.000463
+  - l. 885 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.9371 → 0.7319
+  - l. 885 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.002420 → -0.002044
+  - l. 885 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.002729 → 0.002938
+  - l. 888 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.043615 → -0.043596
+  - l. 888 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: -0.001667 → -0.001685
+  - l. 888 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.3715 → 0.3628
+  - l. 888 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.004996 → -0.005027
+  - l. 888 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.001628 → 0.001518
+  - l. 891 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.043233 → -0.042843
+  - l. 891 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: -0.000331 → -0.000721
+  - l. 891 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.8566 → 0.7249
+  - l. 891 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.004186 → -0.004522
+  - l. 891 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.003728 → 0.003252
+  - l. 894 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.043644 → -0.043494
+  - l. 894 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.002601 → 0.002451
+  - l. 894 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.3051 → 0.3306
+  - l. 894 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.001764 → -0.001902
+  - l. 894 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.007333 → 0.007170
+  - l. 897 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.049976 → -0.049869
+  - l. 897 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: 0.002369 → 0.002262
+  - l. 897 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.1835 → 0.1703
+  - l. 897 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.000672 → -0.000636
+  - l. 897 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.005347 → 0.005034
+  - l. 900 ((iii) Δa = −0.015, Δc = +0.02 · W60), pred_did: -0.036057 → -0.035945
+  - l. 900 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_did: -0.001671 → -0.001783
+  - l. 900 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_p: 0.3488 → 0.3342
+  - l. 900 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_lo: -0.005051 → -0.005382
+  - l. 900 ((iii) Δa = −0.015, Δc = +0.02 · W60), res_ci_hi: 0.001520 → 0.001478
+  - l. 903 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.051581 → -0.051172
+  - l. 903 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.008416 → 0.008006
+  - l. 903 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0007 → 0.0006
+  - l. 903 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.004514 → 0.004366
+  - l. 903 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.012730 → 0.012104
+  - l. 906 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.049427 → -0.049498
+  - l. 906 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.005499 → 0.005570
+  - l. 906 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0056 → 0.0100
+  - l. 906 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.002406 → 0.002302
+  - l. 906 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.008571 → 0.008927
+  - l. 909 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.043191 → -0.043390
+  - l. 909 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.004108 → 0.004307
+  - l. 909 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0396 → 0.0303
+  - l. 909 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.000813 → 0.001030
+  - l. 909 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.007317 → 0.007373
+  - l. 912 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.044068 → -0.044051
+  - l. 912 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.003682 → 0.003665
+  - l. 912 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0664 → 0.0677
+  - l. 912 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.000377 → 0.000358
+  - l. 912 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.007170 → 0.007058
+  - l. 915 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.049860 → -0.049738
+  - l. 915 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.006041 → 0.005918
+  - l. 915 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.003663 → 0.003552
+  - l. 915 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.008457 → 0.008283
+  - l. 918 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.048628 → -0.048022
+  - l. 918 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.007435 → 0.006829
+  - l. 918 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0061 → 0.0094
+  - l. 918 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.003125 → 0.002411
+  - l. 918 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.011250 → 0.010785
+  - l. 921 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.051608 → -0.051353
+  - l. 921 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.006372 → 0.006117
+  - l. 921 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0012 → 0.0018
+  - l. 921 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.003891 → 0.003545
+  - l. 921 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.009451 → 0.009355
+  - l. 924 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.050049 → -0.049888
+  - l. 924 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.003856 → 0.003695
+  - l. 924 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0654 → 0.0828
+  - l. 924 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.000312 → -0.000107
+  - l. 924 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.007360 → 0.007217
+  - l. 927 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.050208 → -0.050060
+  - l. 927 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.006236 → 0.006087
+  - l. 927 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0013 → 0.0006
+  - l. 927 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.003381 → 0.003364
+  - l. 927 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.008899 → 0.008682
+  - l. 930 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.048052 → -0.047934
+  - l. 930 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.009235 → 0.009117
+  - l. 930 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0010 → 0.0015
+  - l. 930 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.004973 → 0.004792
+  - l. 930 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.013220 → 0.013265
+  - l. 933 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.052375 → -0.052048
+  - l. 933 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.006383 → 0.006056
+  - l. 933 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0049 → 0.0056
+  - l. 933 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.003004 → 0.002782
+  - l. 933 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.009936 → 0.009624
+  - l. 936 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.046144 → -0.046437
+  - l. 936 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.003788 → 0.004081
+  - l. 936 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0898 → 0.0687
+  - l. 936 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.000003 → 0.000259
+  - l. 936 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.007598 → 0.007892
+  - l. 939 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.045186 → -0.044693
+  - l. 939 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.002842 → 0.002348
+  - l. 939 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0525 → 0.1104
+  - l. 939 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.000558 → -0.000132
+  - l. 939 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.005543 → 0.005214
+  - l. 942 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.052680 → -0.051861
+  - l. 942 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.004710 → 0.003891
+  - l. 942 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0497 → 0.0848
+  - l. 942 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.000367 → -0.000265
+  - l. 942 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.008809 → 0.007849
+  - l. 945 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.043569 → -0.043627
+  - l. 945 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.005040 → 0.005098
+  - l. 945 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0316 → 0.0332
+  - l. 945 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.001250 → 0.001234
+  - l. 945 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.008609 → 0.008769
+  - l. 948 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.050576 → -0.050411
+  - l. 948 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.004576 → 0.004412
+  - l. 948 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0820 → 0.0813
+  - l. 948 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: -0.000175 → -0.000074
+  - l. 948 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.008935 → 0.008708
+  - l. 951 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.040872 → -0.040744
+  - l. 951 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.005779 → 0.005652
+  - l. 951 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0244 → 0.0289
+  - l. 951 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.001801 → 0.001506
+  - l. 951 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.009845 → 0.009787
+  - l. 954 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.041672 → -0.041728
+  - l. 954 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.004168 → 0.004224
+  - l. 954 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0154 → 0.0156
+  - l. 954 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.001544 → 0.001598
+  - l. 954 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.006653 → 0.006736
+  - l. 957 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.048219 → -0.048468
+  - l. 957 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.003038 → 0.003286
+  - l. 957 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.1411 → 0.1077
+  - l. 957 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: -0.000697 → -0.000284
+  - l. 957 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.006316 → 0.006449
+  - l. 960 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.053400 → -0.053422
+  - l. 960 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.007517 → 0.007539
+  - l. 960 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0006 → 0.0005
+  - l. 960 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.004282 → 0.004463
+  - l. 960 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.010797 → 0.010628
+  - l. 963 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.049378 → -0.049507
+  - l. 963 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.004816 → 0.004946
+  - l. 963 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0013 → 0.0016
+  - l. 963 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.002603 → 0.002745
+  - l. 963 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.007180 → 0.007285
+  - l. 966 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.054486 → -0.054988
+  - l. 966 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.004261 → 0.004763
+  - l. 966 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0292 → 0.0168
+  - l. 966 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.000999 → 0.001508
+  - l. 966 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.007312 → 0.007777
+  - l. 969 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.044057 → -0.043928
+  - l. 969 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.005572 → 0.005443
+  - l. 969 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0067 → 0.0042
+  - l. 969 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.002537 → 0.002750
+  - l. 969 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.009053 → 0.008772
+  - l. 972 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.048503 → -0.048489
+  - l. 972 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.006531 → 0.006516
+  - l. 972 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0079 → 0.0098
+  - l. 972 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.002716 → 0.002584
+  - l. 972 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.010158 → 0.010404
+  - l. 975 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.051140 → -0.051222
+  - l. 975 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.004201 → 0.004283
+  - l. 975 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0662 → 0.0498
+  - l. 975 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.000458 → 0.000826
+  - l. 975 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.008161 → 0.008004
+  - l. 978 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.048832 → -0.048904
+  - l. 978 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.005130 → 0.005201
+  - l. 978 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0233 → 0.0322
+  - l. 978 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.001540 → 0.001213
+  - l. 978 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.009039 → 0.009435
+  - l. 981 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.046737 → -0.046553
+  - l. 981 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.005921 → 0.005737
+  - l. 981 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0009 → 0.0010
+  - l. 981 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.003536 → 0.003266
+  - l. 981 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.008333 → 0.008227
+  - l. 984 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.048658 → -0.048749
+  - l. 984 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.008309 → 0.008400
+  - l. 984 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0009 → 0.0007
+  - l. 984 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.005037 → 0.005256
+  - l. 984 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.011306 → 0.011317
+  - l. 987 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.046139 → -0.046305
+  - l. 987 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.005958 → 0.006124
+  - l. 987 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0013 → 0.0005
+  - l. 987 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.003308 → 0.003784
+  - l. 987 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.008782 → 0.008631
+  - l. 990 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.047928 → -0.047646
+  - l. 990 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.006228 → 0.005946
+  - l. 990 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.003894 → 0.003581
+  - l. 990 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.009401 → 0.009069
+  - l. 993 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.045549 → -0.045390
+  - l. 993 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.005234 → 0.005075
+  - l. 993 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0046 → 0.0050
+  - l. 993 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.002293 → 0.002174
+  - l. 993 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.008270 → 0.008215
+  - l. 996 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.056790 → -0.056527
+  - l. 996 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.008336 → 0.008073
+  - l. 996 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0042 → 0.0039
+  - l. 996 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.004178 → 0.004131
+  - l. 996 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.012560 → 0.012055
+  - l. 999 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.048212 → -0.048073
+  - l. 999 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.006083 → 0.005944
+  - l. 999 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0055 → 0.0060
+  - l. 999 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.002455 → 0.002357
+  - l. 999 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.009171 → 0.008888
+  - l. 1002 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.050058 → -0.049638
+  - l. 1002 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.003949 → 0.003529
+  - l. 1002 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0419 → 0.0664
+  - l. 1002 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.000768 → 0.000382
+  - l. 1002 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.007250 → 0.006751
+  - l. 1005 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.050274 → -0.050440
+  - l. 1005 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.002691 → 0.002857
+  - l. 1005 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.2667 → 0.2388
+  - l. 1005 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: -0.001281 → -0.001057
+  - l. 1005 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.006752 → 0.006908
+  - l. 1008 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.036278 → -0.036497
+  - l. 1008 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.006253 → 0.006472
+  - l. 1008 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0059 → 0.0032
+  - l. 1008 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.003002 → 0.003329
+  - l. 1008 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.009718 → 0.009766
+  - l. 1011 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.045255 → -0.045480
+  - l. 1011 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.002790 → 0.003016
+  - l. 1011 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.1156 → 0.1066
+  - l. 1011 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: -0.000326 → -0.000339
+  - l. 1011 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.006139 → 0.006642
+  - l. 1014 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.044773 → -0.044941
+  - l. 1014 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.002894 → 0.003062
+  - l. 1014 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.1021 → 0.0851
+  - l. 1014 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: -0.000434 → -0.000167
+  - l. 1014 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.006133 → 0.006258
+  - l. 1017 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.046666 → -0.046888
+  - l. 1017 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.003822 → 0.004044
+  - l. 1017 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0405 → 0.0292
+  - l. 1017 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.000745 → 0.000968
+  - l. 1017 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.007063 → 0.007191
+  - l. 1020 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.043629 → -0.043656
+  - l. 1020 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.003250 → 0.003278
+  - l. 1020 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0870 → 0.0820
+  - l. 1020 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: -0.000266 → -0.000273
+  - l. 1020 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.006423 → 0.006445
+  - l. 1023 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.045950 → -0.046114
+  - l. 1023 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.006991 → 0.007154
+  - l. 1023 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.003450 → 0.003671
+  - l. 1023 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.010362 → 0.010721
+  - l. 1026 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.046896 → -0.046773
+  - l. 1026 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.003549 → 0.003426
+  - l. 1026 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0148 → 0.0212
+  - l. 1026 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.001235 → 0.000953
+  - l. 1026 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.005784 → 0.005712
+  - l. 1029 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.043022 → -0.042819
+  - l. 1029 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.005860 → 0.005657
+  - l. 1029 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0031 → 0.0038
+  - l. 1029 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.002936 → 0.002889
+  - l. 1029 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.008718 → 0.008527
+  - l. 1032 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.045752 → -0.045945
+  - l. 1032 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.001547 → 0.001740
+  - l. 1032 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.4308 → 0.3754
+  - l. 1032 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: -0.002061 → -0.001798
+  - l. 1032 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.005018 → 0.005226
+  - l. 1035 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.045951 → -0.045759
+  - l. 1035 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.003652 → 0.003459
+  - l. 1035 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0339 → 0.0321
+  - l. 1035 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.000762 → 0.000706
+  - l. 1035 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.006469 → 0.006022
+  - l. 1038 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.040638 → -0.040540
+  - l. 1038 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.001084 → 0.000987
+  - l. 1038 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.4690 → 0.5220
+  - l. 1038 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: -0.001698 → -0.001918
+  - l. 1038 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.003730 → 0.003728
+  - l. 1041 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.044977 → -0.044941
+  - l. 1041 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.004960 → 0.004924
+  - l. 1041 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0248 → 0.0129
+  - l. 1041 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.001571 → 0.001754
+  - l. 1041 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.008751 → 0.008542
+  - l. 1044 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.045984 → -0.046335
+  - l. 1044 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.007131 → 0.007481
+  - l. 1044 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0021 → 0.0023
+  - l. 1044 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.003891 → 0.003961
+  - l. 1044 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.010171 → 0.010714
+  - l. 1047 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.045883 → -0.045914
+  - l. 1047 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.004646 → 0.004677
+  - l. 1047 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0178 → 0.0167
+  - l. 1047 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.001261 → 0.001326
+  - l. 1047 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.008013 → 0.008146
+  - l. 1050 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), pred_did: -0.043541 → -0.043798
+  - l. 1050 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_did: 0.004538 → 0.004795
+  - l. 1050 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_p: 0.0869 → 0.0762
+  - l. 1050 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_lo: 0.000361 → 0.000523
+  - l. 1050 ((iv) a_x − a_y = 0.03, Δa = −0.015 · W60), res_ci_hi: 0.009013 → 0.009346
+- `notes/review_results/partB/calibration_run.log`: 7 line(s) differ (committed l., then regenerated l.)
+  - l. 44 → l. 44
+    − | (i) Δa = −0.015, Δc = 0 | W60 | 0.7152 | -0.0422 ± 0.0034 | -0.0471 ± 0.0036 | +0.0049 ± 0.0017 | 0.056; 0.82 | +0.00014 ± 0.00065 | +0.00130 ± 0.00050 |
+    + | (i) Δa = −0.015, Δc = 0 | W60 | 0.7152 | -0.0422 ± 0.0034 | -0.0471 ± 0.0036 | +0.0049 ± 0.0017 | 0.055; 0.80 | +0.00014 ± 0.00065 | +0.00130 ± 0.00050 |
+  - l. 47 → l. 47
+    − | (ii) Δc = +0.01 | W60 | 0.7153 | +0.0010 ± 0.0036 | +0.0020 ± 0.0037 | -0.0010 ± 0.0018 | 0.460; 0.08 | +0.00758 ± 0.00072 | -0.00014 ± 0.00065 |
+    + | (ii) Δc = +0.01 | W60 | 0.7153 | +0.0010 ± 0.0036 | +0.0020 ± 0.0037 | -0.0010 ± 0.0018 | 0.459; 0.10 | +0.00758 ± 0.00072 | -0.00014 ± 0.00065 |
+  - l. 50 → l. 50
+    − | (ii) Δc = +0.02 | W60 | 0.7154 | +0.0002 ± 0.0039 | +0.0053 ± 0.0037 | -0.0052 ± 0.0016 | 0.055; 0.76 | +0.01480 ± 0.00069 | -0.00037 ± 0.00063 |
+    + | (ii) Δc = +0.02 | W60 | 0.7154 | +0.0002 ± 0.0039 | +0.0054 ± 0.0037 | -0.0052 ± 0.0016 | 0.052; 0.76 | +0.01480 ± 0.00069 | -0.00037 ± 0.00063 |
+  - l. 53 → l. 53
+    − | (ii) Δc = +0.03 | W60 | 0.7152 | +0.0001 ± 0.0031 | +0.0110 ± 0.0034 | -0.0109 ± 0.0017 | 0.001; 1.00 | +0.02210 ± 0.00071 | -0.00083 ± 0.00055 |
+    + | (ii) Δc = +0.03 | W60 | 0.7152 | +0.0001 ± 0.0031 | +0.0110 ± 0.0033 | -0.0108 ± 0.0017 | 0.001; 1.00 | +0.02210 ± 0.00071 | -0.00083 ± 0.00055 |
+  - l. 56 → l. 56
+    − | (ii) Δc = −0.02 | W60 | 0.7152 | -0.0002 ± 0.0038 | +0.0053 ± 0.0037 | -0.0055 ± 0.0018 | 0.039; 0.80 | -0.01495 ± 0.00066 | -0.00027 ± 0.00059 |
+    + | (ii) Δc = −0.02 | W60 | 0.7152 | -0.0002 ± 0.0038 | +0.0054 ± 0.0037 | -0.0056 ± 0.0018 | 0.037; 0.80 | -0.01495 ± 0.00066 | -0.00027 ± 0.00059 |
+  - l. 59 → l. 59
+    − | (iii) Δa = −0.015, Δc = +0.02 | W60 | 0.7153 | -0.0419 ± 0.0035 | -0.0427 ± 0.0033 | +0.0009 ± 0.0016 | 0.521; 0.00 | +0.01500 ± 0.00080 | +0.00093 ± 0.00056 |
+    + | (iii) Δa = −0.015, Δc = +0.02 | W60 | 0.7153 | -0.0419 ± 0.0035 | -0.0428 ± 0.0033 | +0.0009 ± 0.0016 | 0.505; 0.00 | +0.01500 ± 0.00080 | +0.00093 ± 0.00056 |
+  - l. 62 → l. 62
+    − | (iv) a_x − a_y = 0.03, Δa = −0.015 | W60 | 0.7131 | -0.0422 ± 0.0036 | -0.0473 ± 0.0038 | +0.0051 ± 0.0018 | 0.052; 0.72 | +0.00013 ± 0.00071 | +0.00130 ± 0.00056 |
+    + | (iv) a_x − a_y = 0.03, Δa = −0.015 | W60 | 0.7131 | -0.0422 ± 0.0036 | -0.0472 ± 0.0038 | +0.0051 ± 0.0017 | 0.051; 0.70 | +0.00013 ± 0.00071 | +0.00130 ± 0.00056 |
+
+### B17b, `notes/partB17b_calibration_filtered.py`
+
+Matrices evaluated by `rev_phiid_fast`: 110,240,000 (49,980,000 through PairPhiID, 0 of them not positive definite; 60,260,000 through atoms_from_corr, 23 of them not positive definite); nearly singular (smallest eigenvalue in (0, 10⁻³]): 436. By calling line: `notes/partB17b_calibration_filtered.py` line 164, 41,160,000 (0 not positive definite); `notes/partB17b_calibration_filtered.py` line 166, 41,160,000 (15 not positive definite); `notes/partB17b_calibration_filtered.py` line 168, 2,940,000 (0 not positive definite); `notes/partB17b_calibration_filtered.py` line 171, 2,940,000 (0 not positive definite); `notes/partB17b_calibration_filtered.py` line 174, 5,880,000 (0 not positive definite); `notes/partB17b_calibration_filtered.py` line 176, 5,880,000 (0 not positive definite); `notes/partB17b_calibration_filtered.py` line 231, 80,000 (0 not positive definite); `notes/review_v2_residual_null.py` line 67, 5,100,000 (0 not positive definite); `notes/review_v2_residual_null.py` line 69, 5,100,000 (8 not positive definite).
+
+- `notes/review_v2_residual_null.py` line 69, atoms_from_corr: 8 of 5,100,000 not positive definite, smallest eigenvalue -0.0022.
+- `notes/partB17b_calibration_filtered.py` line 166, atoms_from_corr: 15 of 41,160,000 not positive definite, smallest eigenvalue -0.00203.
+- the sts that the code before the correction gave the 8 matrices of `notes/review_v2_residual_null.py` line 69: +0.9378 to +2.7796.
+- the sts that the code before the correction gave the 15 matrices of `notes/partB17b_calibration_filtered.py` line 166: +0.8434 to +2.7564.
+
+- `notes/review_results/partB/calibration_filtered_tables.md`: 2 line(s) differ (committed l., then regenerated l.)
+  - l. 11 → l. 11
+    − | (ii) Δc = +0.01 | W60 | 1.1878 | +0.0001 ± 0.0029 | -0.0002 ± 0.0025 | +0.0003 ± 0.0011 | 0.464; 0.04 | +0.00025 ± 0.00031 | -0.00021 ± 0.00096 |
+    + | (ii) Δc = +0.01 | W60 | 1.1878 | +0.0001 ± 0.0029 | -0.0002 ± 0.0025 | +0.0003 ± 0.0011 | 0.465; 0.04 | +0.00025 ± 0.00031 | -0.00021 ± 0.00096 |
+  - l. 17 → l. 17
+    − | (ii) Δc = +0.03 | W60 | 1.1883 | -0.0009 ± 0.0028 | -0.0005 ± 0.0026 | -0.0004 ± 0.0012 | 0.453; 0.06 | +0.00069 ± 0.00024 | -0.00018 ± 0.00096 |
+    + | (ii) Δc = +0.03 | W60 | 1.1883 | -0.0009 ± 0.0028 | -0.0005 ± 0.0026 | -0.0004 ± 0.0012 | 0.452; 0.06 | +0.00069 ± 0.00024 | -0.00018 ± 0.00096 |
+- `notes/review_results/partB/calibration_filtered.csv`: 54 cell(s) differ (line in the file, its row's text cells, column: committed → regenerated)
+  - l. 117 ((i) Δa (post filter) · W60), pred_did: -0.097749 → -0.097781
+  - l. 117 ((i) Δa (post filter) · W60), res_did: 0.002216 → 0.002249
+  - l. 117 ((i) Δa (post filter) · W60), res_p: 0.0536 → 0.0505
+  - l. 117 ((i) Δa (post filter) · W60), res_ci_lo: 0.000293 → 0.000342
+  - l. 117 ((i) Δa (post filter) · W60), res_ci_hi: 0.004252 → 0.004279
+  - l. 168 ((ii) Δc = +0.01 · W60), pred_did: -0.000223 → -0.000198
+  - l. 168 ((ii) Δc = +0.01 · W60), res_did: 0.000820 → 0.000796
+  - l. 168 ((ii) Δc = +0.01 · W60), res_p: 0.3516 → 0.3666
+  - l. 168 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.000727 → -0.000751
+  - l. 168 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.002470 → 0.002443
+  - l. 288 ((ii) Δc = +0.01 · W60), pred_did: 0.005049 → 0.005009
+  - l. 288 ((ii) Δc = +0.01 · W60), res_did: -0.000459 → -0.000419
+  - l. 288 ((ii) Δc = +0.01 · W60), res_p: 0.6514 → 0.6803
+  - l. 288 ((ii) Δc = +0.01 · W60), res_ci_lo: -0.002278 → -0.002242
+  - l. 288 ((ii) Δc = +0.01 · W60), res_ci_hi: 0.001480 → 0.001501
+  - l. 456 ((ii) Δc = +0.03 · W60), pred_did: 0.002378 → 0.002338
+  - l. 456 ((ii) Δc = +0.03 · W60), res_did: 0.000662 → 0.000702
+  - l. 456 ((ii) Δc = +0.03 · W60), res_p: 0.6116 → 0.5935
+  - l. 456 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.001533 → -0.001502
+  - l. 456 ((ii) Δc = +0.03 · W60), res_ci_hi: 0.003167 → 0.003226
+  - l. 540 ((ii) Δc = +0.03 · W60), pred_did: 0.003277 → 0.003256
+  - l. 540 ((ii) Δc = +0.03 · W60), res_did: -0.002165 → -0.002144
+  - l. 540 ((ii) Δc = +0.03 · W60), res_p: 0.1813 → 0.1847
+  - l. 540 ((ii) Δc = +0.03 · W60), res_ci_lo: -0.004991 → -0.004962
+  - l. 540 ((ii) Δc = +0.03 · W60), res_ci_hi: 0.000927 → 0.000952
+  - l. 711 ((ii) Δc = −0.02 · W60), pred_did: -0.003543 → -0.003561
+  - l. 711 ((ii) Δc = −0.02 · W60), res_did: 0.003482 → 0.003501
+  - l. 711 ((ii) Δc = −0.02 · W60), res_ci_hi: 0.005296 → 0.005313
+  - l. 927 ((iv) a_x − a_y = 0.03 with Δa · W60), pred_did: -0.090534 → -0.090541
+  - l. 927 ((iv) a_x − a_y = 0.03 with Δa · W60), res_did: 0.001472 → 0.001479
+  - l. 927 ((iv) a_x − a_y = 0.03 with Δa · W60), res_p: 0.2101 → 0.2073
+  - l. 927 ((iv) a_x − a_y = 0.03 with Δa · W60), res_ci_lo: -0.000742 → -0.000728
+  - l. 927 ((iv) a_x − a_y = 0.03 with Δa · W60), res_ci_hi: 0.003622 → 0.003633
+  - l. 936 ((iv) a_x − a_y = 0.03 with Δa · W60), pred_did: -0.088182 → -0.088154
+  - l. 936 ((iv) a_x − a_y = 0.03 with Δa · W60), res_did: 0.001804 → 0.001777
+  - l. 936 ((iv) a_x − a_y = 0.03 with Δa · W60), res_p: 0.2863 → 0.2910
+  - l. 936 ((iv) a_x − a_y = 0.03 with Δa · W60), res_ci_lo: -0.001055 → -0.001074
+  - l. 936 ((iv) a_x − a_y = 0.03 with Δa · W60), res_ci_hi: 0.004867 → 0.004823
+  - l. 960 ((iv) a_x − a_y = 0.03 with Δa · W60), pred_did: -0.088630 → -0.088664
+  - l. 960 ((iv) a_x − a_y = 0.03 with Δa · W60), res_did: 0.001669 → 0.001702
+  - l. 960 ((iv) a_x − a_y = 0.03 with Δa · W60), res_p: 0.1827 → 0.1752
+  - l. 960 ((iv) a_x − a_y = 0.03 with Δa · W60), res_ci_lo: -0.000752 → -0.000738
+  - l. 960 ((iv) a_x − a_y = 0.03 with Δa · W60), res_ci_hi: 0.003743 → 0.003744
+  - l. 984 ((iv) a_x − a_y = 0.03 with Δa · W60), pred_did: -0.090833 → -0.090843
+  - l. 984 ((iv) a_x − a_y = 0.03 with Δa · W60), res_did: 0.001794 → 0.001804
+  - l. 984 ((iv) a_x − a_y = 0.03 with Δa · W60), res_p: 0.1508 → 0.1479
+  - l. 984 ((iv) a_x − a_y = 0.03 with Δa · W60), res_ci_lo: -0.000231 → -0.000221
+  - l. 1026 ((iv) a_x − a_y = 0.03 with Δa · W60), pred_did: -0.090415 → -0.090353
+  - l. 1026 ((iv) a_x − a_y = 0.03 with Δa · W60), res_did: 0.004438 → 0.004376
+  - l. 1026 ((iv) a_x − a_y = 0.03 with Δa · W60), res_ci_hi: 0.006914 → 0.006734
+  - l. 1035 ((iv) a_x − a_y = 0.03 with Δa · W60), pred_did: -0.090542 → -0.090531
+  - l. 1035 ((iv) a_x − a_y = 0.03 with Δa · W60), res_did: 0.002190 → 0.002180
+  - l. 1035 ((iv) a_x − a_y = 0.03 with Δa · W60), res_p: 0.1167 → 0.1183
+  - l. 1035 ((iv) a_x − a_y = 0.03 with Δa · W60), res_ci_lo: -0.000366 → -0.000386
+- `notes/review_results/partB/calibration_filtered_run.log`: 2 line(s) differ (committed l., then regenerated l.)
+  - l. 50 → l. 50
+    − | (ii) Δc = +0.01 | W60 | 1.1878 | +0.0001 ± 0.0029 | -0.0002 ± 0.0025 | +0.0003 ± 0.0011 | 0.464; 0.04 | +0.00025 ± 0.00031 | -0.00021 ± 0.00096 |
+    + | (ii) Δc = +0.01 | W60 | 1.1878 | +0.0001 ± 0.0029 | -0.0002 ± 0.0025 | +0.0003 ± 0.0011 | 0.465; 0.04 | +0.00025 ± 0.00031 | -0.00021 ± 0.00096 |
+  - l. 56 → l. 56
+    − | (ii) Δc = +0.03 | W60 | 1.1883 | -0.0009 ± 0.0028 | -0.0005 ± 0.0026 | -0.0004 ± 0.0012 | 0.453; 0.06 | +0.00069 ± 0.00024 | -0.00018 ± 0.00096 |
+    + | (ii) Δc = +0.03 | W60 | 1.1883 | -0.0009 ± 0.0028 | -0.0005 ± 0.0026 | -0.0004 ± 0.0012 | 0.452; 0.06 | +0.00069 ± 0.00024 | -0.00018 ± 0.00096 |
+
+### B24, `notes/partB24_bandpassed_expectations.py`
+
+Matrices evaluated by `rev_phiid_fast`: 17,640,000 (5,376,000 through PairPhiID, 0 of them not positive definite; 12,264,000 through atoms_from_corr, 0 of them not positive definite); nearly singular (smallest eigenvalue in (0, 10⁻³]): 15. By calling line: `notes/partB24_bandpassed_expectations.py` line 156, 2,352,000 (0 not positive definite); `notes/partB24_bandpassed_expectations.py` line 158, 2,352,000 (0 not positive definite); `notes/partB24_bandpassed_expectations.py` line 160, 168,000 (0 not positive definite); `notes/partB24_bandpassed_expectations.py` line 163, 168,000 (0 not positive definite); `notes/partB24_bandpassed_expectations.py` line 166, 336,000 (0 not positive definite); `notes/partB24_bandpassed_expectations.py` line 168, 336,000 (0 not positive definite); `notes/partB24_bandpassed_expectations.py` line 193, 2,352,000 (0 not positive definite); `notes/partB24_bandpassed_expectations.py` line 194, 2,352,000 (0 not positive definite); `notes/partB24_bandpassed_expectations.py` line 195, 2,352,000 (0 not positive definite); `notes/partB24_bandpassed_expectations.py` line 196, 2,352,000 (0 not positive definite); `notes/partB24_bandpassed_expectations.py` line 212, 2,352,000 (0 not positive definite); `notes/partB24_bandpassed_expectations.py` line 242, 168,000 (0 not positive definite).
+
+- `notes/review_results/partB/bandpassed_expectations_tables.md`: the bytes differ; every line agrees (masks as in 10_logs_figures_compare.py; numbers within 1e-9)
+- `notes/review_results/partB/bandpassed_expectations.csv`: the bytes differ; every cell agrees (within 1e-9)
+- `notes/review_results/partB/bandpassed_expectations_run.log`: the bytes differ; every line agrees (masks as in 10_logs_figures_compare.py; numbers within 1e-9)
+
+### B10, `notes/partB10_crosslag_deviation.py`: its replay of the null's first section and cells (its section B), with the null's own draws
+
+These lines use no data: in the rehearsal of part 3, d108d66's code printed on the synthetic series lines 63–73 of `notes/review_results/partB/crosslag_deviation_tables.md` exactly as d108d66 committed them from the data; the corrected code prints:
+
+- l. 63 → l. 63
+  − Homogeneous-filter check (placebo ACF; 2,000 pairs × 8,400 TRs per window length), as the null's first section; its log reports residual −8.52 %, −3.10 %, −0.34 % at W = 30, 60, 840:
+  + Homogeneous-filter check (placebo ACF; 2,000 pairs × 8,400 TRs per window length), as the null's first section; its log reports residual −8.51 %, −3.10 %, −0.34 % at W = 30, 60, 840 (−8.52 % at W = 30 before B26):
+- l. 64 → l. 64
+  − W = 30: residual -0.0886 (-8.52 %); share of pair-windows with q < 0 0.503, mean |q| 0.354; sign(q)-weighted mean deviation +0.00662 ± 0.00008 (SE; 95 % [+0.00647, +0.00677]); signed mean +0.00000 ± 0.00005; slope on q +0.0169 ± 0.0001 over 280 window indices
+  + W = 30: residual -0.0885 (-8.51 %); share of pair-windows with q < 0 0.503, mean |q| 0.354; sign(q)-weighted mean deviation +0.00662 ± 0.00008 (SE; 95 % [+0.00647, +0.00677]); signed mean +0.00000 ± 0.00005; slope on q +0.0169 ± 0.0001 over 280 window indices
+
+The runner's counts for these lines (the rehearsal's `positive_definite.csv`, the sites whose call comes from lines 337–377 of `notes/partB10_crosslag_deviation.py`): 126 matrices not positive definite:
+- `notes/review_v2_residual_null.py` line 69:11 (reached from notes/partB10_crosslag_deviation.py:348), atoms_from_corr: 115 of 860,000, in 1 of its 3 calls (#1: 115).
+- `notes/review_v2_residual_null.py` line 69:11 (reached from notes/partB10_crosslag_deviation.py:362 < notes/partB10_crosslag_deviation.py:363), atoms_from_corr: 6 of 4,500,000, in 4 of its 30 calls (#2: 1, #4: 1, #9: 3, #26: 1).
+- `notes/review_v2_residual_null.py` line 69:11 (reached from notes/partB10_crosslag_deviation.py:362 < notes/partB10_crosslag_deviation.py:364), atoms_from_corr: 5 of 4,050,000, in 3 of its 27 calls (#2: 3, #8: 1, #16: 1).
+
+### B15, `notes/partB15_directed_crosslag.py`: its finite-sample null with lead–lag asymmetry (the first part of its line of levels, l. 42, changes with these lines; the rest of that line quotes the data's residuals)
+
+These lines use no data: in the rehearsal of part 3, d108d66's code printed on the synthetic series lines 34–40 of `notes/review_results/partB/directed_crosslag_tables.md` exactly as d108d66 committed them from the data; the corrected code prints:
+
+- l. 36 → l. 36
+  − (0) symmetric filter null, as review_v2_residual_null.py (solved bmean 184, qsd 0.266): window a 0.8629, |q| 0.2824; residual -0.03535 (-2.98 %); RMS δ_anti 0.10389, RMS δ_sym 0.02342; closed-form response to δ_anti -0.03484, to δ_sym -0.00009, to both -0.03575.
+  + (0) symmetric filter null, as review_v2_residual_null.py (solved bmean 184, qsd 0.266): window a 0.8629, |q| 0.2824; residual -0.03534 (-2.98 %); RMS δ_anti 0.10389, RMS δ_sym 0.02342; closed-form response to δ_anti -0.03484, to δ_sym -0.00008, to both -0.03574.
+- l. 37 → l. 37
+  − (1) y = x delayed by one sample mixed with independent noise at the pair's q (w = q / r₁ of x, clipped to ±0.99): window a 0.8637, |q| 0.2828; residual -0.06505 (-5.59 %); RMS δ_anti 0.12579, RMS δ_sym 0.02347; closed-form response to δ_anti -0.04954, to δ_sym -0.01159, to both -0.06552.
+  + (1) y = x delayed by one sample mixed with independent noise at the pair's q (w = q / r₁ of x, clipped to ±0.99): window a 0.8637, |q| 0.2828; residual -0.06505 (-5.59 %); RMS δ_anti 0.12579, RMS δ_sym 0.02347; closed-form response to δ_anti -0.04955, to δ_sym -0.01157, to both -0.06553.
+- l. 38 → l. 38
+  − (2) symmetric VAR(1), population a = 0.8632, c_xy = +0.02, c_yx = −0.02, q ~ N(0, 0.266) clipped to the reachable lag-0 range -0.987 to +0.987 (window a and |q| as measured, see the note in the script): window a 0.7987, |q| 0.3126; residual -0.07353 (-9.52 %); RMS δ_anti 0.06488, RMS δ_sym 0.05227; closed-form response to δ_anti -0.01305, to δ_sym -0.05854, to both -0.07386.
+  + (2) symmetric VAR(1), population a = 0.8632, c_xy = +0.02, c_yx = −0.02, q ~ N(0, 0.266) clipped to the reachable lag-0 range -0.987 to +0.987 (window a and |q| as measured, see the note in the script): window a 0.7987, |q| 0.3126; residual -0.07343 (-9.51 %); RMS δ_anti 0.06488, RMS δ_sym 0.05227; closed-form response to δ_anti -0.01310, to δ_sym -0.05837, to both -0.07372.
+- l. 39 → l. 39
+  − (2) symmetric VAR(1), population a = 0.8632, c_xy = +0.04, c_yx = −0.04, q ~ N(0, 0.266) clipped to the reachable lag-0 range -0.949 to +0.949 (window a and |q| as measured, see the note in the script): window a 0.8012, |q| 0.3133; residual -0.07253 (-9.22 %); RMS δ_anti 0.07516, RMS δ_sym 0.05067; closed-form response to δ_anti -0.01860, to δ_sym -0.05166, to both -0.07304.
+  + (2) symmetric VAR(1), population a = 0.8632, c_xy = +0.04, c_yx = −0.04, q ~ N(0, 0.266) clipped to the reachable lag-0 range -0.949 to +0.949 (window a and |q| as measured, see the note in the script): window a 0.8012, |q| 0.3133; residual -0.07245 (-9.21 %); RMS δ_anti 0.07516, RMS δ_sym 0.05067; closed-form response to δ_anti -0.01880, to δ_sym -0.05141, to both -0.07290.
+- l. 40 → l. 40
+  − (2) symmetric VAR(1), population a = 0.8632, c_xy = +0.06, c_yx = −0.06, q ~ N(0, 0.266) clipped to the reachable lag-0 range -0.888 to +0.888 (window a and |q| as measured, see the note in the script): window a 0.8043, |q| 0.3091; residual -0.06842 (-8.47 %); RMS δ_anti 0.08931, RMS δ_sym 0.04900; closed-form response to δ_anti -0.02685, to δ_sym -0.03947, to both -0.06933.
+  + (2) symmetric VAR(1), population a = 0.8632, c_xy = +0.06, c_yx = −0.06, q ~ N(0, 0.266) clipped to the reachable lag-0 range -0.888 to +0.888 (window a and |q| as measured, see the note in the script): window a 0.8043, |q| 0.3091; residual -0.06847 (-8.47 %); RMS δ_anti 0.08931, RMS δ_sym 0.04900; closed-form response to δ_anti -0.02712, to δ_sym -0.03945, to both -0.06955.
+
+The runner's counts for these lines (the rehearsal's `positive_definite.csv`, the sites whose call comes from lines 150–233 of `notes/partB15_directed_crosslag.py`): 644 matrices not positive definite:
+- `notes/review_v2_residual_null.py` line 69:11 (reached from notes/partB15_directed_crosslag.py:165 < notes/partB15_directed_crosslag.py:165), atoms_from_corr: 4 of 900,000, in 1 of its 6 calls (#2: 4).
+- `notes/review_v2_residual_null.py` line 69:11 (reached from notes/partB15_directed_crosslag.py:171 < notes/partB15_directed_crosslag.py:182), atoms_from_corr: 1 of 150,000, in 1 of its 1 calls (#1: 1).
+- `notes/partB15_directed_crosslag.py` line 88:11 (reached from notes/partB15_directed_crosslag.py:173 < notes/partB15_directed_crosslag.py:182), atoms_from_corr: 1 of 150,000, in 1 of its 1 calls (#1: 1).
+- `notes/partB15_directed_crosslag.py` line 89:13 (reached from notes/partB15_directed_crosslag.py:173 < notes/partB15_directed_crosslag.py:194), atoms_from_corr: 11 of 150,000, in 1 of its 1 calls (#1: 11).
+- `notes/partB15_directed_crosslag.py` line 91:13 (reached from notes/partB15_directed_crosslag.py:173 < notes/partB15_directed_crosslag.py:194), atoms_from_corr: 2 of 150,000, in 1 of its 1 calls (#1: 2).
+- `notes/review_v2_residual_null.py` line 69:11 (reached from notes/partB15_directed_crosslag.py:171 < notes/partB15_directed_crosslag.py:224), atoms_from_corr: 202 of 450,000, in 3 of its 3 calls (#1: 33, #2: 81, #3: 88).
+- `notes/partB15_directed_crosslag.py` line 88:11 (reached from notes/partB15_directed_crosslag.py:173 < notes/partB15_directed_crosslag.py:224), atoms_from_corr: 202 of 450,000, in 3 of its 3 calls (#1: 33, #2: 81, #3: 88).
+- `notes/partB15_directed_crosslag.py` line 89:13 (reached from notes/partB15_directed_crosslag.py:173 < notes/partB15_directed_crosslag.py:224), atoms_from_corr: 149 of 450,000, in 3 of its 3 calls (#1: 21, #2: 63, #3: 65).
+- `notes/partB15_directed_crosslag.py` line 90:12 (reached from notes/partB15_directed_crosslag.py:173 < notes/partB15_directed_crosslag.py:224), atoms_from_corr: 33 of 450,000, in 3 of its 3 calls (#1: 6, #2: 11, #3: 16).
+- `notes/partB15_directed_crosslag.py` line 91:13 (reached from notes/partB15_directed_crosslag.py:173 < notes/partB15_directed_crosslag.py:224), atoms_from_corr: 39 of 450,000, in 2 of its 3 calls (#2: 7, #3: 32).
+
+### Fig 3 (c)
+
+`scripts/15_figures_v2.py` draws in Fig 3 (c) the AR(1) generator's rate that it reads from B23's (i) row of `diagnostic_alternatives_tables.md` (its l. 269–271 and 301): the line's slope becomes −0.387 per unit of pair r₁ for −0.390, so the figure's files change; the caption, which the script also writes, prints it as −0.39 either way. The rehearsal of part 3 does not show it: on the synthetic series the figure step stops before it draws, in both runs.
+
+### B21's three expectations
+
+`notes/partB21_inference_revision.py` holds EXPECTATIONS = (0.0027, 0.0049, 0.0054): B17b's and B17's (i) residual DiD at W = 60 and the null's DiD, which `scripts/15_figures_v2.py` also looks up. The corrected outputs print +0.0027, +0.0049, +0.0054: the same.
+
+Their means over the 50 replicates, committed and regenerated (`calibration_filtered.csv`, `calibration.csv`): B17b 0.0026686 → 0.0026692; B17 0.0048988 → 0.0049320.
+
+## 2. The numbers of the text whose source changed
+
+### The main text
+
+`notes/review_2026-09-25/checks/check_numbers.py` on commit A's text and numbers table with the corrected outputs of part 1: "rows 1183, data rows 666, flagged 36", against "rows 1183, data rows 666, flagged 12" with the committed outputs (`checks/check_numbers.out`); the rows it flags beyond those (24), each a number of the main text whose held string the corrected outputs no longer hold, with the value they give at the printed precision (row of commit A's table as `check_numbers.py` numbers it, its line in the file − 1 | number | finding | where):
+
+- 547 | −0.39 | HELD STRING NOT ON LINE | notes/review_results/partB/diagnostic_alternatives_tables.md:108 held='-0.390' → unchanged at its printed precision (the line now holds -0.387)
+- 685 | −0.39 | HELD STRING NOT ON LINE | notes/review_results/partB/diagnostic_alternatives_tables.md:108 held='-0.390' → unchanged at its printed precision (the line now holds -0.387)
+- 738 | −0.39 | HELD STRING NOT ON LINE | notes/review_results/partB/diagnostic_alternatives_tables.md:108 held='-0.390' → unchanged at its printed precision (the line now holds -0.387)
+- 741 | −1.59 | HELD STRING NOT ON LINE | notes/review_results/partB/diagnostic_alternatives_tables.md:117 held='-1.587' → becomes −1.58 (the line now holds -1.581)
+- 742 | −2.73 | HELD STRING NOT ON LINE | notes/review_results/partB/diagnostic_alternatives_tables.md:118 held='-2.727' → becomes −2.76 (the line now holds -2.762)
+- 785 | −0.0048 | HELD STRING NOT ON LINE | notes/review_results/partB/diagnostic_alternatives_tables.md:114 held='-0.00479' → becomes −0.0047 (the line now holds -0.00471)
+- 786 | 0.0006 | HELD STRING NOT ON LINE | notes/review_results/partB/diagnostic_alternatives.csv:171 held='0.000645626' → unchanged at its printed precision (the line now holds 0.000642041)
+- 787 | −0.0055 | HELD STRING NOT ON LINE | notes/review_results/partB/diagnostic_alternatives.csv:180 held='-0.005458535055' → becomes −0.0056 (the line now holds -0.005647467028)
+- 788 | 0.0007 | HELD STRING NOT ON LINE | notes/review_results/partB/diagnostic_alternatives.csv:180 held='0.000659427' → becomes 0.0006 (the line now holds 0.000648932)
+- 800 | +0.0068 | HELD STRING NOT ON LINE | notes/review_results/partB/diagnostic_alternatives_tables.md:113 held='+0.00677' → unchanged at its printed precision (the line now holds +0.00678)
+- 801 | 0.0006 | HELD STRING NOT ON LINE | notes/review_results/partB/diagnostic_alternatives.csv:162 held='0.000553529' → becomes 0.0005 (the line now holds 0.00054864)
+- 810 | +0.0098 | HELD STRING NOT ON LINE | notes/review_results/partB/diagnostic_alternatives_tables.md:109 held='+0.00978' → becomes +0.0093 (the line now holds +0.00931)
+- 811 | 0.0009 | HELD STRING NOT ON LINE | notes/review_results/partB/diagnostic_alternatives.csv:126 held='0.000930884' → unchanged at its printed precision (the line now holds 0.000910076)
+- 812 | +0.0102 | HELD STRING NOT ON LINE | notes/review_results/partB/diagnostic_alternatives.csv:135 held='0.01016339895' → becomes +0.0095 (the line now holds 0.009505306536)
+- 813 | 0.0010 | HELD STRING NOT ON LINE | notes/review_results/partB/diagnostic_alternatives.csv:135 held='0.000954184' → becomes 0.0009 (the line now holds 0.000923941)
+- 824 | −0.0135 | HELD STRING NOT ON LINE | notes/review_results/partB/diagnostic_alternatives_tables.md:111 held='-0.01354' → unchanged at its printed precision (the line now holds -0.01348)
+- 825 | 0.0003 | HELD STRING NOT ON LINE | notes/review_results/partB/diagnostic_alternatives.csv:144 held='0.000301333' → unchanged at its printed precision (the line now holds 0.000294162)
+- 826 | +0.0185 | HELD STRING NOT ON LINE | notes/review_results/partB/diagnostic_alternatives.csv:153 held='0.01849717867' → becomes +0.0181 (the line now holds 0.01807963329)
+- 827 | 0.0004 | HELD STRING NOT ON LINE | notes/review_results/partB/diagnostic_alternatives.csv:153 held='0.000384623' → unchanged at its printed precision (the line now holds 0.000363857)
+- 838 | +0.0102 | HELD STRING NOT ON LINE | notes/review_results/partB/diagnostic_alternatives_tables.md:117 held='+0.01020' → becomes +0.0101 (the line now holds +0.01012)
+- 839 | 0.0002 | HELD STRING NOT ON LINE | notes/review_results/partB/diagnostic_alternatives.csv:189 held='0.000229522' → unchanged at its printed precision (the line now holds 0.000225595)
+- 847 | +0.0039 | HELD STRING NOT ON LINE | notes/review_results/partB/diagnostic_alternatives_tables.md:118 held='+0.00391' → unchanged at its printed precision (the line now holds +0.00394)
+- 848 | 0.0001 | HELD STRING NOT ON LINE | notes/review_results/partB/diagnostic_alternatives.csv:198 held='0.000121024' → unchanged at its printed precision (the line now holds 0.00010387)
+- 1023 | −0.39 | HELD STRING NOT ON LINE | notes/review_results/partB/diagnostic_alternatives_tables.md:108 held='-0.390' → unchanged at its printed precision (the line now holds -0.387)
+
+Of these 24 rows, 11 print a number that the corrected values change at its printed precision; the others keep their printed number and need only their held string.
+
+### The supporting information
+
+Tables that transcribe an output row whose values changed (the row's numbers in order, as `notes/review_2026-09-25/checks/rowcheck.py` matches them; the changes are those listed in part 1 for that line):
+
+- `manuscript/supplementary.md` l. 196, 199, 202, 205, 208, 211, 214: S10 Table, B17's seven W = 60 rows (`notes/review_results/partB/calibration_tables.md` l. 8, 11, 14, 17, 20, 23, 26).
+- `manuscript/si/S3_Text.md` l. 299, 302, 305, 308, 311, 314, 317: S3 Text §7, the same seven rows (`notes/review_results/partB/calibration_tables.md` l. 8, 11, 14, 17, 20, 23, 26).
+- `manuscript/supplementary.md` l. 225, 231: S10 Table, B17b's rows (ii) Δc = +0.01 and +0.03 at W = 60 (`notes/review_results/partB/calibration_filtered_tables.md` l. 11, 17).
+- `manuscript/si/S3_Text.md` l. 328, 334: S3 Text §7, the same two rows (`notes/review_results/partB/calibration_filtered_tables.md` l. 11, 17).
+- `manuscript/supplementary.md` l. 1421–1431: S18 Table, B23 (b)'s eleven rows, which gain the bracketed numbers of pairs left out, as its description line (l. 1415) gains the note of the tables' line 102 (`notes/review_results/partB/diagnostic_alternatives_tables.md` l. 108–118).
+
+Quotations in the prose and in single cells of commit A's text (the text as it stands → the text the corrected values give; the verdicts of B23's (b) stand by the criteria of its pre-run entry):
+
+- `manuscript/supplementary.md` l. 1417: "AR(1)-substituted sts +0.78780; residual −0.07027; r₁ +0.78638; A_other −0.00291; A_same −0.00117; D −0.01137" → "AR(1)-substituted sts +0.78788 [11]; residual −0.06998 [11]; r₁ +0.78638; A_other −0.00291; A_same −0.00117; D −0.01138 [11]" (S18 Table (b), the levels; `diagnostic_alternatives_tables.md` l. 104)
+- `manuscript/supplementary.md` l. 1623: "(i) +0.00537 ("met"); (a4) −0.00479 and −0.00546, within 2 SE ("met"); (a1) +0.00978 and +0.01016 ("missed, about half as large again"); (a2) −0.01354 and +0.01850 ("missed, about a third larger")" → "(i) +0.00532 ("met"); (a4) −0.00471 and −0.00565, within 2 SE ("met"); (a1) +0.00931 and +0.00951 ("missed"; 1.4 and 1.5 times the predictions); (a2) −0.01348 and +0.01808 ("missed, about a third larger")" (S19 Table, B23 (b); `diagnostic_alternatives_tables.md` l. 108–115; each verdict as before: (i) in +0.003 to +0.007; (a4) within 2 SE of B17's rows (ii) Δc = ±0.02 (−0.0052 ± 0.0016, −0.0056 ± 0.0018); (a1) 1.41 and 1.49 times the predictions +0.0066 and +0.0064 (before 1.48 and 1.59, which B23's outcome entry called "about half as large again"); (a2) 1.32 and 1.34 times −0.0102 and +0.0135)
+- `manuscript/supplementary.md` l. 339: "−1.59 and −2.73 under a weakening" → "−1.58 and −2.76 under a weakening" (S13 Table's note; B23 (b) (a5), `diagnostic_alternatives_tables.md` l. 117–118)
+- `manuscript/si/S3_Text.md` l. 241: "(−0.0048 ± 0.0006 at c = +0.02 and −0.0055 ± 0.0007 at c = −0.02, at W = 60)" → "(−0.0047 ± 0.0006 at c = +0.02 and −0.0056 ± 0.0006 at c = −0.02, at W = 60)" (B23 (b) (a4), `diagnostic_alternatives.csv`)
+- `manuscript/si/S3_Text.md` l. 241: "(+0.0098 ± 0.0009 and +0.0102 ± 0.0010 at δ = ±0.02)" → "(+0.0093 ± 0.0009 and +0.0095 ± 0.0009 at δ = ±0.02)" (B23 (b) (a1))
+- `manuscript/si/S3_Text.md` l. 241: "(−0.0135 ± 0.0003 at δ = +0.01·sign(q), +0.0185 ± 0.0004 at −0.01·sign(q))" → "(−0.0135 ± 0.0003 at δ = +0.01·sign(q), +0.0181 ± 0.0004 at −0.01·sign(q))" (B23 (b) (a2))
+- `manuscript/si/S3_Text.md` l. 241: "−1.59 and −2.73 per unit of pair r₁ at W = 60" → "−1.58 and −2.76 per unit of pair r₁ at W = 60" (B23 (b) (a5))
+- `manuscript/si/S3_Text.md` l. 276: "residual −0.03535 (−2.98 %); RMS δ_anti 0.10389, RMS δ_sym 0.02342; closed-form response to δ_anti −0.03484, to δ_sym −0.00009, to both −0.03575" → "residual −0.03534 (−2.98 %); RMS δ_anti 0.10389, RMS δ_sym 0.02342; closed-form response to δ_anti −0.03484, to δ_sym −0.00008, to both −0.03574" (B15's finite-sample null (0), the symmetric filter null, `directed_crosslag_tables.md` l. 36; part 1)
+- `manuscript/si/S3_Text.md` l. 277: "residual −0.06505 (−5.59 %); RMS δ_anti 0.12579, RMS δ_sym 0.02347; closed-form response to δ_anti −0.04954, to δ_sym −0.01159, to both −0.06552" → "residual −0.06505 (−5.59 %); RMS δ_anti 0.12579, RMS δ_sym 0.02347; closed-form response to δ_anti −0.04955, to δ_sym −0.01157, to both −0.06553" (B15's finite-sample null (1), the delayed copy, `directed_crosslag_tables.md` l. 37; part 1)
+- `manuscript/si/S3_Text.md` l. 278: "residual −0.07353 (−9.52 %); RMS δ_anti 0.06488, RMS δ_sym 0.05227; closed-form response to δ_anti −0.01305, to δ_sym −0.05854, to both −0.07386" → "residual −0.07343 (−9.51 %); RMS δ_anti 0.06488, RMS δ_sym 0.05227; closed-form response to δ_anti −0.01310, to δ_sym −0.05837, to both −0.07372" (B15's finite-sample null (2), the antisymmetric VAR(1) at c = 0.02, `directed_crosslag_tables.md` l. 38; part 1)
+- `manuscript/si/S3_Text.md` l. 279: "residual −0.07253 (−9.22 %); RMS δ_anti 0.07516, RMS δ_sym 0.05067; closed-form response to δ_anti −0.01860, to δ_sym −0.05166, to both −0.07304" → "residual −0.07245 (−9.21 %); RMS δ_anti 0.07516, RMS δ_sym 0.05067; closed-form response to δ_anti −0.01880, to δ_sym −0.05141, to both −0.07290" (B15's finite-sample null (2) at c = 0.04, `directed_crosslag_tables.md` l. 39; part 1)
+- `manuscript/si/S3_Text.md` l. 280: "residual −0.06842 (−8.47 %); RMS δ_anti 0.08931, RMS δ_sym 0.04900; closed-form response to δ_anti −0.02685, to δ_sym −0.03947, to both −0.06933" → "residual −0.06847 (−8.47 %); RMS δ_anti 0.08931, RMS δ_sym 0.04900; closed-form response to δ_anti −0.02712, to δ_sym −0.03945, to both −0.06955" (B15's finite-sample null (2) at c = 0.06, `directed_crosslag_tables.md` l. 40; part 1)
+- `manuscript/si/S3_Text.md` l. 347: "82 % (mean 0.056) on AR(1) pairs" → "80 % (mean 0.055) on AR(1) pairs" (B17 (i) at W = 60, `calibration_tables.md` l. 8)
+- `manuscript/si/S3_Text.md` l. 349: "(the four rows give −17, −24, −22 and −25)" → "(the four rows give −18, −24, −22 and −25)" (B17 (ii), residual DiD / δ_sym DiD² at W = 60 from the replicate means of `calibration.csv`, the method of the verification of 26 September 2026: −17.82, −23.61, −22.15 and −24.85 (before −17.04, −23.57, −22.22, −24.63); from the printed rows −17.40, −23.74, −22.11 and −25.06, which keep −17; "≈ −22" stands)
+- `manuscript/supplementary.md` l. 1597: "Residual −0.0010, −0.0052, −0.0109, −0.0055 at Δc" → "Residual −0.0010, −0.0052, −0.0108, −0.0056 at Δc" (S19 Table, B17 (ii); `calibration_tables.md` l. 11–20; the verdict (missed) stands)
+- `manuscript/supplementary.md` l. 1599: "residual +0.0051 ± 0.0018" → "residual +0.0051 ± 0.0017" (S19 Table, B17 (iv); `calibration_tables.md` l. 26; the verdict (met) stands)
+- `manuscript/supplementary.md` l. 1673: "−1.36 to +4.59, |ΦR − rtr| > 0.01 in 57 %" → "+0.00 to +4.59, |ΦR − rtr| > 0.01 in 53 % (the 1,829 draws whose matrix is positive definite)" (S20 Table, Table B item 1; B5, `family_checks.log` l. 18)
+- `notes/partB5_literature_v2.md` l. 27: "−1.36 to +4.59, |ΦR − rtr| > 0.01 in 57 %" → "+0.00 to +4.59, |ΦR − rtr| > 0.01 in 53 % (the 1,829 draws whose matrix is positive definite)" (the table S20 Table transcribes)
+
+Captions and descriptions that the corrected outputs make inexact (the wording is for the commit that follows the run):
+
+- `manuscript/draft_v2.md` l. 120, "against the unperturbed pairs (rows 10 and 11 against the shared-component model at its base parameters), ± SE over pairs": Table 3's caption: in rows 6–11 the residual change at W = 60 is now a mean over the pairs whose substituted matrices are positive definite in all 14 windows (2,980 to 2,995 of the 3,000; S18 Table's brackets), which the caption's "3,000 pairs … ± SE over pairs" does not yet say; its −1.59 and −2.73 are among the rows above
+- `manuscript/supplementary.md` l. 1415, "SE over pairs of each pair's 14-window mean; B's SE over the 14 windows.": S18 Table (b)'s description, which transcribes line 102 of `diagnostic_alternatives_tables.md`: the line now ends with the note on the brackets ("A number in brackets after a mean: the pairs left out of it because the quantity does not exist for them, one of their windows' matrices not being positive definite (B26); …")
+
+## 3. Section 6 on synthetic series
+
+A rehearsal of the run on synthetic series with the layout of the data file (14 subjects × 2 runs, 116 regions × 840 samples, both variants), with the framewise-displacement, rating and spin-rotation files the steps read in their layout too (written by the planning session, not the data), from the root of two clones of d108d66 on the same series: once with d108d66's code, each step run as `run_all.sh` runs it (O), and once with the corrected code under `notes/partB26_positive_definite.py` (R). Both run section 6's 37 steps without B17 and B17b, which part 1 ran, and without the HRF-deconvolution steps, whose sandbox is absent, as in the final run. R's runner differs from this commit's only in when and how it writes its CSV (this commit's also writes it before the first step, replacing the file whole each time) and in the checks of `--from`; the two count the same matrices (checked on a reduced section 6: the same rows but the durations). Its figure script keeps d108d66's caption of Fig 1, which this commit rewords (E07).
+
+The runner's steps: 37; ran to their end: 35; stopped: partB/crosslag_budget_null_run, 15_figures_v2. Matrices that are not positive definite, by step: partB4_diagnostic 18,974 of 46,986,240; partB/family_atoms_run 1,244 of 11,012,400; partB/directed_crosslag_run 810 of 15,374,520; partB4_residual_source 1,208 of 10,278,240; partB5_family_checks 171 of 4,047; partB/exchange_rates_run 1,188 of 10,278,262; logs/review_v2_residual_null 126 of 20,020,000; partB/crosslag_deviation_run 182 of 25,893,286; partB/aligned_directed_run 2,062 of 26,062,684; partB/diagnostic_alternatives_run 172 of 4,336,546.
+
+
+`b26_changes.py` between the two runs' outputs, B26's own three files set aside: 337 files examined, 43 whose bytes differ but whose content agrees, 40 with changes (25,318 lines of listing, not reproduced here). Each file with changes, with the step that wrote it and where its changes come from:
+
+- `manuscript/figures/fig2_v2_atoms_observed_substituted.pdf`: differs (bytes; see its PNG); from the figure step, which drew Fig 2 from B14's `family_atoms_ts_gsr_W60.npz` before it stopped: an earlier step's changed output.
+- `manuscript/figures/fig2_v2_atoms_observed_substituted.png`: 30,251 of 4,043,193 pixels differ, largest channel difference 255; from the figure step, which drew Fig 2 from B14's `family_atoms_ts_gsr_W60.npz` before it stopped: an earlier step's changed output.
+- `notes/review_results/inference_rows_diag.csv`: 744 cell(s) differ (line in the file, its row's text cells, column: committed → regenerated); from B4 (`partB4_diagnostic.py`), whose matrices R counted.
+- `notes/review_results/inference_rows_diag.pkl`: 792 array(s) or value(s) differ; from B4 (`partB4_diagnostic.py`), whose matrices R counted.
+- `notes/review_results/logs/review_v2_residual_null.log`: 4 line(s) differ (committed l., then regenerated l.); from the null, whose matrices R counted (its W = 30 line), the data's residual shares and changes it now reads from B4's changed `diag_tables.md` and `inference_rows_diag.csv`, and the label of its last line, which this commit rewords.
+- `notes/review_results/partB/aligned_directed.csv`: 2,200 cell(s) differ (line in the file, its row's text cells, column: committed → regenerated); from B22 (`partB22_aligned_directed.py`), whose matrices R counted, with its sentence that names the pairs each quantity is taken over, which this commit rewords.
+- `notes/review_results/partB/aligned_directed_run.log`: 12 line(s) differ (committed l., then regenerated l.); from B22 (`partB22_aligned_directed.py`), whose matrices R counted, with its sentence that names the pairs each quantity is taken over, which this commit rewords.
+- `notes/review_results/partB/aligned_directed_tables.md`: 12 line(s) differ (committed l., then regenerated l.); from B22 (`partB22_aligned_directed.py`), whose matrices R counted, with its sentence that names the pairs each quantity is taken over, which this commit rewords.
+- `notes/review_results/partB/bca_intervals.csv`: 59 cell(s) differ (line in the file, its row's text cells, column: committed → regenerated); from B19 (`partB19_exchange_rates.py`), which reads B4's per-subject DiDs (`inference_rows_diag.pkl`) for these rows: an earlier step's changed output.
+- `notes/review_results/partB/ccs_pub_tables.md`: 4 line(s) differ (committed l., then regenerated l.); from B6 (`partB6_ccs_definition.py`), which reads B4's residual DiD: an earlier step's changed output.
+- `notes/review_results/partB/crosslag_budget_null_run.log`: 6 line(s) differ (committed l., then regenerated l.); from B13, which stopped in both runs at the same point (its null's solve has no root on these series): R's traceback carries the runner's frames (`runpy`) above the step's own, the lines listed; no value differs.
+- `notes/review_results/partB/crosslag_deviation.csv`: 168 cell(s) differ (line in the file, its row's text cells, column: committed → regenerated); from B10 (`partB10_crosslag_deviation.py`), whose matrices R counted (its whole-run matrices and its replay of the null), the diagnostic's W = 60 residual it reads (B4's `diag_series_<variant>_W60.npz`), and its statement of the null's value, which this commit rewords.
+- `notes/review_results/partB/crosslag_deviation_run.log`: 13 line(s) differ (committed l., then regenerated l.); from B10 (`partB10_crosslag_deviation.py`), whose matrices R counted (its whole-run matrices and its replay of the null), the diagnostic's W = 60 residual it reads (B4's `diag_series_<variant>_W60.npz`), and its statement of the null's value, which this commit rewords.
+- `notes/review_results/partB/crosslag_deviation_tables.md`: 16 line(s) differ (committed l., then regenerated l.); from B10 (`partB10_crosslag_deviation.py`), whose matrices R counted (its whole-run matrices and its replay of the null), the diagnostic's W = 60 residual it reads (B4's `diag_series_<variant>_W60.npz`), and its statement of the null's value, which this commit rewords.
+- `notes/review_results/partB/diag_series_ts_demean_W30.npz`: 4 array(s) or value(s) differ; from B4 (`partB4_diagnostic.py`), whose matrices R counted.
+- `notes/review_results/partB/diag_series_ts_demean_W60.npz`: 4 array(s) or value(s) differ; from B4 (`partB4_diagnostic.py`), whose matrices R counted.
+- `notes/review_results/partB/diag_series_ts_gsr_W30.npz`: 4 array(s) or value(s) differ; from B4 (`partB4_diagnostic.py`), whose matrices R counted.
+- `notes/review_results/partB/diag_series_ts_gsr_W60.npz`: 4 array(s) or value(s) differ; from B4 (`partB4_diagnostic.py`), whose matrices R counted.
+- `notes/review_results/partB/diag_tables.md`: 36 line(s) differ (committed l., then regenerated l.); from B4 (`partB4_diagnostic.py`), whose matrices R counted, with its count on the level lines and its lines for subject 1, which this commit rewords.
+- `notes/review_results/partB/diagnostic_alternatives.csv`: 70 cell(s) differ (line in the file, its row's text cells, column: committed → regenerated); from B23, whose matrices R counted, as in part 1, with its note on the brackets.
+- `notes/review_results/partB/diagnostic_alternatives_run.log`: 13 line(s) differ (committed l., then regenerated l.); from B23, whose matrices R counted, as in part 1, with its note on the brackets.
+- `notes/review_results/partB/diagnostic_alternatives_tables.md`: 13 line(s) differ (committed l., then regenerated l.); from B23, whose matrices R counted, as in part 1, with its note on the brackets.
+- `notes/review_results/partB/directed_crosslag.csv`: 224 cell(s) differ (line in the file, its row's text cells, column: committed → regenerated); from B15 (`partB15_directed_crosslag.py`), whose matrices R counted, and the diagnostic's W = 60 residual it now reads (B4's `diag_tables.md`), with its two sentences and its label, which this commit rewords.
+- `notes/review_results/partB/directed_crosslag_run.log`: 12 line(s) differ (committed l., then regenerated l.); from B15 (`partB15_directed_crosslag.py`), whose matrices R counted, and the diagnostic's W = 60 residual it now reads (B4's `diag_tables.md`), with its two sentences and its label, which this commit rewords.
+- `notes/review_results/partB/directed_crosslag_tables.md`: 12 line(s) differ (committed l., then regenerated l.); from B15 (`partB15_directed_crosslag.py`), whose matrices R counted, and the diagnostic's W = 60 residual it now reads (B4's `diag_tables.md`), with its two sentences and its label, which this commit rewords.
+- `notes/review_results/partB/exchange_rates_run.log`: 8 line(s) differ (committed l., then regenerated l.); from B19 (`partB19_exchange_rates.py`), whose matrices R counted, and B4's per-subject DiDs it reads for its BCa rows.
+- `notes/review_results/partB/exchange_rates_tables.md`: 8 line(s) differ (committed l., then regenerated l.); from B19 (`partB19_exchange_rates.py`), whose matrices R counted, and B4's per-subject DiDs it reads for its BCa rows.
+- `notes/review_results/partB/family_atoms_run.log`: 64 line(s) differ (committed l., then regenerated l.); from B14 (`partB14_family_atoms.py`), whose matrices R counted, and the diagnostic's residual it now reads.
+- `notes/review_results/partB/family_atoms_tables.md`: 64 line(s) differ (committed l., then regenerated l.); from B14 (`partB14_family_atoms.py`), whose matrices R counted, and the diagnostic's residual it now reads.
+- `notes/review_results/partB/family_atoms_ts_demean_W60.npz`: 1 array(s) or value(s) differ; from B14 (`partB14_family_atoms.py`), whose matrices R counted, and the diagnostic's residual it now reads.
+- `notes/review_results/partB/family_atoms_ts_gsr_W60.csv`: 68 cell(s) differ (line in the file, its row's text cells, column: committed → regenerated); from B14 (`partB14_family_atoms.py`), whose matrices R counted, and the diagnostic's residual it now reads.
+- `notes/review_results/partB/family_atoms_ts_gsr_W60.npz`: 1 array(s) or value(s) differ; from B14 (`partB14_family_atoms.py`), whose matrices R counted, and the diagnostic's residual it now reads.
+- `notes/review_results/partB/family_checks.log`: 1 line(s) differ (committed l., then regenerated l.); from B5, whose matrices R counted, as in part 1.
+- `notes/review_results/partB/inference_revision.csv`: 602 cell(s) differ (line in the file, its row's text cells, column: committed → regenerated); from B21, which evaluates no matrix and reads the changed outputs of B4, B6, B7, B10, B15 and B19: earlier steps' changed outputs (its checks against the log of 17 September 2026 fail in both runs on these series, with different differences).
+- `notes/review_results/partB/inference_revision_run.log`: 3 line(s) differ (committed l., then regenerated l.); from B21, which evaluates no matrix and reads the changed outputs of B4, B6, B7, B10, B15 and B19: earlier steps' changed outputs (its checks against the log of 17 September 2026 fail in both runs on these series, with different differences).
+- `notes/review_results/partB/inference_revision_tables.md`: 23 line(s) differ (committed l., then regenerated l.); from B21, which evaluates no matrix and reads the changed outputs of B4, B6, B7, B10, B15 and B19: earlier steps' changed outputs (its checks against the log of 17 September 2026 fail in both runs on these series, with different differences).
+- `notes/review_results/partB/residual_source.log`: 5 line(s) differ (committed l., then regenerated l.); from B4's residual source (`partB4_residual_source.py`), whose matrices R counted.
+- `notes/review_results/partB/splithalf.log`: 25 line(s) differ (committed l., then regenerated l.); from B7 (`partB7_splithalf.py`), which reads B4's per-subject residual: an earlier step's changed output.
+- `notes/review_results/partB/splithalf_tables.md`: 17 line(s) differ (committed l., then regenerated l.); from B7 (`partB7_splithalf.py`), which reads B4's per-subject residual: an earlier step's changed output.
+- `results/run_15_figures_v2.log`: 6 line(s) differ (committed l., then regenerated l.); from the figure step, which stopped in both runs at the same point (its look-up of B21's table (d) row for ts_gsr, which it expects to begin with a positive value, `| ts_gsr | +` at its line 284, fails on these series, where that row begins −0.044): R's traceback carries the runner's frames, the lines listed; no value differs.
+
+Every step whose outputs changed, but B13, whose log differs only in the runner's frames, either counted matrices that are not positive definite or reads a changed output of a step that did; no other step changed an output; and beyond these the only differences are the lines this commit rewords and the runner's frames in the tracebacks of the two steps that stopped in both runs (B13 and the figure step), which on the data ran to their end in the final run: what rule (i) of B26's entry asks of the run on the data.

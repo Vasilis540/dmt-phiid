@@ -59,7 +59,7 @@ for var in ("ts_gsr", "ts_demean"):
         obs = np.full((14, 2, n_win), np.nan); pred = np.full((14, 2, n_win), np.nan); pred_sym = np.full((14, 2, n_win), np.nan)
         local_obs = np.full((14, 2, 840), np.nan); local_res = np.full((14, 2, 840), np.nan)
         r2 = np.full((14, 2, n_win), np.nan); xcorr_dev = np.full((14, 2, n_win), np.nan); xcorr_r = np.full((14, 2, n_win), np.nan)
-        pair_stats = []
+        pair_stats = []; n_pw = n_bad = 0                                      # B26: pair-windows, and those without the substituted estimate
         for s in range(14):
             for c in range(2):
                 X = np.asarray(ts[var][s, c], float)[REGIONS]
@@ -72,19 +72,20 @@ for var in ("ts_gsr", "ts_demean"):
                     o = pp.atoms_mean()[:, S]
                     ax, ay = pp.C[:, 0, 2], pp.C[:, 1, 3]
                     q = 0.5 * (pp.C[:, 0, 1] + pp.C[:, 2, 3])
-                    p = atoms_from_corr(ar1_corr(ax, ay, q))[:, S]
+                    p = atoms_from_corr(ar1_corr(ax, ay, q))[:, S]  # B26: NaN where not positive definite
+                    ok = np.isfinite(p); n_pw += ok.size; n_bad += int((~ok).sum())
                     ps = atoms_from_corr(ar1_corr(0.5 * (ax + ay), 0.5 * (ax + ay), q))[:, S]
-                    obs[s, c, w], pred[s, c, w], pred_sym[s, c, w] = o.mean(), p.mean(), ps.mean()
-                    r2[s, c, w] = pearsonr(o, p)[0] ** 2
+                    obs[s, c, w], pred[s, c, w], pred_sym[s, c, w] = o.mean(), p[ok].mean(), ps.mean()
+                    r2[s, c, w] = pearsonr(o[ok], p[ok])[0] ** 2
                     # AR(1) lag-1 cross-correlation check: model says corr(x_t, y_{t+1}) = a_y q and corr(y_t, x_{t+1}) = a_x q
                     dev = np.r_[pp.C[:, 0, 3] - ay * q, pp.C[:, 1, 2] - ax * q]
                     xcorr_dev[s, c, w] = np.abs(dev).mean()
                     xcorr_r[s, c, w] = pearsonr(np.r_[pp.C[:, 0, 3], pp.C[:, 1, 2]], np.r_[ay * q, ax * q])[0]
                     loc = pp.atoms_local_pairmean()[:, S]
                     local_obs[s, c, in_w[:pp.n]] = loc
-                    local_res[s, c, in_w[:pp.n]] = loc - p.mean()
+                    local_res[s, c, in_w[:pp.n]] = loc - p[ok].mean()
                     if s == 0 and w in (1, 5):
-                        pair_stats.append((c, w, o, p, ax, ay, q))
+                        pair_stats.append((c, w, o, p, ax, ay, q, ok))
             print(f"   {var} W{W}: subject {s + 1}/14 done ({time.time() - t0:.0f}s)", flush=True)
         res = obs - pred
         np.savez(OUT / f"diag_series_{var}_W{W}.npz", obs=obs, pred=pred, pred_sym=pred_sym, res=res, r2=r2, xcorr_dev=xcorr_dev, xcorr_r=xcorr_r, local_obs=local_obs, local_res=local_res)
@@ -92,11 +93,14 @@ for var in ("ts_gsr", "ts_demean"):
         PRE, POST = Sx["PRE"], Sx["primary"]
         lines += [f"## {var}, W = {W}", ""]
         lines.append(f"Levels (all subjects, runs, windows): observed sts {np.nanmean(obs):.4f}, predicted (AR(1) from a_x, a_y, q) {np.nanmean(pred):.4f}, residual {np.nanmean(res):+.4f} ({100 * np.nanmean(res) / np.nanmean(obs):+.1f} % of observed); "
-                     f"SD of the residual across subject × run × window {np.nanstd(res):.4f} vs SD of observed {np.nanstd(obs):.4f}; symmetric-a prediction {np.nanmean(pred_sym):.4f}.")
+                     f"SD of the residual across subject × run × window {np.nanstd(res):.4f} vs SD of observed {np.nanstd(obs):.4f}; symmetric-a prediction {np.nanmean(pred_sym):.4f}. "
+                     f"AR(1)-substituted matrices that are not positive definite, left out of the substituted means (B26): {n_bad:,} of {n_pw:,} pair-windows.")
         lines.append(f"Per-pair R² of predicted vs observed sts within a window: mean {np.nanmean(r2):.3f} (min {np.nanmin(r2):.3f}, max {np.nanmax(r2):.3f}). "
                      f"AR(1) lag-1 cross-correlation check: mean |corr(x_t, y_(t+1)) − a_y q| = {np.nanmean(xcorr_dev):.4f}; correlation across pairs between observed and model lag-1 cross-correlations, mean {np.nanmean(xcorr_r):.3f} (min {np.nanmin(xcorr_r):.3f}).")
-        for c, w, o, p, ax, ay, q in pair_stats:
-            lines.append(f"Subject 1 {'DMT' if c == 0 else 'PCB'} window {w + 1}: pair-level r(obs, pred) = {pearsonr(o, p)[0]:+.3f}; obs mean {o.mean():.4f} SD {o.std():.4f}; pred mean {p.mean():.4f} SD {p.std():.4f}; residual mean {np.mean(o - p):+.4f} SD {np.std(o - p):.4f}; r(residual, mean a) = {pearsonr(o - p, 0.5 * (ax + ay))[0]:+.3f}, r(residual, |q|) = {pearsonr(o - p, np.abs(q))[0]:+.3f}, r(residual, |a_x − a_y|) = {pearsonr(o - p, np.abs(ax - ay))[0]:+.3f}")
+        for c, w, o, p, ax, ay, q, ok in pair_stats:                                  # B26: rule (1) for the means; the pairs where both exist for the rest
+            o2, p2, ax2, ay2, q2 = o[ok], p[ok], ax[ok], ay[ok], q[ok]
+            lines.append(f"Subject 1 {'DMT' if c == 0 else 'PCB'} window {w + 1}: pair-level r(obs, pred) = {pearsonr(o2, p2)[0]:+.3f}; obs mean {o.mean():.4f} SD {o.std():.4f}; pred mean {p2.mean():.4f} SD {p2.std():.4f}; residual mean {o.mean() - p2.mean():+.4f} SD {np.std(o2 - p2):.4f}; r(residual, mean a) = {pearsonr(o2 - p2, 0.5 * (ax2 + ay2))[0]:+.3f}, r(residual, |q|) = {pearsonr(o2 - p2, np.abs(q2))[0]:+.3f}, r(residual, |a_x − a_y|) = {pearsonr(o2 - p2, np.abs(ax2 - ay2))[0]:+.3f}"
+                         + (f" [{int((~ok).sum())} pairs without the substituted estimate]" if (~ok).any() else ""))
         # engine inference: observed, predicted, residual
         for qname, x, xl in (("observed sts", obs, local_obs), ("predicted sts", pred, None), ("residual sts", res, local_res)):
             E = Engine(W)
@@ -125,7 +129,7 @@ for var in ("ts_gsr", "ts_demean"):
             kept = np.where(np.all(np.isfinite(X), axis=0))[0]
             pp = PairPhiID(X[:, kept])
             ax, ay = pp.C[:, 0, 2], pp.C[:, 1, 3]; q = 0.5 * (pp.C[:, 0, 1] + pp.C[:, 2, 3])
-            pred_run[s, c] = atoms_from_corr(ar1_corr(ax, ay, q))[:, S].mean(); obs_run[s, c] = pp.atoms_mean()[:, S].mean()
+            pred_run[s, c] = np.nanmean(atoms_from_corr(ar1_corr(ax, ay, q))[:, S]); obs_run[s, c] = pp.atoms_mean()[:, S].mean()
     lines.append(f"{var}: run-level observed sts (whole run, plug-in) {obs_run.mean():.4f} vs AR(1) prediction from run-level (a_x, a_y, q) {pred_run.mean():.4f} (residual {np.mean(obs_run - pred_run):+.4f}, {100 * np.mean(obs_run - pred_run) / obs_run.mean():+.1f} %); "
                  f"the prediction is constant across the run's bins, so the bin-level residual DiD equals the observed global-fit DiD ({((A[:, 0, 10:28].mean(1) - A[:, 0, :8].mean(1)) - (A[:, 1, 10:28].mean(1) - A[:, 1, :8].mean(1))).mean():+.4f}); no decomposition is possible at this estimator.")
 (RR / "inference_rows_diag.csv").write_text(f"# partB4_diagnostic.py; git={SHA}\n" + pd.DataFrame([{k: v for k, v in r.items() if k != "did_subjects"} for r in rows]).to_csv(index=False))

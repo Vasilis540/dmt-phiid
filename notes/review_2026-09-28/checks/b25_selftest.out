@@ -1,0 +1,42 @@
+git=nogit
+SELF-TEST (no evaluation of the AR(1) family)
+   reductions: 3-variable max |Δ| 2.78e-17; 4-variable against Genz max |Δ| 9.81e-09
+   RDN (examples2d_output.txt): [1.0000, 0.0000, 0.0000, 0.0000] against (1, 0, 0, 0)
+   W&B Fig 4A / Ince 2017 Table 8: [0.3900, 0.5283, 0.5283, 0.1383] against (0.39, 0.5283, 0.5283, 0.1383)
+   W&B Fig 4B / Ince 2017 Table 9: [0.0000, 0.5000, 1.0000, 0.0000] against (0, 0.5, 1, 0)
+   W&B Fig 4 modified 1 / Ince 2017 Table 10: [0.0000, 0.0000, 0.2516, 0.6667] against (0, 0, 0.2516, 0.6667)
+   W&B Fig 4 modified 2 (examples2d_output.txt): [0.0000, 0.1710, 0.5710, 0.3800] against (0, 0.171, 0.571, 0.38)
+   2 bit copy, independent (examples2d_output.txt): [0.0000, 1.0000, 1.0000, 0.0000] against (0, 1, 1, 0)
+   OR / Ince 2017 Table 11: [0.1038, 0.2075, 0.2075, 0.2925] against (0.1038, 0.2075, 0.2075, 0.2925)
+   XOR (examples2d_output.txt): [0.0000, 0.0000, 0.0000, 1.0000] against (0, 0, 0, 1)
+   AND / Ince 2017 Table 11: [0.1038, 0.2075, 0.2075, 0.2925] against (0.1038, 0.2075, 0.2075, 0.2925)
+   SUM / Ince 2017 Table 13: [0.0000, 0.5000, 0.5000, 0.5000] against (0, 0.5, 0.5, 0.5)
+   IMPERFECTRDN (examples2d_output.txt): [0.7685, 0.2315, -0.1585, 0.1585] against (0.7685, 0.2315, -0.1585, 0.1585)
+   Reduced OR / Ince 2017 Table 6: [0.0000, 0.3113, 0.3113, 0.3774] against (0, 0.3113, 0.3113, 0.3774)
+   random VAR(1) 1: A = [[0.263, -0.029], [0.004, -0.411]]
+   | quantity | limit | phyid, 10 × 10⁵ samples | difference | within 4 SE + 2e-4 |
+   | MMI sts | +0.01541 | +0.01514 ± 0.00021 | -0.00027 | yes |
+   | MMI EC | +0.01685 | +0.01671 ± 0.00022 | -0.00014 | yes |
+   | CCS-pub sts | +0.00042 | +0.00055 ± 0.00028 | +0.00013 | yes |
+   | CCS-code sts | +0.00042 | +0.00055 ± 0.00028 | +0.00013 | yes |
+   | CCS EC | +0.02702 | +0.02706 ± 0.00010 | +0.00004 | yes |
+   | Ince EC | +0.02696 | +0.02699 ± 0.00009 | +0.00003 | yes |
+   | 2A | +0.04687 | +0.04647 ± 0.00025 | -0.00040 | yes |
+   | TDMI | +0.07277 | +0.07254 ± 0.00025 | -0.00023 | yes |
+   | MMI rtr | +0.00170 | +0.00171 ± 0.00004 | +0.00001 | yes |
+   (14 s)
+   random VAR(1) 2: A = [[-0.161, -1.094], [0.35, 0.342]]
+   | quantity | limit | phyid, 10 × 10⁵ samples | difference | within 4 SE + 2e-4 |
+   | MMI sts | +0.02114 | +0.02092 ± 0.00022 | -0.00023 | yes |
+   | MMI EC | +0.02115 | +0.02094 ± 0.00022 | -0.00022 | yes |
+   | CCS-pub sts | -0.00146 | -0.00131 ± 0.00029 | +0.00015 | yes |
+   | CCS-code sts | -0.00146 | -0.00131 ± 0.00029 | +0.00015 | yes |
+   | CCS EC | +0.07894 | +0.07896 ± 0.00012 | +0.00002 | yes |
+   | Ince EC | +0.07879 | +0.07881 ± 0.00012 | +0.00002 | yes |
+   | 2A | +0.03616 | +0.03623 ± 0.00018 | +0.00007 | yes |
+   | TDMI | +0.28504 | +0.28504 ± 0.00059 | +0.00001 | yes |
+   | MMI rtr | +0.00182 | +0.00183 ± 0.00004 | +0.00001 | yes |
+   (13 s)
+   one replicate at T = 840: 10.3 ms
+   maximum-entropy fits: 54, from the support 5, largest marginal error 1.0e-15
+SELF-TEST: 54 checks, 0 failed

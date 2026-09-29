@@ -121,9 +121,9 @@ def run_pipeline(Xw_all, var, tag):
                 loc = pp.atoms_local_pairmean()
                 mmi_win_local[s, c, in_w[:pp.n]] = loc
                 ax, ay = pp.C[:, 0, 2], pp.C[:, 1, 3]; q = 0.5 * (pp.C[:, 0, 1] + pp.C[:, 2, 3])
-                p = atoms_from_corr(ar1_corr(ax, ay, q))[:, S]
-                obs[s, c, w], pred[s, c, w] = am[:, S].mean(), p.mean()
-                local_obs[s, c, in_w[:pp.n]] = loc[:, S]; local_res[s, c, in_w[:pp.n]] = loc[:, S] - p.mean()
+                p = atoms_from_corr(ar1_corr(ax, ay, q))[:, S]  # B26: NaN where not positive definite
+                obs[s, c, w], pred[s, c, w] = am[:, S].mean(), np.nanmean(p)
+                local_obs[s, c, in_w[:pp.n]] = loc[:, S]; local_res[s, c, in_w[:pp.n]] = loc[:, S] - np.nanmean(p)
                 cm, _, cloc, _ = pp.atoms_ccs()
                 ccs_win[s, c, w] = cm.mean(0); ccs_win_local[s, c, in_w[:pp.n]] = cloc
             pp = PairPhiID(X[:, kept])
