@@ -182,7 +182,7 @@ for var in ("ts_gsr", "ts_demean"):
         slope[s, c] = np.polyfit(q2, d, 1)[0]
         share_neg[s, c] = (q < 0).mean()
         dev_pos[s, c] = d[q2 > 0].mean(); dev_neg[s, c] = d[q2 < 0].mean() if (q2 < 0).any() else np.nan
-        obs[s, c] = pp.atoms_mean()[:, S].mean(); pred[s, c] = atoms_from_corr(ar1_corr(ax, ay, q))[:, S].mean()
+        obs[s, c] = pp.atoms_mean()[:, S].mean(); pred[s, c] = np.nanmean(atoms_from_corr(ar1_corr(ax, ay, q))[:, S])  # B26: NaN where not positive definite
         a_mean[s, c] = (0.5 * (ax + ay)).mean(); q_abs[s, c] = np.abs(q).mean()
         rows.append(dict(variant=var, subject=s + 1, condition=CONDITIONS[c], n_trs=int(kept.size), mean_crosslag_deviation=dev[s, c],
                          signq_weighted_mean_deviation=devq[s, c], slope_deviation_on_q=slope[s, c], share_pairs_q_negative=share_neg[s, c],
@@ -331,14 +331,15 @@ def null_stats(C, n_pairs):
 
 def null_line(label, st, obs, pred):
     lo, hi = st["devq"] - 1.96 * st["devq_se"], st["devq"] + 1.96 * st["devq_se"]
-    return (f"{label}: residual {np.mean(obs - pred):+.4f} ({100 * np.mean(obs - pred) / np.mean(obs):+.2f} %); share of pair-windows with q < 0 {st['share_neg']:.3f}, mean |q| {st['qabs']:.3f}; "
+    res = np.mean(obs) - np.nanmean(pred)                                   # B26: the substituted mean over the pairs where it exists
+    return (f"{label}: residual {res:+.4f} ({100 * res / np.mean(obs):+.2f} %); share of pair-windows with q < 0 {st['share_neg']:.3f}, mean |q| {st['qabs']:.3f}; "
             f"sign(q)-weighted mean deviation {st['devq']:+.5f} ± {st['devq_se']:.5f} (SE; 95 % [{lo:+.5f}, {hi:+.5f}]); signed mean {st['dev']:+.5f} ± {st['dev_se']:.5f}; "
             f"slope on q {st['slope']:+.4f} ± {st['slope_se']:.4f} over {st['n_w']} window indices")
 
 
 t1 = time.time()
 fits = {k: NULL.fit_filter(t) for k, t in NULL.TARGET_ACF.items()}
-lines.append("Homogeneous-filter check (placebo ACF; 2,000 pairs × 8,400 TRs per window length), as the null's first section; its log reports residual −8.52 %, −3.10 %, −0.34 % at W = 30, 60, 840:")
+lines.append("Homogeneous-filter check (placebo ACF; 2,000 pairs × 8,400 TRs per window length), as the null's first section; its log reports residual −8.51 %, −3.10 %, −0.34 % at W = 30, 60, 840 (−8.52 % at W = 30 before B26):")
 null_values = {}
 for Wn in (30, 60, 840):
     betas = np.clip(NULL.rng.normal(200, 100, 2000), 5, None); qn = np.clip(NULL.rng.normal(0, 0.27, 2000), -0.95, 0.95)
@@ -371,7 +372,7 @@ cell_res, cell_devq = {}, {}
 for name, (ta, tq, acf) in NULL.CELLS.items():
     Cc, obs, pred = null_cell(ta, tq, fits[acf][2], fits[acf][3])
     st = null_stats(Cc, 3000)
-    cell_res[name] = np.mean(obs - pred); cell_devq[name] = st
+    cell_res[name] = np.mean(obs) - np.nanmean(pred); cell_devq[name] = st
     lines.append(null_line(name, st, obs, pred))
     print(lines[-1], f"({time.time() - t1:.0f} s)", flush=True)
 did = (cell_res["DMT post"] - cell_res["DMT pre"]) - (cell_res["PCB post"] - cell_res["PCB pre"])

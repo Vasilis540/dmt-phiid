@@ -1,0 +1,53 @@
+# The repository's tests, run on every push and pull request: tests/ (tools/ar1_diagnostic.py checked against phyid
+# and notes/rev_phiid_fast.py, and the closed form of the paper's Results 1 against the tool's lattice solve), the
+# doctest of the tool, the self-tests of notes/partB25_binarised.py and notes/partB26_positive_definite.py, and
+# phyid's own tests at the commit the analysis pins (they compare phyid's Gaussian and discrete modes under MMI and
+# CCS with reference outputs that they download from OSF, so an OSF outage fails that step). No data are needed. NumPy,
+# SciPy, pytest, phyid and its build backend are pinned; pip and pytest's own dependencies are not, and Python is the
+# latest 3.12.
+name: tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out this repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check out phyid at the pinned commit
+        run: |
+          git clone https://github.com/Imperial-MIND-lab/integrated-info-decomp phyid-src
+          git -C phyid-src checkout 6c5f2e9d33c985efbdf875d45cb5a2a6a5cdbf44
+
+      - name: Install NumPy, SciPy and pytest, and phyid with its build backend, at pinned versions
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install numpy==2.5.3 scipy==1.18.1 pytest==9.1.1 setuptools==84.0.0 "versioneer[toml]==0.29"
+          python -m pip install --no-build-isolation -e ./phyid-src
+
+      - name: This repository's tests
+        run: python -m pytest -v tests
+
+      - name: The doctest of tools/ar1_diagnostic.py
+        working-directory: tools
+        run: python -m doctest -v ar1_diagnostic.py
+
+      - name: The self-test of notes/partB25_binarised.py (no evaluation of the AR(1) family)
+        run: python notes/partB25_binarised.py --selftest
+
+      - name: The self-test of notes/partB26_positive_definite.py (its wrappers alone, no data)
+        run: python notes/partB26_positive_definite.py --selftest
+
+      - name: phyid's own tests at the pinned commit
+        working-directory: phyid-src
+        run: python -m pytest -v --pyargs phyid

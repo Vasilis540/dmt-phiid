@@ -1,0 +1,1514 @@
+[
+ {
+  "id": "P01",
+  "file": "manuscript/draft_v2.md",
+  "old": "whose members authored Luppi et al. (2022, 2024), the studies whose estimator this paper analyses;",
+  "new": "whose members authored four of the studies this paper examines (Luppi et al., 2022, 2023, 2024, 2026);",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P01 (class A): Luppi, Menon and Stamatakis (Division of Anaesthesia, Cambridge) are also authors of Luppi et al. 2023 (p. 1, affiliation a) and Luppi et al. 2026 (p. 26, affiliation 1), both in S20 Table."
+ },
+ {
+  "id": "P02",
+  "file": "manuscript/draft_v2.md",
+  "old": "C.T. is a co-author of Timmermann et al. (2023), the source of the data, and of Singleton et al. (2025); S.P.S. is the first author of Singleton et al. (2025), the source of the released derivatives.",
+  "new": "C.T. is the first author of Timmermann et al. (2023), the source of the data, and a co-author of Singleton et al. (2025); S.P.S. is the first author of Singleton et al. (2025), the source of the released derivatives, and a co-author of Luppi et al. (2026), one of the studies this paper examines.",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P02 (class A): Luppi et al. 2026 lists S. Parker Singleton among its authors (p. 1); C.T. is the first author of Timmermann et al. 2023 (p. 1). No other cited work has either as an author."
+ },
+ {
+  "id": "P03",
+  "file": "manuscript/draft_v2.md",
+  "old": "Regions where synergy — in that study the whole-minus-max synergy (their Eq. 5), in ΦID terms str + stx + sty + sts — predominates over redundancy",
+  "new": "Regions where synergy — which that study calls the persistent synergy but writes as the whole-minus-max synergy of its Eq. 5, in ΦID terms str + stx + sty + sts — predominates over redundancy",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P03 (class A): Luppi et al. 2024 say in their Results 'we focused on the persistent synergy (henceforth simply synergy)' (p. 6), i.e. sts, while their only formula (Eq. 5, p. 20) is the whole-minus-max synergy. The sentence gave only the formula."
+ },
+ {
+  "id": "P04",
+  "file": "manuscript/draft_v2.md",
+  "old": "what none of them gives is which of the sixteen atoms carry the self-information,",
+  "new": "what none of them gives is the sixteen atoms in closed form, and so which of them take their value from the self-information,",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P04 (class A): Mediano et al. 2021, Eq. 2 (p. 6) do say which four atoms sum to a variable's self-information (AIS = Red→Red + Red→Un1 + Un1→Red + Un1→Un1); what they do not give is the atoms' values, which is this paper's result."
+ },
+ {
+  "id": "P05",
+  "file": "manuscript/draft_v2.md",
+  "old": "reduces to MMI when the target is univariate (Barrett, 2015; Kay & Ince, 2018), which covers the lattice nodes with a single past or single future variable but not the joint-target nodes or the double redundancy, ΦID's own extensions (Mediano et al., 2021); so \"MMI-specific\" is not a licensed phrase, and other Gaussian PIDs could share or not share the property.",
+  "new": "reduces to MMI when the target is univariate (Barrett, 2015), which covers the lattice nodes with a single past or single future variable but not the joint-target nodes, whose target is bivariate, or the double redundancy, ΦID's own extension (Mediano et al., 2021); so \"MMI-specific\" is not a licensed phrase, and other Gaussian PIDs, such as CCS and the dependency-constraint PID, whose redundancy depends also on the source–source marginal (Kay & Ince, 2018), could share or not share the property.",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P05 (class A): Mediano et al. 2021 treat the joint-target nodes as ordinary PIDs with a bivariate target ('the single-target PIDs', p. 23); only the double redundancy is ΦID's extension (p. 4). Kay & Ince state the univariate-target result only by citing Barrett (their ref. 12): citing them for it is secondhand. Their own point is that CCS and their Idep depend on the predictor–predictor marginal and so are not equivalent to MMI (pp. 3, 26), which is what the end of the sentence needs."
+ },
+ {
+  "id": "P06",
+  "file": "manuscript/supplementary.md",
+  "old": "macaques 5 (three awake/anaesthesia, two DBS; p. 35)",
+  "new": "macaques: five in a multi-anaesthesia dataset (p. 3; p. 35) and five in a DBS dataset, three scanned awake and two anaesthetised with thalamic DBS (p. 5; p. 35)",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P06 (class A): The work has two macaque datasets of five animals each (main text p. 3 'N = 5 macaques'; Fig. 3a p. 5 'N = 2 anaesthetized macaques'; Reporting Summary p. 35)."
+ },
+ {
+  "id": "P06L",
+  "file": "notes/partB5_literature_v2.md",
+  "old": "macaques 5 (three awake/anaesthesia, two DBS; p. 35)",
+  "new": "macaques: five in a multi-anaesthesia dataset (p. 3; p. 35) and five in a DBS dataset, three scanned awake and two anaesthetised with thalamic DBS (p. 5; p. 35)",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P06 (class A): The work has two macaque datasets of five animals each (main text p. 3 'N = 5 macaques'; Fig. 3a p. 5 'N = 2 anaesthetized macaques'; Reporting Summary p. 35). (mirrored in the table S20 Table transcribes)"
+ },
+ {
+  "id": "P07",
+  "file": "manuscript/supplementary.md",
+  "old": "1 HCP subject, 1,000 region pairs (data from Varley et al. 2023 Comm Biol: Schaefer-200, GSR; TR not stated, HCP standard 0.72 s)",
+  "new": "1 HCP subject, 1,000 region pairs (p. 8; data \"previously published\" in his refs. 14–15); TR not stated",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P07 (class A): Varley 2024 names no parcellation, GSR or TR; the details came from Varley et al. 2023, which the S20 reference note says was not read. Varley names two 2023 papers (PNAS and Comm Biol) as the data's source."
+ },
+ {
+  "id": "P07L",
+  "file": "notes/partB5_literature_v2.md",
+  "old": "1 HCP subject, 1,000 region pairs (data from Varley et al. 2023 Comm Biol: Schaefer-200, GSR; TR not stated, HCP standard 0.72 s)",
+  "new": "1 HCP subject, 1,000 region pairs (p. 8; data \"previously published\" in his refs. 14–15); TR not stated",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P07 (class A): Varley 2024 names no parcellation, GSR or TR; the details came from Varley et al. 2023, which the S20 reference note says was not read. Varley names two 2023 papers (PNAS and Comm Biol) as the data's source. (mirrored in the table S20 Table transcribes)"
+ },
+ {
+  "id": "P08",
+  "file": "manuscript/supplementary.md",
+  "old": "| Schaefer-200 |",
+  "new": "| not stated |",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P08 (class A): Not in Varley 2024 (see P07)."
+ },
+ {
+  "id": "P08L",
+  "file": "notes/partB5_literature_v2.md",
+  "old": "| Schaefer-200 |",
+  "new": "| not stated |",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P08 (class A): Not in Varley 2024 (see P07). (mirrored in the table S20 Table transcribes)"
+ },
+ {
+  "id": "P09",
+  "file": "manuscript/supplementary.md",
+  "old": "| as in Varley et al. 2023; deconvolution not mentioned |",
+  "new": "| not stated (the data of his refs. 14–15); deconvolution not mentioned |",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P09 (class A): See P07."
+ },
+ {
+  "id": "P09L",
+  "file": "notes/partB5_literature_v2.md",
+  "old": "| as in Varley et al. 2023; deconvolution not mentioned |",
+  "new": "| not stated (the data of his refs. 14–15); deconvolution not mentioned |",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P09 (class A): See P07. (mirrored in the table S20 Table transcribes)"
+ },
+ {
+  "id": "P10",
+  "file": "manuscript/supplementary.md",
+  "old": "disintegration increased temporal MI in 37.5 % of pairs; Δsynergy vs Δtemporal MI r = 0.77; Δsynergy vs pairwise MI r = 0.97; names Luppi 2022, 2023, 2024, Gatica 2024, Menesse 2024, Mediano 2022 as MMI-ΦID users; proposes I_Red^τsx, specificity/ambiguity, CCS (noted as critiqued), synergy-first decompositions",
+  "new": "disintegration increased temporal MI in about 37.5 % of pairs; Δsynergy vs Δtemporal MI r = 0.77; Δsynergy vs pairwise MI r = 0.97; names Varley & Bongard 2024, Menesse 2024, Gatica 2024, Luppi 2022, 2023, 2024 and Mediano 2022 as MMI-ΦID applications; suggests I_Red^τsx, specificity/ambiguity and synergy-first decompositions, and notes that CCS, used in earlier ΦID work, has been critiqued",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P10 (class A): Varley writes 'about 37.5%' (p. 8); his list of applications includes Varley & Bongard 2024 (ref. 7, p. 5); he mentions CCS only as used before and 'critiqued as an approach to redundancy' (p. 11)."
+ },
+ {
+  "id": "P10L",
+  "file": "notes/partB5_literature_v2.md",
+  "old": "disintegration increased temporal MI in 37.5 % of pairs; Δsynergy vs Δtemporal MI r = 0.77; Δsynergy vs pairwise MI r = 0.97; names Luppi 2022, 2023, 2024, Gatica 2024, Menesse 2024, Mediano 2022 as MMI-ΦID users; proposes I_Red^τsx, specificity/ambiguity, CCS (noted as critiqued), synergy-first decompositions",
+  "new": "disintegration increased temporal MI in about 37.5 % of pairs; Δsynergy vs Δtemporal MI r = 0.77; Δsynergy vs pairwise MI r = 0.97; names Varley & Bongard 2024, Menesse 2024, Gatica 2024, Luppi 2022, 2023, 2024 and Mediano 2022 as MMI-ΦID applications; suggests I_Red^τsx, specificity/ambiguity and synergy-first decompositions, and notes that CCS, used in earlier ΦID work, has been critiqued",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P10 (class A): Varley writes 'about 37.5%' (p. 8); his list of applications includes Varley & Bongard 2024 (ref. 7, p. 5); he mentions CCS only as used before and 'critiqued as an approach to redundancy' (p. 11). (mirrored in the table S20 Table transcribes)"
+ },
+ {
+  "id": "P11",
+  "file": "manuscript/supplementary.md",
+  "old": "\n\nVarley, T. F., Pope, M., Faskowitz, J., & Sporns, O. (2023). Multivariate information theory uncovers synergistic subsystems of the human cerebral cortex. *Communications Biology*, 6(1), 451. https://doi.org/10.1038/s42003-023-04843-w (cited only as the source of the data of Varley (2024), row 10; bibliographic record checked against Crossref on 25 September 2026; not read)\n",
+  "new": "\n",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P11 (class A): An unread work should not carry facts in the table."
+ },
+ {
+  "id": "P12",
+  "file": "manuscript/supplementary.md",
+  "old": "reports \"faster decay of autocorrelation under anaesthesia\"; through r₁ q that lowers ΦR on the family.",
+  "new": "reports that anaesthesia \"reduces the value of features related to linear and nonlinear temporal autocorrelation\"; through r₁ q that lowers ΦR on the family.",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P12 (class A): The quoted words are the caption of one example macaque time series (Fig. 3e of the preprint); the preprint's general finding is the other quotation, already in Table B item 3."
+ },
+ {
+  "id": "P12L",
+  "file": "notes/partB5_literature_v2.md",
+  "old": "reports \"faster decay of autocorrelation under anaesthesia\"; through r₁ q that lowers ΦR on the family.",
+  "new": "reports that anaesthesia \"reduces the value of features related to linear and nonlinear temporal autocorrelation\"; through r₁ q that lowers ΦR on the family.",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P12 (class A): The quoted words are the caption of one example macaque time series (Fig. 3e of the preprint); the preprint's general finding is the other quotation, already in Table B item 3. (mirrored in the table S20 Table transcribes)"
+ },
+ {
+  "id": "P13",
+  "file": "manuscript/supplementary.md",
+  "old": "\"reduces the value of features related to linear and nonlinear temporal autocorrelation\", \"faster decay of autocorrelation under anaesthesia\".",
+  "new": "\"reduces the value of features related to linear and nonlinear temporal autocorrelation\", and, in the caption of an example macaque time series, \"faster decay of autocorrelation under anaesthesia\".",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P13 (class A): As P12. Applied without the figure number '(Fig. 3e)', which was read in version 2 of the preprint, where the reference note records the check of the quotations against version 1."
+ },
+ {
+  "id": "P13L",
+  "file": "notes/partB5_literature_v2.md",
+  "old": "\"reduces the value of features related to linear and nonlinear temporal autocorrelation\", \"faster decay of autocorrelation under anaesthesia\".",
+  "new": "\"reduces the value of features related to linear and nonlinear temporal autocorrelation\", and, in the caption of an example macaque time series, \"faster decay of autocorrelation under anaesthesia\".",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P13 (class A): As P12. Applied without the figure number '(Fig. 3e)', which was read in version 2 of the preprint, where the reference note records the check of the quotations against version 1. (mirrored in the table S20 Table transcribes)"
+ },
+ {
+  "id": "P14",
+  "file": "manuscript/draft_v2.md",
+  "old": "and one uses the common-change-in-surprisal (CCS) function (Ince, 2017) on binarised signals (Luppi et al., 2023);",
+  "new": "and one uses the common-change-in-surprisal (CCS) function (Ince, 2017) on binarised signals in its primary analysis (Luppi et al., 2023);",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P14 (class B): Luppi et al. 2023 also replicate with MMI and with the Gaussian JIDT solver (p. 12)."
+ },
+ {
+  "id": "P15",
+  "file": "manuscript/draft_v2.md",
+  "old": "cannot tell a synergistic pair from two independent autocorrelated processes (Varley, 2024, Eq. 12),",
+  "new": "cannot tell a synergistic pair from two independent autocorrelated processes (Varley, 2024, Eqs. 4–6 and 12),",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P15 (class B): The comparison is Varley's worked example (Eqs. 4–6, pp. 5–6); Eq. 12 (p. 7) is the general identity for the disintegrated pair."
+ },
+ {
+  "id": "P16",
+  "file": "manuscript/draft_v2.md",
+  "old": "Closed-form Gaussian decompositions exist for transfer entropy (Faes et al., 2017),",
+  "new": "Exact Gaussian decompositions exist for transfer entropy (Faes et al., 2017),",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P16 (class B): Faes et al. call their result 'exact' and 'analytical'; it requires solving a discrete algebraic Riccati equation (p. 6), so 'closed-form' overstates it. 'Exact' is also true of the other works in the sentence."
+ },
+ {
+  "id": "P17",
+  "file": "manuscript/draft_v2.md",
+  "old": "(Raut et al., 2020; Ito et al., 2020; in single units, Murray et al., 2014)",
+  "new": "(Raut et al., 2020; Ito et al., 2020; in macaque single units, from sensory to prefrontal cortex, Murray et al., 2014)",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P17 (class B): Murray et al. recorded seven macaque areas, sensory (MT, S1, S2) to prefrontal; no motor area (p. 1)."
+ },
+ {
+  "id": "P18",
+  "file": "manuscript/draft_v2.md",
+  "old": "Of the studies in the table only Luppi et al. (2022) addressed autocorrelation,",
+  "new": "Of the studies in the table only Luppi et al. (2022) addressed autocorrelation, in part,",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P18 (class B): Their one test is a phase-randomised surrogate (p. 18; Table 1); S20 Table already says 'yes, in part'."
+ },
+ {
+  "id": "P19",
+  "file": "manuscript/draft_v2.md",
+  "old": "with the effective sample size computed from the autocorrelation function (Afyouni et al., 2019).",
+  "new": "with the effective sample size computed from the auto- and cross-correlation functions (Afyouni et al., 2019).",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P19 (class B): Afyouni et al. show that estimators using the autocorrelation function alone are biased when the true correlation is not zero, and propose xDF, which also uses the cross-correlations (pp. 1–2). With zero true correlation, as in Methods, the two agree."
+ },
+ {
+  "id": "P20",
+  "file": "manuscript/si/S3_Text.md",
+  "old": "c(x; y) = I∂^{{1}{2}→{1}{2}} − I∂^{{12}→{12}})",
+  "new": "c(x; y) = i∂^{{1}{2}→{1}{2}}(x; y) − i∂^{{12}→{12}}(x; y))",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P20 (class B): The SI Appendix states the identity for the pointwise atoms, lower-case i∂ with argument (x; y) (p. 3); capital I∂ is the averaged atom."
+ },
+ {
+  "id": "P21",
+  "file": "manuscript/si/S3_Text.md",
+  "old": "retains the definition verbatim on the sign condition,",
+  "new": "retains the definition's sign condition word for word, apart from writing the pointwise full mutual information I(X; Y) where the preprint has i(x; y):",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P21 (class B): 2021: 'the pointwise full mutual information i(x; y)' (p. 24); 2025: 'I(X; Y )' (SI p. 4)."
+ },
+ {
+  "id": "P22",
+  "file": "manuscript/si/S3_Text.md",
+  "old": "retaining Definition 1 verbatim on the sign condition",
+  "new": "retaining Definition 1's sign condition unchanged but for the symbol of the full mutual information",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P22 (class B): As P21."
+ },
+ {
+  "id": "P23",
+  "file": "manuscript/si/S3_Text.md",
+  "old": "while many of the others can take negative values (Down et al., 2026).",
+  "new": "while many of the others can occasionally take negative values (Down et al., 2026).",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P23 (class B): Down's words: 'many of the other atoms can occasionally take negative values' (p. 7)."
+ },
+ {
+  "id": "P24",
+  "file": "manuscript/si/S3_Text.md",
+  "old": "and, in some studies, moved towards CCS redundancy (Luppi et al., 2023).",
+  "new": "and in one study used CCS redundancy (Luppi et al., 2023).",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P24 (class B): Luppi et al. 2023 use CCS without presenting it as a move, and replicate with MMI (p. 12); the later Luppi et al. 2026 uses MMI."
+ },
+ {
+  "id": "P25",
+  "file": "manuscript/si/S3_Text.md",
+  "old": "The surrogate gradient of Luppi et al. (2022) correlated",
+  "new": "The phase-randomised surrogate gradient of Luppi et al. (2022), the third of the three surrogates of their Table 1, correlated",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P25 (class B): Table 1 (p. 10) has three surrogate gradients; the numbers are those of the phase-randomised one. The other two reach ρ = 0.32 and 0.54."
+ },
+ {
+  "id": "P26",
+  "file": "manuscript/supplementary.md",
+  "old": "| autocorrelation addressed? |",
+  "new": "| temporal autocorrelation addressed? |",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P26 (class B): Luppi et al. 2024, Luppi et al. 2026 and Nago et al. 2026 do address spatial autocorrelation (spin tests; autocorrelation-preserving nulls), so a bare 'no' can be misread. The same change in S3 Text §10 is P26b."
+ },
+ {
+  "id": "P26L",
+  "file": "notes/partB5_literature_v2.md",
+  "old": "| autocorrelation addressed? |",
+  "new": "| temporal autocorrelation addressed? |",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P26 (class B): Luppi et al. 2024, Luppi et al. 2026 and Nago et al. 2026 do address spatial autocorrelation (spin tests; autocorrelation-preserving nulls), so a bare 'no' can be misread. The same change in S3 Text §10 is P26b. (mirrored in the table S20 Table transcribes)"
+ },
+ {
+  "id": "P26b",
+  "file": "manuscript/si/S3_Text.md",
+  "old": "whether autocorrelation was addressed,",
+  "new": "whether temporal autocorrelation was addressed,",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P26b (class B): As P26."
+ },
+ {
+  "id": "P27",
+  "file": "manuscript/supplementary.md",
+  "old": "Lausanne-83 for the species comparison (pp. 14, 16–17) — no \"DK-66\" in the paper",
+  "new": "Lausanne-83 for the species comparison (pp. 14, 16–17); also HCP-MMP-360 for wiring distance (p. 14), a Brodmann parcellation for the glycolytic index (p. 16), 39 autoradiography areas for receptor diversity (p. 18) and Lausanne-129 for robustness (p. 23) — no \"DK-66\" in the paper",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P27 (class B): The list read as complete but was not."
+ },
+ {
+  "id": "P27L",
+  "file": "notes/partB5_literature_v2.md",
+  "old": "Lausanne-83 for the species comparison (pp. 14, 16–17) — no \"DK-66\" in the paper",
+  "new": "Lausanne-83 for the species comparison (pp. 14, 16–17); also HCP-MMP-360 for wiring distance (p. 14), a Brodmann parcellation for the glycolytic index (p. 16), 39 autoradiography areas for receptor diversity (p. 18) and Lausanne-129 for robustness (p. 23) — no \"DK-66\" in the paper",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P27 (class B): The list read as complete but was not. (mirrored in the table S20 Table transcribes)"
+ },
+ {
+  "id": "P28",
+  "file": "manuscript/supplementary.md",
+  "old": "synergy a higher proportion of total information in humans than in macaques, redundancy equal (p. 6)",
+  "new": "synergy a higher proportion of total information in humans than in macaques, redundancy equal (gradient p. 2 and Fig. 2, p. 4; species p. 6)",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P28 (class B): p. 6 holds only the species comparison."
+ },
+ {
+  "id": "P28L",
+  "file": "notes/partB5_literature_v2.md",
+  "old": "synergy a higher proportion of total information in humans than in macaques, redundancy equal (p. 6)",
+  "new": "synergy a higher proportion of total information in humans than in macaques, redundancy equal (gradient p. 2 and Fig. 2, p. 4; species p. 6)",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P28 (class B): p. 6 holds only the species comparison. (mirrored in the table S20 Table transcribes)"
+ },
+ {
+  "id": "P29",
+  "file": "manuscript/supplementary.md",
+  "old": "lag 1 TR (2 s), with 4 TRs as a check (p. 3)",
+  "new": "lag 1 TR (2 s); at 4 TRs \"no significant difference was observed\" (p. 3)",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P29 (class B): At 4 TRs the effect was not significant, and the paper says its results 'depend on the timescale' (p. 8)."
+ },
+ {
+  "id": "P29L",
+  "file": "notes/partB5_literature_v2.md",
+  "old": "lag 1 TR (2 s), with 4 TRs as a check (p. 3)",
+  "new": "lag 1 TR (2 s); at 4 TRs \"no significant difference was observed\" (p. 3)",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P29 (class B): At 4 TRs the effect was not significant, and the paper says its results 'depend on the timescale' (p. 8). (mirrored in the table S20 Table transcribes)"
+ },
+ {
+  "id": "P30",
+  "file": "manuscript/supplementary.md",
+  "old": "The Gaussian and the MMI validations are inside it.",
+  "new": "The Gaussian and the MMI validations are inside it if each used both the Gaussian estimator and MMI, which the paper does not state.",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P30 (class B): Luppi et al. 2023 do not say which redundancy function the Gaussian validation used, or which estimator the MMI one used (p. 12)."
+ },
+ {
+  "id": "P30L",
+  "file": "notes/partB5_literature_v2.md",
+  "old": "The Gaussian and the MMI validations are inside it.",
+  "new": "The Gaussian and the MMI validations are inside it if each used both the Gaussian estimator and MMI, which the paper does not state.",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P30 (class B): Luppi et al. 2023 do not say which redundancy function the Gaussian validation used, or which estimator the MMI one used (p. 12). (mirrored in the table S20 Table transcribes)"
+ },
+ {
+  "id": "P31",
+  "file": "manuscript/supplementary.md",
+  "old": "(\"A synergistic workspace for human consciousness revealed by ΦID\") | 100 HCP (TR not stated in this paper); propofol: N = 15 in Results (p. 4) but \"n = 16 for analysis\" in Methods (p. 15)",
+  "new": "(\"A synergistic workspace for human consciousness revealed by Integrated Information Decomposition\") | 100 HCP (TR not stated in this paper); propofol: N = 15 in the Introduction and Results (pp. 4, 8) but \"n=16 for analysis\" in Methods (p. 15)",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P31 (class B): Exact title (p. 1); p. 4 is the Introduction, the Results say 15 on p. 8; the work prints 'n=16'."
+ },
+ {
+  "id": "P31L",
+  "file": "notes/partB5_literature_v2.md",
+  "old": "(\"A synergistic workspace for human consciousness revealed by ΦID\") | 100 HCP (TR not stated in this paper); propofol: N = 15 in Results (p. 4) but \"n = 16 for analysis\" in Methods (p. 15)",
+  "new": "(\"A synergistic workspace for human consciousness revealed by Integrated Information Decomposition\") | 100 HCP (TR not stated in this paper); propofol: N = 15 in the Introduction and Results (pp. 4, 8) but \"n=16 for analysis\" in Methods (p. 15)",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P31 (class B): Exact title (p. 1); p. 4 is the Introduction, the Results say 15 on p. 8; the work prints 'n=16'. (mirrored in the table S20 Table transcribes)"
+ },
+ {
+  "id": "P32",
+  "file": "manuscript/supplementary.md",
+  "old": "(\"500 time points per window with 99 % overlap, resulting in 60 windows\", p. 14,",
+  "new": "(\"500-time points per window with 99% overlap, resulting in 60 windows\", p. 14,",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P32 (class B): The quotation as printed (p. 14)."
+ },
+ {
+  "id": "P32L",
+  "file": "notes/partB5_literature_v2.md",
+  "old": "(\"500 time points per window with 99 % overlap, resulting in 60 windows\", p. 14,",
+  "new": "(\"500-time points per window with 99% overlap, resulting in 60 windows\", p. 14,",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P32 (class B): The quotation as printed (p. 14). (mirrored in the table S20 Table transcribes)"
+ },
+ {
+  "id": "P33",
+  "file": "manuscript/supplementary.md",
+  "old": "DPABI/SPM12 standard steps, 6-mm smoothing, FD > 0.5 mm exclusion;",
+  "new": "DPABI/SPM12 standard steps, smoothing with a \"6 × 6 × 6\" Gaussian kernel (unit not printed), exclusion of subjects with mean FD > 0.5 mm;",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P33 (class B): The work prints '6 × 6 × 6 Gaussian kernel smoothing' with no unit (p. 3); the FD criterion excludes subjects, not volumes."
+ },
+ {
+  "id": "P33L",
+  "file": "notes/partB5_literature_v2.md",
+  "old": "DPABI/SPM12 standard steps, 6-mm smoothing, FD > 0.5 mm exclusion;",
+  "new": "DPABI/SPM12 standard steps, smoothing with a \"6 × 6 × 6\" Gaussian kernel (unit not printed), exclusion of subjects with mean FD > 0.5 mm;",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P33 (class B): The work prints '6 × 6 × 6 Gaussian kernel smoothing' with no unit (p. 3); the FD criterion excludes subjects, not volumes. (mirrored in the table S20 Table transcribes)"
+ },
+ {
+  "id": "P34",
+  "file": "manuscript/supplementary.md",
+  "old": "computed once per subject over the 140-volume run,",
+  "new": "computed once per subject over the run (140 volumes acquired; no windowing described),",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P34 (class B): The work gives 140 acquired volumes (p. 3) but not the number of time points entering each fit."
+ },
+ {
+  "id": "P34L",
+  "file": "notes/partB5_literature_v2.md",
+  "old": "computed once per subject over the 140-volume run,",
+  "new": "computed once per subject over the run (140 volumes acquired; no windowing described),",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P34 (class B): The work gives 140 acquired volumes (p. 3) but not the number of time points entering each fit. (mirrored in the table S20 Table transcribes)"
+ },
+ {
+  "id": "P35",
+  "file": "manuscript/supplementary.md",
+  "old": "one run-level fit of 140 samples per subject;",
+  "new": "one run-level fit per subject, 140 volumes acquired;",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P35 (class B): As P34."
+ },
+ {
+  "id": "P35L",
+  "file": "notes/partB5_literature_v2.md",
+  "old": "one run-level fit of 140 samples per subject;",
+  "new": "one run-level fit per subject, 140 volumes acquired;",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P35 (class B): As P34. (mirrored in the table S20 Table transcribes)"
+ },
+ {
+  "id": "P36",
+  "file": "manuscript/supplementary.md",
+  "old": "Insight From ΦID of Resting State fMRI\") | 72 patients",
+  "new": "Insight From Integrated Information Decomposition of Resting State fMRI\") | 72 patients",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P36 (class B): Exact title (p. 1)."
+ },
+ {
+  "id": "P36L",
+  "file": "notes/partB5_literature_v2.md",
+  "old": "Insight From ΦID of Resting State fMRI\") | 72 patients",
+  "new": "Insight From Integrated Information Decomposition of Resting State fMRI\") | 72 patients",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P36 (class B): Exact title (p. 1). (mirrored in the table S20 Table transcribes)"
+ },
+ {
+  "id": "P37",
+  "file": "manuscript/supplementary.md",
+  "old": "232 ROIs: Schaefer plus 32 subcortical ROIs printed as \"cerebellar\" (Tian et al. 2020) (p. 3)",
+  "new": "232 ROIs: Schaefer plus ROIs of Tian et al. 2020 printed as \"cerebellar\", neither resolution stated (p. 3)",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P37 (class B): The work gives neither the Schaefer resolution nor the number of Tian ROIs; 32 was inferred (232 − 200)."
+ },
+ {
+  "id": "P37L",
+  "file": "notes/partB5_literature_v2.md",
+  "old": "232 ROIs: Schaefer plus 32 subcortical ROIs printed as \"cerebellar\" (Tian et al. 2020) (p. 3)",
+  "new": "232 ROIs: Schaefer plus ROIs of Tian et al. 2020 printed as \"cerebellar\", neither resolution stated (p. 3)",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P37 (class B): The work gives neither the Schaefer resolution nor the number of Tian ROIs; 32 was inferred (232 − 200). (mirrored in the table S20 Table transcribes)"
+ },
+ {
+  "id": "P38",
+  "file": "manuscript/supplementary.md",
+  "old": "(\"Toward a unified taxonomy of information dynamics via ΦID\"; arXiv 2109.13186)",
+  "new": "(\"Toward a unified taxonomy of information dynamics via Integrated Information Decomposition\"; preprint arXiv 2109.13186)",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P38 (class B): Exact title (p. 1); 2109.13186 is the preprint's identifier (Mediano2021.pdf), not printed in the article."
+ },
+ {
+  "id": "P38L",
+  "file": "notes/partB5_literature_v2.md",
+  "old": "(\"Toward a unified taxonomy of information dynamics via ΦID\"; arXiv 2109.13186)",
+  "new": "(\"Toward a unified taxonomy of information dynamics via Integrated Information Decomposition\"; preprint arXiv 2109.13186)",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P38 (class B): Exact title (p. 1); 2109.13186 is the preprint's identifier (Mediano2021.pdf), not printed in the article. (mirrored in the table S20 Table transcribes)"
+ },
+ {
+  "id": "P39",
+  "file": "manuscript/supplementary.md",
+  "old": "Huang et al. 2018, *J Neurosci* 38:2304 (TR 2 s;",
+  "new": "Huang et al. 2018, *J Neurosci* 38:2304 (TR 2 s for the two propofol datasets;",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P39 (class B): No TR is given for the DoC dataset, taken from earlier studies (p. 2307)."
+ },
+ {
+  "id": "P39L",
+  "file": "notes/partB5_literature_v2.md",
+  "old": "Huang et al. 2018, *J Neurosci* 38:2304 (TR 2 s;",
+  "new": "Huang et al. 2018, *J Neurosci* 38:2304 (TR 2 s for the two propofol datasets;",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P39 (class B): No TR is given for the DoC dataset, taken from earlier studies (p. 2307). (mirrored in the table S20 Table transcribes)"
+ },
+ {
+  "id": "P40",
+  "file": "manuscript/si/S4_Text.md",
+  "old": "| D3 Sampling frame and recruitment | not applicable | Reported by Timmermann et al. (2023). |",
+  "new": "| D3 Sampling frame and recruitment | not applicable | Timmermann et al. (2023) report the population (healthy volunteers with previous psychedelic experience) and the screening visit; how participants were recruited is not described. |",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P40 (class B): Recruitment is not described anywhere in the article."
+ },
+ {
+  "id": "P41",
+  "file": "manuscript/si/S4_Text.md",
+  "old": "Timmermann et al. (2023) report the demographics of the 20 recruited participants.",
+  "new": "Timmermann et al. (2023) report age and sex of the 20 participants who completed all study visits; handedness is not reported.",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P41 (class B): Age and sex only; the 20 are described as having 'completed all study visits'."
+ },
+ {
+  "id": "P42",
+  "file": "manuscript/si/S4_Text.md",
+  "old": "| A1 Subject preparation (head restraint, mock scanning, instructions) | not applicable | Timmermann et al. (2023). |",
+  "new": "| A1 Subject preparation (head restraint, mock scanning, instructions) | not applicable | Instructions (eyes closed, with an eye mask): Timmermann et al. (2023); head restraint and mock scanning are not described. |",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P42 (class B): Only the instructions are reported."
+ },
+ {
+  "id": "P43",
+  "file": "manuscript/si/S4_Text.md",
+  "old": "All other parameters: Timmermann et al. (2023). |",
+  "new": "TE, flip angle, voxel size, slices and gap: Timmermann et al. (2023); FOV, matrix, acceleration and phase-encoding direction are not reported by the source. |",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P43 (class B): 'All other parameters' overstated what the source gives."
+ },
+ {
+  "id": "P44",
+  "file": "manuscript/si/S4_Text.md",
+  "old": "| A4 Structural acquisition | not applicable | Timmermann et al. (2023). |",
+  "new": "| A4 Structural acquisition | not applicable | Timmermann et al. (2023) state that T1-weighted structural images were acquired; its parameters are not reported. |",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P44 (class B): No structural parameters in the source."
+ },
+ {
+  "id": "P45",
+  "file": "manuscript/si/S4_Text.md",
+  "old": "| P1 Preprocessing software and versions | not applicable | Timmermann et al. (2023); Singleton et al. (2025). Not restated. |",
+  "new": "| P1 Preprocessing software and versions | not applicable | Software: Timmermann et al. (2023); Singleton et al. (2025); neither gives versions. |",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P45 (class B): Software named, no versions."
+ },
+ {
+  "id": "P46",
+  "file": "manuscript/si/S4_Text.md",
+  "old": "| P2 Distortion, slice-timing and motion correction | not applicable | Timmermann et al. (2023); Singleton et al. (2025). |",
+  "new": "| P2 Distortion, slice-timing and motion correction | not applicable | Slice-timing and motion correction: Timmermann et al. (2023); Singleton et al. (2025); distortion correction is not described. |",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P46 (class B): Distortion correction is not mentioned in either article."
+ },
+ {
+  "id": "P47",
+  "file": "manuscript/si/S4_Text.md",
+  "old": "D5 demographics of the 14 analysed subjects (available for the 20 recruited in Timmermann et al., 2023; not carried by the derivatives); the participant instructions for the resting-state session (Timmermann et al., 2023); every acquisition parameter beyond field strength, TR and the number of volumes (Timmermann et al., 2023);",
+  "new": "D5 demographics of the 14 analysed subjects (age and sex are given for the 20 who completed the study in Timmermann et al., 2023; not carried by the derivatives); the participant instructions for the resting-state session (Timmermann et al., 2023); every acquisition parameter beyond field strength, TR and the number of volumes (Timmermann et al., 2023, give TE, flip angle, voxel size, slices and gap; FOV, matrix, acceleration, phase encoding and the structural parameters are not reported by the source);",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P47 (class B): As P41 and P43–P44."
+ },
+ {
+  "id": "P48",
+  "file": "manuscript/draft_v2.md",
+  "old": "the release carries no licence file,",
+  "new": "the release's repository carries no licence of its own at that commit (its three licence files belong to bundled third-party plotting functions),",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P48 (class C): Found on 27 September; recorded in b32/external_checks_2026-09-27.md. Applied with 'the release's repository ... at that commit' for 'the release': the licence field of the Zenodo record could not be read on 28 September 2026."
+ },
+ {
+  "id": "P49",
+  "file": "README.md",
+  "old": "The source repository carries no licence file, and no",
+  "new": "The source repository carries no licence of its own (its three licence files belong to third-party plotting functions it bundles), and no",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P49 (class C): As P48."
+ },
+ {
+  "id": "P50",
+  "file": "manuscript/draft_v2.md",
+  "old": "(merge of pull request #4, 13 March 2026;",
+  "new": "(merge of pull request #4, 14 March 2026;",
+  "count": 1,
+  "why": "citation crosscheck of 28 Sep 2026, P50 (class C): The pinned commit 6c5f2e9 is dated 2026-03-14 12:44:53 +0000; 13 March is the date of the merged change."
+ },
+ {
+  "id": "D01",
+  "file": "manuscript/draft_v2.md",
+  "old": "the DMT contrast is a proof of concept. There is no ground truth for synergy in these data, so the analysis establishes what the estimator responds to, not what the brain does. Two redundancy functions were examined, both Gaussian.",
+  "new": "the DMT contrast is a proof of concept. Why r₁ fell (neural, haemodynamic, cardiac, respiratory or motion effects) is not identified; the account needs only that it did. Two redundancy functions were examined on the data, both Gaussian.",
+  "count": 1,
+  "why": "readiness: the cause of the r₁ fall stated as a limitation; the ground-truth sentence moved to the Discussion's first sentence (C03); 'on the data' (B25 examines binarised estimators on the family)"
+ },
+ {
+  "id": "D02",
+  "file": "manuscript/si/S1_Text.md",
+  "old": "Software: Python 3.12.3, NumPy 2.5.3, SciPy 1.18.1, Matplotlib 3.11.1, pinned in `requirements.lock.txt`.",
+  "new": "Software: Python 3.12.3 with NumPy 2.5.3, SciPy 1.18.1, pandas 3.0.5, h5py 3.16.0, joblib 1.6.0, Matplotlib 3.11.1 and phyid at commit 6c5f2e9 (the estimator), the packages pinned in `requirements.lock.txt`; the deconvolution (S2 Text) used rsHRF 1.7.0, which the lock file does not hold; no MATLAB code was run.",
+  "count": 1,
+  "why": "readiness: every package the scripts import that the list omitted (pandas builds, reads and writes the tables of the review and Part B computations under notes/review_results/; h5py reads the spin-test rotations; joblib runs the deconvolution's loop in parallel); the estimator's commit; no MATLAB"
+ },
+ {
+  "id": "D03",
+  "file": "manuscript/si/S4_Text.md",
+  "old": "S1 Text (software versions): Python 3.12.3, NumPy 2.5.3, SciPy 1.18.1, Matplotlib 3.11.1; `phyid` at commit 6c5f2e9d… (S5 Text §6; main text, References); `requirements.lock.txt`; seed 20261120 throughout (Methods, Inference).",
+  "new": "S1 Text (software versions): Python 3.12.3, NumPy 2.5.3, SciPy 1.18.1, pandas 3.0.5, h5py 3.16.0, Matplotlib 3.11.1; `phyid` at commit 6c5f2e9d… (S5 Text §6; main text, References); `requirements.lock.txt`, which also pins joblib 1.6.0; rsHRF 1.7.0 for the deconvolution, not in the lock file (S2 Text); no MATLAB code run; seed 20261120 throughout (Methods, Inference); the repository's tests and continuous-integration workflow (main text, Data and code availability).",
+  "count": 1,
+  "why": "readiness: as D02"
+ },
+ {
+  "id": "D04",
+  "file": "manuscript/draft_v2.md",
+  "old": "and `notes/partB4_diagnostic.py` computes the AR(1)-substituted estimate with them. The repository's full history is public.",
+  "new": "and `notes/partB4_diagnostic.py` computes the AR(1)-substituted estimate with them. `tools/ar1_diagnostic.py` applies that estimate to any pair of time series (usage in `README.md`; NaN where the pair's measured a_x, a_y and q are those of no AR(1) pair), and `tests/` checks it against phyid and `notes/rev_phiid_fast.py` and the closed form against its lattice solve; the repository's continuous-integration workflow (`.github/workflows/tests.yml`) runs these tests and phyid's own tests at the pinned commit, which compare its Gaussian and discrete modes under MMI and CCS with reference outputs on a test series. The code is released under the MIT licence and the result files and the text outside `manuscript/` under the Creative Commons Attribution 4.0 licence (`LICENSE`, `LICENSE-CC-BY-4.0.md`); the manuscript, a draft for co-author review, is not yet licensed, and the data are not included. [TK: the DOI of the archived version (Zenodo), at submission.] The repository's full history is public.",
+  "count": 1,
+  "why": "readiness: PLOS Computational Biology's code policy (a licence; an archive with a persistent identifier); the repository tool, the tests and the workflow"
+ },
+ {
+  "id": "D05",
+  "file": "manuscript/si/S5_Text.md",
+  "old": "the corrections of the error-only read of 26 September 2026 are the commit that follows, which cannot name its own identifier (its parent is 13705b9).",
+  "new": "d108d66 (27 Sep, the corrections of the error-only read of 26 September 2026); the revision that followed the citation crosscheck of 28 September 2026 (its corrections; the licences, the citation file, the diagnostic tool, the tests and the continuous-integration workflow; the pre-run entry of B25, the binarised estimators on the family; and the correction for the matrices that are not positive definite, with the pre-run entry of its run, B26) is the commit that follows, which cannot name its own identifier (its parent is d108d66).",
+  "count": 1,
+  "why": "readiness: S5 Text §6's list of commits"
+ },
+ {
+  "id": "D06",
+  "file": "manuscript/si/S5_Text.md",
+  "old": "The reviews and audits were carried out by separate sessions of the same AI system; no person other than V.S. has yet checked the analysis.",
+  "new": "On 28 September 2026 every citation of the text at d108d66 was checked claim by claim against the cited work, by eight further sessions, one per group of works, and the planning session (`notes/review_2026-09-28/`): 271 claims, each with the passages of the work that bear on it and their pages; 194 supported, 59 supported with a qualification, 2 not supported (two table cells), 2 not checkable (Theiler et al., 1992) and 14 attributing no content to the work; in 252 the work states the point as its own and in one only by citing another (Kay & Ince, 2018, cited beside Barrett, 2015). Each of the 759 passages taken from a PDF was found again, word for word, on its stated page by a script of the planning session, written separately from the seven group sessions that copied 639 of them; the other 120 (Luppi et al., 2024, 2026) the planning session cut from the page texts itself. The revision that followed applied the 51 changes it proposed (record, \"The citation crosscheck of 28 September 2026 and the revision it led to\"). The reviews and audits were carried out by separate sessions of the same AI system; no person other than V.S. has yet checked the analysis.",
+  "count": 1,
+  "why": "readiness: S5 Text §5, the crosscheck"
+ },
+ {
+  "id": "D07",
+  "file": "manuscript/draft_v2.md",
+  "old": "`notes/review_2026-09-24/`, `notes/review_2026-09-25/`, `notes/review_2026-09-26/`)",
+  "new": "`notes/review_2026-09-24/`, `notes/review_2026-09-25/`, `notes/review_2026-09-26/`, `notes/review_2026-09-28/`)",
+  "count": 1,
+  "why": "readiness: the crosscheck's folder among the reviews and audits"
+ },
+ {
+  "id": "E01",
+  "file": "manuscript/draft_v2.md",
+  "old": "and str + stx + sty + sts = S for every q: Varley's (2024) aggregate synergy (his Eq. 3), which",
+  "new": "and str + stx + sty + sts = S for every q: the whole-minus-max synergy (Luppi et al., 2024, Eq. 5) and Varley's (2024) aggregate synergy (his Eq. 3), which",
+  "count": 1,
+  "why": "the four-atom identity named as the synergy of Luppi et al. (2024), Eq. 5 (I(X,Y; X′,Y′) − max of the two single-source informations about the joint future)"
+ },
+ {
+  "id": "E02",
+  "file": "manuscript/supplementary.md",
+  "old": "ΦR ≡ rtr = −½ ln(1 − a² q²) (the MMI double redundancy is the cross-lag MI, the smallest of the four single MIs).",
+  "new": "ΦR ≡ rtr = −½ ln(1 − a² q²) (the MMI double redundancy is the cross-lag MI, the smallest of the four single MIs). The four atoms with a synergistic source sum to the self-information of one process, str + stx + sty + sts = S = −½ ln(1 − a²), for every q (main text, Results 1; checked by the repository's `tests/test_closed_form.py`): the whole-minus-max synergy of Luppi et al. (2024, Eq. 5), which with the Gaussian estimator is also the MMI emergence capacity of Luppi et al. (2023) (row 2), depends on r₁ alone on this family.",
+  "count": 1,
+  "why": "the four-atom identity in Table B item 1"
+ },
+ {
+  "id": "E03",
+  "file": "manuscript/supplementary.md",
+  "old": "which on the map lowers MMI sts; the map was not evaluated for the emergence atoms.",
+  "new": "which on the map lowers MMI sts and the Gaussian-MMI emergence capacity (on the symmetric family S, a function of r₁ alone; Table B item 1).",
+  "count": 1,
+  "why": "row 2: the emergence capacity on the family, in place of 'not evaluated'"
+ },
+ {
+  "id": "E04",
+  "file": "manuscript/supplementary.md",
+  "old": "Contrasted quantity is ΦR, not sts.",
+  "new": "Contrasted quantity is ΦR, not sts; the synergy by whose rank the workspace is defined, which the study calls the persistent synergy (p. 6) but writes as the whole-minus-max synergy of Eq. 5, is on the symmetric family S, a function of r₁ alone, as Eq. 5 writes it (str + stx + sty + sts; Table B item 1), and 2S − C, which depends on q as well, if it is sts.",
+  "count": 1,
+  "why": "row 3: the workspace's synergy on the family"
+ },
+ {
+  "id": "E02L",
+  "file": "notes/partB5_literature_v2.md",
+  "old": "ΦR ≡ rtr = −½ ln(1 − a² q²) (the MMI double redundancy is the cross-lag MI, the smallest of the four single MIs).",
+  "new": "ΦR ≡ rtr = −½ ln(1 − a² q²) (the MMI double redundancy is the cross-lag MI, the smallest of the four single MIs). The four atoms with a synergistic source sum to the self-information of one process, str + stx + sty + sts = S = −½ ln(1 − a²), for every q (main text, Results 1; checked by the repository's `tests/test_closed_form.py`): the whole-minus-max synergy of Luppi et al. (2024, Eq. 5), which with the Gaussian estimator is also the MMI emergence capacity of Luppi et al. (2023) (row 2), depends on r₁ alone on this family.",
+  "count": 1,
+  "why": "the four-atom identity in Table B item 1"
+ },
+ {
+  "id": "E03L",
+  "file": "notes/partB5_literature_v2.md",
+  "old": "which on the map lowers MMI sts; the map was not evaluated for the emergence atoms.",
+  "new": "which on the map lowers MMI sts and the Gaussian-MMI emergence capacity (on the symmetric family S, a function of r₁ alone; Table B item 1).",
+  "count": 1,
+  "why": "row 2: the emergence capacity on the family, in place of 'not evaluated'"
+ },
+ {
+  "id": "E04L",
+  "file": "notes/partB5_literature_v2.md",
+  "old": "Contrasted quantity is ΦR, not sts.",
+  "new": "Contrasted quantity is ΦR, not sts; the synergy by whose rank the workspace is defined, which the study calls the persistent synergy (p. 6) but writes as the whole-minus-max synergy of Eq. 5, is on the symmetric family S, a function of r₁ alone, as Eq. 5 writes it (str + stx + sty + sts; Table B item 1), and 2S − C, which depends on q as well, if it is sts.",
+  "count": 1,
+  "why": "row 3: the workspace's synergy on the family"
+ },
+ {
+  "id": "E05",
+  "file": "manuscript/draft_v2.md",
+  "old": "the sixteen Gaussian-MMI atoms of two first-order autoregressive (AR(1)) processes correlated only at lag 0",
+  "new": "the sixteen Gaussian-MMI atoms of two first-order autoregressive (AR(1)) processes coupled only at lag 0",
+  "count": 1,
+  "why": "audit: 'correlated only at lag 0' contradicts Results 1's corr(x_t, y_{t+1}) = aq; the processes are coupled only at lag 0 (their innovations' correlation), with no lagged interaction (Abstract)"
+ },
+ {
+  "id": "E06",
+  "file": "manuscript/draft_v2.md",
+  "old": "The Results give the closed form for two first-order autoregressive (AR(1)) processes correlated at lag 0,",
+  "new": "The Results give the closed form for two first-order autoregressive (AR(1)) processes coupled only at lag 0,",
+  "count": 1,
+  "why": "audit: 'correlated only at lag 0' contradicts Results 1's corr(x_t, y_{t+1}) = aq; the processes are coupled only at lag 0 (their innovations' correlation), with no lagged interaction (Introduction)"
+ },
+ {
+  "id": "E07",
+  "file": "manuscript/draft_v2.md",
+  "old": "(a) Gaussian-MMI sts of two AR(1) processes correlated only at lag 0, as a function",
+  "new": "(a) Gaussian-MMI sts of two AR(1) processes coupled only at lag 0, as a function",
+  "count": 1,
+  "why": "audit: 'correlated only at lag 0' contradicts Results 1's corr(x_t, y_{t+1}) = aq; the processes are coupled only at lag 0 (their innovations' correlation), with no lagged interaction (Fig 1's caption)"
+ },
+ {
+  "id": "E07c",
+  "file": "manuscript/figures/captions_v2.md",
+  "old": "(a) Gaussian-MMI sts of two AR(1) processes correlated only at lag 0, as a function",
+  "new": "(a) Gaussian-MMI sts of two AR(1) processes coupled only at lag 0, as a function",
+  "count": 1,
+  "why": "audit: 'correlated only at lag 0' contradicts Results 1's corr(x_t, y_{t+1}) = aq; the processes are coupled only at lag 0 (their innovations' correlation), with no lagged interaction (Fig 1's caption as the figure script writes it)"
+ },
+ {
+  "id": "E07s",
+  "file": "scripts/15_figures_v2.py",
+  "old": "(a) Gaussian-MMI sts of two AR(1) processes correlated only at lag 0, as a functi",
+  "new": "(a) Gaussian-MMI sts of two AR(1) processes coupled only at lag 0, as a functi",
+  "count": 1,
+  "why": "audit: 'correlated only at lag 0' contradicts Results 1's corr(x_t, y_{t+1}) = aq; the processes are coupled only at lag 0 (their innovations' correlation), with no lagged interaction (the caption in the figure script)"
+ },
+ {
+  "id": "E07d",
+  "file": "scripts/15_figures_v2.py",
+  "old": "(a) the (r₁, q) scope map of two AR(1) processes correlated only at lag 0,",
+  "new": "(a) the (r₁, q) scope map of two AR(1) processes coupled only at lag 0,",
+  "count": 1,
+  "why": "audit: 'correlated only at lag 0' contradicts Results 1's corr(x_t, y_{t+1}) = aq; the processes are coupled only at lag 0 (their innovations' correlation), with no lagged interaction (the figure script's docstring)"
+ },
+ {
+  "id": "E08",
+  "file": "manuscript/draft_v2.md",
+  "old": "On the family of two AR(1) processes correlated only at lag 0 the Gaussian-MMI synergy atom",
+  "new": "On the family of two AR(1) processes coupled only at lag 0 the Gaussian-MMI synergy atom",
+  "count": 1,
+  "why": "audit: 'correlated only at lag 0' contradicts Results 1's corr(x_t, y_{t+1}) = aq; the processes are coupled only at lag 0 (their innovations' correlation), with no lagged interaction (Discussion)"
+ },
+ {
+  "id": "E09",
+  "file": "manuscript/draft_v2.md",
+  "old": "Regions where synergy — which that study calls the persistent synergy but writes as the whole-minus-max synergy of its Eq. 5, in ΦID terms str + stx + sty + sts — predominates over redundancy, by rank, form a 'synergistic workspace' whose integrated information (ΦR) is reduced under propofol and in disorders of consciousness (Luppi et al., 2024).",
+  "new": "Regions where synergy predominates over redundancy, by rank, form a 'synergistic workspace' whose integrated information (ΦR) is reduced under propofol and in disorders of consciousness (Luppi et al., 2024); they call that synergy the persistent synergy but write it as the whole-minus-max synergy of their Eq. 5, in ΦID terms str + stx + sty + sts.",
+  "count": 1,
+  "why": "audit (second round): 'that study' read as Luppi et al. (2022), the citation before it; the study is named first (P03's content unchanged)"
+ },
+ {
+  "id": "E10",
+  "file": "manuscript/draft_v2.md",
+  "old": "Of the studies in the table only Luppi et al. (2022) addressed autocorrelation, in part, which is the subject of Varley (2024).",
+  "new": "Of the studies in the table only Luppi et al. (2022) addressed autocorrelation (in part); it is the subject of Varley (2024).",
+  "count": 1,
+  "why": "audit (second round): after P18's 'in part', 'which' could refer to the partial treatment"
+ },
+ {
+  "id": "E11",
+  "file": "manuscript/si/S4_Text.md",
+  "old": "T1-weighted structural images were acquired; its parameters are not reported.",
+  "new": "T1-weighted structural images were acquired; their acquisition parameters are not reported.",
+  "count": 1,
+  "why": "audit (second round): the pronoun of P44"
+ },
+ {
+  "id": "E12",
+  "file": "README.md",
+  "old": "The source repository carries no licence of its own (its three licence files",
+  "new": "The source repository carries no licence of its own at 77af7aa (its three licence files",
+  "count": 1,
+  "why": "audit (third round): the commit at which the licence was read, as P48 has it in the main text"
+ },
+ {
+  "id": "E13",
+  "file": "manuscript/draft_v2.md",
+  "old": "computes the sixteen Gaussian-MMI atoms of any 4 × 4 correlation matrix (`atoms_from_corr`)",
+  "new": "computes the sixteen Gaussian-MMI atoms of any positive definite 4 × 4 correlation matrix (`atoms_from_corr`; NaN for one that is not)",
+  "count": 1,
+  "why": "audit (third round): after the correction of the code, atoms_from_corr returns NaN for a matrix that is not positive definite"
+ },
+ {
+  "id": "C01",
+  "file": "manuscript/draft_v2.md",
+  "old": "Lagged interaction moves sts non-monotonically. On the symmetric coupled family (lagged coupling c; S3 Text), with r₁ and q held at (0.85, 0.25), sts falls from 1.2588 at c = 0 to 1.2155 at c = +0.05, then rises again (1.2569 at +0.10), and rises to 1.4111 at c = −0.05: coupling of the same sign as q, up to c = +0.10, lowers the atom called synergy, and coupling of the opposite sign raises it (Fig 1c).",
+  "new": "Lagged interaction moves sts non-monotonically (Fig 1c; S3 Text): with r₁ and q held at (0.85, 0.25), coupling c of the same sign as q lowers the atom called synergy at each value computed up to +0.10, most at +0.05, and coupling of the opposite sign raises it.",
+  "count": 1,
+  "why": "length: the values of sts along c stay in Fig 1's caption"
+ },
+ {
+  "id": "C02",
+  "file": "manuscript/draft_v2.md",
+  "old": "Partialling does not remove all network structure: the residual map's eight-class F (8.15) lies in the upper 0.1 % of its spin distribution (p = 0.0009, against 0.056 for the unpartialled map), with network means from −0.024 (subcortex) to +0.021 (dorsal attention), though its somatomotor − default and visual − default contrasts do not stand out (spin p = 0.22 and 0.31; Fig 4c).",
+  "new": "Partialling does not remove all network structure: the residual map's eight-class F lies in the upper 0.1 % of its spin distribution (p = 0.0009), though its somatomotor − default and visual − default contrasts do not stand out (Fig 4c).",
+  "count": 1,
+  "why": "length: F, the unpartialled map's p, the network means and the contrasts' p values stay in Fig 4's caption"
+ },
+ {
+  "id": "C03",
+  "file": "manuscript/draft_v2.md",
+  "old": "The analysis says nothing about whether synergy in the intended sense is present in the brain; what it establishes",
+  "new": "The analysis says nothing about whether synergy in the intended sense is present in the brain: these data have no ground truth; what the analysis establishes",
+  "count": 1,
+  "why": "length: the ground-truth sentence of the Limitations joined to the Discussion's first sentence (D01)"
+ },
+ {
+  "id": "C04",
+  "file": "manuscript/draft_v2.md",
+  "old": "is the primary contrast; its statistic was fixed after global fits on the same data had shown a decrease (Pre-registration and deviations), so it is not a blind confirmation.",
+  "new": "is the primary contrast, not a blind confirmation (Pre-registration and deviations).",
+  "count": 1,
+  "why": "length: the reason is the subsection it names, Results 2 and the Introduction"
+ },
+ {
+  "file": "notes/rev_phiid_fast.py",
+  "old": "def atoms_from_corr(C):\n    \"\"\"(n, 16) Gaussian-MMI atoms (phyid definitions) from (n, 4, 4) correlation matrices of\n    [x_t, y_t, x_{t+τ}, y_{t+τ}] — the analytic atoms of a Gaussian process with that lag\n    covariance, or the plug-in (time-mean) atoms of a sample with that correlation matrix.\"\"\"\n    C = np.asarray(C, float)\n    if C.ndim == 2:\n        C = C[None]\n    mi = _plugin_mis(C)\n    return _assemble(mi, _mmi_choice(mi)) @ _MINV_T\n",
+  "new": "def atoms_from_corr(C):\n    \"\"\"(n, 16) Gaussian-MMI atoms (phyid definitions) from (n, 4, 4) correlation matrices of\n    [x_t, y_t, x_{t+τ}, y_{t+τ}] — the analytic atoms of a Gaussian process with that lag\n    covariance, or the plug-in (time-mean) atoms of a sample with that correlation matrix.\n    A matrix that is not positive definite (smallest eigenvalue ≤ 0, or a non-finite entry) is the\n    lag covariance of no process and has no atoms: its row is NaN (B26). Until B26, _logdets took\n    log |det| of every block, so that such a matrix yielded sixteen numbers. The rows of the other\n    matrices are computed as before, in the same batch (placeholders stand in for the rows without\n    atoms), so that their values are unchanged to the last bit.\"\"\"\n    C = np.asarray(C, float)\n    if C.ndim == 2:\n        C = C[None]\n    ok = np.isfinite(C).all(axis=(1, 2))\n    ok[ok] = np.linalg.eigvalsh(C[ok]).min(axis=1) > 0\n    mi = _plugin_mis(np.where(ok[:, None, None], C, np.eye(4)))\n    out = _assemble(mi, _mmi_choice(mi)) @ _MINV_T\n    out[~ok] = np.nan\n    return out\n",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite is the lag covariance of no process: NaN, as the tool returns",
+  "id": "F01"
+ },
+ {
+  "file": "notes/partB4_diagnostic.py",
+  "old": "        pair_stats = []\n",
+  "new": "        pair_stats = []; n_pw = n_bad = 0                                      # B26: pair-windows, and those without the substituted estimate\n",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist",
+  "id": "F02"
+ },
+ {
+  "file": "notes/partB4_diagnostic.py",
+  "old": "                    p = atoms_from_corr(ar1_corr(ax, ay, q))[:, S]\n                    ps = atoms_from_corr(ar1_corr(0.5 * (ax + ay), 0.5 * (ax + ay), q))[:, S]\n                    obs[s, c, w], pred[s, c, w], pred_sym[s, c, w] = o.mean(), p.mean(), ps.mean()\n                    r2[s, c, w] = pearsonr(o, p)[0] ** 2\n",
+  "new": "                    p = atoms_from_corr(ar1_corr(ax, ay, q))[:, S]  # B26: NaN where not positive definite\n                    ok = np.isfinite(p); n_pw += ok.size; n_bad += int((~ok).sum())\n                    ps = atoms_from_corr(ar1_corr(0.5 * (ax + ay), 0.5 * (ax + ay), q))[:, S]\n                    obs[s, c, w], pred[s, c, w], pred_sym[s, c, w] = o.mean(), p[ok].mean(), ps.mean()\n                    r2[s, c, w] = pearsonr(o[ok], p[ok])[0] ** 2\n",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist",
+  "id": "F03"
+ },
+ {
+  "file": "notes/partB4_diagnostic.py",
+  "old": "                    local_res[s, c, in_w[:pp.n]] = loc - p.mean()\n",
+  "new": "                    local_res[s, c, in_w[:pp.n]] = loc - p[ok].mean()\n",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist",
+  "id": "F04"
+ },
+ {
+  "file": "notes/partB4_diagnostic.py",
+  "old": "                        pair_stats.append((c, w, o, p, ax, ay, q))\n",
+  "new": "                        pair_stats.append((c, w, o, p, ax, ay, q, ok))\n",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist",
+  "id": "F05"
+ },
+ {
+  "file": "notes/partB4_diagnostic.py",
+  "old": "symmetric-a prediction {np.nanmean(pred_sym):.4f}.\")",
+  "new": "symmetric-a prediction {np.nanmean(pred_sym):.4f}. \"\n                     f\"AR(1)-substituted matrices that are not positive definite, left out of the substituted means (B26): {n_bad:,} of {n_pw:,} pair-windows.\")",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist; the count, on the same line (the numbers table locates this file's lines)",
+  "id": "F06"
+ },
+ {
+  "file": "notes/partB4_diagnostic.py",
+  "old": "        for c, w, o, p, ax, ay, q in pair_stats:\n            lines.append(f\"Subject 1 {'DMT' if c == 0 else 'PCB'} window {w + 1}: pair-level r(obs, pred) = {pearsonr(o, p)[0]:+.3f}; obs mean {o.mean():.4f} SD {o.std():.4f}; pred mean {p.mean():.4f} SD {p.std():.4f}; residual mean {np.mean(o - p):+.4f} SD {np.std(o - p):.4f}; r(residual, mean a) = {pearsonr(o - p, 0.5 * (ax + ay))[0]:+.3f}, r(residual, |q|) = {pearsonr(o - p, np.abs(q))[0]:+.3f}, r(residual, |a_x − a_y|) = {pearsonr(o - p, np.abs(ax - ay))[0]:+.3f}\")\n",
+  "new": "        for c, w, o, p, ax, ay, q, ok in pair_stats:                                  # B26: rule (1) for the means; the pairs where both exist for the rest\n            o2, p2, ax2, ay2, q2 = o[ok], p[ok], ax[ok], ay[ok], q[ok]\n            lines.append(f\"Subject 1 {'DMT' if c == 0 else 'PCB'} window {w + 1}: pair-level r(obs, pred) = {pearsonr(o2, p2)[0]:+.3f}; obs mean {o.mean():.4f} SD {o.std():.4f}; pred mean {p2.mean():.4f} SD {p2.std():.4f}; residual mean {o.mean() - p2.mean():+.4f} SD {np.std(o2 - p2):.4f}; r(residual, mean a) = {pearsonr(o2 - p2, 0.5 * (ax2 + ay2))[0]:+.3f}, r(residual, |q|) = {pearsonr(o2 - p2, np.abs(q2))[0]:+.3f}, r(residual, |a_x − a_y|) = {pearsonr(o2 - p2, np.abs(ax2 - ay2))[0]:+.3f}\"\n                         + (f\" [{int((~ok).sum())} pairs without the substituted estimate]\" if (~ok).any() else \"\"))\n",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist",
+  "id": "F07"
+ },
+ {
+  "file": "notes/partB4_diagnostic.py",
+  "old": "            pred_run[s, c] = atoms_from_corr(ar1_corr(ax, ay, q))[:, S].mean(); obs_run[s, c] = pp.atoms_mean()[:, S].mean()\n",
+  "new": "            pred_run[s, c] = np.nanmean(atoms_from_corr(ar1_corr(ax, ay, q))[:, S]); obs_run[s, c] = pp.atoms_mean()[:, S].mean()\n",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist",
+  "id": "F08"
+ },
+ {
+  "file": "notes/partB4_residual_source.py",
+  "old": "            pred[s, c, w] = atoms_from_corr(ar1_corr(ax, ay, q))[:, S].mean()\n",
+  "new": "            pred[s, c, w] = np.nanmean(atoms_from_corr(ar1_corr(ax, ay, q))[:, S])  # B26: NaN where not positive definite\n",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist",
+  "id": "F09"
+ },
+ {
+  "file": "notes/partB4_residual_source.py",
+  "old": "            p_cross[s, c, w] = atoms_from_corr(CA)[:, S].mean(); p_lag0[s, c, w] = atoms_from_corr(CB)[:, S].mean()\n",
+  "new": "            p_cross[s, c, w] = np.nanmean(atoms_from_corr(CA)[:, S]); p_lag0[s, c, w] = np.nanmean(atoms_from_corr(CB)[:, S])\n",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist",
+  "id": "F10"
+ },
+ {
+  "file": "notes/partB5_family_checks.py",
+  "old": "At2 = atoms_from_corr(ar1_corr(ax, ay, q2)); d = phir(At2) - At2[:, IX[\"rtr\"]]\nlines.append(f\"Unequal a_x, a_y (2,000 draws, same seed stream): ΦR − rtr min {d.min():+.3f}, max {d.max():+.3f}, mean {d.mean():+.3f}, share |ΦR − rtr| > 0.01: {(np.abs(d) > 0.01).mean():.2f}\")\n",
+  "new": "At2 = atoms_from_corr(ar1_corr(ax, ay, q2)); d = phir(At2) - At2[:, IX[\"rtr\"]]\nok = np.isfinite(d)                     # B26: the draws whose AR(1) matrix is positive definite; the others are the lag covariance of no process\nlines.append(f\"Unequal a_x, a_y (2,000 draws, same seed stream; {int((~ok).sum())} not positive definite and excluded, {int(ok.sum())} kept): \"\n             f\"ΦR − rtr min {d[ok].min():+.3f}, max {d[ok].max():+.3f}, mean {d[ok].mean():+.3f}, share |ΦR − rtr| > 0.01: {(np.abs(d[ok]) > 0.01).mean():.2f}\")\n",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist",
+  "id": "F11"
+ },
+ {
+  "file": "notes/partB10_crosslag_deviation.py",
+  "old": "        obs[s, c] = pp.atoms_mean()[:, S].mean(); pred[s, c] = atoms_from_corr(ar1_corr(ax, ay, q))[:, S].mean()\n",
+  "new": "        obs[s, c] = pp.atoms_mean()[:, S].mean(); pred[s, c] = np.nanmean(atoms_from_corr(ar1_corr(ax, ay, q))[:, S])  # B26: NaN where not positive definite\n",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist",
+  "id": "F12"
+ },
+ {
+  "file": "notes/partB10_crosslag_deviation.py",
+  "old": "    return (f\"{label}: residual {np.mean(obs - pred):+.4f} ({100 * np.mean(obs - pred) / np.mean(obs):+.2f} %); share",
+  "new": "    res = np.mean(obs) - np.nanmean(pred)                                   # B26: the substituted mean over the pairs where it exists\n    return (f\"{label}: residual {res:+.4f} ({100 * res / np.mean(obs):+.2f} %); share",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist",
+  "id": "F13"
+ },
+ {
+  "file": "notes/partB10_crosslag_deviation.py",
+  "old": "its log reports residual −8.52 %, −3.10 %, −0.34 % at W = 30, 60, 840:",
+  "new": "its log reports residual −8.51 %, −3.10 %, −0.34 % at W = 30, 60, 840 (−8.52 % at W = 30 before B26):",
+  "count": 1,
+  "why": "B26: the null's log reports its corrected value at W = 30 (115 of its 560,000 substituted matrices there are not positive definite; computed by the planning session with the corrected code, no data)",
+  "id": "F14"
+ },
+ {
+  "file": "notes/partB10_crosslag_deviation.py",
+  "old": "    cell_res[name] = np.mean(obs - pred); cell_devq[name] = st\n",
+  "new": "    cell_res[name] = np.mean(obs) - np.nanmean(pred); cell_devq[name] = st\n",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist",
+  "id": "F15"
+ },
+ {
+  "file": "notes/partB14_family_atoms.py",
+  "old": "import sys\nimport time\n",
+  "new": "import re\nimport sys\nimport time\n",
+  "count": 1,
+  "why": "B26: a value quoted from another output, read from it rather than held here, since the correction can change it",
+  "id": "F16"
+ },
+ {
+  "file": "notes/partB14_family_atoms.py",
+  "old": "OUT = REPO / \"notes\" / \"review_results\" / \"partB\"\n",
+  "new": "OUT = REPO / \"notes\" / \"review_results\" / \"partB\"\n\n\ndef diag_res_w60():\n    \"\"\"The diagnostic's W = 60 residual level on ts_gsr as diag_tables.md prints it (B26: read, not held here).\"\"\"\n    try:\n        m = re.search(r\"## ts_gsr, W = 60\\n\\nLevels \\(all subjects, runs, windows\\): observed sts [\\d.]+, predicted \\(AR\\(1\\) from a_x, a_y, q\\) [\\d.]+, residual ([+-]\\d+\\.\\d+) \", (OUT / \"diag_tables.md\").read_text(encoding=\"utf-8\"))\n    except (OSError, UnicodeError):\n        m = None\n    return m.group(1).replace(\"-\", \"−\") if m else \"CHECK FAILED (not read)\"\n\n\n",
+  "count": 1,
+  "why": "B26: a value quoted from another output, read from it rather than held here, since the correction can change it",
+  "id": "F17"
+ },
+ {
+  "file": "notes/partB14_family_atoms.py",
+  "old": "                pred[s, c, w] = atoms_from_corr(ar1_corr(ax, ay, q)).mean(0)\n",
+  "new": "                pred[s, c, w] = np.nanmean(atoms_from_corr(ar1_corr(ax, ay, q)), axis=0)  # B26: NaN where not positive definite\n",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist",
+  "id": "F18"
+ },
+ {
+  "file": "notes/partB14_family_atoms.py",
+  "old": "(the diagnostic's, diag_tables.md: −0.0489 on ts_gsr)",
+  "new": "(the diagnostic's, diag_tables.md: {diag_res_w60()} on ts_gsr)",
+  "count": 1,
+  "why": "B26: a value quoted from another output, read from it rather than held here, since the correction can change it",
+  "id": "F19"
+ },
+ {
+  "file": "notes/partB14_family_atoms.py",
+  "old": "            pred_run[s, c] = atoms_from_corr(ar1_corr(ax, ay, q)).mean(0)\n",
+  "new": "            pred_run[s, c] = np.nanmean(atoms_from_corr(ar1_corr(ax, ay, q)), axis=0)\n",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist",
+  "id": "F20"
+ },
+ {
+  "file": "notes/partB15_directed_crosslag.py",
+  "old": "ts = sio.loadmat(MAT)\nfor var in (\"ts_gsr\", \"ts_demean\"):\n    rms_anti = ",
+  "new": "ts = sio.loadmat(MAT)\nRUNRES = {}                                                                    # B26: the run-level residual by variant, quoted below\nfor var in (\"ts_gsr\", \"ts_demean\"):\n    rms_anti = ",
+  "count": 1,
+  "why": "B26: a value quoted from another output, read from it rather than held here, since the correction can change it",
+  "id": "F21"
+ },
+ {
+  "file": "notes/partB15_directed_crosslag.py",
+  "old": "            resp[s, c] = [r_anti.mean(), r_sym.mean(), r_both.mean()]\n            resid[s, c] = pp.atoms_mean()[:, S].mean() - base.mean()\n",
+  "new": "            ok = np.isfinite(r_anti) & np.isfinite(r_sym) & np.isfinite(r_both)       # B26: the pair's four matrices positive definite\n            resp[s, c] = [r_anti[ok].mean(), r_sym[ok].mean(), r_both[ok].mean()]\n            resid[s, c] = pp.atoms_mean()[:, S].mean() - np.nanmean(base)\n",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist",
+  "id": "F22"
+ },
+ {
+  "file": "notes/partB15_directed_crosslag.py",
+  "old": "    per_subj = rms_anti.mean(1)\n",
+  "new": "    per_subj = rms_anti.mean(1); RUNRES[var] = float(resid.mean())\n",
+  "count": 1,
+  "why": "B26: a value quoted from another output, read from it rather than held here, since the correction can change it",
+  "id": "F23"
+ },
+ {
+  "file": "notes/partB15_directed_crosslag.py",
+  "old": "the responses account for {100 * resp[:, :, 2].mean() / resid.mean():.0f} % of the residual (directed alone {100 * resp[:, :, 0].mean() / resid.mean():.0f} %, symmetric alone {100 * resp[:, :, 1].mean() / resid.mean():.0f} %).\",",
+  "new": "the responses account for {100 * resp[:, :, 2].mean() / resid.mean():.0f} % of the residual (directed alone {100 * resp[:, :, 0].mean() / resid.mean():.0f} %, symmetric alone {100 * resp[:, :, 1].mean() / resid.mean():.0f} %; \"\n              \"the responses over the pairs whose four matrices are positive definite, the residual over those whose AR(1) matrix is, B26).\",",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist; the pairs each is taken over, named",
+  "id": "F24"
+ },
+ {
+  "file": "notes/partB15_directed_crosslag.py",
+  "old": "    _, r_anti, r_sym, r_both = response(ax, ay, q, sym, anti)\n    lines.append(f\"{name}: window a {a.mean():.4f}, |q| {aq.mean():.4f}; residual {np.mean(obs - pred):+.5f} ({100 * np.mean(obs - pred) / obs.mean():+.2f} %); RMS δ_anti {np.sqrt(np.mean(anti ** 2)):.5f}, RMS δ_sym {np.sqrt(np.mean(sym ** 2)):.5f}; \"\n                 f\"closed-form response to δ_anti {r_anti.mean():+.5f}, to δ_sym {r_sym.mean():+.5f}, to both {r_both.mean():+.5f}.\")\n    return np.mean(obs - pred)\n",
+  "new": "    _, r_anti, r_sym, r_both = response(ax, ay, q, sym, anti)\n    ok = np.isfinite(r_anti) & np.isfinite(r_sym) & np.isfinite(r_both)           # B26: the pair's four matrices positive definite\n    res = np.mean(obs) - np.nanmean(pred)                                          # B26: the substituted mean over the pairs where it exists\n    lines.append(f\"{name}: window a {a.mean():.4f}, |q| {aq.mean():.4f}; residual {res:+.5f} ({100 * res / obs.mean():+.2f} %); RMS δ_anti {np.sqrt(np.mean(anti ** 2)):.5f}, RMS δ_sym {np.sqrt(np.mean(sym ** 2)):.5f}; \"\n                 f\"closed-form response to δ_anti {r_anti[ok].mean():+.5f}, to δ_sym {r_sym[ok].mean():+.5f}, to both {r_both[ok].mean():+.5f}.\")\n    return res\n",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist",
+  "id": "F25"
+ },
+ {
+  "file": "notes/partB15_directed_crosslag.py",
+  "old": "lines += [\"\", f\"Null residual levels: symmetric",
+  "new": "import re                                                                      # B26: the diagnostic's level read, not held here\ntry:\n    _m26 = re.search(r\"## ts_gsr, W = 60\\n\\nLevels \\(all subjects, runs, windows\\): observed sts [\\d.]+, predicted \\(AR\\(1\\) from a_x, a_y, q\\) [\\d.]+, residual ([+-]\\d+\\.\\d+) \", (OUT / \"diag_tables.md\").read_text(encoding=\"utf-8\"))\nexcept (OSError, UnicodeError):\n    _m26 = None\nDIAG_RES_W60 = _m26.group(1).replace(\"-\", \"−\") if _m26 else \"CHECK FAILED (not read)\"\nRUN_TS_GSR = f\"{RUNRES['ts_gsr']:.4f}\".replace(\"-\", \"−\")                     # B26: this script's own run-level value\nlines += [\"\", f\"Null residual levels: symmetric",
+  "count": 1,
+  "why": "B26: a value quoted from another output, read from it rather than held here, since the correction can change it",
+  "id": "F26"
+ },
+ {
+  "file": "notes/partB15_directed_crosslag.py",
+  "old": "          \". These are W = 60 window-level residuals; the data's W = 60 residual is −0.0489 on ts_gsr (diag_tables.md) and its run-level residual −0.0137 (residual_source.log; recomputed in this script's run-level section above). Reported with their sizes; no branch labels (rule of the pre-run entry).\", \"\"]",
+  "new": "          f\". These are W = 60 window-level residuals; the data's W = 60 residual is {DIAG_RES_W60} on ts_gsr (diag_tables.md) and its run-level residual {RUN_TS_GSR} (this script's run-level section above). Reported with their sizes; no branch labels (rule of the pre-run entry).\", \"\"]",
+  "count": 1,
+  "why": "B26: a value quoted from another output, read from it rather than held here, since the correction can change it; the run-level value is this script's own, which residual_source.log does not hold",
+  "id": "F27"
+ },
+ {
+  "file": "notes/partB16_prewhiten.py",
+  "old": "                p = atoms_from_corr(ar1_corr(ax, ay, q))[:, S]\n                obs[s, c, w], pred[s, c, w] = am[:, S].mean(), p.mean()\n                local_obs[s, c, in_w[:pp.n]] = loc[:, S]; local_res[s, c, in_w[:pp.n]] = loc[:, S] - p.mean()\n",
+  "new": "                p = atoms_from_corr(ar1_corr(ax, ay, q))[:, S]  # B26: NaN where not positive definite\n                obs[s, c, w], pred[s, c, w] = am[:, S].mean(), np.nanmean(p)\n                local_obs[s, c, in_w[:pp.n]] = loc[:, S]; local_res[s, c, in_w[:pp.n]] = loc[:, S] - np.nanmean(p)\n",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist",
+  "id": "F28"
+ },
+ {
+  "file": "notes/partB17_calibration.py",
+  "old": "        obs_w[w] = pp.atoms_mean()[:, S].mean(); pred_w[w] = atoms_from_corr(ar1_corr(ax, ay, q))[:, S].mean()\n",
+  "new": "        obs_w[w] = pp.atoms_mean()[:, S].mean(); pred_w[w] = np.nanmean(atoms_from_corr(ar1_corr(ax, ay, q))[:, S])\n",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist (in place: the line is copied verbatim into partB17b and partB24 and checked there)",
+  "id": "F29"
+ },
+ {
+  "file": "notes/partB17_calibration.py",
+  "old": "    pred_b = np.full(28, atoms_from_corr(ar1_corr(ax, ay, q))[:, S].mean())          # the pipeline's run-level prediction, constant across bins\n",
+  "new": "    pred_b = np.full(28, np.nanmean(atoms_from_corr(ar1_corr(ax, ay, q))[:, S]))      # the pipeline's run-level prediction, constant across bins\n",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist (in place: the line is copied verbatim into partB17b and partB24 and checked there)",
+  "id": "F30"
+ },
+ {
+  "file": "notes/partB17_calibration.py",
+  "old": "        pred_bp[sl] = atoms_from_corr(ar1_corr(axp, ayp, qp))[:, S].mean()\n",
+  "new": "        pred_bp[sl] = np.nanmean(atoms_from_corr(ar1_corr(axp, ayp, qp))[:, S])\n",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist (in place: the line is copied verbatim into partB17b and partB24 and checked there)",
+  "id": "F31"
+ },
+ {
+  "file": "notes/partB17b_calibration_filtered.py",
+  "old": "        obs_w[w] = pp.atoms_mean()[:, S].mean(); pred_w[w] = atoms_from_corr(ar1_corr(ax, ay, q))[:, S].mean()\n",
+  "new": "        obs_w[w] = pp.atoms_mean()[:, S].mean(); pred_w[w] = np.nanmean(atoms_from_corr(ar1_corr(ax, ay, q))[:, S])\n",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist (in place: the line is copied verbatim into partB17b and partB24 and checked there)",
+  "id": "F32"
+ },
+ {
+  "file": "notes/partB17b_calibration_filtered.py",
+  "old": "    pred_b = np.full(28, atoms_from_corr(ar1_corr(ax, ay, q))[:, S].mean())          # the pipeline's run-level prediction, constant across bins\n",
+  "new": "    pred_b = np.full(28, np.nanmean(atoms_from_corr(ar1_corr(ax, ay, q))[:, S]))      # the pipeline's run-level prediction, constant across bins\n",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist (in place: the line is copied verbatim into partB17b and partB24 and checked there)",
+  "id": "F33"
+ },
+ {
+  "file": "notes/partB17b_calibration_filtered.py",
+  "old": "        pred_bp[sl] = atoms_from_corr(ar1_corr(axp, ayp, qp))[:, S].mean()\n",
+  "new": "        pred_bp[sl] = np.nanmean(atoms_from_corr(ar1_corr(axp, ayp, qp))[:, S])\n",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist (in place: the line is copied verbatim into partB17b and partB24 and checked there)",
+  "id": "F34"
+ },
+ {
+  "file": "notes/partB17b_calibration_filtered.py",
+  "old": "    qt = rng.choice(Q_POOL, N_POP); qe = qe_from_q(ax, ay, qt)\n    pre = sts_of(ax, ay, qt).mean(); post = sts_of(ax - 0.015, ay - 0.015, q_from_qe(ax - 0.015, ay - 0.015, qe)).mean()\n",
+  "new": "    qt = rng.choice(Q_POOL, N_POP); qe = qe_from_q(ax, ay, qt)\n    s_pre = sts_of(ax, ay, qt); ok = np.isfinite(s_pre)                          # B26: the draws whose AR(1) matrix is positive definite\n    pre = s_pre[ok].mean(); post = sts_of(ax - 0.015, ay - 0.015, q_from_qe(ax - 0.015, ay - 0.015, qe))[ok].mean()\n",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist (paired: the shifted matrix is positive definite whenever |q_ε| < 1, which the clip ensures)",
+  "id": "F35"
+ },
+ {
+  "file": "notes/partB19_exchange_rates.py",
+  "old": "                    pred = atoms_from_corr(ar1_corr(ax, ay, q))[:, S]\n",
+  "new": "                    pred = atoms_from_corr(ar1_corr(ax, ay, q))[:, S]  # B26: NaN where not positive definite\n                    ok = np.isfinite(pred)\n",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist",
+  "id": "F36"
+ },
+ {
+  "file": "notes/partB19_exchange_rates.py",
+  "old": "R2f.append(pearsonr(y, pred)[0] ** 2)",
+  "new": "R2f.append(pearsonr(y[ok], pred[ok])[0] ** 2)",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist",
+  "id": "F37"
+ },
+ {
+  "file": "notes/partB22_aligned_directed.py",
+  "old": "    st = dict(A_other=float(np.mean(sg_other * sym)), A_same=float(np.mean(sg_same * sym)), winsign=float(np.mean(np.sign(q) * sym)),\n              B=float(np.polyfit(q, sym, 1)[0]), D=float(r_anti.mean()), Sym=float(r_sym.mean()), D_plus_Sym=float((r_anti + r_sym).mean()),\n              Both=float(r_both.mean()), rms_anti=float(np.sqrt(np.mean(anti ** 2))), residual=float(obs.mean() - base.mean()),\n",
+  "new": "    ok = np.isfinite(r_anti) & np.isfinite(r_sym) & np.isfinite(r_both)       # B26: the pair's four matrices positive definite\n    st = dict(A_other=float(np.mean(sg_other * sym)), A_same=float(np.mean(sg_same * sym)), winsign=float(np.mean(np.sign(q) * sym)),\n              B=float(np.polyfit(q, sym, 1)[0]), D=float(r_anti[ok].mean()), Sym=float(r_sym[ok].mean()), D_plus_Sym=float((r_anti + r_sym)[ok].mean()),\n              Both=float(r_both[ok].mean()), rms_anti=float(np.sqrt(np.mean(anti ** 2))), residual=float(obs.mean() - np.nanmean(base)),\n",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist",
+  "id": "F38"
+ },
+ {
+  "file": "notes/partB22_aligned_directed.py",
+  "old": "(their difference {res_did.mean() - ds_did.mean():+.5f}: the lag-0 substitution and the non-additivity of the two responses)",
+  "new": "(their difference {res_did.mean() - ds_did.mean():+.5f}: the lag-0 substitution, the non-additivity of the two responses and, where a pair's matrices are not positive definite, the pairs each is taken over, B26)",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist; the pairs each is taken over, named",
+  "id": "F39"
+ },
+ {
+  "file": "notes/partB23_diagnostic_alternatives.py",
+  "old": "\"A_same\": rs(sym) * s_same[None], \"D\": rs(r_anti)}",
+  "new": "\"A_same\": rs(sym) * s_same[None],\n           \"D\": rs(np.where(np.isfinite(r_sym) & np.isfinite(r_both), r_anti, nan))}      # B26: D where the pair-window's four matrices are positive definite",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist",
+  "id": "F40"
+ },
+ {
+  "file": "notes/partB23_diagnostic_alternatives.py",
+  "old": "KEYS = (\"observed sts\", \"AR(1)-substituted sts\", \"residual\", \"r₁\", \"A_other\", \"A_same\", \"D\")\nlines += [\"## (b) W = 60 simulation",
+  "new": "KEYS = (\"observed sts\", \"AR(1)-substituted sts\", \"residual\", \"r₁\", \"A_other\", \"A_same\", \"D\")\n\n\ndef nleft(m, *vals):\n    \"\"\"\" [k]\": the k pairs of m left out of a mean because the quantity does not exist for them, one of their windows'\n    matrices not being positive definite (B26); \"\" if there are none.\"\"\"\n    k = int((m & ~np.all([np.isfinite(v) for v in vals], axis=0)).sum())\n    return f\" [{k}]\" if k else \"\"\n\n\nlines += [\"## (b) W = 60 simulation",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist",
+  "id": "F41"
+ },
+ {
+  "file": "notes/partB23_diagnostic_alternatives.py",
+  "old": "SE over pairs of each pair's 14-window mean; B's SE over the 14 windows.\", \"\"]",
+  "new": "SE over pairs of each pair's 14-window mean; B's SE over the 14 windows. \"\n          \"A number in brackets after a mean: the pairs left out of it because the quantity does not exist for them, one of their windows' \"\n          \"matrices not being positive definite (B26); the column 'pairs excluded' counts the pairs left out of every quantity, and the last \"\n          \"column divides the residual's change by r₁'s over the residual's pairs.\", \"\"]",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist; the note on the line that describes the table, so that no line of the output moves",
+  "id": "F42"
+ },
+ {
+  "file": "notes/partB23_diagnostic_alternatives.py",
+  "old": "lines += [\"Unperturbed AR(1) pairs, levels: \" + \"; \".join(f\"{k} {per0[k][ok0].mean():+.5f}\" for k in KEYS)",
+  "new": "lines += [\"Unperturbed AR(1) pairs, levels: \" + \"; \".join(f\"{k} {np.nanmean(per0[k][ok0]):+.5f}\" + nleft(ok0, per0[k]) for k in KEYS)",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist",
+  "id": "F43"
+ },
+ {
+  "file": "notes/partB23_diagnostic_alternatives.py",
+  "old": "    for k in KEYS:\n        d = per[k][m] - per_ref[k][m]\n        cells.append(f\"{d.mean():+.5f} ± {d.std(ddof=1) / np.sqrt(m.sum()):.5f}\")\n        rec(part, lab, 0.85, f\"Δ {k}\", float(d.mean()), float(d.std(ddof=1) / np.sqrt(m.sum())))\n    dB = Bw - B_ref\n    rec(part, lab, 0.85, \"Δ B\", float(dB.mean()), float(dB.std(ddof=1) / np.sqrt(dB.size)))\n    dres = float((per[\"residual\"][m] - per_ref[\"residual\"][m]).mean()); dr1 = float((per[\"r₁\"][m] - per_ref[\"r₁\"][m]).mean())\n",
+  "new": "    for k in KEYS:\n        mk = m & np.isfinite(per[k]) & np.isfinite(per_ref[k])                     # B26: the pairs where the quantity exists in both\n        d = per[k][mk] - per_ref[k][mk]\n        cells.append(f\"{d.mean():+.5f} ± {d.std(ddof=1) / np.sqrt(mk.sum()):.5f}\" + nleft(m, per[k], per_ref[k]))\n        rec(part, lab, 0.85, f\"Δ {k}\", float(d.mean()), float(d.std(ddof=1) / np.sqrt(mk.sum())))\n    dB = Bw - B_ref\n    rec(part, lab, 0.85, \"Δ B\", float(dB.mean()), float(dB.std(ddof=1) / np.sqrt(dB.size)))\n    mr = m & np.isfinite(per[\"residual\"]) & np.isfinite(per_ref[\"residual\"])\n    dres = float((per[\"residual\"][mr] - per_ref[\"residual\"][mr]).mean()); dr1 = float((per[\"r₁\"][mr] - per_ref[\"r₁\"][mr]).mean())\n",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist",
+  "id": "F44"
+ },
+ {
+  "file": "notes/partB23_diagnostic_alternatives.py",
+  "old": "\" | \".join(f\"{(per5[k] - per0[k])[ok0].mean():+.5f}\" for k in KEYS)",
+  "new": "\" | \".join(f\"{np.nanmean((per5[k] - per0[k])[ok0]):+.5f}\" + nleft(ok0, per5[k], per0[k]) for k in KEYS)",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist",
+  "id": "F45"
+ },
+ {
+  "file": "notes/partB24_bandpassed_expectations.py",
+  "old": "        obs_w[w] = pp.atoms_mean()[:, S].mean(); pred_w[w] = atoms_from_corr(ar1_corr(ax, ay, q))[:, S].mean()\n",
+  "new": "        obs_w[w] = pp.atoms_mean()[:, S].mean(); pred_w[w] = np.nanmean(atoms_from_corr(ar1_corr(ax, ay, q))[:, S])\n",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist (in place: the copy of partB17b's lines, checked at run time)",
+  "id": "F46"
+ },
+ {
+  "file": "notes/partB24_bandpassed_expectations.py",
+  "old": "    pred_b = np.full(28, atoms_from_corr(ar1_corr(ax, ay, q))[:, S].mean())          # the pipeline's run-level prediction, constant across bins\n",
+  "new": "    pred_b = np.full(28, np.nanmean(atoms_from_corr(ar1_corr(ax, ay, q))[:, S]))      # the pipeline's run-level prediction, constant across bins\n",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist (in place: the copy of partB17b's lines, checked at run time)",
+  "id": "F47"
+ },
+ {
+  "file": "notes/partB24_bandpassed_expectations.py",
+  "old": "        pred_bp[sl] = atoms_from_corr(ar1_corr(axp, ayp, qp))[:, S].mean()\n",
+  "new": "        pred_bp[sl] = np.nanmean(atoms_from_corr(ar1_corr(axp, ayp, qp))[:, S])\n",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist (in place: the copy of partB17b's lines, checked at run time)",
+  "id": "F48"
+ },
+ {
+  "file": "notes/partB24_bandpassed_expectations.py",
+  "old": "        out[\"D\"][w] = r_anti.mean(); out[\"Sym\"][w] = r_sym.mean(); out[\"D_plus_Sym\"][w] = (r_anti + r_sym).mean()\n",
+  "new": "        ok = np.isfinite(r_anti) & np.isfinite(r_sym) & np.isfinite(r_both)   # B26: the pair's four matrices positive definite\n        out[\"D\"][w] = r_anti[ok].mean(); out[\"Sym\"][w] = r_sym[ok].mean(); out[\"D_plus_Sym\"][w] = (r_anti + r_sym)[ok].mean()\n",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist",
+  "id": "F49"
+ },
+ {
+  "file": "notes/review_v2_residual_null.py",
+  "old": "    obs, pred, a, aq = stats(bmean, qsd); res = obs - pred\n    print(f\"{label:9s}: window a={a.mean():.4f} (SD {a.std():.3f}) |q|={aq.mean():.4f}  obs sts={obs.mean():.4f}  AR(1) pred={pred.mean():.4f}  residual={res.mean():+.4f} ({100*res.mean()/obs.mean():+.1f} %)\")\n    return res.mean(), obs.mean()\n\nif __name__ == \"__main__\":\n    print(f\"git={SHA}\", flush=True)\n",
+  "new": "    obs, pred, a, aq = stats(bmean, qsd); res_m = obs.mean() - np.nanmean(pred)   # B26: the substituted mean over the pairs where it exists\n    print(f\"{label:9s}: window a={a.mean():.4f} (SD {a.std():.3f}) |q|={aq.mean():.4f}  obs sts={obs.mean():.4f}  AR(1) pred={np.nanmean(pred):.4f}  residual={res_m:+.4f} ({100*res_m/obs.mean():+.1f} %)\")\n    return res_m, obs.mean()\n\ndef data_refs():\n    \"\"\"The data's values the log prints beside the null's, read from the outputs of partB4_diagnostic.py, which section 6\n    of run_all.sh runs before this script (B26: they were held here as numbers, which the correction can change): the\n    residual as a share of the observed sts at W = 30 and W = 60 and at the global fit (ts_gsr, diag_tables.md), and the\n    residual's DMT and placebo changes, their DiD and its interval (ts_gsr, W = 60, primary windows, inference_rows_diag.csv).\"\"\"\n    import csv, re\n    rr = os.path.join(os.path.dirname(os.path.abspath(__file__)), \"review_results\")\n    try:\n        t = open(os.path.join(rr, \"partB\", \"diag_tables.md\"), encoding=\"utf-8\").read()\n        pc = {W: re.search(r\"## ts_gsr, W = \" + str(W) + r\"\\n\\nLevels \\(all subjects, runs, windows\\): .*?\\(([+-]\\d+\\.\\d) % of observed\\)\", t).group(1) for W in (30, 60)}\n        run = re.search(r\"\\nts_gsr: run-level observed sts .*?\\(residual [+-]\\d+\\.\\d+, ([+-]\\d+\\.\\d) %\\)\", t).group(1)\n        a = f\"W30 {pc[30]} %, W60 {pc[60]} %, run-level {run} %\"\n    except (OSError, AttributeError) as e:\n        a = f\"CHECK FAILED (not read: {type(e).__name__})\"\n    try:\n        with open(os.path.join(rr, \"inference_rows_diag.csv\"), encoding=\"utf-8\") as fh:\n            row = [x for x in csv.DictReader(l for l in fh if not l.startswith(\"#\")) if x[\"label\"] == \"diag residual sts ts_gsr W60\" and x[\"set\"] == \"primary\"][0]\n        f = {k: float(row[k]) for k in (\"dmt_change\", \"pcb_change\", \"did\", \"did_lo\", \"did_hi\")}\n        b = f\"DMT {f['dmt_change']:+.4f}, PCB {f['pcb_change']:+.4f}, DiD {f['did']:+.4f} [{f['did_lo']:+.4f}, {f['did_hi']:+.4f}]\"\n    except (OSError, IndexError, KeyError, ValueError) as e:\n        b = f\"CHECK FAILED (not read: {type(e).__name__})\"\n    return a, b\n\nif __name__ == \"__main__\":\n    print(f\"git={SHA}\", flush=True)\n    DATA = data_refs()\n",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist; B26: a value quoted from another output, read from it rather than held here, since the correction can change it",
+  "id": "F50"
+ },
+ {
+  "file": "notes/review_v2_residual_null.py",
+  "old": "residual={(obs-pred).mean():+.4f} ({100*(obs-pred).mean()/obs.mean():+.2f} %)   [data: W30 -9.7 %, W60 -4.3 %, run-level -1.1 %]\")",
+  "new": "residual={obs.mean()-np.nanmean(pred):+.4f} ({100*(obs.mean()-np.nanmean(pred))/obs.mean():+.2f} %)   [data: {DATA[0]}]\")",
+  "count": 1,
+  "why": "B26: a matrix that is not positive definite has no atoms; means over the matrices where they exist; B26: a value quoted from another output, read from it rather than held here, since the correction can change it",
+  "id": "F51"
+ },
+ {
+  "file": "notes/review_v2_residual_null.py",
+  "old": "    print( \"data (residual_source.log): DMT +0.0077, PCB -0.0038, DiD +0.0115 [+0.0021, +0.0211]\")",
+  "new": "    print(f\"data (inference_rows_diag.csv): {DATA[1]}\")",
+  "count": 1,
+  "why": "B26: a value quoted from another output, read from it rather than held here, since the correction can change it; named by the file it is read from",
+  "id": "F52"
+ },
+ {
+  "id": "N01",
+  "file": "manuscript/main_text_numbers.csv",
+  "why": "the numbers table (contexts, deletions, additions, head note)",
+  "old": "# Every number of the main text of manuscript/draft_v2.md (title to Materials and methods, the six figure captions and the three table captions and bodies, the Data and code availability statement, and the Supporting-information captions), one row per occurrence, in reading order. category: data (checked against the named file at the named line, at the printed precision), design (a fixed setting of the analysis, located in the named file), literature (a value of a cited work, located in the literature table), bound (a stated bound, checked to hold against the file's value), derived (computed from quoted values; the derivation is given), label (a name, index, date or formula constant, not a quantity). As revised in the error-only revision that applied the check of 25 September 2026, and in the commit of the final run's outputs, which added the row of the run's wall-clock, recomputed the context of the two rows of Data and code availability whose context the rewritten sentences changed, moved 67 locators to the lines of the regenerated files and took 43 held strings from them (the files' values changed by less than 1e-9; the numbers the text prints are unchanged), updated the five rows of S19 Table's count, which the table's new row for the final run changes, and corrected the notes of four rows that gave B21's inverted-interval bounds wrongly in their fifth decimal and the locators of eleven rows into `scripts/15_figures_v2.py`, whose lines b02d5ba had moved (the numbers the text prints were right). The corrections of the error-only read of 26 September 2026 recomputed the context of the rows whose context the edits reached (26), added the row of the population change on AR(1) pairs that Table 3 now states, and restated the band-passed row, whose number is now the window-level fall of 0.015 in pair r₁, with the generator's target as its source.\n",
+  "new": "# Every number of the main text of manuscript/draft_v2.md (title to Materials and methods, the six figure captions and the three table captions and bodies, the Data and code availability statement, and the Supporting-information captions), one row per occurrence, in reading order. category: data (checked against the named file at the named line, at the printed precision), design (a fixed setting of the analysis, located in the named file), literature (a value of a cited work, located in the literature table), bound (a stated bound, checked to hold against the file's value), derived (computed from quoted values; the derivation is given), label (a name, index, date or formula constant, not a quantity). As revised in the error-only revision that applied the check of 25 September 2026, and in the commit of the final run's outputs, which added the row of the run's wall-clock, recomputed the context of the two rows of Data and code availability whose context the rewritten sentences changed, moved 67 locators to the lines of the regenerated files and took 43 held strings from them (the files' values changed by less than 1e-9; the numbers the text prints are unchanged), updated the five rows of S19 Table's count, which the table's new row for the final run changes, and corrected the notes of four rows that gave B21's inverted-interval bounds wrongly in their fifth decimal and the locators of eleven rows into `scripts/15_figures_v2.py`, whose lines b02d5ba had moved (the numbers the text prints were right). The corrections of the error-only read of 26 September 2026 recomputed the context of the rows whose context the edits reached (26), added the row of the population change on AR(1) pairs that Table 3 now states, and restated the band-passed row, whose number is now the window-level fall of 0.015 in pair r₁, with the generator's target as its source. The revision that followed the citation crosscheck of 28 September 2026 (the crosscheck's changes, the readiness items, the audits' corrections and the length condensations) recomputed the context of the rows whose context its edits reached (24), deleted the 13 rows of the numbers the condensations take out of the body (they remain in Figs 1 and 4's captions), recounted the occurrences of the changed paragraphs, put the rows of Results 1's rewritten paragraph in reading order and made its row of \"+0.05\" a derived row, corrected the note of the second \"1\" of Introduction paragraph 2 (lag-1) and the context of the seed row of Data and code availability, which ran past its paragraph, and added three label rows (Varley's Eqs. 4–6; the licence's version).\n",
+  "count": 1
+ },
+ {
+  "id": "N02",
+  "file": "manuscript/main_text_numbers.csv",
+  "why": "the numbers table (contexts, deletions, additions, head note)",
+  "old": "Abstract,paragraph 1,1,1,label,,,\"AR(1), lag-1: names\",ok,en Gaussian-MMI atoms of two first-order autoregressive (AR(1)) processes correlated only at lag 0. W\r\nAbstract,paragraph 1,1,0,label,,,lag-0: a name,ok,der autoregressive (AR(1)) processes correlated only at lag 0. With equal coefficients the synergy at\r\n",
+  "new": "Abstract,paragraph 1,1,1,label,,,\"AR(1), lag-1: names\",ok,en Gaussian-MMI atoms of two first-order autoregressive (AR(1)) processes coupled only at lag 0. With\r\nAbstract,paragraph 1,1,0,label,,,lag-0: a name,ok,-order autoregressive (AR(1)) processes coupled only at lag 0. With equal coefficients the synergy at\r\n",
+  "count": 1
+ },
+ {
+  "id": "N03",
+  "file": "manuscript/main_text_numbers.csv",
+  "why": "the numbers table (contexts, deletions, additions, head note)",
+  "old": "Introduction,paragraph 2,2,1,label,,,½ ln(1 + α²): formula,ok,\"s carry the self-information, how sts depends on a pair's lag-1 autocorrelation r₁ and lag-0 correlat\"\r\n",
+  "new": "Introduction,paragraph 2,1,4,label,,,citation locator (Varley's Eqs. 4–6),ok,\"wo independent autocorrelated processes (Varley, 2024, Eqs. 4–6 and 12), and PID applied to time seri\"\r\nIntroduction,paragraph 2,1,6,label,,,citation locator,ok,\" independent autocorrelated processes (Varley, 2024, Eqs. 4–6 and 12), and PID applied to time series\"\r\nIntroduction,paragraph 2,2,1,label,,,lag-1: a name,ok,\"ue from the self-information, how sts depends on a pair's lag-1 autocorrelation r₁ and lag-0 correlat\"\r\n",
+  "count": 1
+ },
+ {
+  "id": "N04",
+  "file": "manuscript/main_text_numbers.csv",
+  "why": "the numbers table (contexts, deletions, additions, head note)",
+  "old": "Introduction,paragraph 3,2,1,label,,,\"AR(1), lag-1: names\",ok,\"give the closed form for two first-order autoregressive (AR(1)) processes correlated at lag 0, with i\"\r\nIntroduction,paragraph 3,1,0,label,,,lag-0: a name,ok,\"st-order autoregressive (AR(1)) processes correlated at lag 0, with its exchange rates in data units \"\r\nIntroduction,paragraph 3,3,1,label,,,the number of a Results section,ok,\"correlated at lag 0, with its exchange rates in data units (1), the DMT contrast (2), the regional ma\"\r\n",
+  "new": "Introduction,paragraph 3,2,1,label,,,\"AR(1), lag-1: names\",ok,\"give the closed form for two first-order autoregressive (AR(1)) processes coupled only at lag 0, with\"\r\nIntroduction,paragraph 3,1,0,label,,,lag-0: a name,ok,\"-order autoregressive (AR(1)) processes coupled only at lag 0, with its exchange rates in data units \"\r\nIntroduction,paragraph 3,3,1,label,,,the number of a Results section,ok,\"upled only at lag 0, with its exchange rates in data units (1), the DMT contrast (2), the regional ma\"\r\n",
+  "count": 1
+ },
+ {
+  "id": "N05",
+  "file": "manuscript/main_text_numbers.csv",
+  "why": "the numbers table (contexts, deletions, additions, head note)",
+  "old": "Results / 1. The sixteen atoms in closed form,\"Fig 1, caption\",1,1,label,,,AR(1): a name,ok,\"map and the coupled family.** (a) Gaussian-MMI sts of two AR(1) processes correlated only at lag 0, a\"\r\nResults / 1. The sixteen atoms in closed form,\"Fig 1, caption\",1,0,label,,,lag-0: a name,ok,\"ussian-MMI sts of two AR(1) processes correlated only at lag 0, as a function of the pair's lag-1 aut\"\r\nResults / 1. The sixteen atoms in closed form,\"Fig 1, caption\",2,1,label,,,½ ln(1 + α²): formula,ok,\"es correlated only at lag 0, as a function of the pair's lag-1 autocorrelation r₁ and lag-0 cross-cor\"\r\n",
+  "new": "Results / 1. The sixteen atoms in closed form,\"Fig 1, caption\",1,1,label,,,AR(1): a name,ok,\"map and the coupled family.** (a) Gaussian-MMI sts of two AR(1) processes coupled only at lag 0, as a\"\r\nResults / 1. The sixteen atoms in closed form,\"Fig 1, caption\",1,0,label,,,lag-0: a name,ok,\" Gaussian-MMI sts of two AR(1) processes coupled only at lag 0, as a function of the pair's lag-1 aut\"\r\nResults / 1. The sixteen atoms in closed form,\"Fig 1, caption\",2,1,label,,,½ ln(1 + α²): formula,ok,\"esses coupled only at lag 0, as a function of the pair's lag-1 autocorrelation r₁ and lag-0 cross-cor\"\r\n",
+  "count": 1
+ },
+ {
+  "id": "N06",
+  "file": "manuscript/main_text_numbers.csv",
+  "why": "the numbers table (contexts, deletions, additions, head note)",
+  "old": "Results / 1. The sixteen atoms in closed form,paragraph 9,1,0.85,design,notes/review_results/partB/coupling_map_tables.md,line 4; anchor: 0.85,the operating point of the coupled family,ok,\"family (lagged coupling c; S3 Text), with r₁ and q held at (0.85, 0.25), sts falls from 1.2588 at c = 0 \"\r\nResults / 1. The sixteen atoms in closed form,paragraph 9,1,0.25,design,notes/review_results/partB/coupling_map_tables.md,line 4; anchor: 0.25,the operating point of the coupled family,ok,\" (lagged coupling c; S3 Text), with r₁ and q held at (0.85, 0.25), sts falls from 1.2588 at c = 0 to 1.2\"\r\nResults / 1. The sixteen atoms in closed form,paragraph 9,1,1.2588,data,notes/review_results/partB/coupling_map_tables.md,line 8; the line holds 1.2588; anchor: 1.2588,c = 0,ok,\"3 Text), with r₁ and q held at (0.85, 0.25), sts falls from 1.2588 at c = 0 to 1.2155 at c = +0.05, then r\"\r\nResults / 1. The sixteen atoms in closed form,paragraph 9,1,0,label,,,c = 0,ok,\"r₁ and q held at (0.85, 0.25), sts falls from 1.2588 at c = 0 to 1.2155 at c = +0.05, then rises agai\"\r\nResults / 1. The sixteen atoms in closed form,paragraph 9,1,1.2155,data,notes/review_results/partB/coupling_map_tables.md,line 13; the line holds 1.2155; anchor: 1.2155,c = +0.05,ok,\"d q held at (0.85, 0.25), sts falls from 1.2588 at c = 0 to 1.2155 at c = +0.05, then rises again (1.2569 \"\r\nResults / 1. The sixteen atoms in closed form,paragraph 9,1,+0.05,design,notes/review_results/partB/coupling_map_tables.md,line 9; anchor: 0.05,the coupling evaluated,ok,\".85, 0.25), sts falls from 1.2588 at c = 0 to 1.2155 at c = +0.05, then rises again (1.2569 at +0.10), an\"\r\nResults / 1. The sixteen atoms in closed form,paragraph 9,1,1.2569,data,notes/review_results/partB/coupling_map_tables.md,line 14; the line holds 1.2569; anchor: | +0.10 | 0.8250 |,c = +0.10,ok,\"m 1.2588 at c = 0 to 1.2155 at c = +0.05, then rises again (1.2569 at +0.10), and rises to 1.4111 at c = −\"\r\nResults / 1. The sixteen atoms in closed form,paragraph 9,1,+0.10,design,notes/review_results/partB/coupling_map_tables.md,line 8; anchor: 0.10,the coupling evaluated,ok,\"t c = 0 to 1.2155 at c = +0.05, then rises again (1.2569 at +0.10), and rises to 1.4111 at c = −0.05: cou\"\r\nResults / 1. The sixteen atoms in closed form,paragraph 9,1,1.4111,data,notes/review_results/partB/coupling_map_tables.md,line 9; the line holds 1.4111; anchor: | -0.05 | 0.8625 |,c = −0.05,ok,\"c = +0.05, then rises again (1.2569 at +0.10), and rises to 1.4111 at c = −0.05: coupling of the same sign\"\r\nResults / 1. The sixteen atoms in closed form,paragraph 9,1,−0.05,design,notes/review_results/partB/coupling_map_tables.md,line 9; anchor: | -0.05 | 0.8625 |,the coupling evaluated,ok,\"n rises again (1.2569 at +0.10), and rises to 1.4111 at c = −0.05: coupling of the same sign as q, up to \"\r\nResults / 1. The sixteen atoms in closed form,paragraph 9,2,+0.10,design,notes/review_results/partB/coupling_map_tables.md,line 14; anchor: | +0.10 | 0.8250 |,the coupling evaluated,ok,\"111 at c = −0.05: coupling of the same sign as q, up to c = +0.10, lowers the atom called synergy, and co\"\r\n",
+  "new": "Results / 1. The sixteen atoms in closed form,paragraph 9,1,0.85,design,notes/review_results/partB/coupling_map_tables.md,line 4; anchor: 0.85,the operating point of the coupled family,ok,\"non-monotonically (Fig 1c; S3 Text): with r₁ and q held at (0.85, 0.25), coupling c of the same sign as \"\r\nResults / 1. The sixteen atoms in closed form,paragraph 9,1,0.25,design,notes/review_results/partB/coupling_map_tables.md,line 4; anchor: 0.25,the operating point of the coupled family,ok,\"notonically (Fig 1c; S3 Text): with r₁ and q held at (0.85, 0.25), coupling c of the same sign as q lowe\"\r\nResults / 1. The sixteen atoms in closed form,paragraph 9,1,+0.10,design,notes/review_results/partB/coupling_map_tables.md,line 14; anchor: | +0.10 | 0.8250 |,the coupling evaluated,ok,\"lowers the atom called synergy at each value computed up to +0.10, most at +0.05, and coupling of the opp\"\r\nResults / 1. The sixteen atoms in closed form,paragraph 9,1,+0.05,derived,,\"derived: sts at (0.85, 0.25) is lowest, among the coupled family's rows with c > 0, at c = +0.05: 1.2155, against 1.2315 at +0.02 and 1.2569 at +0.10 (coupling_map_tables.md lines 12–14)\",,ok,\" called synergy at each value computed up to +0.10, most at +0.05, and coupling of the opposite sign rais\"\r\n",
+  "count": 1
+ },
+ {
+  "id": "N07",
+  "file": "manuscript/main_text_numbers.csv",
+  "why": "the numbers table (contexts, deletions, additions, head note)",
+  "old": "Results / 3. The regional map,paragraph 1,1,8.15,data,notes/review_results/partB/aligned_directed_tables.md,line 61; the line holds 8.146; anchor: | sts with regional r₁ partialled out,F 8.146,ok,emove all network structure: the residual map's eight-class F (8.15) lies in the upper 0.1 % of its spin\r\nResults / 3. The regional map,paragraph 1,1,0.1,derived,,derived: spin p 0.0009 < 0.001: the upper 0.1 % (AD (e)),,ok,ure: the residual map's eight-class F (8.15) lies in the upper 0.1 % of its spin distribution (p = 0.00\r\nResults / 3. The regional map,paragraph 1,1,0.0009,data,notes/review_results/partB/aligned_directed_tables.md,line 61; the line holds 0.0009; anchor: | sts with regional r₁ partialled out,spin p,ok,\"F (8.15) lies in the upper 0.1 % of its spin distribution (p = 0.0009, against 0.056 for the unpartialled \"\r\nResults / 3. The regional map,paragraph 1,1,0.056,data,notes/review_results/partB/aligned_directed_tables.md,line 60; the line holds 0.0564; anchor: | sts (unpartialled) | 16.933 | 0.0564,spin p 0.0564 of the unpartialled map's F,ok,\" the upper 0.1 % of its spin distribution (p = 0.0009, against 0.056 for the unpartialled map), with netw\"\r\nResults / 3. The regional map,paragraph 1,1,−0.024,data,notes/review_results/partB/regional_partial_tables.md,line 20; the line holds -0.0235; anchor: @L11-20|| Subcortex |,residual mean −0.0235,ok,\"ainst 0.056 for the unpartialled map), with network means from −0.024 (subcortex) to +0.021 (dorsal attent\"\r\nResults / 3. The regional map,paragraph 1,1,+0.021,data,notes/review_results/partB/regional_partial_tables.md,line 15; the line holds +0.0207; anchor: @L11-20|| DorsAttn |,residual mean +0.0207,ok,\"partialled map), with network means from −0.024 (subcortex) to +0.021 (dorsal attention), though its somat\"\r\nResults / 3. The regional map,paragraph 1,1,0.22,data,notes/review_results/partB/aligned_directed_tables.md,line 61; the line holds 0.2240; anchor: | sts with regional r₁ partialled out,spin p 0.2240,ok,ault and visual − default contrasts do not stand out (spin p = 0.22 and 0.31; Fig 4c). rtr follows regio\r\nResults / 3. The regional map,paragraph 1,1,0.31,data,notes/review_results/partB/aligned_directed_tables.md,line 61; the line holds 0.3089; anchor: | sts with regional r₁ partialled out,spin p 0.3089,ok,visual − default contrasts do not stand out (spin p = 0.22 and 0.31; Fig 4c). rtr follows regional r₁ at\r\nResults / 3. The regional map,paragraph 1,1,0.638,data,notes/review_results/partB/regional_sts_r1_tables.md,line 11; the line holds +0.638; anchor: | rtr | r₁ windowed | +0.638,Pearson,ok,\"spin p = 0.22 and 0.31; Fig 4c). rtr follows regional r₁ at r = 0.638, with a slope of 0.50 nats per unit\"\r\nResults / 3. The regional map,paragraph 1,1,0.50,derived,,derived: 3.0887 − 2.5906 = 0.498 (RP lines 8 and 40: the sts and sts − rtr slopes); a sixth of 3.0887,,ok,\" Fig 4c). rtr follows regional r₁ at r = 0.638, with a slope of 0.50 nats per unit, about nine times the\"\r\nResults / 3. The regional map,paragraph 1,2,0.056,data,notes/review_2026-09-24/checks/derived_r17.out,line 41; the line holds 0.0556; anchor: drtr/dr1 = 0.0556,\"the family's ∂rtr/∂r₁ at (0.85, 0.25), 0.0556\",ok,\"th a slope of 0.50 nats per unit, about nine times the family's 0.056, a difference these data do not exp\"\r\n",
+  "new": "Results / 3. The regional map,paragraph 1,1,0.1,derived,,derived: spin p 0.0009 < 0.001: the upper 0.1 % (AD (e)),,ok, structure: the residual map's eight-class F lies in the upper 0.1 % of its spin distribution (p = 0.00\r\nResults / 3. The regional map,paragraph 1,1,0.0009,data,notes/review_results/partB/aligned_directed_tables.md,line 61; the line holds 0.0009; anchor: | sts with regional r₁ partialled out,spin p,ok,\"-class F lies in the upper 0.1 % of its spin distribution (p = 0.0009), though its somatomotor − default a\"\r\nResults / 3. The regional map,paragraph 1,1,0.638,data,notes/review_results/partB/regional_sts_r1_tables.md,line 11; the line holds +0.638; anchor: | rtr | r₁ windowed | +0.638,Pearson,ok,\"rasts do not stand out (Fig 4c). rtr follows regional r₁ at r = 0.638, with a slope of 0.50 nats per unit\"\r\nResults / 3. The regional map,paragraph 1,1,0.50,derived,,derived: 3.0887 − 2.5906 = 0.498 (RP lines 8 and 40: the sts and sts − rtr slopes); a sixth of 3.0887,,ok,\"(Fig 4c). rtr follows regional r₁ at r = 0.638, with a slope of 0.50 nats per unit, about nine times the\"\r\nResults / 3. The regional map,paragraph 1,1,0.056,data,notes/review_2026-09-24/checks/derived_r17.out,line 41; the line holds 0.0556; anchor: drtr/dr1 = 0.0556,\"the family's ∂rtr/∂r₁ at (0.85, 0.25), 0.0556\",ok,\"th a slope of 0.50 nats per unit, about nine times the family's 0.056, a difference these data do not exp\"\r\n",
+  "count": 1
+ },
+ {
+  "id": "N08",
+  "file": "manuscript/main_text_numbers.csv",
+  "why": "the numbers table (contexts, deletions, additions, head note)",
+  "old": "Discussion / What the finding is and is not,paragraph 1,1,1,label,,,AR(1): a name,ok, is what the estimator responds to. On the family of two AR(1) processes correlated only at lag 0 the\r\nDiscussion / What the finding is and is not,paragraph 1,1,0,label,,,lag-0: a name,ok,On the family of two AR(1) processes correlated only at lag 0 the Gaussian-MMI synergy atom is the tw\r\n",
+  "new": "Discussion / What the finding is and is not,paragraph 1,1,1,label,,,AR(1): a name,ok, is what the estimator responds to. On the family of two AR(1) processes coupled only at lag 0 the Ga\r\nDiscussion / What the finding is and is not,paragraph 1,1,0,label,,,lag-0: a name,ok,o. On the family of two AR(1) processes coupled only at lag 0 the Gaussian-MMI synergy atom is the tw\r\n",
+  "count": 1
+ },
+ {
+  "id": "N09",
+  "file": "manuscript/main_text_numbers.csv",
+  "why": "the numbers table (contexts, deletions, additions, head note)",
+  "old": "Materials and methods / The primary contrast and the exploratory analyses,paragraph 1,1,60,design,manuscript/analysis_record.md,\"line 1400; anchor: ts_gsr, W = 60, 115 regions\",W = 60,ok,e pre-specified DiD of whole-brain MMI-sts on ts_gsr at W = 60 is the primary contrast; its statistic \r\n",
+  "new": "Materials and methods / The primary contrast and the exploratory analyses,paragraph 1,1,60,design,manuscript/analysis_record.md,\"line 1400; anchor: ts_gsr, W = 60, 115 regions\",W = 60,ok,\"e pre-specified DiD of whole-brain MMI-sts on ts_gsr at W = 60 is the primary contrast, not a blind co\"\r\n",
+  "count": 1
+ },
+ {
+  "id": "N10",
+  "file": "manuscript/main_text_numbers.csv",
+  "why": "the numbers table (contexts, deletions, additions, head note)",
+  "old": "Data and code availability,paragraph 1,1,4,label,,,matrix dimension,ok,iid_fast.py` computes the sixteen Gaussian-MMI atoms of any 4 × 4 correlation matrix (`atoms_from_cor\r\nData and code availability,paragraph 1,2,4,label,,,matrix dimension,ok,\"fast.py` computes the sixteen Gaussian-MMI atoms of any 4 × 4 correlation matrix (`atoms_from_corr`),\"\r\nData and code availability,paragraph 1,1,1,label,,,AR(1): a name,ok,\"of any 4 × 4 correlation matrix (`atoms_from_corr`), the AR(1) matrix of a pair (`ar1_corr`) and the \"\r\nData and code availability,paragraph 1,2,1,label,,,AR(1): a name,ok,\"irPhiID`), and `notes/partB4_diagnostic.py` computes the AR(1)-substituted estimate with them. The re\"\r\n",
+  "new": "Data and code availability,paragraph 1,1,4,label,,,matrix dimension,ok,tes the sixteen Gaussian-MMI atoms of any positive definite 4 × 4 correlation matrix (`atoms_from_cor\r\nData and code availability,paragraph 1,2,4,label,,,matrix dimension,ok,the sixteen Gaussian-MMI atoms of any positive definite 4 × 4 correlation matrix (`atoms_from_corr`; \r\nData and code availability,paragraph 1,1,1,label,,,AR(1): a name,ok,\"matrix (`atoms_from_corr`; NaN for one that is not), the AR(1) matrix of a pair (`ar1_corr`) and the \"\r\nData and code availability,paragraph 1,2,1,label,,,AR(1): a name,ok,\"irPhiID`), and `notes/partB4_diagnostic.py` computes the AR(1)-substituted estimate with them. `tools\"\r\nData and code availability,paragraph 1,1,4.0,label,,,licence version (CC BY 4.0),ok,\"utside `manuscript/` under the Creative Commons Attribution 4.0 licence (`LICENSE`, `LICENSE-CC-BY-4.0.\"\r\n",
+  "count": 1
+ },
+ {
+  "id": "N11",
+  "file": "manuscript/main_text_numbers.csv",
+  "why": "the numbers table (contexts, deletions, additions, head note)",
+  "old": "Data and code availability,paragraph 1,1,20261120,design,manuscript/analysis_record.md,line 127; anchor: `SEED = 20261120` everywhere,seed,ok,nv.py` and are skipped unless it is present (S2 Text). Seed 20261120 throughout.  ---\r\n",
+  "new": "Data and code availability,paragraph 1,1,20261120,design,manuscript/analysis_record.md,line 127; anchor: `SEED = 20261120` everywhere,seed,ok,nv.py` and are skipped unless it is present (S2 Text). Seed 20261120 throughout.\r\n",
+  "count": 1
+ },
+ {
+  "id": "N12",
+  "file": "manuscript/analysis_record.md",
+  "why": "the record's three entries of 28 September 2026 (the revision's; the pre-run entries of B25 and B26)",
+  "old": "   files were moved\", C36).\n",
+  "new": "   files were moved\", C36).\n\n## The citation crosscheck of 28 September 2026 and the revision it led to, «ENTRY_TIME» UTC (appended; nothing above edited)\n\nOn 28 September 2026, after the text of d108d66 had been typeset for the co-authors, V.S. asked for every citation to be\nchecked against the work it cites, claim by claim, with the passage of the work that supports each claim, then whether\nthe calculations and the software were complete, and for everything that would contribute to the paper's quality to be\nincluded. This entry records the crosscheck, the revision it and the completeness check led to, the audits of the\nprepared revision and the files that hold them; the pre-run entries of B25 and B26 follow it. No analysis was run on the\ndata.\n\n1. **The crosscheck.** A claim is one place where the text at d108d66 attributes something to a cited work: a sentence\n   of the main text or the supporting information, or a cell of S4 Text or S20 Table (a sentence citing three works\n   gives three claims). There are 271 (C001–C271). Eight sessions of the AI system, one per group of works, and the\n   planning session (which checked the group of Luppi et al. 2024 and 2026 after that group's session stopped on a usage\n   limit, and the works not among V.S.'s PDFs) took for each claim the passages of the work that bear on it, word for\n   word, with their PDF pages, and gave a verdict: 194 SUPPORTED, 59 SUPPORTED WITH QUALIFICATION, 2 NOT SUPPORTED (two\n   table cells: the macaque sample of Luppi et al. 2026 in S20 Table row 5; the parcellation given for Varley 2024 in\n   row 10), 2 CANNOT CHECK (Theiler et al., 1992, whose full text is not open) and 14 NOT A CONTENT CLAIM; and whether\n   the work states the point as its own (252 claims) or only by citing another (1: Kay & Ince, 2018, cited beside\n   Barrett, 2015, for the univariate-target reduction; 18 not applicable). Each of the 759 passages taken from a PDF was\n   found again, word for word, on its stated page by a script of the planning session, written separately from the seven\n   group sessions that copied 639 of them; the other 120 (Luppi et al., 2024, 2026) the planning session cut from the\n   page texts itself. The script normalises soft hyphens, zero-width characters, ligatures, line-break hyphens and white\n   space, and searches the raw and the layout text of each page and, for pp. 33–41 of Luppi et al. (2026), its OCR. 33\n   passages do not come from a PDF of the cited work: publishers' and journals' pages, PubMed, bioRxiv (the preprint of\n   Tian et al., 2020; Luppi et al., 2025), `phyid`'s code at its pinned commit, the data release and, for Theiler et al.\n   (1992), its abstract and Prichard & Theiler (1994), each with its source. The planning session read every verdict\n   other than a plain SUPPORTED, re-checked against the PDF the claims behind each proposed change, and spot-checked a\n   random sample of the plain ones. The full document with the passages (`citation_crosscheck.md`, 93,000 words, and\n   `citation_crosscheck.xlsx`) is held by V.S.; the repository holds, in `notes/review_2026-09-28/`, every claim with\n   its location, wording, attribution, verdict, firsthand status, note and the PDF pages of its passages\n   (`crosscheck_claims.csv`), without the passages, which are verbatim excerpts of the cited works, and the 51 proposed\n   changes (`proposals.json`).\n2. **The changes it proposed** (P01–P50 and P26b; `revision/text_replacements_2026-09-28.json`), applied as proposed but\n   for two: P48 says \"the release's repository\" where it proposed \"the release\", with \"at that commit\", because the\n   licence field of the Zenodo record of the data release could not be read (its page was refused on 28 September 2026),\n   and \"bundled third-party plotting functions\" for \"third-party plotting functions it bundles\"; and P13 leaves out the\n   figure number \"(Fig. 3e)\", which was read in version 2 of the preprint of Luppi et al. (2025), whereas S20 Table's\n   reference note records the quotations as checked against version 1, and says \"in the caption of an example macaque\n   time series\" for \"of an example macaque time series (Fig. 3e)\". P11 removes, with the reference entry, the blank line\n   before it. Class A, an attribution or fact wrong or incomplete (P01–P13): the competing-interests statement, which\n   named only Luppi et al. (2022, 2024) where the group's members also authored Luppi et al. (2023, 2026), and in which\n   C.T. is the first author of Timmermann et al. (2023) and S.P.S. a co-author of Luppi et al. (2026); the synergy of\n   Luppi et al. (2024), which that study calls the persistent synergy but writes as the whole-minus-max synergy of its\n   Eq. 5; what the earlier closed forms do not give (Mediano et al., 2021, Eq. 2, name the four atoms that sum to the\n   self-information; they do not give the atoms' values); the joint-target nodes, which are ordinary PIDs with a\n   bivariate target, not ΦID's extension, and Kay & Ince (2018) cited for their own point (CCS and their dependency PID\n   depend on the source–source marginal); S20 Table's macaque sample of Luppi et al. (2026) (five in each of two\n   datasets); its row 10, which gave details of the data of Varley (2024) from a work not read (Varley et al., 2023,\n   whose reference entry is removed); and the quotation of Luppi et al. (2025), which is the caption of one example time\n   series. Class B, the work says less than or something slightly different from the text (P14–P47, P26b): wording of\n   the main text (Luppi et al. 2023's CCS \"in its primary analysis\"; Varley's Eqs. 4–6 and 12; \"exact\" Gaussian\n   decompositions; Murray et al.'s macaque areas, sensory to prefrontal; \"in part\"; Afyouni et al.'s auto- and\n   cross-correlation functions), S3 Text (the pointwise atoms' lower-case symbols; \"word for word\" where the preprint\n   writes i(x; y); Down et al.'s \"occasionally\"; \"in one study used CCS\"; the phase-randomised surrogate of Luppi et al.\n   2022's Table 1; \"temporal autocorrelation\"), S20 Table's cells (titles in full, pages, a quotation as printed, the\n   parcellations, the smoothing kernel as printed, what each study states and does not state) and S4 Text's cells (what\n   Timmermann et al. 2023 report of recruitment, demographics, instructions and acquisition, and what they do not).\n   Class C, found on 27 September in checking the software and data facts (P48–P50): the data release's repository\n   carries no licence of its own at 77af7aa, its three licence files belonging to the third-party plotting functions it\n   bundles; `phyid`'s pinned commit is the merge of 14 March 2026, not 13 March. Every change to S20 Table is made also\n   in `notes/partB5_literature_v2.md`, whose Tables A and B S20 Table transcribes.\n3. **The completeness check.** Software: every computation of the paper ran in Python (3.12.3; NumPy 2.5.3, SciPy\n   1.18.1, pandas 3.0.5, which builds, reads and writes the tables of the review and Part B computations under\n   `notes/review_results/`, h5py 3.16.0, which reads the spin-test rotations, Matplotlib 3.11.1, `phyid` at 6c5f2e9;\n   rsHRF 1.7.0 and joblib 1.6.0 in the deconvolution sandbox); no MATLAB code was run, the MATLAB scripts of the data\n   release and of `phyid`'s pinned reference having been read only. S1 Text's software line named four of these and S4\n   Text's item S8 five; they now name all, and that no MATLAB code was run. Calculations: the closed form of Results 1\n   was re-derived by an implementation written from the lattice definitions alone, without `phyid` or the repository's\n   code (`checks/phiid_indep.py`, output `checks/phiid_indep.out`): every identity of Results 1 to at most 5 × 10⁻¹⁶\n   over a grid of (a, q); ∂sts/∂r₁ = 6.0705 and ∂sts/∂q = −0.1892 at (0.85, 0.25); at q = 0 with unequal coefficients\n   sts = 2 min(S_x, S_y) and rtr = 0, as the paper states; the excess sts − (xtx + yty) +0.0049 at an asymmetry of 0.006\n   and −0.0012 at 0.008, consistent with the change of sign at 0.008 that the paper states. `phyid`'s own tests, which\n   compare its modes with reference outputs they download from OSF, had not been run in the repository; they are now run\n   by its continuous-integration workflow.\n4. **The readiness items.** PLOS Computational Biology requires a clearly specified licence for the code and asks for a\n   persistent identifier: `LICENSE` (MIT, the code), `LICENSE-CC-BY-4.0.md` (CC BY 4.0 for the result files and the text\n   outside `manuscript/`; the manuscript, a draft for co-author review, not yet licensed, its licence to be set with its\n   preprint; the data not included; the file of parcel names copied from CBIG under CBIG's MIT notice, now in\n   `data/LICENSE-CBIG.md`), `CITATION.cff`, and Data and code availability's sentences on them, with a [TK] for the\n   archive's DOI at submission. `tools/ar1_diagnostic.py` puts a pair's MMI-sts beside its AR(1)-substituted estimate\n   for any two series, in one fit, in windows or for every pair of a region × sample array, with the closed form and its\n   exchange rates; where the measured a_x, a_y and q are those of no AR(1) pair, the substituted matrix is not positive\n   definite and the tool returns NaN, as the paper's code now does (B26). `tests/` (pytest; 107 tests) checks the tool\n   against `phyid` and `notes/rev_phiid_fast.py` (the window means to 10⁻¹⁰, the lattice solve on 500 random correlation\n   matrices to 10⁻¹², the substituted estimate as `notes/partB4_diagnostic.py` computes it, the NaN exactly where no\n   AR(1) pair exists, the input checks) and the closed form and the numbers Results 1 quotes against the tool's lattice\n   solve; `.github/workflows/tests.yml` runs these tests, the tool's doctest, the self-tests of B25 and B26 and\n   `phyid`'s own tests at the pinned commit on every push, with NumPy, SciPy, pytest, `phyid` and its build backend\n   pinned. `README.md` shows how to apply the tool and run the tests, and its opening paragraph now gives the primary\n   contrast's inverted sign-flip interval. The planning session ran the tests with Python 3.12.3, NumPy 2.5.3, SciPy\n   1.18.1 and `phyid` at 6c5f2e9: 107 passed; the doctest passed.\n5. **Named where the literature uses it.** On the symmetric family str + stx + sty + sts = S for every q (Results 1).\n   This sum is the whole-minus-max synergy of Luppi et al. (2024, Eq. 5), I(X_t−τ, Y_t−τ; X_t, Y_t) − max[I(X_t−τ; X_t,\n   Y_t), I(Y_t−τ; X_t, Y_t)], which is how they write the synergy by whose rank they define the workspace (they call it\n   the persistent synergy, p. 6), and, with the Gaussian estimator under MMI, the emergence capacity of Luppi et al.\n   (2023), whose primary estimator is binarised (B25); on the family it depends on r₁ alone. Results 1 now names the\n   first; S20 Table's Table B item 1 states the identity, and rows 2 and 3, which read \"the map was not evaluated for\n   the emergence atoms\" and \"Contrasted quantity is ΦR, not sts\", state what it implies for each, row 3 for both\n   readings of the workspace's synergy (Eq. 5 as written, S; the persistent synergy sts, 2S − C).\n6. **Why r₁ fell** is not identified by these data; the Limitations now say so (neural, haemodynamic, cardiac,\n   respiratory or motion effects could each lower it; the account needs only that it did), and that the two redundancy\n   functions were examined on the data (B25 examines binarised estimators on the family).\n7. **Length.** The changes above change Introduction through Methods by +61 words, net of the Limitations' sentence on\n   ground truth, which they take out (24 words). The condensations then take out of the body what the figure captions,\n   the supporting information or another subsection hold: Results 1's values of sts along the coupling c (Fig 1's\n   caption; −30), Results 3's F of the partialled map, the unpartialled map's spin p, the network means and the\n   contrasts' spin p values (Fig 4's caption; −23) and the Methods' second statement of when the primary statistic was\n   fixed (the subsection it cites; −18); and the ground-truth clause, shortened, is joined to the Discussion's first\n   sentence (+7). Introduction through Methods: 6,994 words with headings (6,997 before), within the 7,000 words of the\n   decision entry of 23 September 2026.\n8. **The numbers table.** The contexts of the 24 rows whose context the edits reached recomputed; 13 rows deleted, for\n   the numbers the condensations take out of the body (Results 1, paragraph 9: 1.2588, 0, 1.2155, 1.2569, +0.10, 1.4111,\n   −0.05; Results 3, paragraph 1: 8.15, 0.056, −0.024, +0.021, 0.22, 0.31); 3 rows added, two labels for Varley's Eqs.\n   4–6 and one for the licence's version, 4.0; the rows of the rewritten paragraph of Results 1 put in reading order,\n   and its row of \"+0.05\" made a derived row (the coupling at which sts is lowest among the coupled family's rows with\n   positive c; its locator had pointed at the row of c = −0.05); no data value changed; 1,183 rows.\n9. **Checks** on the revised tree: no line added to or removed from the main text or S1–S5 Text (S20 Table loses the two\n   lines of the reference entry of Varley et al., 2023, the last in `supplementary.md`); the intervals B21 reads, with\n   their rounded values, files and lines, unchanged, and its column `quoted_at` recomputed from this text equal to the\n   committed one; `check_numbers.py` prints \"rows 1183, data rows 666, flagged 12\" (the twelve sign-wording rows of\n   `check_numbers.out`), `check_cells.py` \"flagged 0\", `tablecheck.py` no row with a wrong cell count; no process label\n   in the manuscript files; the 13 verbatim copies between scripts equal their sources; the tests, the tool's doctest\n   and the self-tests of B25 and B26 passed. The outputs of the four text checks, of the tests, of the doctest and of\n   the two self-tests are in `notes/review_2026-09-28/checks/`.\n10. **The audits.** Before the revision was given to the writer's session, three further sessions audited it: the text\n    edits and the entries; B25's script, its pre-run entry and `b25_fill.py`; the tool, the tests, the workflow and the\n    licences. Their findings (16, 14 and 13) and what was done with each are in `notes/review_2026-09-28/audit/`. Among\n    them: the licence first prepared covered the manuscript, which the co-authors have not yet reviewed and whose first\n    line forbids its distribution; `b25_fill.py` would have stated a re-run of B25 before it was made; a failed check on\n    a quantity that carries no prediction could have stopped B25's report; and the tool raised for a whole call where\n    one pair's substituted matrix was not positive definite, where `notes/rev_phiid_fast.py` returned a value computed\n    from |det|: a fault of the paper's code, corrected in this commit, whose effect on the data B26 measures (its\n    pre-run entry follows). A fourth session audited that correction, B26's script and the draft of its entry (19\n    findings, `findings_b26code.md`): among them, a sentence of the draft misstated which of B23's matrices fail; values\n    quoted by scripts from other outputs could have gone stale; B4's lines for subject 1 did not follow the rule; the\n    counts could not be read per site, nor could a failed step be run again under the wrappers; and a note added to\n    B23's table would have moved the lines that the numbers table locates. The corrected revision was audited again, in\n    a second round, by two sessions: one of the text, the entries and B26's preview (29 findings, `findings2_text.md`),\n    one of the correction, B26's script, the scripts that start the run and collect its evidence and the planning\n    session's scripts that package the revision and check the writer's commits (16 findings, `findings2_code.md`). Among\n    them: the start script would have refused to start the run (it looked for a comma where the self-test prints a\n    semicolon); a step that failed could not have been run again, since a step of section 6 rewrites a file outside the\n    output folders, and the later steps that read its outputs would not have been run again (the script's `--from` now\n    runs a step and every later one); the preview listed a draft's change to B23's table, and B26's pre-run entry quoted\n    the counts of one path of the matrices where it named the preview's totals; the evidence would not have held the\n    binary outputs; and wording of the main text and S1 and S4 Text (E09–E11, C01, C03, P48, D02, D03). A third round,\n    by two sessions again (`findings3_text.md`, 23 findings; `findings3_code.md`, 9), found among others that a run\n    interrupted by a power loss would have left no counts (the script now writes them before the first step and after\n    every step, and the start script can resume a run with `--from`), that the runner kept the ordinals of the calls\n    that held matrices that are not positive definite for the first 2,000 per site only, that the preview missed three\n    quotations of B17's values in S19 Table and S3 Text, and that rule (i) did not list one rewording of this commit;\n    its corrections include wording of the main text, S1 Text and the README (C03, D02, E12, E13). A fourth round, by\n    two sessions that verified the third's corrections (`findings4_text.md`, 10 findings; `findings4_code.md`, 8), found\n    that two steps that read the data also evaluate substituted matrices of synthetic series, whose outputs the\n    correction changes whatever the data (B10's replay of the null and B15's finite-sample null with lead–lag asymmetry,\n    whose five lines S3 Text §6 transcribes), and that a run could have been resumed only once (each resumed run now has\n    its own unit and files, and `--from` requires every earlier step to have run to its end). A fifth round, by two\n    sessions that verified the fourth's corrections (`findings5_text.md`, 9 findings; `findings5_code.md`, 5), found\n    that B26's entry gave the failing matrices of B15's null as counts of pairs where they are counts of pair-windows,\n    that the preview gave a wrong cause for the figure step's stop in the rehearsal and wrong sources for two of the\n    files it changed, and that the review folder's README had not been made again. What was done with each finding of\n    the five rounds is in `dispositions.md`.\n11. **The documents** in `notes/review_2026-09-28/`: `README.md` (sha256\n    5d50a9e3286ce4eb172394f6a0e23a617f472c53ba8f0c19d481182381065b4a), `crosscheck_claims.csv` (sha256\n    942858b08699b075935caae11cbbca3726d81a6e774b77f5b622b7d7778278b1), `proposals.json` (sha256\n    4031a825f9425cd79444433af3a75020fe7bc902767a1e274739127df0e0e1ee), `checks/phiid_indep.py` (sha256\n    6c3d1362a7113b77205241c9555d38343b16778d84ddebc77408878909dbab16), `checks/phiid_indep.out` (sha256\n    02980e4b38a3569b113efc715b2013b55667887a50b191061e0194df4b04f15f), `checks/b26_preview.md` (sha256\n    20b39a62a3e56d91c0e826d4a428be96dfb072aa548b9f59fe3c299454485323), `checks/b26_changes.py` (sha256\n    5218f9a0c7fc6d1842e6c268f9a98f62422da18f3a3e13ddca8ce9f723f5da22), `revision/b25_fill.py` (sha256\n    a27a94728bbebf6238fd1e3b7b14d605c4f11c74be7be253b117f5ed05d8c8b2), `audit/findings2_code.md` (sha256\n    05e86febd72a96fe40c5637f0b7ca02ff2cb2fbccfaa1a2c53807508c19bb163), `audit/findings2_text.md` (sha256\n    16a3bc837e4cb4376d60ef092e65a60111c9a12c75cedf989e5ecce47c18f36d), `audit/findings3_code.md` (sha256\n    9b372d943ba052352fb3dbfc3e8abf94e4ea03c8aa8d6ebfba49466adac1d916), `audit/findings3_text.md` (sha256\n    4accd66c21997a5ec56bf56c5fe5223a76a96fc4394918c596be0eb8f51b222d), `audit/findings4_code.md` (sha256\n    e9a7919a82abd2665bbb1a87ee76ef9bb7a02e618d72c34fa0609370d189a48b), `audit/findings4_text.md` (sha256\n    fdb15d1ca0e563f1ad2beda4b89f2abadbe54ab2c7d303fc3ff4921397cb91b6), `audit/findings5_code.md` (sha256\n    3fb1f858fadd849acdf8bc172d74d2dbd718a7223f09a7ed408db6c51c6e553b), `audit/findings5_text.md` (sha256\n    5adc29d8f975312099213bdf6dc319514af2f80cfe1cac4d21a00cb5c7c8a1b3), `audit/findings_b25.md` (sha256\n    80d5741341dd3c447e505c85536d48e88c4eb379623a27226d8f15ac6aad0f8e), `audit/findings_b26code.md` (sha256\n    cc612c4bccc6183a826c752794f70a170fefc7a083b89d54369ffd35f9dc8b60), `audit/findings_ci.md` (sha256\n    7c5624093e10dffb3cc4101b6feaadcb34c5e95fd58aaafb5b10401aa3bf377a), `audit/findings_text.md` (sha256\n    d61faf6a86631bb319bf08441396be4cb4f893cf47dceab39ca6958dae20a328), `audit/dispositions.md` (sha256\n    36aeca3287683eca80fa3f228787675b6c88415df453a71696d07d39800d60f6).\n\n## The binarised estimators on the AR(1) family (B25): pre-run entry, «ENTRY_TIME» UTC (appended; nothing above edited)\n\nAppended with `notes/partB25_binarised.py` in the commit of the revision that followed the citation crosscheck of 28\nSeptember 2026, before the script is run on the family. No data.\n\n**Question.** Two studies of S20 Table use binarised signals. Luppi et al. (2022) replicated their gradient \"if synergy\nand redundancy are computed from discretized rather than continuous data\", on mean-binarised signals with the plug-in\nestimator (their pp. 3, 14); the primary quantity of Luppi et al. (2023) is the emergence capacity computed with Ince's\nCCS partial information decomposition on mean-binarised signals with the plug-in estimator (their p. 12), which S20\nTable places outside the map. B25 asks whether the self-information carries the binarised estimators on the symmetric\nAR(1) family as it carries the Gaussian-MMI atoms.\n\n**Specification.** As the script's docstring states it. The family of Results 1; the estimators: `phyid`'s discrete\npath (each of x_t, y_t, x_{t+1}, y_{t+1} binarised at its own mean, plug-in probabilities, local entropies in bits)\nunder MMI and under CCS, the CCS double redundancy under the published mask and under `phyid`'s; the emergence capacity\nstr + stx + sty + sts, which under MMI is the whole-minus-max synergy and under CCS does not depend on the mask; and\nLuppi et al. (2023)'s emergence capacity as we read their Methods: the synergy of x_t and y_t about the joint future,\ntaken as one four-state target (the paper does not state the target; this is our reading of \"emergence capacity\"), in\nInce's decomposition, whose redundancy is his Iccs on the maximum-entropy distribution that keeps the three pairwise\nmarginals (Ince, 2017, Definition 2), computed as Ince's toolbox computes it (`Iccs.m`, `calc_pi.m` and `mme2.py` of\ngithub.com/robince/partial-info-decomp, the repository Luppi et al. (2023, p. 12) print and link, at 3220716; read, not\nrun). At finite length each of the four lagged series is binarised at its own mean, as `phyid` does, where Luppi et al.\nbinarise each signal once, which differs by O(1/T). Nats (bits × ln 2). (a) The long-series limit: the pattern\nprobabilities are the orthant probabilities of the Gaussian family (closed forms up to three variables; the\nfour-variable one by Plackett's reduction, by numerical quadrature to about 10⁻¹³), on the grid r₁ ∈ {0.60, 0.65, …,\n0.95} × q ∈ {0.10, 0.25, 0.50}, with the rates ∂/∂r₁ and ∂/∂q at (0.85, 0.25) by central differences (step 10⁻⁴, and\n10⁻³ beside it). (b) Finite length: T ∈ {160, 300, 840} samples, 1,000 replicate pairs per point from a stationary\nstart with common random numbers across the grid, `phyid`'s calc_PhiID(kind=\"discrete\") under MMI and CCS, the\npublished-mask CCS atoms from its local mutual informations, and Luppi et al. (2023)'s emergence capacity from the\nplug-in pattern frequencies of `phyid`'s binarisation; replicate means and SEs. (c) The checks the docstring lists,\namong them `phyid` on ten series of 10⁵ samples at the operating point against the limit and the agreement of the rates\nat the two steps, both for the quantities that are smooth on the family (MMI-sts, its emergence capacity, 2A, TDMI and\nMMI's rtr, whose MMI selections are strict or exact ties there). The four CCS quantities jump wherever a sign mask\nchanges; for them the same comparisons are reported, not checked, and a rate whose two steps differ by more than 1 % (+\n10⁻⁶) is reported as not differentiable on the 10⁻³ scale.\n\n**What is known before the run.** (i) On the symmetric family in the long-series limit, with A = I(x_t; x_{t+1}) of the\nbinarised series (= I(y_t; y_{t+1})), B = I(x_t; y_{t+1}) (= I(y_t; x_{t+1})), F = I(x_t; x_{t+1}, y_{t+1}), which the\nfamily's symmetries and its time reversal make equal to I(y_t; x_{t+1}, y_{t+1}) and to I(x_t, y_t; x_{t+1}), and T =\nI(x_t, y_t; x_{t+1}, y_{t+1}), the MMI lattice gives sts = T − 2F + 2A − B and emergence capacity T − F for 0 < q < 1,\nwhere B < A settles every MMI selection; for the Gaussian atoms F = A and T = 2A, which gives Results 1's sts = 2S − C\nand emergence capacity S. At finite length the plug-in probabilities break these equalities. (ii) At q = 0 both are\nexact: sts = 2A and emergence capacity A, with A = 1 − H₂(arccos(r₁)/π) bits, which rises with r₁; q = 0 is not on the\ngrid. (iii) In preparing this entry the planning session evaluated one function of the family: the derivative of the\nbinarised pair information f(ρ) = 1 − H₂(arccos(ρ)/π) at ρ = 0.85 and at ρ = 0.2125 (1.34 and 0.13 bits per unit), the\ningredients of 2A − B at the operating point; nothing else of the family was computed, binarised or simulated. (iv) The\nscript was run before this entry only with `--selftest`, which evaluates no point of the family: 54 checks, 0 failed —\nthe four-variable reduction against Genz on 20 random correlation matrices (largest difference 9.8 × 10⁻⁹) and the\nthree-variable one against its closed form (2.8 × 10⁻¹⁷); Ince's CCS decomposition reproducing, to the four decimals of\nhis toolbox's `examples2d_output.txt`, the twelve decompositions it prints, seven of which Ince (2017, Tables 6, 8–11\nand 13) also publishes; the limit against `phyid` on two random stable VAR(1) pairs with lagged coupling, ten series of\n10⁵ samples each, within 4 SE + 2 × 10⁻⁴ nats for every quantity; `phyid`'s CCS atoms recomputed from its local mutual\ninformations to 10⁻¹²; the maximum-entropy fits' marginals within 10⁻¹² (five of the 54 fits from the solution's\nsupport). The audit of the script by a separate session evaluated nothing binarised on the family either\n(`notes/review_2026-09-28/audit/`).\n\n**Predictions.** (a) In the long-series limit binarised MMI-sts and its emergence capacity rise with r₁ at every step of\nthe grid at each q: 42 steps (7 per curve, 2 quantities, 3 values of q). Met if all 42 rise; partly met if at least 21\ndo; missed otherwise. (b) At (0.85, 0.25), in the limit, ∂(MMI-sts)/∂r₁ is positive and, per standard deviation of the\npairs' variation within a window (0.0284 for pair r₁ and 0.1957 for |q|; S3 Text §4, B22 (d); 0.196 in the main text,\nResults 1), exceeds |∂(MMI-sts)/∂q| (a per-unit ratio above 6.89). Met if both hold; partly met if the derivative is\npositive and the per-SD ratio is not above 1; missed if the derivative is not positive. (c) At 160, 300 and 840 samples\nthe replicate means of binarised MMI-sts and its emergence capacity rise with r₁ at every step, q and length: 126 steps.\nMet if all 126 rise; partly met if at least 63 do; missed otherwise. (d) No prediction for the CCS quantities (sts under\neither mask, the emergence capacity, Luppi et al. (2023)'s emergence capacity), nor for the sign of the finite-sample\nbias of MMI-sts, on which two effects act in opposite directions: the plug-in mutual informations are biased upward, and\nthe minima that MMI takes between candidates equal on the symmetric family (the double redundancy, R_xytab and R_abtxy)\ndownward.\n\n**Rule.** The outputs are `notes/review_results/partB/binarised_tables.md` (its header carries the commit, the time of\nthe run and the sha256 of `binarised.csv`), `binarised.csv` and `binarised_run.log`, each with the commit; the verdicts\nfollow the criteria above, mechanically, from the values in `binarised.csv`. The text that reports B25 is fixed now,\nbefore the run: `notes/review_2026-09-28/revision/b25_fill.py`, committed with this entry, writes from the outputs alone\nS3 Text §11, S19 Table's four rows for B25 and its count of predictions, the labels B1–B25 of S3 Text and S19 Table, the\ncount in Methods, S20 Table's row 2 (and `notes/partB5_literature_v2.md`), the Discussion's pointer to S3 Text, S3\nText's caption, the numbers table's rows, S5 Text's run inventory and list of commits, Data and code availability's list\nof the computations and its sentence on the run, `CLAUDE.md` and `README.md`, and the outcome entry. It stops without\nwriting if an output is missing, carries another commit or does not match the sha256 the tables give, or if B25 reports\na failed check. The checks that can stop it are those of the method (the reductions, the pattern probabilities, the\nbinarised pair information 1 − H₂(arccos(r₁)/π) bits, the family's symmetries, the recomputation of `phyid`'s CCS atoms,\nthe maximum-entropy fits, the verbatim copy) and those of the smooth quantities; a comparison of a CCS quantity is\nreported, not checked, and does not stop the verdicts of (a)–(c). The result is reported whatever it is. The run is made\nin the writer's session at this commit, with the command in the script's docstring; a separate session re-runs it at the\nsame commit, and the commit that follows that re-run records its result; the text `b25_fill.py` writes states no result\nof the re-run and names it only as still to be made.\n\n## The matrices that are not positive definite (B26): pre-run entry, «ENTRY_TIME» UTC (appended; nothing above edited)\n\nAppended in the commit of the revision that followed the citation crosscheck of 28 September 2026, with the correction\nof the code that it describes and `notes/partB26_positive_definite.py`, before that script is run. The run reads the\ndata, through the steps it runs.\n\n**The fault.** The AR(1)-substituted estimate of a pair (Methods; Results 4) is the sts of `ar1_corr(a_x, a_y, q)`, the\nlag-1 correlation matrix of two AR(1) processes with the pair's measured lag-1 autocorrelations and lag-0 correlation.\nThat matrix is positive definite if and only if |q| < 1 and (1 − a_x²)(1 − a_y²) > q²(1 − a_x a_y)²; where the measured\nvalues violate this, no pair of AR(1) processes has them, and the estimate does not exist. Until this commit\n`notes/rev_phiid_fast.py`, which computes the atoms of the substituted estimate and of every Part B computation, took\nthe logarithm of |det| of each block (`np.linalg.slogdet`, its sign discarded), so that such a matrix still yielded\nsixteen numbers, and they entered the means over pairs. The matrices with measured cross-lag deviations added (B15, B22,\nB23, B24), the partial substitutions of `notes/partB4_residual_source.py` and the matrices of measured or drawn values\nin B5, B17 and B17b can fail in the same way. The audit of 28 September 2026 of the repository's new tool, which had no\ndata, found the fault: on a stable VAR(1) pair and on a pair sharing a slow signal under unequal noise, `rev_phiid_fast`\ngave the substituted sts 3.08 and −0.28 nats against observed values of 0.43 and 0.001. Only B23 checked positive\ndefiniteness, of its population matrices and of the processes it simulates, not of the matrices it substitutes on the\nsimulated windows.\n\n**The correction, in this commit.** `rev_phiid_fast.atoms_from_corr` returns NaN for a matrix that is not positive\ndefinite (smallest eigenvalue ≤ 0, or a non-finite entry), as `tools/ar1_diagnostic.py` does; the other matrices of a\nbatch are computed as before, to the last bit. Each computation that averages such atoms takes its means over the\nmatrices where they exist, by one rule: (1) a substituted mean over pairs, pair-windows or draws is over those whose\nmatrix is positive definite, and the observed mean, which the fault does not reach, stays over all of them, so that the\nresidual is the observed mean minus the substituted mean over the pairs where it exists; (2) a correlation of observed\nand substituted values (B4's R² and its lines for subject 1, B19's) is over the pairs where both exist; (3) a response\nto the cross-lag deviations (B15, B22, B23's D, B24) is over the pairs, or pair-windows, whose four matrices, the AR(1)\nmatrix and the three with deviations, are all positive definite; (4) in B23's simulation (b), whose per-pair values are\nmeans over a pair's 14 windows, a pair is left out of a quantity's mean where the quantity does not exist in one of its\nwindows, so that its residual is taken per pair, the other quantities keeping their pairs, and the pairs left out are\nprinted in brackets. B17b's population reference leaves out a draw whose AR(1) matrix fails before the shift, in both of\nits means (the shifted matrix cannot fail: its q is built from |q_ε| ≤ 0.999). `partB4_diagnostic.py` prints, on the\nlevel line of each variant and window length, how many of its pair-windows have no substituted estimate; those are the\nnumbers the text quotes. The values that three scripts held as quotations of other outputs that the correction can\nchange are now read from those outputs (the diagnostic's W = 60 residual in `partB14_family_atoms.py` and\n`partB15_directed_crosslag.py`; the data's residual shares and changes in the null's log), a read that fails printing\nCHECK FAILED, and B10's statement of the null's logged residuals takes the null's corrected value at W = 30 (below).\nB21's three expectations (+0.0027, +0.0049 and +0.0054: B17b's and B17's (i) residual DiDs at W = 60 and the null's DiD)\nand the look-up of B21's rows by them in `scripts/15_figures_v2.py` stay held as numbers: the corrected steps reproduce\nthem at their printed precision (below), and the evidence of the run compares them with the regenerated outputs. Two\nsentences of B15's and B22's outputs now name the pairs over which the residual and the responses are taken, and B15's\nlabel of its run-level residual names it as its own. Edited: `rev_phiid_fast.py`, `partB4_diagnostic.py`,\n`partB4_residual_source.py`, `partB5_family_checks.py`, `partB10_crosslag_deviation.py`, `partB14_family_atoms.py`,\n`partB15_directed_crosslag.py`, `partB16_prewhiten.py`, `partB17_calibration.py`, `partB17b_calibration_filtered.py`,\n`partB19_exchange_rates.py`, `partB22_aligned_directed.py`, `partB23_diagnostic_alternatives.py`,\n`partB24_bandpassed_expectations.py` and `review_v2_residual_null.py` (the entries F01–F52 of\n`notes/review_2026-09-28/revision/text_replacements_2026-09-28.json`); the lines that other scripts copy and check\nverbatim are changed in place, identically in every copy, and no edit adds a line to an output that the numbers table\nlocates by line. The other callers of `atoms_from_corr` in `run_all.sh` (`partB1_scope_map.py`, `partB3_lag.py`,\n`partB8_coupling_map.py`, `partB12_crosslag_budget.py`, `scripts/15_figures_v2.py`) give it only symmetric AR(1)\nmatrices with |q| < 1, the population matrices of stable processes or sample correlation matrices, all positive\ndefinite; their calls are unchanged. Outside `run_all.sh`, `tests/test_ar1_diagnostic.py` checks the tool against it,\nNaN included, and the checks of the reviews of 16 and 22 September 2026 that call it\n(`notes/planning_checks_2026-09-16/reviewer/`, `notes/review_2026-09-22/refcheck/`), whose results the text does not\nquote, are records of their time and are not re-run. Where no matrix is left out, every output equals d108d66's, on the\nmachine that wrote d108d66's outputs, but for the lines these edits reword and differences in the last bit of a mean\n(below 10⁻¹⁵); on another machine the unchanged computations differ from them by float noise (the preview's comparisons\nallow 10⁻⁹). The alternative to rule (1), the residual over the pairs where both estimates exist, differs from it only\nthrough the pairs left out: at the null's W = 30, −8.50 % against −8.51 %.\n\n**What is known before the run.** (i) The planning session ran the six steps of section 6 that call `rev_phiid_fast`\nwith matrices that can fail and read no data (B5, the null of `review_v2_residual_null.py`, B23, B24, B17, B17b) with\nthe corrected code (Python 3.12.3, NumPy 2.5.3), under the script's wrappers, and compared their outputs with those of\nd108d66; the counts per path and site, every changed line and cell (listed by\n`notes/review_2026-09-28/checks/b26_changes.py`), and the numbers of the main text and of the supporting information\nwhose source changed are in `notes/review_2026-09-28/checks/b26_preview.md`. B5: 171 of its 2,000 draws with unequal\ncoefficients are not positive definite; over the 1,829 others ΦR − rtr runs from +0.000 to +4.585, mean +0.094, and\nexceeds 0.01 in absolute value in a share of 0.53, where d108d66's line, which S20 Table's Table B item 1 reports, has\n−1.362 to +4.585, mean +0.091, share 0.57: its negative values came from matrices of no process. The null: 115 of the\n560,000 substituted matrices at W = 30, none in the final evaluations at W = 60 and 840 or in the four cells\n(`checks/b26_null_sections.out`), and 11 more among the evaluations of the cells' root searches, which use a and |q|\nonly (126 of the 10,010,000 substituted matrices the wrappers counted in all); its W = 30 residual becomes −0.0885\n(−8.51 %) from −0.0886 (−8.52 %), and nothing else in its log changes but the file its last line names. B23: 172 of the\n4,336,546 matrices it evaluates (4,336,530 through `atoms_from_corr`, 16 sample matrices), all in simulation (b): 109\nAR(1) matrices (its line 200), 61 with the antisymmetric deviation added (line 201) and 2 with the symmetric one (line\n202); by condition, 16 in the unperturbed pairs, 8 to 28 in each of the eight conditions of (i) and (a1)–(a4) and 6 to 8\nin each of (a5)'s three; to them the code before the correction gave sts from −1.2746 to +3.3136. A quantity of (b) that\nrests on a substituted matrix (the AR(1)-substituted sts, the residual, D) is now a mean over the pairs where it exists\nin all 14 windows, 5 to 20 of the 3,000 pairs being left out per condition (the brackets of its table), and the other\nquantities keep all their pairs; the changes reach Table 3, Fig 3 (c), S13, S18 and S19 Tables and S3 Text, 11 numbers\nof the main text change at their printed precision, and B23's verdicts stand by their criteria. B24: none of its\n17,640,000 matrices (12,264,000 through `atoms_from_corr`); its outputs are unchanged. B17: 11,494 of the 41,160,000\nsubstituted matrices of its windows (its line 104), to which the code before the correction gave sts from −3.1618 to\n+5.8239; its (i) residual DiD at W = 60 is 0.0049320 against 0.0048988 with the code before (+0.0049 printed), and other\nvalues of its W = 60 rows change, p-values and shares by up to 0.016 and 0.02, DiDs and SEs by 0.0001 (S10 Table and S3\nText §7 transcribe them, S19 Table's rows B17 (ii) and (iv) and S3 Text §7's ratios quote them; the preview lists each).\nB17b: 23 of the 60,260,000 matrices it passes to `atoms_from_corr`: 15 of the 41,160,000 of its windows (its line 166),\nand 8 of the 5,100,000 of the null's function it imports (line 69), these 8 in the calibration draws that solve its\ngenerator's parameters, which use the windows' a, |q| and a_x − a_y and discard the substituted sts; the code before had\ngiven the 23 sts from +0.8434 to +2.7796. Its (i) residual DiD at W = 60 is 0.0026692 against 0.0026686 with the code\nbefore (+0.0027 printed), and two p-values of its table move in their third decimal. Two steps that read the data\nevaluate substituted matrices of synthetic series in sections that use no data, and the correction changes those\nsections' outputs whatever the data: B10 replays the null's first section and cells with the null's draws (126 matrices\nnot positive definite, as in the null: 115 at W = 30 and 11 in the cells' root searches), and its W = 30 line becomes\n−0.0885 (−8.51 %), as the null's; B15's finite-sample null with lead–lag asymmetry has 4 matrices not positive definite\nin its root searches, which use a and |q| only; of the 150,000 pair-windows (3,000 pairs × 50 windows) of each of its\nfive configurations, the substituted matrices of 1, 0, 33, 81 and 88 are not positive definite, and 1, 11, 36, 91 and\n120 are left out of the responses (the matrices with a deviation added fail too); each of its five lines changes, the\nresiduals by up to 0.0001 and the responses by up to 0.0003 (S3 Text §6 transcribes them). In the rehearsal (iii)\nd108d66's code printed these lines on the synthetic series exactly as committed from the data; the preview lists the new\nones. Fig 3 (c) draws B23's AR(1) rate, −0.387 for −0.390 (its caption prints −0.39 either way). (ii) The steps that\nread the data were not run on the data. Subject 1's saved pair-window points (`scope_map_overlay_points.npz`, 52,440\npre-injection pair-windows) reach |q| = 0.986; the asymmetry |a_x − a_y| that the condition allows, about √(1 − q²)(1 −\nr₁²), is below 0.05 in 2 of them and below 0.10 in 83 (the points hold pair r₁ and q, not a_x and a_y), and the\nwindow-level scatter of one region's a is about 0.03 (`exchange_rates_tables.md`): the count on the data cannot be taken\nto be zero. (iii) Section 6 was rehearsed on synthetic series with the layout of the data file (not the data), twice\nfrom clones of d108d66 on the same series: with d108d66's code, each step as `run_all.sh` runs it, and with the\ncorrected code under this script (B17 and B17b left out, having been run for (i)). In both runs 35 of the 37 steps ran\nto their end, B13 and the figure step stopping at the same point on these series; the runner counted matrices that are\nnot positive definite in ten steps (18,974 of B4's 46,986,240 on these series). `b26_changes.py` between the two runs'\noutputs found changes in 40 of 337 files: B13's log only in the runner's frames in its traceback, each of the others in\na step that counted such matrices or that reads a changed output of one (B6, B7, B21, the figure step); no other step\nchanged an output, and beyond these the only differences are the lines this commit rewords and the runner's frames in\nthe tracebacks of the two steps that stopped (the preview's section 3).\n\n**The run.** `notes/partB26_positive_definite.py` runs the steps of section 6 of `run_all.sh`, in its order and with its\narguments, except B25 (no data, no atoms from `rev_phiid_fast`, its outputs tied to its own pre-run entry) and, as\n`run_all.sh` does, the HRF-deconvolution steps when their sandbox is absent; in place, each step's output written where\n`run_all.sh` writes it; each step under wrappers of `rev_phiid_fast._logdets` and `atoms_from_corr` that return what the\nfunctions return and count, per step and site (the calling line and column, with the frames of the repository that led\nto it), the matrices, those that are not positive definite, those with a non-finite entry, those that are nearly\nsingular (smallest eigenvalue in (0, 10⁻³]), every call that held matrices that are not positive definite or not finite\n(from which a step's loop gives each one's window) and, for those that pass through `atoms_from_corr` and are not\npositive definite, the sts that the code before this commit gave them. A data window, or a whole run, evaluated by\nseveral steps (B4, B4's residual source, B10, B14, B15, B19, B22) is counted in each, so the counts of different steps\nare not to be added; the number of the data's pair-windows without a substituted estimate is B4's, and its whole-run\npairs without one are in the site rows of B4's run-level line. Its tables:\n`notes/review_results/partB/positive_definite_tables.md` (the commit, the time of the run, the versions and the sha256\nof `positive_definite.csv` in its header), made from `positive_definite.csv` alone, and `positive_definite_run.log`; the\nCSV and the tables are written before the first step and after every step, so that an interrupted run leaves the counts\nof the steps it finished. Its `--selftest` checks the wrappers and the child mode and runs in the continuous-integration\nworkflow; its `--from` re-runs a step and every later step under the same wrappers, after a complete or an interrupted\nrun (any number of times), once every earlier step has run to its end, and replaces their rows; the CSV's first line\nrecords each interruption and re-run. Run by V.S. on his machine at this commit, or at a later one that changes none of\nthe steps' scripts, from a clean tree, with the command in the script's docstring; about three hours.\n\n**Rule.** No prediction. (i) The regenerated outputs are compared with those committed at the commit of the run, as the\nfinal run's were (its pre-run entry of 26 September 2026, item 5): `6_committed_compare.py`, `8_binary_compare.py` and\n`10_logs_figures_compare.py` of `notes/planning_checks_2026-09-16/reproduction_checks/` (its fourth,\n`9_wrapper_compare.py`, was for a change of B21's writer made before that run, and B21's committed outputs are now that\nrun's own), and `notes/review_2026-09-28/checks/b26_changes.py`, which lists every changed line and cell in full and,\nfor each changed array, the number of entries that changed, the largest change and the first 2,000 entries, and for each\nimage the pixels that differ (the files themselves are in the evidence). Every difference other than the commit, the\ntimes, float noise below 10⁻⁹ and the rewordings of this commit (B5's line, B10's statement of the null's value, the\nbrackets and note of B23's table, B4's count on its level lines and its lines for subject 1, the two sentences of B15\nand B22, B15's label of its run-level residual, the label of the null's last line) must trace to matrices the tables\ncount, in the step itself or in an earlier step's output that it reads; one that does not is a fault, found and\ncorrected before anything is read or committed. B21's check of the run-level residual against the log of 17 September\n2026 (`check_C1_residual_vs_null.log`), which the run does not regenerate, fails if that residual changes at its fifth\ndecimal; such a failure is read as the change it reports. (ii) The outputs are committed as the run writes them, with\nits tables, in the commit that follows the run; the outcome entry lists per step and site the matrices left out and the\nsts the code before gave them; every number of the text computed from an output that changed is replaced by the run's\nvalue, the numbers table's locators follow the lines of the regenerated outputs (a line can move: B21's table (a) lists\nonly the rows whose intervals the text quotes), and a verdict that rests on a changed number is read again by its own\ncriterion, the values before staying in the record. (iii) S3 Text states the rule at the start of §6, on the residual of\nthe AR(1)-substituted estimate, with B4's numbers of pair-windows left out, and of whole-run pairs, or that none of the\ndata's was; if the pair-windows left out change a number of the main text at its printed precision, the main text says\nso where it quotes that number, within the 7,000 words (the outcome entry names the words taken out for it). (iv) A step\nthat does not run to its end is reported with its error; if the cause is outside the code, that step and every later\nstep are run again at the same commit with `--from` before (i)–(iii); otherwise the code is corrected under an entry of\nthis record and the run is made again. (v) Matrices that are positive definite but nearly singular are reported, not\nleft out: the estimate exists there. A sample correlation matrix (the PairPhiID path) that is not positive definite is\nnot expected (a sample of more than four points is positive definite unless its series are collinear) and is not\ncorrected; if the tables report one, the outcome entry says what it means before anything is read.\n",
+  "count": 1
+ },
+ {
+  "id": "K01",
+  "file": "README.md",
+  "old": "# The Gaussian-MMI synergy atom of integrated information decomposition is mostly self-prediction\n\n",
+  "new": "# The Gaussian-MMI synergy atom of integrated information decomposition is mostly self-prediction\n\n[![tests](https://github.com/Vasilis540/dmt-phiid/actions/workflows/tests.yml/badge.svg)](https://github.com/Vasilis540/dmt-phiid/actions/workflows/tests.yml)\n\n",
+  "count": 1,
+  "why": "bookkeeping"
+ },
+ {
+  "id": "K02",
+  "file": "README.md",
+  "old": "A secondary analysis of open DMT fMRI data (14 subjects, DMT and placebo runs,\nSchaefer-116 parcellation) using Integrated Information Decomposition (ΦID;",
+  "new": "A secondary analysis of open DMT fMRI data (14 subjects, DMT and placebo runs,\n115 regions of the Schaefer-100 and Tian subcortical parcellations) using Integrated\nInformation Decomposition (ΦID;",
+  "count": 1,
+  "why": "bookkeeping"
+ },
+ {
+  "id": "K03",
+  "file": "README.md",
+  "old": "synergy atom `sts` *decreased* (difference-in-differences −0.081 nats [95 % CI\n−0.126, −0.038], sign-flip p = 0.004, negative in 13 of 14 subjects; replicated",
+  "new": "synergy atom `sts` *decreased* (difference-in-differences −0.081 nats [−0.132,\n−0.031], the inverted sign-flip 95 % interval; exact sign-flip p = 0.004; negative in 13 of\n14 subjects; replicated",
+  "count": 1,
+  "why": "bookkeeping"
+ },
+ {
+  "id": "K04",
+  "file": "README.md",
+  "old": "error-only check of 25 Sep 2026 and the error-only read of 26 Sep 2026\n(Introduction through Methods 6,997 words with headings; three tables and six\nfigures, the captions in the text), with its",
+  "new": "error-only check of 25 Sep 2026 and the error-only read of 26 Sep 2026, and to the\ncitation crosscheck of 28 Sep 2026 (Introduction through Methods 6,994 words with\nheadings; three tables and six figures, the captions in the text), with its",
+  "count": 1,
+  "why": "bookkeeping"
+ },
+ {
+  "id": "K05",
+  "file": "README.md",
+  "old": "| `requirements.lock.txt` | pinned environment (Python 3.12) |\n",
+  "new": "| `requirements.lock.txt` | pinned environment (Python 3.12) |\n| `tools/ar1_diagnostic.py` | the paper's check for any pair of time series: MMI-sts beside its AR(1)-substituted estimate, the sixteen atoms, the closed form and its exchange rates (NumPy only; see \"Checking your own synergy values\") |\n| `tests/` | pytest tests of the tool against `phyid` and `notes/rev_phiid_fast.py`, and of the closed form (no data) |\n| `.github/workflows/tests.yml` | runs the tests, the tool's doctest, the self-tests of B25 and B26 and `phyid`'s own tests at the pinned commit on every push |\n| `LICENSE`, `LICENSE-CC-BY-4.0.md` | MIT for the code; CC BY 4.0 for the result files and the text outside `manuscript/` (the manuscript, a draft for co-author review, is not yet licensed; the data are not included) |\n| `CITATION.cff` | how to cite this repository |\n| `data/Schaefer2018_100Parcels_7Networks_order.lut` | the parcel names of the Schaefer-100 7-network parcellation, copied unchanged from CBIG (MIT; `data/LICENSE-CBIG.md`) |\n",
+  "count": 1,
+  "why": "bookkeeping"
+ },
+ {
+  "id": "K06",
+  "file": "README.md",
+  "old": "Figures are regenerated from saved results only, never from a recomputation.\n",
+  "new": "Figures are regenerated from saved results only, never from a recomputation.\n\n### Tests\n\n```bash\n.venv/bin/pip install pytest             # pytest is not part of the pinned analysis environment\n.venv/bin/python -m pytest tests         # the tool against phyid, and the closed form; seconds, no data\n```\n\n`tests/test_ar1_diagnostic.py` checks `tools/ar1_diagnostic.py` against `phyid` and against\n`notes/rev_phiid_fast.py`, the second implementation behind the paper's numbers, and its handling of matrices that\nare the lag covariance of no process; `tests/test_closed_form.py` checks the closed form of Results 1 and the numbers\nthe paper quotes from it against the tool's lattice solve. The workflow in `.github/workflows/tests.yml` runs them on\nevery push, with the tool's doctest, the self-tests of `notes/partB25_binarised.py` and\n`notes/partB26_positive_definite.py` and `phyid`'s own tests at the pinned commit (which compare its Gaussian and\ndiscrete modes under MMI and CCS with reference outputs downloaded from OSF).\n\n## Checking your own synergy values\n\n`tools/ar1_diagnostic.py` (NumPy only) puts the Gaussian-MMI synergy atom `sts` of a pair of time series beside its\nAR(1)-substituted estimate: the `sts` of the same 4 × 4 lag correlation matrix with the pair's two lag-1\nautocorrelations kept, its two lag-0 entries set to their mean q and its two cross-lag correlations replaced by\na_y q and a_x q, which is what the pair's own autocorrelations and lag-0 correlation carry (the paper's Results 4).\nThe atoms are those of `phyid`'s `calc_PhiID(kind=\"gaussian\", redundancy=\"MMI\")`, in nats.\n\n```python\nimport sys; sys.path.insert(0, \"tools\")\nfrom ar1_diagnostic import diagnose, diagnose_windows, diagnose_pairs, closed_form, exchange_rates\n\nd = diagnose(x, y)                       # one fit: d[\"sts\"], d[\"sts_ar1\"], d[\"residual\"], d[\"r1\"], d[\"q\"], d[\"atoms\"]\nw = diagnose_windows(x, y, window=60)    # separately fitted non-overlapping windows (the paper's W = 60)\npairs, P = diagnose_pairs(X)             # every pair of the rows of a (regions × samples) array\nclosed_form(0.85, 0.25)[\"sts\"]           # 1.2588 nats: two AR(1) processes with no lagged interaction\nexchange_rates(0.85, 0.25)               # ∂sts/∂r₁ = 6.07 and ∂sts/∂q = −0.19 nats per unit\n```\n\nFrom the shell, for two files with one value per line: `python tools/ar1_diagnostic.py x.txt y.txt --window 60`.\nReport the mean lag-1 autocorrelation beside `sts`, and each `sts` contrast beside the contrast of its\nAR(1)-substituted estimate. Their difference is not by itself a measure of lagged interaction: it has a non-zero\nexpectation under a pure change of autocorrelation, which a simulation of the study's own design must supply (the\npaper's Results 4 and Recommendations). Where a pair's measured a_x, a_y and q are those of no AR(1) pair,\n(1 − a_x²)(1 − a_y²) ≤ q²(1 − a_x a_y)² (a high |q| with unequal autocorrelations, as when two regions share a slow\nsignal under different noise), the substituted estimate does not exist and the tool returns NaN: average with\n`np.nanmean` and report the share of such windows or pairs. Inputs must be finite; drop or impute missing samples\nfirst.\n",
+  "count": 1,
+  "why": "bookkeeping"
+ },
+ {
+  "id": "K07",
+  "file": "README.md",
+  "old": "redistribute them (they are cloned into a git-ignored directory). This\nrepository's own code and text have no licence file yet either.",
+  "new": "redistribute them (they are cloned into a git-ignored directory). This\nrepository's code is released under the MIT licence (`LICENSE`) and its result files and\nthe text outside `manuscript/` under CC BY 4.0 (`LICENSE-CC-BY-4.0.md`); the manuscript,\na draft for co-author review, is not yet licensed, and none of these covers the\ndata. To cite the repository, see `CITATION.cff`.",
+  "count": 1,
+  "why": "bookkeeping"
+ },
+ {
+  "id": "K08",
+  "file": "README.md",
+  "old": "the corrections' replacements and the checks' outputs (`review_2026-09-26/`),",
+  "new": "the corrections' replacements and the checks' outputs (`review_2026-09-26/`), the citation crosscheck of 28 Sep 2026 with the revision's replacements, the text that reports B25 and the checks' outputs (`review_2026-09-28/`),",
+  "count": 1,
+  "why": "bookkeeping"
+ },
+ {
+  "id": "K09",
+  "file": "README.md",
+  "old": "added 23 Sep 2026 under their pre-run entries and run by V.S. that day, outputs at 90690f4)",
+  "new": "added 23 Sep 2026 under their pre-run entries and run by V.S. that day, outputs at 90690f4; and `partB25_binarised.py`, the binarised estimators on the family, and `partB26_positive_definite.py`, the run of section 6 with the correction for the matrices that are not positive definite, added under their pre-run entries in the revision that followed the citation crosscheck of 28 Sep 2026)",
+  "count": 1,
+  "why": "bookkeeping"
+ },
+ {
+  "id": "K10",
+  "file": "README.md",
+  "old": "final commit: outcome\"). The [TK] marks left are the co-author items.",
+  "new": "final commit: outcome\"). The [TK] marks left are the co-author items and the\narchive's DOI (Data and code availability), filled at submission. The code now carries the\ncorrection for the matrices that are not positive definite (record, \"The\nmatrices that are not positive definite (B26): pre-run entry\"); the committed\noutputs predate it until B26's run replaces them: a run of `run_all.sh` before\nthen writes the outputs of B5, the null, B23, B17 and B17b, B10's and B15's\nsections on synthetic series and Fig 3 (c) with their corrected values\n(`notes/review_2026-09-28/checks/b26_preview.md`), the lines the correction\nrewords (rule (i) of B26's entry), and any output that the data's matrices\nchange.",
+  "count": 1,
+  "why": "bookkeeping"
+ },
+ {
+  "id": "K11",
+  "file": "CLAUDE.md",
+  "old": "## Current state (round 20, bundle 31: the error-only read of 26 September 2026 applied after the outputs commit of the final run of `run_all.sh`; the typeset PDF and the note to C.T. and S.P.S. next)",
+  "new": "## Current state (round 21, bundle 32: the citation crosscheck of 28 September 2026 applied, with the licences, the tool, the tests, the workflow, the pre-run entry and script of B25, and the correction for the matrices that are not positive definite with the pre-run entry of its run, B26; next B25's run and outcome, its re-run by a separate session, B26's run on the data, then the typeset PDF and the note to C.T. and S.P.S.)",
+  "count": 1,
+  "why": "bookkeeping"
+ },
+ {
+  "id": "K12",
+  "file": "CLAUDE.md",
+  "old": "and in round 20 (bundle 31) to the error-only read of 26 Sep 2026 and its verification (`notes/review_2026-09-26/`; record, \"The error-only read of 26 September 2026 and its corrections\"): title",
+  "new": "in round 20 (bundle 31) to the error-only read of 26 Sep 2026 and its verification (`notes/review_2026-09-26/`; record, \"The error-only read of 26 September 2026 and its corrections\"), and in round 21 (bundle 32) to the citation crosscheck of 28 Sep 2026 (`notes/review_2026-09-28/`; record, \"The citation crosscheck of 28 September 2026 and the revision it led to\"), with licences (`LICENSE`, `LICENSE-CC-BY-4.0.md`, `data/LICENSE-CBIG.md`), `CITATION.cff`, `tools/ar1_diagnostic.py`, `tests/` and a continuous-integration workflow, the pre-run entry and script of B25 (the binarised estimators on the family; S3 Text §11 is written from its outputs by `notes/review_2026-09-28/revision/b25_fill.py`), and the correction of `notes/rev_phiid_fast.py` and of the scripts that average its atoms for the matrices that are not positive definite, with the pre-run entry of B26, which re-runs section 6 on the data: title",
+  "count": 1,
+  "why": "bookkeeping"
+ },
+ {
+  "id": "K13",
+  "file": "CLAUDE.md",
+  "old": "the main text carries no computation label (B1–B24)",
+  "new": "the main text carries no computation label (B1–B26)",
+  "count": 1,
+  "why": "bookkeeping"
+ },
+ {
+  "id": "K14",
+  "file": "CLAUDE.md",
+  "old": "Introduction through Methods 6,997 words with headings (6,877 without)",
+  "new": "Introduction through Methods 6,994 words with headings (6,874 without)",
+  "count": 1,
+  "why": "bookkeeping"
+ },
+ {
+  "id": "K15",
+  "file": "CLAUDE.md",
+  "old": "every number of the main text with its source in `manuscript/main_text_numbers.csv` (1,193 rows)",
+  "new": "every number of the main text with its source in `manuscript/main_text_numbers.csv` (1,183 rows)",
+  "count": 1,
+  "why": "bookkeeping"
+ },
+ {
+  "id": "K16",
+  "file": "CLAUDE.md",
+  "old": "- `phyid` is not on PyPI; `requirements.lock.txt` pins its git commit.\n",
+  "new": "- `phyid` is not on PyPI; `requirements.lock.txt` pins its git commit.\n- Tests: `.venv/bin/python -m pytest tests` (pytest is not in the lock); `.github/workflows/tests.yml`\n  runs them, the doctest of `tools/ar1_diagnostic.py`, the self-tests of B25 and B26 and `phyid`'s own\n  tests on every push. Code MIT (`LICENSE`); result files and the text outside `manuscript/` CC BY 4.0\n  (`LICENSE-CC-BY-4.0.md`); the manuscript not yet licensed (co-author review); the CBIG parcel-name file\n  under CBIG's MIT notice (`data/LICENSE-CBIG.md`).\n",
+  "count": 1,
+  "why": "bookkeeping"
+ },
+ {
+  "id": "K17",
+  "file": "CLAUDE.md",
+  "old": "requirements.lock.txt            pinned environment (.venv/bin/python)\n",
+  "new": "requirements.lock.txt            pinned environment (.venv/bin/python)\ntools/ar1_diagnostic.py          the paper's check for any pair of series (NumPy only)\ntests/                           pytest: the tool against phyid, the closed form (no data)\n.github/workflows/tests.yml      the tests, the doctest, the B25 and B26 self-tests, phyid's tests\nLICENSE, LICENSE-CC-BY-4.0.md    MIT (code); CC BY 4.0 (results, text outside manuscript/)\ndata/LICENSE-CBIG.md             CBIG's MIT notice for the parcel-name file\nCITATION.cff                     how to cite the repository\n",
+  "count": 1,
+  "why": "bookkeeping"
+ },
+ {
+  "id": "K18",
+  "file": "CLAUDE.md",
+  "old": "outputs (review_2026-09-26/), the applicability",
+  "new": "outputs (review_2026-09-26/), the citation crosscheck of 28 Sep\n                                 with the revision's replacements, the text that reports B25\n                                 and the checks' outputs (review_2026-09-28/), the applicability",
+  "count": 1,
+  "why": "bookkeeping"
+ },
+ {
+  "id": "K19",
+  "file": "CLAUDE.md",
+  "old": "of that date and run 21 Sep; partB16b and partB17b added 21 Sep;",
+  "new": "of that date and run 21 Sep; partB16b and partB17b added 21 Sep;\n                                 partB25 (the binarised estimators on the family) and partB26\n                                 (section 6 with the correction for the matrices that are not\n                                 positive definite) added after the crosscheck of 28 Sep;",
+  "count": 1,
+  "why": "bookkeeping"
+ },
+ {
+  "id": "K20",
+  "file": "CLAUDE.md",
+  "old": "- Remaining work: the typeset PDF of the paper and its supporting information from the final commit, and the note to C.T.\n  and S.P.S.",
+  "new": "- Round 21 (bundle 32; record, \"The citation crosscheck of 28 September 2026 and the revision it led to\" and the pre-run\n  entries of B25 and B26): every citation of the text at d108d66 checked claim by claim against the cited work\n  (`notes/review_2026-09-28/`: 271 claims; the 51 proposed changes applied), the software and the calculations\n  checked for completeness, a licence, `CITATION.cff`, `tools/ar1_diagnostic.py`, `tests/` and a continuous-integration\n  workflow added, the four-atom identity named where the literature uses it, the cause of the r₁ fall stated as a\n  limitation, four condensations for the 7,000 words, and B25 (the binarised estimators on the family, no data)\n  registered before it runs; separate sessions audited the prepared round, twelve audits in five rounds\n  (`notes/review_2026-09-28/audit/`, with what was done with each finding in `dispositions.md`): among\n  them, the paper's code had given values computed from |det| to matrices that are not positive definite,\n  which is corrected in the same commit, with B26, the run of section 6 with the correction, registered\n  before it runs.\n- Remaining work: B25's run at the revision's commit and its outcome (`b25_fill.py`), its re-run by a separate\n  session, B26's run on the data by V.S. (about three hours), the comparison of its outputs and the corrections of the\n  text its rule calls for; then the typeset PDF of the paper and its supporting information from the final commit,\n  and the note to C.T. and S.P.S.",
+  "count": 1,
+  "why": "bookkeeping"
+ },
+ {
+  "id": "K21",
+  "file": "run_all.sh",
+  "old": "#    that earlier steps write or that no step regenerates (B21 and B22 need the .mat, B22 also the rotation file).\n",
+  "new": "#    that earlier steps write or that no step regenerates (B21 and B22 need the .mat, B22 also the rotation file).\n#    Added after the final run of 26 Sep 2026, which therefore did not run it: B25, under its pre-run entry,\n#    after B24 and before the figures; no data. B26 (notes/partB26_positive_definite.py) is not a step: it\n#    runs this section, B25 excepted, in place, under wrappers that count the matrices that are not\n#    positive definite (about three hours).\n",
+  "count": 1,
+  "why": "bookkeeping"
+ },
+ {
+  "id": "K22",
+  "file": "run_all.sh",
+  "old": "nstep partB/bandpassed_expectations_run notes/partB24_bandpassed_expectations.py\n",
+  "new": "nstep partB/bandpassed_expectations_run notes/partB24_bandpassed_expectations.py\n# B25 (record, \"The binarised estimators on the AR(1) family (B25): pre-run entry\"): no data\nnstep partB/binarised_run           notes/partB25_binarised.py\n",
+  "count": 1,
+  "why": "bookkeeping"
+ },
+ {
+  "id": "K23",
+  "file": "run_all.sh",
+  "old": "of which B21–B24 (round 16) about 15 min",
+  "new": "of which B21–B24 (round 16) about 15 min;\n#                                B25 (added after the final run) about 15–30 min, an estimate",
+  "count": 1,
+  "why": "bookkeeping"
+ }
+]

@@ -13,7 +13,8 @@
 #   TOTAL, sections 0–5          ~6 h single-core (≈ 21,000 s), no GPU, ~2 GB RAM.
 #   section 6 (review + Part B)  about three hours more (≈ 10,600 s in the committed logs: B17 ≈ 56 min,
 #                                B17b ≈ 39 min, B16 ≈ 28 min, the rest seconds to minutes each; see each
-#                                script's docstring), of which B21–B24 (round 16) about 15 min
+#                                script's docstring), of which B21–B24 (round 16) about 15 min;
+#                                B25 (added after the final run) about 15–30 min, an estimate
 #   TOTAL                        about nine hours (twelve minutes more with the deconvolution sandbox)
 # Every script is deterministic (SEED = 20261120) and writes the git SHA of the tree into
 # its output header; commit before running so the headers are clean, not "-dirty".
@@ -88,6 +89,10 @@ step 12_figures                     scripts/12_figures.py
 #    (round 14): B16b and B17b, under their pre-run entries of that date, likewise. Added 23 Sep 2026 (round 16):
 #    B21–B24, under their pre-run entries of that date, after B20 and before the figures; each reads only files
 #    that earlier steps write or that no step regenerates (B21 and B22 need the .mat, B22 also the rotation file).
+#    Added after the final run of 26 Sep 2026, which therefore did not run it: B25, under its pre-run entry,
+#    after B24 and before the figures; no data. B26 (notes/partB26_positive_definite.py) is not a step: it
+#    runs this section, B25 excepted, in place, under wrappers that count the matrices that are not
+#    positive definite (about three hours).
 nstep() {  # nstep <log path under notes/review_results, without .log> <script> [args...]
     local log="notes/review_results/$1.log"; shift
     echo "=== $(date '+%F %T')  $*   -> $log"
@@ -161,6 +166,8 @@ nstep partB/aligned_directed_run    notes/partB22_aligned_directed.py
 nstep partB/diagnostic_alternatives_run notes/partB23_diagnostic_alternatives.py
 # B24 (record, "The pure-autocorrelation expectations of the new statistics on the band-passed generator (B24): pre-run entry, 23 Sep 2026"): no data
 nstep partB/bandpassed_expectations_run notes/partB24_bandpassed_expectations.py
+# B25 (record, "The binarised estimators on the AR(1) family (B25): pre-run entry"): no data
+nstep partB/binarised_run           notes/partB25_binarised.py
 step 15_figures_v2                  scripts/15_figures_v2.py
 
 echo "=== all done in $(( ($(date +%s) - T0) / 60 )) min"

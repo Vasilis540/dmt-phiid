@@ -97,6 +97,7 @@ lines = ["# The directed (antisymmetric) cross-lag component (partB15_directed_c
          f"Run level from the whole-run 4 × 4 matrices; W = 60 from each window's own. Seed {SEED}; subject bootstrap {N_BOOT} draws; exact sign-flip p over 2^14 assignments. Region 20 excluded.", ""]
 csv = ["variant,subject,run,rms_anti_run,rms_sym_run,resp_anti_run,resp_sym_run,resp_both_run,residual_run,mean_a,mean_abs_q,rms_anti_w60_mean,signq_sym_w60_mean"]
 ts = sio.loadmat(MAT)
+RUNRES = {}                                                                    # B26: the run-level residual by variant, quoted below
 for var in ("ts_gsr", "ts_demean"):
     rms_anti = np.full((14, 2), np.nan); rms_sym = np.full((14, 2), np.nan)
     resp = np.full((14, 2, 3), np.nan); resid = np.full((14, 2), np.nan); m_a = np.full((14, 2), np.nan); m_q = np.full((14, 2), np.nan)
@@ -109,8 +110,9 @@ for var in ("ts_gsr", "ts_demean"):
             ax, ay, q, sym, anti = deviations(pp.C)
             base, r_anti, r_sym, r_both = response(ax, ay, q, sym, anti)
             rms_anti[s, c] = np.sqrt(np.mean(anti ** 2)); rms_sym[s, c] = np.sqrt(np.mean(sym ** 2))
-            resp[s, c] = [r_anti.mean(), r_sym.mean(), r_both.mean()]
-            resid[s, c] = pp.atoms_mean()[:, S].mean() - base.mean()
+            ok = np.isfinite(r_anti) & np.isfinite(r_sym) & np.isfinite(r_both)       # B26: the pair's four matrices positive definite
+            resp[s, c] = [r_anti[ok].mean(), r_sym[ok].mean(), r_both[ok].mean()]
+            resid[s, c] = pp.atoms_mean()[:, S].mean() - np.nanmean(base)
             m_a[s, c] = 0.5 * (ax + ay).mean(); m_q[s, c] = np.abs(q).mean()
             for w in range(14):
                 in_w = kept[(kept >= w * 60) & (kept < (w + 1) * 60)]
@@ -123,14 +125,15 @@ for var in ("ts_gsr", "ts_demean"):
     for s in range(14):
         for c in range(2):
             csv.append(f"{var},{s + 1},{'DMT' if c == 0 else 'PCB'},{rms_anti[s, c]:.6f},{rms_sym[s, c]:.6f},{resp[s, c, 0]:.6f},{resp[s, c, 1]:.6f},{resp[s, c, 2]:.6f},{resid[s, c]:.6f},{m_a[s, c]:.5f},{m_q[s, c]:.5f},{np.nanmean(rms_w[s, c]):.6f},{np.nanmean(sq_w[s, c]):.6f}")
-    per_subj = rms_anti.mean(1)
+    per_subj = rms_anti.mean(1); RUNRES[var] = float(resid.mean())
     ci_dir = boot_ci(resp[:, :, 0].mean(1), np.random.default_rng(SEED))
     lines += [f"## {var}, run level (whole-run matrices; 28 runs)", "",
               f"RMS of δ_anti over pairs: mean over runs {rms_anti.mean():.5f} (DMT {rms_anti[:, 0].mean():.5f}, placebo {rms_anti[:, 1].mean():.5f}); per subject (mean of the two runs) min {per_subj.min():.5f}, max {per_subj.max():.5f}. RMS of δ_sym: {rms_sym.mean():.5f}. For reference, 1/√(kept TRs) ≈ {1 / np.sqrt(839):.4f}.",
               f"Mean pair a {m_a.mean():.4f}, mean pair |q| {m_q.mean():.4f}.",
               f"Closed-form response of the pair-mean sts (mean over runs): to δ_anti alone {resp[:, :, 0].mean():+.5f} [{ci_dir[0]:+.5f}, {ci_dir[1]:+.5f}] (subject bootstrap of the per-subject mean of the two runs) — the directed share; "
               f"to δ_sym alone {resp[:, :, 1].mean():+.5f} — the symmetric share; to both {resp[:, :, 2].mean():+.5f}; run-level residual of the diagnostic (observed − AR(1) prediction) {resid.mean():+.5f} (DMT {resid[:, 0].mean():+.5f}, placebo {resid[:, 1].mean():+.5f}); "
-              f"the responses account for {100 * resp[:, :, 2].mean() / resid.mean():.0f} % of the residual (directed alone {100 * resp[:, :, 0].mean() / resid.mean():.0f} %, symmetric alone {100 * resp[:, :, 1].mean() / resid.mean():.0f} %).",
+              f"the responses account for {100 * resp[:, :, 2].mean() / resid.mean():.0f} % of the residual (directed alone {100 * resp[:, :, 0].mean() / resid.mean():.0f} %, symmetric alone {100 * resp[:, :, 1].mean() / resid.mean():.0f} %; "
+              "the responses over the pairs whose four matrices are positive definite, the residual over those whose AR(1) matrix is, B26).",
               f"Per-subject directed response (mean of the two runs): {np.array2string(resp[:, :, 0].mean(1), precision=5, floatmode='fixed', max_line_width=250)}; negative in {int((resp[:, :, 0].mean(1) < 0).sum())}/14; sign-flip p = {signflip_p(resp[:, :, 0].mean(1)):.4f}.",
               f"DMT − placebo of the run-level RMS of δ_anti: {(rms_anti[:, 0] - rms_anti[:, 1]).mean():+.5f}, sign-flip p = {signflip_p(rms_anti[:, 0] - rms_anti[:, 1]):.4f}; of the directed response: {(resp[:, 0, 0] - resp[:, 1, 0]).mean():+.5f}, p = {signflip_p(resp[:, 0, 0] - resp[:, 1, 0]):.4f}.", ""]
     d_rms = ((rms_w[:, 0, POST].mean(1) - rms_w[:, 0, PRE].mean(1)) - (rms_w[:, 1, POST].mean(1) - rms_w[:, 1, PRE].mean(1)))
@@ -168,9 +171,11 @@ def report(name, X, Y):
     obs, pred, a, aq = NULL.residual(C)
     ax, ay, q, sym, anti = deviations(C)
     _, r_anti, r_sym, r_both = response(ax, ay, q, sym, anti)
-    lines.append(f"{name}: window a {a.mean():.4f}, |q| {aq.mean():.4f}; residual {np.mean(obs - pred):+.5f} ({100 * np.mean(obs - pred) / obs.mean():+.2f} %); RMS δ_anti {np.sqrt(np.mean(anti ** 2)):.5f}, RMS δ_sym {np.sqrt(np.mean(sym ** 2)):.5f}; "
-                 f"closed-form response to δ_anti {r_anti.mean():+.5f}, to δ_sym {r_sym.mean():+.5f}, to both {r_both.mean():+.5f}.")
-    return np.mean(obs - pred)
+    ok = np.isfinite(r_anti) & np.isfinite(r_sym) & np.isfinite(r_both)           # B26: the pair's four matrices positive definite
+    res = np.mean(obs) - np.nanmean(pred)                                          # B26: the substituted mean over the pairs where it exists
+    lines.append(f"{name}: window a {a.mean():.4f}, |q| {aq.mean():.4f}; residual {res:+.5f} ({100 * res / obs.mean():+.2f} %); RMS δ_anti {np.sqrt(np.mean(anti ** 2)):.5f}, RMS δ_sym {np.sqrt(np.mean(sym ** 2)):.5f}; "
+                 f"closed-form response to δ_anti {r_anti[ok].mean():+.5f}, to δ_sym {r_sym[ok].mean():+.5f}, to both {r_both[ok].mean():+.5f}.")
+    return res
 
 
 X, Y, betas, q = stats_sym(bmean, qsd, NULL.rng)
@@ -217,8 +222,15 @@ res2 = {}
 for k_c, cc in enumerate((0.02, 0.04, 0.06)):
     Xv, Yv, (lo_q, hi_q) = var1_pair(target_a, cc, qsd, SEED + 21 + k_c)
     res2[cc] = report(f"(2) symmetric VAR(1), population a = {target_a}, c_xy = +{cc}, c_yx = −{cc}, q ~ N(0, {qsd:.3f}) clipped to the reachable lag-0 range {lo_q:+.3f} to {hi_q:+.3f} (window a and |q| as measured, see the note in the script)", Xv, Yv)
+import re                                                                      # B26: the diagnostic's level read, not held here
+try:
+    _m26 = re.search(r"## ts_gsr, W = 60\n\nLevels \(all subjects, runs, windows\): observed sts [\d.]+, predicted \(AR\(1\) from a_x, a_y, q\) [\d.]+, residual ([+-]\d+\.\d+) ", (OUT / "diag_tables.md").read_text(encoding="utf-8"))
+except (OSError, UnicodeError):
+    _m26 = None
+DIAG_RES_W60 = _m26.group(1).replace("-", "−") if _m26 else "CHECK FAILED (not read)"
+RUN_TS_GSR = f"{RUNRES['ts_gsr']:.4f}".replace("-", "−")                     # B26: this script's own run-level value
 lines += ["", f"Null residual levels: symmetric {res0:+.5f}; delayed-copy {res1:+.5f}; antisymmetric VAR(1) " + ", ".join(f"c = {c}: {v:+.5f}" for c, v in res2.items()) +
-          ". These are W = 60 window-level residuals; the data's W = 60 residual is −0.0489 on ts_gsr (diag_tables.md) and its run-level residual −0.0137 (residual_source.log; recomputed in this script's run-level section above). Reported with their sizes; no branch labels (rule of the pre-run entry).", ""]
+          f". These are W = 60 window-level residuals; the data's W = 60 residual is {DIAG_RES_W60} on ts_gsr (diag_tables.md) and its run-level residual {RUN_TS_GSR} (this script's run-level section above). Reported with their sizes; no branch labels (rule of the pre-run entry).", ""]
 (OUT / "directed_crosslag_tables.md").write_text("\n".join(lines) + "\n")
 print("\n".join(lines))
 print(f"done ({time.time() - t0:.0f}s)")

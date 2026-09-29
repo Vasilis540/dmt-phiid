@@ -146,14 +146,15 @@ if MAT.exists():
                     pp = PairPhiID(X[:, in_w])
                     y = pp.atoms_mean()[:, S]
                     ax, ay = pp.C[:, 0, 2], pp.C[:, 1, 3]; q = 0.5 * (pp.C[:, 0, 1] + pp.C[:, 2, 3])
-                    pred = atoms_from_corr(ar1_corr(ax, ay, q))[:, S]
+                    pred = atoms_from_corr(ar1_corr(ax, ay, q))[:, S]  # B26: NaN where not positive definite
+                    ok = np.isfinite(pred)
                     F = np.c_[0.5 * (ax + ay), np.abs(q), np.abs(ax - ay)]
                     Z = (F - F.mean(0)) / F.std(0, ddof=1); yz = (y - y.mean()) / y.std(ddof=1)
                     Xd = np.c_[np.ones(y.size), Z]
                     beta, *_ = np.linalg.lstsq(Xd, yz, rcond=None)
                     fit = Xd @ beta
                     R2.append(1 - np.sum((yz - fit) ** 2) / np.sum(yz ** 2)); B.append(beta[1:])
-                    r2.append(pearsonr(y, F[:, 0])[0] ** 2); R2f.append(pearsonr(y, pred)[0] ** 2)
+                    r2.append(pearsonr(y, F[:, 0])[0] ** 2); R2f.append(pearsonr(y[ok], pred[ok])[0] ** 2)
             print(f"   (b) {var}: subject {s + 1}/14 done ({time.time() - t0:.0f}s)", flush=True)
         B = np.array(B)
         lines.append(f"| {var} | {np.mean(R2):.3f} (min {np.min(R2):.3f}, max {np.max(R2):.3f}) | {np.mean(r2):.3f} | {np.mean(R2f):.3f} | {np.mean(B[:, 0]):+.3f}, {np.mean(B[:, 1]):+.3f}, {np.mean(B[:, 2]):+.3f} |")

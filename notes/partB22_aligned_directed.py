@@ -135,9 +135,10 @@ def window_stats(C, obs, sg_same, sg_other):
     Z = (F - F.mean(0)) / F.std(0, ddof=1)
     yz = (obs - obs.mean()) / obs.std(ddof=1)
     bs = np.linalg.lstsq(np.c_[np.ones(obs.size), Z], yz, rcond=None)[0][1:]
+    ok = np.isfinite(r_anti) & np.isfinite(r_sym) & np.isfinite(r_both)       # B26: the pair's four matrices positive definite
     st = dict(A_other=float(np.mean(sg_other * sym)), A_same=float(np.mean(sg_same * sym)), winsign=float(np.mean(np.sign(q) * sym)),
-              B=float(np.polyfit(q, sym, 1)[0]), D=float(r_anti.mean()), Sym=float(r_sym.mean()), D_plus_Sym=float((r_anti + r_sym).mean()),
-              Both=float(r_both.mean()), rms_anti=float(np.sqrt(np.mean(anti ** 2))), residual=float(obs.mean() - base.mean()),
+              B=float(np.polyfit(q, sym, 1)[0]), D=float(r_anti[ok].mean()), Sym=float(r_sym[ok].mean()), D_plus_Sym=float((r_anti + r_sym)[ok].mean()),
+              Both=float(r_both[ok].mean()), rms_anti=float(np.sqrt(np.mean(anti ** 2))), residual=float(obs.mean() - np.nanmean(base)),
               sd_r1=float(r1p.std(ddof=1)), sd_absq=float(aq.std(ddof=1)))
     return st, bu, bs, r1p, aq
 
@@ -275,7 +276,7 @@ def main():
             cells = [inf_cell(sm[key])[0] for key in ("DMT pre level", "DMT post − pre", "placebo post − pre", "DiD")]
             lines.append(f"| {NAMES[k]} | " + " | ".join(cells) + " |")
         res_did = summaries(arr["residual"])["DiD"]; ds_did = summaries(arr["D_plus_Sym"])["DiD"]
-        lines += ["", f"The residual DiD {res_did.mean():+.5f} beside the DiD of D + Sym {ds_did.mean():+.5f} (their difference {res_did.mean() - ds_did.mean():+.5f}: the lag-0 substitution and the non-additivity of the two responses).", ""]
+        lines += ["", f"The residual DiD {res_did.mean():+.5f} beside the DiD of D + Sym {ds_did.mean():+.5f} (their difference {res_did.mean() - ds_did.mean():+.5f}: the lag-0 substitution, the non-additivity of the two responses and, where a pair's matrices are not positive definite, the pairs each is taken over, B26).", ""]
         # ---- (d)
         m_sd_r1 = float(np.nanmean(arr["sd_r1"][:, :, PRE])); m_sd_q = float(np.nanmean(arr["sd_absq"][:, :, PRE]))
         ratio = (DSTS_DR1 * m_sd_r1) / (abs(DSTS_DQ) * m_sd_q)

@@ -1,0 +1,630 @@
+[
+ {
+  "pid": "P01",
+  "cls": "A",
+  "where": "Competing interests (main PDF p. 21, line 534)",
+  "units": [
+   "C076",
+   "C077",
+   "C078"
+  ],
+  "file": "manuscript/draft_v2.md",
+  "current": "whose members authored Luppi et al. (2022, 2024), the studies whose estimator this paper analyses;",
+  "proposed": "whose members authored four of the studies this paper examines (Luppi et al., 2022, 2023, 2024, 2026);",
+  "reason": "Luppi, Menon and Stamatakis (Division of Anaesthesia, Cambridge) are also authors of Luppi et al. 2023 (p. 1, affiliation a) and Luppi et al. 2026 (p. 26, affiliation 1), both in S20 Table."
+ },
+ {
+  "pid": "P02",
+  "cls": "A",
+  "where": "Competing interests (main PDF p. 21, line 534)",
+  "units": [
+   "C078"
+  ],
+  "file": "manuscript/draft_v2.md",
+  "current": "C.T. is a co-author of Timmermann et al. (2023), the source of the data, and of Singleton et al. (2025); S.P.S. is the first author of Singleton et al. (2025), the source of the released derivatives.",
+  "proposed": "C.T. is the first author of Timmermann et al. (2023), the source of the data, and a co-author of Singleton et al. (2025); S.P.S. is the first author of Singleton et al. (2025), the source of the released derivatives, and a co-author of Luppi et al. (2026), one of the studies this paper examines.",
+  "reason": "Luppi et al. 2026 lists S. Parker Singleton among its authors (p. 1); C.T. is the first author of Timmermann et al. 2023 (p. 1). No other cited work has either as an author."
+ },
+ {
+  "pid": "P03",
+  "cls": "A",
+  "where": "Introduction ¶1 (main PDF p. 2, line 52)",
+  "units": [
+   "C005"
+  ],
+  "file": "manuscript/draft_v2.md",
+  "current": "Regions where synergy — in that study the whole-minus-max synergy (their Eq. 5), in ΦID terms str + stx + sty + sts — predominates over redundancy",
+  "proposed": "Regions where synergy — which that study calls the persistent synergy but writes as the whole-minus-max synergy of its Eq. 5, in ΦID terms str + stx + sty + sts — predominates over redundancy",
+  "reason": "Luppi et al. 2024 say in their Results 'we focused on the persistent synergy (henceforth simply synergy)' (p. 6), i.e. sts, while their only formula (Eq. 5, p. 20) is the whole-minus-max synergy. The sentence gave only the formula."
+ },
+ {
+  "pid": "P04",
+  "cls": "A",
+  "where": "Introduction ¶2 (main PDF p. 2, line 67)",
+  "units": [
+   "C018"
+  ],
+  "file": "manuscript/draft_v2.md",
+  "current": "what none of them gives is which of the sixteen atoms carry the self-information,",
+  "proposed": "what none of them gives is the sixteen atoms in closed form, and so which of them take their value from the self-information,",
+  "reason": "Mediano et al. 2021, Eq. 2 (p. 6) do say which four atoms sum to a variable's self-information (AIS = Red→Red + Red→Un1 + Un1→Red + Un1→Un1); what they do not give is the atoms' values, which is this paper's result."
+ },
+ {
+  "pid": "P05",
+  "cls": "A",
+  "where": "Limitations (main PDF p. 16, line 340)",
+  "units": [
+   "C053",
+   "C054"
+  ],
+  "file": "manuscript/draft_v2.md",
+  "current": "reduces to MMI when the target is univariate (Barrett, 2015; Kay & Ince, 2018), which covers the lattice nodes with a single past or single future variable but not the joint-target nodes or the double redundancy, ΦID's own extensions (Mediano et al., 2021); so \"MMI-specific\" is not a licensed phrase, and other Gaussian PIDs could share or not share the property.",
+  "proposed": "reduces to MMI when the target is univariate (Barrett, 2015), which covers the lattice nodes with a single past or single future variable but not the joint-target nodes, whose target is bivariate, or the double redundancy, ΦID's own extension (Mediano et al., 2021); so \"MMI-specific\" is not a licensed phrase, and other Gaussian PIDs, such as CCS and the dependency-constraint PID, whose redundancy depends also on the source–source marginal (Kay & Ince, 2018), could share or not share the property.",
+  "reason": "Mediano et al. 2021 treat the joint-target nodes as ordinary PIDs with a bivariate target ('the single-target PIDs', p. 23); only the double redundancy is ΦID's extension (p. 4). Kay & Ince state the univariate-target result only by citing Barrett (their ref. 12): citing them for it is secondhand. Their own point is that CCS and their Idep depend on the predictor–predictor marginal and so are not equivalent to MMI (pp. 3, 26), which is what the end of the sentence needs."
+ },
+ {
+  "pid": "P06",
+  "cls": "A",
+  "where": "S20 Table A, row 5, data (SI PDF p. 123)",
+  "units": [
+   "C210"
+  ],
+  "file": "manuscript/supplementary.md",
+  "current": "macaques 5 (three awake/anaesthesia, two DBS; p. 35)",
+  "proposed": "macaques: five in a multi-anaesthesia dataset (p. 3; p. 35) and five in a DBS dataset, three scanned awake and two anaesthetised with thalamic DBS (p. 5; p. 35)",
+  "reason": "The work has two macaque datasets of five animals each (main text p. 3 'N = 5 macaques'; Fig. 3a p. 5 'N = 2 anaesthetized macaques'; Reporting Summary p. 35)."
+ },
+ {
+  "pid": "P07",
+  "cls": "A",
+  "where": "S20 Table A, row 10, data (SI PDF p. 126)",
+  "units": [
+   "C255"
+  ],
+  "file": "manuscript/supplementary.md",
+  "current": "1 HCP subject, 1,000 region pairs (data from Varley et al. 2023 Comm Biol: Schaefer-200, GSR; TR not stated, HCP standard 0.72 s)",
+  "proposed": "1 HCP subject, 1,000 region pairs (p. 8; data \"previously published\" in his refs. 14–15); TR not stated",
+  "reason": "Varley 2024 names no parcellation, GSR or TR; the details came from Varley et al. 2023, which the S20 reference note says was not read. Varley names two 2023 papers (PNAS and Comm Biol) as the data's source."
+ },
+ {
+  "pid": "P08",
+  "cls": "A",
+  "where": "S20 Table A, row 10, parcellation (SI PDF p. 126)",
+  "units": [
+   "C256"
+  ],
+  "file": "manuscript/supplementary.md",
+  "current": "| Schaefer-200 |",
+  "proposed": "| not stated |",
+  "reason": "Not in Varley 2024 (see P07)."
+ },
+ {
+  "pid": "P09",
+  "cls": "A",
+  "where": "S20 Table A, row 10, preprocessing (SI PDF p. 126)",
+  "units": [
+   "C257"
+  ],
+  "file": "manuscript/supplementary.md",
+  "current": "| as in Varley et al. 2023; deconvolution not mentioned |",
+  "proposed": "| not stated (the data of his refs. 14–15); deconvolution not mentioned |",
+  "reason": "See P07."
+ },
+ {
+  "pid": "P10",
+  "cls": "A",
+  "where": "S20 Table A, row 10, reported effect (SI PDF p. 126)",
+  "units": [
+   "C261"
+  ],
+  "file": "manuscript/supplementary.md",
+  "current": "disintegration increased temporal MI in 37.5 % of pairs; Δsynergy vs Δtemporal MI r = 0.77; Δsynergy vs pairwise MI r = 0.97; names Luppi 2022, 2023, 2024, Gatica 2024, Menesse 2024, Mediano 2022 as MMI-ΦID users; proposes I_Red^τsx, specificity/ambiguity, CCS (noted as critiqued), synergy-first decompositions",
+  "proposed": "disintegration increased temporal MI in about 37.5 % of pairs; Δsynergy vs Δtemporal MI r = 0.77; Δsynergy vs pairwise MI r = 0.97; names Varley & Bongard 2024, Menesse 2024, Gatica 2024, Luppi 2022, 2023, 2024 and Mediano 2022 as MMI-ΦID applications; suggests I_Red^τsx, specificity/ambiguity and synergy-first decompositions, and notes that CCS, used in earlier ΦID work, has been critiqued",
+  "reason": "Varley writes 'about 37.5%' (p. 8); his list of applications includes Varley & Bongard 2024 (ref. 7, p. 5); he mentions CCS only as used before and 'critiqued as an approach to redundancy' (p. 11)."
+ },
+ {
+  "pid": "P11",
+  "cls": "A",
+  "where": "S20, References cited only in this table (SI PDF p. 128)",
+  "units": [
+   "C255"
+  ],
+  "file": "manuscript/supplementary.md",
+  "current": "Varley, T. F., Pope, M., Faskowitz, J., & Sporns, O. (2023). Multivariate information theory uncovers synergistic subsystems of the human cerebral cortex. *Communications Biology*, 6(1), 451. https://doi.org/10.1038/s42003-023-04843-w (cited only as the source of the data of Varley (2024), row 10; bibliographic record checked against Crossref on 25 September 2026; not read)",
+  "proposed": "(delete this entry: after P07–P09 the table no longer cites it)",
+  "reason": "An unread work should not carry facts in the table."
+ },
+ {
+  "pid": "P12",
+  "cls": "A",
+  "where": "S20 Table A, row 5, scope-map reading (SI PDF p. 123)",
+  "units": [
+   "C217",
+   "C268"
+  ],
+  "file": "manuscript/supplementary.md",
+  "current": "reports \"faster decay of autocorrelation under anaesthesia\"; through r₁ q that lowers ΦR on the family.",
+  "proposed": "reports that anaesthesia \"reduces the value of features related to linear and nonlinear temporal autocorrelation\"; through r₁ q that lowers ΦR on the family.",
+  "reason": "The quoted words are the caption of one example macaque time series (Fig. 3e of the preprint); the preprint's general finding is the other quotation, already in Table B item 3."
+ },
+ {
+  "pid": "P13",
+  "cls": "A",
+  "where": "S20 Table B, item 3 (SI PDF p. 127)",
+  "units": [
+   "C267",
+   "C268"
+  ],
+  "file": "manuscript/supplementary.md",
+  "current": "\"reduces the value of features related to linear and nonlinear temporal autocorrelation\", \"faster decay of autocorrelation under anaesthesia\".",
+  "proposed": "\"reduces the value of features related to linear and nonlinear temporal autocorrelation\", and, of an example macaque time series (Fig. 3e), \"faster decay of autocorrelation under anaesthesia\".",
+  "reason": "As P12."
+ },
+ {
+  "pid": "P14",
+  "cls": "B",
+  "where": "Introduction ¶1 (main PDF p. 2, line 55)",
+  "units": [
+   "C009"
+  ],
+  "file": "manuscript/draft_v2.md",
+  "current": "and one uses the common-change-in-surprisal (CCS) function (Ince, 2017) on binarised signals (Luppi et al., 2023);",
+  "proposed": "and one uses the common-change-in-surprisal (CCS) function (Ince, 2017) on binarised signals in its primary analysis (Luppi et al., 2023);",
+  "reason": "Luppi et al. 2023 also replicate with MMI and with the Gaussian JIDT solver (p. 12)."
+ },
+ {
+  "pid": "P15",
+  "cls": "B",
+  "where": "Introduction ¶2 (main PDF p. 2, lines 64–67)",
+  "units": [
+   "C012",
+   "C014"
+  ],
+  "file": "manuscript/draft_v2.md",
+  "current": "cannot tell a synergistic pair from two independent autocorrelated processes (Varley, 2024, Eq. 12),",
+  "proposed": "cannot tell a synergistic pair from two independent autocorrelated processes (Varley, 2024, Eqs. 4–6 and 12),",
+  "reason": "The comparison is Varley's worked example (Eqs. 4–6, pp. 5–6); Eq. 12 (p. 7) is the general identity for the disintegrated pair."
+ },
+ {
+  "pid": "P16",
+  "cls": "B",
+  "where": "Introduction ¶2 (main PDF p. 2, line 67)",
+  "units": [
+   "C014"
+  ],
+  "file": "manuscript/draft_v2.md",
+  "current": "Closed-form Gaussian decompositions exist for transfer entropy (Faes et al., 2017),",
+  "proposed": "Exact Gaussian decompositions exist for transfer entropy (Faes et al., 2017),",
+  "reason": "Faes et al. call their result 'exact' and 'analytical'; it requires solving a discrete algebraic Riccati equation (p. 6), so 'closed-form' overstates it. 'Exact' is also true of the other works in the sentence."
+ },
+ {
+  "pid": "P17",
+  "cls": "B",
+  "where": "Results 3 (main PDF p. 8, line 181)",
+  "units": [
+   "C025"
+  ],
+  "file": "manuscript/draft_v2.md",
+  "current": "(Raut et al., 2020; Ito et al., 2020; in single units, Murray et al., 2014)",
+  "proposed": "(Raut et al., 2020; Ito et al., 2020; in macaque single units, from sensory to prefrontal cortex, Murray et al., 2014)",
+  "reason": "Murray et al. recorded seven macaque areas, sensory (MT, S1, S2) to prefrontal; no motor area (p. 1)."
+ },
+ {
+  "pid": "P18",
+  "cls": "B",
+  "where": "Discussion, The literature (main PDF p. 16, line 320)",
+  "units": [
+   "C049"
+  ],
+  "file": "manuscript/draft_v2.md",
+  "current": "Of the studies in the table only Luppi et al. (2022) addressed autocorrelation,",
+  "proposed": "Of the studies in the table only Luppi et al. (2022) addressed autocorrelation, in part,",
+  "reason": "Their one test is a phase-randomised surrogate (p. 18; Table 1); S20 Table already says 'yes, in part'."
+ },
+ {
+  "pid": "P19",
+  "cls": "B",
+  "where": "Recommendations (main PDF p. 16, line 323)",
+  "units": [
+   "C051"
+  ],
+  "file": "manuscript/draft_v2.md",
+  "current": "with the effective sample size computed from the autocorrelation function (Afyouni et al., 2019).",
+  "proposed": "with the effective sample size computed from the auto- and cross-correlation functions (Afyouni et al., 2019).",
+  "reason": "Afyouni et al. show that estimators using the autocorrelation function alone are biased when the true correlation is not zero, and propose xDF, which also uses the cross-correlations (pp. 1–2). With zero true correlation, as in Methods, the two agree."
+ },
+ {
+  "pid": "P20",
+  "cls": "B",
+  "where": "S3 Text §2 (SI PDF p. 10)",
+  "units": [
+   "C096"
+  ],
+  "file": "manuscript/si/S3_Text.md",
+  "current": "c(x; y) = I∂^{{1}{2}→{1}{2}} − I∂^{{12}→{12}})",
+  "proposed": "c(x; y) = i∂^{{1}{2}→{1}{2}}(x; y) − i∂^{{12}→{12}}(x; y))",
+  "reason": "The SI Appendix states the identity for the pointwise atoms, lower-case i∂ with argument (x; y) (p. 3); capital I∂ is the averaged atom."
+ },
+ {
+  "pid": "P21",
+  "cls": "B",
+  "where": "S3 Text §2 (SI PDF p. 11)",
+  "units": [
+   "C097"
+  ],
+  "file": "manuscript/si/S3_Text.md",
+  "current": "retains the definition verbatim on the sign condition,",
+  "proposed": "retains the definition's sign condition word for word, apart from writing the pointwise full mutual information I(X; Y) where the preprint has i(x; y):",
+  "reason": "2021: 'the pointwise full mutual information i(x; y)' (p. 24); 2025: 'I(X; Y )' (SI p. 4)."
+ },
+ {
+  "pid": "P22",
+  "cls": "B",
+  "where": "S3 Text §7 (SI PDF p. 19)",
+  "units": [
+   "C108"
+  ],
+  "file": "manuscript/si/S3_Text.md",
+  "current": "retaining Definition 1 verbatim on the sign condition",
+  "proposed": "retaining Definition 1's sign condition unchanged but for the symbol of the full mutual information",
+  "reason": "As P21."
+ },
+ {
+  "pid": "P23",
+  "cls": "B",
+  "where": "S3 Text §3 (SI PDF p. 11)",
+  "units": [
+   "C102"
+  ],
+  "file": "manuscript/si/S3_Text.md",
+  "current": "while many of the others can take negative values (Down et al., 2026).",
+  "proposed": "while many of the others can occasionally take negative values (Down et al., 2026).",
+  "reason": "Down's words: 'many of the other atoms can occasionally take negative values' (p. 7)."
+ },
+ {
+  "pid": "P24",
+  "cls": "B",
+  "where": "S3 Text §10 (SI PDF p. 37)",
+  "units": [
+   "C128"
+  ],
+  "file": "manuscript/si/S3_Text.md",
+  "current": "and, in some studies, moved towards CCS redundancy (Luppi et al., 2023).",
+  "proposed": "and in one study used CCS redundancy (Luppi et al., 2023).",
+  "reason": "Luppi et al. 2023 use CCS without presenting it as a move, and replicate with MMI (p. 12); the later Luppi et al. 2026 uses MMI."
+ },
+ {
+  "pid": "P25",
+  "cls": "B",
+  "where": "S3 Text §10 (SI PDF p. 37)",
+  "units": [
+   "C130"
+  ],
+  "file": "manuscript/si/S3_Text.md",
+  "current": "The surrogate gradient of Luppi et al. (2022) correlated",
+  "proposed": "The phase-randomised surrogate gradient of Luppi et al. (2022), the third of the three surrogates of their Table 1, correlated",
+  "reason": "Table 1 (p. 10) has three surrogate gradients; the numbers are those of the phase-randomised one. The other two reach ρ = 0.32 and 0.54."
+ },
+ {
+  "pid": "P26",
+  "cls": "B",
+  "where": "S20 Table A header, and S3 Text §10's list of columns",
+  "units": [
+   "C197",
+   "C215",
+   "C233"
+  ],
+  "file": "manuscript/supplementary.md",
+  "current": "| autocorrelation addressed? |",
+  "proposed": "| temporal autocorrelation addressed? |",
+  "reason": "Luppi et al. 2024, Luppi et al. 2026 and Nago et al. 2026 do address spatial autocorrelation (spin tests; autocorrelation-preserving nulls), so a bare 'no' can be misread. The same change in S3 Text §10 is P26b."
+ },
+ {
+  "pid": "P26b",
+  "cls": "B",
+  "where": "S3 Text §10, list of Table A's columns (SI PDF p. 36)",
+  "units": [
+   "C197",
+   "C215",
+   "C233"
+  ],
+  "file": "manuscript/si/S3_Text.md",
+  "current": "whether autocorrelation was addressed,",
+  "proposed": "whether temporal autocorrelation was addressed,",
+  "reason": "As P26."
+ },
+ {
+  "pid": "P27",
+  "cls": "B",
+  "where": "S20 Table A, row 1 (SI PDF p. 121)",
+  "units": [
+   "C175",
+   "C180"
+  ],
+  "file": "manuscript/supplementary.md",
+  "current": "Lausanne-83 for the species comparison (pp. 14, 16–17) — no \"DK-66\" in the paper",
+  "proposed": "Lausanne-83 for the species comparison (pp. 14, 16–17); also HCP-MMP-360 for wiring distance (p. 14), a Brodmann parcellation for the glycolytic index (p. 16), 39 autoradiography areas for receptor diversity (p. 18) and Lausanne-129 for robustness (p. 23) — no \"DK-66\" in the paper",
+  "reason": "The list read as complete but was not."
+ },
+ {
+  "pid": "P28",
+  "cls": "B",
+  "where": "S20 Table A, row 1, reported effect (SI PDF p. 121)",
+  "units": [
+   "C180"
+  ],
+  "file": "manuscript/supplementary.md",
+  "current": "synergy a higher proportion of total information in humans than in macaques, redundancy equal (p. 6)",
+  "proposed": "synergy a higher proportion of total information in humans than in macaques, redundancy equal (gradient p. 2 and Fig. 2, p. 4; species p. 6)",
+  "reason": "p. 6 holds only the species comparison."
+ },
+ {
+  "pid": "P29",
+  "cls": "B",
+  "where": "S20 Table A, row 2 (SI PDF p. 122)",
+  "units": [
+   "C187",
+   "C190"
+  ],
+  "file": "manuscript/supplementary.md",
+  "current": "lag 1 TR (2 s), with 4 TRs as a check (p. 3)",
+  "proposed": "lag 1 TR (2 s); at 4 TRs \"no significant difference was observed\" (p. 3)",
+  "reason": "At 4 TRs the effect was not significant, and the paper says its results 'depend on the timescale' (p. 8)."
+ },
+ {
+  "pid": "P30",
+  "cls": "B",
+  "where": "S20 Table A, row 2, scope-map reading (SI PDF p. 122)",
+  "units": [
+   "C190"
+  ],
+  "file": "manuscript/supplementary.md",
+  "current": "The Gaussian and the MMI validations are inside it.",
+  "proposed": "The Gaussian and the MMI validations are inside it if each used both the Gaussian estimator and MMI, which the paper does not state.",
+  "reason": "Luppi et al. 2023 do not say which redundancy function the Gaussian validation used, or which estimator the MMI one used (p. 12)."
+ },
+ {
+  "pid": "P31",
+  "cls": "B",
+  "where": "S20 Table A, row 3 (SI PDF p. 122)",
+  "units": [
+   "C191",
+   "C192"
+  ],
+  "file": "manuscript/supplementary.md",
+  "current": "(\"A synergistic workspace for human consciousness revealed by ΦID\") | 100 HCP (TR not stated in this paper); propofol: N = 15 in Results (p. 4) but \"n = 16 for analysis\" in Methods (p. 15)",
+  "proposed": "(\"A synergistic workspace for human consciousness revealed by Integrated Information Decomposition\") | 100 HCP (TR not stated in this paper); propofol: N = 15 in the Introduction and Results (pp. 4, 8) but \"n=16 for analysis\" in Methods (p. 15)",
+  "reason": "Exact title (p. 1); p. 4 is the Introduction, the Results say 15 on p. 8; the work prints 'n=16'."
+ },
+ {
+  "pid": "P32",
+  "cls": "B",
+  "where": "S20 Table A, row 4, quantity reported (SI PDF p. 123)",
+  "units": [
+   "C204"
+  ],
+  "file": "manuscript/supplementary.md",
+  "current": "(\"500 time points per window with 99 % overlap, resulting in 60 windows\", p. 14,",
+  "proposed": "(\"500-time points per window with 99% overlap, resulting in 60 windows\", p. 14,",
+  "reason": "The quotation as printed (p. 14)."
+ },
+ {
+  "pid": "P33",
+  "cls": "B",
+  "where": "S20 Table A, row 8 (SI PDF p. 125)",
+  "units": [
+   "C239",
+   "C240",
+   "C244"
+  ],
+  "file": "manuscript/supplementary.md",
+  "current": "DPABI/SPM12 standard steps, 6-mm smoothing, FD > 0.5 mm exclusion;",
+  "proposed": "DPABI/SPM12 standard steps, smoothing with a \"6 × 6 × 6\" Gaussian kernel (unit not printed), exclusion of subjects with mean FD > 0.5 mm;",
+  "reason": "The work prints '6 × 6 × 6 Gaussian kernel smoothing' with no unit (p. 3); the FD criterion excludes subjects, not volumes."
+ },
+ {
+  "pid": "P34",
+  "cls": "B",
+  "where": "S20 Table A, row 8, quantity reported (SI PDF p. 125)",
+  "units": [
+   "C240"
+  ],
+  "file": "manuscript/supplementary.md",
+  "current": "computed once per subject over the 140-volume run,",
+  "proposed": "computed once per subject over the run (140 volumes acquired; no windowing described),",
+  "reason": "The work gives 140 acquired volumes (p. 3) but not the number of time points entering each fit."
+ },
+ {
+  "pid": "P35",
+  "cls": "B",
+  "where": "S20 Table A, row 8, scope-map reading (SI PDF p. 125)",
+  "units": [
+   "C244"
+  ],
+  "file": "manuscript/supplementary.md",
+  "current": "one run-level fit of 140 samples per subject;",
+  "proposed": "one run-level fit per subject, 140 volumes acquired;",
+  "reason": "As P34."
+ },
+ {
+  "pid": "P36",
+  "cls": "B",
+  "where": "S20 Table A, row 9 (SI PDF p. 125)",
+  "units": [
+   "C245",
+   "C247"
+  ],
+  "file": "manuscript/supplementary.md",
+  "current": "Insight From ΦID of Resting State fMRI\") | 72 patients",
+  "proposed": "Insight From Integrated Information Decomposition of Resting State fMRI\") | 72 patients",
+  "reason": "Exact title (p. 1)."
+ },
+ {
+  "pid": "P37",
+  "cls": "B",
+  "where": "S20 Table A, row 9, parcellation (SI PDF p. 125)",
+  "units": [
+   "C247"
+  ],
+  "file": "manuscript/supplementary.md",
+  "current": "232 ROIs: Schaefer plus 32 subcortical ROIs printed as \"cerebellar\" (Tian et al. 2020) (p. 3)",
+  "proposed": "232 ROIs: Schaefer plus ROIs of Tian et al. 2020 printed as \"cerebellar\", neither resolution stated (p. 3)",
+  "reason": "The work gives neither the Schaefer resolution nor the number of Tian ROIs; 32 was inferred (232 − 200)."
+ },
+ {
+  "pid": "P38",
+  "cls": "B",
+  "where": "S20 Table A, row 11 (SI PDF p. 126)",
+  "units": [
+   "C263"
+  ],
+  "file": "manuscript/supplementary.md",
+  "current": "(\"Toward a unified taxonomy of information dynamics via ΦID\"; arXiv 2109.13186)",
+  "proposed": "(\"Toward a unified taxonomy of information dynamics via Integrated Information Decomposition\"; preprint arXiv 2109.13186)",
+  "reason": "Exact title (p. 1); 2109.13186 is the preprint's identifier (Mediano2021.pdf), not printed in the article."
+ },
+ {
+  "pid": "P39",
+  "cls": "B",
+  "where": "S20 Table B, item 3 (SI PDF p. 127)",
+  "units": [
+   "C267"
+  ],
+  "file": "manuscript/supplementary.md",
+  "current": "Huang et al. 2018, *J Neurosci* 38:2304 (TR 2 s;",
+  "proposed": "Huang et al. 2018, *J Neurosci* 38:2304 (TR 2 s for the two propofol datasets;",
+  "reason": "No TR is given for the DoC dataset, taken from earlier studies (p. 2307)."
+ },
+ {
+  "pid": "P40",
+  "cls": "B",
+  "where": "S4 Text, D3 (SI PDF p. 38)",
+  "units": [
+   "C136"
+  ],
+  "file": "manuscript/si/S4_Text.md",
+  "current": "| D3 Sampling frame and recruitment | not applicable | Reported by Timmermann et al. (2023). |",
+  "proposed": "| D3 Sampling frame and recruitment | not applicable | Timmermann et al. (2023) report the population (healthy volunteers with previous psychedelic experience) and the screening visit; how participants were recruited is not described. |",
+  "reason": "Recruitment is not described anywhere in the article."
+ },
+ {
+  "pid": "P41",
+  "cls": "B",
+  "where": "S4 Text, D5 (SI PDF p. 38)",
+  "units": [
+   "C139"
+  ],
+  "file": "manuscript/si/S4_Text.md",
+  "current": "Timmermann et al. (2023) report the demographics of the 20 recruited participants.",
+  "proposed": "Timmermann et al. (2023) report age and sex of the 20 participants who completed all study visits; handedness is not reported.",
+  "reason": "Age and sex only; the 20 are described as having 'completed all study visits'."
+ },
+ {
+  "pid": "P42",
+  "cls": "B",
+  "where": "S4 Text, A1 (SI PDF p. 39)",
+  "units": [
+   "C142"
+  ],
+  "file": "manuscript/si/S4_Text.md",
+  "current": "| A1 Subject preparation (head restraint, mock scanning, instructions) | not applicable | Timmermann et al. (2023). |",
+  "proposed": "| A1 Subject preparation (head restraint, mock scanning, instructions) | not applicable | Instructions (eyes closed, with an eye mask): Timmermann et al. (2023); head restraint and mock scanning are not described. |",
+  "reason": "Only the instructions are reported."
+ },
+ {
+  "pid": "P43",
+  "cls": "B",
+  "where": "S4 Text, A3 (SI PDF p. 39)",
+  "units": [
+   "C144"
+  ],
+  "file": "manuscript/si/S4_Text.md",
+  "current": "All other parameters: Timmermann et al. (2023). |",
+  "proposed": "TE, flip angle, voxel size, slices and gap: Timmermann et al. (2023); FOV, matrix, acceleration and phase-encoding direction are not reported by the source. |",
+  "reason": "'All other parameters' overstated what the source gives."
+ },
+ {
+  "pid": "P44",
+  "cls": "B",
+  "where": "S4 Text, A4 (SI PDF p. 39)",
+  "units": [
+   "C145"
+  ],
+  "file": "manuscript/si/S4_Text.md",
+  "current": "| A4 Structural acquisition | not applicable | Timmermann et al. (2023). |",
+  "proposed": "| A4 Structural acquisition | not applicable | Timmermann et al. (2023) state that T1-weighted structural images were acquired; its parameters are not reported. |",
+  "reason": "No structural parameters in the source."
+ },
+ {
+  "pid": "P45",
+  "cls": "B",
+  "where": "S4 Text, P1 (SI PDF p. 39)",
+  "units": [
+   "C147",
+   "C148"
+  ],
+  "file": "manuscript/si/S4_Text.md",
+  "current": "| P1 Preprocessing software and versions | not applicable | Timmermann et al. (2023); Singleton et al. (2025). Not restated. |",
+  "proposed": "| P1 Preprocessing software and versions | not applicable | Software: Timmermann et al. (2023); Singleton et al. (2025); neither gives versions. |",
+  "reason": "Software named, no versions."
+ },
+ {
+  "pid": "P46",
+  "cls": "B",
+  "where": "S4 Text, P2 (SI PDF p. 39)",
+  "units": [
+   "C149",
+   "C150"
+  ],
+  "file": "manuscript/si/S4_Text.md",
+  "current": "| P2 Distortion, slice-timing and motion correction | not applicable | Timmermann et al. (2023); Singleton et al. (2025). |",
+  "proposed": "| P2 Distortion, slice-timing and motion correction | not applicable | Slice-timing and motion correction: Timmermann et al. (2023); Singleton et al. (2025); distortion correction is not described. |",
+  "reason": "Distortion correction is not mentioned in either article."
+ },
+ {
+  "pid": "P47",
+  "cls": "B",
+  "where": "S4 Text, Items not reported (SI PDF p. 41)",
+  "units": [
+   "C157"
+  ],
+  "file": "manuscript/si/S4_Text.md",
+  "current": "D5 demographics of the 14 analysed subjects (available for the 20 recruited in Timmermann et al., 2023; not carried by the derivatives); the participant instructions for the resting-state session (Timmermann et al., 2023); every acquisition parameter beyond field strength, TR and the number of volumes (Timmermann et al., 2023);",
+  "proposed": "D5 demographics of the 14 analysed subjects (age and sex are given for the 20 who completed the study in Timmermann et al., 2023; not carried by the derivatives); the participant instructions for the resting-state session (Timmermann et al., 2023); every acquisition parameter beyond field strength, TR and the number of volumes (Timmermann et al., 2023, give TE, flip angle, voxel size, slices and gap; FOV, matrix, acceleration, phase encoding and the structural parameters are not reported by the source);",
+  "reason": "As P41 and P43–P44."
+ },
+ {
+  "pid": "P48",
+  "cls": "C",
+  "where": "Data and code availability (main PDF p. 20, line 491)",
+  "units": [
+   "C075"
+  ],
+  "file": "manuscript/draft_v2.md",
+  "current": "the release carries no licence file,",
+  "proposed": "the release carries no licence of its own (its three licence files belong to third-party plotting functions it bundles),",
+  "reason": "Found on 27 September; recorded in b32/external_checks_2026-09-27.md."
+ },
+ {
+  "pid": "P49",
+  "cls": "C",
+  "where": "README.md, line 116",
+  "units": [],
+  "file": "README.md",
+  "current": "The source repository carries no licence file, and no",
+  "proposed": "The source repository carries no licence of its own (its three licence files belong to third-party plotting functions it bundles), and no",
+  "reason": "As P48."
+ },
+ {
+  "pid": "P50",
+  "cls": "C",
+  "where": "References, phyid (main PDF p. 23, line 583)",
+  "units": [
+   "C062"
+  ],
+  "file": "manuscript/draft_v2.md",
+  "current": "(merge of pull request #4, 13 March 2026;",
+  "proposed": "(merge of pull request #4, 14 March 2026;",
+  "reason": "The pinned commit 6c5f2e9 is dated 2026-03-14 12:44:53 +0000; 13 March is the date of the merged change."
+ }
+]

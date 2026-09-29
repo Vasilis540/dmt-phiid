@@ -1,0 +1,14 @@
+ok    partB16b_whitened_spectrum.py l. 56–92  <-  partB16_prewhiten.py l. 63–99 (found)
+ok    partB17b_calibration_filtered.py l. 154–186  <-  partB17_calibration.py l. 92–124 (found)
+ok    partB22_aligned_directed.py l. 101–123  <-  partB15_directed_crosslag.py l. 70–92
+ok    partB23_diagnostic_alternatives.py l. 157–161  <-  partB19_exchange_rates.py l. 75–79
+ok    partB23_diagnostic_alternatives.py l. 182–204  <-  partB15_directed_crosslag.py l. 70–92
+ok    partB23_diagnostic_alternatives.py l. 209–238  <-  partB6_ccs_definition.py l. 51–80
+ok    partB23_diagnostic_alternatives.py l. 243–262  <-  partB17_calibration.py l. 67–86
+ok    partB24_bandpassed_expectations.py l. 94–101  <-  partB17b_calibration_filtered.py l. 81–88
+ok    partB24_bandpassed_expectations.py l. 106–121  <-  partB17b_calibration_filtered.py l. 97–112
+ok    partB24_bandpassed_expectations.py l. 126–141  <-  partB17b_calibration_filtered.py l. 135–150
+ok    partB24_bandpassed_expectations.py l. 146–178  <-  partB17b_calibration_filtered.py l. 154–186
+ok    partB24_bandpassed_expectations.py l. 183–197  <-  partB15_directed_crosslag.py l. 78–92
+ok    partB25_binarised.py l. 146–171  <-  partB6_ccs_definition.py l. 51–76
+13 of 13 copies equal their sources

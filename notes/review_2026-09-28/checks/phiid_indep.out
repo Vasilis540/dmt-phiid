@@ -1,0 +1,20 @@
+sts=2S-C               max |dev| = 4.4e-16
+xtx=S-C                max |dev| = 8.7e-17
+rts=S-C                max |dev| = 4.4e-16
+xts=-(S-C)             max |dev| = 3.3e-16
+rtr=C                  max |dev| = 5.6e-17
+zero atoms             max |dev| = 0.0e+00
+sts-(xtx+yty)=rtr      max |dev| = 5.0e-16
+TDMI=2S                max |dev| = 2.2e-16
+aggregate=S            max |dev| = 4.4e-16
+d sts/d r1 at (0.85,0.25): 6.070488750786751
+d sts/d q  at (0.85,0.25): -0.18916707600347138
+q=0 ax=0.8 ay=0.9: sts-2min(S) = 0.0e+00, rtr = 0.0e+00
+q=0 ax=0.85 ay=0.86: sts-2min(S) = -2.2e-16, rtr = 0.0e+00
+q=0 ax=0.6 ay=0.95: sts-2min(S) = -5.6e-17, rtr = 0.0e+00
+asym 0.004: sts-(xtx+yty) = +0.01097
+asym 0.006: sts-(xtx+yty) = +0.00490
+asym 0.008: sts-(xtx+yty) = -0.00116
+asym 0.010: sts-(xtx+yty) = -0.00723
+asym 0.012: sts-(xtx+yty) = -0.01329
+sts change for 0.01 asymmetry: -0.03033160017592862

@@ -1,0 +1,8 @@
+homogeneous filter, W = 30: 560,000 substituted matrices, 115 not positive definite; residual by rule (1) -0.088518 (-8.5121 %); over the pairs where both exist -0.088440 (-8.5040 %)
+homogeneous filter, W = 60: 280,000 substituted matrices, 0 not positive definite; residual by rule (1) -0.037317 (-3.0961 %); over the pairs where both exist -0.037317 (-3.0961 %)
+homogeneous filter, W = 840: 20,000 substituted matrices, 0 not positive definite; residual by rule (1) -0.004543 (-0.3355 %); over the pairs where both exist -0.004543 (-0.3355 %)
+cell DMT pre (W = 60): 150,000 substituted matrices, 0 not positive definite; residual by rule (1) -0.035349 (-2.9867 %); over the pairs where both exist -0.035349 (-2.9867 %)
+cell DMT post (W = 60): 150,000 substituted matrices, 0 not positive definite; residual by rule (1) -0.031286 (-2.7737 %); over the pairs where both exist -0.031286 (-2.7737 %)
+cell PCB pre (W = 60): 150,000 substituted matrices, 0 not positive definite; residual by rule (1) -0.035023 (-3.0012 %); over the pairs where both exist -0.035023 (-3.0012 %)
+cell PCB post (W = 60): 150,000 substituted matrices, 0 not positive definite; residual by rule (1) -0.036361 (-3.0241 %); over the pairs where both exist -0.036361 (-3.0241 %)
+null residual DiD +0.005400

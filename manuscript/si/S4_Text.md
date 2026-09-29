@@ -8,9 +8,9 @@ Supporting information for the paper "The Gaussian-MMI synergy atom of integrate
 |---|---|---|
 | D1 Number of subjects analysed | reported | Methods, Dataset: fourteen subjects, each with a DMT run and a placebo run; N = 14 in every inference. |
 | D2 Sample size determination | not applicable | Secondary analysis of a released dataset; the sample is the 14 subjects the data authors retained. No power analysis was possible or performed; Limitations states "One dataset, one drug, one parcellation, N = 14". |
-| D3 Sampling frame and recruitment | not applicable | Reported by Timmermann et al. (2023). |
+| D3 Sampling frame and recruitment | not applicable | Timmermann et al. (2023) report the population (healthy volunteers with previous psychedelic experience) and the screening visit; how participants were recruited is not described. |
 | D4 Inclusion and exclusion criteria | not applicable (recruitment); reported (analysis) | Recruitment criteria: Timmermann et al. (2023). Exclusions at the data-release stage: Methods, Dataset — "six of twenty excluded for head movement by Singleton et al., 2025". No subject was excluded by this study. |
-| D5 Demographics (age, sex, handedness) | not reported | Not stated in this paper for the 14 analysed subjects; the derivatives carry no demographic fields. Timmermann et al. (2023) report the demographics of the 20 recruited participants. |
+| D5 Demographics (age, sex, handedness) | not reported | Not stated in this paper for the 14 analysed subjects; the derivatives carry no demographic fields. Timmermann et al. (2023) report age and sex of the 20 participants who completed all study visits; handedness is not reported. |
 | D6 Task / paradigm specification | reported | Methods, Dataset and S1 Text: continuous task-free session of 840 TRs, intravenous injection at TR 240 (20 mg DMT fumarate over 30 s); placebo run of the same form; intensity ratings (once per 30 TRs) collected in a later session of the same day and used in no main-text result. Instructions to participants (eyes closed or open) are not restated here: Timmermann et al. (2023). |
 | D7 Design timing and event structure | reported | Methods, Inference: pre-injection windows 1–4, post windows 6–14 (primary), window 5 excluded; W = 60 TRs (2 min) per window; the rating bins of 30 TRs are in S1 Text. |
 | D8 Number of runs and run order | reported | Methods, Dataset: one DMT run and one placebo run per subject (order and blinding as in Timmermann et al., 2023, not restated; S1 Text gives the counterbalancing). |
@@ -20,10 +20,10 @@ Supporting information for the paper "The Gaussian-MMI synergy atom of integrate
 
 | Item | Status | Where / what |
 |---|---|---|
-| A1 Subject preparation (head restraint, mock scanning, instructions) | not applicable | Timmermann et al. (2023). |
+| A1 Subject preparation (head restraint, mock scanning, instructions) | not applicable | Instructions (eyes closed, with an eye mask): Timmermann et al. (2023); head restraint and mock scanning are not described. |
 | A2 MRI system (vendor, model, field strength, coil) | not applicable; partly reported | S1 Text gives the field strength (3 T) and Methods, Dataset the TR (2 s), as stated by the data authors; vendor, model and coil: Timmermann et al. (2023). |
-| A3 Pulse sequence and parameters (TE, flip angle, FOV, matrix, voxel size, slices, acceleration, phase encoding, number of volumes) | not applicable; partly reported | Number of volumes (840) and TR (2 s): Methods, Dataset. All other parameters: Timmermann et al. (2023). |
-| A4 Structural acquisition | not applicable | Timmermann et al. (2023). |
+| A3 Pulse sequence and parameters (TE, flip angle, FOV, matrix, voxel size, slices, acceleration, phase encoding, number of volumes) | not applicable; partly reported | Number of volumes (840) and TR (2 s): Methods, Dataset. TE, flip angle, voxel size, slices and gap: Timmermann et al. (2023); FOV, matrix, acceleration and phase-encoding direction are not reported by the source. |
+| A4 Structural acquisition | not applicable | Timmermann et al. (2023) state that T1-weighted structural images were acquired; their acquisition parameters are not reported. |
 | A5 Physiological recording (cardiac, respiratory) and EEG | not applicable | Simultaneous EEG was recorded by the source study (Timmermann et al., 2023); an HRF-convolved EEG Lempel–Ziv regressor is released with the data and is used only in the original pre-specified analysis (S1 Text, S6 Table), not in the main text. |
 | A6 Preliminary quality control (motion, incidental findings) | not applicable; partly reported | Exclusion of six subjects for head movement by the data authors: Methods, Dataset. Framewise displacement per TR is released with the data and used for motion control here (Methods, Inference). |
 
@@ -31,8 +31,8 @@ Supporting information for the paper "The Gaussian-MMI synergy atom of integrate
 
 | Item | Status | Where / what |
 |---|---|---|
-| P1 Preprocessing software and versions | not applicable | Timmermann et al. (2023); Singleton et al. (2025). Not restated. |
-| P2 Distortion, slice-timing and motion correction | not applicable | Timmermann et al. (2023); Singleton et al. (2025). |
+| P1 Preprocessing software and versions | not applicable | Software: Timmermann et al. (2023); Singleton et al. (2025); neither gives versions. |
+| P2 Distortion, slice-timing and motion correction | not applicable | Slice-timing and motion correction: Timmermann et al. (2023); Singleton et al. (2025); distortion correction is not described. |
 | P3 Intra- and inter-subject registration, template | not applicable | Timmermann et al. (2023); Singleton et al. (2025). The parcellation is applied in MNI space by the data authors. |
 | P4 Spatial smoothing | not applicable | Timmermann et al. (2023); Singleton et al. (2025). |
 | P5 Temporal filtering | reported | Methods, Dataset: the released series are band-limited to 0.01–0.08 Hz; the consequence for lag-1 autocorrelation (r₁ ≈ 0.82 for white noise at TR = 2 s, and r₁ ≥ 0.54 for any series confined to the band) is stated in Results 7 and S1 Text. |
@@ -52,7 +52,7 @@ Supporting information for the paper "The Gaussian-MMI synergy atom of integrate
 | S5 Multiple-comparison handling | reported | Methods, The primary contrast and the exploratory analyses: no correction; every quantity but the primary contrast is exploratory and reported without threshold language; the rows of S17 Table (932 quantities); no weighting rule (withdrawn; S5 Text §2). Exploratory regional FDR (BH) is in S1 Text (S3 Table). |
 | S6 Pre-specification and deviations | reported | Methods, Pre-registration and deviations; S5 Text; record `manuscript/analysis_record.md`; `manuscript/prespecification_summary.md`; S19 Table lists every recorded prediction with its outcome and the post hoc computations the paper quotes; every post hoc or review computation is labelled at first mention. |
 | S7 Functional-connectivity / network definition | reported | Methods, Estimator: nodes are the 115 parcels, "edges" are the 6,555 region pairs, quantities are whole-brain pair means of ΦID atoms; Results 1 states the per-pair operating point. |
-| S8 Software and versions | reported | S1 Text (software versions): Python 3.12.3, NumPy 2.5.3, SciPy 1.18.1, Matplotlib 3.11.1; `phyid` at commit 6c5f2e9d… (S5 Text §6; main text, References); `requirements.lock.txt`; seed 20261120 throughout (Methods, Inference). |
+| S8 Software and versions | reported | S1 Text (software versions): Python 3.12.3, NumPy 2.5.3, SciPy 1.18.1, pandas 3.0.5, h5py 3.16.0, Matplotlib 3.11.1; `phyid` at commit 6c5f2e9d… (S5 Text §6; main text, References); `requirements.lock.txt`, which also pins joblib 1.6.0; rsHRF 1.7.0 for the deconvolution, not in the lock file (S2 Text); no MATLAB code run; seed 20261120 throughout (Methods, Inference); the repository's tests and continuous-integration workflow (main text, Data and code availability). |
 | S9 Simulations and null models | reported | Methods, The AR(1)-substituted estimate and its calibration; S1 Text; S3 Text: VAR(1) bias check (2,000 replicate windows per cell; S1 Text; S3 Text §6), the calibration on both generators (S10 Table), the finite-sample null (a review computation; S3 Text §6), the sts-matched null (S3 Text §6; S16 Table), the coupled family (S3 Text §3); each with its provenance. |
 
 ## R. Results reporting
@@ -80,7 +80,7 @@ Supporting information for the paper "The Gaussian-MMI synergy atom of integrate
 
 ## Items not reported in this paper, collected
 
-D5 demographics of the 14 analysed subjects (available for the 20 recruited in Timmermann et al., 2023; not carried by the derivatives); the participant instructions for the resting-state session (Timmermann et al., 2023); every acquisition parameter beyond field strength, TR and the number of volumes (Timmermann et al., 2023); every image-preprocessing step beyond the band-pass, the global-signal variants and the parcellation (Timmermann et al., 2023; Singleton et al., 2025). None of these was available to, or altered by, this analysis.
+D5 demographics of the 14 analysed subjects (age and sex are given for the 20 who completed the study in Timmermann et al., 2023; not carried by the derivatives); the participant instructions for the resting-state session (Timmermann et al., 2023); every acquisition parameter beyond field strength, TR and the number of volumes (Timmermann et al., 2023, give TE, flip angle, voxel size, slices and gap; FOV, matrix, acceleration, phase encoding and the structural parameters are not reported by the source); every image-preprocessing step beyond the band-pass, the global-signal variants and the parcellation (Timmermann et al., 2023; Singleton et al., 2025). None of these was available to, or altered by, this analysis.
 
 ## Reference
 

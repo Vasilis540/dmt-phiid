@@ -1,0 +1,1 @@
+B26 SELF-TEST: 4 sites; atoms_from_corr 52 matrices (2 not PD, NaN now; before B26 their sts was -0.2941 to -0.2794); _logdets 52 (2); PairPhiID 10 (0); the call that held them recorded; the child: two sites on one line, the step's exit message and status passed through; 0 failed

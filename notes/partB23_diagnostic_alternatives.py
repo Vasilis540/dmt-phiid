@@ -409,7 +409,8 @@ def analyse(X, Y, Xo, Yo, ok):
     s_same = np.sign(0.5 * (qm[:, 0, 1] + qm[:, 2, 3])); s_other = np.sign(0.5 * (qo[:, 0, 1] + qo[:, 2, 3]))
     rs = lambda v: v.reshape(T // W, n)
     per = {"observed sts": rs(obs), "AR(1)-substituted sts": rs(base), "residual": rs(obs - base), "r₁": rs(0.5 * (ax + ay)),
-           "A_other": rs(sym) * s_other[None], "A_same": rs(sym) * s_same[None], "D": rs(r_anti)}
+           "A_other": rs(sym) * s_other[None], "A_same": rs(sym) * s_same[None],
+           "D": rs(np.where(np.isfinite(r_sym) & np.isfinite(r_both), r_anti, nan))}      # B26: D where the pair-window's four matrices are positive definite
     Bw = np.array([np.polyfit(rs(q)[w][ok], rs(sym)[w][ok], 1)[0] for w in range(T // W)])
     return {k: v.mean(0) for k, v in per.items()}, Bw
 
@@ -436,10 +437,22 @@ for c in (0.02, -0.02):
     Sg = np.stack([np.stack([np.ones(N_B), qb], 1), np.stack([qb, np.ones(N_B)], 1)], 1)
     CONDS.append((f"(a4) c = {c:+.02f}, B17's construction", var1_corr4_batch(Am, Sg)))
 KEYS = ("observed sts", "AR(1)-substituted sts", "residual", "r₁", "A_other", "A_same", "D")
+
+
+def nleft(m, *vals):
+    """" [k]": the k pairs of m left out of a mean because the quantity does not exist for them, one of their windows'
+    matrices not being positive definite (B26); "" if there are none."""
+    k = int((m & ~np.all([np.isfinite(v) for v in vals], axis=0)).sum())
+    return f" [{k}]" if k else ""
+
+
 lines += ["## (b) W = 60 simulation: changes against the unperturbed pairs (common random numbers; mean ± SE)", "",
-          f"{N_B} pairs, q ~ N(0, 0.3424) clipped to ±0.8, a = 0.85; runs of {T} samples after a burn-in of {BURN}; 14 windows of {W}; the other run an independent realisation. SE over pairs of each pair's 14-window mean; B's SE over the 14 windows.", ""]
+          f"{N_B} pairs, q ~ N(0, 0.3424) clipped to ±0.8, a = 0.85; runs of {T} samples after a burn-in of {BURN}; 14 windows of {W}; the other run an independent realisation. SE over pairs of each pair's 14-window mean; B's SE over the 14 windows. "
+          "A number in brackets after a mean: the pairs left out of it because the quantity does not exist for them, one of their windows' "
+          "matrices not being positive definite (B26); the column 'pairs excluded' counts the pairs left out of every quantity, and the last "
+          "column divides the residual's change by r₁'s over the residual's pairs.", ""]
 per0, B0, ok0 = run_condition(base_b)
-lines += ["Unperturbed AR(1) pairs, levels: " + "; ".join(f"{k} {per0[k][ok0].mean():+.5f}" for k in KEYS) + f"; B {B0.mean():+.5f}.", "",
+lines += ["Unperturbed AR(1) pairs, levels: " + "; ".join(f"{k} {np.nanmean(per0[k][ok0]):+.5f}" + nleft(ok0, per0[k]) for k in KEYS) + f"; B {B0.mean():+.5f}.", "",
           "| condition | pairs excluded | " + " | ".join(f"Δ {k}" for k in KEYS) + " | Δ B | residual change / Δr₁ |", "|" + "---|" * (len(KEYS) + 4)]
 
 
@@ -447,12 +460,14 @@ def change_row(lab, per, Bw, ok, per_ref, B_ref, ok_ref, part="b"):
     m = ok & ok_ref
     cells = []
     for k in KEYS:
-        d = per[k][m] - per_ref[k][m]
-        cells.append(f"{d.mean():+.5f} ± {d.std(ddof=1) / np.sqrt(m.sum()):.5f}")
-        rec(part, lab, 0.85, f"Δ {k}", float(d.mean()), float(d.std(ddof=1) / np.sqrt(m.sum())))
+        mk = m & np.isfinite(per[k]) & np.isfinite(per_ref[k])                     # B26: the pairs where the quantity exists in both
+        d = per[k][mk] - per_ref[k][mk]
+        cells.append(f"{d.mean():+.5f} ± {d.std(ddof=1) / np.sqrt(mk.sum()):.5f}" + nleft(m, per[k], per_ref[k]))
+        rec(part, lab, 0.85, f"Δ {k}", float(d.mean()), float(d.std(ddof=1) / np.sqrt(mk.sum())))
     dB = Bw - B_ref
     rec(part, lab, 0.85, "Δ B", float(dB.mean()), float(dB.std(ddof=1) / np.sqrt(dB.size)))
-    dres = float((per["residual"][m] - per_ref["residual"][m]).mean()); dr1 = float((per["r₁"][m] - per_ref["r₁"][m]).mean())
+    mr = m & np.isfinite(per["residual"]) & np.isfinite(per_ref["residual"])
+    dres = float((per["residual"][mr] - per_ref["residual"][mr]).mean()); dr1 = float((per["r₁"][mr] - per_ref["r₁"][mr]).mean())
     ratio = dres / dr1 if abs(dr1) > 0 else nan
     rec(part, lab, 0.85, "residual change / Δr₁", ratio)
     return f"| {lab} | {int((~m).sum())} | " + " | ".join(cells) + f" | {dB.mean():+.5f} ± {dB.std(ddof=1) / np.sqrt(dB.size):.5f} | {ratio:+.3f} |"
@@ -473,7 +488,7 @@ def run_components(a_s, a_n, lam_):
 
 
 per5, B5, ok5 = run_components(a_s_b, a_n_b, lam_b)
-lines.append(f"| (a5) base, against the unperturbed AR(1) pairs (levels differ by construction) | {int((~ok0).sum())} | " + " | ".join(f"{(per5[k] - per0[k])[ok0].mean():+.5f}" for k in KEYS) + f" | {(B5 - B0).mean():+.5f} | — |")
+lines.append(f"| (a5) base, against the unperturbed AR(1) pairs (levels differ by construction) | {int((~ok0).sum())} | " + " | ".join(f"{np.nanmean((per5[k] - per0[k])[ok0]):+.5f}" + nleft(ok0, per5[k], per0[k]) for k in KEYS) + f" | {(B5 - B0).mean():+.5f} | — |")
 for lab, args in (("(a5) Δa_s = −0.03", (a_s_b - 0.03, a_n_b, lam_b)), ("(a5) λ → 0.9λ", (a_s_b, a_n_b, 0.9 * lam_b))):
     per, Bw, ok = run_components(*args)
     lines.append(change_row(lab + " (against the (a5) base)", per, Bw, ok, per5, B5, ok5))
