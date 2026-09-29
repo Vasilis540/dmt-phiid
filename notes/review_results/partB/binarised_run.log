@@ -1,0 +1,172 @@
+git=b36178d
+python 3.12.3, numpy 2.5.3, scipy 1.18.1, phyid 0+untagged.8.g6c5f2e9
+(a) the limit: 24 points (21 s); reductions: 3-variable 5.55e-17, 4-variable 5.33e-08
+    the check against phyid at the operating point (29 s)
+/home/claude/dmt-phiid/.venv/lib/python3.12/site-packages/phyid/measures.py:52: RuntimeWarning: divide by zero encountered in log2
+  entropy_dict = {comb: -np.log2(p_) for comb, p_ in zip(combs, p)}
+(b) T = 160 done (134 s)
+(b) T = 300 done (263 s)
+(b) T = 840 done (482 s)
+## The facts the pre-run entry's predictions read
+
+- (a) steps of MMI sts and MMI EC along r₁ (7 per curve, 3 values of q) that rise in the limit: 42 of 42.
+- (b) at (0.85, 0.25): ∂(MMI sts)/∂r₁ = +1.8153, ∂(MMI sts)/∂q = -0.1496; per-unit ratio 12.13; per-SD ratio 1.76.
+- (c) steps of the replicate means of MMI sts and MMI EC along r₁ (7 per curve, 3 values of q, 3 lengths) that rise: 126 of 126.
+
+## Checks
+
+| check | largest difference | tolerance | passed |
+|---|---|---|---|
+| the copy of notes/partB6_ccs_definition.py l. 51–76 is verbatim | 0 | 0 | yes |
+| pattern probabilities positive at (0.6, 0.1) | 0 | 0 | yes |
+| pattern probabilities sum to 1 at (0.6, 0.1) | 0 | 1e-13 | yes |
+| pattern marginals at (0.6, 0.1) | 0 | 1e-13 | yes |
+| I(x_t; x_t+1) = 1 − H2(arccos(a)/π) at (0.6, 0.1) | 1.67e-16 | 1e-12 | yes |
+| the family's symmetries (xtx = yty, rts = str, stx = sty, xts = yts) at (0.6, 0.1) | 2.78e-17 | 1e-12 | yes |
+| pattern probabilities positive at (0.65, 0.1) | 0 | 0 | yes |
+| pattern probabilities sum to 1 at (0.65, 0.1) | 0 | 1e-13 | yes |
+| pattern marginals at (0.65, 0.1) | 0 | 1e-13 | yes |
+| I(x_t; x_t+1) = 1 − H2(arccos(a)/π) at (0.65, 0.1) | 5.55e-17 | 1e-12 | yes |
+| the family's symmetries (xtx = yty, rts = str, stx = sty, xts = yts) at (0.65, 0.1) | 0 | 1e-12 | yes |
+| pattern probabilities positive at (0.7, 0.1) | 0 | 0 | yes |
+| pattern probabilities sum to 1 at (0.7, 0.1) | 0 | 1e-13 | yes |
+| pattern marginals at (0.7, 0.1) | 0 | 1e-13 | yes |
+| I(x_t; x_t+1) = 1 − H2(arccos(a)/π) at (0.7, 0.1) | 2.78e-17 | 1e-12 | yes |
+| the family's symmetries (xtx = yty, rts = str, stx = sty, xts = yts) at (0.7, 0.1) | 5.55e-17 | 1e-12 | yes |
+| pattern probabilities positive at (0.75, 0.1) | 0 | 0 | yes |
+| pattern probabilities sum to 1 at (0.75, 0.1) | 2.22e-16 | 1e-13 | yes |
+| pattern marginals at (0.75, 0.1) | 0 | 1e-13 | yes |
+| I(x_t; x_t+1) = 1 − H2(arccos(a)/π) at (0.75, 0.1) | 3.89e-16 | 1e-12 | yes |
+| the family's symmetries (xtx = yty, rts = str, stx = sty, xts = yts) at (0.75, 0.1) | 2.78e-17 | 1e-12 | yes |
+| pattern probabilities positive at (0.8, 0.1) | 0 | 0 | yes |
+| pattern probabilities sum to 1 at (0.8, 0.1) | 0 | 1e-13 | yes |
+| pattern marginals at (0.8, 0.1) | 0 | 1e-13 | yes |
+| I(x_t; x_t+1) = 1 − H2(arccos(a)/π) at (0.8, 0.1) | 1.11e-16 | 1e-12 | yes |
+| the family's symmetries (xtx = yty, rts = str, stx = sty, xts = yts) at (0.8, 0.1) | 5.55e-17 | 1e-12 | yes |
+| pattern probabilities positive at (0.85, 0.1) | 0 | 0 | yes |
+| pattern probabilities sum to 1 at (0.85, 0.1) | 0 | 1e-13 | yes |
+| pattern marginals at (0.85, 0.1) | 0 | 1e-13 | yes |
+| I(x_t; x_t+1) = 1 − H2(arccos(a)/π) at (0.85, 0.1) | 0 | 1e-12 | yes |
+| the family's symmetries (xtx = yty, rts = str, stx = sty, xts = yts) at (0.85, 0.1) | 5.55e-17 | 1e-12 | yes |
+| pattern probabilities positive at (0.9, 0.1) | 0 | 0 | yes |
+| pattern probabilities sum to 1 at (0.9, 0.1) | 0 | 1e-13 | yes |
+| pattern marginals at (0.9, 0.1) | 0 | 1e-13 | yes |
+| I(x_t; x_t+1) = 1 − H2(arccos(a)/π) at (0.9, 0.1) | 1.11e-16 | 1e-12 | yes |
+| the family's symmetries (xtx = yty, rts = str, stx = sty, xts = yts) at (0.9, 0.1) | 1.11e-16 | 1e-12 | yes |
+| pattern probabilities positive at (0.95, 0.1) | 0 | 0 | yes |
+| pattern probabilities sum to 1 at (0.95, 0.1) | 0 | 1e-13 | yes |
+| pattern marginals at (0.95, 0.1) | 0 | 1e-13 | yes |
+| I(x_t; x_t+1) = 1 − H2(arccos(a)/π) at (0.95, 0.1) | 2.22e-16 | 1e-12 | yes |
+| the family's symmetries (xtx = yty, rts = str, stx = sty, xts = yts) at (0.95, 0.1) | 2.22e-16 | 1e-12 | yes |
+| pattern probabilities positive at (0.6, 0.25) | 0 | 0 | yes |
+| pattern probabilities sum to 1 at (0.6, 0.25) | 0 | 1e-13 | yes |
+| pattern marginals at (0.6, 0.25) | 0 | 1e-13 | yes |
+| I(x_t; x_t+1) = 1 − H2(arccos(a)/π) at (0.6, 0.25) | 1.39e-16 | 1e-12 | yes |
+| the family's symmetries (xtx = yty, rts = str, stx = sty, xts = yts) at (0.6, 0.25) | 2.78e-17 | 1e-12 | yes |
+| pattern probabilities positive at (0.65, 0.25) | 0 | 0 | yes |
+| pattern probabilities sum to 1 at (0.65, 0.25) | 0 | 1e-13 | yes |
+| pattern marginals at (0.65, 0.25) | 0 | 1e-13 | yes |
+| I(x_t; x_t+1) = 1 − H2(arccos(a)/π) at (0.65, 0.25) | 5.55e-17 | 1e-12 | yes |
+| the family's symmetries (xtx = yty, rts = str, stx = sty, xts = yts) at (0.65, 0.25) | 5.55e-17 | 1e-12 | yes |
+| pattern probabilities positive at (0.7, 0.25) | 0 | 0 | yes |
+| pattern probabilities sum to 1 at (0.7, 0.25) | 0 | 1e-13 | yes |
+| pattern marginals at (0.7, 0.25) | 0 | 1e-13 | yes |
+| I(x_t; x_t+1) = 1 − H2(arccos(a)/π) at (0.7, 0.25) | 2.78e-17 | 1e-12 | yes |
+| the family's symmetries (xtx = yty, rts = str, stx = sty, xts = yts) at (0.7, 0.25) | 1.67e-16 | 1e-12 | yes |
+| pattern probabilities positive at (0.75, 0.25) | 0 | 0 | yes |
+| pattern probabilities sum to 1 at (0.75, 0.25) | 0 | 1e-13 | yes |
+| pattern marginals at (0.75, 0.25) | 0 | 1e-13 | yes |
+| I(x_t; x_t+1) = 1 − H2(arccos(a)/π) at (0.75, 0.25) | 1.11e-16 | 1e-12 | yes |
+| the family's symmetries (xtx = yty, rts = str, stx = sty, xts = yts) at (0.75, 0.25) | 2.22e-16 | 1e-12 | yes |
+| pattern probabilities positive at (0.8, 0.25) | 0 | 0 | yes |
+| pattern probabilities sum to 1 at (0.8, 0.25) | 0 | 1e-13 | yes |
+| pattern marginals at (0.8, 0.25) | 0 | 1e-13 | yes |
+| I(x_t; x_t+1) = 1 − H2(arccos(a)/π) at (0.8, 0.25) | 1.11e-16 | 1e-12 | yes |
+| the family's symmetries (xtx = yty, rts = str, stx = sty, xts = yts) at (0.8, 0.25) | 1.67e-16 | 1e-12 | yes |
+| pattern probabilities positive at (0.85, 0.25) | 0 | 0 | yes |
+| pattern probabilities sum to 1 at (0.85, 0.25) | 0 | 1e-13 | yes |
+| pattern marginals at (0.85, 0.25) | 0 | 1e-13 | yes |
+| I(x_t; x_t+1) = 1 − H2(arccos(a)/π) at (0.85, 0.25) | 1.67e-16 | 1e-12 | yes |
+| the family's symmetries (xtx = yty, rts = str, stx = sty, xts = yts) at (0.85, 0.25) | 5.55e-17 | 1e-12 | yes |
+| pattern probabilities positive at (0.9, 0.25) | 0 | 0 | yes |
+| pattern probabilities sum to 1 at (0.9, 0.25) | 2.22e-16 | 1e-13 | yes |
+| pattern marginals at (0.9, 0.25) | 0 | 1e-13 | yes |
+| I(x_t; x_t+1) = 1 − H2(arccos(a)/π) at (0.9, 0.25) | 1.67e-16 | 1e-12 | yes |
+| the family's symmetries (xtx = yty, rts = str, stx = sty, xts = yts) at (0.9, 0.25) | 0 | 1e-12 | yes |
+| pattern probabilities positive at (0.95, 0.25) | 0 | 0 | yes |
+| pattern probabilities sum to 1 at (0.95, 0.25) | 4.44e-16 | 1e-13 | yes |
+| pattern marginals at (0.95, 0.25) | 0 | 1e-13 | yes |
+| I(x_t; x_t+1) = 1 − H2(arccos(a)/π) at (0.95, 0.25) | 5.55e-16 | 1e-12 | yes |
+| the family's symmetries (xtx = yty, rts = str, stx = sty, xts = yts) at (0.95, 0.25) | 2.22e-16 | 1e-12 | yes |
+| pattern probabilities positive at (0.6, 0.5) | 0 | 0 | yes |
+| pattern probabilities sum to 1 at (0.6, 0.5) | 0 | 1e-13 | yes |
+| pattern marginals at (0.6, 0.5) | 0 | 1e-13 | yes |
+| I(x_t; x_t+1) = 1 − H2(arccos(a)/π) at (0.6, 0.5) | 8.33e-17 | 1e-12 | yes |
+| the family's symmetries (xtx = yty, rts = str, stx = sty, xts = yts) at (0.6, 0.5) | 1.25e-16 | 1e-12 | yes |
+| pattern probabilities positive at (0.65, 0.5) | 0 | 0 | yes |
+| pattern probabilities sum to 1 at (0.65, 0.5) | 0 | 1e-13 | yes |
+| pattern marginals at (0.65, 0.5) | 0 | 1e-13 | yes |
+| I(x_t; x_t+1) = 1 − H2(arccos(a)/π) at (0.65, 0.5) | 2.78e-17 | 1e-12 | yes |
+| the family's symmetries (xtx = yty, rts = str, stx = sty, xts = yts) at (0.65, 0.5) | 1.94e-16 | 1e-12 | yes |
+| pattern probabilities positive at (0.7, 0.5) | 0 | 0 | yes |
+| pattern probabilities sum to 1 at (0.7, 0.5) | 1.11e-16 | 1e-13 | yes |
+| pattern marginals at (0.7, 0.5) | 5.55e-17 | 1e-13 | yes |
+| I(x_t; x_t+1) = 1 − H2(arccos(a)/π) at (0.7, 0.5) | 3.61e-16 | 1e-12 | yes |
+| the family's symmetries (xtx = yty, rts = str, stx = sty, xts = yts) at (0.7, 0.5) | 2.78e-17 | 1e-12 | yes |
+| pattern probabilities positive at (0.75, 0.5) | 0 | 0 | yes |
+| pattern probabilities sum to 1 at (0.75, 0.5) | 0 | 1e-13 | yes |
+| pattern marginals at (0.75, 0.5) | 0 | 1e-13 | yes |
+| I(x_t; x_t+1) = 1 − H2(arccos(a)/π) at (0.75, 0.5) | 0 | 1e-12 | yes |
+| the family's symmetries (xtx = yty, rts = str, stx = sty, xts = yts) at (0.75, 0.5) | 5.55e-17 | 1e-12 | yes |
+| pattern probabilities positive at (0.8, 0.5) | 0 | 0 | yes |
+| pattern probabilities sum to 1 at (0.8, 0.5) | 0 | 1e-13 | yes |
+| pattern marginals at (0.8, 0.5) | 0 | 1e-13 | yes |
+| I(x_t; x_t+1) = 1 − H2(arccos(a)/π) at (0.8, 0.5) | 1.11e-16 | 1e-12 | yes |
+| the family's symmetries (xtx = yty, rts = str, stx = sty, xts = yts) at (0.8, 0.5) | 5.55e-17 | 1e-12 | yes |
+| pattern probabilities positive at (0.85, 0.5) | 0 | 0 | yes |
+| pattern probabilities sum to 1 at (0.85, 0.5) | 0 | 1e-13 | yes |
+| pattern marginals at (0.85, 0.5) | 0 | 1e-13 | yes |
+| I(x_t; x_t+1) = 1 − H2(arccos(a)/π) at (0.85, 0.5) | 0 | 1e-12 | yes |
+| the family's symmetries (xtx = yty, rts = str, stx = sty, xts = yts) at (0.85, 0.5) | 5.55e-17 | 1e-12 | yes |
+| pattern probabilities positive at (0.9, 0.5) | 0 | 0 | yes |
+| pattern probabilities sum to 1 at (0.9, 0.5) | 0 | 1e-13 | yes |
+| pattern marginals at (0.9, 0.5) | 0 | 1e-13 | yes |
+| I(x_t; x_t+1) = 1 − H2(arccos(a)/π) at (0.9, 0.5) | 0 | 1e-12 | yes |
+| the family's symmetries (xtx = yty, rts = str, stx = sty, xts = yts) at (0.9, 0.5) | 5.55e-17 | 1e-12 | yes |
+| pattern probabilities positive at (0.95, 0.5) | 0 | 0 | yes |
+| pattern probabilities sum to 1 at (0.95, 0.5) | 0 | 1e-13 | yes |
+| pattern marginals at (0.95, 0.5) | 0 | 1e-13 | yes |
+| I(x_t; x_t+1) = 1 − H2(arccos(a)/π) at (0.95, 0.5) | 1.11e-16 | 1e-12 | yes |
+| the family's symmetries (xtx = yty, rts = str, stx = sty, xts = yts) at (0.95, 0.5) | 2.22e-16 | 1e-12 | yes |
+| three-variable closed forms against the reduction, every grid matrix | 5.55e-17 | 1e-12 | yes |
+| four-variable reduction against Genz, every grid matrix | 5.33e-08 | 1e-06 | yes |
+| rate d(MMI sts)/dr1 at the two steps within 1 % (+ 10⁻⁶) | -0.0181 | 1e-06 | yes |
+| rate d(MMI sts)/dq at the two steps within 1 % (+ 10⁻⁶) | -0.0015 | 1e-06 | yes |
+| rate d(MMI EC)/dr1 at the two steps within 1 % (+ 10⁻⁶) | -0.00907 | 1e-06 | yes |
+| rate d(MMI EC)/dq at the two steps within 1 % (+ 10⁻⁶) | -0.000662 | 1e-06 | yes |
+| rate d(2A)/dr1 at the two steps within 1 % (+ 10⁻⁶) | -0.0186 | 1e-06 | yes |
+| rate d(2A)/dq at the two steps within 1 % (+ 10⁻⁶) | 8.33e-14 | 1e-06 | yes |
+| rate d(TDMI)/dr1 at the two steps within 1 % (+ 10⁻⁶) | -0.0184 | 1e-06 | yes |
+| rate d(TDMI)/dq at the two steps within 1 % (+ 10⁻⁶) | -0.000588 | 1e-06 | yes |
+| rate d(MMI rtr)/dr1 at the two steps within 1 % (+ 10⁻⁶) | -0.000223 | 1e-06 | yes |
+| rate d(MMI rtr)/dq at the two steps within 1 % (+ 10⁻⁶) | -0.00076 | 1e-06 | yes |
+| operating point (0.85, 0.25): phyid's local CCS atoms recomputed from its local MIs, sample by sample (series 1) | 0 | 1e-12 | yes |
+| operating point (0.85, 0.25): phyid's local CCS atoms recomputed from its local MIs, sample by sample (series 2) | 0 | 1e-12 | yes |
+| operating point (0.85, 0.25): phyid's local CCS atoms recomputed from its local MIs, sample by sample (series 3) | 2.22e-16 | 1e-12 | yes |
+| operating point (0.85, 0.25): phyid's local CCS atoms recomputed from its local MIs, sample by sample (series 4) | 0 | 1e-12 | yes |
+| operating point (0.85, 0.25): phyid's local CCS atoms recomputed from its local MIs, sample by sample (series 5) | 2.22e-16 | 1e-12 | yes |
+| operating point (0.85, 0.25): phyid's local CCS atoms recomputed from its local MIs, sample by sample (series 6) | 2.22e-16 | 1e-12 | yes |
+| operating point (0.85, 0.25): phyid's local CCS atoms recomputed from its local MIs, sample by sample (series 7) | 4.44e-16 | 1e-12 | yes |
+| operating point (0.85, 0.25): phyid's local CCS atoms recomputed from its local MIs, sample by sample (series 8) | 0 | 1e-12 | yes |
+| operating point (0.85, 0.25): phyid's local CCS atoms recomputed from its local MIs, sample by sample (series 9) | 8.88e-16 | 1e-12 | yes |
+| operating point (0.85, 0.25): phyid's local CCS atoms recomputed from its local MIs, sample by sample (series 10) | 0 | 1e-12 | yes |
+| operating point (0.85, 0.25): MMI sts of phyid at n = 100,000 within 4 SE + 2e-4 of the limit | -0.00481 | 0.0002 | yes |
+| operating point (0.85, 0.25): MMI EC of phyid at n = 100,000 within 4 SE + 2e-4 of the limit | -0.00231 | 0.0002 | yes |
+| operating point (0.85, 0.25): 2A of phyid at n = 100,000 within 4 SE + 2e-4 of the limit | -0.00434 | 0.0002 | yes |
+| operating point (0.85, 0.25): TDMI of phyid at n = 100,000 within 4 SE + 2e-4 of the limit | -0.00398 | 0.0002 | yes |
+| operating point (0.85, 0.25): MMI rtr of phyid at n = 100,000 within 4 SE + 2e-4 of the limit | -0.000963 | 0.0002 | yes |
+| phyid's local CCS atoms equal their recomputation from its local MIs, sample by sample, every replicate | 4e-15 | 1e-12 | yes |
+| the maximum-entropy fits' marginals | 9.99e-16 | 1e-12 | yes |
+
+Wall-clock 482 s.
+checks: 150, failed 0; wrote /home/claude/dmt-phiid/notes/review_results/partB/binarised_tables.md and binarised.csv; 482 s
