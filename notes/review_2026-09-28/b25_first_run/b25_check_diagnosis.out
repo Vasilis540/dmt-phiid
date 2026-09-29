@@ -1,0 +1,16 @@
+git=nogit
+python 3.12.3, numpy 2.5.3, scipy 1.18.1, phyid 0+untagged.8.g6c5f2e9
+ten series of 100,000 samples at the operating point (0.85, 0.25); each value the largest over the sixteen atoms (in the column of the knowns' means, over the sixteen knowns)
+| series | (i) as the first run's check | (ii) exact sums | (iii) sample by sample | mean of the knowns (first axis) − exact | mean of the atoms (pairwise) − exact | largest mean \|local known\| |
+|---|---|---|---|---|---|---|
+| 1 | 5.17e-13 | 5.55e-17 | 0 | 3.34e-13 | 2.78e-17 | 1.28 |
+| 2 | 4.44e-13 | 8.33e-17 | 0 | 3.05e-13 | 3.47e-18 | 1.3 |
+| 3 | 4.71e-13 | 4.16e-17 | 2.22e-16 | 3.66e-13 | 2.78e-17 | 1.27 |
+| 4 | 1.06e-12 | 5.55e-17 | 0 | 4.65e-13 | 1.39e-17 | 1.28 |
+| 5 | 5.21e-13 | 5.55e-17 | 2.22e-16 | 5.09e-13 | 1.39e-17 | 1.27 |
+| 6 | 6.01e-13 | 5.55e-17 | 2.22e-16 | 3.83e-13 | 5.55e-17 | 1.27 |
+| 7 | 3.56e-13 | 9.71e-17 | 4.44e-16 | 4.19e-13 | 5.55e-17 | 1.28 |
+| 8 | 4.37e-13 | 9.71e-17 | 0 | 4e-13 | 1.39e-17 | 1.27 |
+| 9 | 9.74e-13 | 6.94e-17 | 8.88e-16 | 3.97e-13 | 5.55e-17 | 1.29 |
+| 10 | 5.56e-13 | 1.11e-16 | 0 | 4.18e-13 | 3.47e-18 | 1.29 |
+largest over the ten series: (i) 1.06e-12; (ii) 1.11e-16; (iii) 8.88e-16; the tolerance 1e-12

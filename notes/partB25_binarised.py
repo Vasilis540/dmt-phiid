@@ -2,7 +2,9 @@
 partB25_binarised.py — B25: the binarised ΦID estimators on the symmetric AR(1) family: MMI and CCS through phyid's
 discrete path, and the CCS emergence capacity of Ince's partial information decomposition, in the long-series limit
 and at 160, 300 and 840 samples. No data.
-Pre-run entry: manuscript/analysis_record.md, "The binarised estimators on the AR(1) family (B25): pre-run entry".
+Pre-run entry: manuscript/analysis_record.md, "The binarised estimators on the AR(1) family (B25): pre-run entry";
+the first run and the correction of one check: "The binarised estimators on the AR(1) family (B25): the first run
+and the correction of one check".
 
 The family (Results 1): x, y unit-variance AR(1) processes with coefficient a (= r₁) whose innovations are correlated so
 that their lag-0 correlation is q, with no lagged interaction; the lag-1 correlation matrix of (x_t, y_t, x_{t+1},
@@ -50,8 +52,9 @@ signal once, which differs by O(1/T). Every value is converted from bits to nats
     positive, summing to 1, with the closed-form marginals; I(x_t; x_{t+1}) = 1 − H₂(arccos(a)/π) bits; the family's
     symmetries; phyid on ten series of 10⁵ samples at the operating point against the limit (within 4 SE + 2 × 10⁻⁴
     nats) and the rates at the two steps within 1 % (+ 10⁻⁶), for the quantities that are smooth on the family
-    (SMOOTH: MMI sts, MMI EC, 2A, TDMI, MMI rtr, whose MMI selections are strict or exact ties there); phyid's CCS atoms
-    equal to their recomputation from its local mutual informations under its own mask, every replicate; the
+    (SMOOTH: MMI sts, MMI EC, 2A, TDMI, MMI rtr, whose MMI selections are strict or exact ties there); phyid's local
+    CCS atoms equal to their recomputation from its local mutual informations under its own mask within 10⁻¹², sample
+    by sample (no sum over the samples enters the comparison), in the ten series and in every replicate; the
     maximum-entropy fits' marginals within 10⁻¹²; the copy of partB6's make_knowns verbatim; and the number of pattern
     values of a quantity whose sign a CCS mask tests (the nine local mutual informations, the six co-informations of the
     single-target redundancies and the double co-information) that are below 10⁻¹² in absolute value (reported: there
@@ -70,8 +73,8 @@ Outputs (notes/review_results/partB/): binarised_tables.md (its header carries t
 the sha256 of binarised.csv), binarised.csv (a first line with the commit and the time, then one row per part,
 estimator, quantity, r₁, q and T), binarised_run.log via run_all.sh's nstep.
 Run from the repository root: .venv/bin/python -u notes/partB25_binarised.py 2>&1 | tee notes/review_results/partB/binarised_run.log
-(about 15–30 minutes, an estimate: 24,000 replicates at each of the three lengths, under 25 ms each on the planning
-session's machine (--selftest times one at the longest length), and the limit and the checks a few minutes)
+(its first run took 514 s; the replicates, 24,000 at each of the three lengths, take under 25 ms each on the planning
+session's machine (--selftest times one at the longest length), the limit and the checks a few minutes)
 """
 import hashlib
 import itertools
@@ -396,7 +399,10 @@ def simulate_family(a, q, Z):
 
 
 def phyid_quantities(x, y):
-    """The finite-sample estimators (nats) of one pair of series, and the CCS recomputation check."""
+    """The finite-sample estimators (nats) of one pair of series, and the CCS recomputation check: the largest
+    difference, over the samples and the sixteen atoms, between phyid's local CCS atoms and the atoms of the local
+    knowns recomputed from its local mutual informations under its mask, compared sample by sample, so that no sum
+    over the samples enters it."""
     at_m, cr = calc_PhiID(x, y, 1, kind="discrete", redundancy="MMI")
     at_c, _ = calc_PhiID(x, y, 1, kind="discrete", redundancy="CCS")
     I = cr["I_res"]
@@ -405,8 +411,7 @@ def phyid_quantities(x, y):
     Kp, _, _ = KN_PUB(I)
     Kc, _, _ = KN_CODE(I)
     mean_p = Kp.mean(0) @ _MINV_T
-    rec_c = Kc.mean(0) @ _MINV_T
-    dev = float(np.max(np.abs(rec_c - mean_c)))
+    dev = float(np.max(np.abs(Kc @ _MINV_T - np.stack([at_c[k] for k in ATOMS], axis=-1))))
     Xb = np.c_[_binarize(x[:-1]), _binarize(y[:-1]), _binarize(x[1:]), _binarize(y[1:])]
     counts = np.zeros((2, 2, 2, 2))
     np.add.at(counts, tuple(Xb.T), 1.0)
@@ -431,7 +436,8 @@ def long_series_check(label, R4, sim, n_series=10, n=100_000, rng=None, checked=
     for s in range(n_series):
         x, y = sim(n, rng)
         v, dev = phyid_quantities(x, y)
-        check(f"{label}: phyid's CCS atoms recomputed from its local MIs (series {s + 1})", dev, 1e-12)
+        check(f"{label}: phyid's local CCS atoms recomputed from its local MIs, sample by sample (series {s + 1})", dev,
+              1e-12)
         for k in QUANTS:
             vals[k].append(v[k])
     lines = []
@@ -623,7 +629,7 @@ for T in T_GRID:
             for i in range(N_REP):
                 x, y = simulate_family(r1, q, Z[i])
                 v, dev = phyid_quantities(x, y)
-                DEVMAX = max(DEVMAX, dev)
+                DEVMAX = float(np.maximum(DEVMAX, dev))            # np.maximum keeps a NaN, which max() would drop
                 for k in QUANTS:
                     vals[k][i] = v[k]
             for k in QUANTS:
@@ -631,7 +637,8 @@ for T in T_GRID:
                 FIN[(r1, q, T, k)] = (m, se)
                 rec("b", k.split()[0], k, r1, q, T, m, se)
     print(f"(b) T = {T} done ({time.time() - t0:.0f} s)", flush=True)
-check("phyid's CCS atoms equal their recomputation from its local MIs, every replicate", DEVMAX, 1e-12)
+check("phyid's local CCS atoms equal their recomputation from its local MIs, sample by sample, every replicate", DEVMAX,
+      1e-12)
 check("the maximum-entropy fits' marginals", IPF["err"], 1e-12)
 
 

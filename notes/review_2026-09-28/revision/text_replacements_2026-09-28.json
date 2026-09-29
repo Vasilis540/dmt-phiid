@@ -557,7 +557,7 @@
   "old": "the release carries no licence file,",
   "new": "the release's repository carries no licence of its own at that commit (its three licence files belong to bundled third-party plotting functions),",
   "count": 1,
-  "why": "citation crosscheck of 28 Sep 2026, P48 (class C): Found on 27 September; recorded in b32/external_checks_2026-09-27.md. Applied with 'the release's repository ... at that commit' for 'the release': the licence field of the Zenodo record could not be read on 28 September 2026."
+  "why": "citation crosscheck of 28 Sep 2026, P48 (class C): Found on 27 September; recorded in notes/review_2026-09-28/external_checks_2026-09-27.md. Applied with 'the release's repository ... at that commit' for 'the release': the licence field of the Zenodo record could not be read on 28 September 2026."
  },
  {
   "id": "P49",

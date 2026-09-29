@@ -41,8 +41,19 @@ with its source.
   `notes/review_2026-09-25/revision/apply_replacements.py`. The record's entries carry «ENTRY_TIME» there: the writer's
   session put the date and time of the commit into the record after applying them.
 - `revision/b25_fill.py` — the text that reports B25, written from B25's outputs alone; fixed with B25's pre-run entry,
-  before B25 was run. When it runs it writes `revision/text_replacements_2026-09-28_b25.json`, the replacements it
-  applies.
+  before B25 was run, and changed after its first run, before its second (L01–L12 of
+  `revision/text_replacements_2026-09-29.json`). When it runs it writes
+  `revision/text_replacements_2026-09-28_b25.json`, the replacements it applies.
+- `revision/text_replacements_2026-09-29.json` — the replacements of the commit that follows B25's first run (record,
+  "The binarised estimators on the AR(1) family (B25): the first run and the correction of one check"): the correction
+  of the check it failed (H01–H08), the changes to `b25_fill.py` (L01–L12), the entry (E01), the bookkeeping (K01–K06)
+  and the writer's session's three notes (W01–W04), applied with the same script.
+- `b25_first_run/` — the check of B25's first run that failed: `b25_check_diagnosis.py` and its output
+  `b25_check_diagnosis.out` (the check recomputed three ways), `b25_selftest.out` (the self-test of the corrected
+  script) and `planning_runs.md` (a note on the planning session's two runs of B25 before the entry). The first run's
+  outputs are in `notes/review_results/partB/binarised_first_run/`.
+- `external_checks_2026-09-27.md` — the planning session's note of 27 September 2026 on the data release and the
+  software, which the reason of P48 cites.
 - `checks/phiid_indep.py` and `checks/phiid_indep.out` — the closed form of Results 1 re-derived by an implementation
   written from the lattice definitions alone, without `phyid` or the repository's code.
 - `checks/check_numbers.out`, `check_cells.out`, `tablecheck.out`, `wc.out` — the checks of the revised text, run with
@@ -64,6 +75,7 @@ with its source.
   those of its draft; then a second round, of the corrected revision: `findings2_text.md`, of the text, the entries and
   the preview, and `findings2_code.md`, of the correction, the runner and the scripts of the run; then a third, the same
   way, `findings3_text.md` and `findings3_code.md`, a fourth, which verified the third's corrections,
-  `findings4_text.md` and `findings4_code.md`, and a fifth, which verified the fourth's, `findings5_text.md` and
-  `findings5_code.md`; their line numbers are those of the build they audited) and what was done with each finding
-  (`dispositions.md`).
+  `findings4_text.md` and `findings4_code.md`, a fifth, which verified the fourth's, `findings5_text.md` and
+  `findings5_code.md`, and a sixth, of the changes made after B25's first run, `findings6_code.md` and
+  `findings6_text.md`; their line numbers are those of the build they audited) and what was done with each
+  finding (`dispositions.md`, with the writer's session's notes on 820cacd).

@@ -570,3 +570,76 @@ on. The preview's section 3 compares the two.
    deactivating, reloading or running.
 4. The note on the CSV's first line. Corrected: the whole line.
 5. The docstrings on large stretches. Corrected (`findings5_text.md` 9).
+
+## The writer's session's notes on 820cacd
+
+The writer's session made commit 820cacd from this revision and reported three notes with it, besides B25's failed check
+(record, "The binarised estimators on the AR(1) family (B25): the first run and the correction of one check"). What was
+done, in the commit that follows:
+
+1. P48's reason cited `b32/external_checks_2026-09-27.md`, a note of the planning session outside the repository.
+   Corrected: the note is `external_checks_2026-09-27.md` in this review folder, with a preface, and P48's reason in
+   `proposals.json` and in `revision/text_replacements_2026-09-28.json` names it there.
+2. Row 3 of Table A in `notes/partB5_literature_v2.md` held the bars of "|q|" unescaped (since before d108d66), which
+   split the row into more cells than its header. Corrected: "\|q\|". The same check
+   (`notes/review_2026-09-25/checks/tablecheck.py`) finds the header of one table of
+   `notes/review_results/partB/lag_tables.md` split in the same way ("model sts at |q| = 0.25"); that file is written by
+   `notes/partB3_lag.py`, a step of B26's run, whose scripts stay unchanged until B26 has run, so it is corrected after
+   that run. The other files it flags are kept as written: the superseded `notes/partB5_literature.md`, two earlier
+   reviews and one table of an earlier entry of the record.
+3. The header of `manuscript/figures/captions_v2.md` names c25a310, the commit at which `scripts/15_figures_v2.py`
+   generated it, although this revision edited one phrase of Fig 1 (a) in the file (E07c) and in the script (E07s). Not
+   changed: B26's run regenerates the file, with the commit of that run in the header and the script's phrase, and a
+   header edited by hand would be one more difference between the regenerated file and the committed one for B26's rule
+   (i) to read.
+
+## findings6_code.md
+
+The sixth round audited the changes made after B25's first run (record, "The binarised estimators on the AR(1) family
+(B25): the first run and the correction of one check"), on a simulation of the whole flow with a real second run:
+`findings6_code.md` the code, the writer's prompt and the planning session's check of the returned bundle,
+`findings6_text.md` the entry and the texts. Their line numbers are those of the build they audited.
+
+1. The first run's wall-clock and the two logs. Corrected as proposed in the planning session's check of the bundle
+   (`check32c.py`, outside the repository): it checks that the first run's tables and log give 514 s, the value of the
+   entry, that the first run's log equals the planning session's run of its script once the commit, the times and the
+   paths are masked, and that the second run's log has no CHECK FAILED line and ends with 150 checks, 0 failed.
+2. The diagnosis and the machine's BLAS kernels. Corrected: step 8 of the writer's prompt compares only the columns that
+   the kernels leave unchanged (the series, (i), the knowns' means and the largest mean absolute local known), and
+   `b25_fill.py` requires the second run's values within 10⁻⁹ (relative above 1) of the first run's, the tolerance of
+   the separate session's re-run, and says in its text whether they are identical; the entry states the one value of
+   `binarised.csv` that the Haswell kernels change.
+3. The test for the entry at the first run's commit. Corrected as proposed: its title, with any time.
+4. Step 6's test that nothing above the entry is edited. Corrected: `git diff --numstat` must give the entry's lines
+   added and none removed.
+5. The maximum over the replicates and a NaN. Corrected as proposed (H08).
+6. The fill's docstring. Corrected: it lists the stop on the number of checks and the test of the entry with any time.
+7. The pattern of the log's last line. Corrected as proposed.
+8. The order of the lines of step 7. Corrected: the block is in the order the commands print.
+9. The commits' subjects. Corrected: the message of the commit that follows 820cacd says that 820cacd's subject was
+   written when the round had two commits.
+
+## findings6_text.md
+
+1. The Rule's statement that the sentences fixed with the pre-run entry are unchanged. Corrected as proposed: the
+   verdict criteria and the sentences that state B25's values and verdicts are unchanged, and the sentences that name
+   the run, its commit and the places that report it change, `CLAUDE.md` among them.
+2. "Found them as that entry describes them". Corrected as proposed, in the outcome entry and the fill's docstring; the
+   values the fill does not compare (the time and the wall-clock of the first run, the sha256 of its CSV) are those the
+   planning session's check of the bundle compares (`findings6_code.md` 1).
+3. "No sum". Corrected: "no sum over the samples" in the entry, the script's docstrings, S3 Text, S5 Text and the
+   diagnosis.
+4. "No value changes". Corrected as proposed; S3 Text, S5 Text and Data and code availability speak of the values of
+   `binarised.csv`.
+5. Why `b25_fill.py` was not run. Corrected as proposed.
+6. The means of the knowns. Corrected: the entry gives, by series, the mean farthest from its exact value, and the
+   diagnosis says which of its columns is over the sixteen knowns.
+7. The diagnosis's definitions. Corrected as proposed.
+8. The places where the corrected run's tables differ. Corrected.
+9. The record's flagged table. Corrected: "one table of an earlier entry of the record".
+10. The run at the commit of the correction. Corrected: "B25's second run was made at this commit".
+11. The fill's docstring on the free parts of its sentences. Corrected: values read from B25's outputs and the dates and
+   times of the entries, the runs and its own run.
+12. The opening of the writer's prompt. Corrected as proposed.
+13. The message of the commit that follows 820cacd. Corrected as proposed.
+14. The outcome entry's long lines. Corrected: its first paragraph is wrapped at 120 columns when it is written.

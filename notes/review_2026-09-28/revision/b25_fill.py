@@ -2,15 +2,28 @@
 """b25_fill.py — the text that reports B25, written from B25's outputs alone. Fixed with B25's pre-run entry, before B25
 was run on the family (record, "The binarised estimators on the AR(1) family (B25): pre-run entry"): the verdicts follow
 that entry's criteria mechanically and every sentence below is a template whose only free parts are values read from
-`notes/review_results/partB/binarised.csv` and the dates and times of the entry, the run and this script's own run.
+B25's outputs and the dates and times of the entries, the runs and this script's own run.
+Changed after B25's first run, which failed one check, and before its second (record, "The binarised estimators on the
+AR(1) family (B25): the first run and the correction of one check"; the changes are L01–L12 of
+`notes/review_2026-09-28/revision/text_replacements_2026-09-29.json`): it reports the second run, made at the commit of
+that entry; it checks that the first run's outputs, kept in `notes/review_results/partB/binarised_first_run/`, name the
+parent of that commit and report the one failed check that entry describes, and that the second run's values agree with
+the first run's; and its text states the first run and whether the two runs' values are identical. The verdict criteria
+and the sentences that state B25's values and verdicts are unchanged.
 
-Usage, from the repository root, after B25 has run at the commit of its pre-run entry (the tree otherwise unchanged):
+Usage, from the repository root, after B25's second run at the commit of that entry (the tree otherwise unchanged):
     python3 notes/review_2026-09-28/revision/b25_fill.py <that commit, short SHA> [--now "D Mon YYYY HH:MM"]
 The outcome entry is dated now (UTC); --now gives the time instead, to reproduce a fill made earlier.
 
-It stops, writing nothing, if an output is missing, names another commit or a dirty tree, does not match the sha256 the
-tables give for `binarised.csv`, or reports a failed check; if the pre-run entry's time is not filled; or if any
-replacement does not find its text exactly once. Otherwise it writes the replacements it applies to
+It stops, writing nothing, if an output of either run is missing, names another commit or a dirty tree, or does not
+match the sha256 its tables give for its `binarised.csv`; if either run made other than 150 checks, the second run
+reports a failed check, or the first run's outputs report other than the one failed check that the entry of the first
+run describes; if the second run's `binarised.csv` has other rows than the first run's, or a value that differs from
+the first run's by more than 10⁻⁹ (relative above 1) or is NaN or infinite where the first run's is not; if the first
+run's commit is not the parent of the second's, or its record lacks the pre-run entry or holds the entry of the first
+run, with any time; if either entry's time is not filled, or the two entries and the two runs are not in the order
+entry, run, entry, run; or if any replacement does not find its text exactly once. Otherwise it writes the
+replacements it applies to
 `notes/review_2026-09-28/revision/text_replacements_2026-09-28_b25.json`, applies them with
 `notes/review_2026-09-25/revision/apply_replacements.py`, updates `manuscript/main_text_numbers.csv` (the five rows of
 the count of predictions and the contexts the edits reach), appends the outcome entry to the record, runs the
@@ -27,6 +40,7 @@ import math
 import re
 import subprocess
 import sys
+import textwrap
 import time
 from pathlib import Path
 
@@ -88,6 +102,12 @@ mh = re.search(r"^## The binarised estimators on the AR\(1\) family \(B25\): pre
 if not mh:
     sys.exit("NOTHING WRITTEN: the pre-run entry's heading, with its date and time filled, is not in the record")
 DATE_A, TIME_A = mh.group(1), mh.group(2)
+mk = re.search(r"^## The binarised estimators on the AR\(1\) family \(B25\): the first run and the correction of one check, "
+               r"(\d{1,2} [A-Z][a-z]{2} \d{4}) (\d\d:\d\d) UTC \(appended; nothing above edited\)$", rd(REC), re.M)
+if not mk:
+    sys.exit("NOTHING WRITTEN: the heading of the entry of B25's first run, with its date and time filled, is not in the "
+             "record")
+DATE_K, TIME_K = mk.group(1), mk.group(2)
 for f in ("binarised.csv", "binarised_tables.md", "binarised_run.log"):
     if not (OUTD / f).exists():
         sys.exit(f"NOTHING WRITTEN: notes/review_results/partB/{f} is missing")
@@ -113,6 +133,99 @@ if not mc or mc.group(2) != "0":
 NCHECKS = int(mc.group(1))
 WALL = int(re.search(r"Wall-clock (\d+) s\.", tables).group(1))
 ENV = re.search(r"python [\d.]+, numpy [\S]+, scipy [\S]+, phyid [^.]+(?:\.[^ .]+)*", tables).group(0).rstrip(".")
+
+# ------------------------------------------------------------------ the first run (record, the entry of the first run)
+OUT0 = OUTD / "binarised_first_run"
+for f in ("binarised.csv", "binarised_tables.md", "binarised_run.log"):
+    if not (OUT0 / f).exists():
+        sys.exit(f"NOTHING WRITTEN: notes/review_results/partB/binarised_first_run/{f} is missing")
+tables0 = (OUT0 / "binarised_tables.md").read_text(encoding="utf-8")
+log0 = (OUT0 / "binarised_run.log").read_text(encoding="utf-8")
+csv0 = (OUT0 / "binarised.csv").read_text(encoding="utf-8")
+TL0 = tables0.split("\n")
+m0 = re.fullmatch(r"git=([0-9a-f]{7})", TL0[1])
+if not m0 or log0.split("\n")[0] != TL0[1]:
+    sys.exit(f"NOTHING WRITTEN: the first run's tables and log name {TL0[1]!r} and {log0.split(chr(10))[0]!r}, not one "
+             f"commit")
+A0 = m0.group(1)
+mr0 = re.fullmatch(r"run (\d{1,2} [A-Z][a-z]{2} \d{4}) (\d\d:\d\d) UTC", TL0[2])
+if not mr0:
+    sys.exit(f"NOTHING WRITTEN: the first run's tables' third line is {TL0[2]!r}, not the time of the run")
+RUN_DATE0 = mr0.group(1)
+if TL0[3] != f"binarised.csv sha256 {hashlib.sha256(csv0.encode('utf-8')).hexdigest()}":
+    sys.exit("NOTHING WRITTEN: the first run's binarised.csv does not match the sha256 its tables give for it")
+if csv0.split("\n")[0] != f"# partB25_binarised.py; git={A0}; run {RUN_DATE0} {mr0.group(2)} UTC":
+    sys.exit(f"NOTHING WRITTEN: the first run's binarised.csv begins {csv0.split(chr(10))[0]!r}")
+FAILED0 = ("operating point (0.85, 0.25): phyid's CCS atoms recomputed from its local MIs (series 4)", "1.06e-12", "1e-12")
+mc0 = re.search(r"Checks: (\d+), failed (\d+)\.", tables0)
+if (not mc0 or mc0.group(2) != "1" or [l for l in TL0 if l.endswith(" | NO |")] != [f"| {' | '.join(FAILED0)} | NO |"]
+        or [l.strip() for l in log0.split("\n") if "CHECK FAILED" in l]
+        != [f"CHECK FAILED: {FAILED0[0]}: {FAILED0[1]} above {FAILED0[2]}"]):
+    sys.exit("NOTHING WRITTEN: the first run's outputs do not report the one failed check that the entry of the first "
+             "run describes")
+NCHECKS0 = int(mc0.group(1))
+WALL0 = int(re.search(r"Wall-clock (\d+) s\.", tables0).group(1))
+if not NCHECKS0 == NCHECKS == 150:
+    sys.exit(f"NOTHING WRITTEN: the first run made {NCHECKS0} checks and the second {NCHECKS}, not 150 each")
+ROWS0, ROWS1, DMAX = csv0.split("\n")[1:], csv_text.split("\n")[1:], 0.0
+if len(ROWS0) != len(ROWS1):
+    sys.exit("NOTHING WRITTEN: the second run's binarised.csv has other rows than the first run's")
+for r0, r1 in zip(ROWS0, ROWS1):
+    f0, f1 = r0.split(","), r1.split(",")
+    if len(f0) != len(f1) or f0[:6] != f1[:6]:
+        sys.exit("NOTHING WRITTEN: the second run's binarised.csv has other rows than the first run's")
+    for x, y in zip(f0[6:], f1[6:]):
+        if x == y:
+            continue
+        try:
+            fx, fy = float(x), float(y)
+        except ValueError:
+            sys.exit(f"NOTHING WRITTEN: the second run's binarised.csv has {y!r} where the first run's has {x!r}")
+        if not (math.isfinite(fx) and math.isfinite(fy)):
+            sys.exit(f"NOTHING WRITTEN: the second run's binarised.csv has {y} where the first run's has {x}")
+        DMAX = max(DMAX, abs(fx - fy) / max(1.0, abs(fx)))
+if DMAX > 1e-9:
+    sys.exit(f"NOTHING WRITTEN: a value of the second run's binarised.csv differs from the first run's by {DMAX:.3g} "
+             f"(relative above 1), more than 1e-9")
+
+
+def sci(v):
+    # 8.3e-14 as "8.3 × 10⁻¹⁴"
+    mant, ex = f"{v:.1e}".split("e")
+    return f"{mant} × 10{str(int(ex)).translate(str.maketrans('-0123456789', '⁻⁰¹²³⁴⁵⁶⁷⁸⁹'))}"
+
+
+if DMAX == 0.0:
+    SAME = "every value of the second run's `binarised.csv` equals the first run's"
+    SAME_D = "every value in the two runs' `binarised.csv` is the same"
+    SAME_E = "every value of this run's `binarised.csv` equal to the first run's"
+else:
+    SAME = (f"every value of the second run's `binarised.csv` lies within {sci(DMAX)} of the first run's (relative "
+            f"above 1)")
+    SAME_D = f"the values in the two runs' `binarised.csv` agree within {sci(DMAX)}"
+    SAME_E = f"every value of this run's `binarised.csv` within {sci(DMAX)} of the first run's (relative above 1)"
+
+
+def git(*a):
+    return subprocess.run(["git", *a], capture_output=True, text=True, cwd=ROOT)
+
+
+par, first = git("rev-parse", "-q", "--verify", f"{A}^"), git("rev-parse", "-q", "--verify", f"{A0}^{{commit}}")
+if par.returncode or first.returncode or par.stdout.strip() != first.stdout.strip():
+    sys.exit(f"NOTHING WRITTEN: the first run's commit, {A0}, is not the parent of {A}")
+rec0 = git("show", f"{A0}:{REC}").stdout
+if mh.group(0) not in rec0 or re.search(r"^## The binarised estimators on the AR\(1\) family \(B25\): the first run and the "
+                                        r"correction of one check,", rec0, re.M):
+    sys.exit(f"NOTHING WRITTEN: the record at {A0} lacks the pre-run entry or holds the entry of the first run")
+
+
+def when(d, t):
+    return time.strptime(f"{d} {t}", "%d %b %Y %H:%M")
+
+
+if not (when(DATE_A, TIME_A) <= when(RUN_DATE0, mr0.group(2)) <= when(DATE_K, TIME_K) <= when(RUN_DATE, mr.group(2))):
+    sys.exit("NOTHING WRITTEN: the pre-run entry, the first run, the entry of the first run and the second run are not "
+             "in that order")
 V = {}
 for row in csv.DictReader(io.StringIO("\n".join(l for l in csv_text.split("\n") if not l.startswith("#")))):
     V[(row["part"], row["quantity"], float(row["r1"]), float(row["q"]), row["T"])] = (float(row["value"]),
@@ -254,7 +367,8 @@ S3_SECTION = "\n".join([
     "signals with the plug-in estimator (their pp. 3, 14), and the primary quantity of Luppi et al. (2023) is the "
     "emergence capacity of Ince's CCS decomposition on mean-binarised signals (their p. 12; S20 Table, row 2). B25 "
     "(`notes/partB25_binarised.py`; "
-    "record, \"The binarised estimators on the AR(1) family (B25): pre-run entry\", with its predictions, and \"B25, "
+    "record, \"The binarised estimators on the AR(1) family (B25): pre-run entry\", with its predictions, \"The "
+    "binarised estimators on the AR(1) family (B25): the first run and the correction of one check\" and \"B25, "
     "outcome\") evaluates on the symmetric AR(1) family phyid's discrete path, which binarises each of x_t, y_t, x_{t+1} "
     "and y_{t+1} at its mean and takes plug-in probabilities, under MMI and under CCS, and Luppi et al. (2023)'s "
     "emergence capacity as we read their Methods: the synergy of the two pasts about the joint future, taken as one "
@@ -264,7 +378,12 @@ S3_SECTION = "\n".join([
     "difference of order 1/T. The emergence capacity is str + stx + sty + sts, under MMI the whole-minus-max synergy. "
     "In the long-series limit the binarised probabilities are the orthant probabilities of the Gaussian family, "
     "computed by numerical quadrature to about 10⁻¹³; at 160, 300 and 840 samples, 1,000 replicate pairs per point of "
-    "the grid r₁ 0.60–0.95 × q 0.10, 0.25, 0.50. Values in nats (bits × ln 2).", "",
+    "the grid r₁ 0.60–0.95 × q 0.10, 0.25, 0.50. Values in nats (bits × ln 2). The values below are those of B25's "
+    f"second run. The first failed one of its {NCHECKS0} checks, the comparison of phyid's CCS atoms with their "
+    "recomputation from its local mutual informations: on one of ten series of 10⁵ samples, two means that are equal "
+    "in exact arithmetic differed by 1.06 × 10⁻¹² through the rounding of their sums, against a tolerance of 10⁻¹². "
+    "Before the second run the check was changed to compare the atoms sample by sample, which involves no sum over "
+    f"the samples; {SAME} (S5 Text §4).", "",
     "Under MMI the lattice fixes the form before any computation. With A = I(x_t; x_{t+1}) of the binarised series, "
     "B = I(x_t; y_{t+1}), F = I(x_t; x_{t+1}, y_{t+1}) and T = I(x_t, y_t; x_{t+1}, y_{t+1}), binarised MMI-sts on the "
     "symmetric family in the long-series limit is T − 2F + 2A − B and its emergence capacity T − F, for 0 < q < 1, where "
@@ -319,12 +438,14 @@ S5_COMMIT_OLD = ("the revision that followed the citation crosscheck of 28 Septe
                  "of B25, the binarised estimators on the family; and the correction for the matrices that are not positive "
                  "definite, with the pre-run entry of its run, B26) is the commit that follows, which cannot name its own "
                  "identifier (its parent is d108d66).")
-S5_COMMIT_NEW = (f"{A} ({DATE_A.rsplit(' ', 1)[0]}, the revision that followed the citation crosscheck of 28 September 2026: "
+S5_COMMIT_NEW = (f"{A0} ({DATE_A.rsplit(' ', 1)[0]}, the revision that followed the citation crosscheck of 28 September 2026: "
                  f"its corrections; the licences, the citation file, the diagnostic tool, the tests and the "
                  f"continuous-integration workflow; the pre-run entry of B25; and the correction for the matrices that are "
-                 f"not positive definite, with the pre-run entry of its run, B26; B25 was run at this commit); "
-                 f"the outputs of B25, its outcome entry and the text that reports it are the commit that follows, which "
-                 f"cannot name its own identifier (its parent is {A}).")
+                 f"not positive definite, with the pre-run entry of its run, B26; B25's first run was made at this "
+                 f"commit); {A} ({DATE_K.rsplit(' ', 1)[0]}, the correction of one of B25's checks after its first run, "
+                 f"with that run's outputs; B25's second run was made at this commit); the outputs of B25, its outcome "
+                 f"entry and the text that reports it are the commit that follows, which cannot name its own identifier "
+                 f"(its parent is {A}).")
 DCA_RUN = ("record, \"The final end-to-end run of `run_all.sh` at the final commit: the difference in the two CCS "
            "agreement-share arrays\"). The HRF-deconvolution items")
 R = [
@@ -345,7 +466,8 @@ R = [
     rr("G09", D, DCA_RUN,
        DCA_RUN.replace(" The HRF-deconvolution items",
                        f" The computation of the binarised estimators on the family (S3 Text), which uses no data, was "
-                       f"added to `run_all.sh` after that run; it was run at {A} in a session of the AI system. The "
+                       f"added to `run_all.sh` after that run; it was run at {A} in a session of the AI system; a first "
+                       f"run, at {A0}, had failed one check through the rounding of a sum, and {SAME_D} (S5 Text). The "
                        f"HRF-deconvolution items"),
        "B25: Data and code availability"),
     rr("G10", D, "; manufacture and the lag variants; the literature details behind S20 Table.",
@@ -354,21 +476,28 @@ R = [
     rr("G11", S5, S5_RUN,
        S5_RUN + f" B25 (S3 Text §11), which uses no data, was run on {long_date(RUN_DATE)} at {A} in a session of the AI "
        f"system ({WALL} s by its own count; {NCHECKS} checks, 0 failed; its three outputs carry `git={A}`, and its tables "
-       f"the sha256 of `binarised.csv`); it was added to `run_all.sh` after the final run.",
+       f"the sha256 of `binarised.csv`); it was added to `run_all.sh` after the final run. That was its second run. The "
+       f"first, on {long_date(RUN_DATE0)} at {A0}, the commit of its pre-run entry ({WALL0} s), failed one of its "
+       f"{NCHECKS0} checks, the comparison of phyid's CCS atoms with their recomputation from its local mutual "
+       f"informations: on one of ten series of 10⁵ samples, two means that are equal in exact arithmetic differed by "
+       f"1.06 × 10⁻¹² through the rounding of their sums, against a tolerance of 10⁻¹². Before the second run the check was "
+       f"changed to compare the atoms sample by sample, which involves no sum over the samples (record, \"The binarised "
+       f"estimators on the AR(1) family (B25): the first run and the correction of one check\"); {SAME}; the first "
+       f"run's outputs are kept in `notes/review_results/partB/binarised_first_run/`.",
        "B25: S5 Text §4"),
     rr("G12", S5, S5_COMMIT_OLD, S5_COMMIT_NEW, "B25: S5 Text §6"),
     rr("G13", "CLAUDE.md", "of 53, 25 met, 14 partly met, 14 missed, 0 not evaluable",
        f"of 56, {MET} met, {PART} partly met, {MISS} missed, 0 not evaluable", "bookkeeping"),
     rr("G14", "README.md", "B16b, B17b\nand B21–B24 have been run and their values are in the text,",
        "B16b, B17b,\nB21–B24 and B25 have been run and their values are in the text,", "bookkeeping"),
-    rr("G15", "CLAUDE.md", "; next B25's run and outcome, its re-run by a separate session, B26's run on the data, then "
-       "the typeset PDF and the note to C.T. and S.P.S.)",
-       f"; B25 run at {A} and reported; next its re-run by a separate session, B26's run on the data, then the typeset "
-       f"PDF and the note to C.T. and S.P.S.)", "bookkeeping"),
-    rr("G16", "CLAUDE.md", "- Remaining work: B25's run at the revision's commit and its outcome (`b25_fill.py`), its "
-       "re-run by a separate\n  session,",
-       f"- Remaining work: B25's re-run at {A} by a separate session (B25 was run and reported in the commit that\n  "
-       f"follows {A}),", "bookkeeping"),
+    rr("G15", "CLAUDE.md", "; next B25's second run and outcome, its re-run by a separate session, B26's run on the data, "
+       "then the typeset PDF and the note to C.T. and S.P.S.)",
+       f"; B25's second run made at {A} and reported; next its re-run by a separate session, B26's run on the data, then "
+       f"the typeset PDF and the note to C.T. and S.P.S.)", "bookkeeping"),
+    rr("G16", "CLAUDE.md", "- Remaining work: B25's second run and its outcome (`b25_fill.py`), its re-run by a separate\n"
+       "  session,",
+       f"- Remaining work: B25's re-run at {A} by a separate session (its second run, made at {A}, is reported in the\n"
+       f"  commit that follows),", "bookkeeping"),
 ]
 
 
@@ -455,15 +584,25 @@ first_new = (first + f" The text that reports B25 ({long_date(NOW.rsplit(' ', 1)
 wr(CSVF, first_new + "\n" + out.getvalue())
 
 # ------------------------------------------------------------------ the outcome entry
+NB = "\u00a0"
+P1 = textwrap.fill(
+    f"Run in the writer's session at {A}, the commit of the entry \"The binarised estimators on the AR(1) family (B25): "
+    f"the first run and the correction of one check\", on {RUN_DATE}, with the command of the script's docstring "
+    f"({WALL}{NB}s by its own count; {NCHECKS} checks, 0 failed; {ENV}); the three outputs, "
+    f"`notes/review_results/partB/binarised_tables.md`, `binarised.csv` and `binarised_run.log`, carry `git={A}`, and "
+    f"the tables give the sha256 of `binarised.csv`, which `notes/review_2026-09-28/revision/b25_fill.py` recomputed. "
+    f"This is B25's second run. Its first, at {A0}, the commit of the pre-run entry, on {RUN_DATE0}, failed one check; "
+    f"the entry of the first run records it and the correction. The first run's outputs are kept in "
+    f"`notes/review_results/partB/binarised_first_run/`, and `b25_fill.py` found that they name this commit's parent "
+    f"and report {NCHECKS0} checks with the one failed check that entry describes, and found {SAME_E}. A separate "
+    f"session re-runs B25 at {A}; the commit that follows its re-run records the result. The text below and every "
+    f"sentence that reports B25 were written by `b25_fill.py`, fixed with the pre-run entry and changed, before this "
+    f"run, under the entry of the first run.".replace(" × ", NB + "×" + NB),
+    width=120, break_long_words=False, break_on_hyphens=False).replace(NB, " ")
 entry = f"""
 ## B25, outcome, {NOW} UTC (appended; nothing above edited)
 
-Run in the writer's session at {A}, the commit of the pre-run entry, on {RUN_DATE}, with the command of the script's
-docstring ({WALL} s by its own count; {NCHECKS} checks, 0 failed; {ENV}); the three outputs,
-`notes/review_results/partB/binarised_tables.md`, `binarised.csv` and `binarised_run.log`, carry `git={A}`, and the
-tables give the sha256 of `binarised.csv`, which `notes/review_2026-09-28/revision/b25_fill.py` recomputed. A separate
-session re-runs B25 at {A}; the commit that follows its re-run records the result. The text below and every sentence
-that reports B25 were written by `b25_fill.py`, fixed with the pre-run entry.
+{P1}
 
 **The facts the predictions read.** (a) {a_up} of the 42 steps rise in the limit: MMI-sts {desc_q('MMI sts')}; its
 emergence capacity {desc_q('MMI EC')}. (b) At (0.85, 0.25) ∂(MMI-sts)/∂r₁ = {m(dr1, 4, True)} and ∂(MMI-sts)/∂q =
@@ -482,10 +621,11 @@ samples). CCS through phyid's discrete path at (0.85, 0.25): sts {m(ccs_op, 4, T
 {m(ccsec_op, 4, True)}, which {desc_q('CCS EC')}. Luppi et al. (2023)'s emergence capacity {m(ince_op, 4, True)}, which
 {desc_q('Ince EC')}, {rates_of('Ince EC', 4)}; at 840 samples {m(ince840[0], 4, True)} ± {m(ince840[1], 4)}.
 
-**Where it is reported.** S3 Text §11 (new; the limit at q = 0.25 as a table); S19 Table, rows B25 (a)–(d) and its
-count; Methods, Pre-registration and deviations (the count); S20 Table row 2 and `notes/partB5_literature_v2.md` (Luppi
-et al. 2023's estimator on the family); the Discussion's pointer to S3 Text; S3 Text's caption and the labels B1–B25;
-Data and code availability and S5 Text §4 and §6 (the run and the commits); `main_text_numbers.csv` (the count's five
+**Where it is reported.** S3 Text §11 (new; the limit at q = 0.25 as a table; the first run); S19 Table, rows B25
+(a)–(d) and its count; Methods, Pre-registration and deviations (the count); S20 Table row 2 and
+`notes/partB5_literature_v2.md` (Luppi et al. 2023's estimator on the family); the Discussion's pointer to S3 Text;
+S3 Text's caption and the labels B1–B25; Data and code availability and S5 Text §4 and §6 (the two runs and the
+commits); `main_text_numbers.csv` (the count's five
 rows; the contexts of {nctx} rows); `CLAUDE.md` and `README.md`. The replacements:
 `notes/review_2026-09-28/revision/text_replacements_2026-09-28_b25.json`.
 """

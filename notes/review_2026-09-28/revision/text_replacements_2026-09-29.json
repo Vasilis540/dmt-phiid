@@ -1,0 +1,250 @@
+[
+ {
+  "id": "E01",
+  "file": "manuscript/analysis_record.md",
+  "old": "corrected; if the tables report one, the outcome entry says what it means before anything is read.\n",
+  "new": "corrected; if the tables report one, the outcome entry says what it means before anything is read.\n\n## The binarised estimators on the AR(1) family (B25): the first run and the correction of one check, «ENTRY_TIME» UTC (appended; nothing above edited)\n\nAppended in the commit that follows 820cacd, with the correction of one of B25's checks, the first run's outputs and the\nchanges to `b25_fill.py`, before B25's second run. No data.\n\n**The first run.** B25 was run in the writer's session at 820cacd, the commit of its pre-run entry, on 29 Sep 2026 at\n06:16 UTC, with the command of the script's docstring (514 s by its own count; python 3.12.3, numpy 2.5.3, scipy 1.18.1,\nphyid 0+untagged.8.g6c5f2e9). It reported 150 checks, 1 failed: `phyid`'s CCS atoms recomputed from its local mutual\ninformations on the fourth of the ten series of 10⁵ samples at the operating point, a largest difference of 1.06 × 10⁻¹²\nagainst the tolerance 10⁻¹² (the other nine series 3.56 × 10⁻¹³ to 9.74 × 10⁻¹³; every replicate at 160, 300 and 840\nsamples at most 4.82 × 10⁻¹⁴). Every other check passed, those of the smooth quantities among them. As the pre-run\nentry's rule requires, nothing was reported; `b25_fill.py`, which stops without writing on a failed check, was not run.\nThe three outputs are kept as the run wrote them in `notes/review_results/partB/binarised_first_run/`, committed with\nthis entry; they carry `git=820cacd`, and the tables give the sha256 of the CSV,\n2dc288bb3357c66a8bb8954861fc13d5351f2748de83900c019e26bcdbce3479.\n\n**What failed.** The check compared, for each of the sixteen atoms, two means over the 99,999 samples of a series: the\nmean of `phyid`'s local CCS atoms, which numpy sums pairwise (the mean of a one-dimensional array), and the atoms of the\nmean of the local knowns recomputed from `phyid`'s local mutual informations, which numpy sums one term after another\n(the mean over the first axis of a two-dimensional array). The atoms being a fixed linear map of the knowns, the two are\nequal in exact arithmetic; in floating point they differ by the rounding of the two sums, carried through that map,\nwhich grows with the number of terms, and the tolerance did not allow for it.\n`notes/review_2026-09-28/b25_first_run/b25_check_diagnosis.py` draws the ten series again as the run drew them and\ncomputes the difference three ways (`b25_check_diagnosis.out`, run by the planning session): as the first run's check\ncomputed it, it gives that run's ten values, 1.06 × 10⁻¹² for the fourth series; with each mean from an exact sum\n(`math.fsum`), at most 1.1 × 10⁻¹⁶; and sample by sample, `phyid`'s local atoms against the atoms of the recomputed\nlocal knowns, at most 8.9 × 10⁻¹⁶. Over the ten series, the mean of the knowns farthest from its exact value lies\n3.1 × 10⁻¹³ to 5.1 × 10⁻¹³ from it, the farthest mean of the atoms at most 5.6 × 10⁻¹⁷ from its. `phyid`'s CCS atoms and\ntheir recomputation agree; what exceeded the tolerance was the rounding of the check's own sums.\n\n**The correction.** The check now compares `phyid`'s local CCS atoms with the atoms of the recomputed local knowns\nsample by sample, in the ten series and in every replicate, with the same tolerance, 10⁻¹²; no sum over the samples\nenters it. Its maximum over the replicates now keeps a NaN, which Python's `max` dropped (the audit below; in the\nplanning session's run of the corrected script no replicate gave one). The rest of `notes/partB25_binarised.py` is\nunchanged but for its docstrings (the module's: the check's description, the first run's time where the estimate of\n15–30 minutes stood, and a pointer to this entry; the function's: what the check compares) and the check's two names: no\nother value of the tables, and no value of `binarised.csv`, is computed otherwise, and no other check changes. The\nself-test of the corrected script: 54 checks, 0 failed (`b25_first_run/b25_selftest.out`; it differs from that of the\nfirst run's script only in its timings). The changes are H01–H08 of\n`notes/review_2026-09-28/revision/text_replacements_2026-09-29.json`.\n\n**What this entry is written knowing.** The first run's tables were read before this entry was written. Their facts: (a)\n42 of the 42 steps rise in the limit; (b) at (0.85, 0.25) ∂(MMI-sts)/∂r₁ = +1.8153 and ∂(MMI-sts)/∂q = −0.1496 nats per\nunit, a per-unit ratio of 12.13 and a per-SD ratio of 1.76; (c) 126 of the 126 steps of the replicate means rise. The\ncorrection cannot change them: it changes no value of `binarised.csv`. Before this entry the planning session ran B25 to\nits end with the first run's script and with the corrected one, on its own machine with the same versions\n(`b25_first_run/planning_runs.md`): the first reported the same failed check with the same value, and its\n`binarised.csv`, given the first run's first line, has the sha256 above, so that the first run's values are reproduced\nbit for bit on a second machine; the corrected script reported 150 checks, 0 failed (the corrected check at most\n8.9 × 10⁻¹⁶ in the ten series and 4 × 10⁻¹⁵ over every replicate), and every row of its `binarised.csv` after the first\nline equals the first run's. The values are not bound to be the same on every machine: the planning session's machine\nuses OpenBLAS's SkylakeX kernels, and with its Haswell kernels (`OPENBLAS_CORETYPE=Haswell`) the first run's script\ngives one value of `binarised.csv` otherwise, ∂(2A)/∂q at the step 10⁻³, 0 against 8.3 × 10⁻¹⁴ (the audit below).\n\n**Rule.** B25 is run again in the writer's session at this entry's commit, with the command of the script's docstring,\nand `b25_fill.py` reports that second run. Its verdict criteria and the sentences that state B25's values and verdicts\nare unchanged; it is changed now (L01–L12 of the same file of replacements), and with it the sentences that name the\nrun, its commit and the places that report it. It takes this commit; it reads the first run's commit from the kept\noutputs and stops unless that commit is this one's parent, its record holds the pre-run entry and not this one, and the\nkept outputs report 150 checks with the one failed check described above; unless the second run reports 150 checks, none\nfailed, and its `binarised.csv` has the first run's rows with every value within 10⁻⁹ of the first run's (relative above\n1; the text says whether the values are identical); and unless the pre-run entry, the first run, this entry and the\nsecond run are in that order. Its text states the first run, its failed check and this correction in S3 Text §11, S5\nText §4 and §6, Data and code availability and the outcome entry, and `CLAUDE.md` names the second run. A separate\nsession re-runs B25 at this entry's commit, and the commit that follows that re-run records its result. If the second\nrun fails a check or its values do not agree with the first run's, `b25_fill.py` writes nothing, and an entry records\nwhat happened before anything else is done.\n\n**The audit.** Two separate sessions audited these changes before the commit, one the code and one the texts, on a\nsimulation of the whole flow with a real second run and the texts `b25_fill.py` writes\n(`notes/review_2026-09-28/audit/findings6_code.md`, `findings6_text.md`). What was done with each finding is in\n`notes/review_2026-09-28/audit/dispositions.md`.\n\n**Also in this commit.** Three notes of the writer's session on 820cacd\n(`notes/review_2026-09-28/audit/dispositions.md`): the reason of the crosscheck's proposal P48 cited a note of the\nplanning session outside the repository, which is now `notes/review_2026-09-28/external_checks_2026-09-27.md`, and the\nreason names it there (in `proposals.json` and `revision/text_replacements_2026-09-28.json`); row 3 of Table A in\n`notes/partB5_literature_v2.md` held the bars of \"|q|\" unescaped, which split the row into more cells than its header,\nand now escapes them; and the header of `manuscript/figures/captions_v2.md` names c25a310, where the figure script\ngenerated it, although the revision edited one phrase of Fig 1 (a) in the file and in the script alike. The header is\nleft as it is: B26's run regenerates the file, with its own commit in the header.\n",
+  "count": 1,
+  "why": "B25's first run: the record's entry of the first run and the correction of one check"
+ },
+ {
+  "id": "H01",
+  "file": "notes/partB25_binarised.py",
+  "old": "Pre-run entry: manuscript/analysis_record.md, \"The binarised estimators on the AR(1) family (B25): pre-run entry\".\n",
+  "new": "Pre-run entry: manuscript/analysis_record.md, \"The binarised estimators on the AR(1) family (B25): pre-run entry\";\nthe first run and the correction of one check: \"The binarised estimators on the AR(1) family (B25): the first run\nand the correction of one check\".\n",
+  "count": 1,
+  "why": "B25's check: the docstring points to the entry that records the first run and the correction"
+ },
+ {
+  "id": "H02",
+  "file": "notes/partB25_binarised.py",
+  "old": "    (SMOOTH: MMI sts, MMI EC, 2A, TDMI, MMI rtr, whose MMI selections are strict or exact ties there); phyid's CCS atoms\n    equal to their recomputation from its local mutual informations under its own mask, every replicate; the\n    maximum-entropy fits' marginals within 10⁻¹²; the copy of partB6's make_knowns verbatim; and the number of pattern\n",
+  "new": "    (SMOOTH: MMI sts, MMI EC, 2A, TDMI, MMI rtr, whose MMI selections are strict or exact ties there); phyid's local\n    CCS atoms equal to their recomputation from its local mutual informations under its own mask within 10⁻¹², sample\n    by sample (no sum over the samples enters the comparison), in the ten series and in every replicate; the\n    maximum-entropy fits' marginals within 10⁻¹²; the copy of partB6's make_knowns verbatim; and the number of pattern\n",
+  "count": 1,
+  "why": "B25's check: the docstring describes the corrected comparison, sample by sample"
+ },
+ {
+  "id": "H03",
+  "file": "notes/partB25_binarised.py",
+  "old": "(about 15–30 minutes, an estimate: 24,000 replicates at each of the three lengths, under 25 ms each on the planning\nsession's machine (--selftest times one at the longest length), and the limit and the checks a few minutes)\n",
+  "new": "(its first run took 514 s; the replicates, 24,000 at each of the three lengths, take under 25 ms each on the planning\nsession's machine (--selftest times one at the longest length), the limit and the checks a few minutes)\n",
+  "count": 1,
+  "why": "B25's check: the run time as the first run measured it, for the estimate of 15–30 minutes"
+ },
+ {
+  "id": "H04",
+  "file": "notes/partB25_binarised.py",
+  "old": "    \"\"\"The finite-sample estimators (nats) of one pair of series, and the CCS recomputation check.\"\"\"\n",
+  "new": "    \"\"\"The finite-sample estimators (nats) of one pair of series, and the CCS recomputation check: the largest\n    difference, over the samples and the sixteen atoms, between phyid's local CCS atoms and the atoms of the local\n    knowns recomputed from its local mutual informations under its mask, compared sample by sample, so that no sum\n    over the samples enters it.\"\"\"\n",
+  "count": 1,
+  "why": "B25's check: the function's docstring states what the check compares"
+ },
+ {
+  "id": "H05",
+  "file": "notes/partB25_binarised.py",
+  "old": "    mean_p = Kp.mean(0) @ _MINV_T\n    rec_c = Kc.mean(0) @ _MINV_T\n    dev = float(np.max(np.abs(rec_c - mean_c)))\n",
+  "new": "    mean_p = Kp.mean(0) @ _MINV_T\n    dev = float(np.max(np.abs(Kc @ _MINV_T - np.stack([at_c[k] for k in ATOMS], axis=-1))))\n",
+  "count": 1,
+  "why": "B25's check: phyid's local CCS atoms against the atoms of the recomputed local knowns, sample by sample, in place of two means whose sums numpy rounds differently (record, the entry of the first run)"
+ },
+ {
+  "id": "H06",
+  "file": "notes/partB25_binarised.py",
+  "old": "        check(f\"{label}: phyid's CCS atoms recomputed from its local MIs (series {s + 1})\", dev, 1e-12)\n",
+  "new": "        check(f\"{label}: phyid's local CCS atoms recomputed from its local MIs, sample by sample (series {s + 1})\", dev,\n              1e-12)\n",
+  "count": 1,
+  "why": "B25's check: its name says what it compares"
+ },
+ {
+  "id": "H07",
+  "file": "notes/partB25_binarised.py",
+  "old": "check(\"phyid's CCS atoms equal their recomputation from its local MIs, every replicate\", DEVMAX, 1e-12)\n",
+  "new": "check(\"phyid's local CCS atoms equal their recomputation from its local MIs, sample by sample, every replicate\", DEVMAX,\n      1e-12)\n",
+  "count": 1,
+  "why": "B25's check: its name says what it compares"
+ },
+ {
+  "id": "H08",
+  "file": "notes/partB25_binarised.py",
+  "old": "                DEVMAX = max(DEVMAX, dev)\n",
+  "new": "                DEVMAX = float(np.maximum(DEVMAX, dev))            # np.maximum keeps a NaN, which max() would drop\n",
+  "count": 1,
+  "why": "B25's check: the maximum over the replicates keeps a NaN (findings6_code.md, 5)"
+ },
+ {
+  "id": "L01",
+  "file": "notes/review_2026-09-28/revision/b25_fill.py",
+  "old": "was run on the family (record, \"The binarised estimators on the AR(1) family (B25): pre-run entry\"): the verdicts follow\nthat entry's criteria mechanically and every sentence below is a template whose only free parts are values read from\n`notes/review_results/partB/binarised.csv` and the dates and times of the entry, the run and this script's own run.\n\nUsage, from the repository root, after B25 has run at the commit of its pre-run entry (the tree otherwise unchanged):\n    python3 notes/review_2026-09-28/revision/b25_fill.py <that commit, short SHA> [--now \"D Mon YYYY HH:MM\"]\nThe outcome entry is dated now (UTC); --now gives the time instead, to reproduce a fill made earlier.\n\nIt stops, writing nothing, if an output is missing, names another commit or a dirty tree, does not match the sha256 the\ntables give for `binarised.csv`, or reports a failed check; if the pre-run entry's time is not filled; or if any\nreplacement does not find its text exactly once. Otherwise it writes the replacements it applies to\n",
+  "new": "was run on the family (record, \"The binarised estimators on the AR(1) family (B25): pre-run entry\"): the verdicts follow\nthat entry's criteria mechanically and every sentence below is a template whose only free parts are values read from\nB25's outputs and the dates and times of the entries, the runs and this script's own run.\nChanged after B25's first run, which failed one check, and before its second (record, \"The binarised estimators on the\nAR(1) family (B25): the first run and the correction of one check\"; the changes are L01–L12 of\n`notes/review_2026-09-28/revision/text_replacements_2026-09-29.json`): it reports the second run, made at the commit of\nthat entry; it checks that the first run's outputs, kept in `notes/review_results/partB/binarised_first_run/`, name the\nparent of that commit and report the one failed check that entry describes, and that the second run's values agree with\nthe first run's; and its text states the first run and whether the two runs' values are identical. The verdict criteria\nand the sentences that state B25's values and verdicts are unchanged.\n\nUsage, from the repository root, after B25's second run at the commit of that entry (the tree otherwise unchanged):\n    python3 notes/review_2026-09-28/revision/b25_fill.py <that commit, short SHA> [--now \"D Mon YYYY HH:MM\"]\nThe outcome entry is dated now (UTC); --now gives the time instead, to reproduce a fill made earlier.\n\nIt stops, writing nothing, if an output of either run is missing, names another commit or a dirty tree, or does not\nmatch the sha256 its tables give for its `binarised.csv`; if either run made other than 150 checks, the second run\nreports a failed check, or the first run's outputs report other than the one failed check that the entry of the first\nrun describes; if the second run's `binarised.csv` has other rows than the first run's, or a value that differs from\nthe first run's by more than 10⁻⁹ (relative above 1) or is NaN or infinite where the first run's is not; if the first\nrun's commit is not the parent of the second's, or its record lacks the pre-run entry or holds the entry of the first\nrun, with any time; if either entry's time is not filled, or the two entries and the two runs are not in the order\nentry, run, entry, run; or if any replacement does not find its text exactly once. Otherwise it writes the\nreplacements it applies to\n",
+  "count": 1,
+  "why": "B25's first run: the fill's docstring states what changed and what it now checks"
+ },
+ {
+  "id": "L02",
+  "file": "notes/review_2026-09-28/revision/b25_fill.py",
+  "old": "DATE_A, TIME_A = mh.group(1), mh.group(2)\n",
+  "new": "DATE_A, TIME_A = mh.group(1), mh.group(2)\nmk = re.search(r\"^## The binarised estimators on the AR\\(1\\) family \\(B25\\): the first run and the correction of one check, \"\n               r\"(\\d{1,2} [A-Z][a-z]{2} \\d{4}) (\\d\\d:\\d\\d) UTC \\(appended; nothing above edited\\)$\", rd(REC), re.M)\nif not mk:\n    sys.exit(\"NOTHING WRITTEN: the heading of the entry of B25's first run, with its date and time filled, is not in the \"\n             \"record\")\nDATE_K, TIME_K = mk.group(1), mk.group(2)\n",
+  "count": 1,
+  "why": "B25's first run: the fill reads the entry of the first run, with its time"
+ },
+ {
+  "id": "L03",
+  "file": "notes/review_2026-09-28/revision/b25_fill.py",
+  "old": "ENV = re.search(r\"python [\\d.]+, numpy [\\S]+, scipy [\\S]+, phyid [^.]+(?:\\.[^ .]+)*\", tables).group(0).rstrip(\".\")\n",
+  "new": "ENV = re.search(r\"python [\\d.]+, numpy [\\S]+, scipy [\\S]+, phyid [^.]+(?:\\.[^ .]+)*\", tables).group(0).rstrip(\".\")\n\n# ------------------------------------------------------------------ the first run (record, the entry of the first run)\nOUT0 = OUTD / \"binarised_first_run\"\nfor f in (\"binarised.csv\", \"binarised_tables.md\", \"binarised_run.log\"):\n    if not (OUT0 / f).exists():\n        sys.exit(f\"NOTHING WRITTEN: notes/review_results/partB/binarised_first_run/{f} is missing\")\ntables0 = (OUT0 / \"binarised_tables.md\").read_text(encoding=\"utf-8\")\nlog0 = (OUT0 / \"binarised_run.log\").read_text(encoding=\"utf-8\")\ncsv0 = (OUT0 / \"binarised.csv\").read_text(encoding=\"utf-8\")\nTL0 = tables0.split(\"\\n\")\nm0 = re.fullmatch(r\"git=([0-9a-f]{7})\", TL0[1])\nif not m0 or log0.split(\"\\n\")[0] != TL0[1]:\n    sys.exit(f\"NOTHING WRITTEN: the first run's tables and log name {TL0[1]!r} and {log0.split(chr(10))[0]!r}, not one \"\n             f\"commit\")\nA0 = m0.group(1)\nmr0 = re.fullmatch(r\"run (\\d{1,2} [A-Z][a-z]{2} \\d{4}) (\\d\\d:\\d\\d) UTC\", TL0[2])\nif not mr0:\n    sys.exit(f\"NOTHING WRITTEN: the first run's tables' third line is {TL0[2]!r}, not the time of the run\")\nRUN_DATE0 = mr0.group(1)\nif TL0[3] != f\"binarised.csv sha256 {hashlib.sha256(csv0.encode('utf-8')).hexdigest()}\":\n    sys.exit(\"NOTHING WRITTEN: the first run's binarised.csv does not match the sha256 its tables give for it\")\nif csv0.split(\"\\n\")[0] != f\"# partB25_binarised.py; git={A0}; run {RUN_DATE0} {mr0.group(2)} UTC\":\n    sys.exit(f\"NOTHING WRITTEN: the first run's binarised.csv begins {csv0.split(chr(10))[0]!r}\")\nFAILED0 = (\"operating point (0.85, 0.25): phyid's CCS atoms recomputed from its local MIs (series 4)\", \"1.06e-12\", \"1e-12\")\nmc0 = re.search(r\"Checks: (\\d+), failed (\\d+)\\.\", tables0)\nif (not mc0 or mc0.group(2) != \"1\" or [l for l in TL0 if l.endswith(\" | NO |\")] != [f\"| {' | '.join(FAILED0)} | NO |\"]\n        or [l.strip() for l in log0.split(\"\\n\") if \"CHECK FAILED\" in l]\n        != [f\"CHECK FAILED: {FAILED0[0]}: {FAILED0[1]} above {FAILED0[2]}\"]):\n    sys.exit(\"NOTHING WRITTEN: the first run's outputs do not report the one failed check that the entry of the first \"\n             \"run describes\")\nNCHECKS0 = int(mc0.group(1))\nWALL0 = int(re.search(r\"Wall-clock (\\d+) s\\.\", tables0).group(1))\nif not NCHECKS0 == NCHECKS == 150:\n    sys.exit(f\"NOTHING WRITTEN: the first run made {NCHECKS0} checks and the second {NCHECKS}, not 150 each\")\nROWS0, ROWS1, DMAX = csv0.split(\"\\n\")[1:], csv_text.split(\"\\n\")[1:], 0.0\nif len(ROWS0) != len(ROWS1):\n    sys.exit(\"NOTHING WRITTEN: the second run's binarised.csv has other rows than the first run's\")\nfor r0, r1 in zip(ROWS0, ROWS1):\n    f0, f1 = r0.split(\",\"), r1.split(\",\")\n    if len(f0) != len(f1) or f0[:6] != f1[:6]:\n        sys.exit(\"NOTHING WRITTEN: the second run's binarised.csv has other rows than the first run's\")\n    for x, y in zip(f0[6:], f1[6:]):\n        if x == y:\n            continue\n        try:\n            fx, fy = float(x), float(y)\n        except ValueError:\n            sys.exit(f\"NOTHING WRITTEN: the second run's binarised.csv has {y!r} where the first run's has {x!r}\")\n        if not (math.isfinite(fx) and math.isfinite(fy)):\n            sys.exit(f\"NOTHING WRITTEN: the second run's binarised.csv has {y} where the first run's has {x}\")\n        DMAX = max(DMAX, abs(fx - fy) / max(1.0, abs(fx)))\nif DMAX > 1e-9:\n    sys.exit(f\"NOTHING WRITTEN: a value of the second run's binarised.csv differs from the first run's by {DMAX:.3g} \"\n             f\"(relative above 1), more than 1e-9\")\n\n\ndef sci(v):\n    # 8.3e-14 as \"8.3 × 10⁻¹⁴\"\n    mant, ex = f\"{v:.1e}\".split(\"e\")\n    return f\"{mant} × 10{str(int(ex)).translate(str.maketrans('-0123456789', '⁻⁰¹²³⁴⁵⁶⁷⁸⁹'))}\"\n\n\nif DMAX == 0.0:\n    SAME = \"every value of the second run's `binarised.csv` equals the first run's\"\n    SAME_D = \"every value in the two runs' `binarised.csv` is the same\"\n    SAME_E = \"every value of this run's `binarised.csv` equal to the first run's\"\nelse:\n    SAME = (f\"every value of the second run's `binarised.csv` lies within {sci(DMAX)} of the first run's (relative \"\n            f\"above 1)\")\n    SAME_D = f\"the values in the two runs' `binarised.csv` agree within {sci(DMAX)}\"\n    SAME_E = f\"every value of this run's `binarised.csv` within {sci(DMAX)} of the first run's (relative above 1)\"\n\n\ndef git(*a):\n    return subprocess.run([\"git\", *a], capture_output=True, text=True, cwd=ROOT)\n\n\npar, first = git(\"rev-parse\", \"-q\", \"--verify\", f\"{A}^\"), git(\"rev-parse\", \"-q\", \"--verify\", f\"{A0}^{{commit}}\")\nif par.returncode or first.returncode or par.stdout.strip() != first.stdout.strip():\n    sys.exit(f\"NOTHING WRITTEN: the first run's commit, {A0}, is not the parent of {A}\")\nrec0 = git(\"show\", f\"{A0}:{REC}\").stdout\nif mh.group(0) not in rec0 or re.search(r\"^## The binarised estimators on the AR\\(1\\) family \\(B25\\): the first run and the \"\n                                        r\"correction of one check,\", rec0, re.M):\n    sys.exit(f\"NOTHING WRITTEN: the record at {A0} lacks the pre-run entry or holds the entry of the first run\")\n\n\ndef when(d, t):\n    return time.strptime(f\"{d} {t}\", \"%d %b %Y %H:%M\")\n\n\nif not (when(DATE_A, TIME_A) <= when(RUN_DATE0, mr0.group(2)) <= when(DATE_K, TIME_K) <= when(RUN_DATE, mr.group(2))):\n    sys.exit(\"NOTHING WRITTEN: the pre-run entry, the first run, the entry of the first run and the second run are not \"\n             \"in that order\")\n",
+  "count": 1,
+  "why": "B25's first run: the fill checks the first run's kept outputs against the entry, the equality of the two runs' values, the commits and the order of the entries and the runs"
+ },
+ {
+  "id": "L04",
+  "file": "notes/review_2026-09-28/revision/b25_fill.py",
+  "old": "    \"record, \\\"The binarised estimators on the AR(1) family (B25): pre-run entry\\\", with its predictions, and \\\"B25, \"\n    \"outcome\\\") evaluates on the symmetric AR(1) family phyid's discrete path, which binarises each of x_t, y_t, x_{t+1} \"\n",
+  "new": "    \"record, \\\"The binarised estimators on the AR(1) family (B25): pre-run entry\\\", with its predictions, \\\"The \"\n    \"binarised estimators on the AR(1) family (B25): the first run and the correction of one check\\\" and \\\"B25, \"\n    \"outcome\\\") evaluates on the symmetric AR(1) family phyid's discrete path, which binarises each of x_t, y_t, x_{t+1} \"\n",
+  "count": 1,
+  "why": "B25's first run: S3 Text §11 cites the entry of the first run"
+ },
+ {
+  "id": "L05",
+  "file": "notes/review_2026-09-28/revision/b25_fill.py",
+  "old": "    \"the grid r₁ 0.60–0.95 × q 0.10, 0.25, 0.50. Values in nats (bits × ln 2).\", \"\",\n",
+  "new": "    \"the grid r₁ 0.60–0.95 × q 0.10, 0.25, 0.50. Values in nats (bits × ln 2). The values below are those of B25's \"\n    f\"second run. The first failed one of its {NCHECKS0} checks, the comparison of phyid's CCS atoms with their \"\n    \"recomputation from its local mutual informations: on one of ten series of 10⁵ samples, two means that are equal \"\n    \"in exact arithmetic differed by 1.06 × 10⁻¹² through the rounding of their sums, against a tolerance of 10⁻¹². \"\n    \"Before the second run the check was changed to compare the atoms sample by sample, which involves no sum over \"\n    f\"the samples; {SAME} (S5 Text §4).\", \"\",\n",
+  "count": 1,
+  "why": "B25's first run: S3 Text §11 states that its values are the second run's, and why there was a second run"
+ },
+ {
+  "id": "L06",
+  "file": "notes/review_2026-09-28/revision/b25_fill.py",
+  "old": "                       f\" The computation of the binarised estimators on the family (S3 Text), which uses no data, was \"\n                       f\"added to `run_all.sh` after that run; it was run at {A} in a session of the AI system. The \"\n                       f\"HRF-deconvolution items\"),\n",
+  "new": "                       f\" The computation of the binarised estimators on the family (S3 Text), which uses no data, was \"\n                       f\"added to `run_all.sh` after that run; it was run at {A} in a session of the AI system; a first \"\n                       f\"run, at {A0}, had failed one check through the rounding of a sum, and {SAME_D} (S5 Text). The \"\n                       f\"HRF-deconvolution items\"),\n",
+  "count": 1,
+  "why": "B25's first run: Data and code availability names the first run"
+ },
+ {
+  "id": "L07",
+  "file": "notes/review_2026-09-28/revision/b25_fill.py",
+  "old": "       S5_RUN + f\" B25 (S3 Text §11), which uses no data, was run on {long_date(RUN_DATE)} at {A} in a session of the AI \"\n       f\"system ({WALL} s by its own count; {NCHECKS} checks, 0 failed; its three outputs carry `git={A}`, and its tables \"\n       f\"the sha256 of `binarised.csv`); it was added to `run_all.sh` after the final run.\",\n",
+  "new": "       S5_RUN + f\" B25 (S3 Text §11), which uses no data, was run on {long_date(RUN_DATE)} at {A} in a session of the AI \"\n       f\"system ({WALL} s by its own count; {NCHECKS} checks, 0 failed; its three outputs carry `git={A}`, and its tables \"\n       f\"the sha256 of `binarised.csv`); it was added to `run_all.sh` after the final run. That was its second run. The \"\n       f\"first, on {long_date(RUN_DATE0)} at {A0}, the commit of its pre-run entry ({WALL0} s), failed one of its \"\n       f\"{NCHECKS0} checks, the comparison of phyid's CCS atoms with their recomputation from its local mutual \"\n       f\"informations: on one of ten series of 10⁵ samples, two means that are equal in exact arithmetic differed by \"\n       f\"1.06 × 10⁻¹² through the rounding of their sums, against a tolerance of 10⁻¹². Before the second run the check was \"\n       f\"changed to compare the atoms sample by sample, which involves no sum over the samples (record, \\\"The binarised \"\n       f\"estimators on the AR(1) family (B25): the first run and the correction of one check\\\"); {SAME}; the first \"\n       f\"run's outputs are kept in `notes/review_results/partB/binarised_first_run/`.\",\n",
+  "count": 1,
+  "why": "B25's first run: S5 Text §4 states the first run, its failed check and the correction"
+ },
+ {
+  "id": "L08",
+  "file": "notes/review_2026-09-28/revision/b25_fill.py",
+  "old": "S5_COMMIT_NEW = (f\"{A} ({DATE_A.rsplit(' ', 1)[0]}, the revision that followed the citation crosscheck of 28 September 2026: \"\n                 f\"its corrections; the licences, the citation file, the diagnostic tool, the tests and the \"\n                 f\"continuous-integration workflow; the pre-run entry of B25; and the correction for the matrices that are \"\n                 f\"not positive definite, with the pre-run entry of its run, B26; B25 was run at this commit); \"\n                 f\"the outputs of B25, its outcome entry and the text that reports it are the commit that follows, which \"\n                 f\"cannot name its own identifier (its parent is {A}).\")\n",
+  "new": "S5_COMMIT_NEW = (f\"{A0} ({DATE_A.rsplit(' ', 1)[0]}, the revision that followed the citation crosscheck of 28 September 2026: \"\n                 f\"its corrections; the licences, the citation file, the diagnostic tool, the tests and the \"\n                 f\"continuous-integration workflow; the pre-run entry of B25; and the correction for the matrices that are \"\n                 f\"not positive definite, with the pre-run entry of its run, B26; B25's first run was made at this \"\n                 f\"commit); {A} ({DATE_K.rsplit(' ', 1)[0]}, the correction of one of B25's checks after its first run, \"\n                 f\"with that run's outputs; B25's second run was made at this commit); the outputs of B25, its outcome \"\n                 f\"entry and the text that reports it are the commit that follows, which cannot name its own identifier \"\n                 f\"(its parent is {A}).\")\n",
+  "count": 1,
+  "why": "B25's first run: S5 Text §6 lists the commit of the first run and the commit of the correction"
+ },
+ {
+  "id": "L09",
+  "file": "notes/review_2026-09-28/revision/b25_fill.py",
+  "old": "    rr(\"G15\", \"CLAUDE.md\", \"; next B25's run and outcome, its re-run by a separate session, B26's run on the data, then \"\n       \"the typeset PDF and the note to C.T. and S.P.S.)\",\n       f\"; B25 run at {A} and reported; next its re-run by a separate session, B26's run on the data, then the typeset \"\n       f\"PDF and the note to C.T. and S.P.S.)\", \"bookkeeping\"),\n    rr(\"G16\", \"CLAUDE.md\", \"- Remaining work: B25's run at the revision's commit and its outcome (`b25_fill.py`), its \"\n       \"re-run by a separate\\n  session,\",\n       f\"- Remaining work: B25's re-run at {A} by a separate session (B25 was run and reported in the commit that\\n  \"\n       f\"follows {A}),\", \"bookkeeping\"),\n",
+  "new": "    rr(\"G15\", \"CLAUDE.md\", \"; next B25's second run and outcome, its re-run by a separate session, B26's run on the data, \"\n       \"then the typeset PDF and the note to C.T. and S.P.S.)\",\n       f\"; B25's second run made at {A} and reported; next its re-run by a separate session, B26's run on the data, then \"\n       f\"the typeset PDF and the note to C.T. and S.P.S.)\", \"bookkeeping\"),\n    rr(\"G16\", \"CLAUDE.md\", \"- Remaining work: B25's second run and its outcome (`b25_fill.py`), its re-run by a separate\\n\"\n       \"  session,\",\n       f\"- Remaining work: B25's re-run at {A} by a separate session (its second run, made at {A}, is reported in the\\n\"\n       f\"  commit that follows),\", \"bookkeeping\"),\n",
+  "count": 1,
+  "why": "B25's first run: the fill's two edits of CLAUDE.md start from the text the commit of the correction gives it"
+ },
+ {
+  "id": "L10",
+  "file": "notes/review_2026-09-28/revision/b25_fill.py",
+  "old": "# ------------------------------------------------------------------ the outcome entry\nentry = f\"\"\"\n## B25, outcome, {NOW} UTC (appended; nothing above edited)\n\nRun in the writer's session at {A}, the commit of the pre-run entry, on {RUN_DATE}, with the command of the script's\ndocstring ({WALL} s by its own count; {NCHECKS} checks, 0 failed; {ENV}); the three outputs,\n`notes/review_results/partB/binarised_tables.md`, `binarised.csv` and `binarised_run.log`, carry `git={A}`, and the\ntables give the sha256 of `binarised.csv`, which `notes/review_2026-09-28/revision/b25_fill.py` recomputed. A separate\nsession re-runs B25 at {A}; the commit that follows its re-run records the result. The text below and every sentence\nthat reports B25 were written by `b25_fill.py`, fixed with the pre-run entry.\n",
+  "new": "# ------------------------------------------------------------------ the outcome entry\nNB = \"\\u00a0\"\nP1 = textwrap.fill(\n    f\"Run in the writer's session at {A}, the commit of the entry \\\"The binarised estimators on the AR(1) family (B25): \"\n    f\"the first run and the correction of one check\\\", on {RUN_DATE}, with the command of the script's docstring \"\n    f\"({WALL}{NB}s by its own count; {NCHECKS} checks, 0 failed; {ENV}); the three outputs, \"\n    f\"`notes/review_results/partB/binarised_tables.md`, `binarised.csv` and `binarised_run.log`, carry `git={A}`, and \"\n    f\"the tables give the sha256 of `binarised.csv`, which `notes/review_2026-09-28/revision/b25_fill.py` recomputed. \"\n    f\"This is B25's second run. Its first, at {A0}, the commit of the pre-run entry, on {RUN_DATE0}, failed one check; \"\n    f\"the entry of the first run records it and the correction. The first run's outputs are kept in \"\n    f\"`notes/review_results/partB/binarised_first_run/`, and `b25_fill.py` found that they name this commit's parent \"\n    f\"and report {NCHECKS0} checks with the one failed check that entry describes, and found {SAME_E}. A separate \"\n    f\"session re-runs B25 at {A}; the commit that follows its re-run records the result. The text below and every \"\n    f\"sentence that reports B25 were written by `b25_fill.py`, fixed with the pre-run entry and changed, before this \"\n    f\"run, under the entry of the first run.\".replace(\" × \", NB + \"×\" + NB),\n    width=120, break_long_words=False, break_on_hyphens=False).replace(NB, \" \")\nentry = f\"\"\"\n## B25, outcome, {NOW} UTC (appended; nothing above edited)\n\n{P1}\n",
+  "count": 1,
+  "why": "B25's first run: the outcome entry states which run it reports and what the fill checked of the first, wrapped at 120 columns"
+ },
+ {
+  "id": "L11",
+  "file": "notes/review_2026-09-28/revision/b25_fill.py",
+  "old": "**Where it is reported.** S3 Text §11 (new; the limit at q = 0.25 as a table); S19 Table, rows B25 (a)–(d) and its\ncount; Methods, Pre-registration and deviations (the count); S20 Table row 2 and `notes/partB5_literature_v2.md` (Luppi\net al. 2023's estimator on the family); the Discussion's pointer to S3 Text; S3 Text's caption and the labels B1–B25;\nData and code availability and S5 Text §4 and §6 (the run and the commits); `main_text_numbers.csv` (the count's five\n",
+  "new": "**Where it is reported.** S3 Text §11 (new; the limit at q = 0.25 as a table; the first run); S19 Table, rows B25\n(a)–(d) and its count; Methods, Pre-registration and deviations (the count); S20 Table row 2 and\n`notes/partB5_literature_v2.md` (Luppi et al. 2023's estimator on the family); the Discussion's pointer to S3 Text;\nS3 Text's caption and the labels B1–B25; Data and code availability and S5 Text §4 and §6 (the two runs and the\ncommits); `main_text_numbers.csv` (the count's five\n",
+  "count": 1,
+  "why": "B25's first run: the outcome entry's list of places names the first run"
+ },
+ {
+  "id": "L12",
+  "file": "notes/review_2026-09-28/revision/b25_fill.py",
+  "old": "import sys\nimport time\n",
+  "new": "import sys\nimport textwrap\nimport time\n",
+  "count": 1,
+  "why": "B25's first run: textwrap wraps the outcome entry's first paragraph"
+ },
+ {
+  "id": "K01",
+  "file": "CLAUDE.md",
+  "old": "; next B25's run and outcome, its re-run by a separate session, B26's run on the data, then the typeset PDF and the note to C.T. and S.P.S.)",
+  "new": "; B25's first run failed one check through the rounding of a sum, corrected before its second; next B25's second run and outcome, its re-run by a separate session, B26's run on the data, then the typeset PDF and the note to C.T. and S.P.S.)",
+  "count": 1,
+  "why": "bookkeeping"
+ },
+ {
+  "id": "K02",
+  "file": "CLAUDE.md",
+  "old": "  which is corrected in the same commit, with B26, the run of section 6 with the correction, registered\n  before it runs.\n- Remaining work: B25's run at the revision's commit and its outcome (`b25_fill.py`), its re-run by a separate\n  session,",
+  "new": "  which is corrected in the same commit, with B26, the run of section 6 with the correction, registered\n  before it runs. B25's first run, at that commit, failed one check through the rounding of a sum; the check\n  was corrected, and the first run's outputs kept, in the commit that follows, before B25's second run, and\n  two further sessions audited those changes (record, \"The binarised estimators on the AR(1) family (B25):\n  the first run and the correction of one check\"; `findings6_code.md`, `findings6_text.md`).\n- Remaining work: B25's second run and its outcome (`b25_fill.py`), its re-run by a separate\n  session,",
+  "count": 1,
+  "why": "bookkeeping"
+ },
+ {
+  "id": "K03",
+  "file": "CLAUDE.md",
+  "old": "                                 with the revision's replacements, the text that reports B25\n                                 and the checks' outputs (review_2026-09-28/), the applicability\n",
+  "new": "                                 with the revision's replacements, the text that reports B25,\n                                 the checks' outputs, and B25's first run and the correction of\n                                 one of its checks (review_2026-09-28/), the applicability\n",
+  "count": 1,
+  "why": "bookkeeping"
+ },
+ {
+  "id": "K04",
+  "file": "README.md",
+  "old": "the citation crosscheck of 28 Sep 2026 with the revision's replacements, the text that reports B25 and the checks' outputs (`review_2026-09-28/`)",
+  "new": "the citation crosscheck of 28 Sep 2026 with the revision's replacements, the text that reports B25, the checks' outputs and B25's first run with the correction of one of its checks (`review_2026-09-28/`)",
+  "count": 1,
+  "why": "bookkeeping"
+ },
+ {
+  "id": "K05",
+  "file": "notes/review_2026-09-28/README.md",
+  "old": "- `revision/b25_fill.py` — the text that reports B25, written from B25's outputs alone; fixed with B25's pre-run entry,\n  before B25 was run. When it runs it writes `revision/text_replacements_2026-09-28_b25.json`, the replacements it\n  applies.\n",
+  "new": "- `revision/b25_fill.py` — the text that reports B25, written from B25's outputs alone; fixed with B25's pre-run entry,\n  before B25 was run, and changed after its first run, before its second (L01–L12 of\n  `revision/text_replacements_2026-09-29.json`). When it runs it writes\n  `revision/text_replacements_2026-09-28_b25.json`, the replacements it applies.\n- `revision/text_replacements_2026-09-29.json` — the replacements of the commit that follows B25's first run (record,\n  \"The binarised estimators on the AR(1) family (B25): the first run and the correction of one check\"): the correction\n  of the check it failed (H01–H08), the changes to `b25_fill.py` (L01–L12), the entry (E01), the bookkeeping (K01–K06)\n  and the writer's session's three notes (W01–W04), applied with the same script.\n- `b25_first_run/` — the check of B25's first run that failed: `b25_check_diagnosis.py` and its output\n  `b25_check_diagnosis.out` (the check recomputed three ways), `b25_selftest.out` (the self-test of the corrected\n  script) and `planning_runs.md` (a note on the planning session's two runs of B25 before the entry). The first run's\n  outputs are in `notes/review_results/partB/binarised_first_run/`.\n- `external_checks_2026-09-27.md` — the planning session's note of 27 September 2026 on the data release and the\n  software, which the reason of P48 cites.\n",
+  "count": 1,
+  "why": "bookkeeping"
+ },
+ {
+  "id": "K06",
+  "file": "notes/review_2026-09-28/README.md",
+  "old": "  `findings4_text.md` and `findings4_code.md`, and a fifth, which verified the fourth's, `findings5_text.md` and\n  `findings5_code.md`; their line numbers are those of the build they audited) and what was done with each finding\n  (`dispositions.md`).\n",
+  "new": "  `findings4_text.md` and `findings4_code.md`, a fifth, which verified the fourth's, `findings5_text.md` and\n  `findings5_code.md`, and a sixth, of the changes made after B25's first run, `findings6_code.md` and\n  `findings6_text.md`; their line numbers are those of the build they audited) and what was done with each\n  finding (`dispositions.md`, with the writer's session's notes on 820cacd).\n",
+  "count": 1,
+  "why": "bookkeeping"
+ },
+ {
+  "id": "W01",
+  "file": "notes/partB5_literature_v2.md",
+  "old": "it falls with a fall in r₁ or in |q|, with ∂ΦR/∂q = 0.19",
+  "new": "it falls with a fall in r₁ or in \\|q\\|, with ∂ΦR/∂q = 0.19",
+  "count": 1,
+  "why": "the writer's session's note 2: the bars of |q| split row 3 of Table A into more cells than its header"
+ },
+ {
+  "id": "W02",
+  "file": "notes/review_2026-09-28/revision/text_replacements_2026-09-28.json",
+  "old": "recorded in b32/external_checks_2026-09-27.md.",
+  "new": "recorded in notes/review_2026-09-28/external_checks_2026-09-27.md.",
+  "count": 1,
+  "why": "the writer's session's note 1: P48's reason names the note where the repository holds it"
+ },
+ {
+  "id": "W03",
+  "file": "notes/review_2026-09-28/proposals.json",
+  "old": "recorded in b32/external_checks_2026-09-27.md.",
+  "new": "recorded in notes/review_2026-09-28/external_checks_2026-09-27.md.",
+  "count": 1,
+  "why": "the writer's session's note 1: P48's reason names the note where the repository holds it"
+ },
+ {
+  "id": "W04",
+  "file": "notes/review_2026-09-28/audit/dispositions.md",
+  "old": "5. The docstrings on large stretches. Corrected (`findings5_text.md` 9).\n",
+  "new": "5. The docstrings on large stretches. Corrected (`findings5_text.md` 9).\n\n## The writer's session's notes on 820cacd\n\nThe writer's session made commit 820cacd from this revision and reported three notes with it, besides B25's failed check\n(record, \"The binarised estimators on the AR(1) family (B25): the first run and the correction of one check\"). What was\ndone, in the commit that follows:\n\n1. P48's reason cited `b32/external_checks_2026-09-27.md`, a note of the planning session outside the repository.\n   Corrected: the note is `external_checks_2026-09-27.md` in this review folder, with a preface, and P48's reason in\n   `proposals.json` and in `revision/text_replacements_2026-09-28.json` names it there.\n2. Row 3 of Table A in `notes/partB5_literature_v2.md` held the bars of \"|q|\" unescaped (since before d108d66), which\n   split the row into more cells than its header. Corrected: \"\\|q\\|\". The same check\n   (`notes/review_2026-09-25/checks/tablecheck.py`) finds the header of one table of\n   `notes/review_results/partB/lag_tables.md` split in the same way (\"model sts at |q| = 0.25\"); that file is written by\n   `notes/partB3_lag.py`, a step of B26's run, whose scripts stay unchanged until B26 has run, so it is corrected after\n   that run. The other files it flags are kept as written: the superseded `notes/partB5_literature.md`, two earlier\n   reviews and one table of an earlier entry of the record.\n3. The header of `manuscript/figures/captions_v2.md` names c25a310, the commit at which `scripts/15_figures_v2.py`\n   generated it, although this revision edited one phrase of Fig 1 (a) in the file (E07c) and in the script (E07s). Not\n   changed: B26's run regenerates the file, with the commit of that run in the header and the script's phrase, and a\n   header edited by hand would be one more difference between the regenerated file and the committed one for B26's rule\n   (i) to read.\n\n## findings6_code.md\n\nThe sixth round audited the changes made after B25's first run (record, \"The binarised estimators on the AR(1) family\n(B25): the first run and the correction of one check\"), on a simulation of the whole flow with a real second run:\n`findings6_code.md` the code, the writer's prompt and the planning session's check of the returned bundle,\n`findings6_text.md` the entry and the texts. Their line numbers are those of the build they audited.\n\n1. The first run's wall-clock and the two logs. Corrected as proposed in the planning session's check of the bundle\n   (`check32c.py`, outside the repository): it checks that the first run's tables and log give 514 s, the value of the\n   entry, that the first run's log equals the planning session's run of its script once the commit, the times and the\n   paths are masked, and that the second run's log has no CHECK FAILED line and ends with 150 checks, 0 failed.\n2. The diagnosis and the machine's BLAS kernels. Corrected: step 8 of the writer's prompt compares only the columns that\n   the kernels leave unchanged (the series, (i), the knowns' means and the largest mean absolute local known), and\n   `b25_fill.py` requires the second run's values within 10⁻⁹ (relative above 1) of the first run's, the tolerance of\n   the separate session's re-run, and says in its text whether they are identical; the entry states the one value of\n   `binarised.csv` that the Haswell kernels change.\n3. The test for the entry at the first run's commit. Corrected as proposed: its title, with any time.\n4. Step 6's test that nothing above the entry is edited. Corrected: `git diff --numstat` must give the entry's lines\n   added and none removed.\n5. The maximum over the replicates and a NaN. Corrected as proposed (H08).\n6. The fill's docstring. Corrected: it lists the stop on the number of checks and the test of the entry with any time.\n7. The pattern of the log's last line. Corrected as proposed.\n8. The order of the lines of step 7. Corrected: the block is in the order the commands print.\n9. The commits' subjects. Corrected: the message of the commit that follows 820cacd says that 820cacd's subject was\n   written when the round had two commits.\n\n## findings6_text.md\n\n1. The Rule's statement that the sentences fixed with the pre-run entry are unchanged. Corrected as proposed: the\n   verdict criteria and the sentences that state B25's values and verdicts are unchanged, and the sentences that name\n   the run, its commit and the places that report it change, `CLAUDE.md` among them.\n2. \"Found them as that entry describes them\". Corrected as proposed, in the outcome entry and the fill's docstring; the\n   values the fill does not compare (the time and the wall-clock of the first run, the sha256 of its CSV) are those the\n   planning session's check of the bundle compares (`findings6_code.md` 1).\n3. \"No sum\". Corrected: \"no sum over the samples\" in the entry, the script's docstrings, S3 Text, S5 Text and the\n   diagnosis.\n4. \"No value changes\". Corrected as proposed; S3 Text, S5 Text and Data and code availability speak of the values of\n   `binarised.csv`.\n5. Why `b25_fill.py` was not run. Corrected as proposed.\n6. The means of the knowns. Corrected: the entry gives, by series, the mean farthest from its exact value, and the\n   diagnosis says which of its columns is over the sixteen knowns.\n7. The diagnosis's definitions. Corrected as proposed.\n8. The places where the corrected run's tables differ. Corrected.\n9. The record's flagged table. Corrected: \"one table of an earlier entry of the record\".\n10. The run at the commit of the correction. Corrected: \"B25's second run was made at this commit\".\n11. The fill's docstring on the free parts of its sentences. Corrected: values read from B25's outputs and the dates and\n   times of the entries, the runs and its own run.\n12. The opening of the writer's prompt. Corrected as proposed.\n13. The message of the commit that follows 820cacd. Corrected as proposed.\n14. The outcome entry's long lines. Corrected: its first paragraph is wrapped at 120 columns when it is written.\n",
+  "count": 1,
+  "why": "the writer's session's three notes and what was done with them"
+ }
+]
