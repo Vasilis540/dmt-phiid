@@ -1,0 +1,138 @@
+[
+ {
+  "id": "G01",
+  "file": "manuscript/si/S3_Text.md",
+  "old": "while the AR(1)-substituted estimate from each pair's measured (a_x, a_y, q), in which |q| fell too, gives −0.0086 (main text, Table 1).\n",
+  "new": "while the AR(1)-substituted estimate from each pair's measured (a_x, a_y, q), in which |q| fell too, gives −0.0086 (main text, Table 1).\n\n## 11. The binarised estimators on the family\n\nTwo studies in S20 Table use binarised signals: Luppi et al. (2022) replicated their gradient from mean-binarised signals with the plug-in estimator (their pp. 3, 14), and the primary quantity of Luppi et al. (2023) is the emergence capacity of Ince's CCS decomposition on mean-binarised signals (their p. 12; S20 Table, row 2). B25 (`notes/partB25_binarised.py`; record, \"The binarised estimators on the AR(1) family (B25): pre-run entry\", with its predictions, \"The binarised estimators on the AR(1) family (B25): the first run and the correction of one check\" and \"B25, outcome\") evaluates on the symmetric AR(1) family phyid's discrete path, which binarises each of x_t, y_t, x_{t+1} and y_{t+1} at its mean and takes plug-in probabilities, under MMI and under CCS, and Luppi et al. (2023)'s emergence capacity as we read their Methods: the synergy of the two pasts about the joint future, taken as one target, in Ince's decomposition, whose redundancy is evaluated on the maximum-entropy distribution that keeps the three pairwise marginals (Ince, 2017, Definition 2; his toolbox's code read, not run). At finite length each of the four lagged series is binarised at its own mean, as phyid does, where Luppi et al. binarise each signal once, a difference of order 1/T. The emergence capacity is str + stx + sty + sts, under MMI the whole-minus-max synergy. In the long-series limit the binarised probabilities are the orthant probabilities of the Gaussian family, computed by numerical quadrature to about 10⁻¹³; at 160, 300 and 840 samples, 1,000 replicate pairs per point of the grid r₁ 0.60–0.95 × q 0.10, 0.25, 0.50. Values in nats (bits × ln 2). The values below are those of B25's second run. The first failed one of its 150 checks, the comparison of phyid's CCS atoms with their recomputation from its local mutual informations: on one of ten series of 10⁵ samples, two means that are equal in exact arithmetic differed by 1.06 × 10⁻¹² through the rounding of their sums, against a tolerance of 10⁻¹². Before the second run the check was changed to compare the atoms sample by sample, which involves no sum over the samples; every value of the second run's `binarised.csv` equals the first run's (S5 Text §4).\n\nUnder MMI the lattice fixes the form before any computation. With A = I(x_t; x_{t+1}) of the binarised series, B = I(x_t; y_{t+1}), F = I(x_t; x_{t+1}, y_{t+1}) and T = I(x_t, y_t; x_{t+1}, y_{t+1}), binarised MMI-sts on the symmetric family in the long-series limit is T − 2F + 2A − B and its emergence capacity T − F, for 0 < q < 1, where B < A settles every MMI selection; the Gaussian atoms have F = A and T = 2A, which gives sts = 2S − C and emergence capacity S (main text, Results 1). At q = 0 binarised MMI-sts is exactly 2A, the two binarised self-informations, and its emergence capacity A = 1 − H₂(arccos(r₁)/π) bits.\n\nIn the long-series limit binarised MMI-sts rises with r₁ at every step at each q, and so does its emergence capacity. At q = 0.25 MMI-sts goes from 0.1639 nats at r₁ = 0.60 to 0.7082 at 0.95 and is 0.4355 at the operating point (0.85, 0.25), where the Gaussian atom is 1.2588 and the two binarised self-informations, 2A, are 0.4539; the emergence capacity there is 0.2188, against S = 0.6410 for the Gaussian estimator. At the operating point ∂(MMI-sts)/∂r₁ = +1.815 and ∂(MMI-sts)/∂q = −0.150 nats per unit, so that per standard deviation of the pairs' variation within a window (main text, Results 1) the r₁ rate is 1.76 times the |q| rate, against 4.7 for the Gaussian atom. At 160, 300 and 840 samples the replicate means of MMI-sts and its emergence capacity rise with r₁ at 126 of the 126 steps, and the replicate mean of MMI-sts lies between −0.1914 and −0.0169 nats from its limit (−0.0627 to −0.0169 at 840 samples). Under CCS, through phyid's discrete path, sts is −0.0456 nats at the operating point with the published mask (−0.0481 with phyid's) and falls with r₁ at every step at each q; the CCS emergence capacity is +0.0400 there and rises with r₁ at every step at each q. Luppi et al. (2023)'s emergence capacity as we read it, Ince's CCS synergy of the two pasts about the joint future, is +0.0397 nats at the operating point and rises with r₁ at every step at each q, with ∂/∂r₁ = +0.124 and ∂/∂q = +0.142 there; at 840 samples its replicate mean at the operating point is +0.0409 ± 0.0005. Of the predictions recorded before the run (S19 Table), (a), that binarised MMI-sts and its emergence capacity rise with r₁ at every step of the grid in the limit, was met; (b), that at the operating point ∂(MMI-sts)/∂r₁ is positive and the r₁ rate exceeds the |q| rate per standard deviation, was met; and (c), that the replicate means rise at every step at the three lengths, was met. The CCS quantities carried no prediction.\n\n**The long-series limit at q = 0.25** (nats; the other values of q, the finite lengths and the rates are in `notes/review_results/partB/binarised_tables.md`).\n\n| r₁ | MMI-sts | MMI emergence capacity | 2A | CCS-sts (published mask) | CCS emergence capacity | Luppi et al. (2023)'s emergence capacity | Gaussian-MMI sts |\n|---|---|---|---|---|---|---|---|\n| 0.60 | 0.1639 | 0.0826 | 0.1729 | −0.0205 | +0.0177 | +0.0175 | 0.4349 |\n| 0.65 | 0.1999 | 0.1007 | 0.2104 | −0.0244 | +0.0211 | +0.0209 | 0.5357 |\n| 0.70 | 0.2424 | 0.1221 | 0.2547 | −0.0288 | +0.0250 | +0.0247 | 0.6578 |\n| 0.75 | 0.2935 | 0.1477 | 0.3076 | −0.0338 | +0.0293 | +0.0290 | 0.8088 |\n| 0.80 | 0.3561 | 0.1791 | 0.3722 | −0.0393 | +0.0343 | +0.0340 | 1.0012 |\n| 0.85 | 0.4355 | 0.2188 | 0.4539 | −0.0456 | +0.0400 | +0.0397 | 1.2588 |\n| 0.90 | 0.5428 | 0.2725 | 0.5635 | −0.0528 | +0.0468 | +0.0466 | 1.6348 |\n| 0.95 | 0.7082 | 0.3550 | 0.7314 | −0.0613 | +0.0555 | +0.0553 | 2.2989 |\n",
+  "count": 1,
+  "why": "B25: S3 Text §11"
+ },
+ {
+  "id": "G02",
+  "file": "manuscript/si/S3_Text.md",
+  "old": "(B1–B24, B16b, B17b)",
+  "new": "(B1–B25, B16b, B17b)",
+  "count": 1,
+  "why": "B25: the labels"
+ },
+ {
+  "id": "G03",
+  "file": "manuscript/supplementary.md",
+  "old": "\n\nOf 53 recorded predictions, 25 were met, 14 partly met, 14 missed and 0 could not be evaluated. Six further entries recorded a reading rule or an outcome mapping without predicting which branch would obtain (B2, B6, B7, the two rules of 16 September 2026, 10:23 UTC, the cross-lag budget) or recorded no prediction (B18);",
+  "new": "\n| B25 (a), binarised MMI in the long-series limit (29 Sep 2026, 05:59 UTC) | Binarised MMI-sts and its emergence capacity rise with r₁ at every step of the grid (r₁ 0.60–0.95 in steps of 0.05; q = 0.10, 0.25, 0.50): 42 steps | 42 of 42 steps rise; at (0.85, 0.25) MMI-sts 0.4355 (Gaussian 1.2588) | met | S3 Text §11 |\n| B25 (b), the rates at the operating point | ∂(MMI-sts)/∂r₁ positive and, per SD of the pairs' variation within a window, above \\|∂(MMI-sts)/∂q\\| (a per-unit ratio above 6.89) | ∂/∂r₁ +1.815, ∂/∂q −0.150: per-unit ratio 12.13, per-SD ratio 1.76 | met | S3 Text §11 |\n| B25 (c), binarised MMI at 160, 300 and 840 samples | The replicate means of binarised MMI-sts and its emergence capacity rise with r₁ at every step, q and length: 126 steps | 126 of 126 steps rise; MMI-sts −0.1914 to −0.0169 from its limit | met | S3 Text §11 |\n| B25 (d), the CCS quantities and Luppi et al. (2023)'s emergence capacity | No prediction (descriptive), nor for the sign of the finite-sample bias of MMI-sts | At (0.85, 0.25): CCS-sts −0.0456 (published mask), CCS emergence capacity +0.0400, Luppi et al. (2023)'s +0.0397, its ∂/∂r₁ = +0.124 and ∂/∂q = +0.142 | no prediction | S3 Text §11; S20 Table, row 2 |\n\nOf 56 recorded predictions, 28 were met, 14 partly met, 14 missed and 0 could not be evaluated. Six further entries recorded a reading rule or an outcome mapping without predicting which branch would obtain (B2, B6, B7, the two rules of 16 September 2026, 10:23 UTC, the cross-lag budget) or recorded no prediction (B18), and B25 recorded none for its CCS quantities (row B25 (d));",
+  "count": 1,
+  "why": "B25: S19 Table's rows and its count"
+ },
+ {
+  "id": "G04",
+  "file": "manuscript/supplementary.md",
+  "old": "Labels B1–B24, B16b and B17b",
+  "new": "Labels B1–B25, B16b and B17b",
+  "count": 1,
+  "why": "B25: the labels"
+ },
+ {
+  "id": "G05",
+  "file": "manuscript/supplementary.md",
+  "old": "Primary quantity is discrete CCS on binarised data: outside the map, which is Gaussian-MMI (the CCS comparison (S3 Text §2) evaluated Gaussian CCS on continuous data, not this estimator). The Gaussian and the MMI validations are inside it",
+  "new": "Primary quantity is discrete CCS on binarised data: outside the map, which is Gaussian-MMI (the CCS comparison (S3 Text §2) evaluated Gaussian CCS on continuous data, not this estimator). On the symmetric family this estimator, as we read it (Ince's CCS on mean-binarised signals, the joint future as one target), gives an emergence capacity of +0.0397 nats at (r₁, q) = (0.85, 0.25), which rises with r₁ at every step at each q, with ∂/∂r₁ = +0.124 against ∂/∂q = +0.142 (S3 Text §11). The Gaussian and the MMI validations are inside the map",
+  "count": 1,
+  "why": "B25: S20 Table, row 2"
+ },
+ {
+  "id": "G05L",
+  "file": "notes/partB5_literature_v2.md",
+  "old": "Primary quantity is discrete CCS on binarised data: outside the map, which is Gaussian-MMI (B2 evaluated Gaussian CCS on continuous data, not this estimator). The Gaussian and the MMI validations are inside it",
+  "new": "Primary quantity is discrete CCS on binarised data: outside the map, which is Gaussian-MMI (B2 evaluated Gaussian CCS on continuous data, not this estimator). On the symmetric family this estimator, as we read it (Ince's CCS on mean-binarised signals, the joint future as one target), gives an emergence capacity of +0.0397 nats at (r₁, q) = (0.85, 0.25), which rises with r₁ at every step at each q, with ∂/∂r₁ = +0.124 against ∂/∂q = +0.142 (B25). The Gaussian and the MMI validations are inside the map",
+  "count": 1,
+  "why": "B25: the table S20 Table transcribes, row 2"
+ },
+ {
+  "id": "G06",
+  "file": "manuscript/draft_v2.md",
+  "old": "of 53, 25 were met, 14 partly met, 14 missed and 0 could not be evaluated",
+  "new": "of 56, 28 were met, 14 partly met, 14 missed and 0 could not be evaluated",
+  "count": 1,
+  "why": "B25: the count of predictions (Methods)"
+ },
+ {
+  "id": "G07",
+  "file": "manuscript/draft_v2.md",
+  "old": "is outside the scope, and the main text of Tarchi",
+  "new": "is outside the scope (S3 Text evaluates it), and the main text of Tarchi",
+  "count": 1,
+  "why": "B25: the Discussion's pointer"
+ },
+ {
+  "id": "G08",
+  "file": "manuscript/draft_v2.md",
+  "old": "the calibration and remedy computations with their result files (`notes/partB14_*.py`–`partB24_*.py`,",
+  "new": "the calibration, remedy and binarised-estimator computations with their result files (`notes/partB14_*.py`–`partB25_*.py`,",
+  "count": 1,
+  "why": "B25: Data and code availability"
+ },
+ {
+  "id": "G09",
+  "file": "manuscript/draft_v2.md",
+  "old": "record, \"The final end-to-end run of `run_all.sh` at the final commit: the difference in the two CCS agreement-share arrays\"). The HRF-deconvolution items",
+  "new": "record, \"The final end-to-end run of `run_all.sh` at the final commit: the difference in the two CCS agreement-share arrays\"). The computation of the binarised estimators on the family (S3 Text), which uses no data, was added to `run_all.sh` after that run; it was run at b36178d in a session of the AI system; a first run, at 820cacd, had failed one check through the rounding of a sum, and every value in the two runs' `binarised.csv` is the same (S5 Text). The HRF-deconvolution items",
+  "count": 1,
+  "why": "B25: Data and code availability"
+ },
+ {
+  "id": "G10",
+  "file": "manuscript/draft_v2.md",
+  "old": "; manufacture and the lag variants; the literature details behind S20 Table.",
+  "new": "; manufacture and the lag variants; the literature details behind S20 Table; the binarised estimators on the family.",
+  "count": 1,
+  "why": "B25: S3 Text's caption"
+ },
+ {
+  "id": "G11",
+  "file": "manuscript/si/S5_Text.md",
+  "old": "(record, \"The final end-to-end run of `run_all.sh` at the final commit: outcome\").",
+  "new": "(record, \"The final end-to-end run of `run_all.sh` at the final commit: outcome\"). B25 (S3 Text §11), which uses no data, was run on 29 September 2026 at b36178d in a session of the AI system (482 s by its own count; 150 checks, 0 failed; its three outputs carry `git=b36178d`, and its tables the sha256 of `binarised.csv`); it was added to `run_all.sh` after the final run. That was its second run. The first, on 29 September 2026 at 820cacd, the commit of its pre-run entry (514 s), failed one of its 150 checks, the comparison of phyid's CCS atoms with their recomputation from its local mutual informations: on one of ten series of 10⁵ samples, two means that are equal in exact arithmetic differed by 1.06 × 10⁻¹² through the rounding of their sums, against a tolerance of 10⁻¹². Before the second run the check was changed to compare the atoms sample by sample, which involves no sum over the samples (record, \"The binarised estimators on the AR(1) family (B25): the first run and the correction of one check\"); every value of the second run's `binarised.csv` equals the first run's; the first run's outputs are kept in `notes/review_results/partB/binarised_first_run/`.",
+  "count": 1,
+  "why": "B25: S5 Text §4"
+ },
+ {
+  "id": "G12",
+  "file": "manuscript/si/S5_Text.md",
+  "old": "the revision that followed the citation crosscheck of 28 September 2026 (its corrections; the licences, the citation file, the diagnostic tool, the tests and the continuous-integration workflow; the pre-run entry of B25, the binarised estimators on the family; and the correction for the matrices that are not positive definite, with the pre-run entry of its run, B26) is the commit that follows, which cannot name its own identifier (its parent is d108d66).",
+  "new": "820cacd (29 Sep, the revision that followed the citation crosscheck of 28 September 2026: its corrections; the licences, the citation file, the diagnostic tool, the tests and the continuous-integration workflow; the pre-run entry of B25; and the correction for the matrices that are not positive definite, with the pre-run entry of its run, B26; B25's first run was made at this commit); b36178d (29 Sep, the correction of one of B25's checks after its first run, with that run's outputs; B25's second run was made at this commit); the outputs of B25, its outcome entry and the text that reports it are the commit that follows, which cannot name its own identifier (its parent is b36178d).",
+  "count": 1,
+  "why": "B25: S5 Text §6"
+ },
+ {
+  "id": "G13",
+  "file": "CLAUDE.md",
+  "old": "of 53, 25 met, 14 partly met, 14 missed, 0 not evaluable",
+  "new": "of 56, 28 met, 14 partly met, 14 missed, 0 not evaluable",
+  "count": 1,
+  "why": "bookkeeping"
+ },
+ {
+  "id": "G14",
+  "file": "README.md",
+  "old": "B16b, B17b\nand B21–B24 have been run and their values are in the text,",
+  "new": "B16b, B17b,\nB21–B24 and B25 have been run and their values are in the text,",
+  "count": 1,
+  "why": "bookkeeping"
+ },
+ {
+  "id": "G15",
+  "file": "CLAUDE.md",
+  "old": "; next B25's second run and outcome, its re-run by a separate session, B26's run on the data, then the typeset PDF and the note to C.T. and S.P.S.)",
+  "new": "; B25's second run made at b36178d and reported; next its re-run by a separate session, B26's run on the data, then the typeset PDF and the note to C.T. and S.P.S.)",
+  "count": 1,
+  "why": "bookkeeping"
+ },
+ {
+  "id": "G16",
+  "file": "CLAUDE.md",
+  "old": "- Remaining work: B25's second run and its outcome (`b25_fill.py`), its re-run by a separate\n  session,",
+  "new": "- Remaining work: B25's re-run at b36178d by a separate session (its second run, made at b36178d, is reported in the\n  commit that follows),",
+  "count": 1,
+  "why": "bookkeeping"
+ }
+]

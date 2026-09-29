@@ -8129,3 +8129,43 @@ reason names it there (in `proposals.json` and `revision/text_replacements_2026-
 and now escapes them; and the header of `manuscript/figures/captions_v2.md` names c25a310, where the figure script
 generated it, although the revision edited one phrase of Fig 1 (a) in the file and in the script alike. The header is
 left as it is: B26's run regenerates the file, with its own commit in the header.
+
+## B25, outcome, 29 Sep 2026 09:30 UTC (appended; nothing above edited)
+
+Run in the writer's session at b36178d, the commit of the entry "The binarised estimators on the AR(1) family (B25): the
+first run and the correction of one check", on 29 Sep 2026, with the command of the script's docstring (482 s by its own
+count; 150 checks, 0 failed; python 3.12.3, numpy 2.5.3, scipy 1.18.1, phyid 0+untagged.8.g6c5f2e9); the three outputs,
+`notes/review_results/partB/binarised_tables.md`, `binarised.csv` and `binarised_run.log`, carry `git=b36178d`, and the
+tables give the sha256 of `binarised.csv`, which `notes/review_2026-09-28/revision/b25_fill.py` recomputed. This is
+B25's second run. Its first, at 820cacd, the commit of the pre-run entry, on 29 Sep 2026, failed one check; the entry of
+the first run records it and the correction. The first run's outputs are kept in
+`notes/review_results/partB/binarised_first_run/`, and `b25_fill.py` found that they name this commit's parent and
+report 150 checks with the one failed check that entry describes, and found every value of this run's `binarised.csv`
+equal to the first run's. A separate session re-runs B25 at b36178d; the commit that follows its re-run records the
+result. The text below and every sentence that reports B25 were written by `b25_fill.py`, fixed with the pre-run entry
+and changed, before this run, under the entry of the first run.
+
+**The facts the predictions read.** (a) 42 of the 42 steps rise in the limit: MMI-sts rises with r₁ at every step at each q; its
+emergence capacity rises with r₁ at every step at each q. (b) At (0.85, 0.25) ∂(MMI-sts)/∂r₁ = +1.8153 and ∂(MMI-sts)/∂q =
+−0.1496 nats per unit: a per-unit ratio of 12.13 and a per-SD ratio of 1.76
+(the threshold 1, a per-unit ratio of 6.89). (c) 126 of the 126 steps of the replicate means rise.
+
+**Verdicts.** (a) met; (b) met; (c) met; (d) no prediction. With them S19 Table counts 56 recorded predictions:
+28 met, 14 partly met, 14 missed, 0 not evaluable.
+
+**Values the text quotes.** Binarised MMI-sts at (0.85, 0.25) 0.4355 nats (Gaussian 1.2588), 2A 0.4539, its
+emergence capacity 0.2188 (Gaussian S = 0.6410); at q = 0.25 MMI-sts 0.1639 at r₁ = 0.60
+and 0.7082 at 0.95; the finite-sample differences of MMI-sts from its limit
+−0.1914 to −0.0169 (−0.0627 to −0.0169 at 840
+samples). CCS through phyid's discrete path at (0.85, 0.25): sts −0.0456 (published mask),
+−0.0481 (phyid's); sts under the published mask falls with r₁ at every step at each q; the emergence capacity
++0.0400, which rises with r₁ at every step at each q. Luppi et al. (2023)'s emergence capacity +0.0397, which
+rises with r₁ at every step at each q, ∂/∂r₁ = +0.1244 and ∂/∂q = +0.1415; at 840 samples +0.0409 ± 0.0005.
+
+**Where it is reported.** S3 Text §11 (new; the limit at q = 0.25 as a table; the first run); S19 Table, rows B25
+(a)–(d) and its count; Methods, Pre-registration and deviations (the count); S20 Table row 2 and
+`notes/partB5_literature_v2.md` (Luppi et al. 2023's estimator on the family); the Discussion's pointer to S3 Text;
+S3 Text's caption and the labels B1–B25; Data and code availability and S5 Text §4 and §6 (the two runs and the
+commits); `main_text_numbers.csv` (the count's five
+rows; the contexts of 5 rows); `CLAUDE.md` and `README.md`. The replacements:
+`notes/review_2026-09-28/revision/text_replacements_2026-09-28_b25.json`.

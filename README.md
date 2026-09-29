@@ -37,8 +37,8 @@ citation crosscheck of 28 Sep 2026 (Introduction through Methods 6,994 words wit
 headings; three tables and six figures, the captions in the text), with its
 supporting information as five files under `manuscript/si/` and its tables
 S1–S20 in `manuscript/supplementary.md`; every number of the main text is listed
-with its source file and line in `manuscript/main_text_numbers.csv`. B16b, B17b
-and B21–B24 have been run and their values are in the text, and the single
+with its source file and line in `manuscript/main_text_numbers.csv`. B16b, B17b,
+B21–B24 and B25 have been run and their values are in the text, and the single
 end-to-end run of `run_all.sh` was made at c25a310 on 26 September 2026 (475 min
 by its own count): it reproduced the committed outputs under the rule of its
 pre-run entry apart from two CCS agreement-share arrays of B2, which depend on
