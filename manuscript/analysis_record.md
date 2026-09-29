@@ -8047,3 +8047,85 @@ this record and the run is made again. (v) Matrices that are positive definite b
 left out: the estimate exists there. A sample correlation matrix (the PairPhiID path) that is not positive definite is
 not expected (a sample of more than four points is positive definite unless its series are collinear) and is not
 corrected; if the tables report one, the outcome entry says what it means before anything is read.
+
+## The binarised estimators on the AR(1) family (B25): the first run and the correction of one check, 29 Sep 2026 09:15 UTC (appended; nothing above edited)
+
+Appended in the commit that follows 820cacd, with the correction of one of B25's checks, the first run's outputs and the
+changes to `b25_fill.py`, before B25's second run. No data.
+
+**The first run.** B25 was run in the writer's session at 820cacd, the commit of its pre-run entry, on 29 Sep 2026 at
+06:16 UTC, with the command of the script's docstring (514 s by its own count; python 3.12.3, numpy 2.5.3, scipy 1.18.1,
+phyid 0+untagged.8.g6c5f2e9). It reported 150 checks, 1 failed: `phyid`'s CCS atoms recomputed from its local mutual
+informations on the fourth of the ten series of 10⁵ samples at the operating point, a largest difference of 1.06 × 10⁻¹²
+against the tolerance 10⁻¹² (the other nine series 3.56 × 10⁻¹³ to 9.74 × 10⁻¹³; every replicate at 160, 300 and 840
+samples at most 4.82 × 10⁻¹⁴). Every other check passed, those of the smooth quantities among them. As the pre-run
+entry's rule requires, nothing was reported; `b25_fill.py`, which stops without writing on a failed check, was not run.
+The three outputs are kept as the run wrote them in `notes/review_results/partB/binarised_first_run/`, committed with
+this entry; they carry `git=820cacd`, and the tables give the sha256 of the CSV,
+2dc288bb3357c66a8bb8954861fc13d5351f2748de83900c019e26bcdbce3479.
+
+**What failed.** The check compared, for each of the sixteen atoms, two means over the 99,999 samples of a series: the
+mean of `phyid`'s local CCS atoms, which numpy sums pairwise (the mean of a one-dimensional array), and the atoms of the
+mean of the local knowns recomputed from `phyid`'s local mutual informations, which numpy sums one term after another
+(the mean over the first axis of a two-dimensional array). The atoms being a fixed linear map of the knowns, the two are
+equal in exact arithmetic; in floating point they differ by the rounding of the two sums, carried through that map,
+which grows with the number of terms, and the tolerance did not allow for it.
+`notes/review_2026-09-28/b25_first_run/b25_check_diagnosis.py` draws the ten series again as the run drew them and
+computes the difference three ways (`b25_check_diagnosis.out`, run by the planning session): as the first run's check
+computed it, it gives that run's ten values, 1.06 × 10⁻¹² for the fourth series; with each mean from an exact sum
+(`math.fsum`), at most 1.1 × 10⁻¹⁶; and sample by sample, `phyid`'s local atoms against the atoms of the recomputed
+local knowns, at most 8.9 × 10⁻¹⁶. Over the ten series, the mean of the knowns farthest from its exact value lies
+3.1 × 10⁻¹³ to 5.1 × 10⁻¹³ from it, the farthest mean of the atoms at most 5.6 × 10⁻¹⁷ from its. `phyid`'s CCS atoms and
+their recomputation agree; what exceeded the tolerance was the rounding of the check's own sums.
+
+**The correction.** The check now compares `phyid`'s local CCS atoms with the atoms of the recomputed local knowns
+sample by sample, in the ten series and in every replicate, with the same tolerance, 10⁻¹²; no sum over the samples
+enters it. Its maximum over the replicates now keeps a NaN, which Python's `max` dropped (the audit below; in the
+planning session's run of the corrected script no replicate gave one). The rest of `notes/partB25_binarised.py` is
+unchanged but for its docstrings (the module's: the check's description, the first run's time where the estimate of
+15–30 minutes stood, and a pointer to this entry; the function's: what the check compares) and the check's two names: no
+other value of the tables, and no value of `binarised.csv`, is computed otherwise, and no other check changes. The
+self-test of the corrected script: 54 checks, 0 failed (`b25_first_run/b25_selftest.out`; it differs from that of the
+first run's script only in its timings). The changes are H01–H08 of
+`notes/review_2026-09-28/revision/text_replacements_2026-09-29.json`.
+
+**What this entry is written knowing.** The first run's tables were read before this entry was written. Their facts: (a)
+42 of the 42 steps rise in the limit; (b) at (0.85, 0.25) ∂(MMI-sts)/∂r₁ = +1.8153 and ∂(MMI-sts)/∂q = −0.1496 nats per
+unit, a per-unit ratio of 12.13 and a per-SD ratio of 1.76; (c) 126 of the 126 steps of the replicate means rise. The
+correction cannot change them: it changes no value of `binarised.csv`. Before this entry the planning session ran B25 to
+its end with the first run's script and with the corrected one, on its own machine with the same versions
+(`b25_first_run/planning_runs.md`): the first reported the same failed check with the same value, and its
+`binarised.csv`, given the first run's first line, has the sha256 above, so that the first run's values are reproduced
+bit for bit on a second machine; the corrected script reported 150 checks, 0 failed (the corrected check at most
+8.9 × 10⁻¹⁶ in the ten series and 4 × 10⁻¹⁵ over every replicate), and every row of its `binarised.csv` after the first
+line equals the first run's. The values are not bound to be the same on every machine: the planning session's machine
+uses OpenBLAS's SkylakeX kernels, and with its Haswell kernels (`OPENBLAS_CORETYPE=Haswell`) the first run's script
+gives one value of `binarised.csv` otherwise, ∂(2A)/∂q at the step 10⁻³, 0 against 8.3 × 10⁻¹⁴ (the audit below).
+
+**Rule.** B25 is run again in the writer's session at this entry's commit, with the command of the script's docstring,
+and `b25_fill.py` reports that second run. Its verdict criteria and the sentences that state B25's values and verdicts
+are unchanged; it is changed now (L01–L12 of the same file of replacements), and with it the sentences that name the
+run, its commit and the places that report it. It takes this commit; it reads the first run's commit from the kept
+outputs and stops unless that commit is this one's parent, its record holds the pre-run entry and not this one, and the
+kept outputs report 150 checks with the one failed check described above; unless the second run reports 150 checks, none
+failed, and its `binarised.csv` has the first run's rows with every value within 10⁻⁹ of the first run's (relative above
+1; the text says whether the values are identical); and unless the pre-run entry, the first run, this entry and the
+second run are in that order. Its text states the first run, its failed check and this correction in S3 Text §11, S5
+Text §4 and §6, Data and code availability and the outcome entry, and `CLAUDE.md` names the second run. A separate
+session re-runs B25 at this entry's commit, and the commit that follows that re-run records its result. If the second
+run fails a check or its values do not agree with the first run's, `b25_fill.py` writes nothing, and an entry records
+what happened before anything else is done.
+
+**The audit.** Two separate sessions audited these changes before the commit, one the code and one the texts, on a
+simulation of the whole flow with a real second run and the texts `b25_fill.py` writes
+(`notes/review_2026-09-28/audit/findings6_code.md`, `findings6_text.md`). What was done with each finding is in
+`notes/review_2026-09-28/audit/dispositions.md`.
+
+**Also in this commit.** Three notes of the writer's session on 820cacd
+(`notes/review_2026-09-28/audit/dispositions.md`): the reason of the crosscheck's proposal P48 cited a note of the
+planning session outside the repository, which is now `notes/review_2026-09-28/external_checks_2026-09-27.md`, and the
+reason names it there (in `proposals.json` and `revision/text_replacements_2026-09-28.json`); row 3 of Table A in
+`notes/partB5_literature_v2.md` held the bars of "|q|" unescaped, which split the row into more cells than its header,
+and now escapes them; and the header of `manuscript/figures/captions_v2.md` names c25a310, where the figure script
+generated it, although the revision edited one phrase of Fig 1 (a) in the file and in the script alike. The header is
+left as it is: B26's run regenerates the file, with its own commit in the header.

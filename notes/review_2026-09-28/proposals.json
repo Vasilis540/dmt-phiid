@@ -603,7 +603,7 @@
   "file": "manuscript/draft_v2.md",
   "current": "the release carries no licence file,",
   "proposed": "the release carries no licence of its own (its three licence files belong to third-party plotting functions it bundles),",
-  "reason": "Found on 27 September; recorded in b32/external_checks_2026-09-27.md."
+  "reason": "Found on 27 September; recorded in notes/review_2026-09-28/external_checks_2026-09-27.md."
  },
  {
   "pid": "P49",
