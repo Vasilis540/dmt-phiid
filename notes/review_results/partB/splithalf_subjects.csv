@@ -1,4 +1,4 @@
-# partB21_inference_revision.py; per-subject half DiDs (partB19's halves), W = 60; git=c25a310
+# partB21_inference_revision.py; per-subject half DiDs (partB19's halves), W = 60; git=d5a65bd
 variant,subject,sts_odd,sts_even,r1_odd,r1_even
 ts_gsr,1,-0.1070497969,-0.06159304059,-0.02337442617,-0.01059674547
 ts_gsr,2,-0.06371948386,-0.02589254011,-0.004946931492,0.000147733521

@@ -1,4 +1,4 @@
-git=c25a310
+git=d5a65bd
 sts ts_gsr W60                     primary                DiD -0.0809 [-0.1261, -0.0377] p=0.0038 neg 13/14 | phase p=0.0020 | DMT -0.0485 (p=0.027) PCB +0.0324 (p=0.042) placebo share 0.40 | FD DiD +0.0143 (p=0.245) | FD-resid -0.0649 [-0.0966, -0.0289] p=0.0048 13/14 SURVIVES
 sts ts_gsr W60                     sensitivity            DiD -0.0733 [-0.1180, -0.0291] p=0.0070 neg 12/14 | phase p=0.0020 | DMT -0.0491 (p=0.023) PCB +0.0242 (p=0.104) placebo share 0.33 | FD DiD +0.0191 (p=0.108) | FD-resid -0.0555 [-0.0864, -0.0210] p=0.0100 13/14 SURVIVES
 sts ts_gsr W60                     early                  DiD -0.1029 [-0.1464, -0.0601] p=0.0009 neg 13/14 | phase p=0.0010 | DMT -0.0842 (p=0.001) PCB +0.0187 (p=0.221) placebo share 0.18 | FD DiD +0.0366 (p=0.010) | FD-resid -0.0806 [-0.1151, -0.0455] p=0.0018 12/14 SURVIVES

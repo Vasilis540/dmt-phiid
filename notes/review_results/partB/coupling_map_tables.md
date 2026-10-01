@@ -1,5 +1,5 @@
 # Lagged coupling on the symmetric VAR(1) family (partB8_coupling_map.py)
-git=c25a310
+git=d5a65bd
 
 ## (r1, q) held at (0.85, 0.25) — the data's operating point; a and q_ε re-solved for each c (matched view)
 

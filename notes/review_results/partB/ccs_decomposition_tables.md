@@ -1,5 +1,5 @@
 # The CCS-sts increase decomposed: mask-selected share and double co-information of the rejected samples (partB18_ccs_decomposition.py)
-git=c25a310
+git=d5a65bd
 
 Per pair and period CCS-sts = −(1 − s) c̄_rej exactly (samples of the period's windows or bins pooled): s the mask-selected share, c̄_rej the mean double co-information over the rejected samples. Masks: code (phyid's), pub (published). The pre → post change of the pair-mean CCS-sts is split per pair into c̄_pre Δs (share term), −(1 − s_pre) Δc̄ (co-information term) and +Δs Δc̄ (interaction), averaged over pairs. DiD = DMT minus placebo (pre = windows 1–4 / bins 1–8; post = windows 6–14 / bins 11–28). Seed 20261120; bootstrap 10000 draws; exact sign-flip p over 2^14. Region 20 excluded.
 

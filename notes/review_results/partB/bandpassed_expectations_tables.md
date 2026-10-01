@@ -1,5 +1,5 @@
 # The pure-autocorrelation expectations of the new statistics on the band-passed generator (partB24_bandpassed_expectations.py)
-git=c25a310
+git=d5a65bd
 
 B17b's generator at its solved parameters (β̄ = 185.4, σ_q = 0.2637, β̄_post = 105.7, read from calibration_filtered_tables.md; filter 0.0064–0.080 Hz), condition (i) only: 20 replicates × 14 subjects × 2 runs × 840 samples × 300 pairs, the DMT run spliced at sample 300. Seed 20261120. ± is the SD over replicates. DiD = windows 6–14 minus 1–4 (bins 11–28 minus 1–8), DMT minus placebo; level = the DMT pre-injection mean.
 

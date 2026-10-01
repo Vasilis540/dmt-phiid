@@ -1,5 +1,5 @@
 # Inverted sign-flip intervals, the residual against its calibrated expectations, the per-subject regressions and the correlation intervals (partB21_inference_revision.py)
-git=c25a310
+git=d5a65bd
 
 Exploratory (decision D1): effect sizes and intervals; no threshold language. N = 14 subjects; the exact sign-flip test over 2^14 assignments, two-sided; the inverted interval {μ : p(μ) > 0.05} of notes/rev_inference_inverted.py (relative tolerance 1e-12; bounds bisected to 1e-7 after a 2,001-point monotonicity grid); the t interval mean ± t(0.975, 13)·SD/√14; the percentile interval as committed. Seed 20261120.
 
@@ -11,14 +11,14 @@ Mode: full (the .mat and FDlong.mat present).
 Quantities: 932 (738 pickle rows, 36 Engine recomputations, 158 other saved per-subject quantities); 10 of them matched to an interval quoted in draft_v2.md, S1–S5 Text or supplementary.md.
 Width of the inverted interval over the committed percentile interval (932 quantities with a committed interval): median 1.143, quartiles 1.127–1.156, range 1.039–1.288; share with a ratio in 1.05–1.20: 0.997, below 1.05: 0.001, above 1.20: 0.002.
 Zero outside the inverted interval exactly when the exact p ≤ 0.05: 932 of 932 (exceptions: 0). Grid points where p rose away from the mean: 0.
-Quantities whose zero-inclusion differs between the committed percentile and the inverted interval: 39: CCS sts ts_gsr W60 [sensitivity] did; CCS sts ts_gsr W60 [trend_a_placebo_line] did; CCS rtr ts_demean global-bins [late] did; CCSpub sts ts_gsr W60 [primary] did; CCSpub rtr ts_demean global-bins [primary] did; PhiR_deconv ts_demean global-bins [primary] did; PhiR_deconv ts_demean global-bins [sensitivity] did; PhiR_deconv ts_demean global-bins [late] did; PhiR_deconv ts_demean global-bins [trend_a_placebo_line] did; diag residual sts ts_gsr W60 [trend_a_placebo_line] did; autocorr lag5 ts_gsr W60 [trend_b_shared_slope] did; prewhiten arp MMI sts ts_gsr W60 [trend_b_shared_slope] did; prewhiten arp MMI xtx+yty ts_gsr W60 [primary] did; prewhiten arp autocorr ts_gsr W60 [primary] did; prewhiten arp diag observed sts ts_gsr W60 [trend_b_shared_slope] did; prewhiten arp autocorr ts_gsr global-bins [trend_a_placebo_line] did; prewhiten arp MMI xtx+yty ts_demean W60 [late] did; prewhiten arp autocorr ts_demean global-bins [early] did; prewhiten ar1 diag residual sts ts_demean W60 [primary] did; prewhiten ar1 diag residual sts ts_demean W60 [late] did; PhiR ts_gsr global-bins [sensitivity] did; PhiR ts_gsr global-bins [trend_a_placebo_line] did; PhiR ts_demean W60 [primary] did; PhiR ts_demean W60 [late] did; PhiR ts_demean W60 [trend_b_shared_slope] did; sts ts_demean global-bins [late] did; PhiR ts_demean global-bins [late] did; PhiR ts_demean global-bins [trend_a_placebo_line] did; sts ts_demean W60 [sensitivity] pcb_change; diag residual sts ts_gsr W60 [primary] resid_did; CCSpub sts ts_gsr W60 [primary] resid_did; CCS-sts decomposition: CCS-sts (nats) (pub mask) ts_gsr W60 [primary] DiD; CCS-sts decomposition: interaction Δs Δc̄ (code mask) ts_gsr global [primary] DiD; CCS-sts decomposition: interaction Δs Δc̄ (pub mask) ts_gsr global [primary] DiD; cross-lag budget δ_run ts_demean [grand mean (mean of the two runs)] S9 Table; cross-lag budget δ_wd ts_demean [grand mean (mean of the two runs)] S9 Table; cross-lag budget δ_within ts_demean [grand mean (mean of the two runs)] S9 Table; cross-lag budget δ_60 (run-level sign) ts_demean [placebo run] S9 Table; cross-lag budget window-sign value (partB10) ts_demean [placebo run] S9 Table.
+Quantities whose zero-inclusion differs between the committed percentile and the inverted interval: 40: CCS sts ts_gsr W60 [sensitivity] did; CCS sts ts_gsr W60 [trend_a_placebo_line] did; CCS rtr ts_demean global-bins [late] did; CCSpub sts ts_gsr W60 [primary] did; CCSpub rtr ts_demean global-bins [primary] did; PhiR_deconv ts_demean global-bins [primary] did; PhiR_deconv ts_demean global-bins [sensitivity] did; PhiR_deconv ts_demean global-bins [late] did; PhiR_deconv ts_demean global-bins [trend_a_placebo_line] did; diag residual sts ts_gsr W60 [trend_a_placebo_line] did; autocorr lag5 ts_gsr W60 [trend_b_shared_slope] did; prewhiten arp MMI sts ts_gsr W60 [trend_b_shared_slope] did; prewhiten arp MMI xtx+yty ts_gsr W60 [primary] did; prewhiten arp autocorr ts_gsr W60 [primary] did; prewhiten arp diag observed sts ts_gsr W60 [trend_b_shared_slope] did; prewhiten arp diag residual sts ts_gsr W60 [early] did; prewhiten arp autocorr ts_gsr global-bins [trend_a_placebo_line] did; prewhiten arp MMI xtx+yty ts_demean W60 [late] did; prewhiten arp autocorr ts_demean global-bins [early] did; prewhiten ar1 diag residual sts ts_demean W60 [primary] did; prewhiten ar1 diag residual sts ts_demean W60 [late] did; PhiR ts_gsr global-bins [sensitivity] did; PhiR ts_gsr global-bins [trend_a_placebo_line] did; PhiR ts_demean W60 [primary] did; PhiR ts_demean W60 [late] did; PhiR ts_demean W60 [trend_b_shared_slope] did; sts ts_demean global-bins [late] did; PhiR ts_demean global-bins [late] did; PhiR ts_demean global-bins [trend_a_placebo_line] did; sts ts_demean W60 [sensitivity] pcb_change; diag residual sts ts_gsr W60 [primary] resid_did; CCSpub sts ts_gsr W60 [primary] resid_did; CCS-sts decomposition: CCS-sts (nats) (pub mask) ts_gsr W60 [primary] DiD; CCS-sts decomposition: interaction Δs Δc̄ (code mask) ts_gsr global [primary] DiD; CCS-sts decomposition: interaction Δs Δc̄ (pub mask) ts_gsr global [primary] DiD; cross-lag budget δ_run ts_demean [grand mean (mean of the two runs)] S9 Table; cross-lag budget δ_wd ts_demean [grand mean (mean of the two runs)] S9 Table; cross-lag budget δ_within ts_demean [grand mean (mean of the two runs)] S9 Table; cross-lag budget δ_60 (run-level sign) ts_demean [placebo run] S9 Table; cross-lag budget window-sign value (partB10) ts_demean [placebo run] S9 Table.
 Exact p against 0 (relative tolerance) differing from the committed p by more than the committed p's precision (1e-9 stored in full; 5.1e-5 read from a four-decimal table): 7: CCS-sts decomposition: interaction Δs Δc̄ (code mask) ts_gsr W60 [primary] DiD 0.522705 vs 0.523300; CCS-sts decomposition: interaction Δs Δc̄ (pub mask) ts_gsr W60 [primary] DiD 0.117554 vs 0.117800; CCS-sts decomposition: interaction Δs Δc̄ (code mask) ts_gsr global [primary] DiD 0.059204 vs 0.058800; CCS-sts decomposition: s (selected share) (code mask) ts_demean W60 [primary] DiD 0.574829 vs 0.574700; CCS-sts decomposition: s (selected share) (pub mask) ts_demean W60 [primary] DiD 0.801514 vs 0.801400; CCS-sts decomposition: share term c̄_pre Δs (pub mask) ts_demean W60 [primary] DiD 0.524414 vs 0.524000; CCS-sts decomposition: interaction Δs Δc̄ (pub mask) ts_demean W60 [primary] DiD 0.689697 vs 0.689300.
 
 ## (a) Quantities quoted in the text, the Engine recomputations and the other saved quantities (every pickle row is in inference_revision.csv)
 
 | group | quantity | set / field | mean | exact p | percentile CI (committed) | inverted CI | t CI | width ratio | 0 in pct / inv / t | neg/14 | quoted at | check |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| pickle | diag residual sts ts_gsr W60 | primary / did | +0.01153 | 0.0422 | [+0.00213, +0.02107] | [+0.00046, +0.02265] | [+0.00048, +0.02258] | 1.171 | no / no / no | 4 | supplementary.md:1584 | ok |
+| pickle | diag residual sts ts_gsr W60 | primary / did | +0.01153 | 0.0421 | [+0.00214, +0.02107] | [+0.00047, +0.02265] | [+0.00048, +0.02258] | 1.171 | no / no / no | 4 | supplementary.md:1584 | ok |
 | engine | sts ts_gsr W60 | primary / dmt_change | -0.04847 | 0.0267 | [-0.08195, -0.01130] | [-0.08824, -0.00676] | [-0.08942, -0.00752] | 1.153 | no / no / no | 11 | — | ok |
 | engine | sts ts_gsr W60 | primary / pcb_change | +0.03240 | 0.0425 | [+0.00531, +0.06060] | [+0.00133, +0.06376] | [+0.00129, +0.06350] | 1.129 | no / no / no | 4 | — | ok |
 | engine | sts ts_gsr W60 | primary / fd_did | +0.01435 | 0.2452 | [-0.00704, +0.03646] | [-0.01147, +0.04026] | [-0.01116, +0.03985] | 1.189 | yes / yes / yes | 6 | — | ok |
@@ -44,9 +44,9 @@ Exact p against 0 (relative tolerance) differing from the committed p by more th
 | engine | sts ts_gsr W30 | sensitivity / fd_did | +0.01740 | 0.1550 | [-0.00376, +0.03933] | [-0.00774, +0.04265] | [-0.00751, +0.04231] | 1.169 | yes / yes / yes | 6 | — | ok |
 | engine | sts ts_gsr W30 | sensitivity / resid_did | -0.05136 | 0.0109 | [-0.07992, -0.01793] | [-0.08456, -0.01545] | [-0.08688, -0.01583] | 1.115 | no / no / no | 12 | — | ok |
 | engine | diag residual sts ts_gsr W60 | primary / dmt_change | +0.00771 | 0.0797 | [-0.00011, +0.01493] | [-0.00112, +0.01643] | [-0.00100, +0.01643] | 1.167 | yes / yes / yes | 4 | — | ok |
-| engine | diag residual sts ts_gsr W60 | primary / pcb_change | -0.00382 | 0.1929 | [-0.00908, +0.00136] | [-0.00986, +0.00220] | [-0.00981, +0.00218] | 1.156 | yes / yes / yes | 10 | — | ok |
+| engine | diag residual sts ts_gsr W60 | primary / pcb_change | -0.00382 | 0.1918 | [-0.00909, +0.00136] | [-0.00986, +0.00219] | [-0.00981, +0.00217] | 1.154 | yes / yes / yes | 10 | — | ok |
 | engine | diag residual sts ts_gsr W60 | primary / fd_did | +0.01435 | 0.2452 | [-0.00704, +0.03646] | [-0.01147, +0.04026] | [-0.01116, +0.03985] | 1.189 | yes / yes / yes | 6 | — | ok |
-| engine | diag residual sts ts_gsr W60 | primary / resid_did | +0.00999 | 0.0580 | [+0.00085, +0.01849] | [-0.00040, +0.02014] | [-0.00027, +0.02024] | 1.165 | no / yes / yes | 3 | — | ok |
+| engine | diag residual sts ts_gsr W60 | primary / resid_did | +0.00999 | 0.0579 | [+0.00086, +0.01849] | [-0.00040, +0.02014] | [-0.00027, +0.02025] | 1.165 | no / yes / yes | 3 | — | ok |
 | engine | CCSpub sts ts_gsr W60 | primary / dmt_change | +0.00212 | 0.1667 | [-0.00055, +0.00485] | [-0.00097, +0.00524] | [-0.00099, +0.00523] | 1.150 | yes / yes / yes | 4 | — | ok |
 | engine | CCSpub sts ts_gsr W60 | primary / pcb_change | -0.00226 | 0.1093 | [-0.00469, +0.00017] | [-0.00511, +0.00061] | [-0.00510, +0.00058] | 1.177 | yes / yes / yes | 9 | — | ok |
 | engine | CCSpub sts ts_gsr W60 | primary / fd_did | +0.01435 | 0.2452 | [-0.00704, +0.03646] | [-0.01147, +0.04026] | [-0.01116, +0.03985] | 1.189 | yes / yes / yes | 6 | — | ok |
@@ -227,22 +227,22 @@ Not a mean over subjects, and so outside (a): S8 Table's (ii) ratio of group mea
 
 ## (b) The primary residual DiD against its calibrated expectations (ts_gsr, W = 60; per-subject DiD minus the expectation)
 
-Residual DiD +0.01153; inverted interval [+0.00046, +0.02265].
+Residual DiD +0.01153; inverted interval [+0.00047, +0.02265].
 
 | expectation | exact p (relative tolerance) | exact p (rev_inference.signflip_p, absolute tolerance) | subjects below the expectation |
 |---|---|---|---|
-| +0.0027 | 0.1079 | 0.1079 | 4/14 |
-| +0.0049 | 0.2188 | 0.2188 | 4/14 |
-| +0.0054 | 0.2506 | 0.2506 | 4/14 |
+| +0.0027 | 0.1075 | 0.1075 | 4/14 |
+| +0.0049 | 0.2183 | 0.2183 | 4/14 |
+| +0.0054 | 0.2507 | 0.2507 | 4/14 |
 
 ## (c) Per-subject regressions on the r₁ DiD (W = 60, primary windows)
 
 | variant | y | slope | t CI (12 df), p | bootstrap CI | leave-one-out range | intercept | t CI, p | bootstrap CI | leave-one-out range | skipped resamples | split-half rel(r₁) → full-set | corrected slope (model-based) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | ts_gsr | sts DiD | +4.2627 | [+3.4085, +5.1169], 0.0000 | [+3.7768, +5.2686] | +4.1392 to +4.5346 | -0.01844 | [-0.03900, +0.00212], 0.0744 | [-0.03335, -0.00518] | -0.02147 to -0.01545 | 0 | 0.741 → 0.851 | +5.008 |
-| ts_gsr | residual DiD | -0.7535 | [-1.1332, -0.3737], 0.0010 | [-1.0207, -0.4360] | -0.7915 to -0.6994 | +0.00049 | [-0.00865, +0.00963], 0.9082 | [-0.00529, +0.00810] | -0.00125 to +0.00220 | 0 | 0.741 → 0.851 | -0.885 |
+| ts_gsr | residual DiD | -0.7533 | [-1.1331, -0.3735], 0.0010 | [-1.0207, -0.4355] | -0.7914 to -0.6991 | +0.00050 | [-0.00864, +0.00964], 0.9068 | [-0.00529, +0.00812] | -0.00124 to +0.00221 | 0 | 0.741 → 0.851 | -0.885 |
 | ts_demean | sts DiD | +4.9219 | [+3.9925, +5.8512], 0.0000 | [+4.3799, +6.2271] | +4.8026 to +5.1503 | +0.00308 | [-0.02387, +0.03002], 0.8078 | [-0.01793, +0.03793] | -0.00295 to +0.00849 | 0 | 0.712 → 0.832 | +5.917 |
-| ts_demean | residual DiD | -0.5679 | [-1.0480, -0.0878], 0.0242 | [-1.1413, -0.1509] | -0.7659 to -0.4751 | +0.00598 | [-0.00794, +0.01989], 0.3680 | [-0.00374, +0.02016] | +0.00335 to +0.00945 | 0 | 0.712 → 0.832 | -0.683 |
+| ts_demean | residual DiD | -0.5676 | [-1.0479, -0.0874], 0.0243 | [-1.1413, -0.1503] | -0.7660 to -0.4747 | +0.00598 | [-0.00794, +0.01990], 0.3679 | [-0.00374, +0.02018] | +0.00335 to +0.00946 | 0 | 0.712 → 0.832 | -0.682 |
 
 The corrected slope divides by the Spearman–Brown full-set reliability of the r₁ DiD; it assumes that the r₁ DiD's measurement error is independent of the y's, which the shared windows do not guarantee (model-based).
 
@@ -255,7 +255,7 @@ The corrected slope divides by the Spearman–Brown full-set reliability of the 
 | Table 4: r(AR(1)-substituted DiD, observed DiD), ts_gsr, W = 60 | +0.989 | +0.989 | [+0.966, +0.997] | diag_tables.md | ok |
 | Table 4: r(residual DiD, r₁ DiD at W = 60), ts_gsr, W = 60 | -0.780 | -0.780 | [-0.927, -0.426] | diag_tables.md | ok |
 | Table 4: r(AR(1)-substituted DiD, observed DiD), ts_gsr, W = 30 | +0.987 | +0.987 | [+0.957, +0.996] | diag_tables.md | ok |
-| Table 4: r(residual DiD, r₁ DiD at W = 60), ts_gsr, W = 30 | -0.825 | -0.825 | [-0.943, -0.523] | diag_tables.md | ok |
+| Table 4: r(residual DiD, r₁ DiD at W = 60), ts_gsr, W = 30 | -0.825 | -0.825 | [-0.943, -0.524] | diag_tables.md | ok |
 | Table 4: r(AR(1)-substituted DiD, observed DiD), ts_demean, W = 60 | +0.990 | +0.990 | [+0.967, +0.997] | diag_tables.md | ok |
 | Table 4: r(residual DiD, r₁ DiD at W = 60), ts_demean, W = 60 | -0.597 | -0.597 | [-0.856, -0.097] | diag_tables.md | ok |
 | Table 4: r(AR(1)-substituted DiD, observed DiD), ts_demean, W = 30 | +0.981 | +0.981 | [+0.940, +0.994] | diag_tables.md | ok |

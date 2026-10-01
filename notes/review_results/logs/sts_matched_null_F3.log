@@ -1,4 +1,4 @@
-git=c25a310
+git=d5a65bd
 
 F3 empirical ACFs (realised after taper/clip): placebo lags 1-6 [ 0.868  0.539  0.172 -0.085 -0.174 -0.145] | DMT post [ 0.858  0.507  0.123 -0.13  -0.194 -0.133]
    analytic sts as a function of lag-1 autocorrelation r1 (rows) and cross-correlation q (cols):
@@ -18,7 +18,7 @@ F3 empirical ACFs (realised after taper/clip): placebo lags 1-6 [ 0.868  0.539  
    W=840: est sts baseline 1.3396, shifted 1.3409; manufactured difference +0.0013 ± 0.0013 = +2 % of the real |DiD|  (36s)
 
 === F3-c reference, unmatched: placebo ACF vs DMT-post ACF at q = 0.2: analytic sts 1.3853 vs 1.3166 (true difference -0.0688; real windowed DiD -0.0809)
-   W= 30: est sts baseline 1.0345 (analytic 1.3853), shifted 0.9834 (analytic 1.3166); estimated difference -0.0511 ± 0.0066 vs true -0.0688  (46s)
+   W= 30: est sts baseline 1.0345 (analytic 1.3853), shifted 0.9834 (analytic 1.3166); estimated difference -0.0511 ± 0.0066 vs true -0.0688  (47s)
    W= 60: est sts baseline 1.1837 (analytic 1.3853), shifted 1.1280 (analytic 1.3166); estimated difference -0.0557 ± 0.0046 vs true -0.0688  (57s)
-   W=840: est sts baseline 1.3418 (analytic 1.3853), shifted 1.2738 (analytic 1.3166); estimated difference -0.0680 ± 0.0013 vs true -0.0688  (71s)
+   W=840: est sts baseline 1.3418 (analytic 1.3853), shifted 1.2738 (analytic 1.3166); estimated difference -0.0680 ± 0.0013 vs true -0.0688  (72s)
 done

@@ -1,5 +1,5 @@
 # CCS tables under the published double-redundancy definition (partB6_ccs_definition.py)
-git=c25a310
+git=d5a65bd
 
 Mask 'pub' = Definition 1 of Mediano et al. (arXiv:2109.13186v1, Appendix): D kept where the four single-source, single-target local MIs and the local full MI i(x; y) share a sign. 'code' = phyid (D's own sign as the fifth). MMI from results/atoms_*.npy.
 
@@ -83,7 +83,7 @@ share of samples selected by the published mask (mean over runs): 0.365
 | TDMI (sum) | +1.4341 | +1.4341 | +1.4341 | -0.1186 | -0.1186 | -0.1186 |
 
 Published-mask CCS sts: level -0.0378 vs phyid -0.0255 (difference -0.0122); primary DiD +0.0120 vs phyid +0.0134 (difference -0.0014); per-subject r(pub, code) = +0.991
-Per-subject pub CCS sts DiD vs the autocorrelation contrast (W60): Pearson r = -0.428 (p = 0.127), Spearman -0.433; vs the MMI sts DiD of the same estimator: r = -0.357; vs the B4 residual DiD (W60): r = +0.875 (p = 0.000); pub CCS (xtx+yty) DiD vs autocorrelation contrast: r = +0.917
+Per-subject pub CCS sts DiD vs the autocorrelation contrast (W60): Pearson r = -0.428 (p = 0.127), Spearman -0.433; vs the MMI sts DiD of the same estimator: r = -0.357; vs the B4 residual DiD (W60): r = +0.876 (p = 0.000); pub CCS (xtx+yty) DiD vs autocorrelation contrast: r = +0.917
 pub CCS sts level / pub CCS (xtx + yty) level (DMT pre): -0.0378 / +1.1429; MMI: +1.1004 / +1.1529
 share of samples selected by the published mask (mean over runs): 0.366
 Group-mean window series, pub CCS sts vs mean r1 (28 condition-windows): r = -0.612; MMI sts vs r1: +0.938

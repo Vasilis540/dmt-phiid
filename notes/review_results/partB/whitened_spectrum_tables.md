@@ -1,5 +1,5 @@
 # Where the power of the prewhitened series lies (partB16b_whitened_spectrum.py)
-git=c25a310
+git=d5a65bd
 
 Per region and run: the raw series and the residuals of AR(1), AR(p) with p by BIC over 1–5 (B16's whitening, recomputed), and fixed p = 10 and p = 20 (OLS with intercept; the first p samples dropped). In-band share = periodogram power at 0.01 ≤ f ≤ 0.08 Hz over the total, the run's kept samples pooled over regions, as rev_extra.py (c); run-level r₁ as rev_extra.py's r1_obs; window-level r₁ = rev_series.autocorr_series (window mode, W = 60), DMT windows 1–4, as B16. Reference values: raw in-band share 0.992 and r₁ of ideal flat-spectrum noise on the band at TR 2 s 0.8176 (rev_extra.log); the band's share of the Nyquist range 0.07/0.25 = 0.28. Seed 20261120 (no random draws). Region 20 excluded.
 

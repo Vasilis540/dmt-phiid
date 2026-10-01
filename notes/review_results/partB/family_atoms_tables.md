@@ -1,5 +1,5 @@
 # Family-predicted sixteen atoms per pair, asymmetric diagonal family (partB14_family_atoms.py)
-git=c25a310
+git=d5a65bd
 
 Per window and pair: observed MMI atoms (PairPhiID.atoms_mean) and predicted atoms atoms_from_corr(ar1_corr(a_x, a_y, q)) from the window's measured (a_x, a_y, q), averaged over the 6,555 pairs; level = DMT windows 1–4, DiD = windows 6–14 minus 1–4, DMT minus placebo (mean over 14 subjects; in brackets the number of subjects with a negative DiD). W = 60; seed 20261120; region 20 excluded.
 
@@ -23,7 +23,7 @@ Per window and pair: observed MMI atoms (PairPhiID.atoms_mean) and predicted ato
 | stx | -0.5350 | -0.5750 | +0.0400 | +0.0401 (2) | +0.0414 (2) | -0.0013 (9) |
 | sty | -0.5357 | -0.5750 | +0.0392 | +0.0403 (2) | +0.0414 (2) | -0.0011 (9) |
 | sts | +1.1554 | +1.2084 | -0.0530 | -0.0809 (13) | -0.0924 (13) | +0.0115 (4) |
-| TDMI (sum) | +1.4772 | +1.4240 | +0.0532 | -0.1037 (12) | -0.1129 (12) | +0.0092 (5) |
+| TDMI (sum) | +1.4772 | +1.4240 | +0.0532 | -0.1037 (12) | -0.1130 (12) | +0.0092 (5) |
 
 Excess sts − (xtx + yty), DMT windows 1–4: observed -0.0844; family-predicted from each pair's (a_x, a_y, q) -0.1003; rtr observed +0.0388, predicted +0.0504.
 Ordering rts = str below xtx, yty: predicted yes (rts +0.5756, str +0.5750, xtx +0.6617, yty +0.6470); observed yes (rts +0.5669, str +0.5667, xtx +0.6273, yty +0.6125).

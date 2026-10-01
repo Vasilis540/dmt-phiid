@@ -1,4 +1,4 @@
-# partB20_regional_partial.py; residual maps after partialling regional r₁; git=c25a310
+# partB20_regional_partial.py; residual maps after partialling regional r₁; git=d5a65bd
 region_index,name,network,sts,rtr,sts_minus_rtr,r1_windowed,r1_span,sts_resid_win,smr_resid_win,sts_resid_span,smr_resid_span
 0,LH_Vis_1,Vis,1.208287,0.005270,1.203017,0.825099,0.839026,-0.018151,-0.011045,-0.014750,-0.008021
 1,LH_Vis_2,Vis,1.252094,0.028110,1.223984,0.834218,0.852838,-0.002507,-0.013699,-0.011128,-0.020863

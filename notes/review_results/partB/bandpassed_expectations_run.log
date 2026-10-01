@@ -1,27 +1,27 @@
-git=c25a310
+git=d5a65bd
    generator: β̄ = 185.4, σ_q = 0.2637, β̄_post = 105.7; filter 0.0064–0.080 Hz
-   replicate 1/20 (9s)
-   replicate 2/20 (17s)
-   replicate 3/20 (27s)
-   replicate 4/20 (40s)
-   replicate 5/20 (52s)
-   replicate 6/20 (65s)
-   replicate 7/20 (77s)
-   replicate 8/20 (89s)
-   replicate 9/20 (100s)
-   replicate 10/20 (112s)
-   replicate 11/20 (124s)
-   replicate 12/20 (136s)
-   replicate 13/20 (149s)
-   replicate 14/20 (158s)
-   replicate 15/20 (167s)
-   replicate 16/20 (176s)
-   replicate 17/20 (188s)
-   replicate 18/20 (200s)
-   replicate 19/20 (214s)
-   replicate 20/20 (226s)
+   replicate 1/20 (13s)
+   replicate 2/20 (30s)
+   replicate 3/20 (43s)
+   replicate 4/20 (57s)
+   replicate 5/20 (71s)
+   replicate 6/20 (85s)
+   replicate 7/20 (99s)
+   replicate 8/20 (112s)
+   replicate 9/20 (126s)
+   replicate 10/20 (142s)
+   replicate 11/20 (160s)
+   replicate 12/20 (177s)
+   replicate 13/20 (195s)
+   replicate 14/20 (213s)
+   replicate 15/20 (226s)
+   replicate 16/20 (242s)
+   replicate 17/20 (260s)
+   replicate 18/20 (288s)
+   replicate 19/20 (304s)
+   replicate 20/20 (323s)
 # The pure-autocorrelation expectations of the new statistics on the band-passed generator (partB24_bandpassed_expectations.py)
-git=c25a310
+git=d5a65bd
 
 B17b's generator at its solved parameters (β̄ = 185.4, σ_q = 0.2637, β̄_post = 105.7, read from calibration_filtered_tables.md; filter 0.0064–0.080 Hz), condition (i) only: 20 replicates × 14 subjects × 2 runs × 840 samples × 300 pairs, the DMT run spliced at sample 300. Seed 20261120. ± is the SD over replicates. DiD = windows 6–14 minus 1–4 (bins 11–28 minus 1–8), DMT minus placebo; level = the DMT pre-injection mean.
 
@@ -77,4 +77,4 @@ Sym's DiD minus (the residual DiD − D's DiD): -0.00006 ± 0.00017.
 Prediction: the check passes; the A_other DiD within ±0.0005, the A_same DiD within ±0.001, the B DiD within ±0.003; the D DiD −0.002 to −0.006; Sym's DiD equal to the residual DiD minus D's within 0.001.
 Rule: these are the pure-autocorrelation expectations against which B22's DiDs are read.
    checks: 10 run, 0 failed
-done (226s)
+done (323s)

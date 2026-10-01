@@ -1,5 +1,5 @@
 # CCS tables (partB2_ccs_run.py)
-git=c25a310
+git=d5a65bd
 
 ## ts_gsr W60: 16 atoms, DMT pre-injection level and primary DiD, CCS vs MMI (nats)
 
