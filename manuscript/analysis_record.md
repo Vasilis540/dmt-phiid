@@ -8455,3 +8455,30 @@ with each, with the findings of the rule audit and of the fifth session of the c
 (`b26/`; in the unit's journal and logind's the machine's name and a device's name are masked), the claim-by-claim check
 (`claims/`), the replacements this commit applies (`revision/`), the checks of the revised text and the recomputed
 derived values (`checks/`) and the audits, with what was done with each finding (`audit/`).
+
+## Table 3's caption: the rates taken over the residual's pairs, 1 Oct 2026 11:26 UTC (appended; nothing above edited)
+
+Appended in the commit that follows e9a6128, the figures and captions regenerated at df5c160, with the correction it
+describes; `notes/review_2026-10-01/` holds the replacements, the checks' outputs and the audit. No computation; nothing
+read the data.
+
+**The imprecision.** Table 3's caption gives the generators' residual rates per unit of pair r₁, −0.18 (band-passed),
+−0.39 (AR(1)), −0.37 (null), −1.58 (Δa_s) and −2.76 (λ), and said that the last two are taken over the residual's pairs:
+the pairs whose substituted matrices are positive definite in all 14 windows, over which S18 Table (b)'s last column
+divides the residual's change by r₁'s (B26's rule; the entry on B26's outcome, rule (ii), after finding 8 of
+`notes/review_2026-09-30/audit/findings_T.md`). The AR(1) rate is that column's value in row (i), −0.387 (the three rows
+of `main_text_numbers.csv` for −0.39: B23 (b) (i)), so it, too, is taken over the residual's pairs, and the caption
+named two rates where there are three. The writer's session of the revision committed as df5c160 noted it in the report
+it gave with that revision's bundle, as a remark and not an error; the revision was committed as it stood. The
+band-passed and null rates are the ratios that S13 Table's note gives, +0.00279 / −0.01540 and +0.0054 / −0.0146.
+
+**The correction.** The caption now reads "(the AR(1) rate and the last two over the residual's pairs)" (T01 of
+`notes/review_2026-10-01/revision/text_replacements_2026-10-01.json`). No number changes (at its printed precision the
+rate is also what Table 3's own row 4 gives, +0.0049 / −0.01243 = −0.394). Captions are not counted; the counted text is
+6,998 words, as at df5c160. The numbers table follows: the context of its row for −2.76, a label row for the AR(1) the
+caption now names (1,198 rows) and its head note (N01, N02); S5 Text §5 names the audit of this correction and §6 names
+df5c160 and e9a6128 and this commit's place after them (K04, K01); Data and code availability, README.md and CLAUDE.md
+name the folder (K02, K03, K05, C01–C06). A separate session of the AI system audited the revision against the files
+before it was committed (`notes/review_2026-10-01/audit/`). The figures and captions that `scripts/15_figures_v2.py`
+writes at this commit are the commit that follows, under the conditions of the entry on Fig 5's caption, the captions
+file differing from the committed one in its header alone.
