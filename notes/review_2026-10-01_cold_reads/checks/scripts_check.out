@@ -1,0 +1,12 @@
+parses: notes/partB27_baseline_gap.py
+parses: notes/partB28_matched_slope.py
+parses: notes/partB29_censoring.py
+parses: notes/partB16c_prewhiten_fixed.py
+bash -n run_all.sh: ok
+bash -n notes/review_2026-10-01_cold_reads/b27/b27_start.sh: ok
+bash -n notes/review_2026-10-01_cold_reads/b27/b27_commit.sh: ok
+run_all.sh, section 6, after B25's nstep line and before the figure step:
+   nstep partB/baseline_gap_run        notes/partB27_baseline_gap.py
+   nstep partB/matched_slope_run       notes/partB28_matched_slope.py
+   nstep partB/censoring_run           notes/partB29_censoring.py
+   nstep partB/prewhiten_fixed_run     notes/partB16c_prewhiten_fixed.py

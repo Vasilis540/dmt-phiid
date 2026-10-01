@@ -8482,3 +8482,392 @@ name the folder (K02, K03, K05, C01–C06). A separate session of the AI system 
 before it was committed (`notes/review_2026-10-01/audit/`). The figures and captions that `scripts/15_figures_v2.py`
 writes at this commit are the commit that follows, under the conditions of the entry on Fig 5's caption, the captions
 file differing from the committed one in its header alone.
+
+## The cold reads of 1 October 2026, 1 Oct 2026 18:50 UTC (appended; nothing above edited)
+
+Appended in the commit that follows 24919ea, the figures and captions regenerated at 71cf932, with the scripts of B27,
+B28, B29 and B16c and their pre-run entries, which follow this one; `notes/review_2026-10-01_cold_reads/` holds the
+three reports, the literature search of 1 October 2026, the replacements of this commit, the scripts of the run, and the
+audit of the prepared commit by a separate session with what was done with each of its findings (`audit/`). Nothing in
+this commit read the data; what the reviewing and planning sessions computed from the committed arrays is listed in
+B27's and B28's entries.
+
+**The reads.** Three separate sessions of the AI system read the paper and its supporting information typeset from
+24919ea (main text 27 pages, supporting information 133 pages, with line numbers; the PDFs are not in the repository),
+each as a referee for the journal who had not seen the manuscript, asked to verify what it could and to report as for
+the journal: A as a researcher in partial information decomposition and ΦID, B as a statistician and fMRI time-series
+methodologist, C as a psychedelic-neuroimaging researcher reading with the data authors' perspective. A reproduced, from
+an implementation of its own, every closed-form statement of Results 1 and S3 Text §3 (the sixteen atoms and their
+identities on 2,000 random points of the family, the derivatives at the operating point, the unequal-coefficient and
+coupled-family values), the band-limit bounds of Results 7 and the windowed estimator's finite-sample behaviour on AR(1)
+pairs at W = 60 (the level, the residual and its DiD for Δa = −0.015, and a |q| slope 2.6 times the substituted
+estimate's, which Results 1 calls consistent with a finite-sample bias). B reproduced the closed form and, from the
+per-subject DiD vectors of `notes/review_results/inference_rows_raw.pkl` and `inference_rows_diag.pkl`, the primary
+contrast's exact p, the residual's p against zero and against its three expectations, the two OLS slopes with their t
+intervals, the two Fieller intervals and the Fisher-z intervals. C checked every number it quotes against the supporting
+information and recomputed the identities, the derivatives, the band-pass values and the counts. None found a number
+wrong. Their reports are `reviews/read_A.md`, `read_B.md` and `read_C.md`, as the sessions returned them, under a header
+that names the read (the scratch paths they name were their own).
+
+**What the reads found.** A: the Abstract and the Discussion summarise the residual by the group-level p values against
+single constants, while the per-subject scaling is the comparison that carries the information, and no generator is
+non-stationary within a window although the residual is concentrated in the early post-injection windows (M1); the [TK]
+items (M2); fourteen minor points: the mechanism of the closed form left to S3 Text, the exchange rate for lagged
+coupling left to S3 Text, "non-monotonically" overgeneralised, prewhitening presented one-sidedly, CCS's negative
+synergy atom unremarked and the CCS contrast's hypothesis left to the SI, the binarised estimators' scope left to S3
+Text, Luppi et al. (2022)'s surrogate test stated plainly only in the SI, the name "scope map", the regional slope's
+wording and its two estimators, a transfer-entropy companion, the 2.8-fold |q| slope stated without a check, the
+literature search's reproducibility, the length of Data and code availability, and the normalisation sentence; four
+wording points ("artefact", "every atom moved", the Abstract's register for the primary contrast, the 4.7-to-1 ratio's
+qualifying clause). B: the primary contrast is reported without the pre-injection gap between the two runs, the
+post-injection gap or a baseline-adjusted estimate, and the per-subject DiD's between-subject variance is mostly that
+gap's (MAJOR 1); the per-subject covariation of the sts and r₁ contrasts is in large part the covariation of the two
+runs' pre-injection difference, which the Abstract and Author summary present as two drug-induced falls (MAJOR 2); the
+verdict that the calibration is not validated rests on a comparison of a between-subject slope with ratios of group
+means under a change applied to every subject alike, and on two subjects (MAJOR 3); eleven minor points: the sensitivity
+of the "not distinguished" tests, the disattenuation's exclusion rule, the regional analysis (a global-fit atom against
+a windowed r₁; the spin p values before and after partialling not comparable; the subcortical values fixed in every
+rotation), prewhitening incomplete (no atoms at p = 10 or 20), the fifth of the contrast tied to motion, the two-sided
+reading fixed with the sign known, the drug order, the exploratory disclaimer's inconsistency, the OLS and Fieller
+assumptions and Fieller's g, the deconvolution result not regenerable, and Table 1's sentence on atoms whose substituted
+change is zero; five wording points. C: the passage on the subject codes in the Ethics statement and S1 Text (M1); no
+person other than V.S. has checked the analysis, and S.P.S.'s contribution as drafted is thin (M2); the fall of r₁
+framed as nuisance and not connected to the signal-diversity literature, the EEG Lempel–Ziv check kept in S6 Table,
+"artefact" used for the change itself (M3); S4 Text's and S20 Table's negative statements about what the source papers
+report, checked against the main articles only (M4); statements about the ΦID group's papers and code that the argument
+does not need (M5); Results 4 and Table 3 unreadable for the journal's readership (M6); nineteen minor points (subject
+8's leverage beside its mean-filled parcel, the non-finite TR's place, scrubbing never mentioned, the Zenodo licence,
+"relative to placebo", the rank gradient's attenuation, "most fMRI synergy reports", the AR(1)-substituted estimate used
+before it is defined, Fig 5c's legibility, the disattenuation's exclusion rule, the extrapolation clause for Luppi et
+al. (2024), the contrast's history told five times, Data and code availability, Cliff et al. (2021)'s figure, ∂rtr/∂r₁
+against the data's own slope, the Author summary's "mostly" bounded, the session order, the ratings result, the
+Abstract's length) and six wording points. Each report also states what it found right.
+
+**What follows.** The findings that need a computation on the data or on the generators are answered by the four
+computations whose pre-run entries follow, run by V.S. on his machine and committed as the run writes them: B27 (B's
+MAJOR 1–3, MINOR 1 and 9), B28 (A's M1, B's MAJOR 3), B29 (C's m1–m3, B's MINOR 5) and B16c (A's m4, B's MINOR 4). Every
+other finding is a change of the text, made in the commit that follows the outputs together with the outcome entries;
+the entry on that revision lists each finding and what was done with it. Three are decided now. A transfer-entropy
+companion (A's m10) is not added: on the family and at every AR(1)-substituted matrix the Gaussian transfer entropies
+are zero by construction, so on the data they would be a third statistic of the lagged structure beside S3 Text §6's
+directed and symmetric statistics, with the same undetermined reading; Barnett and Seth (2011) and Seth, Chorley and
+Barnett (2013) are cited where the text discusses filtering and deconvolution, and Rosas et al. (2020) where it names
+the emergence capacity, each after a reading of the work and with a record in the claim check. The passage on the
+subject codes (C's M1) is shortened to the facts, and the question whether the letters identify anyone is put to the
+data authors with the draft. The observation on `phyid`'s CCS mask (C's M5 (c)) is kept as a statement of what the
+published definition says and what the code's condition is, with the code's line; whether to raise it with the
+maintainers before the preprint is V.S.'s decision, recorded when made.
+
+**The literature search.** C's m7 and A's m12: the search behind "most fMRI synergy reports" and the nine studies of S20
+Table was by web searches whose queries were not recorded. On 1 October 2026 V.S. ran on PubMed the string of
+`pubmed_search/search_string.txt`, as it stands there (integrated information decomposition or PhiID, each with a
+title-or-abstract tag, or synergy and redundancy with information decomposition, mutual information or information
+theory; and fMRI, functional MRI, functional magnetic resonance or BOLD; the string's third tag is not a PubMed field
+tag, and how PubMed read the string, its search details, is to be recorded in the revision that follows the run), and
+exported its 11 records (`pubmed_search/pubmed_search.csv`); `pubmed_search/screening.md` screens them: six are in S20
+Table (Luppi et al., 2023, 2024; Down et al., 2026; Nago et al., 2026; Tarchi et al., 2026; Zhang et al., 2025), three
+are outside its scope (Gatica et al., 2021, O-information; Varley et al., 2023, partial entropy decomposition; Belloli
+et al., 2026, software), and two are to be assessed from their full texts in the revision that follows the run (Pope et
+al., 2025; Gao et al., 2026). Three of S20 Table's nine studies the string does not return (Luppi et al., 2022, 2026;
+Gatica et al., 2024). The Methods' statement of the search is revised in that commit to name the database, the string,
+the date and the counts, with the web searches as the earlier source.
+
+## The pre-injection gap and the per-subject relations (B27): pre-run entry, 1 Oct 2026 18:50 UTC (appended; nothing above edited)
+
+Appended with `notes/partB27_baseline_gap.py` in the commit that follows 24919ea, before the script is run. It reads the
+data (the released series, for r₁) and the committed per-subject series and vectors.
+
+**Question.** Cold read B (MAJOR 1–3, MINOR 1 and 9): what the primary contrast is beside its DiD — the pre-injection
+gap between the two runs, the post-injection gap and a baseline-adjusted estimate — and how much of the per-subject
+DiD's variance is the gap's; whether the per-subject relation between the sts and r₁ contrasts is the covariation of the
+two runs' pre-injection difference; how the residual's per-subject slope on the r₁ DiD moves with subjects left out;
+what difference from a point expectation the residual's test could detect; and Fieller's g of the two ratio intervals.
+
+**Specification.** As the script's docstring states it. For whole-brain MMI-sts, whole-brain r₁
+(`rev_series.autocorr_series` in window mode), the AR(1)-substituted sts and the residual (B4's series) on ts_gsr and
+ts_demean at W = 60, and on ts_gsr at W = 30: per subject the pre-injection mean of each run (windows 1–4; bins 1–8 at W
+= 30), the post-injection mean (windows 6–14; bins 11–28), the pre gap (DMT pre − placebo pre), the post gap and the DiD
+(post gap − pre gap, the primary statistic); the means with B21's inverted sign-flip 95 % intervals (the text's interval
+for a mean over subjects), exact sign-flip p and shares of subjects; the baseline-adjusted contrast, the intercept of
+the OLS regression of the post gap on the pre gap (the post gap expected at a pre gap of zero), with its t interval (12
+df) and the slope; r(DiD, pre gap) and r(DiD, post gap). (b) On each variant and W: r(sts DiD, r₁ DiD), r(sts pre gap,
+r₁ DiD), r(sts pre gap, r₁ pre gap), r(sts post gap, r₁ post gap), the partial correlation r(sts DiD, r₁ DiD | sts pre
+gap), and the residual's three correlations with r₁. (c) On ts_gsr at W = 60: the OLS slope of the residual DiD on the
+r₁ DiD (intercept free, as B21 (c)) with its t interval, recomputed with each subject left out (14) and each pair (91):
+the range of the slopes and the number of intervals that contain 0, −0.18, −0.39 and −0.37 (Table 3's rates), the ranges
+of r(residual DiD, r₁ DiD) and r(sts DiD, r₁ DiD), the slopes without subject 8, without 14 and without both; the
+minimal difference from a point expectation that the residual DiD's test detects with 80 % power at the two-sided 5 %
+level (one-sample t on 13 df, SE = SD/√14); Fieller's g = (t SE(r₁ DiD) / mean r₁ DiD)² for the two ratio intervals. The
+script stops if the per-subject DiDs of the saved sts, r₁ and residual series at W = 60 and W = 30 are not the saved
+ones (B21's inputs) to 10⁻⁹. Free choices: the regression with intercept; the t approximation; the three rates. Seconds.
+
+**What is known before the run.** (i) Cold read B computed, from `results/atoms_win60_115regions-all_ts_gsr_window.npy`
+and the two pickles, the sts gaps, the adjusted contrast, their correlations and the slopes with subjects left out on
+ts_gsr at W = 60, and the planning session computed from the same committed files, with the script's own functions,
+everything of (a) for sts, the substituted sts and the residual, and of (b) and (c) that uses no r₁ series (the r₁ DiDs
+are saved per subject; the r₁ gaps are not, item (ii)): sts on ts_gsr at W = 60, pre gap +0.0176 [−0.0131, +0.0465] (p =
+0.2307; 10/14 positive), post gap −0.0633 [−0.0917, −0.0369] (p = 0.0001; 14/14 negative), DiD −0.0809, adjusted −0.0544
+[−0.0806, −0.0283] with slope −0.503 on the pre gap, r(DiD, pre gap) = −0.888 (r² = 0.79), r(DiD, post gap) = +0.868,
+the SD of the DiD 0.0887 against 0.0485 of the post gap; subject 14, the one positive DiD (+0.0949), has the most
+negative pre gap (−0.1121) and a negative post gap (−0.0172); subject 8, DiD −0.2795, pre gap +0.0914. On ts_demean: pre
+gap +0.0185 (p = 0.3116; 9/14), post gap −0.0846 (p = 0.0001; 14/14), adjusted −0.0796 [−0.1170, −0.0421], r(DiD, pre
+gap) = −0.818. On ts_gsr at W = 30: pre gap +0.0160 (p = 0.2417), post gap −0.0526 (p = 0.0002; 13/14), adjusted −0.0453
+[−0.0689, −0.0218], r(DiD, pre gap) = −0.887. The substituted sts follows sts in each cell (ts_gsr, W = 60: pre gap
++0.0227, post gap −0.0697, adjusted −0.0566). The residual on ts_gsr at W = 60: pre gap −0.0051 [−0.0111, +0.0006] (p =
+0.0775; 5/14 positive), post gap +0.0064 [−0.0007, +0.0141] (p = 0.0782; 3/14 negative), DiD +0.0115, adjusted +0.0044
+[−0.0042, +0.0130], r(DiD, pre gap) = −0.754; on ts_demean adjusted +0.0127 [+0.0025, +0.0228]; at W = 30 post gap
++0.0129 (p = 0.0037), adjusted +0.0115 [+0.0014, +0.0216]. (b) r(sts pre gap, r₁ DiD) = −0.844 (ts_demean −0.735; W = 30
+−0.799), the partial correlation r(sts DiD, r₁ DiD | sts pre gap) = +0.824 (+0.914; +0.765) against the full +0.953
+(+0.958; +0.921); r(residual pre gap, r₁ DiD) = +0.374 (+0.342; +0.463). (c) The slope −0.753 [−1.133, −0.373],
+intercept +0.0005, r = −0.780; one subject left out, slopes −0.791 to −0.699, intervals containing 0: 0 of 14, −0.18: 0,
+−0.39: 11, −0.37: 11, r(residual DiD, r₁ DiD) −0.871 to −0.670, r(sts DiD, r₁ DiD) +0.921 to +0.964; two left out,
+slopes −0.906 to −0.642, containing 0: 1 of 91, −0.18: 13, −0.39: 71, −0.37: 63, r −0.930 to −0.465 and +0.846 to
++0.973; without subject 8, −0.785 [−1.361, −0.208]; without 14, −0.699 [−1.180, −0.218]; without both, −0.667 [−1.561,
++0.227], r = −0.465. The residual DiD's SE is 0.0051 nats, the minimal detectable difference 0.0155 nats, and the data's
++0.0115 exceeds +0.0027, +0.0049 and +0.0054 by 0.0088, 0.0066 and 0.0061; Fieller's g is 0.611 for both ratios (the r₁
+DiD −0.01465, SE 0.00530); the ratio of means −0.788. These values are the script's expected output for those cells and
+are not predictions. (ii) The r₁ series were not computed, but the group means of the r₁ gaps follow from the committed
+rows of `inference_rows_raw.pkl` (pre_dmt − pre_pcb, and that plus the DiD): on ts_gsr at W = 60 the r₁ pre gap is
++0.0025 and the post gap −0.0122 (ts_demean +0.0054 and −0.0162; W = 30 +0.0026 and −0.0116), so that the signs and
+sizes of the two means are known; their intervals, p values and shares, the adjusted r₁ contrast and the correlations of
+(b) that use an r₁ gap are not. (iii) The script was run on synthetic series with the data file's layout (`--smoke`,
+which prints instead of enforcing the equality with the saved DiDs), not on the data.
+
+**Predictions** (whole-brain r₁ on ts_gsr at W = 60 unless said; the account of Results 1, that sts tracks r₁ within
+every window, makes r₁'s gaps follow sts's; the signs and sizes of the two group means are known, item (ii)). (a) The r₁
+pre gap, +0.0025, is not significant (p > 0.05, its interval containing zero), and the post gap, −0.0122, is significant
+(p < 0.05, its interval excluding zero) and negative in at least 12 of 14 subjects. Met if both; partly met if one;
+missed if neither. (b) r(r₁ DiD, r₁ pre gap) < −0.5, and the adjusted r₁ contrast's t interval excludes zero. Met if
+both; partly met if one; missed if neither. (c) r(sts pre gap, r₁ pre gap) > 0.7 and r(sts post gap, r₁ post gap) > 0.7.
+Met if both; partly met if both positive; missed otherwise. (d) The same three on ts_demean at W = 60 and on ts_gsr at W
+= 30: reported, each read by the same criteria, not counted. No prediction for the residual's correlations with the r₁
+gaps.
+
+**Rule.** The outputs are `notes/review_results/partB/baseline_gap_tables.md`, `baseline_gap.csv` and
+`baseline_gap_run.log`, each with the commit; the verdicts follow the criteria above from the tables. Whatever they are:
+(i) Table 2 gains, for both variants, the pre-injection gap with its inverted sign-flip interval and p, the
+post-injection gap with its interval, p and share, and the baseline-adjusted contrast with its t interval, each interval
+named for what it is, and Results 2 states beside the DiD that its between-subject variance is mostly the pre-injection
+gap's (r(DiD, pre gap) and r²), the post gap's SD against the DiD's, and the gap statistics of r₁; the DiD stays the
+primary statistic, as pre-specified, and the three estimates are named as three readings of the contrast. (ii) The
+scrutiny S2 Text applies to the deconvolved ΦR contrast (a pre-injection gap in the direction that creates it) is
+applied to sts in the same words. (iii) The per-subject relation of the two contrasts is described as the covariation of
+two DMT-minus-placebo differences, not of two drug-induced falls: the Abstract carries the cross-half correlation with
+its interval as the headline value, the disattenuated value beside it; the Author summary's sentence that the two falls
+went together is replaced by one on the two differences, with the subjects in which either rose counted; Results 2 gives
+the disattenuated value with the exclusion rule of its bootstrap and says what the interval's lower limit supports; and
+the partial correlation given the sts pre gap and r(sts post gap, r₁ post gap) stand beside the full correlation, with
+S3 Text §5's caveat moved into Results 2. (iv) Results 4 reports the residual's slope with the ranges and counts of (c)
+and the three named omissions, and every "not distinguished" statement of the residual against its expectations
+(Abstract, Results 4, Discussion) carries the minimal detectable difference beside the excesses. (v) Methods (Inference)
+states the OLS and Fieller assumptions and Fieller's g. (vi) The outcome entry reports (a)–(d) and the verdicts; the
+numbers table takes the new numbers from the tables with their lines.
+
+**The run.** By V.S. on his machine at this commit, from a clean tree, as the first of the four steps of
+`notes/review_2026-10-01_cold_reads/b27/b27_start.sh` (the unit `runb27`: B27, B28, B29, B16c, each as `run_all.sh`'s
+`nstep` runs it, with a heartbeat); the outputs committed as the run wrote them by `b27_commit.sh`, with the unit's log
+and heartbeat, in the commit that follows this one.
+
+## The per-subject slope under a pure autocorrelation change of the data's heterogeneity (B28): pre-run entry, 1 Oct 2026 18:50 UTC (appended; nothing above edited)
+
+Appended with `notes/partB28_matched_slope.py` in the commit that follows 24919ea, before the script is run. No data: it
+reads the saved per-subject r₁ DiDs (`inference_rows_raw.pkl`, "autocorr ts_gsr W60"), the saved residual DiDs
+(`inference_rows_diag.pkl`, for the data's slope) and B17's pool of the data's window-level pair q
+(`scope_map_overlay_points.npz`).
+
+**Question.** Cold reads A (M1) and B (MAJOR 3). Results 4 compares the data's per-subject slope of the residual DiD on
+the whole-brain r₁ DiD, −0.75 per unit [−1.13, −0.37], with Table 3's generator rates, −0.18, −0.39 and −0.37 per unit
+of pair r₁, which are ratios of group means under one change applied to every subject, and concludes that the
+calibration is not validated for the residual. A between-subject slope is not that ratio: within a replicate the
+residual DiD and the r₁ DiD share estimation error, and the subjects' changes differ. B28 asks what per-subject slope
+each generator gives under a pure autocorrelation change whose heterogeneity is the data's, and, for A's point that
+every generator is stationary within a window while the residual is concentrated in the early post-injection windows,
+what a change that builds up over two windows does to the residual.
+
+**Specification.** As the script's docstring states it. B17b's band-passed generator (its solved β̄ = 185.4 and σ_q =
+0.2637, the window-level mean a 0.8632 and mean |q| 0.2842 of the DMT pre-injection windows), 14 subjects × 2 runs × 300
+pairs × 840 samples, the placebo run stationary at the pre parameters and the DMT run's white noises filtered at the pre
+parameters and at the subject's own post parameters β̄_s, solved so that the window-level mean a of the post filtering
+is 0.8632 + Δa_s, where Δa_s is the subject's saved whole-brain r₁ DiD rescaled so that the fourteen average −0.0150
+(B17b's Δa); β̄_s is read from a table of the window-level mean a against β̄ on calibration draws of the null's size
+(3,000 pairs × 3,000 samples) at thirteen multiples of β̄ from 0.03 to 3, interpolated in a, each β̄_s then checked on
+one calibration draw; the generator's window-level a has a floor (the band-pass alone, at the smallest tilt, about
+0.0375 below the pre level), so a Δa_s below the floor is set to it and the subject named; the post β are clipped at 5
+as B17b clips them. B17's AR(1) generator (a_x, a_y ~ N(0.85, 0.0125), q from the pool, the innovation correlation
+solved for q, burn-in 200): the subject's change is Δa_s on both coefficients, exactly. The pre-injection level is the
+generator's for every subject; the data's per-subject levels are not matched. Four conditions: (i) the band-passed
+generator with B17b's step, the DMT run spliced from its pre-filtered to its post-filtered version at sample 300 (window
+6, the first primary window); (ii) the band-passed generator with a ramp, the DMT run the mixture (1 − w_t) x_pre + w_t
+x_post with w_t rising linearly from 0 at sample 300 to 1 at sample 420, over windows 6 and 7; (iii) the AR(1) generator
+with the step at sample 300; (iv) the AR(1) generator with the coefficients ramped linearly from a to a + Δa_s over
+samples 300–419. Per replicate, B17b's analysis at W = 60 (`PairPhiID` on the 300 pairs of each window; the substituted
+estimate from the measured (a_x, a_y, q); the window-level pair a as `window_corr` and `residual` of
+`review_v2_residual_null.py` give it): per subject the DiDs of observed sts, substituted sts, the residual and the pair
+a; across subjects the OLS slope of the residual DiD on the pair-a DiD with its 95 % t interval (12 df), the
+correlation, the ratio of the group means (the per-replicate ratio) and the mean residual DiD. 100 replicates per
+condition; one generator seeded 20261120, the calibration table first, then (i) to (iv). Tables: per condition the mean,
+SD and 2.5th, 50th and 97.5th percentiles of the slope, of r and of the per-replicate ratio of means; the share of
+replicates whose slope is at or below the data's −0.753 and whose r is at or below the data's −0.780; the ratio of the
+replicate-mean residual DiD to the replicate-mean pair-a DiD, and the shares of slope intervals that contain that ratio
+and zero; the residual DiD, the sts DiD and the pair-a DiD (mean ± SD). Free choices: the rescaling of Δa_s to mean
+−0.0150; the floor; the ramp over two windows; the table's grid; 100 replicates; the slope with intercept. About 40
+minutes.
+
+**What is known before the run.** (i) The data's slope and r (B27's entry), and the ratio of means −0.788 per unit of
+whole-brain r₁ DiD (the main text's −0.74 is per unit of pair r₁). (ii) The planning session ran the script with
+`--n-rep 2`, as a test of its code, on the saved DiDs (before the post β were clipped as B17b's are, which touches the
+floored subject alone): the rescaled Δa_s run from −0.0657 (subject 8) to +0.0248 (subject 14); the table a(β̄) gives
+the floor Δa = −0.0375, below which subject 8 alone falls and is set to it, so that in the band-passed conditions the
+fourteen Δa_s average about −0.013 and in the AR(1) conditions −0.0150; the two replicates gave slopes (i) −0.227 ±
+0.139, (ii) −0.125 ± 0.118, (iii) −0.367 ± 0.100, (iv) −0.428 ± 0.017, ratios of means (i) −0.108, (ii) −0.203, (iii)
+−0.329, (iv) −0.170, residual DiDs +0.0014, +0.0024, +0.0040 and +0.0019, and no replicate slope at or below the data's.
+Two replicates are not a result; the predictions below are informed by them and are stated so. (iii) B17b's (i) residual
+DiD under one change for every subject is +0.0027 ± 0.0014 and B17's +0.0049 ± 0.0017 (`calibration_filtered_tables.md`,
+`calibration_tables.md`).
+
+**Predictions.** (a) In each step condition the generator's mean per-subject slope is more negative than the mean of its
+per-replicate ratios of means (the shared estimation error of the two DiDs within a replicate steepens the slope): met
+if in both (i) and (iii); partly met if in one; missed if in neither. (b) The data's slope, −0.753, lies below the 2.5th
+percentile of each condition's 100 slopes, so that no generator under a pure autocorrelation change of the data's
+heterogeneity produces the data's per-subject scaling: met if in all four conditions; partly met if in two or three;
+missed if in one or none. (c) The ramp's mean residual DiD is within 0.003 nats of the step's for each generator (a
+change that builds up over two windows does not move the residual's expectation by more than a quarter of the data's
++0.0115): met if for both generators; partly met if for one; missed if for neither. (d) No prediction for the share of
+replicates with r at or below the data's, for the sts DiDs or for the coverage of the slope intervals.
+
+**Rule.** The outputs are `notes/review_results/partB/matched_slope_tables.md`, `matched_slope.csv` and
+`matched_slope_run.log`, each with the commit; the verdicts follow the criteria above from the tables. Whatever they
+are: (i) Results 4 compares the data's slope with the generators' own per-subject slopes under the matched heterogeneity
+— for each generator and shape the mean slope, the central 95 % of the replicates' slopes and the share of replicates at
+or below the data's — in place of the comparison with Table 3's rates, which stays only as the group-level comparison
+with its Fieller interval; the sentence "Since the generators apply one change to every subject and the band-passed rate
+lies outside the data's slope interval, the calibration is not validated for the residual on this dataset" is replaced
+by the statement the shares give: where the data's slope lies below a condition's central 95 %, that a pure
+autocorrelation change of the data's heterogeneity on that generator does not produce the data's per-subject scaling;
+where it lies within, that it does; and B27's leave-one-out and leave-two-out stand beside. (ii) The ramp conditions are
+reported beside the steps as the within-window non-stationary control, with the difference of the residual DiDs. (iii)
+The subject at the floor is named where the band-passed conditions are reported. (iv) The Abstract and the Discussion
+summarise the residual by both comparisons: the group-level non-distinction with its minimal detectable difference (B27)
+and the per-subject comparison with B28's shares; "not identified" stays. (v) S3 Text carries the table; S19 Table gains
+B28's rows; the outcome entry reports (a)–(d).
+
+**The run.** By V.S. on his machine at this commit, from a clean tree, as the second step of the unit `runb27` (B27's
+entry).
+
+## The replaced volumes and the autocorrelation (B29): pre-run entry, 1 Oct 2026 18:50 UTC (appended; nothing above edited)
+
+Appended with `notes/partB29_censoring.py` in the commit that follows 24919ea, before the script is run. It reads the
+data: the released per-TR framewise displacement (`data/FDlong.mat`) and the series.
+
+**Question.** Cold read C (m1–m3) and B (MINOR 5). The data authors' Reporting Summary (Singleton et al., 2025, received
+from V.S. on 1 October 2026) states that volumes with a framewise displacement greater than 0.4 were replaced with the
+mean of the surrounding volumes, that six of twenty participants were discarded for more than 20 % of scrubbed volumes
+at that threshold during the DMT scans, that the order of the two conditions was randomised, that participants were
+blind to it and the personnel not, and acquisition and preprocessing details, some of which S4 Text marks as not
+reported; the paper has not mentioned the replacement. A replaced volume is a local average, which raises the lag-1
+autocorrelation around it, and DMT raised head motion in the first minutes after the injection (Timmermann et al., 2023,
+SI Appendix, Fig. S4). B29 asks how many TRs the threshold marks per subject, run and window, whether their count moves
+with the injection as the motion does, and how the count stands to r₁ and sts, across subjects and within runs; it
+locates the one non-finite TR; and it reports subjects 8 and 14, whose r₁ changes are the extremes, by window.
+
+**Specification.** As the script's docstring states it. From `FDlong.mat` (840 TRs × 14 subjects per run) the TRs above
+0.4 mm per subject, run and window of 60 TRs (the replaced volumes cannot be told from the series themselves); the
+window's whole-brain r₁ from `rev_series.autocorr_series` on both variants; the saved per-subject DiDs of r₁ and sts.
+(a) Per subject and run the count, its share and the mean FD; per subject the DiD (windows 6–14 minus 1–4, DMT minus
+placebo) of the count per window and of the mean FD, with means, exact sign-flip p and shares. (b) Across subjects, the
+correlations of the count DiD and of the mean-FD DiD with the r₁ DiD and the sts DiD on each variant. (c) Within
+subjects and runs, the correlation across windows between a window's count and its r₁, each run's 14 windows centred on
+their own means, pooled over the 28 runs, on each variant, with the mean r₁ of the windows that hold at least one marked
+TR against the others. (d) Subjects 8 and 14 by run: counts, mean FD and r₁ by window. (e) The non-finite TRs of the
+series: subject, run and TR, and whether each is its run's last. The script stops if the r₁ series' DiDs are not the
+saved ones. Free choices: the threshold (the release's); counts per window; the centring in (c). Seconds.
+
+**What is known before the run.** (i) The FD DiD (the mean FD, windows 6–14 minus 1–4, DMT minus placebo) is +0.0143
+[−0.0115, +0.0403], p = 0.2452 (Table 2), and FD residualisation moves the sts DiD from −0.0809 to −0.0649 and the r₁
+DiD from −0.0146 to −0.0123 (Table 2; S3 Text §5). (ii) `scripts/01_synergy_timecourse.py` notes that subject 3's
+placebo run is non-finite in every region at TR index 839, the run's last (its comment says "at least one" such TR); S1
+Text says one non-finite TR was dropped, without placing it. (iii) Subject 8 is the subject whose DMT run holds the
+mean-filled parcel (region 20, dropped for all) and whose r₁ fell most (−0.064); subject 14's r₁ rose most (+0.024).
+(iv) Nothing of (a)–(d) was computed; the script was run on synthetic series and a synthetic `FDlong.mat` (`--smoke`, as
+B27's), not on the data.
+
+**Predictions.** (a) More marked TRs after the injection on the DMT run than before, relative to placebo: the count
+DiD's mean is positive with at least 8 of 14 subjects positive, and the mean-FD DiD, whose mean is known (+0.0143), is
+positive in at least 8 of 14. Met if both; partly met if one; missed if neither. (b) Within runs, across windows, the
+count correlates positively with r₁ on both variants (the replacement by a local mean raises r₁ around it). Met if both;
+partly met if one; missed if neither. (c) No sign prediction for r(count DiD, r₁ DiD) across subjects: the replacement
+raises r₁ where it acts, which makes the correlation positive, and the subjects who move most after the injection may be
+those whose r₁ falls most, which makes it negative; reported. (d) The non-finite TR is subject 3's placebo run's TR 839
+and no other: a check of (ii), not counted.
+
+**Rule.** The outputs are `notes/review_results/partB/censoring_tables.md`, `censoring.csv` and `censoring_run.log`,
+each with the commit. Whatever they are: (i) the Dataset paragraph of Methods states the release's replacement (the
+threshold, the mean of the surrounding volumes, from the data authors' Reporting Summary) and the non-finite TR's place,
+and S1 Text and S4 Text follow; (ii) Results 2 or Limitations states the count DiD with its p and the correlations of
+(b), and what the replacement does to r₁: if the count DiD is positive, that the replacement raises r₁ where it acts and
+so works against the observed fall; if it is negative, that the replacement could contribute to the fall, with the
+correlation; (iii) subject 8's motion and its marked TRs are stated where its leverage and its mean-filled parcel are
+stated, in one place; (iv) Results 2 states that a fifth of the contrast is removed by FD residualisation and what that
+regression removes besides motion (B's MINOR 5); (v) S4 Text's items that the Reporting Summary answers are revised to
+what it states, with it as the source; (vi) the outcome entry reports (a)–(d).
+
+**The run.** By V.S. on his machine, as the third step of the unit `runb27` (B27's entry).
+
+## Prewhitening at fixed orders (B16c): pre-run entry, 1 Oct 2026 18:50 UTC (appended; nothing above edited)
+
+Appended with `notes/partB16c_prewhiten_fixed.py` in the commit that follows 24919ea, before the script is run. It reads
+the data.
+
+**Question.** Cold reads A (m4) and B (MINOR 4). Results 7 says that prewhitening cannot fully remove the dependence
+from band-passed data, on B16's AR(p) residuals with p by BIC over 1–5, which took the cap for 3,218 of 3,220 series and
+keep r₁ = 0.26; B16b found the AR(20) residuals at a run-level r₁ of 0.0002 but computed no atoms at p = 10 or 20, as
+its entry specified. The statement is one-sided until the atoms are computed at an order where r₁ is gone: what MMI-sts
+and its contrast are then, and what the whitening costs there.
+
+**Specification.** As the script's docstring states it: B16's pipeline, copied, with the order fixed at p = 10 and at p
+= 20 per region and run on ts_gsr and ts_demean (the residuals of the region's own AR(p) fit by ordinary least squares
+on the run's finite TRs, B16's `ar_fit`; the first p TRs non-finite and dropped as B16 drops them): the sixteen MMI
+atoms per W = 60 window and for the global fit's bins, the CCS atoms with `phyid`'s mask, the DMT contrast of MMI-sts,
+CCS-sts and MMI xtx + yty with the primary inference (`rev_inference.Engine`: DiD, subject bootstrap, exact sign-flip p,
+phase-randomised null, FD residualisation), the whitened series' mean lag-1 autocorrelation with the same inference and
+its per-subject correlation with the MMI-sts DiD, and B4's residual diagnostic on the whitened series (the matrices that
+are not positive definite left out, B26). Outputs: `prewhiten_fixed_tables.md`, `inference_rows_prewhiten_fixed.csv` and
+`.pkl`, the sixteen atom arrays `prewhiten_fixed_atoms_<ar10|ar20>_<variant>_<mmi|ccs>_<win60|bins>.npy`,
+`prewhiten_fixed_run.log`. Free choices: the two orders; W = 60; bins of 30; region 20 excluded; seed 20261120. About as
+long as B16 (21 minutes in the final run).
+
+**What is known before the run.** (i) B16 on ts_gsr at W = 60: AR(p ≤ 5) residuals, whitened r₁ 0.2625 (DMT windows
+1–4), MMI-sts level 0.2202, DiD −0.0262 [−0.064, +0.011] (p = 0.14; 8/14 negative), r(MMI-sts DiD, whitened r₁ DiD) =
++0.495, whitened r₁ DiD −0.0544; AR(1) residuals, r₁ 0.75, DiD −0.062 (p = 0.0006); the raw series, level 1.155, DiD
+−0.0809. (ii) B16b: at p = 10 the whitened series' window-level r₁ (DMT windows 1–4) is 0.1368 on ts_gsr and 0.0739 on
+ts_demean, with 51 % of the power above the band on ts_gsr; at p = 20 it is 0.0524 and 0.0323 (run-level 0.0002 and
+−0.0024), with 60 % above the band (34 % at p ≤ 5; 0.1 % raw). (iii) On the symmetric family the closed form gives sts =
+0.067 at (0.26, 0.28) and 0.002 at (0.05, 0.28), and the planning session's simulation of 300 white or nearly white
+pairs (a = 0, 0.05, 0.137; q = 0.28) at W = 60 gives a windowed MMI-sts of 0.006 to 0.009 nats (20 replicates of 300
+pairs; the family's finite-sample value there); B16's 0.22 at r₁ 0.26 is three times the family's value at that point,
+so the whitened series carry sts the family does not give. (iv) The script was run on synthetic series, not on the data.
+
+**Predictions** (ts_gsr unless said). (a) The whitened series' window-level r₁ at p = 10 and 20 equals B16b's values to
+the printed precision: a check of the shared code, not counted. (b) The MMI-sts level falls with the order, p ≤ 5 > p =
+10 > p = 20, at W = 60 and at the global fit on both variants, and the W = 60 level at p = 20 is below 0.1 nats on both.
+Met if all; partly met if the ordering holds everywhere and a p = 20 level is at or above 0.1; missed if the ordering
+fails anywhere. (c) The W = 60 MMI-sts DiD falls in magnitude with the order (|DiD| at p = 10 below 0.0262, at p = 20
+below p = 10's) and neither has p < 0.05. Met if all; partly met if the p = 20 contrast has |DiD| < 0.02 and p > 0.05
+but the ordering fails; missed if the p = 20 contrast has p < 0.05. (d) The per-subject correlation of the MMI-sts DiD
+with the whitened r₁ DiD is weaker at p = 20 than B16's +0.495: met if below; missed otherwise. (e) No prediction for
+CCS, for the global-fit contrasts, for xtx + yty or for the residual diagnostic on the whitened series.
+
+**Rule.** The outputs are those the specification names, each with the commit; the verdicts follow the criteria above
+from `prewhiten_fixed_tables.md` and, for the exact p of a contrast, `inference_rows_prewhiten_fixed.csv`. Whatever they
+are: (i) Results 7's prewhitening paragraph reports, for p = 1, p ≤ 5, 10 and 20, the whitened r₁, the share of power
+above the band, the MMI-sts level and its W = 60 contrast with interval and p; (ii) the sentence "Prewhitening cannot
+fully remove the dependence from band-passed data" and the recommendation "Do not expect prewhitening to remove the
+dependence from band-passed data" are replaced by what each order removes and costs: what the whitening leaves of the
+level and of the contrast, and that at the order where r₁ is gone most of the series' power lies outside the band, so
+that the atoms are then those of the amplified stop-band residue rather than of the band-limited signal; the
+recommendation names the remedy the released derivatives cannot test, whitening before the band-pass or no band-pass;
+(iii) whatever the contrast at p = 20, it is reported with its interval, its p and its correlation with the whitened r₁
+DiD, and no direction is claimed for it beyond its interval; (iv) S11 Table gains the rows and S3 Text §8 the account;
+(v) the outcome entry reports (a)–(e).
+
+**The run.** By V.S. on his machine, as the fourth step of the unit `runb27` (B27's entry).

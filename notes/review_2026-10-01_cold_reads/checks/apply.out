@@ -1,0 +1,16 @@
+S01     run_all.sh                                 ok
+S02     run_all.sh                                 ok
+R01     manuscript/analysis_record.md              ok
+C01     CLAUDE.md                                  ok
+C02     CLAUDE.md                                  ok
+C03     CLAUDE.md                                  ok
+C04     CLAUDE.md                                  ok
+C05     CLAUDE.md                                  ok
+K01     README.md                                  ok
+K02     README.md                                  ok
+
+all 10 entries applied; files written:
+  f40e21f4818246fe9e7a0e552680913011b5344d093bbd302acd27bd8b1c6a52  CLAUDE.md
+  982d6d6263da0c5ce738a12aaa1a225f6f1a822020a229e1453d4a4d50f6dbbd  README.md
+  4b2d23a847a7ddf28bcbbf519eb97ce35a73d63692e040ea184e9ec7d8cf5caf  manuscript/analysis_record.md
+  174cafe586335f31c1d085844a64275d8067fdc2612293bd2ab898ed216eb8c7  run_all.sh
