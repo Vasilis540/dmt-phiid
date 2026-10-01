@@ -17,7 +17,9 @@
 #                                B21–B24 (round 16) about 9 min; 13,529 s (225 min) in B26's run of
 #                                29 Sep 2026, under its counting wrappers;
 #                                B25 (added after the final run) about 8 min (482–514 s in its three runs,
-#                                in sessions of the AI system)
+#                                in sessions of the AI system); B27, B28, B29 and B16c (added after the cold reads
+#                                of 1 Oct 2026) about an hour by their docstrings (B28 ≈ 40 min, B16c ≈ 21 min,
+#                                B27 and B29 seconds); neither B25 nor these four is in the TOTAL below
 #   TOTAL                        about eight hours (475 min by the count at the end of the final run;
 #                                twelve minutes more with the deconvolution sandbox)
 # Every script is deterministic (SEED = 20261120) and writes the git SHA of the tree into
@@ -172,6 +174,14 @@ nstep partB/diagnostic_alternatives_run notes/partB23_diagnostic_alternatives.py
 nstep partB/bandpassed_expectations_run notes/partB24_bandpassed_expectations.py
 # B25 (record, "The binarised estimators on the AR(1) family (B25): pre-run entry"): no data
 nstep partB/binarised_run           notes/partB25_binarised.py
+# B27 (record, "The pre-injection gap and the per-subject relations (B27): pre-run entry"): the series, for r₁, and the committed series and vectors
+nstep partB/baseline_gap_run        notes/partB27_baseline_gap.py
+# B28 (record, "The per-subject slope under a pure autocorrelation change of the data's heterogeneity (B28): pre-run entry"): no data; the saved r₁ DiDs and B17's pool of q; about 40 min
+nstep partB/matched_slope_run       notes/partB28_matched_slope.py
+# B29 (record, "The replaced volumes and the autocorrelation (B29): pre-run entry"): FDlong.mat and the series
+nstep partB/censoring_run           notes/partB29_censoring.py
+# B16c (record, "Prewhitening at fixed orders (B16c): pre-run entry"): B16's pipeline at p = 10 and 20; about as long as B16
+nstep partB/prewhiten_fixed_run     notes/partB16c_prewhiten_fixed.py
 step 15_figures_v2                  scripts/15_figures_v2.py
 
 echo "=== all done in $(( ($(date +%s) - T0) / 60 )) min"
