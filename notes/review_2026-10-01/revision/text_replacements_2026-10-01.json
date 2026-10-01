@@ -1,0 +1,122 @@
+[
+ {
+  "id": "T01",
+  "file": "manuscript/draft_v2.md",
+  "old": "per unit of pair r₁ (the last two over the residual's pairs). Full results: S18 Table.",
+  "new": "per unit of pair r₁ (the AR(1) rate and the last two over the residual's pairs). Full results: S18 Table.",
+  "count": 1,
+  "why": "Table 3's caption: the AR(1) rate, −0.39, is S18 Table (b)'s last column in row (i) (−0.387), which divides the residual's change by r₁'s over the residual's pairs, as the rates −1.58 and −2.76 are; the caption named two rates where there are three (the writer's remark of round 22; record, \"Table 3's caption: the rates taken over the residual's pairs\"). No number changes."
+ },
+ {
+  "id": "N01",
+  "file": "manuscript/main_text_numbers.csv",
+  "old": "band-passed), −0.39 (AR(1)), −0.37 (null), −1.58 (Δa_s) and −2.76 (λ) per unit of pair r₁ (the last two o\"\r\n",
+  "new": "band-passed), −0.39 (AR(1)), −0.37 (null), −1.58 (Δa_s) and −2.76 (λ) per unit of pair r₁ (the AR(1) rate\"\r\nResults / 4. What the pairs' own autocorrelations and lag-0 correlations carry,\"Table 3, title and caption\",7,1,label,,,AR(1),ok,\"ll), −1.58 (Δa_s) and −2.76 (λ) per unit of pair r₁ (the AR(1) rate and the last two over the residua\"\r\n",
+  "count": 1,
+  "why": "The context of the row for −2.76 of Table 3's caption follows the caption (60 characters before the number, 40 after), and the AR(1) the caption now names gets its label row, the seventh occurrence of 1 in the caption, after the row for −2.76, which precedes it in reading order."
+ },
+ {
+  "id": "N02",
+  "file": "manuscript/main_text_numbers.csv",
+  "old": "run again on B26's outputs (notes/review_2026-09-30/checks/derived_r17_b26.out).",
+  "new": "run again on B26's outputs (notes/review_2026-09-30/checks/derived_r17_b26.out). The correction of Table 3's caption (1 October 2026) recomputed the context of the one row its edit reached and added the label row of the AR(1) it names (1,198 rows).",
+  "count": 1,
+  "why": "The head note records what each revision changed in the table."
+ },
+ {
+  "id": "K01",
+  "file": "manuscript/si/S5_Text.md",
+  "old": "3ce5707 (1 Oct, the outputs of B26's run, as the run wrote them); B26's outcome entry, the entry on the claim-by-claim check of 29–30 September 2026 and the text that reports them are the commit that follows, which cannot name its own identifier (its parent is 3ce5707), and the figures and captions regenerated at that commit are in the commit after it.",
+  "new": "3ce5707 (1 Oct, the outputs of B26's run, as the run wrote them); df5c160 (1 Oct, B26's outcome entry, the entry on the claim-by-claim check of 29–30 September 2026 and the text that reports them, with the entries on B25's re-run, on Fig 5's caption and on the audits, and the review folder of 30 September 2026); e9a6128 (1 Oct, the figures and captions regenerated at df5c160); the correction of Table 3's caption is the commit that follows, which cannot name its own identifier (its parent is e9a6128), and the figures and captions regenerated at that commit are in the commit after it.",
+  "count": 1,
+  "why": "S5 Text §6 names the commits the text rests on: df5c160 and e9a6128 exist now, and this commit follows them."
+ },
+ {
+  "id": "K02",
+  "file": "manuscript/draft_v2.md",
+  "old": "`notes/review_2026-09-28/`, `notes/review_2026-09-30/`)",
+  "new": "`notes/review_2026-09-28/`, `notes/review_2026-09-30/`, `notes/review_2026-10-01/`)",
+  "count": 1,
+  "why": "Data and code availability lists the review folders; this revision's is `notes/review_2026-10-01/`."
+ },
+ {
+  "id": "K03",
+  "file": "README.md",
+  "old": "the revision's replacements, the checks' outputs and the audits (`review_2026-09-30/`), the revised applicability table",
+  "new": "the revision's replacements, the checks' outputs and the audits (`review_2026-09-30/`), the correction of Table 3's caption with its checks and audit (`review_2026-10-01/`), the revised applicability table",
+  "count": 1,
+  "why": "README.md's row for `notes/` names each review folder."
+ },
+ {
+  "id": "K04",
+  "file": "manuscript/si/S5_Text.md",
+  "old": "whose 61 findings were applied (`notes/review_2026-09-30/audit/`; record, \"The audits of this revision and its review folder\"). The reviews and audits were carried out by separate sessions of the same AI system;",
+  "new": "whose 61 findings were applied (`notes/review_2026-09-30/audit/`; record, \"The audits of this revision and its review folder\"). On 1 October 2026 a correction of Table 3's caption, which changes no number, was audited by a separate session before its commit (`notes/review_2026-10-01/audit/`; record, \"Table 3's caption: the rates taken over the residual's pairs\"). The reviews and audits were carried out by separate sessions of the same AI system;",
+  "count": 1,
+  "why": "S5 Text §5 names each review and audit by its date; the audit of this correction is added where the audits of the revision of 30 September 2026 are named."
+ },
+ {
+  "id": "K05",
+  "file": "README.md",
+  "old": "error-only check of 25 Sep 2026 and the error-only read of 26 Sep 2026, to the\ncitation crosscheck of 28 Sep 2026 and to the claim-by-claim check of 29–30 Sep\n2026 (Introduction through Methods 6,998 words with headings; three tables and\nsix figures, the captions in the text), with its\n",
+  "new": "error-only check of 25 Sep 2026 and the error-only read of 26 Sep 2026, to the\ncitation crosscheck of 28 Sep 2026 and to the claim-by-claim check of 29–30 Sep\n2026 and, on 1 Oct 2026, in Table 3's caption (Introduction through Methods\n6,998 words with headings; three tables and six figures, the captions in the\ntext), with its\n",
+  "count": 1,
+  "why": "README.md's paragraph on the paper lists its revisions."
+ },
+ {
+  "id": "C01",
+  "file": "CLAUDE.md",
+  "old": "## Current state (round 22, bundle 33: B26's run on the data at d5a65bd, its outputs committed as the run wrote them and the text that reports them; the claim-by-claim check of 29–30 September 2026 and its corrections; B25's re-run by a separate session; the audits of the revision; next the figures regenerated at this round's text commit, then the typeset PDF and the note to C.T. and S.P.S.)",
+  "new": "## Current state (round 23, bundle 34: Table 3's caption corrected, the rates taken over the residual's pairs; next the figures regenerated at this round's text commit, then the typeset PDF and the note to C.T. and S.P.S.)",
+  "count": 1,
+  "why": "The heading names the current round."
+ },
+ {
+  "id": "C02",
+  "file": "CLAUDE.md",
+  "old": "and in round 22 (bundle 33) to B26's run, made at d5a65bd on 29 Sep 2026, and to the claim-by-claim check of 29–30 Sep 2026 (`notes/review_2026-09-30/`; record, \"The matrices that are not positive definite (B26): outcome\" and \"The claim-by-claim check of 29–30 September 2026 and its corrections\"): title",
+  "new": "and in round 22 (bundle 33) to B26's run, made at d5a65bd on 29 Sep 2026, and to the claim-by-claim check of 29–30 Sep 2026 (`notes/review_2026-09-30/`; record, \"The matrices that are not positive definite (B26): outcome\" and \"The claim-by-claim check of 29–30 September 2026 and its corrections\"), and in round 23 (bundle 34) in Table 3's caption (`notes/review_2026-10-01/`; record, \"Table 3's caption: the rates taken over the residual's pairs\"): title",
+  "count": 1,
+  "why": "The state paragraph lists the revisions of the paper."
+ },
+ {
+  "id": "C03",
+  "file": "CLAUDE.md",
+  "old": "and at round 22's text commit, committed in the next (Fig 5's caption without the p values).",
+  "new": "and at round 22's text commit, committed in the next (Fig 5's caption without the p values), and at round 23's text commit, committed in the next (the captions file differing in its header alone).",
+  "count": 1,
+  "why": "The state paragraph's sentence on the figures lists each regeneration."
+ },
+ {
+  "id": "C04",
+  "file": "CLAUDE.md",
+  "old": "  reproduced every row of its `binarised.csv` after the first line, which holds the time, byte for byte.\n- Remaining work: the figures regenerated by `scripts/15_figures_v2.py` at round 22's text commit and committed in the\n  next, under the conditions of the record's entry on Fig 5's caption; then the typeset PDF of the paper and its\n  supporting information from the final commit,\n  and the note to C.T. and S.P.S. When the co-author items are filled:",
+  "new": "  reproduced every row of its `binarised.csv` after the first line, which holds the time, byte for byte.\n- Round 23 (bundle 34; record, \"Table 3's caption: the rates taken over the residual's pairs\"): Table 3's caption said\n  that the last two of its five rates are taken over the residual's pairs; the AR(1) rate, −0.39, S18 Table (b)'s last\n  column in row (i), is too, as the writer's session of round 22 remarked in the report it gave with its bundle, and the\n  caption now names three. No number changes. `main_text_numbers.csv` (one context, the label row of the AR(1) the\n  caption now names and its head note; 1,198 rows), S5 Text §5–§6 (the audit; df5c160 and e9a6128), Data and code\n  availability, README.md and this file follow; the replacements, the checks' outputs and the audit by a separate\n  session are in `notes/review_2026-10-01/`. Introduction through Methods 6,998 words with headings, as at df5c160.\n- Remaining work: the figures regenerated by `scripts/15_figures_v2.py` at round 23's text commit and committed in the\n  next, under the conditions of the record's entry on Fig 5's caption, the captions file differing in its header\n  alone; then the typeset PDF of the paper and its supporting information from the final commit,\n  and the note to C.T. and S.P.S. When the co-author items are filled:",
+  "count": 1,
+  "why": "The history gets round 23's bullet, and the remaining work names round 23's figures commit."
+ },
+ {
+  "id": "C05",
+  "file": "CLAUDE.md",
+  "old": "the revision's replacements, the checks' outputs and the\n                                 audits (review_2026-09-30/), the applicability",
+  "new": "the revision's replacements, the checks' outputs and the\n                                 audits (review_2026-09-30/), the correction of Table 3's caption\n                                 with its checks and audit (review_2026-10-01/), the applicability",
+  "count": 1,
+  "why": "The map of the repository names each review folder."
+ },
+ {
+  "id": "C06",
+  "file": "CLAUDE.md",
+  "old": "every number of the main text with its source in `manuscript/main_text_numbers.csv` (1,197 rows). The figures are",
+  "new": "every number of the main text with its source in `manuscript/main_text_numbers.csv` (1,198 rows). The figures are",
+  "count": 1,
+  "why": "The state paragraph gives the numbers table's row count; the label row of the AR(1) the caption now names makes it 1,198."
+ },
+ {
+  "id": "R01",
+  "file": "manuscript/analysis_record.md",
+  "old": "with each, with the findings of the rule audit and of the fifth session of the claim-by-claim check.\n\n**The review folder of this revision**, `notes/review_2026-09-30/`: B26's evidence and the three scripts of its run\n(`b26/`; in the unit's journal and logind's the machine's name and a device's name are masked), the claim-by-claim check\n(`claims/`), the replacements this commit applies (`revision/`), the checks of the revised text and the recomputed\nderived values (`checks/`) and the audits, with what was done with each finding (`audit/`).\n",
+  "new": "with each, with the findings of the rule audit and of the fifth session of the claim-by-claim check.\n\n**The review folder of this revision**, `notes/review_2026-09-30/`: B26's evidence and the three scripts of its run\n(`b26/`; in the unit's journal and logind's the machine's name and a device's name are masked), the claim-by-claim check\n(`claims/`), the replacements this commit applies (`revision/`), the checks of the revised text and the recomputed\nderived values (`checks/`) and the audits, with what was done with each finding (`audit/`).\n\n## Table 3's caption: the rates taken over the residual's pairs, «ENTRY_TIME» UTC (appended; nothing above edited)\n\nAppended in the commit that follows e9a6128, the figures and captions regenerated at df5c160, with the correction it\ndescribes; `notes/review_2026-10-01/` holds the replacements, the checks' outputs and the audit. No computation; nothing\nread the data.\n\n**The imprecision.** Table 3's caption gives the generators' residual rates per unit of pair r₁, −0.18 (band-passed),\n−0.39 (AR(1)), −0.37 (null), −1.58 (Δa_s) and −2.76 (λ), and said that the last two are taken over the residual's pairs:\nthe pairs whose substituted matrices are positive definite in all 14 windows, over which S18 Table (b)'s last column\ndivides the residual's change by r₁'s (B26's rule; the entry on B26's outcome, rule (ii), after finding 8 of\n`notes/review_2026-09-30/audit/findings_T.md`). The AR(1) rate is that column's value in row (i), −0.387 (the three rows\nof `main_text_numbers.csv` for −0.39: B23 (b) (i)), so it, too, is taken over the residual's pairs, and the caption\nnamed two rates where there are three. The writer's session of the revision committed as df5c160 noted it in the report\nit gave with that revision's bundle, as a remark and not an error; the revision was committed as it stood. The\nband-passed and null rates are the ratios that S13 Table's note gives, +0.00279 / −0.01540 and +0.0054 / −0.0146.\n\n**The correction.** The caption now reads \"(the AR(1) rate and the last two over the residual's pairs)\" (T01 of\n`notes/review_2026-10-01/revision/text_replacements_2026-10-01.json`). No number changes (at its printed precision the\nrate is also what Table 3's own row 4 gives, +0.0049 / −0.01243 = −0.394). Captions are not counted; the counted text is\n6,998 words, as at df5c160. The numbers table follows: the context of its row for −2.76, a label row for the AR(1) the\ncaption now names (1,198 rows) and its head note (N01, N02); S5 Text §5 names the audit of this correction and §6 names\ndf5c160 and e9a6128 and this commit's place after them (K04, K01); Data and code availability, README.md and CLAUDE.md\nname the folder (K02, K03, K05, C01–C06). A separate session of the AI system audited the revision against the files\nbefore it was committed (`notes/review_2026-10-01/audit/`). The figures and captions that `scripts/15_figures_v2.py`\nwrites at this commit are the commit that follows, under the conditions of the entry on Fig 5's caption, the captions\nfile differing from the committed one in its header alone.\n",
+  "count": 1,
+  "why": "The record's entry on the correction, appended after the last entry; the writer's session puts the time into its heading."
+ }
+]

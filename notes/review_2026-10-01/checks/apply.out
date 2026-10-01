@@ -1,0 +1,23 @@
+T01     manuscript/draft_v2.md                     ok
+N01     manuscript/main_text_numbers.csv           ok
+N02     manuscript/main_text_numbers.csv           ok
+K01     manuscript/si/S5_Text.md                   ok
+K02     manuscript/draft_v2.md                     ok
+K03     README.md                                  ok
+K04     manuscript/si/S5_Text.md                   ok
+K05     README.md                                  ok
+C01     CLAUDE.md                                  ok
+C02     CLAUDE.md                                  ok
+C03     CLAUDE.md                                  ok
+C04     CLAUDE.md                                  ok
+C05     CLAUDE.md                                  ok
+C06     CLAUDE.md                                  ok
+R01     manuscript/analysis_record.md              ok
+
+all 15 entries applied; files written:
+  c90ef6c32830c8b85833080789b5dd0282a33bbdf3484b06fca5c3f4f9345ecd  CLAUDE.md
+  d3e099dad34ff20f39f5b090265451ca9ce06d85c31255134f9b2227d7c4d5c4  README.md
+  d138355942db370d990099032edd215ef9045be01957798e62e3b217c59dc19b  manuscript/analysis_record.md
+  b344b913577d49049346cc007dfc8271592dd3f70c33a5ea1704169e10c27dab  manuscript/draft_v2.md
+  1308b613cfb92fe9e767fe49a87a72fe8cc33d1062495bfab491fbe60ca77976  manuscript/main_text_numbers.csv
+  8b64741ae3336a12d319a751aac75bd9093d1579beb42417c1d2269d5b1cacaa  manuscript/si/S5_Text.md
