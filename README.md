@@ -32,13 +32,14 @@ characterised the phenomenon, and the record says so.
 journal reader in the PLOS Computational Biology Methods-article order,
 shortened on 23 Sep 2026, revised on 25 Sep 2026 to the adversarial review, the
 citation check and their verification of 24 Sep 2026, and corrected to the
-error-only check of 25 Sep 2026 and the error-only read of 26 Sep 2026, and to the
-citation crosscheck of 28 Sep 2026 (Introduction through Methods 6,994 words with
-headings; three tables and six figures, the captions in the text), with its
+error-only check of 25 Sep 2026 and the error-only read of 26 Sep 2026, to the
+citation crosscheck of 28 Sep 2026 and to the claim-by-claim check of 29–30 Sep
+2026 (Introduction through Methods 6,998 words with headings; three tables and
+six figures, the captions in the text), with its
 supporting information as five files under `manuscript/si/` and its tables
 S1–S20 in `manuscript/supplementary.md`; every number of the main text is listed
 with its source file and line in `manuscript/main_text_numbers.csv`. B16b, B17b,
-B21–B24 and B25 have been run and their values are in the text, and the single
+B21–B24, B25 and B26 have been run and their values are in the text, and the single
 end-to-end run of `run_all.sh` was made at c25a310 on 26 September 2026 (475 min
 by its own count): it reproduced the committed outputs under the rule of its
 pre-run entry apart from two CCS agreement-share arrays of B2, which depend on
@@ -47,15 +48,11 @@ the machine and the numerical build and which no result of the paper uses
 difference in the two CCS agreement-share arrays"), and its outputs are in the
 commit that follows (record, "The final end-to-end run of `run_all.sh` at the
 final commit: outcome"). The [TK] marks left are the co-author items and the
-archive's DOI (Data and code availability), filled at submission. The code now carries the
-correction for the matrices that are not positive definite (record, "The
-matrices that are not positive definite (B26): pre-run entry"); the committed
-outputs predate it until B26's run replaces them: a run of `run_all.sh` before
-then writes the outputs of B5, the null, B23, B17 and B17b, B10's and B15's
-sections on synthetic series and Fig 3 (c) with their corrected values
-(`notes/review_2026-09-28/checks/b26_preview.md`), the lines the correction
-rewords (rule (i) of B26's entry), and any output that the data's matrices
-change.
+archive's DOI (Data and code availability), filled at submission. The code carries the
+correction for the matrices that are not positive definite, and B26 ran section 6
+with it, B25 excepted, at d5a65bd on 29 September 2026: its outputs replaced the
+committed ones, every change tracing to the matrices it counts (record, "The
+matrices that are not positive definite (B26): outcome").
 `manuscript/draft.md` is the superseded first draft, kept as a record.
 
 ## Repository layout
@@ -71,7 +68,7 @@ change.
 | `manuscript/analysis_record.md` | the full pre-specification and results record, append-only, never retroactively edited (dated correction notes are appended, never edited in) |
 | `manuscript/prespecification_summary.md` | **the audit trail of the original analysis**: each decision with the commit that fixed it, and whether it changed later; it does not cover the review computations or Part B, whose plans and outcomes are dated entries in the record |
 | `scripts/00–15_*.py` | analysis scripts, numbered in execution order, each independently runnable (`14` proportionality, `15` the v2 figures) |
-| `notes/` | the first three adversarial reviews (`adversarial_review_*.md`) and the fourth, the verification of the correction note (`verification_correction_note_2026-09-15.md`; the fifth review is quoted in the record's entry of 15 Sep 2026, 18:14 UTC), the sixth review of 17 Sep 2026 with its checks (`fresh_review_2026-09-17/`), the citation audit against the full texts, the independent adversarial review, its verification and the plan to submission of 20 Sep 2026 (`review_2026-09-20/`), the independent review and the citation pass of 22 Sep 2026 with their verification and the reviewer's check scripts (`review_2026-09-22/`), the adversarial review and the citation check of 24 Sep 2026 with their verification, the reviewers' check scripts and `checks/derived_r17.py` with its output (`review_2026-09-24/`), the error-only check of 25 Sep 2026 with its verification, the revision's replacements and the check scripts (`review_2026-09-25/`), the error-only read of 26 Sep 2026 with its verification, the corrections' replacements and the checks' outputs (`review_2026-09-26/`), the citation crosscheck of 28 Sep 2026 with the revision's replacements, the text that reports B25, the checks' outputs and B25's first run with the correction of one of its checks (`review_2026-09-28/`), the revised applicability table (`partB5_literature_v2.md`), the venue and preprint options (`venue_options.md`), the review computations (`rev_*.py`, `review_*.py`, `review_computations_2026-09-14.md`), the Part B plans and notes (`partB_prespec_2026-09-14.md`, `partB*.md`) and their scripts (`partB*.py`, including `partB10_crosslag_deviation.py` and `partB11_regional_sts_r1.py`, added 15 Sep 2026, and `partB14_family_atoms.py`–`partB20_regional_partial.py`, added 20 Sep 2026 under their pre-run entries and run by V.S. on 21 Sep 2026 (outputs at 96e2242; outcome entries of 21 Sep), and `partB16b_whitened_spectrum.py` and `partB17b_calibration_filtered.py`, added 21 Sep 2026 under their pre-run entries and run that day, outputs at ada6438, outcome entries of 21 Sep; and `partB21_inference_revision.py`–`partB24_bandpassed_expectations.py` with `rev_inference_inverted.py`, added 23 Sep 2026 under their pre-run entries and run by V.S. that day, outputs at 90690f4; and `partB25_binarised.py`, the binarised estimators on the family, and `partB26_positive_definite.py`, the run of section 6 with the correction for the matrices that are not positive definite, added under their pre-run entries in the revision that followed the citation crosscheck of 28 Sep 2026), the plain-language companion (`companion_plain_language.md`, retired 21 Sep 2026: its role is taken by the paper's Author summary and S5 Text) and the defence questions (`defence_questions.md`, rewritten 21 Sep 2026 to the restructured text); result files, tables and logs under `notes/review_results/` |
+| `notes/` | the first three adversarial reviews (`adversarial_review_*.md`) and the fourth, the verification of the correction note (`verification_correction_note_2026-09-15.md`; the fifth review is quoted in the record's entry of 15 Sep 2026, 18:14 UTC), the sixth review of 17 Sep 2026 with its checks (`fresh_review_2026-09-17/`), the citation audit against the full texts, the independent adversarial review, its verification and the plan to submission of 20 Sep 2026 (`review_2026-09-20/`), the independent review and the citation pass of 22 Sep 2026 with their verification and the reviewer's check scripts (`review_2026-09-22/`), the adversarial review and the citation check of 24 Sep 2026 with their verification, the reviewers' check scripts and `checks/derived_r17.py` with its output (`review_2026-09-24/`), the error-only check of 25 Sep 2026 with its verification, the revision's replacements and the check scripts (`review_2026-09-25/`), the error-only read of 26 Sep 2026 with its verification, the corrections' replacements and the checks' outputs (`review_2026-09-26/`), the citation crosscheck of 28 Sep 2026 with the revision's replacements, the text that reports B25, the checks' outputs and B25's first run with the correction of one of its checks (`review_2026-09-28/`), B26's evidence, the claim-by-claim check of 29–30 Sep 2026 with its program and table, the revision's replacements, the checks' outputs and the audits (`review_2026-09-30/`), the revised applicability table (`partB5_literature_v2.md`), the venue and preprint options (`venue_options.md`), the review computations (`rev_*.py`, `review_*.py`, `review_computations_2026-09-14.md`), the Part B plans and notes (`partB_prespec_2026-09-14.md`, `partB*.md`) and their scripts (`partB*.py`, including `partB10_crosslag_deviation.py` and `partB11_regional_sts_r1.py`, added 15 Sep 2026, and `partB14_family_atoms.py`–`partB20_regional_partial.py`, added 20 Sep 2026 under their pre-run entries and run by V.S. on 21 Sep 2026 (outputs at 96e2242; outcome entries of 21 Sep), and `partB16b_whitened_spectrum.py` and `partB17b_calibration_filtered.py`, added 21 Sep 2026 under their pre-run entries and run that day, outputs at ada6438, outcome entries of 21 Sep; and `partB21_inference_revision.py`–`partB24_bandpassed_expectations.py` with `rev_inference_inverted.py`, added 23 Sep 2026 under their pre-run entries and run by V.S. that day, outputs at 90690f4; and `partB25_binarised.py`, the binarised estimators on the family, and `partB26_positive_definite.py`, the run of section 6 with the correction for the matrices that are not positive definite, added under their pre-run entries in the revision that followed the citation crosscheck of 28 Sep 2026), the plain-language companion (`companion_plain_language.md`, retired 21 Sep 2026: its role is taken by the paper's Author summary and S5 Text) and the defence questions (`defence_questions.md`, rewritten 21 Sep 2026 to the restructured text); result files, tables and logs under `notes/review_results/` |
 | `results/` | every table and array of the original analysis, with the script name and git SHA in its header; `run_*.log` are the run logs |
 | `run_all.sh` | regenerates everything in dependency order: the original analysis (5 h 17 min in the final run) and, in its last section, the review and Part B computations and the v2 figures (2 h 39 min); 475 min end to end by its own count in the final run at c25a310, about twelve minutes more with the HRF-deconvolution sandbox present |
 | `requirements.lock.txt` | pinned environment (Python 3.12) |
@@ -112,10 +109,11 @@ tagged `-dirty` if `scripts/` or the record had uncommitted changes; every
 `notes/` script that writes under `notes/review_results/` does the same through
 `notes/rev_git.py` (`partB10`–`partB13` since 15–16 September 2026, the others
 since 18 September). The tables and reports that the final run of `run_all.sh`
-wrote carry its SHA, c25a310, apart from five CSVs that carry none by design
-(record, the final run's pre-run entry, item 3), and so do its logs that print
-one; the files it did not regenerate, the HRF-deconvolution outputs among them,
-keep the header of the run that wrote them.
+wrote, and its logs that print a commit, carry its SHA, c25a310 (five CSVs carry
+none by design; record, the final run's pre-run entry, item 3), apart from those
+of section 6, which B26's run rewrote at d5a65bd; B25's outputs, added after the
+final run, carry b36178d; the files the final run did not regenerate, the
+HRF-deconvolution outputs among them, keep the header of the run that wrote them.
 Figures are regenerated from saved results only, never from a recomputation.
 
 ### Tests

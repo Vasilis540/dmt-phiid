@@ -1,21 +1,25 @@
 #!/usr/bin/env bash
 # run_all.sh — regenerate every table and figure from the raw .mat files, in dependency order.
 #
-# WARNING: this takes HOURS. Measured single-core wall-clock from the run logs in results/:
-#   01 global fit                ~530 s per variant  (x2)          ~18 min
-#   01 windowed W=60             ~3,030 s per variant (x2)         ~1 h 41 min
-#   01 windowed W=30 (control)   ~5,820 s                          ~1 h 37 min
-#   01 placebo-fitted (Rob. C)   ~280 s                            ~5 min
-#   02 bias check, 20,000 runs   ~7,180 s                          ~2 h
+# WARNING: this takes HOURS. Measured wall-clock, from the step times of the final run of 26 Sep 2026
+# in results/run_all_final.log (V.S.'s laptop, 12 CPUs):
+#   01 global fit                ~300 s per variant  (x2)          ~10 min
+#   01 windowed W=60             ~3,010 s per variant (x2)         ~1 h 40 min
+#   01 windowed W=30 (control)   ~6,020 s                          ~1 h 40 min
+#   01 placebo-fitted (Rob. C)   ~285 s                            ~5 min
+#   02 bias check, 20,000 runs   ~5,160 s                          ~1 h 26 min
 #   02 AR-shift step, 2,000 runs ~100 s                            ~2 min
-#   11 regional (per-pair refit) ~540 s per variant (x2)           ~18 min
+#   11 regional (per-pair refit) ~320 s per variant (x2)           ~11 min
 #   everything else              seconds to a few minutes each
-#   TOTAL, sections 0–5          ~6 h single-core (≈ 21,000 s), no GPU, ~2 GB RAM.
-#   section 6 (review + Part B)  about three hours more (≈ 10,600 s in the committed logs: B17 ≈ 56 min,
-#                                B17b ≈ 39 min, B16 ≈ 28 min, the rest seconds to minutes each; see each
-#                                script's docstring), of which B21–B24 (round 16) about 15 min;
-#                                B25 (added after the final run) about 15–30 min, an estimate
-#   TOTAL                        about nine hours (twelve minutes more with the deconvolution sandbox)
+#   TOTAL, sections 0–5          ~5 h 17 min (≈ 19,000 s), no GPU, ~2 GB RAM.
+#   section 6 (review + Part B)  ~2 h 39 min more (≈ 9,540 s: B17 ≈ 44 min, B17b ≈ 34 min, B16 ≈ 21 min,
+#                                the rest seconds to minutes each; see each script's docstring), of which
+#                                B21–B24 (round 16) about 9 min; 13,529 s (225 min) in B26's run of
+#                                29 Sep 2026, under its counting wrappers;
+#                                B25 (added after the final run) about 8 min (482–514 s in its three runs,
+#                                in sessions of the AI system)
+#   TOTAL                        about eight hours (475 min by the count at the end of the final run;
+#                                twelve minutes more with the deconvolution sandbox)
 # Every script is deterministic (SEED = 20261120) and writes the git SHA of the tree into
 # its output header; commit before running so the headers are clean, not "-dirty".
 #
@@ -92,7 +96,7 @@ step 12_figures                     scripts/12_figures.py
 #    Added after the final run of 26 Sep 2026, which therefore did not run it: B25, under its pre-run entry,
 #    after B24 and before the figures; no data. B26 (notes/partB26_positive_definite.py) is not a step: it
 #    runs this section, B25 excepted, in place, under wrappers that count the matrices that are not
-#    positive definite (about three hours).
+#    positive definite (225 min in its run of 29 Sep 2026).
 nstep() {  # nstep <log path under notes/review_results, without .log> <script> [args...]
     local log="notes/review_results/$1.log"; shift
     echo "=== $(date '+%F %T')  $*   -> $log"

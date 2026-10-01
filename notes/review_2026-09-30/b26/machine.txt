@@ -1,0 +1,7 @@
+Linux 6.14.0-32-generic #32~24.04.1-Ubuntu SMP PREEMPT_DYNAMIC Tue Sep  2 14:21:04 UTC 2 x86_64
+PRETTY_NAME="Ubuntu 24.04.3 LTS"
+CPU(s):                                  12
+Model name:                              13th Gen Intel(R) Core(TM) i5-13420H
+CPU(s) scaling MHz:                      19%
+               total        used        free      shared  buff/cache   available
+Mem:            15Gi       3.2Gi       9.5Gi       561Mi       3.2Gi        11Gi

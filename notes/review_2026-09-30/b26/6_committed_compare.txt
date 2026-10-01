@@ -1,0 +1,191 @@
+compared against d5a65bd: 47 files (21 CSV, 26 text)
+CSV identical in every cell: 11
+CSV differing only by less than 1e-9: 0
+CSV with a real difference: 10
+    notes/review_results/inference_rows_prewhiten.csv: max 274, 358 numbers > 1e-9, 0 empty-cell changes, text cells 0
+    notes/review_results/partB/inference_revision.csv: max 2, 728 numbers > 1e-9, 0 empty-cell changes, text cells {'zero_in_pct': 1}
+    notes/review_results/partB/diagnostic_alternatives.csv: max 1.48, 70 numbers > 1e-9, 0 empty-cell changes, text cells 0
+    notes/review_results/partB/calibration.csv: max 0.249, 1698 numbers > 1e-9, 0 empty-cell changes, text cells 0
+    notes/review_results/partB/calibration_filtered.csv: max 0.0289, 54 numbers > 1e-9, 0 empty-cell changes, text cells 0
+    notes/review_results/inference_rows_diag.csv: max 0.0033, 580 numbers > 1e-9, 0 empty-cell changes, text cells 0
+    notes/review_results/partB/bca_intervals.csv: max 0.0017, 48 numbers > 1e-9, 0 empty-cell changes, text cells 0
+    notes/review_results/partB/aligned_directed.csv: max 0.00101, 51 numbers > 1e-9, 0 empty-cell changes, text cells 0
+    notes/review_results/partB/crosslag_deviation.csv: max 2.63e-05, 7 numbers > 1e-9, 0 empty-cell changes, text cells 0
+    notes/review_results/partB/family_atoms_ts_gsr_W60.csv: max 5e-06, 29 numbers > 1e-9, 0 empty-cell changes, text cells 0
+CSV whose rows or columns changed: 0
+text files changed only on git-SHA lines: 12; there and in printed numbers within 1e-9: 0
+text files with other changes: 14
+    manuscript/figures/captions_v2.md (1 committed line(s) not reproduced, 1 line(s) added, besides SHA lines; up to ten of each)
+        - **Fig 5. The AR(1)-substituted estimate by window.** ts_gsr, W = 60, N = 14; lines are group means. Shading is ± 1 within-subject SEM (Cousineau, 2005; Morey, 2008): each
+        + **Fig 5. The AR(1)-substituted estimate by window.** ts_gsr, W = 60, N = 14; lines are group means. Shading is ± 1 within-subject SEM (Cousineau, 2005; Morey, 2008): each
+    notes/review_results/partB/aligned_directed_tables.md (12 committed line(s) not reproduced, 12 line(s) added, besides SHA lines; up to ten of each)
+        - | D, response to δ_anti alone | -0.03823 [-0.04012, -0.03659], p = 0.0001, 14 | +0.00127 [-0.00062, +0.00335], p = 0.2274, 4 | +0.00016 [-0.00266, +0.00316], p = 0.9081, 
+        - | Sym, response to δ_sym alone | -0.01338 [-0.01921, -0.00744], p = 0.0007, 12 | +0.00635 [-0.00114, +0.01368], p = 0.0869, 3 | -0.00398 [-0.00971, +0.00170], p = 0.1547,
+        - | D + Sym | -0.05161 [-0.05727, -0.04586], p = 0.0001, 14 | +0.00762 [-0.00065, +0.01578], p = 0.0670, 4 | -0.00383 [-0.00947, +0.00182], p = 0.1638, 10 | +0.01145 [+0.00
+        - | response to both (reference) | -0.05357 [-0.05964, -0.04745], p = 0.0001, 14 | +0.00789 [-0.00095, +0.01658], p = 0.0735, 4 | -0.00408 [-0.01008, +0.00191], p = 0.1625,
+        - | residual (observed − AR(1)-substituted sts) | -0.05302 [-0.05911, -0.04686], p = 0.0001, 14 | +0.00771 [-0.00112, +0.01643], p = 0.0797, 4 | -0.00382 [-0.00986, +0.0022
+        - The residual DiD +0.01153 beside the DiD of D + Sym +0.01145 (their difference +0.00008: the lag-0 substitution and the non-additivity of the two responses).
+        - | D, response to δ_anti alone | -0.04231 [-0.04533, -0.03947], p = 0.0001, 14 | -0.00239 [-0.00608, +0.00123], p = 0.1887, 9 | -0.00096 [-0.00349, +0.00155], p = 0.4235, 
+        - | Sym, response to δ_sym alone | +0.00252 [-0.00658, +0.01099], p = 0.5665, 5 | +0.00904 [-0.00317, +0.02124], p = 0.1382, 4 | -0.00956 [-0.01918, -0.00010], p = 0.0485, 
+        - | D + Sym | -0.03979 [-0.04760, -0.03263], p = 0.0001, 14 | +0.00665 [-0.00509, +0.01836], p = 0.2458, 4 | -0.01052 [-0.01962, -0.00154], p = 0.0243, 11 | +0.01717 [+0.00
+        - | response to both (reference) | -0.04047 [-0.04884, -0.03272], p = 0.0001, 14 | +0.00729 [-0.00541, +0.02000], p = 0.2410, 4 | -0.01127 [-0.02103, -0.00166], p = 0.0245,
+        + | D, response to δ_anti alone | -0.03823 [-0.04012, -0.03659], p = 0.0001, 14 | +0.00127 [-0.00062, +0.00335], p = 0.2274, 4 | +0.00015 [-0.00266, +0.00315], p = 0.9092, 
+        + | Sym, response to δ_sym alone | -0.01338 [-0.01921, -0.00744], p = 0.0007, 12 | +0.00635 [-0.00114, +0.01368], p = 0.0869, 3 | -0.00399 [-0.00971, +0.00168], p = 0.1537,
+        + | D + Sym | -0.05161 [-0.05727, -0.04586], p = 0.0001, 14 | +0.00762 [-0.00065, +0.01578], p = 0.0670, 4 | -0.00383 [-0.00949, +0.00181], p = 0.1631, 10 | +0.01146 [+0.00
+        + | response to both (reference) | -0.05357 [-0.05964, -0.04745], p = 0.0001, 14 | +0.00789 [-0.00095, +0.01658], p = 0.0735, 4 | -0.00409 [-0.01008, +0.00189], p = 0.1621,
+        + | residual (observed − AR(1)-substituted sts) | -0.05302 [-0.05911, -0.04686], p = 0.0001, 14 | +0.00771 [-0.00112, +0.01643], p = 0.0797, 4 | -0.00382 [-0.00986, +0.0021
+        + The residual DiD +0.01153 beside the DiD of D + Sym +0.01146 (their difference +0.00008: the lag-0 substitution, the non-additivity of the two responses and, where a pair
+        + | D, response to δ_anti alone | -0.04231 [-0.04533, -0.03947], p = 0.0001, 14 | -0.00238 [-0.00608, +0.00123], p = 0.1891, 9 | -0.00097 [-0.00350, +0.00154], p = 0.4215, 
+        + | Sym, response to δ_sym alone | +0.00252 [-0.00658, +0.01099], p = 0.5664, 5 | +0.00904 [-0.00317, +0.02124], p = 0.1382, 4 | -0.00955 [-0.01918, -0.00010], p = 0.0486, 
+        + | D + Sym | -0.03979 [-0.04760, -0.03263], p = 0.0001, 14 | +0.00665 [-0.00509, +0.01836], p = 0.2456, 4 | -0.01052 [-0.01962, -0.00154], p = 0.0244, 11 | +0.01717 [+0.00
+        + | response to both (reference) | -0.04047 [-0.04884, -0.03272], p = 0.0001, 14 | +0.00729 [-0.00541, +0.01999], p = 0.2408, 4 | -0.01126 [-0.02103, -0.00165], p = 0.0245,
+    notes/review_results/partB/calibration_filtered_tables.md (2 committed line(s) not reproduced, 2 line(s) added, besides SHA lines; up to ten of each)
+        - | (ii) Δc = +0.01 | W60 | 1.1878 | +0.0001 ± 0.0029 | -0.0002 ± 0.0025 | +0.0003 ± 0.0011 | 0.464; 0.04 | +0.00025 ± 0.00031 | -0.00021 ± 0.00096 |
+        - | (ii) Δc = +0.03 | W60 | 1.1883 | -0.0009 ± 0.0028 | -0.0005 ± 0.0026 | -0.0004 ± 0.0012 | 0.453; 0.06 | +0.00069 ± 0.00024 | -0.00018 ± 0.00096 |
+        + | (ii) Δc = +0.01 | W60 | 1.1878 | +0.0001 ± 0.0029 | -0.0002 ± 0.0025 | +0.0003 ± 0.0011 | 0.465; 0.04 | +0.00025 ± 0.00031 | -0.00021 ± 0.00096 |
+        + | (ii) Δc = +0.03 | W60 | 1.1883 | -0.0009 ± 0.0028 | -0.0005 ± 0.0026 | -0.0004 ± 0.0012 | 0.452; 0.06 | +0.00069 ± 0.00024 | -0.00018 ± 0.00096 |
+    notes/review_results/partB/calibration_tables.md (7 committed line(s) not reproduced, 7 line(s) added, besides SHA lines; up to ten of each)
+        - | (i) Δa = −0.015, Δc = 0 | W60 | 0.7152 | -0.0422 ± 0.0034 | -0.0471 ± 0.0036 | +0.0049 ± 0.0017 | 0.056; 0.82 | +0.00014 ± 0.00065 | +0.00130 ± 0.00050 |
+        - | (ii) Δc = +0.01 | W60 | 0.7153 | +0.0010 ± 0.0036 | +0.0020 ± 0.0037 | -0.0010 ± 0.0018 | 0.460; 0.08 | +0.00758 ± 0.00072 | -0.00014 ± 0.00065 |
+        - | (ii) Δc = +0.02 | W60 | 0.7154 | +0.0002 ± 0.0039 | +0.0053 ± 0.0037 | -0.0052 ± 0.0016 | 0.055; 0.76 | +0.01480 ± 0.00069 | -0.00037 ± 0.00063 |
+        - | (ii) Δc = +0.03 | W60 | 0.7152 | +0.0001 ± 0.0031 | +0.0110 ± 0.0034 | -0.0109 ± 0.0017 | 0.001; 1.00 | +0.02210 ± 0.00071 | -0.00083 ± 0.00055 |
+        - | (ii) Δc = −0.02 | W60 | 0.7152 | -0.0002 ± 0.0038 | +0.0053 ± 0.0037 | -0.0055 ± 0.0018 | 0.039; 0.80 | -0.01495 ± 0.00066 | -0.00027 ± 0.00059 |
+        - | (iii) Δa = −0.015, Δc = +0.02 | W60 | 0.7153 | -0.0419 ± 0.0035 | -0.0427 ± 0.0033 | +0.0009 ± 0.0016 | 0.521; 0.00 | +0.01500 ± 0.00080 | +0.00093 ± 0.00056 |
+        - | (iv) a_x − a_y = 0.03, Δa = −0.015 | W60 | 0.7131 | -0.0422 ± 0.0036 | -0.0473 ± 0.0038 | +0.0051 ± 0.0018 | 0.052; 0.72 | +0.00013 ± 0.00071 | +0.00130 ± 0.00056 |
+        + | (i) Δa = −0.015, Δc = 0 | W60 | 0.7152 | -0.0422 ± 0.0034 | -0.0471 ± 0.0036 | +0.0049 ± 0.0017 | 0.055; 0.80 | +0.00014 ± 0.00065 | +0.00130 ± 0.00050 |
+        + | (ii) Δc = +0.01 | W60 | 0.7153 | +0.0010 ± 0.0036 | +0.0020 ± 0.0037 | -0.0010 ± 0.0018 | 0.459; 0.10 | +0.00758 ± 0.00072 | -0.00014 ± 0.00065 |
+        + | (ii) Δc = +0.02 | W60 | 0.7154 | +0.0002 ± 0.0039 | +0.0054 ± 0.0037 | -0.0052 ± 0.0016 | 0.052; 0.76 | +0.01480 ± 0.00069 | -0.00037 ± 0.00063 |
+        + | (ii) Δc = +0.03 | W60 | 0.7152 | +0.0001 ± 0.0031 | +0.0110 ± 0.0033 | -0.0108 ± 0.0017 | 0.001; 1.00 | +0.02210 ± 0.00071 | -0.00083 ± 0.00055 |
+        + | (ii) Δc = −0.02 | W60 | 0.7152 | -0.0002 ± 0.0038 | +0.0054 ± 0.0037 | -0.0056 ± 0.0018 | 0.037; 0.80 | -0.01495 ± 0.00066 | -0.00027 ± 0.00059 |
+        + | (iii) Δa = −0.015, Δc = +0.02 | W60 | 0.7153 | -0.0419 ± 0.0035 | -0.0428 ± 0.0033 | +0.0009 ± 0.0016 | 0.505; 0.00 | +0.01500 ± 0.00080 | +0.00093 ± 0.00056 |
+        + | (iv) a_x − a_y = 0.03, Δa = −0.015 | W60 | 0.7131 | -0.0422 ± 0.0036 | -0.0472 ± 0.0038 | +0.0051 ± 0.0017 | 0.051; 0.70 | +0.00013 ± 0.00071 | +0.00130 ± 0.00056 |
+    notes/review_results/partB/ccs_pub_tables.md (1 committed line(s) not reproduced, 1 line(s) added, besides SHA lines; up to ten of each)
+        - Per-subject pub CCS sts DiD vs the autocorrelation contrast (W60): Pearson r = -0.428 (p = 0.127), Spearman -0.433; vs the MMI sts DiD of the same estimator: r = -0.357; 
+        + Per-subject pub CCS sts DiD vs the autocorrelation contrast (W60): Pearson r = -0.428 (p = 0.127), Spearman -0.433; vs the MMI sts DiD of the same estimator: r = -0.357; 
+    notes/review_results/partB/crosslag_deviation_tables.md (2 committed line(s) not reproduced, 2 line(s) added, besides SHA lines; up to ten of each)
+        - Homogeneous-filter check (placebo ACF; 2,000 pairs × 8,400 TRs per window length), as the null's first section; its log reports residual −8.52 %, −3.10 %, −0.34 % at W = 
+        - W = 30: residual -0.0886 (-8.52 %); share of pair-windows with q < 0 0.503, mean |q| 0.354; sign(q)-weighted mean deviation +0.00662 ± 0.00008 (SE; 95 % [+0.00647, +0.006
+        + Homogeneous-filter check (placebo ACF; 2,000 pairs × 8,400 TRs per window length), as the null's first section; its log reports residual −8.51 %, −3.10 %, −0.34 % at W = 
+        + W = 30: residual -0.0885 (-8.51 %); share of pair-windows with q < 0 0.503, mean |q| 0.354; sign(q)-weighted mean deviation +0.00662 ± 0.00008 (SE; 95 % [+0.00647, +0.006
+    notes/review_results/partB/diag_tables.md (19 committed line(s) not reproduced, 19 line(s) added, besides SHA lines; up to ten of each)
+        - Levels (all subjects, runs, windows): observed sts 1.1377, predicted (AR(1) from a_x, a_y, q) 1.1865, residual -0.0489 (-4.3 % of observed); SD of the residual across sub
+        - Per-subject residual DiDs: [ 0.0367 -0.0029  0.0178  0.0116 -0.0076  0.0284  0.0105  0.0474  0.0252 -0.0126  0.0099  0.0064  0.0127 -0.0222]
+        - Levels (all subjects, runs, windows): observed sts 1.0082, predicted (AR(1) from a_x, a_y, q) 1.1062, residual -0.0980 (-9.7 % of observed); SD of the residual across sub
+        - Per-pair R² of predicted vs observed sts within a window: mean 0.622 (min 0.289, max 0.762). AR(1) lag-1 cross-correlation check: mean |corr(x_t, y_(t+1)) − a_y q| = 0.12
+        - Subject 1 DMT window 6: pair-level r(obs, pred) = +0.782; obs mean 0.9852 SD 0.3115; pred mean 1.1143 SD 0.2446; residual mean -0.1290 SD 0.1940; r(residual, mean a) = -0
+        - Subject 1 PCB window 2: pair-level r(obs, pred) = +0.806; obs mean 1.0301 SD 0.2952; pred mean 1.0922 SD 0.2495; residual mean -0.0621 SD 0.1753; r(residual, mean a) = -0
+        - Subject 1 PCB window 6: pair-level r(obs, pred) = +0.848; obs mean 0.9596 SD 0.3044; pred mean 1.0285 SD 0.2741; residual mean -0.0689 SD 0.1620; r(residual, mean a) = -0
+        - Primary DiD: observed -0.0686, predicted -0.0869 (127 % of observed), residual +0.0182. Per subject: r(residual DiD, autocorrelation contrast) = -0.825 (Spearman -0.767);
+        - Per-subject residual DiDs: [ 0.0516  0.0019  0.0324  0.0230 -0.0122  0.0334  0.0155  0.0569  0.0424  0.0020  0.0148  0.0027  0.0152 -0.0241]
+        - Group-mean window series: observed DMT [1.057 1.001 1.014 1.019 1.008 1.007 1.026 1.046 1.002 0.952 0.917 0.942 0.945 0.958 0.962 0.964 0.960 0.982 0.966 0.988 0.990 1.00
+        + Levels (all subjects, runs, windows): observed sts 1.1377, predicted (AR(1) from a_x, a_y, q) 1.1865, residual -0.0489 (-4.3 % of observed); SD of the residual across sub
+        + Per-subject residual DiDs: [ 0.0367 -0.0029  0.0178  0.0116 -0.0076  0.0284  0.0105  0.0474  0.0252 -0.0127  0.0099  0.0065  0.0127 -0.0222]
+        + Levels (all subjects, runs, windows): observed sts 1.0082, predicted (AR(1) from a_x, a_y, q) 1.1061, residual -0.0979 (-9.7 % of observed); SD of the residual across sub
+        + Per-pair R² of predicted vs observed sts within a window: mean 0.625 (min 0.335, max 0.762). AR(1) lag-1 cross-correlation check: mean |corr(x_t, y_(t+1)) − a_y q| = 0.12
+        + Subject 1 DMT window 6: pair-level r(obs, pred) = +0.784; obs mean 0.9852 SD 0.3115; pred mean 1.1142 SD 0.2445; residual mean -0.1289 SD 0.1934; r(residual, mean a) = -0
+        + Subject 1 PCB window 2: pair-level r(obs, pred) = +0.807; obs mean 1.0301 SD 0.2952; pred mean 1.0921 SD 0.2495; residual mean -0.0620 SD 0.1746; r(residual, mean a) = -0
+        + Subject 1 PCB window 6: pair-level r(obs, pred) = +0.848; obs mean 0.9596 SD 0.3044; pred mean 1.0285 SD 0.2741; residual mean -0.0689 SD 0.1619; r(residual, mean a) = -0
+        + Primary DiD: observed -0.0686, predicted -0.0869 (127 % of observed), residual +0.0183. Per subject: r(residual DiD, autocorrelation contrast) = -0.825 (Spearman -0.767);
+        + Per-subject residual DiDs: [ 0.0516  0.0020  0.0323  0.0228 -0.0120  0.0332  0.0154  0.0566  0.0423  0.0022  0.0149  0.0032  0.0153 -0.0241]
+        + Group-mean window series: observed DMT [1.057 1.001 1.014 1.019 1.008 1.007 1.026 1.046 1.002 0.952 0.917 0.942 0.945 0.958 0.962 0.964 0.960 0.982 0.966 0.988 0.990 1.00
+    notes/review_results/partB/diagnostic_alternatives_tables.md (13 committed line(s) not reproduced, 13 line(s) added, besides SHA lines; up to ten of each)
+        - 3000 pairs, q ~ N(0, 0.3424) clipped to ±0.8, a = 0.85; runs of 840 samples after a burn-in of 200; 14 windows of 60; the other run an independent realisation. SE over pa
+        - Unperturbed AR(1) pairs, levels: observed sts +0.71753; AR(1)-substituted sts +0.78780; residual -0.07027; r₁ +0.78638; A_other -0.00291; A_same -0.00117; D -0.01137; B +
+        - | (i) Δa = −0.015 | 0 | -0.04240 ± 0.00011 | -0.04777 ± 0.00012 | +0.00537 ± 0.00009 | -0.01377 ± 0.00002 | +0.00001 ± 0.00004 | +0.00001 ± 0.00005 | +0.00015 ± 0.00007 |
+        - | (a1) δ = +0.02 | 0 | +0.00521 ± 0.00078 | -0.00457 ± 0.00035 | +0.00978 ± 0.00093 | -0.00092 ± 0.00004 | +0.00041 ± 0.00034 | +0.00017 ± 0.00034 | +0.00032 ± 0.00014 | 
+        - | (a1) δ = −0.02 | 0 | +0.00608 ± 0.00079 | -0.00409 ± 0.00037 | +0.01016 ± 0.00095 | -0.00089 ± 0.00004 | +0.00059 ± 0.00034 | +0.00070 ± 0.00034 | +0.00041 ± 0.00013 | 
+        - | (a2) δ = +0.01 × sign(q) | 0 | -0.01064 ± 0.00028 | +0.00290 ± 0.00015 | -0.01354 ± 0.00030 | -0.00023 ± 0.00002 | +0.00782 ± 0.00011 | +0.00781 ± 0.00010 | -0.00007 ± 
+        - | (a2) δ = −0.01 × sign(q) | 0 | +0.01339 ± 0.00033 | -0.00511 ± 0.00020 | +0.01850 ± 0.00038 | -0.00021 ± 0.00002 | -0.00748 ± 0.00010 | -0.00762 ± 0.00010 | +0.00039 ± 
+        - | (a3) c = +0.02, r₁ and q held | 0 | +0.00335 ± 0.00047 | -0.00342 ± 0.00028 | +0.00677 ± 0.00055 | -0.00069 ± 0.00004 | +0.00014 ± 0.00031 | -0.00008 ± 0.00031 | +0.000
+        - | (a4) c = +0.02, B17's construction | 0 | -0.00011 ± 0.00040 | +0.00468 ± 0.00036 | -0.00479 ± 0.00065 | +0.00129 ± 0.00012 | +0.00387 ± 0.00034 | +0.00401 ± 0.00035 | +
+        - | (a4) c = -0.02, B17's construction | 0 | +0.00006 ± 0.00040 | +0.00552 ± 0.00038 | -0.00546 ± 0.00066 | +0.00134 ± 0.00012 | +0.00405 ± 0.00033 | +0.00440 ± 0.00034 | -
+        + 3000 pairs, q ~ N(0, 0.3424) clipped to ±0.8, a = 0.85; runs of 840 samples after a burn-in of 200; 14 windows of 60; the other run an independent realisation. SE over pa
+        + Unperturbed AR(1) pairs, levels: observed sts +0.71753; AR(1)-substituted sts +0.78788 [11]; residual -0.06998 [11]; r₁ +0.78638; A_other -0.00291; A_same -0.00117; D -0.
+        + | (i) Δa = −0.015 | 0 | -0.04240 ± 0.00011 | -0.04775 ± 0.00010 [11] | +0.00532 ± 0.00006 [11] | -0.01377 ± 0.00002 | +0.00001 ± 0.00004 | +0.00001 ± 0.00005 | +0.00017 ±
+        + | (a1) δ = +0.02 | 0 | +0.00521 ± 0.00078 | -0.00450 ± 0.00034 [20] | +0.00931 ± 0.00091 [20] | -0.00092 ± 0.00004 | +0.00041 ± 0.00034 | +0.00017 ± 0.00034 | +0.00017 ± 
+        + | (a1) δ = −0.02 | 0 | +0.00608 ± 0.00079 | -0.00381 ± 0.00035 [19] | +0.00951 ± 0.00092 [19] | -0.00089 ± 0.00004 | +0.00059 ± 0.00034 | +0.00070 ± 0.00034 | +0.00016 ± 
+        + | (a2) δ = +0.01 × sign(q) | 0 | -0.01064 ± 0.00028 | +0.00292 ± 0.00015 [12] | -0.01348 ± 0.00029 [12] | -0.00023 ± 0.00002 | +0.00782 ± 0.00011 | +0.00781 ± 0.00010 | -
+        + | (a2) δ = −0.01 × sign(q) | 0 | +0.01339 ± 0.00033 | -0.00489 ± 0.00017 [16] | +0.01808 ± 0.00036 [16] | -0.00021 ± 0.00002 | -0.00748 ± 0.00010 | -0.00762 ± 0.00010 | +
+        + | (a3) c = +0.02, r₁ and q held | 0 | +0.00335 ± 0.00047 | -0.00338 ± 0.00028 [13] | +0.00678 ± 0.00055 [13] | -0.00069 ± 0.00004 | +0.00014 ± 0.00031 | -0.00008 ± 0.0003
+        + | (a4) c = +0.02, B17's construction | 0 | -0.00011 ± 0.00040 | +0.00466 ± 0.00036 [12] | -0.00471 ± 0.00064 [12] | +0.00129 ± 0.00012 | +0.00387 ± 0.00034 | +0.00401 ± 0
+        + | (a4) c = -0.02, B17's construction | 0 | +0.00006 ± 0.00040 | +0.00565 ± 0.00037 [16] | -0.00565 ± 0.00065 [16] | +0.00134 ± 0.00012 | +0.00405 ± 0.00033 | +0.00440 ± 0
+    notes/review_results/partB/directed_crosslag_tables.md (8 committed line(s) not reproduced, 8 line(s) added, besides SHA lines; up to ten of each)
+        - Closed-form response of the pair-mean sts (mean over runs): to δ_anti alone -0.00641 [-0.00692, -0.00586] (subject bootstrap of the per-subject mean of the two runs) — th
+        - Closed-form response of the pair-mean sts (mean over runs): to δ_anti alone -0.00851 [-0.00991, -0.00720] (subject bootstrap of the per-subject mean of the two runs) — th
+        - (0) symmetric filter null, as review_v2_residual_null.py (solved bmean 184, qsd 0.266): window a 0.8629, |q| 0.2824; residual -0.03535 (-2.98 %); RMS δ_anti 0.10389, RMS 
+        - (1) y = x delayed by one sample mixed with independent noise at the pair's q (w = q / r₁ of x, clipped to ±0.99): window a 0.8637, |q| 0.2828; residual -0.06505 (-5.59 %)
+        - (2) symmetric VAR(1), population a = 0.8632, c_xy = +0.02, c_yx = −0.02, q ~ N(0, 0.266) clipped to the reachable lag-0 range -0.987 to +0.987 (window a and |q| as measur
+        - (2) symmetric VAR(1), population a = 0.8632, c_xy = +0.04, c_yx = −0.04, q ~ N(0, 0.266) clipped to the reachable lag-0 range -0.949 to +0.949 (window a and |q| as measur
+        - (2) symmetric VAR(1), population a = 0.8632, c_xy = +0.06, c_yx = −0.06, q ~ N(0, 0.266) clipped to the reachable lag-0 range -0.888 to +0.888 (window a and |q| as measur
+        - Null residual levels: symmetric -0.03535; delayed-copy -0.06505; antisymmetric VAR(1) c = 0.02: -0.07353, c = 0.04: -0.07253, c = 0.06: -0.06842. These are W = 60 window-
+        + Closed-form response of the pair-mean sts (mean over runs): to δ_anti alone -0.00641 [-0.00692, -0.00586] (subject bootstrap of the per-subject mean of the two runs) — th
+        + Closed-form response of the pair-mean sts (mean over runs): to δ_anti alone -0.00851 [-0.00991, -0.00720] (subject bootstrap of the per-subject mean of the two runs) — th
+        + (0) symmetric filter null, as review_v2_residual_null.py (solved bmean 184, qsd 0.266): window a 0.8629, |q| 0.2824; residual -0.03534 (-2.98 %); RMS δ_anti 0.10389, RMS 
+        + (1) y = x delayed by one sample mixed with independent noise at the pair's q (w = q / r₁ of x, clipped to ±0.99): window a 0.8637, |q| 0.2828; residual -0.06505 (-5.59 %)
+        + (2) symmetric VAR(1), population a = 0.8632, c_xy = +0.02, c_yx = −0.02, q ~ N(0, 0.266) clipped to the reachable lag-0 range -0.987 to +0.987 (window a and |q| as measur
+        + (2) symmetric VAR(1), population a = 0.8632, c_xy = +0.04, c_yx = −0.04, q ~ N(0, 0.266) clipped to the reachable lag-0 range -0.949 to +0.949 (window a and |q| as measur
+        + (2) symmetric VAR(1), population a = 0.8632, c_xy = +0.06, c_yx = −0.06, q ~ N(0, 0.266) clipped to the reachable lag-0 range -0.888 to +0.888 (window a and |q| as measur
+        + Null residual levels: symmetric -0.03534; delayed-copy -0.06505; antisymmetric VAR(1) c = 0.02: -0.07343, c = 0.04: -0.07245, c = 0.06: -0.06847. These are W = 60 window-
+    notes/review_results/partB/exchange_rates_tables.md (3 committed line(s) not reproduced, 3 line(s) added, besides SHA lines; up to ten of each)
+        - | diag residual sts ts_gsr W60 [primary] | +0.0115 | 0.0422 | [+0.0021, +0.0211] | [+0.0018, +0.0211] | [+0.0020, +0.0212] | +0.011 | +0.004 | 1.00 | no |
+        - | diag residual sts ts_gsr W60 [late] | +0.0064 | 0.3243 | [-0.0058, +0.0183] | [-0.0056, +0.0180] | [-0.0056, +0.0180] | +0.002 | -0.002 | 1.00 | no |
+        - | diag residual sts ts_gsr W30 [primary] | +0.0182 | 0.0137 | [+0.0066, +0.0299] | [+0.0062, +0.0298] | [+0.0063, +0.0299] | +0.009 | -0.000 | 1.00 | no |
+        + | diag residual sts ts_gsr W60 [primary] | +0.0115 | 0.0421 | [+0.0021, +0.0211] | [+0.0018, +0.0211] | [+0.0020, +0.0212] | +0.011 | +0.004 | 1.00 | no |
+        + | diag residual sts ts_gsr W60 [late] | +0.0064 | 0.3241 | [-0.0058, +0.0183] | [-0.0056, +0.0180] | [-0.0056, +0.0180] | +0.001 | -0.002 | 1.00 | no |
+        + | diag residual sts ts_gsr W30 [primary] | +0.0183 | 0.0134 | [+0.0067, +0.0299] | [+0.0062, +0.0298] | [+0.0064, +0.0298] | +0.011 | -0.001 | 1.00 | no |
+    notes/review_results/partB/family_atoms_tables.md (1 committed line(s) not reproduced, 1 line(s) added, besides SHA lines; up to ten of each)
+        - | TDMI (sum) | +1.4772 | +1.4240 | +0.0532 | -0.1037 (12) | -0.1129 (12) | +0.0092 (5) |
+        + | TDMI (sum) | +1.4772 | +1.4240 | +0.0532 | -0.1037 (12) | -0.1130 (12) | +0.0092 (5) |
+    notes/review_results/partB/inference_revision_tables.md (11 committed line(s) not reproduced, 11 line(s) added, besides SHA lines; up to ten of each)
+        - Quantities whose zero-inclusion differs between the committed percentile and the inverted interval: 39: CCS sts ts_gsr W60 [sensitivity] did; CCS sts ts_gsr W60 [trend_a_
+        - | pickle | diag residual sts ts_gsr W60 | primary / did | +0.01153 | 0.0422 | [+0.00213, +0.02107] | [+0.00046, +0.02265] | [+0.00048, +0.02258] | 1.171 | no / no / no | 
+        - | engine | diag residual sts ts_gsr W60 | primary / pcb_change | -0.00382 | 0.1929 | [-0.00908, +0.00136] | [-0.00986, +0.00220] | [-0.00981, +0.00218] | 1.156 | yes / ye
+        - | engine | diag residual sts ts_gsr W60 | primary / resid_did | +0.00999 | 0.0580 | [+0.00085, +0.01849] | [-0.00040, +0.02014] | [-0.00027, +0.02024] | 1.165 | no / yes 
+        - Residual DiD +0.01153; inverted interval [+0.00046, +0.02265].
+        - | +0.0027 | 0.1079 | 0.1079 | 4/14 |
+        - | +0.0049 | 0.2188 | 0.2188 | 4/14 |
+        - | +0.0054 | 0.2506 | 0.2506 | 4/14 |
+        - | ts_gsr | residual DiD | -0.7535 | [-1.1332, -0.3737], 0.0010 | [-1.0207, -0.4360] | -0.7915 to -0.6994 | +0.00049 | [-0.00865, +0.00963], 0.9082 | [-0.00529, +0.00810] 
+        - | ts_demean | residual DiD | -0.5679 | [-1.0480, -0.0878], 0.0242 | [-1.1413, -0.1509] | -0.7659 to -0.4751 | +0.00598 | [-0.00794, +0.01989], 0.3680 | [-0.00374, +0.0201
+        + Quantities whose zero-inclusion differs between the committed percentile and the inverted interval: 40: CCS sts ts_gsr W60 [sensitivity] did; CCS sts ts_gsr W60 [trend_a_
+        + | pickle | diag residual sts ts_gsr W60 | primary / did | +0.01153 | 0.0421 | [+0.00214, +0.02107] | [+0.00047, +0.02265] | [+0.00048, +0.02258] | 1.171 | no / no / no | 
+        + | engine | diag residual sts ts_gsr W60 | primary / pcb_change | -0.00382 | 0.1918 | [-0.00909, +0.00136] | [-0.00986, +0.00219] | [-0.00981, +0.00217] | 1.154 | yes / ye
+        + | engine | diag residual sts ts_gsr W60 | primary / resid_did | +0.00999 | 0.0579 | [+0.00086, +0.01849] | [-0.00040, +0.02014] | [-0.00027, +0.02025] | 1.165 | no / yes 
+        + Residual DiD +0.01153; inverted interval [+0.00047, +0.02265].
+        + | +0.0027 | 0.1075 | 0.1075 | 4/14 |
+        + | +0.0049 | 0.2183 | 0.2183 | 4/14 |
+        + | +0.0054 | 0.2507 | 0.2507 | 4/14 |
+        + | ts_gsr | residual DiD | -0.7533 | [-1.1331, -0.3735], 0.0010 | [-1.0207, -0.4355] | -0.7914 to -0.6991 | +0.00050 | [-0.00864, +0.00964], 0.9068 | [-0.00529, +0.00812] 
+        + | ts_demean | residual DiD | -0.5676 | [-1.0479, -0.0874], 0.0243 | [-1.1413, -0.1503] | -0.7660 to -0.4747 | +0.00598 | [-0.00794, +0.01990], 0.3679 | [-0.00374, +0.0201
+    notes/review_results/partB/prewhiten_tables.md (2 committed line(s) not reproduced, 2 line(s) added, besides SHA lines; up to ten of each)
+        - Diagnostic on the whitened series (W = 60): observed sts level 0.2766, predicted 0.2426, residual +0.0341; DiD observed -0.0262, predicted -0.0192, residual -0.0070 (nega
+        - Diagnostic on the whitened series (W = 60): observed sts level 0.2822, predicted 0.2246, residual +0.0576; DiD observed -0.0274, predicted -0.0132, residual -0.0143 (nega
+        + Diagnostic on the whitened series (W = 60): observed sts level 0.2766, predicted 0.2438, residual +0.0328; DiD observed -0.0262, predicted -0.0181, residual -0.0080 (nega
+        + Diagnostic on the whitened series (W = 60): observed sts level 0.2822, predicted 0.2266, residual +0.0555; DiD observed -0.0274, predicted -0.0112, residual -0.0163 (nega
+    notes/review_results/partB/splithalf_tables.md (9 committed line(s) not reproduced, 9 line(s) added, besides SHA lines; up to ten of each)
+        - | pub | +0.847 | +0.783 | +0.815 | +0.160 | +0.478 | +0.319 | 0.39 |
+        - | pub, partial on autocorr | +0.814 | +0.816 | +0.815 | +0.132 | +0.176 | +0.154 | 0.19 |
+        - | code | +0.773 | +0.752 | +0.763 | +0.075 | +0.385 | +0.230 | 0.30 |
+        - | code, partial on autocorr | +0.711 | +0.718 | +0.714 | +0.003 | +0.023 | +0.013 | 0.02 |
+        - | pub, partial on autocorr | +0.823 | +0.874 | +0.849 | +0.247 | +0.327 | +0.287 | 0.34 |
+        - RULE BRANCH (rule of the record B7 applied as recorded, ts_gsr, published CCS; the reading is in the ceiling block below): within-half mean +0.815, cross-half mean +0.319
+        - | ts_gsr (decides) | pub | estimation noise | 0.407 | 0.386 | yes | +0.319 (+0.82) | UNDETERMINED (pass branch unreachable) |
+        - | ts_gsr (decides) | code | estimation noise | 0.381 | 0.311 | yes | +0.230 (+0.74) | UNDETERMINED (pass branch unreachable) |
+        - | ts_demean (sensitivity) | code | estimation noise | 0.419 | 0.335 | yes | +0.318 (+0.95) | UNDETERMINED (pass branch unreachable) |
+        + | pub | +0.847 | +0.783 | +0.815 | +0.160 | +0.477 | +0.318 | 0.39 |
+        + | pub, partial on autocorr | +0.814 | +0.816 | +0.815 | +0.132 | +0.175 | +0.154 | 0.19 |
+        + | code | +0.773 | +0.752 | +0.763 | +0.075 | +0.384 | +0.229 | 0.30 |
+        + | code, partial on autocorr | +0.711 | +0.718 | +0.715 | +0.003 | +0.022 | +0.012 | 0.02 |
+        + | pub, partial on autocorr | +0.823 | +0.874 | +0.849 | +0.248 | +0.327 | +0.287 | 0.34 |
+        + RULE BRANCH (rule of the record B7 applied as recorded, ts_gsr, published CCS; the reading is in the ceiling block below): within-half mean +0.815, cross-half mean +0.318
+        + | ts_gsr (decides) | pub | estimation noise | 0.407 | 0.386 | yes | +0.318 (+0.82) | UNDETERMINED (pass branch unreachable) |
+        + | ts_gsr (decides) | code | estimation noise | 0.381 | 0.311 | yes | +0.229 (+0.74) | UNDETERMINED (pass branch unreachable) |
+        + | ts_demean (sensitivity) | code | estimation noise | 0.419 | 0.334 | yes | +0.318 (+0.95) | UNDETERMINED (pass branch unreachable) |
+files whose line endings changed: 0
+SHA in the headers of the regenerated files: {'d5a65bd': 46, 'no SHA in the first three lines': 1}
+    no SHA: notes/review_results/partB/crosslag_deviation.csv
+other files changed by the run, by extension: {'pdf': 6, 'png': 2, 'pkl': 2, 'log': 33, 'npz': 6}
+untracked files under the output folders: 3
+    notes/review_results/partB/positive_definite.csv
+    notes/review_results/partB/positive_definite_run.log
+    notes/review_results/partB/positive_definite_tables.md
