@@ -1,0 +1,2 @@
+2026-09-29T13:43:36+03:00 «host» systemd-logind[1141]: Watching system buttons on /dev/input/event16 («a Bluetooth speaker» (AVRCP))
+2026-09-29T15:16:11+03:00 «host» systemd-logind[1141]: Watching system buttons on /dev/input/event16 («a Bluetooth speaker» (AVRCP))

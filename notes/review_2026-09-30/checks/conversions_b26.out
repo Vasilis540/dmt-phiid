@@ -1,0 +1,25 @@
+# conversions_b26.py; git=3ce5707
+#   diagnostic_alternatives.csv: # partB23_diagnostic_alternatives.py; one row per part, condition, a and quantity; git=d5a65bd
+#   aligned_directed.csv: # partB22_aligned_directed.py; one row per variant, subject, run and W = 60 window; git=d5a65bd
+#   bandpassed_expectations.csv: # partB24_bandpassed_expectations.py; one row per estimator × replicate; git=d5a65bd
+#   inference_revision.csv: # partB21_inference_revision.py; one row per quantity; git=d5a65bd
+#   calibration_filtered.csv: # partB17b_calibration_filtered.py; one row per condition × estimator × replicate; git=d5a65bd
+1. B23 (b) aligned, δ = −0.01·sign(q): Δ residual +0.01807963 / Δ A_other -0.00748490 = -2.4155 per unit of A_other
+1. B23 (b) aligned, δ = +0.01·sign(q): Δ residual -0.01347543 / Δ A_other +0.00781543 = -1.7242 per unit of A_other
+1. B23 (b) Δa_s = −0.03: Δ residual +0.01012459 / Δ A_other -0.00370929 = -2.7295 per unit of A_other
+1. B23 (b) λ → 0.9λ: Δ residual +0.00393750 / Δ A_other -0.00009789 = -40.2218 per unit of A_other
+2. B24's expectation of the A_other DiD (mean of its W = 60 replicates): +0.0000088
+3. ts_gsr: A_other DiD -0.000594 [-0.001664, +0.000407]; net of B24's expectation -0.000603 [-0.001673, +0.000398]
+   net of the expectation, at -2.4155 (aligned, δ = −0.01·sign(q)): residual change +0.001457 [-0.000962, +0.004041]   <- S3 Text §6
+   net of the expectation, at -2.7295 (Δa_s = −0.03): residual change +0.001646 [-0.001087, +0.004566]   <- S3 Text §6
+   as it is, at -2.4155 (aligned, δ = −0.01·sign(q)): residual change +0.001435 [-0.000983, +0.004020]
+   as it is, at -2.7295 (Δa_s = −0.03): residual change +0.001622 [-0.001111, +0.004542]
+3. ts_demean: A_other DiD -0.002490 [-0.004735, -0.000261]; net of B24's expectation -0.002499 [-0.004744, -0.000269]
+   net of the expectation, at -2.4155 (aligned, δ = −0.01·sign(q)): residual change +0.006036 [+0.000651, +0.011459]
+   net of the expectation, at -2.7295 (Δa_s = −0.03): residual change +0.006821 [+0.000735, +0.012949]
+   as it is, at -2.4155 (aligned, δ = −0.01·sign(q)): residual change +0.006015 [+0.000629, +0.011438]   <- S3 Text §6
+   as it is, at -2.7295 (Δa_s = −0.03): residual change +0.006797 [+0.000711, +0.012925]   <- S3 Text §6
+4. the residual DiD (B21, ts_gsr, W = 60) +0.0115342293; B17b's condition (i) expectation (mean of its W = 60 replicates) +0.0026692400; the excess +0.0088649893
+   ts_gsr at -2.4155: +0.001457 of the excess, a fraction 0.1643 [-0.1085, +0.4558]
+   ts_gsr at -2.7295: +0.001646 of the excess, a fraction 0.1857 [-0.1226, +0.5151]
+   the fractions' range over the two conversions: [-0.1226, +0.5151]

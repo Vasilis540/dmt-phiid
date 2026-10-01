@@ -54,7 +54,7 @@ lines = ["# Lag-dependence tables (partB3_lag.py)", "",
          f"Scope map re-evaluated on r ∈ [−0.95, 0.95] × q ∈ [−0.95, 0.95]: r-dominated {100 * (region == 1).mean():.1f} %, q-dominated {100 * (region == 2).mean():.1f} %, flat {100 * (region == 0).mean():.1f} % of cells; "
          f"q-dominated cells lie at |r| ≤ {np.abs(Rg[region == 2]).max() if (region == 2).any() else 0:.2f}.", ""]
 # model sts vs r at q = 0.25 for reference
-lines += ["| r (lag-τ autocorrelation) | model sts at |q| = 0.25 | ∂sts/∂r | ∂sts/∂q | ratio |", "|---|---|---|---|---|"]
+lines += ["| r (lag-τ autocorrelation) | model sts at \\|q\\| = 0.25 | ∂sts/∂r | ∂sts/∂q | ratio |", "|---|---|---|---|---|"]
 for r in (-0.3, -0.2, -0.1, 0.0, 0.1, 0.15, 0.2, 0.3, 0.5, 0.85):
     i = int(np.argmin(np.abs(r_grid - r))); j = int(np.argmin(np.abs(q_grid - 0.25)))
     lines.append(f"| {r:+.2f} | {sts_map[i, j]:.4f} | {d_r[i, j]:+.3f} | {d_q[i, j]:+.3f} | {abs(d_r[i, j]) / abs(d_q[i, j]) if abs(d_q[i, j]) > 1e-12 else float('inf'):.1f} |")

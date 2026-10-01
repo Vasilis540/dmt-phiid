@@ -8169,3 +8169,289 @@ S3 Text's caption and the labels B1–B25; Data and code availability and S5 Tex
 commits); `main_text_numbers.csv` (the count's five
 rows; the contexts of 5 rows); `CLAUDE.md` and `README.md`. The replacements:
 `notes/review_2026-09-28/revision/text_replacements_2026-09-28_b25.json`.
+
+## The matrices that are not positive definite (B26): outcome, 1 Oct 2026 08:07 UTC (appended; nothing above edited)
+
+Appended in the commit that follows 3ce5707, the commit of B26's outputs as the run wrote them, with the text that
+reports them; B26's evidence, the replacements that revise the text, their checks and the audits are in
+`notes/review_2026-09-30/`. The run read the data.
+
+**The run.** V.S. ran `notes/partB26_positive_definite.py` on his machine at d5a65bd, from a clean tree, with the
+command of the script's docstring, started by the planning session's `b26_start.sh` as the systemd unit `runb26` under a
+lock against sleep, idle, the lid switch and shutdown, on 29 Sep 2026 from 13:04:14 to 16:49:46 EEST (10:04:14 to
+13:49:46 UTC; 225 min by its log), with python 3.12.3, numpy 2.5.3, scipy 1.18.1 and matplotlib 3.11.1, the environment
+identical to `requirements.lock.txt` by `pip freeze`. The two commits after 820cacd, the commit of the pre-run entry,
+b36178d and d5a65bd, change B25's script, which the run leaves out, B25's outputs, the text and the review folder of 28
+September 2026, and no script the run ran. The 39 steps ran to their end in one attempt, each with exit status 0 (the
+CSV's first line records no interruption and no re-run); by their rows they took 13,529 s. 3ce5707 holds the outputs as
+the run wrote them: V.S. committed them with the planning session's `b26_commit.sh`, which first checked that the tree
+held the 99 files the run had changed or created and no other change (96 modified, B26's three new) and that each had
+the sha256 that the evidence records.
+
+**The evidence.** V.S.'s run of the planning session's `b26_evidence.sh` gathered the unit's log and journal, the
+heartbeat the unit wrote every five minutes, the machine's boots and journals, the state of the tree, the environment
+after the run, the outputs of the final run's three comparison scripts and of
+`notes/review_2026-09-28/checks/b26_changes.py` on the regenerated outputs against d5a65bd's, and the sha256 of each of
+the 99 files the run changed or created (`notes/review_2026-09-30/b26/`, with the three scripts; the unit's log is
+`positive_definite_run.log` with a last line, `=== unit exit 0`, which `evidence.txt` quotes). It ran on 30 Sep 2026 at
+08:31 UTC, after the machine had been shut down, at 21:42 EEST on 29 Sep, and started again, although the script asks to
+be run before any restart: the unit was then no longer loaded, so that its state could not be read, and its record is
+its log and its journal, which the restart keeps (the journal shows it started at 13:04:14 EEST, its session closed at
+16:49:46 and the unit stopped at the shutdown). Its summary marked two items DIFFERS, and each was read before any
+output was. First, the charger was disconnected in 17 of the 45 heartbeat lines (14:09 to 15:29 EEST), the battery
+falling from 95 % to 46 % before it recharged; the heartbeat's largest gap is 301 s, all in one boot, logind's journal
+holds no lid, suspend or power-off event and the kernel's no out-of-memory kill or suspend while the run ran, and the
+steps that ran then, B17 and B17b, read no data and gave, to the last printed digit, what the pre-run entry's item (i)
+states from the planning session's runs on another machine. Second, `positive_definite_run.log` holds the word `nogit`:
+the runner copies each step's printed output into its log, and `notes/review_checks.py` prints, in a fixed line of its
+report (its line 133), the header of the 20-region sanity run of 12 September 2026, `git=nogit`; the same line is line
+70 of `review_checks.log`, committed and regenerated alike, and the evidence script flagged it because B26's log is a
+new file. Its two notes are the unit's state (above) and the count of 42,681 (below). Every other item passed: no
+traceback; no check failed (B21's 1,025, its check against the log of 17 September 2026 among them, B22's 22, B23's 63
+and B24's 10); no package installed, upgraded or removed; HEAD at the run's commit, nothing staged and nothing changed
+outside the output folders; every commit an output gained is d5a65bd, none `-dirty`; and B21's three expectations
+printed as it holds them (+0.0027, +0.0049, +0.0054).
+
+**What the run counts** (`notes/review_results/partB/positive_definite_tables.md`). Summed over the steps (a data window
+evaluated by several steps is counted in each), `rev_phiid_fast` evaluated 473,262,025 matrices: none with a non-finite
+entry; 42,681 not positive definite, every one passed to `atoms_from_corr`, the corrected path, and each with a block
+determinant ≤ 0; none of the 215,276,476 sample correlation matrices of the `PairPhiID` path among them; 12,889 nearly
+singular (smallest eigenvalue in (0, 10⁻³]). On the data, B4's level lines: the AR(1)-substituted estimate does not
+exist in 4 of the 2,569,560 pair-windows at W = 60 on each variant, and in 1,617 (`ts_gsr`) and 1,661 (`ts_demean`) of
+the 5,139,120 at W = 30; B4's run-level site holds none, so that no whole-run pair is left out. The other steps that
+evaluate the data's windows fail on the same W = 60 pair-windows (B14 8, B19 8, B4's residual source 4 at each of its
+two sites, B22 8), and B22 also on 14 matrices with a measured cross-lag departure added; B15's data section has none.
+B16 counts those of its whitened series: 10,817 (`ts_gsr`) and 15,776 (`ts_demean`) of the 2,569,560 pair-windows of
+each AR(p)-whitened variant, none on the AR(1)-whitened series. The steps that read no data count what the pre-run
+entry's item (i) states: B5 171, the null 126 (115 at W = 30, 11 in its cells' root searches), B23 172, B17 11,494, B17b
+23 and B24 none; B10's replay of the null 126, as the null's; B15's finite-sample null 4 in its root searches and, of
+the 150,000 pair-windows of each of its five configurations, 1, 0, 33, 81 and 88 substituted matrices, with 1, 11, 36,
+91 and 120 pair-windows left out of the responses.
+
+**Per step and site** (rule (ii)): the matrices left out, with the range and the mean of the sts that the code before
+B26 gave them. A site is the calling line, then the lines of the step that led to it (A < B: A reached from B); the
+null's line 69 is in the function of `review_v2_residual_null.py` that B10, B15 and B17b call. B16
+(`partB16_prewhiten.py`): line 124 from 161, 26,593 (−5.1143 to +5.5379, mean −0.1974). B17 (`partB17_calibration.py`):
+line 104 from 150, 11,494 (−3.1618 to +5.8239, mean +1.0682). B17b (`partB17b_calibration_filtered.py`): the null's line
+69 from 121 < 126, 4 (+1.9712 to +2.7796, mean +2.5531); the null's line 69 from 121 < 127, 2 (+1.8238 to +2.1297, mean
++1.9768); the null's line 69 from 121 < 129, 2 (+0.9378 to +1.1045, mean +1.0211); line 166 from 209, 15 (+0.8434 to
++2.7564, mean +1.8802). B4 (`partB4_diagnostic.py`): line 75, 3,286 (−1.9437 to +5.6218, mean +1.5699). B14
+(`partB14_family_atoms.py`): line 85, 8 (+1.4741 to +3.3515, mean +2.2055). B15 (`partB15_directed_crosslag.py`): the
+null's line 69 from 165 < 165, 4 (+1.9712 to +2.7796, mean +2.5531); the null's line 69 from 171 < 182, 1 (+2.8840);
+line 88 from 173 < 182, 1 (+2.8840); line 89 from 173 < 194, 11 (+0.5166 to +2.0354, mean +1.0849); line 91 from 173 <
+194, 2 (+0.2258 to +4.0512, mean +2.1385); the null's line 69 from 171 < 224, 202 (−2.0880 to +3.8236, mean +0.9547);
+line 88 from 173 < 224, 202 (−2.0880 to +3.8236, mean +0.9547); line 89 from 173 < 224, 149 (−0.3937 to +4.5063, mean
++1.1916); line 90 from 173 < 224, 33 (−0.8697 to +3.1826, mean +1.4288); line 91 from 173 < 224, 39 (+0.7968 to +3.5754,
+mean +2.4221). B4's residual source (`partB4_residual_source.py`): line 50, 4 (+1.4741 to +2.6024, mean +2.1226); line
+53, 4 (+1.6015 to +2.9289, mean +2.2030). B5 (`partB5_family_checks.py`): line 55, 171 (−2.2555 to +2.0550, mean
+−0.2763). B19 (`partB19_exchange_rates.py`): line 149, 8 (+1.4741 to +3.3515, mean +2.2055). The null
+(`review_v2_residual_null.py`): line 69 from 114, 115 (−1.4798 to +5.9903, mean +1.6454); line 69 from 75 < 76, 6
+(+1.4531 to +3.5723, mean +2.6973); line 69 from 75 < 77, 5 (+1.2805 to +2.6023, mean +1.7390). B10
+(`partB10_crosslag_deviation.py`): the null's line 69 from 348, 115 (−1.4798 to +5.9903, mean +1.6454); the null's line
+69 from 362 < 363, 6 (+1.4531 to +3.5723, mean +2.6973); the null's line 69 from 362 < 364, 5 (+1.2805 to +2.6023, mean
++1.7390). B22 (`partB22_aligned_directed.py`): line 119 from 130 < 241, 8 (+1.4741 to +3.3515, mean +2.2055); line 120
+from 130 < 241, 13 (−0.0002 to +3.5020, mean +2.2313); line 122 from 130 < 241, 1 (−0.5463). B23
+(`partB23_diagnostic_alternatives.py`): line 200 from 406 < 423, 95 (−1.2746 to +3.3136, mean +0.9155); line 201 from
+406 < 423, 53 (−0.4202 to +2.4620, mean +1.1935); line 202 from 406 < 423, 2 (−1.1907 to −0.5849, mean −0.8878); line
+200 from 406 < 486, 14 (+0.0364 to +2.7357, mean +1.1997); line 201 from 406 < 486, 8 (+1.2083 to +2.9789, mean
++1.9471).
+
+**Rule (i).** The comparisons (their outputs in `notes/review_2026-09-30/b26/`) found 96 of the committed files changed
+and B26's three new: 46 of the 96 differ only in the commit they name and in times, and 50 in content, each change
+listed line by line and cell by cell in `b26_changes.txt`. Every change traces to matrices the tables count, in the step
+that wrote the file or in an earlier step's output that it reads. The steps that read no data (B5, the null, B23, B17
+and B17b) and the sections of B10 and B15 on synthetic series changed as the pre-run entry's item (i) and
+`notes/review_2026-09-28/checks/b26_preview.md` state, every line and cell to its last printed digit, and B24 changed
+nothing. Of the steps that read the data, those that count failures changed where they count them: B4 (19 lines of
+`diag_tables.md`, its four `diag_series` files and `inference_rows_diag`), B4's residual source (2 lines), B14 (a line
+of its tables, 29 cells of its CSV and its two arrays), B16 (26 lines of its log, 2 of its tables and
+`inference_rows_prewhiten`) and B22 (12 lines of its tables and 51 cells); B19's 8, in its part (b), the within-window
+regression, changed no printed value (the mean R² of the full AR(1) prediction, at three decimals). The steps that read
+those outputs changed with them: B6 (one correlation with B4's residual), B7 (23 lines, from B4's series), B10 (the
+W = 60 residual of the 7 runs whose windows B4 changed), B19 (3 lines of its tables and 48 cells of `bca_intervals.csv`,
+from B4's pickle), B21 (11 lines and 729 cells) and the figure step (Figs 2, 3 and 5, Fig 2 in its PDF only, and Fig 5's
+p values in `captions_v2.md`). Nothing else changed but the rewordings the pre-run entry lists; with the data's values,
+B21's count of the quantities whose zero-inclusion differs between the percentile and the inverted interval (39 to 40);
+and, within 10⁻⁹, one check line of B22, whose difference of 0 is now 2.22 × 10⁻¹⁶. B21's check against the log of 17
+September 2026 passed: the run-level residuals did not change. A separate session of the AI system audited the run
+against the rule from the evidence, comparing the 99 files with d5a65bd's by its own means and replaying B15's null
+section to count the pair-windows left out of its responses, and found no fault
+(`notes/review_2026-09-30/audit/b26_rule_audit.md`, with its replay); its report puts B19 among the steps that count
+none, a slip that changes nothing above (`audit/dispositions.md`).
+
+**Rule (ii).** Every number of the text computed from an output that changed is replaced by the run's value (B01–B13,
+B20–B66, B24b and B57b of `notes/review_2026-09-30/revision/text_replacements_2026-09-30.json`). In the main text 14
+numbers change at their printed precision: the substituted TDMI DiD of Table 1; the exact p of the residual DiD against
++0.0049; the cross-half correlation of the residual on the sensitivity variant; in Table 3, B23 (b)'s −0.0047, −0.0056
+and its ± 0.0006, the ± 0.0005 of +0.0068, +0.0093, +0.0095 and its ± 0.0009, +0.0181 and +0.0101; and in its caption
+the rates −1.58 and −2.76, for −1.59 and −2.73, which it now says are taken over the residual's pairs. Fig 5's caption
+no longer prints the p values (the entry on the caption, below). In the supporting information: S3 Text §5 (the BCa
+table's three rows), §6 (B15's five null lines; B22's table; B23 (b)'s values; the conversions of B22's outcome entry,
+recomputed from B23 (b)'s corrected values, −2.42, −1.72 and −2.73 for −2.47, −1.73 and −2.75, with the residual changes
+and the fractions of the excess they give; the split-half and CCS correlations; the residual's definition, now a
+difference of means over the pairs where each exists), §7 (B17's and B17b's rows, shares and ratios) and §8 (B16's
+estimate on the whitened series); S10–S13 Tables; S17 Table, 73 rows and the note's count, 40 quantities whose
+zero-inclusion differs, the fortieth the early-window residual DiD of the AR(p)-whitened series on `ts_gsr`, which the
+text does not quote; S18 Table (b), whose means now carry, in brackets, the pairs left out of them, and its source note;
+S19 Table; and S20 Table with `notes/partB5_literature_v2.md`, where B5's range is now over the 1,829 draws whose matrix
+is positive definite, 0.00 to +4.59 with |ΦR − rtr| > 0.01 in 53 % (it was −1.36 to +4.59 and 57 %: its negative values
+came from matrices of no process). The values derived from a changed output were computed again
+(`notes/review_2026-09-30/checks/`): `notes/review_2026-09-24/checks/derived_r17.py`, run on the regenerated files,
+gives the residual's rate per unit of whole-brain r₁ as −0.788 (−0.787 before) with the same Fieller interval, [−1.60,
+−0.08], and differs in no other line but the upper bound of a bootstrap interval the text does not quote (−0.26 for
+−0.25); the numbers table now cites that output for the rate, and S19 Table and Data and code availability name it
+(`derived_r17_b26.out`); the partial correlations of S3 Text §6, +0.83 and +0.86, and +0.69 and +0.82 with `phyid`'s
+mask (the third review's computation 4), are unchanged at their printed precision (`partial_b26.out`); and the
+conversions of §6 are computed at full precision in `conversions_b26.out`. The numbers table follows (its head note):
+its locators and held strings point into the regenerated outputs, its rows carry the new values, and rows are added for
+the numbers of the new sentences and removed for those the revision takes out. Every verdict that rests on a changed
+number was read again by its own criterion, and none changes: B23 (b)'s (i), +0.00532, and (a4), −0.00471 and −0.00565,
+met; (a1), +0.00931 and +0.00951, 1.41 and 1.49 times the predictions, missed (its outcome entry's "about half as large
+again" read 1.48 and 1.59, and S19 Table now gives the ratios); (a2), 1.32 and 1.34 times, missed; B17 (ii) missed and
+(iv) met; B7's rule, the noise branch (mean cross-half 0.318, below half the within-half mean, 0.41); B22 (c)'s D DiD,
++0.00112, missed. The values before stay in the entries of their computations and in d5a65bd's outputs.
+
+**Rule (iii).** S3 Text states the rule at the start of §6, with B4's counts and that no whole-run pair is left out.
+Leaving out the W = 60 pair-windows, four on each variant, moves three numbers of the main text at their printed
+precision: with the four of `ts_gsr`, the substituted TDMI DiD of Table 1, from −0.1129 to −0.1130 (B14), and the exact
+p of the residual DiD against +0.0049, from 0.219 to 0.218 (B21 (b)); with the four of `ts_demean`, the cross-half
+correlation r(res_even, ac_odd) on the sensitivity variant, from −0.052 to −0.051 (B7). The main text says so where it
+quotes them, in Table 1's caption and in two parentheses of Results 4, and states the exclusion with its count in
+Methods, The AR(1)-substituted estimate and its calibration, in place of the estimate's definition, which Results 4
+gives. These statements take 14 words of the counted text (Introduction to Methods; Table 1's caption is not counted),
+and the corrections of the claim-by-claim check (the entry below) 7 more, net of the 2 of "except three", which the
+check made untrue; to stay within the 7,000 words, 21 were taken out where they repeat another place: in the
+Introduction's list of the Results, "with its exchange rates in data units", and "that keeps each pair's measured", now
+"from each pair's own"; in the Discussion, the rates of the three generators, which Results 4 gives ("−0.18, contains
+the AR(1) generator's −0.39 and ends at the null's −0.37", now "rate but not the AR(1) generator's"); and in Use of AI
+tools, "the model of each contribution is named in the trailers of the commits that carry it", now "the commits'
+trailers name the model of each contribution". The counted text is 6,998 words, as at d5a65bd, where CLAUDE.md and
+README.md gave the 6,994 of 820cacd.
+
+**Rules (iv) and (v).** No step failed, and nothing was run again. The nearly singular matrices are reported above and
+were not left out, and no sample correlation matrix was other than positive definite.
+
+## The claim-by-claim check of 29–30 September 2026 and its corrections, 1 Oct 2026 08:07 UTC (appended; nothing above edited)
+
+On 29 September 2026 V.S. asked for the text sentence by sentence, each claim about a cited work beside the passages of
+that work that bear on it, cut from his own copies of the PDFs, with whether the work states the point firsthand and
+whether it supports the claim completely. The planning session built it on the text at d5a65bd from the crosscheck of 28
+September 2026 (`notes/review_2026-09-28/`): the passages of that crosscheck that the text still rests on were found
+again by page and position in V.S.'s PDFs, and the claims of the sentences written or changed since d108d66 were read
+anew. It read the files V.S. added: on 29 September the full texts of the seven works added on 20 September 2026, three
+of which had not been read in full (S5 Text §5; Alexander-Bloch et al., 2018; Cousineau, 2005; Morey, 2008; Theiler et
+al., 1992; Tian et al., 2020, in its authors' manuscript; Váša et al., 2018; Wu et al., 2021), the COBIDAS report of
+2016 and Nichols et al. (2017); on 30 September Tian et al. (2020) in its *Nature Neuroscience* version, Váša et al.'s
+Supplementary Information, the version of Luppi et al. (2025) posted on 10 January 2026 and the release's spin-test
+function (`fxns/SpinTests/perm_sphere_p_al857.m`). Three separate sessions of the AI system each checked the records of
+one part of the text against the page texts of the PDFs (the main text, 83 records; S1–S5 Text, 102; S1–S20 Table, 108),
+and a fourth the 78 records corrected after them or added; they made 72 findings (19, 19, 23 and 11), each of which the
+planning session read against the PDF, correcting the records where it held, and a fifth session checked the six records
+that the files of 30 September changed (one verdict it found wrong, since corrected in the text, below). The result is a
+program, `notes/review_2026-09-30/claims/make_claims_check.py`, that holds our text, the verdicts and the positions of
+the passages on the pages but no text of any cited work, and cuts the passages from the reader's own PDFs into a page
+with the words highlighted (`external/claims_check/index.html`, outside git); `claims.csv` beside it lists every claim
+with its verdict, its firsthand status, what the text cites the work for, the reason for any difference and the PDF
+pages of its passages.
+
+**Result.** 204 sentences and table cells, 303 claims about 43 works, read in 45 PDF files and, for `phyid` and the
+release's spin test, in their code: 248 completely supported, 36 supported with a difference, 19 that attribute no
+content to the work, none not supported and none waiting for a PDF. In 266 the work states the point as its own; in 5
+partly (Alexander-Bloch et al., 2018, whose spin test builds on earlier implementations of spatial permutation, and
+Theiler et al., 1992, who name earlier proposals of the phase-randomised surrogate); in 1 only by citing others (Afyouni
+et al., 2019, whose Eq. 8 is the global form of an estimator they review, as the text says); 2 are about `phyid`'s code;
+and 29 have no firsthand status (the 19, and claims that a work does not state something or cites another for it).
+
+**The corrections** (Q01–Q31 and L05 of `notes/review_2026-09-30/revision/text_replacements_2026-09-30.json`, with their
+mirrors in `notes/partB5_literature_v2.md`, and Q32–Q34, which the audits of the prepared revision added; the last entry
+below). 32 of the 36 differences are corrected in the text: the lag stated as one TR is the primary lag (Luppi et al.,
+2023, also report a 4-TR time step); Varley's identity is for a disintegrated pair; that the data are pseudonymised is
+stated as ours, not Singleton et al.'s, and the framewise displacement as a file of the release's repository, which
+S1 Text now lists with the other files the analysis reads; the 100 parcels are one of the resolutions released with
+Schaefer et al. (2018), and Yeo et al. (2011) are cited for the seven networks; Barrett's rule is for a univariate
+target, the joint-target nodes following Mediano et al.; the inversion's lack of a sign constraint, our reading, is
+dropped; the rotations are by the method of Váša et al., and the bracketed p of S5 Table is named as the release's
+function; Ince's redundancy is an expectation under his maximum-entropy distribution, which the average over the samples
+estimates, and the conditional independence of his Definition 3 is marked as our reading; the SI Appendix's notation
+I(X; Y) is noted; Zhang et al. (2025) report synergy only; the ΦID authors' use of CCS is not given as a count; a page
+reference is given as printed page and PDF page; binarising once is marked as our reading of Luppi et al.; Nichols et
+al. (2017) is a commentary on the COBIDAS report; and in S20 Table Raut et al.'s page is the PDF's, the anaesthesia
+levels and the marmosets of Luppi et al. (2026) follow the pages that state them, the deconvolution not mentioned is HRF
+deconvolution, Luppi et al. (2025) cover six species in the version of 10 January 2026, whose Fig. 3e shows an awake and
+an anaesthetised macaque, their finding concerns the features that change alike in all 15 contrasts and the step from it
+to r₁ is marked as ours, and the Gaussian estimators of Down et al. (2026) and Zhang et al. (2025) are marked as our
+reading, so that the Introduction counts four studies that name one. The other four, the citations of the
+competing-interests statement (Luppi et al., 2022, 2023, 2024, 2026), are left as they are: the citations identify the
+studies that, by the statement's own disclosure, members of the group authored; the papers show only their authors'
+affiliation with the Division of Anaesthesia. S5 Text §5 records the check, and that every cited paper has now been read
+in full, Nichols et al. (2017), cited in S4 Text, among them; Use of AI tools no longer excepts three, and it says paper
+for work, which leaves out the software, whose code was read.
+
+## B25: the re-run by a separate session, 1 Oct 2026 08:07 UTC (appended; nothing above edited)
+
+B25's outcome entry said that a separate session re-runs B25 at b36178d and that the commit that follows the re-run
+records its result. The planning session ran `notes/partB25_binarised.py` at b36178d in a copy of the repository at that
+commit, on its own machine, on 29 Sep 2026 at 09:41 UTC (python 3.12.3, numpy 2.5.3, scipy 1.18.1, phyid
+0+untagged.8.g6c5f2e9): 150 checks, none failed, 486 s by its own count. Every row of its `binarised.csv` after the
+first line, which holds the time of the run, equals the committed file's, byte for byte (the rows' sha256,
+bb888d459ea5eb47ae17cfef313d743bcbec77419aa5a5b099a2758df7f6fdbd, the same in both). Its tables differ from the
+committed ones in three lines, the time of the run, the sha256 of the CSV, whose first line holds that time, and the
+wall-clock time (486 s against 482 s), and its log in the durations, in the paths of the two copies and in the path of
+`phyid` (a source tree in the planning session, the installed package in the writer's). The commit that followed the
+re-run, 3ce5707, holds B26's outputs only, so the result is recorded here, in the commit after it: B25's second run is
+reproduced, every value bit for bit, by a separate session.
+
+## Fig 5's caption, B3's table header and `run_all.sh`'s timing comment, 1 Oct 2026 08:07 UTC (appended; nothing above edited)
+
+**Fig 5's caption.** `scripts/15_figures_v2.py` read B21's p values from its four-decimal table (b) and printed them at
+three decimals, a second rounding: in B26's run it printed 0.107 for the first, whose exact value, 0.10754, Results 4
+prints as 0.108, and 0.218 for the second. The caption now names the three expectations and leaves their p values to
+Results 4, whose numbers are B21's exact values; the script's docstring records it. The script reads no data. The commit
+that follows this one holds the figures and captions the script writes at this commit, on V.S.'s machine, where B26's
+run wrote them: `captions_v2.md` is to differ from B26's only in its header and in Fig 5's caption, the PNG files are to
+be identical and the PDF files to differ only in their creation dates (`notes/review_2026-09-30/checks/figures_check.py`
+checks the three); any other difference is recorded, and read, before that commit. (In the planning session's
+environment, with the same versions, the script gives these captions and five of the six PNG files identical; Fig 4's
+differs in 70 pixels along the fitted line of its panel (a), the line's anti-aliasing.)
+
+**B3's table header.** The header of the table of model sts against the lag-τ autocorrelation that `notes/partB3_lag.py`
+writes to `lag_tables.md` held the bars of |q| unescaped, which split it into more cells than its rows. The script now
+escapes them; B3 reads the data, and the committed `lag_tables.md` keeps the old header, the only line in which it
+differs from what the script now writes, until B3 next runs.
+
+**`run_all.sh`'s timing comment** gave times measured from run logs that the final run of 26 September 2026 replaced,
+and for section 6 those of runs before it (≈ 10,600 s, with B17 ≈ 56 min, B17b ≈ 39 min and B16 ≈ 28 min), and called
+them single-core. It now gives the step times of the final run, from `results/run_all_final.log` (sections 0–5 ≈
+19,000 s, section 6 ≈ 9,540 s, with B17 ≈ 44 min, B17b ≈ 34 min and B16 ≈ 21 min, 475 min in all), without the word
+single-core: B26's unit used about 32 h of CPU time in its 3 h 45 min (its journal), so the scripts, as run there, use
+more than one core. It gives the range of B25's three runs, 482–514 s (514 s, 482 s and the re-run's 486 s), in place of
+its estimate of 15–30 minutes, and B26's run of section 6, 13,529 s under its counting wrappers; the comment of section
+6 gives B26's 225 min in place of "about three hours".
+
+## The audits of this revision and its review folder, 1 Oct 2026 08:07 UTC (appended; nothing above edited)
+
+**The audits.** Before it was committed, the revision was audited by five separate sessions of the AI system: B26's run
+against the rule of its pre-run entry (the entry on B26's outcome, above; no fault); and the prepared revision, in three
+parts: its numbers, the exclusion statements, the numbers table and the word count against the regenerated outputs (13
+findings: two last digits of S3 Text §6's conversions and their subtraction, S18 Table's source note, the Discussion's
+sentence on the three rates, the W = 30 values that moved, the record's classification of "except three", a sentence a
+cut had left without a verb, the pairs over which Table 3's caption takes its rates, a circular pointer and a relative
+clause, the derived values that rest on a changed output, the residual's definition and the replacements' labels); the
+record's entries and the bookkeeping against the evidence (23: the timing comment of `run_all.sh`, whose earlier runs'
+times the prepared revision gave as the final run's, the files of the review folder, which did not yet exist, S5 Text's
+and README.md's sentences on the commits the outputs name, the folder's place in README.md and CLAUDE.md, B25's re-run,
+B19's own count, the restart before the evidence, and wording); and the corrections of the claim-by-claim check against
+the PDFs (12: a restored attribution of the excluded subjects, the Introduction's count of Gaussian estimators, Nichols
+et al. (2017) read in full, the files S1 Text lists, Ince's expectation, and wording; the four citations of the
+competing-interests statement left as they are found justified, with the reason reworded). A fifth session audited the
+revision as corrected after them, the record's entries, the dispositions, the review folder and the other text changes
+against the evidence and the files (13 findings: six outputs of the checks not yet in the folder, the figure check's
+reading of the PDFs' dates, the digits of the conversions' output, an e-mail address left in a copy, two paths, and
+wording). Every finding was applied, a few in other words than those proposed (the software is left out of the cited
+works by the word paper, the one change the 7,000-word limit left room for); `audit/dispositions.md` gives what was done
+with each, with the findings of the rule audit and of the fifth session of the claim-by-claim check.
+
+**The review folder of this revision**, `notes/review_2026-09-30/`: B26's evidence and the three scripts of its run
+(`b26/`; in the unit's journal and logind's the machine's name and a device's name are masked), the claim-by-claim check
+(`claims/`), the replacements this commit applies (`revision/`), the checks of the revised text and the recomputed
+derived values (`checks/`) and the audits, with what was done with each finding (`audit/`).

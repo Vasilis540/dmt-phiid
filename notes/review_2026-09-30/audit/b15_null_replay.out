@@ -1,0 +1,13 @@
+bmean 183.70406733738176 (15s)
+qsd 0.2656662532856606 (33s)
+(0) symmetric filter null, as review_v2_residual_null.py (solved bmean 184, qsd 0.266): window a 0.8629, |q| 0.2824; residual -0.03534 (-2.98 %); RMS δ_anti 0.10389, RMS δ_sym 0.02342; closed-form response to δ_anti -0.03484, to δ_sym -0.00008, to both -0.03574.
+   COUNTS: pair-windows 150000; substituted not PD 1 (base 1); anti NaN 1, sym NaN 1, both NaN 1; left out of the responses 1  (38s)
+(1) y = x delayed by one sample mixed with independent noise at the pair's q (w = q / r₁ of x, clipped to ±0.99): window a 0.8637, |q| 0.2828; residual -0.06505 (-5.59 %); RMS δ_anti 0.12579, RMS δ_sym 0.02347; closed-form response to δ_anti -0.04955, to δ_sym -0.01157, to both -0.06553.
+   COUNTS: pair-windows 150000; substituted not PD 0 (base 0); anti NaN 11, sym NaN 0, both NaN 2; left out of the responses 11  (45s)
+(2) symmetric VAR(1), population a = 0.8632, c_xy = +0.02, c_yx = −0.02, q ~ N(0, 0.266) clipped to the reachable lag-0 range -0.987 to +0.987 (window a and |q| as measured, see the note in the script): window a 0.7987, |q| 0.3126; residual -0.07343 (-9.51 %); RMS δ_anti 0.06488, RMS δ_sym 0.05227; closed-form response to δ_anti -0.01310, to δ_sym -0.05837, to both -0.07372.
+   COUNTS: pair-windows 150000; substituted not PD 33 (base 33); anti NaN 35, sym NaN 34, both NaN 33; left out of the responses 36  (52s)
+(2) symmetric VAR(1), population a = 0.8632, c_xy = +0.04, c_yx = −0.04, q ~ N(0, 0.266) clipped to the reachable lag-0 range -0.949 to +0.949 (window a and |q| as measured, see the note in the script): window a 0.8012, |q| 0.3133; residual -0.07245 (-9.21 %); RMS δ_anti 0.07516, RMS δ_sym 0.05067; closed-form response to δ_anti -0.01880, to δ_sym -0.05141, to both -0.07290.
+   COUNTS: pair-windows 150000; substituted not PD 81 (base 81); anti NaN 84, sym NaN 85, both NaN 86; left out of the responses 91  (59s)
+(2) symmetric VAR(1), population a = 0.8632, c_xy = +0.06, c_yx = −0.06, q ~ N(0, 0.266) clipped to the reachable lag-0 range -0.888 to +0.888 (window a and |q| as measured, see the note in the script): window a 0.8043, |q| 0.3091; residual -0.06847 (-8.47 %); RMS δ_anti 0.08931, RMS δ_sym 0.04900; closed-form response to δ_anti -0.02712, to δ_sym -0.03945, to both -0.06955.
+   COUNTS: pair-windows 150000; substituted not PD 88 (base 88); anti NaN 90, sym NaN 96, both NaN 116; left out of the responses 120  (66s)
+exit 0

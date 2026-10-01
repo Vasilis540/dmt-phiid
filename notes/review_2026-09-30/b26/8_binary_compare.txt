@@ -1,0 +1,10 @@
+binary outputs modified by the run under ('notes/review_results/', 'results/'): 8 (compared against d5a65bd)
+  REAL                       notes/review_results/inference_rows_diag.pkl   max|diff| = 0.0033 over every numeric entry
+  REAL                       notes/review_results/inference_rows_prewhiten.pkl   7 non-numeric difference(s), the first obj[36]['resid_n_neg']: 8 against 9
+  REAL                       notes/review_results/partB/diag_series_ts_demean_W30.npz   local_obs: max|diff| = 0; local_res: max|diff| = 0.00707; obs: max|diff| = 0; pred: max|diff| = 0.00707; pred_sym: max|diff| = 0; r2: max|diff| = 0.0494; res: max|diff| = 0.00707; xcorr_dev: max|diff| = 0; xcorr_r: max|diff| = 0
+  REAL                       notes/review_results/partB/diag_series_ts_demean_W60.npz   local_obs: max|diff| = 0; local_res: max|diff| = 0.000299; obs: max|diff| = 0; pred: max|diff| = 0.000299; pred_sym: max|diff| = 0; r2: max|diff| = 0.0101; res: max|diff| = 0.000299; xcorr_dev: max|diff| = 0; xcorr_r: max|diff| = 0
+  REAL                       notes/review_results/partB/diag_series_ts_gsr_W30.npz   local_obs: max|diff| = 0; local_res: max|diff| = 0.00351; obs: max|diff| = 0; pred: max|diff| = 0.00351; pred_sym: max|diff| = 0; r2: max|diff| = 0.0531; res: max|diff| = 0.00351; xcorr_dev: max|diff| = 0; xcorr_r: max|diff| = 0
+  REAL                       notes/review_results/partB/diag_series_ts_gsr_W60.npz   local_obs: max|diff| = 0; local_res: max|diff| = 0.000369; obs: max|diff| = 0; pred: max|diff| = 0.000369; pred_sym: max|diff| = 0; r2: max|diff| = 0.0101; res: max|diff| = 0.000369; xcorr_dev: max|diff| = 0; xcorr_r: max|diff| = 0
+  REAL                       notes/review_results/partB/family_atoms_ts_demean_W60.npz   obs: max|diff| = 0; pred: max|diff| = 0.000299
+  REAL                       notes/review_results/partB/family_atoms_ts_gsr_W60.npz   obs: max|diff| = 0; pred: max|diff| = 0.000369
+summary: {'identical': 0, 'noise (<1e-9)': 0, 'REAL': 8}

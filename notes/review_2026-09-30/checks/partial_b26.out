@@ -1,0 +1,3 @@
+# partial_b26.py; git=3ce5707
+ts_gsr: r(residual, CCS-sts) +0.799; partial on the autocorrelation DiD +0.831; partial on the MMI-sts DiD +0.851; with phyid's mask +0.729, partial on the autocorrelation DiD +0.687; R2 of the residual DiD on the autocorrelation DiD 0.61, on it and CCS-sts 0.88
+ts_demean: r(residual, CCS-sts) +0.876; partial on the autocorrelation DiD +0.855; partial on the MMI-sts DiD +0.864; with phyid's mask +0.838, partial on the autocorrelation DiD +0.820; R2 of the residual DiD on the autocorrelation DiD 0.36, on it and CCS-sts 0.83
