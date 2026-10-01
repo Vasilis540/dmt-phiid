@@ -1,19 +1,19 @@
-git=c25a310
+git=d5a65bd
    arp ts_gsr: whitened (2s); orders: p=1: 0, p=2: 0, p=3: 0, p=4: 2, p=5: 3218
    arp ts_gsr: subject 1/14 done (20s)
-   arp ts_gsr: subject 2/14 done (37s)
-   arp ts_gsr: subject 3/14 done (55s)
-   arp ts_gsr: subject 4/14 done (72s)
-   arp ts_gsr: subject 5/14 done (90s)
-   arp ts_gsr: subject 6/14 done (108s)
-   arp ts_gsr: subject 7/14 done (126s)
-   arp ts_gsr: subject 8/14 done (144s)
-   arp ts_gsr: subject 9/14 done (161s)
-   arp ts_gsr: subject 10/14 done (179s)
-   arp ts_gsr: subject 11/14 done (197s)
-   arp ts_gsr: subject 12/14 done (214s)
-   arp ts_gsr: subject 13/14 done (231s)
-   arp ts_gsr: subject 14/14 done (249s)
+   arp ts_gsr: subject 2/14 done (38s)
+   arp ts_gsr: subject 3/14 done (56s)
+   arp ts_gsr: subject 4/14 done (74s)
+   arp ts_gsr: subject 5/14 done (93s)
+   arp ts_gsr: subject 6/14 done (111s)
+   arp ts_gsr: subject 7/14 done (129s)
+   arp ts_gsr: subject 8/14 done (147s)
+   arp ts_gsr: subject 9/14 done (165s)
+   arp ts_gsr: subject 10/14 done (182s)
+   arp ts_gsr: subject 11/14 done (200s)
+   arp ts_gsr: subject 12/14 done (217s)
+   arp ts_gsr: subject 13/14 done (234s)
+   arp ts_gsr: subject 14/14 done (252s)
 prewhiten arp MMI sts ts_gsr W60   primary                DiD -0.0262 [-0.0589, +0.0049] p=0.1406 neg 8/14 | phase p=0.4176 | DMT +0.0636 (p=0.000) PCB +0.0898 (p=0.000) placebo share 3.43 | FD DiD +0.0143 (p=0.245) | FD-resid -0.0062 [-0.0460, +0.0330] p=0.7714 9/14 does NOT survive
 prewhiten arp MMI sts ts_gsr W60   sensitivity            DiD -0.0186 [-0.0510, +0.0141] p=0.3035 neg 7/14 | phase p=0.5455 | DMT +0.0838 (p=0.000) PCB +0.1023 (p=0.000) placebo share 5.51 | FD DiD +0.0191 (p=0.108) | FD-resid -0.0039 [-0.0444, +0.0373] p=0.8583 7/14 does NOT survive
 prewhiten arp MMI sts ts_gsr W60   early                  DiD -0.0379 [-0.0834, +0.0084] p=0.1420 neg 8/14 | phase p=0.3357 | DMT +0.0573 (p=0.000) PCB +0.0953 (p=0.000) placebo share 2.51 | FD DiD +0.0366 (p=0.010) | FD-resid -0.0343 [-0.0857, +0.0171] p=0.2229 9/14 does NOT survive
@@ -44,18 +44,18 @@ prewhiten arp diag observed sts ts_gsr W60 early                  DiD -0.0379 [-
 prewhiten arp diag observed sts ts_gsr W60 late                   DiD -0.0168 [-0.0439, +0.0086] p=0.2518 neg 7/14 | phase p=0.6474 | DMT +0.0685 (p=0.000) PCB +0.0853 (p=0.000) placebo share 5.08 | FD DiD -0.0034 (p=0.807) | FD-resid +0.0163 [-0.0241, +0.0548] p=0.4487 5/14 does NOT survive
 prewhiten arp diag observed sts ts_gsr W60 trend_a_placebo_line   DiD +0.0273 [+0.0067, +0.0475] p=0.0291 neg 4/14
 prewhiten arp diag observed sts ts_gsr W60 trend_b_shared_slope   DiD +0.0260 [+0.0009, +0.0507] p=0.0667 neg 4/14
-prewhiten arp diag predicted sts ts_gsr W60 primary                DiD -0.0192 [-0.0567, +0.0182] p=0.3462 neg 7/14 | DMT +0.0909 (p=0.000) PCB +0.1101 (p=0.000) placebo share 5.73 | FD DiD +0.0143 (p=0.245) | FD-resid -0.0017 [-0.0542, +0.0506] p=0.9503 8/14 does NOT survive
-prewhiten arp diag predicted sts ts_gsr W60 sensitivity            DiD -0.0113 [-0.0501, +0.0264] p=0.5784 neg 7/14 | DMT +0.1182 (p=0.000) PCB +0.1294 (p=0.000) placebo share 11.49 | FD DiD +0.0191 (p=0.108) | FD-resid -0.0018 [-0.0540, +0.0500] p=0.9585 8/14 does NOT survive
-prewhiten arp diag predicted sts ts_gsr W60 early                  DiD -0.0206 [-0.0773, +0.0351] p=0.5011 neg 7/14 | DMT +0.1160 (p=0.000) PCB +0.1366 (p=0.000) placebo share 6.63 | FD DiD +0.0366 (p=0.010) | FD-resid -0.0243 [-0.0956, +0.0447] p=0.5098 8/14 does NOT survive
-prewhiten arp diag predicted sts ts_gsr W60 late                   DiD -0.0181 [-0.0467, +0.0084] p=0.2458 neg 7/14 | DMT +0.0708 (p=0.000) PCB +0.0890 (p=0.000) placebo share 4.91 | FD DiD -0.0034 (p=0.807) | FD-resid +0.0163 [-0.0378, +0.0670] p=0.5667 6/14 does NOT survive
-prewhiten arp diag predicted sts ts_gsr W60 trend_a_placebo_line   DiD +0.0697 [+0.0420, +0.0964] p=0.0010 neg 3/14
-prewhiten arp diag predicted sts ts_gsr W60 trend_b_shared_slope   DiD +0.0841 [+0.0515, +0.1152] p=0.0010 neg 3/14
-prewhiten arp diag residual sts ts_gsr W60 primary                DiD -0.0070 [-0.0211, +0.0080] p=0.3809 neg 8/14 | phase p=0.7293 | DMT -0.0273 (p=0.001) PCB -0.0204 (p=0.008) placebo share -2.92 | FD DiD +0.0143 (p=0.245) | FD-resid -0.0044 [-0.0234, +0.0133] p=0.6544 8/14 does NOT survive
-prewhiten arp diag residual sts ts_gsr W60 sensitivity            DiD -0.0073 [-0.0213, +0.0070] p=0.3597 neg 9/14 | phase p=0.6953 | DMT -0.0344 (p=0.000) PCB -0.0271 (p=0.003) placebo share -3.71 | FD DiD +0.0191 (p=0.108) | FD-resid -0.0021 [-0.0198, +0.0150] p=0.8280 7/14 does NOT survive
-prewhiten arp diag residual sts ts_gsr W60 early                  DiD -0.0173 [-0.0358, +0.0009] p=0.0967 neg 11/14 | phase p=0.4985 | DMT -0.0586 (p=0.000) PCB -0.0413 (p=0.003) placebo share -2.38 | FD DiD +0.0366 (p=0.010) | FD-resid -0.0099 [-0.0335, +0.0141] p=0.4343 10/14 does NOT survive
-prewhiten arp diag residual sts ts_gsr W60 late                   DiD +0.0013 [-0.0118, +0.0152] p=0.8552 neg 8/14 | phase p=0.9670 | DMT -0.0023 (p=0.601) PCB -0.0036 (p=0.443) placebo share 2.76 | FD DiD -0.0034 (p=0.807) | FD-resid -0.0000 [-0.0179, +0.0171] p=0.9987 7/14 does NOT survive
-prewhiten arp diag residual sts ts_gsr W60 trend_a_placebo_line   DiD -0.0424 [-0.0568, -0.0278] p=0.0004 neg 13/14
-prewhiten arp diag residual sts ts_gsr W60 trend_b_shared_slope   DiD -0.0581 [-0.0736, -0.0419] p=0.0001 neg 14/14
+prewhiten arp diag predicted sts ts_gsr W60 primary                DiD -0.0181 [-0.0554, +0.0192] p=0.3711 neg 7/14 | DMT +0.0913 (p=0.000) PCB +0.1094 (p=0.000) placebo share 6.03 | FD DiD +0.0143 (p=0.245) | FD-resid -0.0004 [-0.0528, +0.0517] p=0.9894 8/14 does NOT survive
+prewhiten arp diag predicted sts ts_gsr W60 sensitivity            DiD -0.0102 [-0.0490, +0.0275] p=0.6129 neg 7/14 | DMT +0.1184 (p=0.000) PCB +0.1286 (p=0.000) placebo share 12.61 | FD DiD +0.0191 (p=0.108) | FD-resid -0.0004 [-0.0523, +0.0513] p=0.9910 8/14 does NOT survive
+prewhiten arp diag predicted sts ts_gsr W60 early                  DiD -0.0198 [-0.0766, +0.0362] p=0.5176 neg 7/14 | DMT +0.1151 (p=0.000) PCB +0.1348 (p=0.000) placebo share 6.83 | FD DiD +0.0366 (p=0.010) | FD-resid -0.0232 [-0.0942, +0.0459] p=0.5298 8/14 does NOT survive
+prewhiten arp diag predicted sts ts_gsr W60 late                   DiD -0.0169 [-0.0450, +0.0094] p=0.2740 neg 7/14 | DMT +0.0722 (p=0.000) PCB +0.0891 (p=0.000) placebo share 5.28 | FD DiD -0.0034 (p=0.807) | FD-resid +0.0178 [-0.0358, +0.0682] p=0.5310 6/14 does NOT survive
+prewhiten arp diag predicted sts ts_gsr W60 trend_a_placebo_line   DiD +0.0694 [+0.0420, +0.0957] p=0.0010 neg 3/14
+prewhiten arp diag predicted sts ts_gsr W60 trend_b_shared_slope   DiD +0.0830 [+0.0507, +0.1139] p=0.0010 neg 3/14
+prewhiten arp diag residual sts ts_gsr W60 primary                DiD -0.0080 [-0.0219, +0.0067] p=0.3092 neg 8/14 | phase p=0.6893 | DMT -0.0277 (p=0.001) PCB -0.0197 (p=0.010) placebo share -2.44 | FD DiD +0.0143 (p=0.245) | FD-resid -0.0058 [-0.0242, +0.0116] p=0.5483 9/14 does NOT survive
+prewhiten arp diag residual sts ts_gsr W60 sensitivity            DiD -0.0084 [-0.0220, +0.0056] p=0.2848 neg 9/14 | phase p=0.6503 | DMT -0.0346 (p=0.000) PCB -0.0263 (p=0.003) placebo share -3.14 | FD DiD +0.0191 (p=0.108) | FD-resid -0.0035 [-0.0208, +0.0132] p=0.7104 8/14 does NOT survive
+prewhiten arp diag residual sts ts_gsr W60 early                  DiD -0.0182 [-0.0363, -0.0001] p=0.0790 neg 11/14 | phase p=0.4545 | DMT -0.0577 (p=0.000) PCB -0.0395 (p=0.003) placebo share -2.18 | FD DiD +0.0366 (p=0.010) | FD-resid -0.0111 [-0.0343, +0.0126] p=0.3804 10/14 does NOT survive
+prewhiten arp diag residual sts ts_gsr W60 late                   DiD +0.0001 [-0.0129, +0.0135] p=0.9945 neg 8/14 | phase p=0.9990 | DMT -0.0037 (p=0.409) PCB -0.0038 (p=0.421) placebo share 68.18 | FD DiD -0.0034 (p=0.807) | FD-resid -0.0015 [-0.0189, +0.0152] p=0.8652 8/14 does NOT survive
+prewhiten arp diag residual sts ts_gsr W60 trend_a_placebo_line   DiD -0.0421 [-0.0565, -0.0278] p=0.0004 neg 13/14
+prewhiten arp diag residual sts ts_gsr W60 trend_b_shared_slope   DiD -0.0571 [-0.0723, -0.0411] p=0.0001 neg 14/14
 prewhiten arp MMI sts ts_gsr global-bins primary                DiD -0.0264 [-0.0700, +0.0159] p=0.2736 neg 8/14 | phase p=0.4166 | DMT +0.0716 (p=0.000) PCB +0.0980 (p=0.000) placebo share 3.71 | FD DiD +0.0143 (p=0.245) | FD-resid -0.0027 [-0.0485, +0.0394] p=0.9108 8/14 does NOT survive
 prewhiten arp MMI sts ts_gsr global-bins sensitivity            DiD -0.0258 [-0.0698, +0.0175] p=0.2906 neg 8/14 | phase p=0.4176 | DMT +0.0718 (p=0.000) PCB +0.0976 (p=0.000) placebo share 3.79 | FD DiD +0.0174 (p=0.155) | FD-resid -0.0016 [-0.0465, +0.0392] p=0.9465 8/14 does NOT survive
 prewhiten arp MMI sts ts_gsr global-bins early                  DiD -0.0241 [-0.0778, +0.0301] p=0.4121 neg 8/14 | phase p=0.5265 | DMT +0.0692 (p=0.000) PCB +0.0934 (p=0.002) placebo share 3.87 | FD DiD +0.0366 (p=0.010) | FD-resid -0.0146 [-0.0631, +0.0333] p=0.5704 8/14 does NOT survive
@@ -80,21 +80,21 @@ prewhiten arp autocorr ts_gsr global-bins early                  DiD -0.2026 [-0
 prewhiten arp autocorr ts_gsr global-bins late                   DiD -0.2057 [-0.3039, -0.1201] p=0.0005 neg 12/14 | phase p=0.0500 | DMT -0.0410 (p=0.346) PCB +0.1647 (p=0.000) placebo share 0.80 | FD DiD -0.0034 (p=0.807) | FD-resid -0.1562 [-0.2736, -0.0490] p=0.0157 10/14 SURVIVES
 prewhiten arp autocorr ts_gsr global-bins trend_a_placebo_line   DiD -0.0934 [-0.1831, -0.0120] p=0.0552 neg 9/14
 prewhiten arp autocorr ts_gsr global-bins trend_b_shared_slope   DiD -0.0513 [-0.1429, +0.0320] p=0.2946 neg 7/14
-   arp ts_demean: whitened (321s); orders: p=1: 0, p=2: 0, p=3: 0, p=4: 5, p=5: 3215
-   arp ts_demean: subject 1/14 done (339s)
-   arp ts_demean: subject 2/14 done (357s)
-   arp ts_demean: subject 3/14 done (374s)
-   arp ts_demean: subject 4/14 done (392s)
-   arp ts_demean: subject 5/14 done (409s)
-   arp ts_demean: subject 6/14 done (427s)
-   arp ts_demean: subject 7/14 done (444s)
-   arp ts_demean: subject 8/14 done (461s)
-   arp ts_demean: subject 9/14 done (479s)
-   arp ts_demean: subject 10/14 done (497s)
-   arp ts_demean: subject 11/14 done (515s)
-   arp ts_demean: subject 12/14 done (533s)
-   arp ts_demean: subject 13/14 done (550s)
-   arp ts_demean: subject 14/14 done (568s)
+   arp ts_demean: whitened (324s); orders: p=1: 0, p=2: 0, p=3: 0, p=4: 5, p=5: 3215
+   arp ts_demean: subject 1/14 done (342s)
+   arp ts_demean: subject 2/14 done (360s)
+   arp ts_demean: subject 3/14 done (378s)
+   arp ts_demean: subject 4/14 done (395s)
+   arp ts_demean: subject 5/14 done (413s)
+   arp ts_demean: subject 6/14 done (431s)
+   arp ts_demean: subject 7/14 done (449s)
+   arp ts_demean: subject 8/14 done (466s)
+   arp ts_demean: subject 9/14 done (484s)
+   arp ts_demean: subject 10/14 done (501s)
+   arp ts_demean: subject 11/14 done (519s)
+   arp ts_demean: subject 12/14 done (536s)
+   arp ts_demean: subject 13/14 done (554s)
+   arp ts_demean: subject 14/14 done (572s)
 prewhiten arp MMI sts ts_demean W60 primary                DiD -0.0274 [-0.0629, +0.0077] p=0.1654 neg 9/14 | phase p=0.4026 | DMT +0.0523 (p=0.003) PCB +0.0797 (p=0.000) placebo share 2.91 | FD DiD +0.0143 (p=0.245) | FD-resid -0.0085 [-0.0481, +0.0322] p=0.6930 9/14 does NOT survive
 prewhiten arp MMI sts ts_demean W60 sensitivity            DiD -0.0179 [-0.0543, +0.0182] p=0.3677 neg 8/14 | phase p=0.5524 | DMT +0.0722 (p=0.001) PCB +0.0901 (p=0.000) placebo share 5.04 | FD DiD +0.0191 (p=0.108) | FD-resid -0.0043 [-0.0460, +0.0400] p=0.8488 8/14 does NOT survive
 prewhiten arp MMI sts ts_demean W60 early                  DiD -0.0385 [-0.0857, +0.0106] p=0.1544 neg 9/14 | phase p=0.3197 | DMT +0.0433 (p=0.023) PCB +0.0818 (p=0.001) placebo share 2.12 | FD DiD +0.0366 (p=0.010) | FD-resid -0.0364 [-0.0880, +0.0172] p=0.2089 9/14 does NOT survive
@@ -125,18 +125,18 @@ prewhiten arp diag observed sts ts_demean W60 early                  DiD -0.0385
 prewhiten arp diag observed sts ts_demean W60 late                   DiD -0.0186 [-0.0508, +0.0128] p=0.2892 neg 7/14 | phase p=0.5994 | DMT +0.0595 (p=0.001) PCB +0.0781 (p=0.000) placebo share 4.20 | FD DiD -0.0034 (p=0.807) | FD-resid +0.0137 [-0.0247, +0.0528] p=0.5051 7/14 does NOT survive
 prewhiten arp diag observed sts ts_demean W60 trend_a_placebo_line   DiD +0.0174 [-0.0098, +0.0442] p=0.2413 neg 5/14
 prewhiten arp diag observed sts ts_demean W60 trend_b_shared_slope   DiD +0.0159 [-0.0183, +0.0471] p=0.3572 neg 5/14
-prewhiten arp diag predicted sts ts_demean W60 primary                DiD -0.0132 [-0.0692, +0.0384] p=0.6553 neg 7/14 | DMT +0.0743 (p=0.006) PCB +0.0875 (p=0.001) placebo share 6.65 | FD DiD +0.0143 (p=0.245) | FD-resid +0.0064 [-0.0555, +0.0686] p=0.8501 7/14 does NOT survive
-prewhiten arp diag predicted sts ts_demean W60 sensitivity            DiD -0.0006 [-0.0596, +0.0517] p=0.9847 neg 7/14 | DMT +0.1037 (p=0.001) PCB +0.1044 (p=0.000) placebo share 161.61 | FD DiD +0.0191 (p=0.108) | FD-resid +0.0101 [-0.0527, +0.0721] p=0.7631 7/14 does NOT survive
-prewhiten arp diag predicted sts ts_demean W60 early                  DiD -0.0064 [-0.0947, +0.0776] p=0.8877 neg 7/14 | DMT +0.0890 (p=0.014) PCB +0.0954 (p=0.015) placebo share 14.89 | FD DiD +0.0366 (p=0.010) | FD-resid -0.0110 [-0.1069, +0.0833] p=0.8253 7/14 does NOT survive
-prewhiten arp diag predicted sts ts_demean W60 late                   DiD -0.0186 [-0.0528, +0.0125] p=0.3066 neg 7/14 | DMT +0.0626 (p=0.002) PCB +0.0811 (p=0.000) placebo share 4.37 | FD DiD -0.0034 (p=0.807) | FD-resid +0.0203 [-0.0298, +0.0685] p=0.4465 6/14 does NOT survive
-prewhiten arp diag predicted sts ts_demean W60 trend_a_placebo_line   DiD +0.0532 [+0.0118, +0.0899] p=0.0253 neg 3/14
-prewhiten arp diag predicted sts ts_demean W60 trend_b_shared_slope   DiD +0.0643 [+0.0098, +0.1118] p=0.0348 neg 3/14
-prewhiten arp diag residual sts ts_demean W60 primary                DiD -0.0143 [-0.0436, +0.0201] p=0.4154 neg 9/14 | phase p=0.5245 | DMT -0.0220 (p=0.088) PCB -0.0077 (p=0.481) placebo share -0.54 | FD DiD +0.0143 (p=0.245) | FD-resid -0.0149 [-0.0466, +0.0181] p=0.3894 9/14 does NOT survive
-prewhiten arp diag residual sts ts_demean W60 sensitivity            DiD -0.0172 [-0.0484, +0.0167] p=0.3363 neg 9/14 | phase p=0.4096 | DMT -0.0315 (p=0.023) PCB -0.0143 (p=0.193) placebo share -0.83 | FD DiD +0.0191 (p=0.108) | FD-resid -0.0144 [-0.0439, +0.0171] p=0.3844 8/14 does NOT survive
-prewhiten arp diag residual sts ts_demean W60 early                  DiD -0.0321 [-0.0856, +0.0270] p=0.2982 neg 9/14 | phase p=0.2358 | DMT -0.0457 (p=0.039) PCB -0.0136 (p=0.479) placebo share -0.42 | FD DiD +0.0366 (p=0.010) | FD-resid -0.0254 [-0.0774, +0.0301] p=0.3861 7/14 does NOT survive
-prewhiten arp diag residual sts ts_demean W60 late                   DiD -0.0000 [-0.0147, +0.0166] p=0.9987 neg 9/14 | phase p=1.0000 | DMT -0.0031 (p=0.651) PCB -0.0031 (p=0.601) placebo share -275.13 | FD DiD -0.0034 (p=0.807) | FD-resid -0.0065 [-0.0264, +0.0130] p=0.5421 8/14 does NOT survive
-prewhiten arp diag residual sts ts_demean W60 trend_a_placebo_line   DiD -0.0357 [-0.0606, -0.0097] p=0.0194 neg 11/14
-prewhiten arp diag residual sts ts_demean W60 trend_b_shared_slope   DiD -0.0483 [-0.0809, -0.0140] p=0.0164 neg 12/14
+prewhiten arp diag predicted sts ts_demean W60 primary                DiD -0.0112 [-0.0667, +0.0399] p=0.7029 neg 7/14 | DMT +0.0746 (p=0.005) PCB +0.0858 (p=0.001) placebo share 7.67 | FD DiD +0.0143 (p=0.245) | FD-resid +0.0088 [-0.0524, +0.0701] p=0.7906 6/14 does NOT survive
+prewhiten arp diag predicted sts ts_demean W60 sensitivity            DiD +0.0013 [-0.0570, +0.0534] p=0.9666 neg 7/14 | DMT +0.1038 (p=0.001) PCB +0.1025 (p=0.000) placebo share -78.92 | FD DiD +0.0191 (p=0.108) | FD-resid +0.0126 [-0.0497, +0.0741] p=0.7054 7/14 does NOT survive
+prewhiten arp diag predicted sts ts_demean W60 early                  DiD -0.0050 [-0.0928, +0.0788] p=0.9135 neg 7/14 | DMT +0.0874 (p=0.015) PCB +0.0923 (p=0.018) placebo share 18.64 | FD DiD +0.0366 (p=0.010) | FD-resid -0.0090 [-0.1050, +0.0848] p=0.8556 7/14 does NOT survive
+prewhiten arp diag predicted sts ts_demean W60 late                   DiD -0.0162 [-0.0494, +0.0137] p=0.3573 neg 7/14 | DMT +0.0644 (p=0.002) PCB +0.0806 (p=0.000) placebo share 4.99 | FD DiD -0.0034 (p=0.807) | FD-resid +0.0230 [-0.0258, +0.0702] p=0.3789 6/14 does NOT survive
+prewhiten arp diag predicted sts ts_demean W60 trend_a_placebo_line   DiD +0.0532 [+0.0128, +0.0890] p=0.0233 neg 3/14
+prewhiten arp diag predicted sts ts_demean W60 trend_b_shared_slope   DiD +0.0629 [+0.0092, +0.1096] p=0.0349 neg 3/14
+prewhiten arp diag residual sts ts_demean W60 primary                DiD -0.0163 [-0.0454, +0.0178] p=0.3490 neg 9/14 | phase p=0.4416 | DMT -0.0223 (p=0.080) PCB -0.0061 (p=0.586) placebo share -0.37 | FD DiD +0.0143 (p=0.245) | FD-resid -0.0173 [-0.0481, +0.0152] p=0.3147 9/14 does NOT survive
+prewhiten arp diag residual sts ts_demean W60 sensitivity            DiD -0.0192 [-0.0502, +0.0147] p=0.2838 neg 9/14 | phase p=0.3487 | DMT -0.0316 (p=0.022) PCB -0.0125 (p=0.269) placebo share -0.65 | FD DiD +0.0191 (p=0.108) | FD-resid -0.0169 [-0.0460, +0.0140] p=0.3015 9/14 does NOT survive
+prewhiten arp diag residual sts ts_demean W60 early                  DiD -0.0336 [-0.0869, +0.0249] p=0.2762 neg 9/14 | phase p=0.1958 | DMT -0.0441 (p=0.042) PCB -0.0105 (p=0.587) placebo share -0.31 | FD DiD +0.0366 (p=0.010) | FD-resid -0.0274 [-0.0789, +0.0279] p=0.3473 7/14 does NOT survive
+prewhiten arp diag residual sts ts_demean W60 late                   DiD -0.0024 [-0.0169, +0.0141] p=0.7776 neg 11/14 | phase p=0.9181 | DMT -0.0049 (p=0.462) PCB -0.0025 (p=0.674) placebo share -1.06 | FD DiD -0.0034 (p=0.807) | FD-resid -0.0092 [-0.0280, +0.0089] p=0.3617 8/14 does NOT survive
+prewhiten arp diag residual sts ts_demean W60 trend_a_placebo_line   DiD -0.0358 [-0.0600, -0.0104] p=0.0173 neg 11/14
+prewhiten arp diag residual sts ts_demean W60 trend_b_shared_slope   DiD -0.0470 [-0.0785, -0.0134] p=0.0170 neg 11/14
 prewhiten arp MMI sts ts_demean global-bins primary                DiD -0.0264 [-0.0718, +0.0155] p=0.2831 neg 8/14 | phase p=0.4046 | DMT +0.0550 (p=0.009) PCB +0.0814 (p=0.000) placebo share 3.08 | FD DiD +0.0143 (p=0.245) | FD-resid -0.0082 [-0.0545, +0.0310] p=0.7645 8/14 does NOT survive
 prewhiten arp MMI sts ts_demean global-bins sensitivity            DiD -0.0255 [-0.0705, +0.0175] p=0.3051 neg 8/14 | phase p=0.4186 | DMT +0.0554 (p=0.009) PCB +0.0809 (p=0.000) placebo share 3.17 | FD DiD +0.0174 (p=0.155) | FD-resid -0.0078 [-0.0537, +0.0316] p=0.7715 8/14 does NOT survive
 prewhiten arp MMI sts ts_demean global-bins early                  DiD -0.0286 [-0.0885, +0.0231] p=0.3615 neg 7/14 | phase p=0.4476 | DMT +0.0511 (p=0.031) PCB +0.0796 (p=0.001) placebo share 2.79 | FD DiD +0.0366 (p=0.010) | FD-resid -0.0256 [-0.0791, +0.0210] p=0.3851 8/14 does NOT survive
@@ -161,21 +161,21 @@ prewhiten arp autocorr ts_demean global-bins early                  DiD -0.1398 
 prewhiten arp autocorr ts_demean global-bins late                   DiD -0.1488 [-0.2625, -0.0526] p=0.0104 neg 11/14 | phase p=0.1339 | DMT -0.0177 (p=0.721) PCB +0.1311 (p=0.000) placebo share 0.88 | FD DiD -0.0034 (p=0.807) | FD-resid -0.1109 [-0.2583, +0.0018] p=0.1007 8/14 does NOT survive
 prewhiten arp autocorr ts_demean global-bins trend_a_placebo_line   DiD -0.0518 [-0.1605, +0.0440] p=0.3805 neg 7/14
 prewhiten arp autocorr ts_demean global-bins trend_b_shared_slope   DiD -0.0182 [-0.1334, +0.0877] p=0.7728 neg 6/14
-   ar1 ts_gsr: whitened (639s); orders: p=1: 3220, p=2: 0, p=3: 0, p=4: 0, p=5: 0
-   ar1 ts_gsr: subject 1/14 done (656s)
-   ar1 ts_gsr: subject 2/14 done (674s)
-   ar1 ts_gsr: subject 3/14 done (691s)
-   ar1 ts_gsr: subject 4/14 done (709s)
-   ar1 ts_gsr: subject 5/14 done (726s)
-   ar1 ts_gsr: subject 6/14 done (744s)
-   ar1 ts_gsr: subject 7/14 done (762s)
-   ar1 ts_gsr: subject 8/14 done (779s)
-   ar1 ts_gsr: subject 9/14 done (797s)
-   ar1 ts_gsr: subject 10/14 done (814s)
-   ar1 ts_gsr: subject 11/14 done (832s)
-   ar1 ts_gsr: subject 12/14 done (849s)
-   ar1 ts_gsr: subject 13/14 done (867s)
-   ar1 ts_gsr: subject 14/14 done (885s)
+   ar1 ts_gsr: whitened (642s); orders: p=1: 3220, p=2: 0, p=3: 0, p=4: 0, p=5: 0
+   ar1 ts_gsr: subject 1/14 done (660s)
+   ar1 ts_gsr: subject 2/14 done (678s)
+   ar1 ts_gsr: subject 3/14 done (695s)
+   ar1 ts_gsr: subject 4/14 done (713s)
+   ar1 ts_gsr: subject 5/14 done (730s)
+   ar1 ts_gsr: subject 6/14 done (748s)
+   ar1 ts_gsr: subject 7/14 done (767s)
+   ar1 ts_gsr: subject 8/14 done (785s)
+   ar1 ts_gsr: subject 9/14 done (802s)
+   ar1 ts_gsr: subject 10/14 done (820s)
+   ar1 ts_gsr: subject 11/14 done (838s)
+   ar1 ts_gsr: subject 12/14 done (856s)
+   ar1 ts_gsr: subject 13/14 done (874s)
+   ar1 ts_gsr: subject 14/14 done (891s)
 prewhiten ar1 MMI sts ts_gsr W60   primary                DiD -0.0620 [-0.0899, -0.0364] p=0.0006 neg 13/14 | phase p=0.0010 | DMT -0.0269 (p=0.017) PCB +0.0351 (p=0.001) placebo share 0.57 | FD DiD +0.0143 (p=0.245) | FD-resid -0.0488 [-0.0702, -0.0264] p=0.0021 13/14 SURVIVES
 prewhiten ar1 MMI sts ts_gsr W60   sensitivity            DiD -0.0580 [-0.0859, -0.0329] p=0.0009 neg 13/14 | phase p=0.0010 | DMT -0.0283 (p=0.012) PCB +0.0297 (p=0.004) placebo share 0.51 | FD DiD +0.0191 (p=0.108) | FD-resid -0.0441 [-0.0649, -0.0220] p=0.0028 13/14 SURVIVES
 prewhiten ar1 MMI sts ts_gsr W60   early                  DiD -0.0730 [-0.1029, -0.0434] p=0.0005 neg 13/14 | phase p=0.0010 | DMT -0.0458 (p=0.001) PCB +0.0272 (p=0.009) placebo share 0.37 | FD DiD +0.0366 (p=0.010) | FD-resid -0.0584 [-0.0849, -0.0328] p=0.0012 13/14 SURVIVES
@@ -242,21 +242,21 @@ prewhiten ar1 autocorr ts_gsr global-bins early                  DiD -0.3284 [-0
 prewhiten ar1 autocorr ts_gsr global-bins late                   DiD -0.3067 [-0.4335, -0.1889] p=0.0006 neg 13/14 | phase p=0.0010 | DMT -0.1798 (p=0.002) PCB +0.1269 (p=0.001) placebo share 0.41 | FD DiD -0.0034 (p=0.807) | FD-resid -0.2272 [-0.3232, -0.1356] p=0.0002 13/14 SURVIVES
 prewhiten ar1 autocorr ts_gsr global-bins trend_a_placebo_line   DiD -0.3637 [-0.4761, -0.2586] p=0.0001 neg 14/14
 prewhiten ar1 autocorr ts_gsr global-bins trend_b_shared_slope   DiD -0.3819 [-0.4885, -0.2814] p=0.0001 neg 14/14
-   ar1 ts_demean: whitened (950s); orders: p=1: 3220, p=2: 0, p=3: 0, p=4: 0, p=5: 0
-   ar1 ts_demean: subject 1/14 done (968s)
-   ar1 ts_demean: subject 2/14 done (986s)
-   ar1 ts_demean: subject 3/14 done (1003s)
-   ar1 ts_demean: subject 4/14 done (1021s)
-   ar1 ts_demean: subject 5/14 done (1038s)
-   ar1 ts_demean: subject 6/14 done (1056s)
-   ar1 ts_demean: subject 7/14 done (1074s)
-   ar1 ts_demean: subject 8/14 done (1092s)
-   ar1 ts_demean: subject 9/14 done (1110s)
-   ar1 ts_demean: subject 10/14 done (1127s)
-   ar1 ts_demean: subject 11/14 done (1145s)
-   ar1 ts_demean: subject 12/14 done (1162s)
-   ar1 ts_demean: subject 13/14 done (1179s)
-   ar1 ts_demean: subject 14/14 done (1197s)
+   ar1 ts_demean: whitened (957s); orders: p=1: 3220, p=2: 0, p=3: 0, p=4: 0, p=5: 0
+   ar1 ts_demean: subject 1/14 done (975s)
+   ar1 ts_demean: subject 2/14 done (994s)
+   ar1 ts_demean: subject 3/14 done (1012s)
+   ar1 ts_demean: subject 4/14 done (1031s)
+   ar1 ts_demean: subject 5/14 done (1050s)
+   ar1 ts_demean: subject 6/14 done (1068s)
+   ar1 ts_demean: subject 7/14 done (1087s)
+   ar1 ts_demean: subject 8/14 done (1105s)
+   ar1 ts_demean: subject 9/14 done (1124s)
+   ar1 ts_demean: subject 10/14 done (1143s)
+   ar1 ts_demean: subject 11/14 done (1161s)
+   ar1 ts_demean: subject 12/14 done (1180s)
+   ar1 ts_demean: subject 13/14 done (1199s)
+   ar1 ts_demean: subject 14/14 done (1218s)
 prewhiten ar1 MMI sts ts_demean W60 primary                DiD -0.0784 [-0.1070, -0.0501] p=0.0004 neg 13/14 | phase p=0.0010 | DMT -0.0392 (p=0.018) PCB +0.0391 (p=0.003) placebo share 0.50 | FD DiD +0.0143 (p=0.245) | FD-resid -0.0631 [-0.0863, -0.0381] p=0.0007 13/14 SURVIVES
 prewhiten ar1 MMI sts ts_demean W60 sensitivity            DiD -0.0715 [-0.0998, -0.0442] p=0.0005 neg 12/14 | phase p=0.0010 | DMT -0.0391 (p=0.014) PCB +0.0324 (p=0.010) placebo share 0.45 | FD DiD +0.0191 (p=0.108) | FD-resid -0.0561 [-0.0786, -0.0312] p=0.0017 12/14 SURVIVES
 prewhiten ar1 MMI sts ts_demean W60 early                  DiD -0.0845 [-0.1149, -0.0543] p=0.0005 neg 13/14 | phase p=0.0010 | DMT -0.0578 (p=0.003) PCB +0.0267 (p=0.014) placebo share 0.32 | FD DiD +0.0366 (p=0.010) | FD-resid -0.0713 [-0.0969, -0.0459] p=0.0005 13/14 SURVIVES
@@ -324,7 +324,7 @@ prewhiten ar1 autocorr ts_demean global-bins late                   DiD -0.2299 
 prewhiten ar1 autocorr ts_demean global-bins trend_a_placebo_line   DiD -0.2881 [-0.4201, -0.1779] p=0.0002 neg 13/14
 prewhiten ar1 autocorr ts_demean global-bins trend_b_shared_slope   DiD -0.3074 [-0.4401, -0.1976] p=0.0001 neg 14/14
 # The atoms and the DMT contrast after prewhitening (partB16_prewhiten.py)
-git=c25a310
+git=d5a65bd
 
 Whitening per region and run: 'arp' = residuals of the region's AR(p) fit, p by BIC over 1–5; 'ar1' = p = 1. The first p TRs of each run are dropped (non-finite). Atoms as partB2_ccs_run.py (MMI: PairPhiID.atoms_mean / atoms_bins; CCS: atoms_ccs, phyid's mask); inference as the primary (rev_inference.Engine, seed 20261120); the diagnostic as partB4 (per-pair AR(1) prediction from the whitened window's a_x, a_y, q). Level = DMT pre-injection (windows 1–4; bins 1–8); DiD = post minus pre, DMT minus placebo.
 
@@ -351,7 +351,7 @@ Whitening per region and run: 'arp' = residuals of the region's AR(p) fit, p by 
 | TDMI (sum) | +0.5762 | -0.0321 | +0.5762 | -0.0321 |
 
 Whitened series: mean lag-1 autocorrelation, DMT pre-injection +0.2625; its DiD -0.0544 (raw series -0.0146); per subject r(MMI sts DiD, whitened autocorrelation DiD) = +0.495; r(MMI sts DiD, raw autocorrelation DiD) = +0.552; r(MMI sts DiD whitened, MMI sts DiD raw) = +0.473; raw MMI sts DiD -0.0809.
-Diagnostic on the whitened series (W = 60): observed sts level 0.2766, predicted 0.2426, residual +0.0341; DiD observed -0.0262, predicted -0.0192, residual -0.0070 (negative in 8/14).
+Diagnostic on the whitened series (W = 60): observed sts level 0.2766, predicted 0.2438, residual +0.0328; DiD observed -0.0262, predicted -0.0181, residual -0.0080 (negative in 8/14).
 
 ## arp ts_gsr global-bins: sixteen atoms, DMT pre-injection level and primary DiD, MMI and CCS (nats)
 
@@ -402,7 +402,7 @@ Chosen AR orders (arp ts_gsr), count over 115 regions × 28 runs: p = 1: 0, p = 
 | TDMI (sum) | +0.5860 | -0.0329 | +0.5860 | -0.0329 |
 
 Whitened series: mean lag-1 autocorrelation, DMT pre-injection +0.2583; its DiD -0.0418 (raw series -0.0216); per subject r(MMI sts DiD, whitened autocorrelation DiD) = +0.429; r(MMI sts DiD, raw autocorrelation DiD) = +0.426; r(MMI sts DiD whitened, MMI sts DiD raw) = +0.353; raw MMI sts DiD -0.1031.
-Diagnostic on the whitened series (W = 60): observed sts level 0.2822, predicted 0.2246, residual +0.0576; DiD observed -0.0274, predicted -0.0132, residual -0.0143 (negative in 9/14).
+Diagnostic on the whitened series (W = 60): observed sts level 0.2822, predicted 0.2266, residual +0.0555; DiD observed -0.0274, predicted -0.0112, residual -0.0163 (negative in 9/14).
 
 ## arp ts_demean global-bins: sixteen atoms, DMT pre-injection level and primary DiD, MMI and CCS (nats)
 
@@ -535,4 +535,4 @@ Chosen AR orders (ar1 ts_demean), count over 115 regions × 28 runs: p = 1: 3220
 ## Reading under the rule of the pre-run entry
 
 A remedy check, reported as such: not a finding about DMT, and the primary result (the raw MMI-sts DiD at W = 60) is unchanged by it. The prediction recorded — MMI-sts near zero after whitening and the DMT contrast shrunk to the order of the cross-lag contrast — is read against the tables above in the outcome entry.
-done (1262s)
+done (1283s)

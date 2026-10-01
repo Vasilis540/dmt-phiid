@@ -1,5 +1,5 @@
 # Scope map tables (partB1_scope_map.py)
-git=c25a310
+git=d5a65bd
 
 ## sts(r1, q), nats (rows r1, columns q)
 

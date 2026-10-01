@@ -1,5 +1,5 @@
 # Family checks (partB5_family_checks.py)
-git=c25a310
+git=d5a65bd
 
 (0.85, 0.25): levels sts 1.2588, xtx+yty 1.2357, TDMI 1.2819, rtr 0.0231, rts+str 1.2357, mirrors -2.4715, PhiR 0.0231
    d/dr1: sts +6.071, xtx+yty +6.015, TDMI +6.126, rtr +0.056, rts+str +6.015, mirrors -12.030, PhiR +0.056
@@ -15,7 +15,7 @@ git=c25a310
    ratio |dsts/dr1| / |dsts/dq| = 131.1; rtr / sts level = 1.08 %
 
 Symmetric family, 2,000 draws a ~ U(0, 0.95), q ~ U(−0.9, 0.9), seed 20261120: max |TDMI + ln(1 − a²)| = 3.6e-15; max |rtr + sts − TDMI| = 1.8e-15; max |rtr + ½ ln(1 − a²q²)| = 0.0e+00; max |ΦR − rtr| = 3.6e-15
-Unequal a_x, a_y (2,000 draws, same seed stream): ΦR − rtr min -1.362, max +4.585, mean +0.091, share |ΦR − rtr| > 0.01: 0.57
+Unequal a_x, a_y (2,000 draws, same seed stream; 171 not positive definite and excluded, 1829 kept): ΦR − rtr min +0.000, max +4.585, mean +0.094, share |ΦR − rtr| > 0.01: 0.53
 
 Ratio |dsts/dr1| / |dsts/dq| at the implied operating points:
    r1 = 0.78: |q| = 0.25: 24.9; |q| = 0.6: 7.8

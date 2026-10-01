@@ -1,4 +1,4 @@
-# partB24_bandpassed_expectations.py; one row per estimator × replicate; git=c25a310
+# partB24_bandpassed_expectations.py; one row per estimator × replicate; git=d5a65bd
 estimator,replicate,sts_level_pre,sts_did,pred_did,res_did,res_p,res_ci_lo,res_ci_hi,sym_did,anti_did,A_other_level,A_other_did,A_same_level,A_same_did,winsign_level,winsign_did,B_level,B_did,D_level,D_did,Sym_level,Sym_did,D_plus_Sym_level,D_plus_Sym_did,r1_level,r1_did
 W60,1,1.187951,-0.095558,-0.099627,0.004069,0.0033,0.002071,0.006069,-0.000369,0.007879,-0.000219,-0.000361,0.000063,-0.000550,0.003340,-0.000939,0.011007,-0.003140,-0.034876,-0.001268,-0.000312,0.005113,-0.035188,0.003845,0.863426,-0.015884
 global (run-level prediction),1,1.325019,-0.106271,0.000000,-0.106271,0.0001,-0.111514,-0.101066,nan,nan,,,,,,,,,,,,,,,,

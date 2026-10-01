@@ -1,5 +1,5 @@
 # Exchange rates in data units, the within-window regression, the cross-half correlation and BCa intervals (partB19_exchange_rates.py)
-git=c25a310
+git=d5a65bd
 
 ## (a) Exchange rates at the operating point (r₁, q) = (0.85, 0.25), closed form, central differences h = 1e-4
 
@@ -53,11 +53,11 @@ Prediction recorded (c): below 0.953 and near the ceiling 0.729 (√(0.717 × 0.
 | PhiR ts_gsr W60 [primary] | +0.0007 | 0.8971 | [-0.0078, +0.0100] | [-0.0079, +0.0099] | [-0.0071, +0.0113] | +0.038 | +0.036 | 1.04 | no |
 | diag observed sts ts_gsr W60 [primary] | -0.0809 | 0.0038 | [-0.1261, -0.0377] | [-0.1253, -0.0365] | [-0.1280, -0.0384] | -0.025 | -0.013 | 1.01 | no |
 | diag predicted sts ts_gsr W60 [primary] | -0.0924 | 0.0037 | [-0.1444, -0.0414] | [-0.1434, -0.0409] | [-0.1460, -0.0431] | -0.017 | -0.012 | 1.00 | no |
-| diag residual sts ts_gsr W60 [primary] | +0.0115 | 0.0422 | [+0.0021, +0.0211] | [+0.0018, +0.0211] | [+0.0020, +0.0212] | +0.011 | +0.004 | 1.00 | no |
+| diag residual sts ts_gsr W60 [primary] | +0.0115 | 0.0421 | [+0.0021, +0.0211] | [+0.0018, +0.0211] | [+0.0020, +0.0212] | +0.011 | +0.004 | 1.00 | no |
 | diag residual sts ts_gsr W60 [early] | +0.0179 | 0.0012 | [+0.0099, +0.0260] | [+0.0098, +0.0262] | [+0.0101, +0.0264] | +0.014 | +0.010 | 1.00 | no |
-| diag residual sts ts_gsr W60 [late] | +0.0064 | 0.3243 | [-0.0058, +0.0183] | [-0.0056, +0.0180] | [-0.0056, +0.0180] | +0.002 | -0.002 | 1.00 | no |
+| diag residual sts ts_gsr W60 [late] | +0.0064 | 0.3241 | [-0.0058, +0.0183] | [-0.0056, +0.0180] | [-0.0056, +0.0180] | +0.001 | -0.002 | 1.00 | no |
 | diag residual sts ts_demean W60 [primary] | +0.0182 | 0.0040 | [+0.0089, +0.0277] | [+0.0085, +0.0276] | [+0.0085, +0.0276] | -0.004 | +0.002 | 1.00 | no |
-| diag residual sts ts_gsr W30 [primary] | +0.0182 | 0.0137 | [+0.0066, +0.0299] | [+0.0062, +0.0298] | [+0.0063, +0.0299] | +0.009 | -0.000 | 1.00 | no |
+| diag residual sts ts_gsr W30 [primary] | +0.0183 | 0.0134 | [+0.0067, +0.0299] | [+0.0062, +0.0298] | [+0.0064, +0.0298] | +0.011 | -0.001 | 1.00 | no |
 | CCSpub sts ts_gsr W60 [primary] | +0.0044 | 0.0559 | [+0.0004, +0.0081] | [+0.0003, +0.0083] | [+0.0002, +0.0081] | -0.009 | -0.014 | 1.00 | no |
 | CCSpub sts ts_gsr global-bins [primary] | +0.0197 | 0.0002 | [+0.0142, +0.0254] | [+0.0141, +0.0252] | [+0.0144, +0.0256] | +0.023 | +0.013 | 1.01 | no |
 | CCSpub sts ts_demean W60 [primary] | +0.0120 | 0.0040 | [+0.0054, +0.0192] | [+0.0050, +0.0193] | [+0.0056, +0.0200] | +0.026 | +0.033 | 1.01 | no |

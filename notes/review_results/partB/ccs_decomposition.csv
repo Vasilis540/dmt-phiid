@@ -1,4 +1,4 @@
-# partB18_ccs_decomposition.py; git=c25a310
+# partB18_ccs_decomposition.py; git=d5a65bd
 variant,estimator,mask,subject,run,s_pre,s_post,cbar_pre,cbar_post,sts_pre,sts_post,term_share,term_coinfo,term_interaction,change_sts
 ts_gsr,W60,code,1,DMT,0.302718,0.278030,0.069520,0.051950,-0.048743,-0.037354,-0.001997,0.012529,0.000857,0.011389
 ts_gsr,W60,code,1,PCB,0.273186,0.292661,0.049651,0.058070,-0.036257,-0.041113,0.000646,-0.006260,0.000759,-0.004856

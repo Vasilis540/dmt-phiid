@@ -1,44 +1,44 @@
-git=c25a310
+git=d5a65bd
    filter fitted to the placebo ACF: beta=200 lo=0.0064 hi=0.080; lags 1-6 [ 0.872  0.549  0.179 -0.091 -0.196 -0.168]
    solving the generator's parameters on calibration draws (3,000 pairs × 3,000 samples) ...
-   solved: β̄ = 185.4, σ_q = 0.2637, β̄_post = 105.7, δ = 82.6; check draws: pre a = 0.8637, |q| = 0.2844; post a = 0.8483; asymmetry a_x − a_y = 0.0300 (45s)
-   (i) Δa (post filter): replicate 10/50 (95s)
-   (i) Δa (post filter): replicate 20/50 (159s)
-   (i) Δa (post filter): replicate 30/50 (214s)
-   (i) Δa (post filter): replicate 40/50 (269s)
-   (i) Δa (post filter): replicate 50/50 (316s)
-   (ii) Δc = +0.01: replicate 10/50 (371s)
-   (ii) Δc = +0.01: replicate 20/50 (427s)
-   (ii) Δc = +0.01: replicate 30/50 (478s)
-   (ii) Δc = +0.01: replicate 40/50 (526s)
-   (ii) Δc = +0.01: replicate 50/50 (574s)
-   (ii) Δc = +0.02: replicate 10/50 (627s)
-   (ii) Δc = +0.02: replicate 20/50 (696s)
-   (ii) Δc = +0.02: replicate 30/50 (761s)
-   (ii) Δc = +0.02: replicate 40/50 (830s)
-   (ii) Δc = +0.02: replicate 50/50 (881s)
-   (ii) Δc = +0.03: replicate 10/50 (938s)
-   (ii) Δc = +0.03: replicate 20/50 (989s)
-   (ii) Δc = +0.03: replicate 30/50 (1055s)
-   (ii) Δc = +0.03: replicate 40/50 (1110s)
-   (ii) Δc = +0.03: replicate 50/50 (1162s)
-   (ii) Δc = −0.02: replicate 10/50 (1227s)
-   (ii) Δc = −0.02: replicate 20/50 (1284s)
-   (ii) Δc = −0.02: replicate 30/50 (1332s)
-   (ii) Δc = −0.02: replicate 40/50 (1383s)
-   (ii) Δc = −0.02: replicate 50/50 (1448s)
-   (iii) Δa and Δc = +0.02: replicate 10/50 (1517s)
-   (iii) Δa and Δc = +0.02: replicate 20/50 (1585s)
-   (iii) Δa and Δc = +0.02: replicate 30/50 (1640s)
-   (iii) Δa and Δc = +0.02: replicate 40/50 (1698s)
-   (iii) Δa and Δc = +0.02: replicate 50/50 (1763s)
-   (iv) a_x − a_y = 0.03 with Δa: replicate 10/50 (1824s)
-   (iv) a_x − a_y = 0.03 with Δa: replicate 20/50 (1884s)
-   (iv) a_x − a_y = 0.03 with Δa: replicate 30/50 (1933s)
-   (iv) a_x − a_y = 0.03 with Δa: replicate 40/50 (1985s)
-   (iv) a_x − a_y = 0.03 with Δa: replicate 50/50 (2038s)
+   solved: β̄ = 185.4, σ_q = 0.2637, β̄_post = 105.7, δ = 82.6; check draws: pre a = 0.8637, |q| = 0.2844; post a = 0.8483; asymmetry a_x − a_y = 0.0300 (106s)
+   (i) Δa (post filter): replicate 10/50 (205s)
+   (i) Δa (post filter): replicate 20/50 (311s)
+   (i) Δa (post filter): replicate 30/50 (423s)
+   (i) Δa (post filter): replicate 40/50 (568s)
+   (i) Δa (post filter): replicate 50/50 (683s)
+   (ii) Δc = +0.01: replicate 10/50 (809s)
+   (ii) Δc = +0.01: replicate 20/50 (919s)
+   (ii) Δc = +0.01: replicate 30/50 (1050s)
+   (ii) Δc = +0.01: replicate 40/50 (1144s)
+   (ii) Δc = +0.01: replicate 50/50 (1238s)
+   (ii) Δc = +0.02: replicate 10/50 (1352s)
+   (ii) Δc = +0.02: replicate 20/50 (1482s)
+   (ii) Δc = +0.02: replicate 30/50 (1581s)
+   (ii) Δc = +0.02: replicate 40/50 (1714s)
+   (ii) Δc = +0.02: replicate 50/50 (1842s)
+   (ii) Δc = +0.03: replicate 10/50 (1966s)
+   (ii) Δc = +0.03: replicate 20/50 (2088s)
+   (ii) Δc = +0.03: replicate 30/50 (2251s)
+   (ii) Δc = +0.03: replicate 40/50 (2387s)
+   (ii) Δc = +0.03: replicate 50/50 (2515s)
+   (ii) Δc = −0.02: replicate 10/50 (2660s)
+   (ii) Δc = −0.02: replicate 20/50 (2810s)
+   (ii) Δc = −0.02: replicate 30/50 (2953s)
+   (ii) Δc = −0.02: replicate 40/50 (3062s)
+   (ii) Δc = −0.02: replicate 50/50 (3138s)
+   (iii) Δa and Δc = +0.02: replicate 10/50 (3220s)
+   (iii) Δa and Δc = +0.02: replicate 20/50 (3308s)
+   (iii) Δa and Δc = +0.02: replicate 30/50 (3387s)
+   (iii) Δa and Δc = +0.02: replicate 40/50 (3466s)
+   (iii) Δa and Δc = +0.02: replicate 50/50 (3534s)
+   (iv) a_x − a_y = 0.03 with Δa: replicate 10/50 (3611s)
+   (iv) a_x − a_y = 0.03 with Δa: replicate 20/50 (3698s)
+   (iv) a_x − a_y = 0.03 with Δa: replicate 30/50 (3767s)
+   (iv) a_x − a_y = 0.03 with Δa: replicate 40/50 (3834s)
+   (iv) a_x − a_y = 0.03 with Δa: replicate 50/50 (3903s)
 # Calibration of the residual diagnostic on the band-passed generator (partB17b_calibration_filtered.py)
-git=c25a310
+git=d5a65bd
 
 Generator of review_v2_residual_null.py: smooth 0.0064–0.080 Hz band-pass (0.004 Hz cosine edges) with tilt exp(−β f²) applied to two white noises of correlation q, circularly over the run's 840 samples; per pair β ~ N(β̄, 0.5 β̄) (clipped below at 5), q ~ N(0, σ_q) (clipped to ±0.95). Solved once on calibration draws of 3000 pairs × 3000 samples (W = 60): β̄ = 185.4 (window-level mean a 0.8637, target 0.8632), σ_q = 0.2637 (mean |q| 0.2844, target 0.2842), β̄_post = 105.7 (mean a 0.8483, target 0.8482), δ = 82.6 (mean a_x − a_y 0.0300, target 0.03); held fixed. N_PAIRS = 300 pairs per subject, 14 subjects × 2 runs × 840 samples; the DMT run's white noises filtered at the pre and at the post parameters (β scaled by β̄_post/β̄) and spliced at sample 300; (ii): x_t ← x_t + c y_(t−1), y_t ← y_t + c x_(t−1) on the post samples, each post segment rescaled to its SD before the coupling; (iv): x at β + δ, y at β − δ. W = 60; bins of 30; 50 replicates per condition; bootstrap 1000 draws; sign-flip exact over 2^14; seed 20261120. DiD = windows 6–14 minus 1–4 (bins 11–28 minus 1–8), DMT minus placebo, mean over subjects; ± is the SD over replicates. At the global fit the run-level prediction (constant across a run's bins; its DiD is zero and the residual DiD equals the observed DiD) and the period-level prediction ((a_x, a_y, q) measured on the pre and the post samples separately) are both tabulated, as in B17.
 
@@ -47,13 +47,13 @@ Generator of review_v2_residual_null.py: smooth 0.0064–0.080 Hz band-pass (0.0
 | (i) Δa (post filter) | W60 | 1.1883 | -0.0940 ± 0.0028 | -0.0966 ± 0.0027 | +0.0027 ± 0.0014 | 0.136; 0.54 | -0.00005 ± 0.00030 | +0.00641 ± 0.00104 |
 | (i) Δa (post filter) | global (run-level prediction) | 1.3262 | -0.1046 ± 0.0035 | +0.0000 ± 0.0000 | -0.1046 ± 0.0035 | 0.000; 1.00 | — | — |
 | (i) Δa (post filter) | global (period-level prediction) | 1.3262 | -0.1046 ± 0.0035 | -0.1089 ± 0.0030 | +0.0043 ± 0.0020 | 0.116; 0.62 | — | — |
-| (ii) Δc = +0.01 | W60 | 1.1878 | +0.0001 ± 0.0029 | -0.0002 ± 0.0025 | +0.0003 ± 0.0011 | 0.464; 0.04 | +0.00025 ± 0.00031 | -0.00021 ± 0.00096 |
+| (ii) Δc = +0.01 | W60 | 1.1878 | +0.0001 ± 0.0029 | -0.0002 ± 0.0025 | +0.0003 ± 0.0011 | 0.465; 0.04 | +0.00025 ± 0.00031 | -0.00021 ± 0.00096 |
 | (ii) Δc = +0.01 | global (run-level prediction) | 1.3349 | -0.0003 ± 0.0034 | -0.0000 ± 0.0000 | -0.0003 ± 0.0034 | 0.494; 0.08 | — | — |
 | (ii) Δc = +0.01 | global (period-level prediction) | 1.3349 | -0.0003 ± 0.0034 | -0.0002 ± 0.0024 | -0.0002 ± 0.0021 | 0.459; 0.06 | — | — |
 | (ii) Δc = +0.02 | W60 | 1.1878 | +0.0002 ± 0.0025 | +0.0004 ± 0.0026 | -0.0002 ± 0.0012 | 0.517; 0.04 | +0.00045 ± 0.00024 | -0.00002 ± 0.00103 |
 | (ii) Δc = +0.02 | global (run-level prediction) | 1.3353 | -0.0001 ± 0.0034 | +0.0000 ± 0.0000 | -0.0001 ± 0.0034 | 0.569; 0.02 | — | — |
 | (ii) Δc = +0.02 | global (period-level prediction) | 1.3353 | -0.0001 ± 0.0034 | -0.0000 ± 0.0028 | -0.0001 ± 0.0020 | 0.477; 0.04 | — | — |
-| (ii) Δc = +0.03 | W60 | 1.1883 | -0.0009 ± 0.0028 | -0.0005 ± 0.0026 | -0.0004 ± 0.0012 | 0.453; 0.06 | +0.00069 ± 0.00024 | -0.00018 ± 0.00096 |
+| (ii) Δc = +0.03 | W60 | 1.1883 | -0.0009 ± 0.0028 | -0.0005 ± 0.0026 | -0.0004 ± 0.0012 | 0.452; 0.06 | +0.00069 ± 0.00024 | -0.00018 ± 0.00096 |
 | (ii) Δc = +0.03 | global (run-level prediction) | 1.3361 | -0.0010 ± 0.0041 | -0.0000 ± 0.0000 | -0.0010 ± 0.0041 | 0.440; 0.16 | — | — |
 | (ii) Δc = +0.03 | global (period-level prediction) | 1.3361 | -0.0010 ± 0.0041 | -0.0005 ± 0.0028 | -0.0005 ± 0.0022 | 0.390; 0.08 | — | — |
 | (ii) Δc = −0.02 | W60 | 1.1879 | -0.0002 ± 0.0026 | +0.0000 ± 0.0024 | -0.0002 ± 0.0012 | 0.469; 0.04 | -0.00044 ± 0.00030 | +0.00019 ± 0.00077 |
@@ -75,4 +75,4 @@ Generator of review_v2_residual_null.py: smooth 0.0064–0.080 Hz band-pass (0.0
 | (iv) − (i), pre level | -0.0463 | — | — | -0.0021 | — | -0.0190 | — |
 
 Predictions recorded (pre-run entry, B17b): the W = 60 sts level near the null's 1.18 rather than B17's 0.715; under (i) the sts DiD between −0.07 and −0.10 (the data's is −0.0809) and the residual DiD near the data's own null, +0.004 to +0.008; (ii) residual negative for either sign of Δc; (iii) additive; (iv) level lowered, residual near its (i) value; the population reference for B17 (i): a change of about −0.08 (1.19 → 1.11), and for (iv) − (i) a level difference of about −0.045. Rule: where B17 and B17b differ, the main text quotes B17b (the generator closer to the data) and S3 Text carries both; the finite-sample null of Results 4 is superseded by B17b where they overlap; the null's own DiD (+0.0054, review_v2_residual_null.log) is quoted beside B17b's (i). Each condition's row is read against these in the outcome entry.
-done (2038s)
+done (3904s)

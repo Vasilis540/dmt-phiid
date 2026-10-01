@@ -1,4 +1,4 @@
-# partB16_prewhiten.py; chosen AR order per region and run; git=c25a310
+# partB16_prewhiten.py; chosen AR order per region and run; git=d5a65bd
 whitening,variant,subject,run,region_index,p
 arp,ts_gsr,1,DMT,0,5
 arp,ts_gsr,1,DMT,1,5

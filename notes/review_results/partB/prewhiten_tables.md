@@ -1,5 +1,5 @@
 # The atoms and the DMT contrast after prewhitening (partB16_prewhiten.py)
-git=c25a310
+git=d5a65bd
 
 Whitening per region and run: 'arp' = residuals of the region's AR(p) fit, p by BIC over 1–5; 'ar1' = p = 1. The first p TRs of each run are dropped (non-finite). Atoms as partB2_ccs_run.py (MMI: PairPhiID.atoms_mean / atoms_bins; CCS: atoms_ccs, phyid's mask); inference as the primary (rev_inference.Engine, seed 20261120); the diagnostic as partB4 (per-pair AR(1) prediction from the whitened window's a_x, a_y, q). Level = DMT pre-injection (windows 1–4; bins 1–8); DiD = post minus pre, DMT minus placebo.
 
@@ -26,7 +26,7 @@ Whitening per region and run: 'arp' = residuals of the region's AR(p) fit, p by 
 | TDMI (sum) | +0.5762 | -0.0321 | +0.5762 | -0.0321 |
 
 Whitened series: mean lag-1 autocorrelation, DMT pre-injection +0.2625; its DiD -0.0544 (raw series -0.0146); per subject r(MMI sts DiD, whitened autocorrelation DiD) = +0.495; r(MMI sts DiD, raw autocorrelation DiD) = +0.552; r(MMI sts DiD whitened, MMI sts DiD raw) = +0.473; raw MMI sts DiD -0.0809.
-Diagnostic on the whitened series (W = 60): observed sts level 0.2766, predicted 0.2426, residual +0.0341; DiD observed -0.0262, predicted -0.0192, residual -0.0070 (negative in 8/14).
+Diagnostic on the whitened series (W = 60): observed sts level 0.2766, predicted 0.2438, residual +0.0328; DiD observed -0.0262, predicted -0.0181, residual -0.0080 (negative in 8/14).
 
 ## arp ts_gsr global-bins: sixteen atoms, DMT pre-injection level and primary DiD, MMI and CCS (nats)
 
@@ -77,7 +77,7 @@ Chosen AR orders (arp ts_gsr), count over 115 regions × 28 runs: p = 1: 0, p = 
 | TDMI (sum) | +0.5860 | -0.0329 | +0.5860 | -0.0329 |
 
 Whitened series: mean lag-1 autocorrelation, DMT pre-injection +0.2583; its DiD -0.0418 (raw series -0.0216); per subject r(MMI sts DiD, whitened autocorrelation DiD) = +0.429; r(MMI sts DiD, raw autocorrelation DiD) = +0.426; r(MMI sts DiD whitened, MMI sts DiD raw) = +0.353; raw MMI sts DiD -0.1031.
-Diagnostic on the whitened series (W = 60): observed sts level 0.2822, predicted 0.2246, residual +0.0576; DiD observed -0.0274, predicted -0.0132, residual -0.0143 (negative in 9/14).
+Diagnostic on the whitened series (W = 60): observed sts level 0.2822, predicted 0.2266, residual +0.0555; DiD observed -0.0274, predicted -0.0112, residual -0.0163 (negative in 9/14).
 
 ## arp ts_demean global-bins: sixteen atoms, DMT pre-injection level and primary DiD, MMI and CCS (nats)
 
