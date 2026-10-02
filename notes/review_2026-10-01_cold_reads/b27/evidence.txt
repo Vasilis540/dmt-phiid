@@ -1,0 +1,14 @@
+The run of B27, B28, B29 and B16c (notes/review_2026-10-01_cold_reads/b27/b27_start.sh, the unit runb27)
+commit of the run: 13e7299 (13e729908582d3127fb262f013b0427270991f6c)
+started (local time): 2026-10-01 23:37:10; the unit's log last written: 2026-10-02 00:35:10
+python/numpy/scipy/matplotlib: 3.12.3 2.5.3 1.18.1 3.11.1; pip freeze identical to requirements.lock.txt
+data clone external/DMT_NCT at 77af7aa
+the unit's step lines and its exit line:
+=== 2026-10-01 23:37:10 notes/partB27_baseline_gap.py -> notes/review_results/partB/baseline_gap_run.log
+=== 2026-10-01 23:37:18 notes/partB28_matched_slope.py -> notes/review_results/partB/matched_slope_run.log
+=== 2026-10-02 00:01:07 notes/partB29_censoring.py -> notes/review_results/partB/censoring_run.log
+=== 2026-10-02 00:01:08 notes/partB16c_prewhiten_fixed.py -> notes/review_results/partB/prewhiten_fixed_run.log
+=== unit exit 0
+heartbeat lines: 11; charger DISCONNECTED in 8 of them; largest gap between lines: 300 s
+git status before the run (b27_prestatus.txt): 0 lines
+outputs: 29 files, sha256 in outputs.sha256; committed as the run wrote them by b27_commit.sh
