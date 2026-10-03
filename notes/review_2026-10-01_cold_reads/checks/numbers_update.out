@@ -1,0 +1,408 @@
+The update of manuscript/main_text_numbers.csv for the revision of 1–2 October 2026: what was done, with the lists
+from which its counts can be recounted (the table before the update is the file at the parent of the revision's text
+commit).
+
+Committed rows 1,198; rows after the update 1,381 = 1,198 − 264 deleted + 447 added.
+
+How a committed row was carried. The committed and the revised main text were split into paragraphs (blocks between
+blank lines) and the paragraphs aligned. A row of an unchanged paragraph keeps its place. In a changed paragraph the
+two texts were aligned character by character; a row is carried when its number's characters are unchanged, the text
+on one side of it is unchanged and the token at that place in the revised text is the row's number (a token is a whole
+number as it stands in the text, its sign included). A row not carried that way is carried by one of two fallbacks,
+listed below, or deleted. Every number token of the revised text without a row then received a new row, apart from the
+kinds the table does not list: 95 citation years; the 13 day numbers and 11 years of the dates; 70 cross-references by
+number in the running text and the captions, to the paper's own sections, tables and figures (25 after "Results", 16
+after "Table" and 14 after "Fig", 10 of these before a panel letter, as in "Fig 1a") and to equations, definitions, an
+example, figures and a table of cited works (7, 3, 1, 3 and 1, the last "their Table 1" of the Discussion); the 10
+numbers of the captions' own heads (Fig 1 to Fig 6, Table 1 to Table 4); and the Zenodo DOI (1). A group of digits
+that follows a letter directly is not a number token: the 148 in the names of the supporting items (S1 Text to S20
+Table), the 4 of "Fig. S4", a figure of a cited work's appendix, and the 540 of the user name in the repository's
+address. The digits of commit identifiers and the numbers inside code spans are not tokens of the text either, and the
+headings are not covered: their 9 number tokens (0, 1, 2, 3, 4, 5, 6, 7: the Results sections' numbers, "lag-0" and
+"AR(1)") have no row; the title's AR(1) has one.
+
+Rows deleted: 264. By class: 161 of the former Table 3's caption and body (the table is now the residual table of S3
+Text §6); 64 of numbers the revision takes out of their paragraph (each is listed below with where it now is); 7 of
+numbers that the rewritten sentences no longer state and that are at no other place in that form (each is listed below
+with what became of it); 28 of labels (section numbers, dates, names, formula constants) that the rewritten sentences
+no longer carry, which have no place to give; 4 of numbers that are still in their paragraph, in a rewritten sentence,
+where the token has a new row with its own source.
+
+Rows added: 447: 277 data rows (source file, line and held string), 62 design and 3 literature rows (file, line and
+anchor, no held string), 19 derived rows (the derivation in place of a file) and 86 label rows (no source). Numbers
+changed in place: 4 (S19 Table's count in Methods, Pre-registration and deviations: 56 to 67, 28 to 36, 14 to 15, 14
+to 16).
+
+Locators: 17 moved to the lines that the revision's edits of their source files moved them to (5 in
+manuscript/supplementary.md, 1 in notes/partB5_literature_v2.md, 11 in scripts/15_figures_v2.py; 4 held strings and 5
+anchors re-read on edited lines). Corrected where the audit of the revision's text found them wrong: 13 anchors of
+committed rows that were not on the line they name (the values of those lines changed in B26's run); 19 committed rows
+of N = 14 that named the line of column names of `results/primary_b_ts_gsr_win60.csv` (now line 48 of
+`manuscript/analysis_record.md`, which gives the shape of the data), a line the 14 added rows of N = 14 take too; and
+1 held string of a committed row taken from the wrong cell of its line (the Discussion's 0.003: the line's +0.0027,
+not its 0.0028). One committed note reworded (1 row: the grid step of Fig 1, whose note called the surface of Fig 1a
+the scope map, the plans' name). Corrected after the check of the corrected revision, all in committed rows: 13 rows
+of the window sets and of the 14 subjects that named line 6 of `notes/review_results/partB/family_atoms_tables.md`, a
+heading (now its line 4, which states them); 4 rows of the window sets and 1 of N = 14 in Table 2's caption that named
+line 189 of the record (now the record's lines on the window sets and on the shape of the data); 5 rows of the name
+AR(1), 3 of "95 %" and 1 of "lag-1" that were design rows on those lines (now label rows); the row of "BIC over 1–5"
+in Methods (now line 4 of `prewhiten_tables.md`); 5 label notes that described another token of their sentence; the
+note of the row on rsHRF 1.7.0, which sits on the token 1.7; the held string of 1 bound row (6.7e-16 for 5.6e-16, the
+value its note names); and the notes of 2 rows that named Table 3 for values now in the residual table of S3 Text §6.
+Corrected after a second check: 3 more label notes that described another token of their sentence (the 0 of "q = 0" in
+Recommendations; the two 1s of "x_{t+1}, y_{t+1}" in Methods); the held string of 1 committed row, Results 2's 0.83,
+which had taken the hyphen of the range "0.680-0.830" of its line for a minus sign (now 0.830, so that check_numbers
+no longer flags the row); and the note of the 3 committed and 14 added rows of N = 14 that read "the per-subject rows
+of the primary result", which describes neither the record's line they cite nor the result file (now "the shape of the
+data: 14 subjects × 2 conditions"). After the update the anchor and the held string of every row with a line locator
+are on the line it names, an anchor's prefix ("@La-b|": the row's line is one of lines a to b of its file, the rows of
+a table or a single line; "@pct|": a value printed as a percentage) and the words "bound on" of a bound row's held
+string being the table's notation and not text of the line.
+
+Contexts recomputed: 281 (rows whose surrounding text the edits reached). Rows relabelled (section or paragraph): 0.
+Occurrences recounted in reading order.
+
+Rows carried by a fallback: 24. 'neighbouring text': the row's number is a token of the revised paragraph with the
+same twelve characters before or after it as in the committed paragraph, at one free place only. 'only token': the
+number was once in the committed paragraph and is once in the revised one, and the row is not a label. Each was read
+against its committed sentence to confirm that the number is the same quantity from the same source:
+
+- −0.081 | Abstract, paragraph 1 | only token
+    committed: …l fits on the same data had shown a decrease. MMI-sts fell (−0.081 nats [−0.132, −0.031], p = 0.004, 13 of…
+    revised:   …MMI-sts fell relative to placebo (difference-in-differences −0.081 [−0.132, −0.031], p = 0.004, 13 of 14;…
+- −0.094 | Abstract, paragraph 1 | only token
+    committed: …−0.132, −0.031], p = 0.004, 13 of 14) with r₁, close to the −0.094 of a generator with the data's spectrum…
+    revised:   …or the runs' pre-injection gap) with r₁, near a generator's −0.094 for that fall; across subjects the two…
+- 0.95 | Abstract, paragraph 1 | only token
+    committed: …nges share most of their reliable variance (disattenuated r 0.95 [0.62, 0.99]). The regional sts map fol…
+    revised:   …ences covary (cross-half r 0.69 [0.26, 0.89], disattenuated 0.95), partly through that gap. Regional sts…
+- 0.694 | Results / 2. The DMT contrast, paragraph 3 | only token
+    committed: …erse, is 0.742 [0.349, 0.913] and 0.645 [0.174, 0.876], mean 0.694 (approximately [0.258, 0.895]), agains…
+    revised:   …one half of the windows against the r₁ DiD on the other, is 0.694 on average (approximately [0.258, 0.895…
+- −0.064 | Results / 2. The DMT contrast, paragraph 3 | only token
+    committed: …arry much of the spread: without the one whose r₁ fell most (−0.064) or the one whose r₁ rose most (+0.024…
+    revised:   …arry much of the spread, subject 8 (the largest fall of r₁, −0.064; its DMT run holds the mean-filled parc…
+- +0.024 | Results / 2. The DMT contrast, paragraph 3 | only token
+    committed: …e whose r₁ fell most (−0.064) or the one whose r₁ rose most (+0.024) the disattenuated correlation stays a…
+    revised:   …een; Methods; S3 Text §5) and subject 14 (the largest rise, +0.024): without either the disattenuated corr…
+- 6.1 | Results / 2. The DMT contrast, paragraph 3 | only token
+    committed: …r of Results 4 gives −0.0944 for a fall of 0.0154 in pair r₁ (6.1 per unit), and AR(1) pairs 3.1 (S13 T…
+    revised:   …etween the AR(1) pairs' 3.1 and the band-passed generator's 6.1 (Results 4; S13 Table); across subjects…
+- 3.1 | Results / 2. The DMT contrast, paragraph 3 | only token
+    committed: …r a fall of 0.0154 in pair r₁ (6.1 per unit), and AR(1) pairs 3.1 (S13 Table). Across subjects the sts…
+    revised:   …0.61; Methods) and 5.2 on pair r₁, between the AR(1) pairs' 3.1 and the band-passed generator's 6.1 (Re…
+- 0.745 | Results / 3. The regional map, paragraph 1 | only token
+    committed: …r₁ accounts for three-quarters of the map's variance (r² = 0.745; Fig 4a). The map's slope on regional r…
+    revised:   …dowed, windows 1–4) at r = 0.863 over the 115 regions (r² = 0.745, Spearman 0.835; Fig 4a) and at r = 0.8…
+- 16.933 | Results / 3. The regional map, Fig 4, caption | neighbouring text
+    committed: …): the eight-class one-way F is 8.146, spin p 0.0009, against 16.933, spin p 0.0564, for the unpartialled…
+    revised:   …predicted for it; S19 Table), and for the unpartialled map 16.933, spin p 0.0564, two p values that are n…
+- 0.0564 | Results / 3. The regional map, Fig 4, caption | neighbouring text
+    committed: …ass one-way F is 8.146, spin p 0.0009, against 16.933, spin p 0.0564, for the unpartialled map; the residu…
+    revised:   …it; S19 Table), and for the unpartialled map 16.933, spin p 0.0564, two p values that are not comparable (…
+- −0.700 | Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry, paragraph 2 | only token
+    committed: …ct relation holds across split halves on the primary variant (−0.700 and −0.385), not on the sensitivity v…
+    revised:   …tes; the per-subject relation's cross-half correlations are −0.700 and −0.385 on the primary variant and −…
+- −0.385 | Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry, paragraph 2 | only token
+    committed: …holds across split halves on the primary variant (−0.700 and −0.385), not on the sensitivity variant (−0.…
+    revised:   …r-subject relation's cross-half correlations are −0.700 and −0.385 on the primary variant and −0.598 and −…
+- −0.598 | Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry, paragraph 2 | neighbouring text
+    committed: …ariant (−0.700 and −0.385), not on the sensitivity variant (−0.598 and −0.051 [−0.052 before that exclusio…
+    revised:   …rrelations are −0.700 and −0.385 on the primary variant and −0.598 and −0.051 on the sensitivity variant (…
+- −0.051 | Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry, paragraph 2 | only token
+    committed: …700 and −0.385), not on the sensitivity variant (−0.598 and −0.051 [−0.052 before that exclusion]). Since…
+    revised:   …are −0.700 and −0.385 on the primary variant and −0.598 and −0.051 on the sensitivity variant (S3 Text §6)…
+- −0.43 | Results / 6. CCS: a near-zero synergy atom, nearly flat in r₁, paragraph 1 | only token
+    committed: …with the r₁ DiD in all four variant × estimator cells (r = −0.43 to −0.27), each Fisher-z interval inclu…
+    revised:   ….98); and its per-subject DiD correlates with the r₁ DiD at −0.43 to −0.27 in the four variant × estimato…
+- −0.27 | Results / 6. CCS: a near-zero synergy atom, nearly flat in r₁, paragraph 1 | only token
+    committed: …r₁ DiD in all four variant × estimator cells (r = −0.43 to −0.27), each Fisher-z interval including zero…
+    revised:   …its per-subject DiD correlates with the r₁ DiD at −0.43 to −0.27 in the four variant × estimator cells,…
+- 0.01 | Results / 7. Remedies, paragraph 1 | only token
+    committed: …e the dependence from band-passed data. BOLD band-passed to 0.01–0.08 Hz holds 99.2 % of its power in th…
+    revised:   …r the stop-band (Table 4). At TR 2 s any series confined to 0.01–0.08 Hz has r₁ ≥ cos(2π × 0.08 Hz × 2 s…
+- 5 | Results / 7. Remedies, paragraph 1 | only token
+    committed: …siduals (p by the Bayesian information criterion, BIC, in 1–5, at the cap for 3,218 of 3,220 series)…
+    revised:   …band and keep most of the level and of the contrast; AR(p ≤ 5) residuals carry a third of their power…
+- 60 | Results / 7. Remedies, paragraph 3 | only token
+    committed: …rent covariance: on the two data-like matched pairs the W = 60 estimator returned +7 % ± 8 % and −8 %…
+    revised:   …: +7 % ± 8 % and −8 % ± 6 % of the observed contrast at W = 60 on the two data-like matched pairs, +29…
+- 840 | Results / 7. Remedies, paragraph 3 | neighbouring text
+    committed: …+7 % ± 8 % and −8 % ± 6 % of the observed contrast and the 840-sample fit +29 % and +2 % ± 2 % (S16 Ta…
+    revised:   …he two data-like matched pairs, +29 % and +2 % ± 2 % at the 840-sample fit (S16 Table; S3 Text §9); the…
+- −0.081 | Discussion / What the finding is and is not, paragraph 2 | only token
+    committed: …ith the data's spectrum gives for the same fall of pair r₁ (−0.081 against −0.094), the regional map follo…
+    revised:   …On this dataset MMI-sts fell with r₁ relative to placebo (−0.081 as a difference-in-differences, −0.054…
+- −0.094 | Discussion / What the finding is and is not, paragraph 2 | only token
+    committed: …spectrum gives for the same fall of pair r₁ (−0.081 against −0.094), the regional map follows regional r₁,…
+    revised:   …all is close to a generator's for the same fall of pair r₁ (−0.094); the regional map follows regional r₁;…
+- 12 | Materials and methods / Inference, paragraph 1 | only token
+    committed: …sher-z intervals, and slopes across subjects t intervals on 12 degrees of freedom. A phase-randomised…
+    revised:   …ts across subjects t intervals on n − 2 degrees of freedom (12 for the 14 subjects), which assume norm…
+
+Deleted rows (section | paragraph | number | class | where the number now is, or what became of it):
+
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 1 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 60 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 95 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 3 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 4 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 300 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 50 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 14 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 2 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 300 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 20 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | +0.0028 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 0.0012 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 3 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 20 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 1 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 3,000 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 0.85 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 5 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 6 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 11 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 1 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 0.85 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 3,000 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 10 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 11 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 14 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 2,980 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 2,995 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 3,000 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 20,000 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 1 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 0 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 0 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 1 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 0.03 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 0 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | −0.75 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 12 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | −1.13 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | −0.37 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | −0.74 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | −0.18 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | −0.39 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 1 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | −0.37 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | −1.58 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | −2.76 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, title and caption | 1 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 60 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.0115 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.0005 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.0226 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.01465 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.02609 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.00370 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.0155 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.00059 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.00166 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.00041 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.0182 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.0072 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.0293 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.02157 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.03314 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.01020 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.00249 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.00474 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.00026 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 0.015 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.0027 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 0.0014 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 0 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.01540 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 0.00035 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.00001 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 0.00031 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.015 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 1 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.0049 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 0.0017 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 0 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.01243 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 0.00101 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.00001 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 0.00004 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.0054 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 0 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.0146 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.02 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.02 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.0047 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 0.0006 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.0056 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 0.0006 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.0081 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.0091 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.00129 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.00134 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 0.00012 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.00387 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 0.00034 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.00405 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 0.00033 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.02 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.02 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.0068 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 0.0005 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.0091 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.0081 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.00069 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 0.00004 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.00014 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 0.00031 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.02 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.02 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.0093 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 0.0009 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.0095 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 0.0009 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.0161 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.0148 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.00092 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.00089 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 0.00004 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.00041 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.00059 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 0.00034 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.01 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.01 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.0135 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 0.0003 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.0181 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 0.0004 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.0225 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.0297 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.00023 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.00021 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 0.00002 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.00782 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 0.00011 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.00748 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 0.00010 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.03 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.0101 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 0.0002 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.0139 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.00642 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 0.00010 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.00815 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.00371 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 0.00006 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 0.9 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.0039 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 0.0001 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | +0.0047 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.00143 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 0.00003 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.00163 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | −0.00010 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | Table 3, body | 0.00005 | former Table 3 | the former Table 3's caption and body, now the residual table of S3 Text §6
+- Abstract | paragraph 1 | 1.4 | taken out of the paragraph | Results 1 and Discussion (the windowed estimator's per-SD ratio)
+- Abstract | paragraph 1 | 1 | label | a label (a section number, a date, a name, a formula constant) the rewritten sentence no longer carries
+- Abstract | paragraph 1 | 0.62 | taken out of the paragraph | S3 Text §5 and Results 2 (the disattenuated ratio's interval)
+- Abstract | paragraph 1 | 0.99 | taken out of the paragraph | S3 Text §5 and Results 2 (the disattenuated ratio's interval)
+- Abstract | paragraph 1 | 0.003 | taken out of the paragraph | Results 4 (the band-passed generator's residual DiD, 0.0027)
+- Abstract | paragraph 1 | 0.005 | taken out of the paragraph | Results 4 (the AR(1) generator's residual DiD, 0.0049)
+- Introduction | paragraph 3 | 1 | label | a label (a section number, a date, a name, a formula constant) the rewritten sentence no longer carries
+- Introduction | paragraph 3 | 2 | label | a label (a section number, a date, a name, a formula constant) the rewritten sentence no longer carries
+- Introduction | paragraph 3 | 3 | label | a label (a section number, a date, a name, a formula constant) the rewritten sentence no longer carries
+- Introduction | paragraph 3 | 0 | label | a label (a section number, a date, a name, a formula constant) the rewritten sentence no longer carries
+- Introduction | paragraph 3 | 4 | label | a label (a section number, a date, a name, a formula constant) the rewritten sentence no longer carries
+- Introduction | paragraph 3 | 5 | label | a label (a section number, a date, a name, a formula constant) the rewritten sentence no longer carries
+- Introduction | paragraph 3 | 6 | label | a label (a section number, a date, a name, a formula constant) the rewritten sentence no longer carries
+- Introduction | paragraph 3 | 7 | label | a label (a section number, a date, a name, a formula constant) the rewritten sentence no longer carries
+- Results / 1. The sixteen atoms in closed form | paragraph 10 | −0.031 | taken out of the paragraph | S3 Text §6 (the null's four-cell residual levels)
+- Results / 1. The sixteen atoms in closed form | paragraph 10 | −0.036 | taken out of the paragraph | S3 Text §6
+- Results / 1. The sixteen atoms in closed form | paragraph 10 | −0.045 | taken out of the paragraph | S3 Text §6
+- Results / 1. The sixteen atoms in closed form | paragraph 10 | −0.053 | taken out of the paragraph | S3 Text §6
+- Results / 1. The sixteen atoms in closed form | paragraph 10 | 60 | taken out of the paragraph | S3 Text §6 (W = 60 of the same sentence)
+- Results / 1. The sixteen atoms in closed form | Table 1, title and caption | 4 | no longer stated | the caption's second mention of the 4 excluded pair-windows; its first mention ('the 4 of the 2,569,560') keeps its row
+- Results / 1. The sixteen atoms in closed form | Table 1, title and caption | −0.1129 | taken out of the paragraph | S3 Text §6 (C's w3: the one printed value the exclusion moved)
+- Results / 1. The sixteen atoms in closed form | Table 1, title and caption | −0.1130 | taken out of the paragraph | S3 Text §6 (C's w3)
+- Results / 2. The DMT contrast | paragraph 1 | −0.0649 | taken out of the paragraph | Results 2, paragraph 2 (the sentence on framewise displacement), where it has a new row with the same source; also in Table 2
+- Results / 2. The DMT contrast | paragraph 1 | −0.1010 | taken out of the paragraph | Results 2, paragraph 2, as −0.0649; also in Table 2
+- Results / 2. The DMT contrast | paragraph 1 | −0.0260 | taken out of the paragraph | Results 2, paragraph 2, as −0.0649; also in Table 2
+- Results / 2. The DMT contrast | paragraph 1 | 60 | taken out of the paragraph | Table 2's caption (W = 60 of the primary statistic; the sentence on the planned test no longer repeats it)
+- Results / 2. The DMT contrast | paragraph 1 | −0.1031 | taken out of the paragraph | Table 2 (the sensitivity variant's DiD; the sentence now points to the table)
+- Results / 2. The DMT contrast | paragraph 1 | −0.1629 | taken out of the paragraph | Table 2
+- Results / 2. The DMT contrast | paragraph 1 | −0.0435 | taken out of the paragraph | Table 2
+- Results / 2. The DMT contrast | paragraph 1 | 0.0026 | taken out of the paragraph | Table 2
+- Results / 2. The DMT contrast | paragraph 1 | 14 | no longer stated | the count of the leave-one-out refits (14 per variant); the sentence now reads 'in each leave-one-out refit on each variant' (the paragraph's other 14s are of '13 of 14', of '14 of 14' and of the windows 5–14)
+- Results / 2. The DMT contrast | paragraph 3 | 0.742 | taken out of the paragraph | S3 Text §5 and Fig 3b (the two cross-half correlations; the text quotes their mean)
+- Results / 2. The DMT contrast | paragraph 3 | 0.349 | taken out of the paragraph | S3 Text §5 (the first correlation's interval, which Fig 3b does not carry)
+- Results / 2. The DMT contrast | paragraph 3 | 0.913 | taken out of the paragraph | S3 Text §5 (the first correlation's interval)
+- Results / 2. The DMT contrast | paragraph 3 | 0.645 | taken out of the paragraph | S3 Text §5 and Fig 3b
+- Results / 2. The DMT contrast | paragraph 3 | 0.174 | taken out of the paragraph | S3 Text §5 (the second correlation's interval)
+- Results / 2. The DMT contrast | paragraph 3 | 0.876 | taken out of the paragraph | S3 Text §5 (the second correlation's interval)
+- Results / 2. The DMT contrast | paragraph 3 | −0.0944 | taken out of the paragraph | Fig 3's caption (a) and S13 Table's note, as −0.09441 (the band-passed generator's sts change; the Abstract and the Discussion give it as −0.094)
+- Results / 2. The DMT contrast | paragraph 3 | 0.0154 | taken out of the paragraph | Fig 3's caption (a) and S13 Table's note, as −0.01540 (the generator's fall of pair r₁)
+- Results / 2. The DMT contrast | paragraph 3 | 1 | re-created | still in the paragraph, in a rewritten sentence: the token has a new row with its own source
+- Results / 3. The regional map | paragraph 1 | 0.0001 | no longer stated | the spin p is now written 'p < 1/10,000' (the same statement; B's W1), whose 1 and 10,000 have rows
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | paragraph 1 | 4 | label | a label (a section number, a date, a name, a formula constant) the rewritten sentence no longer carries
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | paragraph 1 | 4 | label | a label (a section number, a date, a name, a formula constant) the rewritten sentence no longer carries
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | paragraph 1 | 1 | label | a label (a section number, a date, a name, a formula constant) the rewritten sentence no longer carries
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | paragraph 1 | 0 | label | a label (a section number, a date, a name, a formula constant) the rewritten sentence no longer carries
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | paragraph 1 | 1 | label | a label (a section number, a date, a name, a formula constant) the rewritten sentence no longer carries
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | paragraph 1 | 0 | label | a label (a section number, a date, a name, a formula constant) the rewritten sentence no longer carries
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | paragraph 2 | 0.219 | taken out of the paragraph | S3 Text §6 (the value before the exclusion; B's W4)
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | paragraph 2 | 1 | label | a label (a section number, a date, a name, a formula constant) the rewritten sentence no longer carries
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | paragraph 2 | −0.052 | taken out of the paragraph | S3 Text §6 (the cross-half correlation before the exclusion, a bracketed value removed with the p value of B's W4)
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | paragraph 3 | −0.0006 | taken out of the paragraph | S3 Text §6 (the data's change of A_other)
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | paragraph 3 | −0.0017 | taken out of the paragraph | S3 Text §6 (its interval)
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | paragraph 3 | +0.0004 | taken out of the paragraph | S3 Text §6 (its interval)
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | paragraph 3 | +0.0000 | taken out of the paragraph | S3 Text §6, and S18 Table as +0.00001 (A_other's pure-autocorrelation expectation)
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | paragraph 3 | 0.0003 | taken out of the paragraph | S3 Text §6, and S18 Table as 0.00031
+- Results / 4. What the pairs' own autocorrelations and lag-0 correlations carry | paragraph 3 | 1 | label | a label (a section number, a date, a name, a formula constant) the rewritten sentence no longer carries
+- Results / 6. CCS: a near-zero synergy atom, nearly flat in r₁ | paragraph 2 | 0.0112 | no longer stated | the clause that repeated the upper limit of the sentence's interval, [−0.0093, +0.0112], whose row stays; the clause now gives the share alone (about 12 %)
+- Results / 6. CCS: a near-zero synergy atom, nearly flat in r₁ | paragraph 2 | 0.05 | no longer stated | the threshold; the sentence now gives the p values themselves (sign-flip p 0.085 or more; phase-randomised p 0.019–0.038), each with a row (S15 Table)
+- Results / 6. CCS: a near-zero synergy atom, nearly flat in r₁ | paragraph 2 | 60 | taken out of the paragraph | S15 Table (W = 60 of the same clause)
+- Results / 6. CCS: a near-zero synergy atom, nearly flat in r₁ | paragraph 2 | +0.0157 | taken out of the paragraph | S15 Table (the sensitivity variant's ΦR contrast)
+- Results / 6. CCS: a near-zero synergy atom, nearly flat in r₁ | paragraph 2 | −0.0024 | taken out of the paragraph | S15 Table
+- Results / 6. CCS: a near-zero synergy atom, nearly flat in r₁ | paragraph 2 | +0.0341 | taken out of the paragraph | S15 Table
+- Results / 6. CCS: a near-zero synergy atom, nearly flat in r₁ | paragraph 2 | 0.05 | no longer stated | the threshold; the sentence now gives the p values themselves (sign-flip p 0.085 or more; phase-randomised p 0.019–0.038), each with a row (S15 Table)
+- Results / 7. Remedies | paragraph 1 | 0.08 | re-created | still in the paragraph, in a rewritten sentence: the token has a new row with its own source
+- Results / 7. Remedies | paragraph 1 | 99.2 | taken out of the paragraph | Table 4's caption, where it has a new row with the same source
+- Results / 7. Remedies | paragraph 1 | 1 | taken out of the paragraph | Table 4's caption ('chosen by the Bayesian information criterion (BIC) in 1–5'), where it has a new row with the same source (the paragraph's other 1s are the name AR(1))
+- Results / 7. Remedies | paragraph 1 | 3,218 | taken out of the paragraph | Table 4's caption, where it has a new row with the same source
+- Results / 7. Remedies | paragraph 1 | 3,220 | taken out of the paragraph | Table 4's caption, where it has a new row with the same source
+- Results / 7. Remedies | paragraph 1 | 0.26 | taken out of the paragraph | Table 4 (the whitened r₁, 0.263)
+- Results / 7. Remedies | paragraph 1 | 34 | taken out of the paragraph | Table 4 (33.8 %)
+- Results / 7. Remedies | paragraph 1 | 0.1 | taken out of the paragraph | Table 4 (0.1 %)
+- Results / 7. Remedies | paragraph 1 | 0.22 | taken out of the paragraph | Table 4 (0.2202)
+- Results / 7. Remedies | paragraph 1 | −0.026 | taken out of the paragraph | Table 4 (−0.0262 [−0.0636, +0.0107])
+- Results / 7. Remedies | paragraph 1 | −0.064 | taken out of the paragraph | Table 4 (−0.0636)
+- Results / 7. Remedies | paragraph 1 | +0.011 | taken out of the paragraph | Table 4 (+0.0107)
+- Results / 7. Remedies | paragraph 1 | 0.14 | taken out of the paragraph | Table 4 (0.1406)
+- Results / 7. Remedies | paragraph 1 | 0.75 | taken out of the paragraph | Table 4 (0.751)
+- Results / 7. Remedies | paragraph 1 | −0.062 | taken out of the paragraph | Table 4 (−0.0620)
+- Results / 7. Remedies | paragraph 1 | 0.0006 | taken out of the paragraph | Table 4 (0.0006)
+- Results / 7. Remedies | paragraph 1 | 42 | taken out of the paragraph | S3 Text §8, as 41.8 % (the first of the two false-positive rates of Cliff et al., as their text gives it)
+- Results / 7. Remedies | paragraph 1 | 88 | taken out of the paragraph | S3 Text §8 (over 88 %, the second rate)
+- Results / 7. Remedies | paragraph 3 | 2 | label | a label (a section number, a date, a name, a formula constant) the rewritten sentence no longer carries
+- Discussion / What the finding is and is not | paragraph 2 | −1.13 | taken out of the paragraph | Results 4, and Table 3 as −1.133 (the slope's t interval)
+- Discussion / What the finding is and is not | paragraph 2 | −0.37 | taken out of the paragraph | Results 4, and Table 3 as −0.373
+- Discussion / What the finding is and is not | paragraph 2 | 1 | label | a label (a section number, a date, a name, a formula constant) the rewritten sentence no longer carries
+- Discussion / The literature | paragraph 2 | 0.97 | taken out of the paragraph | S3 Text §10 (the ideal-band-pass r₁ at TR 0.72 s)
+- Discussion / The literature | paragraph 2 | 32.8 | taken out of the paragraph | S3 Text §10
+- Discussion / The literature | paragraph 2 | 2 | no longer stated | the clause 'the exposure is not specific to TR 2 s data' is not carried; the sentence keeps that the exposure is almost the same at every TR (S3 Text §4, §10), and the dataset's TR stays in Limitations and Methods
+- Materials and methods / Inference | paragraph 1 | 0.05 | re-created | still in the paragraph, in a rewritten sentence: the token has a new row with its own source
+- Materials and methods / Remedies | paragraph 1 | 1 | re-created | still in the paragraph, in a rewritten sentence: the token has a new row with its own source
+- Materials and methods / Literature search | paragraph 1 | 20 | label | a label (a section number, a date, a name, a formula constant) the rewritten sentence no longer carries
+- Materials and methods / Use of AI tools | paragraph 1 | 18 | label | a label (a section number, a date, a name, a formula constant) the rewritten sentence no longer carries
+- Materials and methods / Use of AI tools | paragraph 1 | 23 | label | a label (a section number, a date, a name, a formula constant) the rewritten sentence no longer carries
+- Materials and methods / Use of AI tools | paragraph 1 | 28 | taken out of the paragraph | S5 Text §4 (the 28-second test run of 20 September 2026 on the copy of the data that a session held by accident; the statement now points there for both occasions on which a session computed on the data)
+- Materials and methods / Use of AI tools | paragraph 1 | 20 | label | a label (a section number, a date, a name, a formula constant) the rewritten sentence no longer carries
+- Data and code availability | paragraph 1 | 0 | label | a label (a section number, a date, a name, a formula constant) the rewritten sentence no longer carries
+- Data and code availability | paragraph 1 | 5 | label | a label (a section number, a date, a name, a formula constant) the rewritten sentence no longer carries
+- Data and code availability | paragraph 1 | 6 | label | a label (a section number, a date, a name, a formula constant) the rewritten sentence no longer carries
+- Data and code availability | paragraph 1 | 8 | taken out of the paragraph | S5 Text §4 (the wall-clock of the unit of 23 September 2026; A's m13)
+- Data and code availability | paragraph 1 | 10 | taken out of the paragraph | S5 Text §4 (10⁻¹⁶, the level of the differences in a separate session's re-run of the data-free computations of 23 September 2026; A's m13)
+- Data and code availability | paragraph 1 | 6 | label | a label (a section number, a date, a name, a formula constant) the rewritten sentence no longer carries
+- Data and code availability | paragraph 1 | 225 | taken out of the paragraph | S5 Text §4 (the wall-clock of B26's run; A's m13)
+- Data and code availability | paragraph 1 | 6 | label | a label (a section number, a date, a name, a formula constant) the rewritten sentence no longer carries

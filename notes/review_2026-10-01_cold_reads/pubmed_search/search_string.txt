@@ -1,7 +1,9 @@
 PubMed (https://pubmed.ncbi.nlm.nih.gov/), run by V.S. on 1 October 2026 with the string below, as the planning session
 gave it to him; the export of its results, "Save" as CSV, is pubmed_search.csv (11 records). Record: "The cold reads
-of 1 October 2026", the paragraph on the literature search. The string's third tag, "[all Title/Abstract]", is not a
-PubMed field tag; how PubMed read the string (the query's "Search details") is to be added here in the revision that
-follows the run of B27, B28, B29 and B16c.
+of 1 October 2026", the paragraph on the literature search. A second search, for applications of ΦID to psychedelic
+data of any modality, was run by V.S. on 2 October 2026: its string, its export (pubmed_psychedelic_search.csv,
+2 records) and the screening are in psychedelic_phiid_search.md. The string's third tag, "[all Title/Abstract]", is not a
+PubMed field tag; how PubMed read the string (the query's "Search details") was not kept at the time of the
+search and is not recorded here; the string as entered, below, is the record of the search.
 
 ("integrated information decomposition"[Title/Abstract] OR PhiID[Title/Abstract] OR ((synergy OR synergistic) AND (redundancy OR redundant) AND ("information decomposition" OR "mutual information" OR "information theory")) [all Title/Abstract]) AND (fMRI OR "functional MRI" OR "functional magnetic resonance" OR BOLD)

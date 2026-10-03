@@ -1,0 +1,103 @@
+# derived_r24.py; git=8bd189e
+1. B16c, inverted sign-flip 95 % intervals (notes/review_results/inference_rows_prewhiten_fixed.pkl, field did_subjects, primary set); mean [lo, hi], exact p, negative/14
+   prewhiten_fixed ar10 MMI sts ts_gsr W60: -0.0191 [-0.0285, -0.0098], p = 0.0002, 13/14 (CSV did_p 0.0002, n_neg 13)
+   prewhiten_fixed ar10 CCS sts ts_gsr W60: -0.0100 [-0.0154, -0.0046], p = 0.0018, 13/14 (CSV did_p 0.0018, n_neg 13)
+   prewhiten_fixed ar10 MMI xtx+yty ts_gsr W60: -0.0229 [-0.0409, -0.0053], p = 0.0077, 11/14 (CSV did_p 0.0077, n_neg 11)
+   prewhiten_fixed ar10 autocorr ts_gsr W60: -0.0733 [-0.1411, -0.0055], p = 0.0331, 11/14 (CSV did_p 0.0331, n_neg 11)
+   prewhiten_fixed ar10 MMI sts ts_gsr global-bins: -0.0212 [-0.0327, -0.0099], p = 0.0007, 12/14 (CSV did_p 0.0007, n_neg 12)
+   prewhiten_fixed ar10 CCS sts ts_gsr global-bins: -0.0082 [-0.0133, -0.0031], p = 0.0054, 10/14 (CSV did_p 0.0054, n_neg 10)
+   prewhiten_fixed ar10 MMI xtx+yty ts_gsr global-bins: -0.0160 [-0.0366, +0.0029], p = 0.1156, 10/14 (CSV did_p 0.1156, n_neg 10)
+   prewhiten_fixed ar10 autocorr ts_gsr global-bins: -0.1032 [-0.1926, -0.0138], p = 0.0234, 11/14 (CSV did_p 0.0234, n_neg 11)
+   prewhiten_fixed ar10 MMI sts ts_demean W60: -0.0256 [-0.0375, -0.0138], p = 0.0004, 13/14 (CSV did_p 0.0004, n_neg 13)
+   prewhiten_fixed ar10 CCS sts ts_demean W60: -0.0138 [-0.0242, -0.0035], p = 0.0132, 11/14 (CSV did_p 0.0132, n_neg 11)
+   prewhiten_fixed ar10 MMI xtx+yty ts_demean W60: -0.0125 [-0.0239, -0.0011], p = 0.0338, 9/14 (CSV did_p 0.0338, n_neg 9)
+   prewhiten_fixed ar10 autocorr ts_demean W60: -0.0626 [-0.1295, +0.0032], p = 0.0602, 10/14 (CSV did_p 0.0602, n_neg 10)
+   prewhiten_fixed ar10 MMI sts ts_demean global-bins: -0.0329 [-0.0481, -0.0180], p = 0.0004, 13/14 (CSV did_p 0.0004, n_neg 13)
+   prewhiten_fixed ar10 CCS sts ts_demean global-bins: -0.0188 [-0.0293, -0.0083], p = 0.0018, 13/14 (CSV did_p 0.0018, n_neg 13)
+   prewhiten_fixed ar10 MMI xtx+yty ts_demean global-bins: -0.0103 [-0.0214, +0.0004], p = 0.0583, 9/14 (CSV did_p 0.0583, n_neg 9)
+   prewhiten_fixed ar10 autocorr ts_demean global-bins: -0.0634 [-0.1449, +0.0158], p = 0.1123, 10/14 (CSV did_p 0.1123, n_neg 10)
+   prewhiten_fixed ar20 MMI sts ts_gsr W60: -0.0127 [-0.0203, -0.0052], p = 0.0002, 13/14 (CSV did_p 0.0002, n_neg 13)
+   prewhiten_fixed ar20 CCS sts ts_gsr W60: -0.0098 [-0.0148, -0.0046], p = 0.0021, 13/14 (CSV did_p 0.0021, n_neg 13)
+   prewhiten_fixed ar20 MMI xtx+yty ts_gsr W60: -0.0060 [-0.0098, -0.0022], p = 0.0037, 11/14 (CSV did_p 0.0037, n_neg 11)
+   prewhiten_fixed ar20 autocorr ts_gsr W60: -0.0927 [-0.1497, -0.0367], p = 0.0038, 11/14 (CSV did_p 0.0038, n_neg 11)
+   prewhiten_fixed ar20 MMI sts ts_gsr global-bins: -0.0168 [-0.0263, -0.0084], p = 0.0001, 14/14 (CSV did_p 0.0001, n_neg 14)
+   prewhiten_fixed ar20 CCS sts ts_gsr global-bins: -0.0088 [-0.0134, -0.0044], p = 0.0001, 14/14 (CSV did_p 0.0001, n_neg 14)
+   prewhiten_fixed ar20 MMI xtx+yty ts_gsr global-bins: +0.0002 [-0.0003, +0.0007], p = 0.4302, 5/14 (CSV did_p 0.4302, n_neg 5)
+   prewhiten_fixed ar20 autocorr ts_gsr global-bins: -0.0963 [-0.1614, -0.0317], p = 0.0066, 11/14 (CSV did_p 0.0066, n_neg 11)
+   prewhiten_fixed ar20 MMI sts ts_demean W60: -0.0200 [-0.0304, -0.0096], p = 0.0006, 13/14 (CSV did_p 0.0006, n_neg 13)
+   prewhiten_fixed ar20 CCS sts ts_demean W60: -0.0134 [-0.0221, -0.0045], p = 0.0076, 11/14 (CSV did_p 0.0076, n_neg 11)
+   prewhiten_fixed ar20 MMI xtx+yty ts_demean W60: -0.0038 [-0.0073, -0.0003], p = 0.0374, 10/14 (CSV did_p 0.0374, n_neg 10)
+   prewhiten_fixed ar20 autocorr ts_demean W60: -0.0691 [-0.1302, -0.0099], p = 0.0245, 10/14 (CSV did_p 0.0245, n_neg 10)
+   prewhiten_fixed ar20 MMI sts ts_demean global-bins: -0.0219 [-0.0392, -0.0032], p = 0.0248, 13/14 (CSV did_p 0.0248, n_neg 13)
+   prewhiten_fixed ar20 CCS sts ts_demean global-bins: -0.0127 [-0.0249, +0.0005], p = 0.0583, 13/14 (CSV did_p 0.0583, n_neg 13)
+   prewhiten_fixed ar20 MMI xtx+yty ts_demean global-bins: +0.0001 [-0.0003, +0.0005], p = 0.5364, 5/14 (CSV did_p 0.5364, n_neg 5)
+   prewhiten_fixed ar20 autocorr ts_demean global-bins: -0.0652 [-0.1372, +0.0052], p = 0.0674, 10/14 (CSV did_p 0.0674, n_neg 10)
+   the AR(1)-substituted estimate on the whitened series, W = 60 (label 'diag predicted sts'): mean [lo, hi], exact p, negative/14
+   prewhiten_fixed ar10 diag predicted sts ts_gsr W60: -0.0100 [-0.0198, -0.0009], p = 0.0289, 9/14 (CSV did_p 0.0289, n_neg 9)
+   prewhiten_fixed ar10 diag predicted sts ts_demean W60: -0.0044 [-0.0086, -0.0003], p = 0.0338, 10/14 (CSV did_p 0.0338, n_neg 10)
+   prewhiten_fixed ar20 diag predicted sts ts_gsr W60: -0.0037 [-0.0066, -0.0008], p = 0.0145, 12/14 (CSV did_p 0.0145, n_neg 12)
+   prewhiten_fixed ar20 diag predicted sts ts_demean W60: -0.0010 [-0.0030, +0.0010], p = 0.3086, 9/14 (CSV did_p 0.3086, n_neg 9)
+2. B27, between-subject SDs (ddof 1) from notes/review_results/partB/baseline_gap.csv, and r(DiD, pre gap)²
+   sts ts_gsr W60: SD pre gap 0.0524, SD post gap 0.0485, SD DiD 0.0887; r(DiD, pre gap) -0.888, r² 0.79; subject with the largest DiD 14 (+0.0949), its pre gap -0.1121, its post gap -0.0172; positive DiDs 1; most negative pre gap subject 14 (-0.1121)
+   sts ts_demean W60: SD pre gap 0.0664, SD post gap 0.0620, SD DiD 0.1033; r(DiD, pre gap) -0.818, r² 0.67; subject with the largest DiD 14 (+0.0935), its pre gap -0.1224, its post gap -0.0288; positive DiDs 2; most negative pre gap subject 14 (-0.1224)
+   sts ts_gsr W30: SD pre gap 0.0487, SD post gap 0.0429, SD DiD 0.0798; r(DiD, pre gap) -0.887, r² 0.79; subject with the largest DiD 14 (+0.0974), its pre gap -0.1071, its post gap -0.0097; positive DiDs 1; most negative pre gap subject 14 (-0.1071)
+   r1 ts_gsr W60: SD pre gap 0.0117, SD post gap 0.0112, SD DiD 0.0198; r(DiD, pre gap) -0.874, r² 0.76; subject with the largest DiD 14 (+0.0242), its pre gap -0.0228, its post gap +0.0013; positive DiDs 2; most negative pre gap subject 14 (-0.0228)
+   residual ts_gsr W60: SD pre gap 0.0103, SD post gap 0.0132, SD DiD 0.0191; r(DiD, pre gap) -0.754, r² 0.57; subject with the largest DiD 8 (+0.0474), its pre gap -0.0058, its post gap +0.0416; positive DiDs 10; most negative pre gap subject 1 (-0.0308)
+3. B20, OLS slopes across the 115 regions on r1_windowed (notes/review_results/partB/regional_partial.csv)
+   sts on r₁: slope +3.0887 nats per unit r₁ (r = +0.863, SD of the map 0.0447)
+   rtr on r₁: slope +0.4981 nats per unit r₁ (r = +0.638, SD of the map 0.0098)
+   ratio rtr slope / sts slope: 0.161 (sts slope / rtr slope 6.2)
+4. Squares and shares quoted in the text
+   disattenuated ratio's interval, lower limit +0.617 (inference_revision_tables.md (d)); its square 0.38 = the share of reliable variance at the limit, 38 %
+   sts ts_gsr W60: DiD -0.0809, FD-residualised -0.0649; removed 0.197 of the DiD
+   autocorr ts_gsr W60: DiD -0.0146, FD-residualised -0.0123; removed 0.163 of the DiD
+   (the data's residual DiD, +0.0115, against the expectations +0.0027, +0.0049 and +0.0054: excesses +0.0088, +0.0066, +0.0061; B27's table (c) prints them from the unrounded values)
+5. B28, mean residual DiD per condition over the replicates (notes/review_results/partB/matched_slope.csv, column res_did; the label is the row's first two fields) and the step-minus-ramp differences
+   (i) band-passed, step: mean residual DiD +0.002182 over 100 replicates
+   (ii) band-passed, ramp: mean residual DiD +0.002034 over 100 replicates
+   (iii) AR(1), step: mean residual DiD +0.004851 over 100 replicates
+   (iv) AR(1), ramp: mean residual DiD +0.004232 over 100 replicates
+   band-passed, step minus ramp: +0.000148 (0.0001 at four decimals)
+   AR(1), step minus ramp: +0.000620 (0.0006 at four decimals)
+6. Fisher-z 95 % intervals at N = 14 (B21 (d)'s formula)
+   mean cross-half correlation of the sts and r₁ DiDs, ts_gsr (splithalf_subjects.csv): r +0.693672 (+0.742180 and +0.645165), interval [+0.258078, +0.894889]
+   r(MMI-sts DiD, whitened r₁ DiD), ts_gsr W60, p = 1: r +0.898873, interval [+0.704092, +0.967858]; excludes zero
+   r(MMI-sts DiD, whitened r₁ DiD), ts_gsr W60, p ≤ 5 (BIC): r +0.495364, interval [-0.047772, +0.812416]; includes zero
+   r(MMI-sts DiD, whitened r₁ DiD), ts_gsr W60, p = 10: r +0.444867, interval [-0.112195, +0.789172]; includes zero
+   r(MMI-sts DiD, whitened r₁ DiD), ts_gsr W60, p = 20: r +0.332750, interval [-0.240244, +0.733781]; includes zero
+   the eight cells at p = 10 and 20, r(MMI-sts DiD, whitened r₁ DiD) from the per-subject vectors, each equal at three decimals to the r that notes/review_results/partB/prewhiten_fixed_tables.md prints under the cell's heading:
+   p = 10, ts_gsr, W60: r +0.445, interval [-0.112, +0.789]; includes zero
+   p = 10, ts_gsr, global fit: r +0.570, interval [+0.057, +0.845]; excludes zero
+   p = 10, ts_demean, W60: r +0.168, interval [-0.398, +0.641]; includes zero
+   p = 10, ts_demean, global fit: r +0.014, interval [-0.520, +0.541]; includes zero
+   p = 20, ts_gsr, W60: r +0.333, interval [-0.240, +0.734]; includes zero
+   p = 20, ts_gsr, global fit: r +0.081, interval [-0.469, +0.587]; includes zero
+   p = 20, ts_demean, W60: r +0.157, interval [-0.408, +0.634]; includes zero
+   p = 20, ts_demean, global fit: r -0.079, interval [-0.585, +0.471]; includes zero
+   intervals that include zero: 7 of 8; smallest r -0.079, largest +0.570
+7. Regional sts of the windowed estimator (notes/review_results/regional/regional_atoms_raw_ts_gsr_win60.npy: subjects × runs × windows × regions × atoms; placebo run, windows 1–4, mean over subjects and windows) against regional r₁ (notes/review_results/partB/regional_sts_r1.csv, r1_windowed)
+   check: the array's whole-brain sts, windows 1–4, is 1.1554 on the DMT run and 1.1378 on the placebo run (Table 2: 1.1554 and 1.1378)
+   windowed sts on r₁, 115 regions: r +0.898, Spearman +0.868, slope +2.3038 nats per unit r₁; 99 cortical parcels: r +0.850
+   global-fit sts (the map of Results 3) on r₁, 115 regions: r +0.863, Spearman +0.835, slope +3.0887 nats per unit r₁; 99 cortical parcels: r +0.807
+   windowed rtr on r₁, 115 regions: r +0.686, Spearman +0.673, slope +0.5118 nats per unit r₁; 99 cortical parcels: r +0.541
+8. The OLS slope of the sts DiD on the whole-brain r₁ DiD across the 14 subjects, ts_gsr W60 (baseline_gap.csv), with each subject left out
+   all 14 subjects: slope +4.263; one subject left out: +4.139 (without subject 14) to +4.535 (without subject 8)
+9. The between-subject variance of the sts DiD by its parts, ts_gsr W60 (baseline_gap.csv): DiD = post gap − pre gap, Var(DiD) = Var(post gap) + Var(pre gap) − 2 Cov(post gap, pre gap)
+   shares of Var(DiD): post gap 0.30, pre gap 0.35, −2 Cov 0.35 (the pre gap's and the covariance's together 0.70; the post gap's and the covariance's together 0.65); r(pre gap, post gap) -0.543; r(DiD, post gap) +0.868
+10. The cross-half correlations of the residual DiD with the r₁ DiD, from the committed per-subject series (notes/review_results/partB/diag_series_<variant>_W60.npz, key res, with the halves of the split-half test; splithalf_subjects.csv, r1_odd and r1_even), with Fisher-z 95 % intervals at N = 14, their mean and the ceiling √(rel(residual DiD) × rel(r₁ DiD)); each correlation, reliability and p equals, at three decimals, the value that the split-half test's log prints (splithalf.log)
+   ts_gsr: r(res_odd, r₁_even) -0.385 [-0.760, +0.183], r(res_even, r₁_odd) -0.700 [-0.897, -0.269]; mean -0.5420; reliabilities 0.494 (residual DiD; p = 0.073) and 0.741 (r₁ DiD; p = 0.002), ceiling 0.605; |mean| / ceiling 0.90; the larger of the two correlations, 0.700 in size, is above the ceiling
+   ts_demean: r(res_odd, r₁_even) -0.598 [-0.857, -0.098], r(res_even, r₁_odd) -0.051 [-0.567, +0.493]; mean -0.3245; reliabilities 0.216 (residual DiD; p = 0.459) and 0.712 (r₁ DiD; p = 0.004), ceiling 0.392; |mean| / ceiling 0.83; the larger of the two correlations, 0.598 in size, is above the ceiling
+11. B27's table (a) recomputed from the six-decimal per-subject file (baseline_gap.csv: pre_gap, post_gap, did) with the run's formulas, each cell compared as printed with notes/review_results/partB/baseline_gap_tables.md
+   cells compared 120 (12 rows × 10 cells); recomputed as printed 119; not 1
+   the cell that differs: the exact p of the pre gap of r1, ts_demean, W = 60: 0.1871 in the run's table, 0.1873 from the file (3068 of 16384 sign assignments); the even count that prints the run's value is 3066; the file's rounding can move the difference between an assignment's absolute mean and the observed one by at most k/14 × 10⁻⁶ (k of the fourteen values enter it): 2 assignments and their mirrors are counted from the file with a margin within that bound (margin 0.00 × 10⁻⁶ against a bound of 0.64 × 10⁻⁶; margin 0.43 × 10⁻⁶ against a bound of 0.50 × 10⁻⁶), and 0 left uncounted lie within it, so that the unrounded values give between 3064 and 3068; the run's 3066 is 1 such pair fewer than the file's
+12. Values that B27's pre-run entry lists as known (record, 'What is known before the run', item (i)), recomputed from baseline_gap.csv (ts_gsr, W = 60) and compared with the entry's: r², the SDs, the values of subjects 14 and 8 and the intercept, which baseline_gap_tables.md does not print; the slope and r, which it prints; the ratio of means, which matched_slope_tables.md prints
+   sts: r(DiD, pre gap)² 0.79; SD of the DiD 0.0887, of the post gap 0.0485; subject 14: DiD +0.0949, pre gap -0.1121, post gap -0.0172; subject 8: DiD -0.2795, pre gap +0.0914; the residual DiD on the r₁ DiD: slope -0.753, intercept +0.0005, r -0.780; ratio of the means of the residual DiD and the r₁ DiD -0.788
+   compared with the entry's values as printed there: 12 of 12 equal
+13. B15, the DMT − placebo difference of the run-level directed response (resp_anti_run) and of the RMS of δ_anti (rms_anti_run), per subject, from notes/review_results/partB/directed_crosslag.csv: mean [lo, hi] (inverted sign-flip 95 % interval), exact p
+   ts_gsr, directed response: +0.00044 [-0.00061, +0.00149], p = 0.3800, 7/14 negative
+   ts_gsr, RMS of δ_anti: -0.00052 [-0.00372, +0.00266], p = 0.7313, 6/14 negative
+   ts_demean, directed response: -0.00012 [-0.00135, +0.00109], p = 0.8330, 7/14 negative
+   ts_demean, RMS of δ_anti: -0.00258 [-0.00733, +0.00195], p = 0.2714, 8/14 negative
+14. B29, the DiD of the count of TRs above the threshold per window (n_above) and of the mean framewise displacement (mean_fd), per subject, from notes/review_results/partB/censoring.csv: mean [lo, hi] (inverted sign-flip 95 % interval), exact p, positive/14
+   count per window: +1.12 [-0.58, +2.97], p = 0.2166, 7/14 positive (the run's table (a): +1.12, p = 0.2166, 7/14 positive)
+   mean framewise displacement: +0.0143 [-0.0115, +0.0403], p = 0.2452, 8/14 positive (the run's table (a): +0.0143, p = 0.2452, 8/14 positive)

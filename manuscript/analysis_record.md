@@ -8871,3 +8871,720 @@ DiD, and no direction is claimed for it beyond its interval; (iv) S11 Table gain
 (v) the outcome entry reports (a)–(e).
 
 **The run.** By V.S. on his machine, as the fourth step of the unit `runb27` (B27's entry).
+
+## B27, outcome, 3 Oct 2026 08:06 UTC (appended; nothing above edited)
+
+Appended in the commit that follows 8bd189e, the commit of the outputs of B27, B28, B29 and B16c as the run wrote them,
+with the text that reports them; the evidence of the run, the revision's replacements, their checks, the claim records
+of the citations added and the audits are in `notes/review_2026-10-01_cold_reads/`. The run read the data.
+
+**The run.** V.S. ran the four scripts on his machine at 13e7299, from a clean tree, each as `run_all.sh`'s `nstep` runs
+it, started by the planning session's `b27_start.sh` as the systemd unit `runb27` under a lock against sleep, idle, the
+lid switch and shutdown (the script requires the charger connected at the start), on 1 Oct 2026 from 23:37:10 EEST; the
+last step began at 00:01:08 on 2 Oct and its log prints 2,040 s, which puts the end at 00:35:08 (the unit's log was last
+written at 00:35:10): 20:37:10 to 21:35:08 UTC, 3,478 s from the start to that end. The machine had python 3.12.3, numpy
+2.5.3, scipy 1.18.1 and matplotlib 3.11.1, the environment identical to `requirements.lock.txt` by `pip freeze`, and the
+data clone at 77af7aa. The four steps ran to their end in one attempt, each with exit status 0 and no traceback, in 7 s,
+1,428 s, 1 s, 2,040 s for B27, B28, B29 and B16c; the heartbeat wrote 11 lines (the charger disconnected in 8 of them,
+from the heartbeat's line 4 (23:57 local time; line 3, at 23:52, shows it connected) to its last line (00:32:10), the
+battery falling from 99 % to 83 %; no line covers the 178 s from that line to the end of the last step; the largest gap
+between lines 300 s). 8bd189e holds the 29 outputs as the run wrote them: the twelve text outputs (four tables, four CSV
+files and four logs) each carry `git=13e7299`, and the sixteen arrays and the pickle carry no header. V.S. committed
+them with the planning session's `b27_commit.sh`, which first checked that the unit had ended with `=== unit exit 0`,
+that the tree held the 29 files and no other change, the headers and the environment, and which wrote the evidence
+(`notes/review_2026-10-01_cold_reads/b27/b27_unit.log`, `b27_heartbeat.log`, `outputs.sha256`, `evidence.txt`) into the
+same commit.
+
+**The outputs.** `notes/review_results/partB/baseline_gap_tables.md`, `baseline_gap.csv` (per subject: the pre- and
+post-injection means of each run, the gaps and the DiD, 168 rows) and `baseline_gap_run.log`, each with `git=13e7299`.
+The script's check held: the per-subject DiDs of the saved sts, r₁ and residual series at W = 60 and W = 30 equal the
+saved ones (B21's inputs) to 10⁻⁹, so the r₁ series the run computed from the released series are the ones the committed
+DiDs came from. The values the pre-run entry lists as known (its item (i)) are reproduced at the printed precision:
+those the tables file prints, in its tables (a), (b) and (c) (the rows of sts, of the substituted sts and of the
+residual; the correlations that use no r₁ gap; the slopes, counts, sensitivity and Fieller's g); those it does not print
+(r² = 0.79, the SDs 0.0887 and 0.0485, the three values of subject 14, the two of subject 8 and the intercept +0.0005),
+from `baseline_gap.csv` (`notes/review_2026-10-01_cold_reads/checks/derived_r24.out`, item 12, which recomputes them
+with the regression's slope and r and the ratio of means and compares the twelve with the entry's values: 12 of 12
+equal); and the ratio of means, −0.788, also in B28's tables file.
+
+**(a) r₁'s gaps on ts_gsr at W = 60.** Pre-injection gap +0.0025 [−0.0044, +0.0092], p = 0.4417, positive in 10 of 14;
+post-injection gap −0.0122 [−0.0187, −0.0064], p = 0.0002, negative in 13 of 14; DiD −0.0146 [−0.0261, −0.0037] (p =
+0.0106); baseline-adjusted contrast −0.0110 [−0.0170, −0.0050], slope on the pre-injection gap −0.480 [−0.997, +0.038];
+r(DiD, pre gap) = −0.874, r(DiD, post gap) = +0.860. The prediction: the pre gap not significant with its interval
+containing zero — yes; the post gap significant, its interval excluding zero and negative in at least 12 of 14 — yes.
+Verdict: met.
+
+**(b) The adjusted r₁ contrast.** r(r₁ DiD, r₁ pre-injection gap) = −0.874 (below −0.5: yes); the adjusted contrast's t
+interval, [−0.0170, −0.0050], excludes zero. Verdict: met.
+
+**(c) The gaps of sts and r₁.** r(sts pre-injection gap, r₁ pre-injection gap) = +0.922 and r(sts post-injection gap, r₁
+post-injection gap) = +0.939 (both above 0.7 for met, both positive for partly met). Verdict: met. The other
+correlations of table (b) on ts_gsr at W = 60: r(sts DiD, r₁ DiD) = +0.953, r(sts pre gap, r₁ DiD) = −0.844, the partial
+correlation given the sts pre gap +0.824, r(residual DiD, r₁ DiD) = −0.780, r(residual pre gap, r₁ DiD) = +0.374,
+r(residual post gap, r₁ post gap) = −0.838 (no prediction).
+
+**(d) ts_demean at W = 60 and ts_gsr at W = 30**, by the same criteria, not counted: ts_demean (a) met (r₁ pre gap
++0.0054 [−0.0031, +0.0136], p = 0.1871; post gap −0.0162 [−0.0242, −0.0086], p = 0.0002, 13 of 14 negative), (b) met (r
+= −0.735; adjusted −0.0161 [−0.0250, −0.0073]), (c) met (+0.920 and +0.895); W = 30 (a) met (pre gap +0.0026 [−0.0045,
++0.0093], p = 0.4419; post gap −0.0116 [−0.0172, −0.0064], p = 0.0005, 12 of 14), (b) met (r = −0.903; adjusted −0.0105
+[−0.0156, −0.0054]), (c) met (+0.862 and +0.912).
+
+**The sts rows and (c), as the run reproduced them.** sts on ts_gsr at W = 60: pre gap +0.0176 [−0.0131, +0.0465] (p =
+0.2307; 10/14 positive), post gap −0.0633 [−0.0917, −0.0369] (p = 0.0001; 14/14 negative), DiD −0.0809 [−0.1317,
+−0.0310] (p = 0.0038), adjusted −0.0544 [−0.0806, −0.0283], slope −0.503 [−0.992, −0.013], r(DiD, pre gap) = −0.888,
+r(DiD, post gap) = +0.868; the SDs over subjects 0.0887 (DiD), 0.0485 (post gap) and 0.0524 (pre gap) and r² = 0.79 are
+in `notes/review_2026-10-01_cold_reads/checks/derived_r24.out` (item 2), computed from `baseline_gap.csv`. The
+residual's slope on the r₁ DiD: −0.753 [−1.133, −0.373], r = −0.780; one subject left out −0.791 to −0.699 (intervals
+containing 0: 0 of 14; −0.18: 0; −0.39: 11; −0.37: 11); two left out −0.906 to −0.642 (1 of 91; 13; 71; 63); without
+subject 8 −0.785 [−1.361, −0.208], without 14 −0.699 [−1.180, −0.218], without both −0.667 [−1.561, +0.227] (r =
+−0.465); the residual DiD's SE 0.0051, the minimal detectable difference 0.0155 (a one-sample t test on 13 df, 80 %
+power, two-sided 5 % level), the excesses +0.0088, +0.0066 and +0.0061; Fieller's g 0.611 and 0.611 (the r₁ DiD
+−0.01465, SE 0.00530). Derived from `baseline_gap.csv` for the text, with no prediction (`derived_r24.out`, item 8): the
+slope of the sts DiD on the r₁ DiD, 4.263 with all 14 subjects, is 4.139 (without subject 14) to 4.535 (without subject
+8) with one subject left out.
+
+**The script's closing paragraph.** The paragraph "Reading under the rule of the pre-run entry" that the script prints
+at the end of its tables paraphrases the predictions as they stood before the audit of the prepared commit ("the pre gap
+the smaller"; "the adjusted r₁ contrast negative"); they were restated to the criteria above in answer to that audit's
+item 3, which found that the group means of the r₁ gaps follow from committed rows (`audit/dispositions.md`, item 3);
+the paragraph computes nothing, and the entry's criteria govern the verdicts. The writer's session noted the difference
+on 1 October 2026 before the run; the script was not changed, so that the run was of the committed scripts.
+
+**What the text says (the rule's items (i)–(vi)).** (i) Table 2 carries, for both variants, the pre-injection gap with
+its inverted sign-flip interval, p and share, the post-injection gap with the same, and the baseline-adjusted contrast
+with its t interval, its caption defining the three readings (the DiD, the post-injection gap and the adjusted
+contrast); Results 2 states beside the DiD that its between-subject variance is mostly the pre-injection gap's (r and
+r², the SDs), gives r₁'s two gaps and its adjusted contrast, and says that the DiD stays the primary statistic and when
+it estimates the drug's effect. (ii) The scrutiny S2 Text applies to the deconvolved ΦR contrast is applied to sts in
+Results 2, which names it, in other words than S2 Text's, where the rule has "in the same words": S2 Text speaks of "a
+pre-injection baseline gap in the direction that creates it"; for sts, whose post-injection gap is itself negative in
+every subject, Results 2 says that the runs' pre-injection gap "lies in the direction that enlarges the DiD". (iii) The
+Abstract carries the cross-half correlation with its interval and the disattenuated value beside it; the Author summary
+says that the two DMT-minus-placebo differences went together, with the subjects in which either rose; Results 2 gives
+the disattenuation's exclusion rule and what the interval's lower limit supports (38 % of the reliable variance), the
+partial correlation given the sts pre-injection gap and the two post-injection gaps' correlation beside the full
+correlation, and S3 Text §5's caveat. (iv) Results 4 reports the residual's slope and, as rows of its Table 3, the
+leave-one-out and leave-two-out ranges of the slope and of r, the counts of their intervals that contain zero and each
+of the three group-level rates, and the three named omissions; every statement that the residual is not distinguished
+from its expectations ("not distinguished" in Results 4 and the Discussion; in the Abstract, "a test detecting 0.0155
+does not resolve this") carries the minimal detectable difference beside the excesses, and Results 4 names the test it
+is computed for. (v) Methods (Inference) states the assumptions of the t intervals (normal residuals of constant
+variance) and of the Fieller intervals (the two means jointly normal), Fieller's g and the condition for a finite
+interval. (vi) This entry; S19 Table has the rows; S3 Text §5 carries the tables, (a) and (b) cell for cell and (c) in
+prose with every value; the numbers table takes the new numbers from `baseline_gap_tables.md` with their lines.
+
+## B28, outcome, 3 Oct 2026 08:06 UTC (appended; nothing above edited)
+
+Appended in the commit that follows 8bd189e, with B27's outcome entry, which describes the run (the second of its four
+steps). The run read no released series: its inputs were three committed files derived from the data, the subjects'
+whole-brain r₁ DiDs, which set each simulated subject's change (`inference_rows_raw.pkl`), their residual DiDs, for the
+data's slope and r (`inference_rows_diag.pkl`), and B17's pool of the data's window-level pair q, from which the AR(1)
+conditions draw (`partB/scope_map_overlay_points.npz`, key `pre_w1to4_q`, 52,440 values).
+
+**The outputs.** `notes/review_results/partB/matched_slope_tables.md`, `matched_slope.csv` (one row per condition ×
+replicate, 400 rows) and `matched_slope_run.log`, each with `git=13e7299`; 100 replicates per condition, seed 20261120,
+1,428 s. The CSV's first field, the condition's name, holds an unquoted comma ("(i) band-passed, step"), so that each
+data row has eleven fields under a header of ten and a CSV reader shifts the columns unless the first two fields are
+joined; the values are right, and the file stays as the run wrote it. The generators as solved: β̄ = 185.4, σ_q =
+0.2637, window-level mean a 0.8628 and |q| 0.2828 on the check draw; the subjects' changes Δa_s −0.0165, −0.0025,
+−0.0267, −0.0205, +0.0005, −0.0191, −0.0086, −0.0657, −0.0319, −0.0206, −0.0147, −0.0082, −0.0003, +0.0248, their post
+β̄_s 99, 172, 52, 80, 188, 87, 138, 6, 30, 80, 108, 140, 184, 351, the band-passed generator's floor Δa = −0.0375, at
+which subject 8 is held. The data: slope −0.753 [−1.133, −0.373], r = −0.780, ratio of means −0.788 per unit of
+whole-brain r₁ DiD. The generators' slopes are on the pair-a DiD, the simulated pairs' own pair r₁ DiD; the data's slope
+is on the whole-brain r₁ DiD, as the pre-run entry specified, and Table 3's caption names both regressors.
+
+**The four conditions.** (i) band-passed, step: slope −0.200 ± 0.091 (2.5th, 50th and 97.5th percentiles −0.407, −0.205,
+−0.012; share of replicates at or below the data's 0.000), r −0.591 ± 0.204 (share at or below the data's 0.190),
+per-replicate ratio of means −0.167 ± 0.077 (percentiles −0.311, −0.174, −0.008), ratio of the replicate-mean DiDs
+−0.167, the slope intervals containing that ratio in a share 0.91 and zero in 0.30, residual DiD +0.0022 ± 0.0010, sts
+DiD −0.0741 ± 0.0026, pair-a DiD −0.0131 ± 0.0004. (ii) band-passed, ramp: slope −0.185 ± 0.096 (2.5th, 50th and 97.5th
+percentiles −0.360, −0.176, −0.025; share of replicates at or below the data's 0.000), r −0.501 ± 0.209 (share at or
+below the data's 0.070), per-replicate ratio of means −0.173 ± 0.101 (percentiles −0.366, −0.173, +0.005), ratio of the
+replicate-mean DiDs −0.174, the slope intervals containing that ratio in a share 0.95 and zero in 0.51, residual DiD
++0.0020 ± 0.0012, sts DiD −0.0670 ± 0.0028, pair-a DiD −0.0117 ± 0.0003. (iii) AR(1), step: slope −0.355 ± 0.087 (2.5th,
+50th and 97.5th percentiles −0.513, −0.354, −0.179; share of replicates at or below the data's 0.000), r −0.731 ± 0.122
+(share at or below the data's 0.370), per-replicate ratio of means −0.349 ± 0.129 (percentiles −0.588, −0.345, −0.115),
+ratio of the replicate-mean DiDs −0.351, the slope intervals containing that ratio in a share 0.97 and zero in 0.05,
+residual DiD +0.0049 ± 0.0019, sts DiD −0.0402 ± 0.0031, pair-a DiD −0.0138 ± 0.0008. (iv) AR(1), ramp: slope −0.375 ±
+0.094 (2.5th, 50th and 97.5th percentiles −0.580, −0.363, −0.227; share of replicates at or below the data's 0.000), r
+−0.706 ± 0.109 (share at or below the data's 0.280), per-replicate ratio of means −0.339 ± 0.139 (percentiles −0.550,
+−0.343, −0.072), ratio of the replicate-mean DiDs −0.343, the slope intervals containing that ratio in a share 0.96 and
+zero in 0.06, residual DiD +0.0042 ± 0.0019, sts DiD −0.0362 ± 0.0029, pair-a DiD −0.0123 ± 0.0008.
+
+**(a)** The generator's mean per-subject slope more negative than the mean of its per-replicate ratios of means:
+band-passed step −0.200 against −0.167 (yes); AR(1) step −0.355 against −0.349 (yes). Verdict: met. **(b)** The data's
+slope, −0.753, below the 2.5th percentile of each condition's slopes: (i) yes (−0.407), (ii) yes (−0.360), (iii) yes
+(−0.513), (iv) yes (−0.580): four of four. Verdict: met. **(c)** The ramp's mean residual DiD within 0.003 nats of the
+step's. From the replicates (`matched_slope.csv`, column `res_did`; `derived_r24.out`, item 5) the means are +0.002182
+(step) and +0.002034 (ramp) on the band-passed generator, a difference of 0.0001 (yes), and +0.004851 and +0.004232 on
+the AR(1) generator, a difference of 0.0006 (yes); the table's cells, which are rounded to four decimals, differ by
+0.0002 and 0.0007. Verdict: met. **(d)** No prediction: the shares of replicates with r at or below the data's are
+0.190, 0.070, 0.370 and 0.280; the sts DiDs −0.0741, −0.0670, −0.0402 and −0.0362; the coverage of the slope intervals
+as above.
+
+**What the text says (the rule's items (i)–(v)).** (i) Results 4 compares the data's slope with the generators'
+per-subject slopes under the data's heterogeneity — for each generator and shape Table 3 gives the mean slope, the
+central 95 % of the replicates' slopes and the share of replicates at or below the data's — and says, in place of "the
+calibration is not validated for the residual on this dataset", what the shares give: the data's slope lies below every
+condition's central 95 %, so that a pure autocorrelation change of the data's heterogeneity does not produce the data's
+per-subject scaling on either generator; the three rates of the residual table stay as the group-level comparison with
+its Fieller interval (S3 Text §6) and, beyond the rule's "only", stand against the data's per-subject slope in two
+places: Table 3's rows on the leave-one-out and the leave-two-out count the intervals that contain each rate, as B27's
+rule (iv) requires, and Fig 3c draws the three rates on the per-subject panel, as the committed figure did; B27's
+leave-one-out and leave-two-out stand beside (Table 3's rows 2–6). (ii) The ramps are reported beside the steps (Table
+3) with the difference of the residual DiDs (Results 4). (iii) The subject at the floor is named in Table 3's caption,
+in S3 Text §6 and in the source line of S18 Table's part on B28; Fig 3's caption, which quotes the band-passed step's
+slope, points to Table 3's caption for the floor, and S19 Table's rows on B28 give the conditions' values without it.
+(iv) The Abstract and the Discussion summarise the residual by both comparisons, the group-level non-distinction with
+its minimal detectable difference and the per-subject comparison ("no replicate as steep"); the source stays
+unidentified (the Abstract's "its source is unidentified"; "not identified" in Results 4 and the Discussion). (v) S3
+Text §6 carries the table in full and S18 Table eleven of its fourteen columns (without the percentiles of r, the share
+of replicates with r at or below the data's and the percentiles of the ratio); S19 Table has the rows; this entry
+reports (a)–(d).
+
+## B29, outcome, 3 Oct 2026 08:06 UTC (appended; nothing above edited)
+
+Appended in the commit that follows 8bd189e, with B27's outcome entry, which describes the run (the third of its four
+steps). The run read the data (`data/FDlong.mat` and the released series, for r₁).
+
+**The outputs.** `notes/review_results/partB/censoring_tables.md`, `censoring.csv` (one row per subject × run × window,
+392 rows) and `censoring_run.log`, each with `git=13e7299`; 1 s. The script's check held: the r₁ series reproduce the
+saved per-subject DiDs.
+
+**(a) The replaced volumes.** Per run, 23.6 TRs on average crossed the threshold under DMT (0.028 of the run; mean
+framewise displacement 0.137) and 10.1 under placebo (0.012; 0.126); the count per window, DMT pre / post and placebo
+pre / post, 0.68 / 1.75 and 0.75 / 0.70; the count DiD +1.12 (p = 0.2166; 7 of 14 positive) and the mean-FD DiD +0.0143
+(p = 0.2452; 8 of 14 positive; its mean equals Table 2's +0.0143 to the printed precision, the same quantity over the
+windows' mean framewise displacement). The prediction: the count DiD positive with at least 8 of 14 positive — no; the
+mean-FD DiD positive in at least 8 of 14 — yes. Verdict: partly met.
+
+**(b) Within runs.** The window's count against its r₁, each run's 14 windows centred, 392 windows: r = −0.124 on ts_gsr
+(137 windows with at least one TR above the threshold; mean r₁ 0.8428 in them, 0.8451 in the others) and −0.025 on
+ts_demean (137; 0.8342 against 0.8352). Positive on both: no. Verdict: missed.
+
+**(c) Across subjects**, no sign prediction: r(count DiD, r₁ DiD) = −0.107 (ts_gsr) and +0.037 (ts_demean); r(count DiD,
+sts DiD) = −0.100 and +0.008; r(mean-FD DiD, r₁ DiD) = −0.363 and −0.301; r(mean-FD DiD, sts DiD) = −0.339 and −0.252;
+r(count DiD, mean-FD DiD) = +0.708.
+
+**(d) The non-finite TR**, a check: (3, placebo, 839); it is the last TR of its run (index 839) and falls at the end of
+window 14. The prediction, subject 3's placebo run's TR 839 and no other: confirmed on ts_gsr, the variant the script
+reads for this check (the text says "on ts_gsr the only one"). Subjects 8 and 14 by window are in the tables file:
+subject 8 had 24 TRs above the threshold on its DMT run (0.029 of the run; mean framewise displacement 0.120) against 6
+on placebo, count DiD +2.25, mean-FD DiD +0.0935, the largest of the fourteen; subject 14, 2 and 4, count DiD −0.08,
+mean-FD DiD +0.0192.
+
+**What the text says (the rule's items (i)–(vi)).** (i) The Dataset paragraph of Methods states the release's
+replacement (the threshold, the mean of the surrounding volumes), from the Methods of Timmermann et al. (2023) and of
+Singleton et al. (2025) and the latter's Reporting Summary; the exclusion of six of the twenty participants, which is
+Singleton et al.'s count alone (Timmermann et al., 2023, report four discarded and three more removed for their dynamic
+analysis; S1 Text and S4 Text D4 give both); and the non-finite TR's place, the last TR of subject 3's placebo run, at
+the end of window 14. S1 Text and S4 Text follow. (ii) Limitations states the count DiD with its p and share; of the
+across-subject correlations, that of the count DiD with the r₁ DiD on both variants (the others, with the sts DiD and of
+the mean-FD DiD, are in S3 Text §5, a departure from the rule's "the correlations of (b)"); the within-run correlation
+on both variants; and what the replacement does to r₁: it raises r₁ where it acts and so works against the observed
+fall, and the positive within-run relation that prediction (b) expected was not found, which the text says without
+reading the negative sign. (iii) Subject 8's marked TRs (against the average) and its framewise-displacement DiD, the
+largest of the fourteen, are stated in Results 2 where its leverage and its mean-filled parcel are stated. (iv) Results
+2 states that a fifth of the contrast is removed by FD residualisation and what that regression removes besides motion.
+(v) S4 Text's items that the data authors' documents answer are revised to what they state, with the five documents as
+the sources. (vi) This entry; S19 Table has the rows; S3 Text §5 transcribes the tables.
+
+## B16c, outcome, 3 Oct 2026 08:06 UTC (appended; nothing above edited)
+
+Appended in the commit that follows 8bd189e, with B27's outcome entry, which describes the run (the fourth of its four
+steps). The run read the data.
+
+**The outputs.** `notes/review_results/partB/prewhiten_fixed_tables.md` and `prewhiten_fixed_run.log`,
+`notes/review_results/inference_rows_prewhiten_fixed.csv` and `.pkl` (264 inference rows, 44 labels in six sets: the 192
+rows of MMI-sts, CCS-sts, xtx + yty and the autocorrelation in the eight cells, and the 72 rows of the diagnostic's
+observed, predicted and residual sts in the four W = 60 cells), and the sixteen atom arrays
+`partB/prewhiten_fixed_atoms_{ar10,ar20}_{ts_gsr,ts_demean}_{mmi,ccs}_{win60,bins}.npy`, each table, CSV and log with
+`git=13e7299`; 2,040 s. The intervals the text quotes for these contrasts are B21's inverted sign-flip intervals,
+computed by the planning session from the committed per-subject vectors of the pickle
+(`notes/review_2026-10-01_cold_reads/checks/derived_r24.py`, item 1 of its output), the CSV's `did_lo` and `did_hi`
+being the subject-bootstrap percentile interval of `rev_inference.Engine`; the exact p is the CSV's `did_p`, which the
+inversion reproduces.
+
+**The eight cells** (order p, variant, estimator): 10 ts_gsr W = 60: MMI-sts level 0.0866, DiD −0.0191 [−0.0285,
+−0.0098] (p = 0.0002, 13/14 negative); whitened r₁ 0.1368, its DiD −0.0733; r(sts DiD, whitened r₁ DiD) = +0.445; 10
+ts_gsr global fit: MMI-sts level 0.0730, DiD −0.0212 [−0.0327, −0.0099] (p = 0.0007, 12/14 negative); whitened r₁
+0.1819, its DiD −0.1032; r(sts DiD, whitened r₁ DiD) = +0.570; 10 ts_demean W = 60: MMI-sts level 0.1075, DiD −0.0256
+[−0.0375, −0.0138] (p = 0.0004, 13/14 negative); whitened r₁ 0.0739, its DiD −0.0626; r(sts DiD, whitened r₁ DiD) =
++0.168; 10 ts_demean global fit: MMI-sts level 0.1014, DiD −0.0329 [−0.0481, −0.0180] (p = 0.0004, 13/14 negative);
+whitened r₁ 0.1033, its DiD −0.0634; r(sts DiD, whitened r₁ DiD) = +0.014; 20 ts_gsr W = 60: MMI-sts level 0.0719, DiD
+−0.0127 [−0.0203, −0.0052] (p = 0.0002, 13/14 negative); whitened r₁ 0.0524, its DiD −0.0927; r(sts DiD, whitened r₁
+DiD) = +0.333; 20 ts_gsr global fit: MMI-sts level 0.0687, DiD −0.0168 [−0.0263, −0.0084] (p = 0.0001, 14/14 negative);
+whitened r₁ 0.0749, its DiD −0.0963; r(sts DiD, whitened r₁ DiD) = +0.081; 20 ts_demean W = 60: MMI-sts level 0.0978,
+DiD −0.0200 [−0.0304, −0.0096] (p = 0.0006, 13/14 negative); whitened r₁ 0.0323, its DiD −0.0691; r(sts DiD, whitened r₁
+DiD) = +0.157; 20 ts_demean global fit: MMI-sts level 0.0923, DiD −0.0219 [−0.0392, −0.0032] (p = 0.0248, 13/14
+negative); whitened r₁ 0.0521, its DiD −0.0652; r(sts DiD, whitened r₁ DiD) = −0.079.
+
+**(a)** The whitened r₁ at W = 60 equals B16b's values to the printed precision in all four variant × order cells: yes;
+a check, not counted. **(b)** The MMI-sts level p ≤ 5 > p = 10 > p = 20: ts_gsr W = 60 0.2202 > 0.0866 > 0.0719 (yes);
+ts_demean W = 60 0.2350 > 0.1075 > 0.0978 (yes); ts_gsr global fit 0.1042, 0.0730, 0.0687 (yes); ts_demean global fit
+0.1306, 0.1014, 0.0923 (yes); the W = 60 level at p = 20 below 0.1 nats on both variants: yes. Verdict: met. **(c)**
+|DiD| at W = 60 on ts_gsr 0.0262 (p ≤ 5), 0.0191 (p = 10), 0.0127 (p = 20), with p = 0.0002 and 0.0002 at p = 10 and 20
+(the ordering holds; the p = 20 contrast has p < 0.05, the criterion for missed). Verdict: missed. **(d)** r(sts DiD,
+whitened r₁ DiD) at p = 20 is +0.333 against +0.495 at p ≤ 5: weaker. Verdict: met. The Fisher-z 95 % intervals of these
+correlations at N = 14, computed for the text (`derived_r24.out`, item 6; no prediction): +0.333 [−0.24, +0.73] at p =
+20, +0.445 [−0.11, +0.79] at p = 10 and +0.495 [−0.05, +0.81] at p ≤ 5, each including zero, and +0.899 [+0.70, +0.97]
+at p = 1. **(e)** No prediction: CCS-sts, the global-fit contrasts and the diagnostic on the whitened series are in the
+tables file; the contrast of xtx + yty, which the tables file does not print (its atom tables give xtx and yty as two
+rows), is in `inference_rows_prewhiten_fixed.csv` and, with its inverted interval, in `derived_r24.out`, item 1 (ts_gsr
+at W = 60: −0.0229 [−0.0409, −0.0053], p = 0.0077, at p = 10 and −0.0060 [−0.0098, −0.0022], p = 0.0037, at p = 20). The
+diagnostic at W = 60 on ts_gsr, whose levels are means over both runs and all windows (the levels of the eight cells
+above are DMT pre-injection means): residual +0.0564 at p = 10 and +0.0624 at p = 20, residual DiD −0.0091 and −0.0090.
+
+**What the text says (the rule's items (i)–(v)).** (i) Results 7's Table 4 reports, for the raw series and for p = 1, p
+≤ 5, 10 and 20, the whitened r₁, the share of power above the band, the MMI-sts level and its W = 60 contrast with
+interval and p, and the prewhitening paragraph reads them. (ii) "Prewhitening cannot fully remove the dependence from
+band-passed data" and "Do not expect prewhitening to remove the dependence from band-passed data" are replaced by what
+each order removes and costs — what the whitening leaves of the level and of the contrast, and that at the orders where
+r₁ is gone most of the series' power lies outside the band, so that the atoms are then those of the amplified stop-band
+residue — and both Results 7 and the Recommendations name the remedy the released derivatives cannot test, whitening
+before the band-pass or no band-pass. (iii) The contrast at p = 20 is reported with its interval, its p and its
+correlation with the whitened r₁ DiD, of which the text says that its Fisher-z interval does not exclude zero; no
+direction is claimed for the contrast beyond its interval. (iv) S11 Table has the rows and S3 Text §8 the account. (v)
+This entry.
+
+## The revision of 1–2 October 2026: the cold reads applied, 3 Oct 2026 08:06 UTC (appended; nothing above edited)
+
+Appended in the commit that follows 8bd189e, with the four outcome entries above, which this commit's text reports;
+`notes/review_2026-10-01_cold_reads/revision/` holds the replacements that make the revision
+(`text_replacements_2026-10-01_cold_reads_revision.json`, applied in order by
+`notes/review_2026-09-25/revision/apply_replacements.py`), `checks/` the outputs of the checks (apply, check_numbers,
+check_cells, tablecheck, wc, the abstract and summary word counts, the parse check of the five scripts that this commit
+adds or changes (the figure script, `figures_check.py`, `derived_r24.py`, the counter of the Abstract's and the Author
+summary's words and the audit's `te_filter_check.py`), `derived_r24.py` with its output, the numbers table's update) and
+`figures_check.py`, which tests the figures commit, `claims/` the claim records of the citations added and of the
+statements newly made from the source papers, and `audit/` the three audits of the revision as first prepared, the
+reports of the sessions that then checked the corrections and of the one that read S19 Table's Part B against the whole
+paper, and what was done about each finding. The revision is named for the two days on which it was written and first
+audited; the corrections that followed the audits and the checks were made between then and this commit. No computation
+whose result the paper uses was run on the data for this commit (the text audit computed on the released series for
+three of its findings, as the paragraph on the audits below records); `derived_r24.py` reads committed files only: two
+pickles of per-subject vectors, eight CSV files, five tables files, three array files and a log.
+
+**The revision.** Every finding of the three cold reads (70: A 20, B 19, C 31) is answered here or assigned, with what
+was done, in the three lists that follow; the four computations' rules (their outcome entries) fixed what the text says
+of their results. The main changes: the Abstract rewritten (a proof of concept; the adjusted contrast beside the DiD;
+the cross-half correlation as the headline with the disattenuated value beside it; the excesses and the minimal
+detectable difference; the per-subject comparison with the generators under the data's heterogeneity; what prewhitening
+removes and leaves), the Author summary bounded to what is shown; Table 2's three readings and the paragraph that reads
+them; Results 3's two estimators, the same relation on the windowed estimator's own regional atoms, and the spin tests;
+Results 4 against the generators' per-subject slopes (the new Table 3, with the leave-one-out, leave-two-out and
+two-subject omissions as rows) and without the former Table 3, which is now the residual table of S3 Text §6; Results 7
+with the atoms at p = 10 and 20 (Table 4) and the two candidates it names and does not compute; the Discussion's
+subsection on the fall of r₁; the Ethics statement; Methods' censoring statement, inference assumptions, literature
+search and the mechanism of the closed form; Data and code availability condensed; S1, S3, S4 and S5 Text, two sentences
+of S2 Text, and S11, S18, S19 and S20 Tables as the outcome entries and the lists say, with the notes of S5, S12 and S13
+Tables, a clause of S17 Table's source note and the head note of the supplementary tables; seven references added
+(Barnett & Seth, 2011; Gao et al., 2026; Rosas et al., 2020; Schartner et al., 2017; Seth et al., 2013; Strassman &
+Qualls, 1994; Timmermann et al., 2019), each read in full from V.S.'s copy and each claim checked against the PDF
+(`claims/`), with Barrett (2015), Liardi et al. (2025), Luppi et al. (2022, 2024, 2026), Cliff et al. (2021), Down et
+al. (2026) and Gatica et al. (2024) cited for statements newly made from them, Luppi et al. (2023) and Murray et al.
+(2014) checked again for the sentences that cite them, and the Methods, SI Appendix, Supplementary Information and
+Reporting Summary of the two source papers read for S4 Text and the censoring statement. The web searches of 1 and 2
+October 2026 for applications of ΦID to psychedelic data (`pubmed_search/psychedelic_phiid_search.md`, which records the
+queries and results of the second day) found none; the PubMed search V.S. ran on 2 October 2026 with the decomposition
+terms and psychedelic terms (its string in S3 Text §10) returned 2 records, none an application of ΦID to psychedelic
+data (the screening is in the same file). Ketamine is among that search's drug terms: S3 Text §10 names the two studies
+of S20 Table whose macaques were given it (Luppi et al., 2026, scanned under ketamine anaesthesia among other
+conditions; Gatica et al., 2024, scanned under isoflurane after injections of ketamine and of other agents) and says
+that data under anaesthesia are not counted as psychedelic data. The two records of the first search left to assess are
+assessed in `pubmed_search/screening.md` from their full texts (Pope et al., 2025: outside the criterion, its measure
+the local O-information; Gao et al., 2026: added to S20 Table), and `search_string.txt` records that PubMed's reading of
+the first string (its Search details) was not kept.
+
+**A.** M1 (the per-subject scaling is the comparison that carries the information, and no generator is non-stationary
+within a window): B28 (the generators' per-subject slopes under the data's heterogeneity, as a step and as a ramp over
+two windows) and B27 (the leave-one-out and leave-two-out, the minimal detectable difference): the Abstract, Results 4
+and the Discussion summarise the residual by both comparisons (B28's rule (iv)). Of M1 (b), the ramp is the control for
+a change of r₁ that builds up; a change of variance within a window and the semi-synthetic control (a known change
+written into the placebo series) are not computed, and Limitations says of the calibration that its change is a step or
+a two-window ramp on generators, not a known change written into the placebo series. M2 (the [TK] items and the
+co-authors' check): for the co-authors: the TK items stay until they are filled; the invitation to reproduce Table 2 is
+an item of the note to C.T. and S.P.S., which is not yet written (its items are listed at the end of this entry; C's
+M2). m1 (the mechanism of the closed form): Methods, The closed form: the MMI choice at the joint-target node stated as
+the mechanism (the joint-target redundancies set to S, the self-information, even at q = 0, where the sources are
+independent; S − C at rts and str, the four negative mirror atoms, 2S − C at sts; with unequal coefficients the smaller
+self-information), with Barrett (2015, Fig. 3: the MMI redundancy does not depend on the correlation between the
+sources). m2 (the exchange rate for lagged coupling): Results 1: −1.74 nats per unit c at fixed (r₁, q), 0.01 of r₁
+worth about 0.035 of symmetric coupling, and the pair-averaged second-order response (+0.009 nats for c = +0.02; S3
+Text, S18 Table). m3 ("non-monotonically" overgeneralised): Abstract, Results 1 and Discussion: lagged coupling "can
+move" sts "either way"; Results 1 gives the response at the operating point (lower at each computed value of c of q's
+sign up to +0.10, most at +0.05; higher for the opposite sign). m4 (prewhitening presented one-sidedly): B16c: Results 7
+reports each order's whitened r₁, power share, level and contrast (Table 4), and Results 7 and the Recommendations name
+whitening before the band-pass or no band-pass as the remedy the released derivatives cannot test (B16c's rule (ii));
+the condition and the numbers of Cliff et al. (2021), which A asks the authors to confirm, are given from the paper
+under C's m14 (S3 Text §8). m5 (CCS's negative synergy atom and the CCS contrast as a hypothesis): Results 6 states the
+negative atom with its range on the family (−0.015 to −0.036) and that CCS is not offered as a replacement; the
+Discussion names, as a hypothesis for a pre-specified test elsewhere, the per-subject relation of the residual to the
+CCS-sts change at W = 60 (r = 0.80; 0.09 for the change at the global fit, the estimator at which CCS-sts's rise has p =
+0.0002). m6 (the binarised estimators' scope in the SI only): Results 6: the binarised rates of S3 Text §11 stated in
+the main text. m7 (Luppi et al. (2022)'s surrogate test): Discussion: the surrogates argue against the exposure for the
+six macroscale associations of their Table 1 on that dataset, stated plainly with the two ranges, and with the rank
+gradient's attenuation beside (C's m6). m8 ("scope map"): Fig 1 retitled (the sts surface of the family, the data's
+operating point, and the coupled family); where the Discussion and the list of supporting information spoke of the map
+the main text names the surface ("the sts surface of Fig 1a" in the Discussion and in the list's entry of S20 Table;
+"the sts surface over (r₁, q)" in its entry of S3 Text); the supporting texts keep "the map", defined where S3 Text §4
+begins and in S20 Table's head note; "scope map" stays as the plans' name (S3 Text §4 and S5 Text §1 say that it is) and
+in file names (README.md, CLAUDE.md and the figure script's comments follow). m9 (the regional slope's wording and its
+two estimators): Results 3 names the two estimators (the global-fit atom against the windowed r₁), gives the same
+relation for the windowed estimator's own regional atoms, which are committed (r = 0.898, slope 2.30; post hoc, S3 Text
+§4, `derived_r24.out` item 7), and the per-subject slope (2.645) beside the group slope, and explains the slope through
+the less self-predictive member. m10 (a transfer-entropy companion): not computed (the decision of the entry on the cold
+reads); Results 7 names the pair of lag-1 transfer entropies, zero on the family and at every substituted matrix, and
+cites Barnett & Seth (2011) and Seth et al. (2013) for Granger causality under filtering; S3 Text §3 says what those
+results cover (the measure regressed on the whole past, not the lag-1 pair, which a filter changes:
+`audit/te_filter_check.py`); Rosas et al. (2020) cited for the emergence capacity (Results 6; S3 Text §11; S20 Table,
+row 2); the point A calls worth one sentence, the residual DiD of TDMI beside that of sts, is in Table 1's caption. m11
+(the 2.8-fold |q| slope stated without a check): not changed: a simulation of the windowed |q| slope on AR(1) pairs
+would be a computation for a later pre-run entry; A's report records its own reproduction (2.6), named in the entry on
+the cold reads. m12 (the literature search's reproducibility): Methods, Literature search: the PubMed search of 1
+October 2026 with its date and counts (its string in S3 Text §10), the web searches as the earlier source, and the
+searches for ΦID on psychedelic data (web, and PubMed on 2 October 2026); S20 Table gains Gao et al. (2026). m13 (the
+length of Data and code availability): condensed to the repository, the data source, the licences, what the code
+computes and one sentence on the runs, the inventory pointed to in S5 Text §4 (C's m13); the details the statement held
+until now are kept in a paragraph of S5 Text §4. m14 (the normalisation sentence): Results 7 says which normalisation is
+meant (Liardi et al., 2025: each atom read as its quantile among random systems of equal total mutual information) and
+what that total is on the family (a function of r₁ alone); what it would keep of sts's dependence is not computed, which
+Results 7 and S3 Text §10 say. w1 ("artefact"): "the r₁-dependence included" in Results 5 and Fig 6's caption; the word
+is not used for the change in r₁: the main text has it once, to deny it ("the fall is not an artefact"), and S3 Text and
+S19 Table quote it where it is the plan's word (C's M3 (iv) and w5); S3 Text §9 has it once more in its own voice, in
+committed text, and there too to deny it: residualising a contrast on the ratio of window variance to run variance would
+remove the part of the r₁ change that coincides with the variance change, "not an artefact of scale". w2 ("every atom
+moved"): Results 1: the thirteen atoms whose substituted DiD is not zero at the printed precision (B's MINOR 11). w3
+(the Abstract's register for the primary contrast): Abstract: a proof of concept, the contrast's history in one clause.
+w4 (the 4.7-to-1 ratio's qualifying clause): Abstract: "4.7 to 1 per within-window standard deviation; neither is lagged
+coupling, which can move it either way" (C's w4).
+
+**B.** MAJOR 1 (the pre-injection gap, the post-injection gap and the baseline-adjusted estimate): B27: Table 2's three
+readings for both variants; Results 2 (the gap's share of the DiD's variance, the SDs, r₁'s gaps and adjusted contrast,
+the scrutiny S2 Text applies to ΦR); Limitations; the Abstract carries the adjusted contrast beside the DiD. MAJOR 2
+(the per-subject covariation as the two runs' pre-injection difference): B27: the Abstract's cross-half correlation with
+the disattenuated value beside it; the Author summary's two differences with the subjects in which either rose; Results
+2's exclusion rule, lower limit, partial correlation and post-injection gaps' correlation, and S3 Text §5's caveat.
+MAJOR 3 (the verdict on the calibration not like-for-like and resting on two subjects): B28 and B27: Results 4 compares
+the data's slope with the generators' per-subject slopes under the data's heterogeneity (Table 3, whose caption names
+the two regressors: the whole-brain r₁ DiD for the data, the simulated pairs' pair r₁ DiD for the generators) and gives
+the leave-one-out and leave-two-out ranges and the slopes without subject 8, without subject 14 and without both (its
+rows 2–6); the sentence "the calibration is not validated" is replaced by what the shares give. MINOR 1 (the sensitivity
+of the "not distinguished" tests): B27: Results 4 gives the residual DiD's SE (0.0051), the minimal detectable
+difference (0.0155 nats, that of a t test: a one-sample t test on 13 df, S3 Text §5) and the three excesses; the
+Abstract and the Discussion give the excesses as a range (0.006–0.009) beside the detectable difference. MINOR 2 (the
+disattenuation's exclusion rule): Results 2 states the rule (the draws in which the split-half reliability of either DiD
+is not positive; 366 of 10,000) and that the ratio is not bounded by one (C's m10). MINOR 3 (the regional analysis: (a)
+a global-fit atom against a windowed r₁, (b) the spin p values not comparable, (c) the subcortical values fixed): (a)
+Results 3 names the two estimators and gives the same relation for the windowed estimator's own regional atoms (r =
+0.898, slope 2.30; post hoc): the reason B offers, that only the global-fit regional atoms were saved, is not so, as the
+audit of the revision's text found (the windowed ones are in `notes/review_results/regional/`); (b) Results 3 and Fig
+4's caption say that the unpartialled map's spin p (0.0564) and the residual map's (0.0009) are not comparable, and
+Results 3 why; (c) Results 3 says that the 16 subcortical values are fixed in every rotation. MINOR 4 (prewhitening
+incomplete (no atoms at p = 10 or 20)): B16c: the atoms at p = 10 and 20 in Results 7 (Table 4), S11 Table and S3 Text
+§8; the untestable remedy named in Results 7 and the Recommendations. MINOR 5 (the fifth of the contrast tied to
+motion): B29 and Results 2: the residualisation removes a fifth of the sts contrast and a sixth of r₁'s, and with motion
+any drug effect that coincides with the rise of framewise displacement; the replaced volumes in Limitations and S3 Text
+§5. MINOR 6 (the two-sided reading fixed with the sign known): Results 2 keeps the committed statement that under the
+directional-failure rule the significant decrease refutes the hypothesis as operationalised and adds that the planned
+increase failed whatever the two-sided p; Results 2 and Methods (Inference) say that the two-sided statistic was fixed
+after the global fits had shown the decrease. MINOR 7 (the drug order): each subject's session order is not among the
+released files (Limitations; S1 Text; S4 Text D8); asking the data authors for it is an item of the note to C.T. and
+S.P.S. MINOR 8 (the exploratory disclaimer applied inconsistently): Methods: the disclaimer qualified (a p value for an
+exploratory quantity describes the sample; S19 Table says of each computation whether a prediction was recorded or it
+was post hoc, and the text repeats it for several, which Methods says without listing them). Marked post hoc in the
+text: the r₁ contrast, the leave-one-out and S8 Table's check of the ratio (Results 2), the regional relation on the
+windowed atoms (Results 3), the spectral centroid (Results 5) and the deconvolved contrast (Results 7, with the
+deconvolution named in S19 Table's Part B); said to rest on a rule or a prediction recorded beforehand: the
+sensory–association contrast, fixed before the partialled map was computed, and the residual map's network structure,
+whose p lies below the range predicted for it (Results 3 and Fig 4's caption); the EEG Lempel–Ziv check (Discussion);
+A_other, the residual's response to the five constructions with their pure-autocorrelation expectations and the
+generators' per-subject slopes (Methods, The AR(1)-substituted estimate and its calibration); and the predictions that
+failed (Limitations); ΦR's p values are given without a threshold (Results 6); the Author summary says "relative to
+placebo". MINOR 9 (the OLS and Fieller assumptions and Fieller's g): Methods (Inference) states the assumptions of the t
+intervals and of the Fieller intervals, g and the condition for a finite interval; Results 2 and Results 4 state g where
+the Fieller intervals are quoted; the leave-one-out of the residual's slope is in Table 3 and that of the sts slope
+(4.263: 4.139 to 4.535) in S3 Text §5. MINOR 10 (the deconvolution result not regenerable): Results 7 labels it so.
+MINOR 11 (Table 1's sentence on atoms whose substituted change is zero): Results 1 restricts the sentence to the
+thirteen atoms (A's w2). W1 (spin p < 0.0001): Results 3, S3 Text §4 and S5 Table's note: p < 1/10,000, no rotation
+reaching the observed value; S19 Table's row: p < 1/10,000. W2 (the boundary convention): Methods: "excludes zero
+exactly when p ≤ 0.05". W3 ("pre-defined"): Results 3 and Fig 4's caption: the contrast fixed before the partialled map
+was computed (S19 Table); the word is gone from both. W4 (the bracketed earlier p value): removed from Results 4, with
+the bracketed earlier cross-half correlation of the same paragraph, which B does not name; S3 Text §6 gives both with
+what each was before the exclusion of Methods. W5 ("is not distinguished from" without the sensitivity): the
+Discussion's statement carries the excesses and the minimal detectable difference (MINOR 1).
+
+**C.** M1 (the subject-code passage): the Ethics statement replaced by a standard statement (a secondary analysis of
+derivatives released by the data authors; the quantities it uses carry no demographic, image or identifying field; no
+new data; no participant contacted); S1 Text shortened to the facts, the record's entry on the codes pointed to for what
+the history holds; S4 Text Sh5 follows; whether the letters identify anyone is an item of the note to C.T. and S.P.S.,
+and whether the public history is rewritten is V.S.'s decision, to be recorded when made (CLAUDE.md's bullet on the
+codes says so). C's remark that the codes in the history contradict "not redistributed" is answered by the record and
+not in the text: the sentence of Data and code availability is about the release's files, which the repository does not
+hold; that the codes stood in six tracked files until 15 September 2026 and remain in the history before fa39ef2 is in
+the record's entries of that day ("Data-governance note"; "Git history and the participant codes"). M2 (no human check;
+S.P.S.'s contribution): for the co-authors: the invitation to reproduce Table 2, Table 1, the closed-form identities and
+the regional correlation from the public repository, and the CRediT line of S.P.S., are items of the note; the Use of AI
+tools statement keeps what it said, in fewer words (its sentences on who ran the computations made one, the exceptions
+pointed to in S5 Text §4), adds the second occasion on which a session computed on the data, that of the text audit (the
+paragraph on the audits below), and still says that no person other than V.S. has checked the analysis, which stands
+until one has. M3 (the fall of r₁ framed as nuisance; the signal-diversity literature; the EEG check; "artefact"):
+Discussion gains the subsection "The fall of r₁ under DMT": the data authors' own reference to decreased BOLD
+autocorrelation on this dataset (Singleton et al., 2025, SI Figure 14: their account of a result, not a measurement),
+the EEG findings under DMT (Timmermann et al., 2019, 2023), MEG signal diversity under three psychedelics (Schartner et
+al., 2017), the EEG Lempel–Ziv check of S6 Table with the placebo run on both variants, the cardiovascular candidate
+with its citation (Strassman & Qualls, 1994) and motion, and that no ΦID application to psychedelic data was found;
+Limitations lists the candidates as the committed text did (neural, haemodynamic, cardiac, respiratory or motion
+effects), the respiratory one without a citation; "artefact" is not used for the change of r₁ (A's w1). M4 (S4 Text's
+and S20 Table's negative statements checked against the main articles only): S4 Text re-sourced to the main text and SI
+Appendix of Timmermann et al. (2023) and the main text, Supplementary Information and Reporting Summary of Singleton et
+al. (2025), with the basis stated in its header; S20 Table's row 5 says of HRF deconvolution that it is not mentioned in
+the article, its Extended Data or its Reporting Summary (the PDF read) and that the Supplementary Methods the article
+defers to were not read; obtaining them is an item of the note. M5 ((a) the definition of Luppi et al. (2024)'s synergy;
+(b) the editorial nitpicks of S20 Table; (c) the phyid-mask observation): (a) stated neutrally: the Introduction says
+that the study names its synergy the persistent synergy and gives its formula as its Eq. 5, the four-atom sum of Results
+1, and S20 Table's row 3 and the literature file that it names the quantity the persistent synergy and gives the
+whole-minus-max formula of its Eq. 5; a confirmation with those authors, which C calls ideal, was not sought; (b) the
+seven observations C lists are removed from S20 Table and the literature file; in rows 2 and 3 the remark is removed and
+the two counts stay as the papers give them; (c) kept as a statement of the definition and the code's condition (the
+decision of the entry on the cold reads). M6 (Results 4 and Table 3 unreadable): the former Table 3 and the
+constructions moved to S3 Text §6 (the residual table, under its own heading); Results 4 keeps the residual, its
+expectations, the per-subject comparison (the new Table 3) and the conclusion, condensed; the closing assessments of A
+and C on the length are answered by the condensation of every section ("The length and the tables" below). m1 (subject
+8's leverage beside its mean-filled parcel): B29 and Results 2: subject 8's marked TRs and its framewise-displacement
+DiD, the largest of the fourteen, stated with its leverage and its parcel (B29's rule (iii)); that the statements on the
+exclusions and the parcel are the data authors' to confirm is an item of the note. m2 (the non-finite TR's place):
+Methods (Dataset), S1 Text, S3 Text §5 and S4 Text P8: the last TR of subject 3's placebo run, at the end of window 14.
+m3 (scrubbing never mentioned): B29 and the source papers: the replacement stated in Methods (Dataset), S1 Text, S4 Text
+P6 and Limitations, with what it does to r₁ (S3 Text §5). m4 (the Zenodo licence; the written agreement; the
+acknowledgments): Data and code availability states the Zenodo record's licence field as V.S. read it on the record page
+("Creative Commons Attribution 4.0 International"; the page is not fetched by the sessions); the agreement exists in
+writing as two emails that V.S. holds, from C.T. (13 September 2026) and S.P.S. (14 September 2026), as README.md's
+paragraph on the licence records, and the note asks the two whether the sentence may stand; the acknowledgments wait for
+the co-authors. m5 ("relative to placebo"): Author summary and Results 2. m6 (the rank gradient's attenuation):
+Discussion: the surrogate gradient's redundancy term is finite-sample noise at q = 0, which weakens the test (S3 Text
+§10 gives the construction from Luppi et al., 2022, Methods). m7 ("most fMRI synergy reports"; the nine studies):
+Abstract: "most fMRI synergy reports we found"; Introduction: the ten studies read, with the counts (eight state MMI,
+five naming a Gaussian estimator; one uses CCS on binarised signals); Discussion: "the ten empirical studies we found"
+and that the search was not systematic until the database search; Methods states the search (A's m12). m8 (the
+AR(1)-substituted estimate used before it is defined): the Results' opening paragraph defines it (the four entries
+replaced) before Table 1; Table 1's caption and Results 4 refer back to it. m9 (Fig 5c illegible; Fig 1b's colour-bar
+label): Fig 5c redrawn on a taller panel with the y-range −0.02 to +0.03, a quarter of the nats per unit height of (a)
+and (b), that is, magnified four times, which its title (now on two lines) and its caption say; Fig 1b's label
+shortened. m10 (the disattenuation's exclusion rule): Results 2 (B's MINOR 2). m11 (the extrapolation clause for Luppi
+et al. (2024)): Introduction carries the clause. m12 (the contrast's history told five times): told in full in Methods
+(Pre-registration and deviations) and in two sentences in Results 2 (kept for B's MINOR 6); the Abstract, the
+Introduction and Limitations carry a clause or a pointer. m13 (Data and code availability as a run log): condensed (A's
+m13); the line "Manuscript for co-author review; not for citation or distribution" stays until submission, when it goes,
+as C says (CLAUDE.md lists it with the work that remains). m14 (Cliff et al. (2021)'s figure): S3 Text §8 gives the
+pages (15–16) and the rates (41.8 % and over 88 %, the second stated in their text and not shown in their figure);
+Results 7 points there for prewhitening's reported costs. m15 (∂rtr/∂r₁ against the data's own slope): Discussion: in
+these data's regional map rtr's slope on r₁ is 0.50, a sixth of sts's 3.09 (derived_r24.out, item 3). m16 (the Author
+summary's "mostly" bounded): Author summary: the level, the regional pattern and the contrast. m17 (the session order):
+Limitations, S1 Text and S4 Text D8: not among the released files; an item of the note (B's MINOR 7). m18 (the ratings
+result): Results 2 states it: the criterion passed its threshold of |ρ| ≥ 0.80 (ρ = −0.98) with the sign opposite to
+that pre-specified, and was void under its controls. m19 (the Abstract's length): 300 words (the check's output). w1
+("lowers the atom called synergy"): Results 1: "lowers sts". w2 (the |q| count's source): Results 2: the count is
+logged, the per-subject vector not saved. w3 (Table 1's caption's SI material): the sentence on the one printed value
+moved out of the caption (S3 Text §6 has it). w4 ("within a window"): the Abstract has "per within-window standard
+deviation" (Results 1: "within a window"). w5 ("the r₁-dependence included"): Results 5 and Fig 6's caption (A's w1). w6
+(a universal negative over nine papers): Discussion: "in the texts we read".
+
+**The length and the tables.** V.S.'s decision of 23 September 2026 set Introduction through Methods at 7,000 words and
+three tables. The statements the findings require (the four computations' results, the two new tables' prose, the
+subsection on the fall of r₁) took the first draft of this revision to about 9,000 words, and the text was condensed in
+every section, before the audits and again after them; two subsections of Methods stand word for word (Redundancy
+functions; Regional maps). Statements of the committed main text that are now in the supporting information or in a
+table, each pointed to from the main text: the former Table 3 with its caption (the constructions, the aligned
+statistic's definition) and the aligned statistic's change against its expectation (S3 Text §6); the null's four-cell
+residual levels, the bracketed earlier p value and cross-half correlation of Results 4 and the one printed value that
+the exclusion moved (S3 Text §6); the sensitivity variant's DiD and the FD-residualised DiD's place in Results 2's first
+paragraph (Table 2); the two cross-half correlations (S3 Text §5; Fig 3b), their intervals (S3 Text §5) and the
+band-passed generator's change and fall (S13 Table; Fig 3a); the prewhitened values at p = 1 and p ≤ 5 (Table 4), the
+reported costs of prewhitening (S3 Text §8, to which Results 7 points with the three citations) and the global fit's two
+exposures (S3 Text §9); the ideal-band-pass r₁ at TR 0.72 s and the derivative there (S3 Text §10); ΦR's cell on the
+sensitivity variant (S15 Table); the sentence on other Gaussian PIDs in full (S3 Text §2; Limitations keeps Barrett's
+reduction and the joint-target nodes in a clause); the itemised deviations (S5 Text §1); the Use of AI tools statement's
+account of the copy of the data that a session held by accident and of the 28-second test run on it (S5 Text §4); and
+the details of Data and code availability (S5 Text §4). Written for this revision and placed in the supporting
+information: the tables of the four computations (S3 Text §5, §6 and §8), the transfer entropies' argument and what the
+two filtering results cover (S3 Text §3), what the null-model normalisation is and the rank gradient's construction (S3
+Text §10), and the regional relation on the windowed atoms (S3 Text §4). Sentences retired by a rule or a finding, not
+for length: "the calibration is not validated for the residual on this dataset" with the comparison of the data's slope
+interval with the three rates (B28's rule (i)); "Prewhitening cannot fully remove the dependence" and "Do not expect
+prewhitening to remove the dependence" (B16c's rule (ii)); "share most of their reliable variance" (B's MAJOR 2); "and
+is not a claim" (B's MINOR 8). Two sentences retired for length: the Introduction's sentence listing the Results
+sections, which the headings give, and the Author summary's first sentence, merged into its second for the 200-word
+limit. No result left the paper: `checks/numbers_update.out` lists every deleted row of the numbers table, with where
+its number now is for the 161 rows of the former Table 3 and the 64 of numbers taken out of their paragraph, and with
+what became of the 7 numbers that the rewritten sentences no longer state and that are at no other place in that form (a
+threshold replaced by the p values themselves, a repeated limit, a second mention, a count of refits, a clause that is
+not carried, and the spin p rewritten as p < 1/10,000); the 28 deleted label rows (section numbers, dates, names,
+constants of formulas) have no place to give. Where a moved number stands at its new place with more decimals (the
+prewhitened values in Table 4; the band-passed generator's −0.0944 for a fall of 0.0154, the slope's interval in Table 3
+and A_other's expectation in S18 Table; the Abstract's 0.003–0.005, which Results 4 gives as 0.0027 and 0.0049; Cliff et
+al.'s 42 %, which is 41.8 % in S3 Text §8, as their text gives it), the list says so. After the condensation
+Introduction through Methods is 8,489 words with headings (8,362 without), and the main text has four tables (Tables 1
+and 2; Table 3, the per-subject slopes; Table 4, prewhitening by order) and six figures. V.S.'s decision of 2 October
+2026, taken on the planning session's recommendation after he asked for the best choice: the limit is 8,500 words with
+headings and the main text keeps four tables and six figures; the Abstract stays at most 300 words and the Author
+summary at most 200; the other terms of the decision of 23 September 2026 stand.
+
+**The audits of the prepared revision.** Three separate sessions audited the revision as first prepared, on 2 October
+2026, each on a clone at 8bd189e with the replacements applied: one the text against the result files and the three
+reads (63 findings, 3 of them blocking, 18 to fix, 31 minor and 11 notes), one these entries, the rules for the text and
+the bookkeeping (57 findings, 1 of them blocking, 12 to fix, 30 minor and 14 notes), one the citations against V.S.'s
+copies of the cited works (32 findings, 2 of them blocking, 5 to fix, 17 minor and 8 notes; its report came in two
+forms: the first, of 25 findings, left the statements about eight works unchecked for want of their PDFs, which V.S.
+then sent, and the second checked them and added seven findings, its first 25 standing word for word).
+`audit/findings_text.md`, `findings_record.md` and `findings_citations.md` hold the reports as the sessions returned
+them, and `audit/dispositions_revision.md` what was done about each of the 152 findings; 147 were corrected, 2 describe
+something that is kept and is now stated as what it is (the form of one output file; a ratio of printed means) and 3
+concern the audits' own instructions. The entries above and the text of this commit are the revision after those
+findings. What they changed, in the main: the Discussion's CCS lead, which had joined the global fit's rise to the W =
+60 correlation; Results 2's sentence on the intensity-tracking criterion, which had read its sign the wrong way round;
+Results 3's clause that only the global-fit regional atoms were saved, which was not so, and with it the relation on the
+windowed atoms, computed from the committed array and marked post hoc; Results 7's sentences on the transfer entropies
+and on the normalisation, which had attributed to the cited works what they do not state (the invariance holds for
+Granger causality regressed on the whole past, not for the lag-1 pair, as the audit's population check
+`audit/te_filter_check.py` shows; the normalisation reads an atom as a quantile and subtracts nothing); the committed
+sentence on the refutation, restored to Results 2; the attribution of the six exclusions to Singleton et al. alone;
+values that had been rounded twice (the Abstract's 0.89; 2.645; 0.0155; the ramp's 0.0001 and 0.0006; +0.445); Fig 5's
+caption and title, which had the scale of panel (c) the wrong way round, and Fig 4's caption, which kept "pre-defined"
+and set its two spin p values against each other; the captions of Tables 2 and 3; the exceptions in Data and code
+availability's sentence on the headers; the reviewers' letters and a session name in the supporting texts; the locators
+of the numbers table; these entries where they said more than the text has; and two statements of text the revision had
+not touched, which the audit of the citations raised outside its findings (the Introduction's sentence on Luppi et al.,
+2022, whose gradient is of the synergy rank minus the redundancy rank, and S3 Text §10's "the ΦID authors" for Liardi et
+al., 2025). The text audit rested three of its findings on the released series, which it fetched outside its clone (its
+T07, T10 and T25): the values it computed there are quoted in its report and used nowhere in the paper, which keeps the
+printed values of the committed files (S5 Text §4 records the occasion; the Use of AI tools statement points there). Ten
+further sessions then checked the corrections, each one part of the corrected revision: the four outcome entries; this
+entry; the dispositions of the three audits (four sessions); the statements about cited works that the audit of the
+citations had at that time left unchecked; the main text; the supporting information; and the numbers table, the
+replacements and the bookkeeping files. Their reports are in `audit/` (`check_*.md`). They hold 157 findings, graded as
+11 errors, 69 inexact statements and 77 notes; no value of a result in the main text or in the supporting information
+was found wrong. The errors were one wrong number in this entry, found by four of the sessions (the upper end of the
+leave-one-out range of the sts slope, 4.54 for 4.535), and seven findings on the bookkeeping (the notes of two rows and
+the source of one row of the numbers table, the places given for two sets of moved numbers, the reasons recorded with
+four replacements). 142 of the 157 were corrected, 7 name something that is kept and that a text of the commit now
+states as what it is, and 8 are kept without a change, each with its reason in the part of
+`audit/dispositions_revision.md` on those checks. Seven further sessions then checked the corrections made after those
+ten checks, reading the revision as it then stood: the main text; S3 Text and the derived numbers; the supplementary
+tables, S4 and S5 Text and the literature file; these five entries; the dispositions file; the numbers table, the
+replacements and the bookkeeping files; and the statements about cited works changed or added after the ten checks,
+against the PDFs (`audit/recheck_W1.md` to `recheck_W7.md`). They hold 86 findings, graded as 6 errors, 40 inexact
+statements and 40 notes, several of them one thing found by two or three sessions. None of the errors is a value of a
+result in the main text or in the supporting information; one finding graded inexact is of such values, three limits of
+intervals in S3 Text §6, each moved by 0.001 (below). The errors were four things: a count in
+`checks/numbers_update.out` (64 cross-references by number without a row for 74, the ten references to a figure's panel
+having been in no count; 70 in the text as now corrected), a computation label in a comment of `derived_r24.py`, a
+statement of one disposition about CLAUDE.md, and a count in the reason recorded with one replacement. 85 of the 86 were
+corrected and 1 names something that is kept and now stated as what it is. In the paper's files the corrections are: two
+parentheses of the main text (Methods' on where the text repeats a computation's status, which no longer lists sections;
+Results 2's on the two SDs, which says whose each is); in S3 Text, three limits of the intervals of the residual's
+cross-half correlations, now computed from the unrounded correlations, the reading of those correlations against their
+ceilings, the note on the two sign assignments under B27's table and a sentence on a second study of S20 Table whose
+animals were given ketamine; the "reported at" cells of S19 Table's Part A, read once more in full against the main
+text, its head note and its Part B row on the derived numbers; a source line of S18 Table, a cell and the head note of
+S20 Table; and two rows of S4 Text; S5 Text §5's clause on the audits names this check too. The part of
+`audit/dispositions_revision.md` on the second check says what was done about each. Four further sessions then checked
+the revision as it stood after those corrections, on 3 October 2026: the paper's files, with every cell of S19 Table's
+Part A read again; these five entries, the numbers table, the reasons of the replacements and the bookkeeping files; the
+dispositions file; and the statements about cited works changed or added after the second check, against the PDFs
+(`audit/recheck_X1.md` to `recheck_X4.md`). They hold 42 findings, none graded an error, 17 graded inexact and 25 notes,
+eight things among them found by two sessions; no value of a result in the main text or in the supporting information
+was found wrong. 41 of the 42 were corrected and 1 names something that is kept and now stated as what it is. A further
+session then read S19 Table's Part B against the whole paper (`audit/partB_reading.md`), which the third check had done
+for part of it only. In the paper's files the corrections are: in S19 Table, its head note, which states what the last
+column of Part A and the second column of Part B name, six cells of Part A, in Part B the second cell of twelve rows and
+the third of one, and five new rows of Part B, for post hoc computations that the supporting texts quote and that had
+none; S20 Table's head note and its row 1, which names the pages it cites from a study's Reporting Summary and Extended
+Data, with the same in the literature file; three rows of S4 Text (R1, S6, P5); a sentence of S2 Text, which now gives
+the outcome of the regional ΦR check; in S3 Text, the plural of one sentence of §10, two outputs named in §6 and one in
+§8, and in §5 and §8 the inverted sign-flip intervals of two contrasts that had none, the count DiD of the replaced
+volumes, +1.12 [−0.58, +2.97], and what the AR(1)-substituted estimate carries of the contrast at p = 20, −0.0037
+[−0.0066, −0.0008]; and a sentence of S5 Text §1; S5 Text §5's clause on the audits names this check as well.
+`derived_r24.py` computes the two intervals from committed per-subject files, with the interval of the directed
+response's difference between the runs, which S3 Text §6 quoted from no committed output, and the Fisher-z intervals of
+the eight whitened correlations at p = 10 and 20 (its items 14, 1, 13 and 6); each reproduces what the run printed of
+the quantity (the mean and the p, and the sign count or the correlation where the run printed one). The part of
+`audit/dispositions_revision.md` on the third check says what was done about each finding and what the reading of Part B
+changed. Four further sessions then checked the revision as it stood after those corrections, on the same day: S19
+Table, with its Part B read once more against the whole paper, row by row; the changes of the supporting texts, with the
+new numbers of `derived_r24.out` recomputed by other code; these five entries, the numbers table, the reasons of the
+replacements, the bookkeeping files and the dispositions file; and the statements about cited works changed or added
+after the third check, against the PDFs, with every page that S20 Table cites placed in its study's article or outside
+it (`audit/recheck_Y1.md` to `recheck_Y4.md`). They hold 38 findings, none graded an error, 17 graded inexact and 21
+notes, three things among them found by two sessions; no value of a result in the main text or in the supporting
+information was found wrong, and each new value of `derived_r24.out` was recomputed and found equal. 36 of the 38 were
+corrected and 2 name something that is kept and now stated as what it is: the last column of S19 Table's Part A, of
+which the head note now says that it names where an outcome is reported and every place of the main text that prints a
+value of it, and that it does not list every other place. In the paper's files the corrections are: in S19 Table, that
+sentence of the head note and its clauses on S17 Table and on the predictions that Part A quotes, and in Part B the cell
+of the coupled family, which no longer names S18 Table, a gloss of the row on `derived_r24.out` and two cells of the new
+row on the whole-brain ΦR items; a parenthesis of S17 Table's source note, which names what the run of 1 October 2026
+saved that is not in that table; in S20 Table and the literature file, row 1's source for the field strength and, in row
+5, the pages of the three parts of the PDF; the head of S2 Text and the main text's list of supporting information,
+which except the outcome of the regional test from what they call post hoc; a parenthesis of S3 Text §4; the sections
+named in the first sentence of S4 Text's row R1; and S5 Text §5's clause on the audits, which names this check.
+`derived_r24.py` compares the eight whitened correlations with B16c's printed values cell by cell, and the parse check
+covers the fifth of the scripts that this commit adds or changes. Two further sessions then read the corrections made
+for this check (`audit/reading_Z1.md`, `audit/reading_Z2.md`): 8 findings, none graded an error, 5 graded inexact and 3
+notes, one thing found by both and none of a value of a result. Each was corrected: among them the parenthesis of S17
+Table's source note, which as first written held of a part only of what that run saved, the sentences on S2 Text, which
+now speak of the results of the exploration and of the deconvolution, since the text quotes two values of the
+pre-specified analysis for comparison, and a count of the scripts in this paragraph. What was done about these findings
+was verified by the planning session with the checks of the build (the replacements applied to 8bd189e, the validators
+of the numbers table and the search of the files for every quotation of the dispositions file) and was not read by a
+further session. The last part of `audit/dispositions_revision.md` says what was done about each finding of the check
+and of the reading.
+
+**The checks.** The replacements applied all-or-none; check_numbers, check_cells and tablecheck as their outputs say;
+Introduction through Methods 8,489 words with headings (8,362 without; the limit 8,500), as `wc.py` counts them, the
+`##` or `###` of each of the 29 heading lines as a word, which is the count the limit was set in; the Abstract 300 words
+and the Author summary 200. `manuscript/main_text_numbers.csv` has 1,381 rows, one on every number token of the main
+text apart from the kinds its head note names (citation years, cross-references by number, the numbers of the captions'
+own heads and of the headings, dates, commit identifiers, the Zenodo DOI, code spans; digits that follow a letter
+directly, as in the names of the supporting items, S1 Text to S20 Table, are not number tokens): 264 committed rows
+deleted (161 of the former Table 3; 64 of numbers the revision takes out of their paragraph; 7 of numbers the rewritten
+sentences no longer state; 28 of labels the rewritten sentences no longer carry; 4 of numbers still in their paragraph,
+whose token has a new row) and 447 added (277 data rows, with file, line and held string; 65 design and literature rows,
+with file, line and anchor; 19 derived rows, with the derivation; 86 label rows, which have no source); the locators of
+committed rows that the audit found wrong are corrected (13 anchors, 19 rows of N = 14, whose corrected line the 14
+added rows of N = 14 take too, and 1 held string), the note of one committed row, which called Fig 1a's surface the
+scope map, is reworded, and the 37 committed rows whose locator or note the check of the corrected revision found
+inexact are corrected as the table's head note lists them, with the 7 that a second check found (3 label notes, 1 held
+string and the note of 3 rows of N = 14, a note the 14 added rows of N = 14 had taken too). `checks/numbers_update.out`
+lists the deleted rows and the 24 rows carried to a rewritten sentence otherwise than by the alignment of the two texts,
+each read against its committed sentence. The main text carries no computation label; the main text and the supporting
+information carry no round, stage or bundle name and no reviewer's letter, and name the sessions only in S5 Text §5,
+which defines the names.
+
+**The figures.** The figures and captions are regenerated at this commit and committed in the next, under these
+conditions, which `checks/figures_check.py` tests as stated here. (1) `captions_v2.md` has the committed file's number
+of lines and differs from it in six: its header, which must name this commit's short SHA without "-dirty", and the
+captions of Figs 1, 3, 4, 5 and 6; each of the six captions must hold a Source sentence and, without it, equal the main
+text's caption, and Fig 2's must also be the committed one. (2) The PNG files of Figs 1, 3 and 5 differ from the
+committed ones (Fig 1b's colour-bar label; Fig 3c's two per-subject slope lines and its legend, whose entries are 6.5 pt
+for 6.8, its title staying 6.8; Fig 5c's y-range and two-line title, with height ratios of 0.30 : 0.20 : 0.20 for 0.30 :
+0.20 : 0.10, which leaves panels (a) and (b) six-sevenths of their height, and its legend's anchor at −0.25 of the
+panel's height for −0.42, which keeps the legend about as far below the taller panel), each with a width and a height
+within 3 % of the committed file's; the PNG files of Figs 2, 4 and 6 are identical to the committed ones or differ by
+anti-aliasing alone, which the script defines as the same size, at most 0.1 % of the pixels different and no channel
+different by more than 32 of 255. (3) The PDF files of Figs 1, 3 and 5 differ beyond their dates; those of Figs 2, 4 and
+6 are identical once the two date fields, the cross-reference table and the `startxref` offset are masked. The script
+ends with "conditions met" or names the conditions that failed; any failure blocks the commit, to be investigated and
+recorded first.
+
+**The note to C.T. and S.P.S.** is not yet written. Its items are those the dispositions above assign to it (A's M2; B's
+MINOR 7; C's M1, M2, M4, m1, m4 and m17) and five that no disposition assigns and that are added here: whether a testing
+day held one substance or both, the censoring, the Zenodo licence field, the [TK] items that are the co-authors' to
+fill, and the Supplementary Materials of Gao et al. (2026). The list in full: each subject's session order and whether a
+testing day held one substance or both; the censoring; the Zenodo licence field and the written agreement; whether the
+letters of the subject codes identify anyone; the two statements that are the data authors' to confirm (the six
+exclusions; the mean-filled parcel of subject 8's DMT run); the invitation to reproduce Table 2, Table 1, the
+closed-form identities and the regional correlation from the public repository; the CRediT line of S.P.S.; the [TK]
+items that are theirs to fill (affiliations, further co-authors and contributors, their contributions, funding
+statements and competing interests, the acknowledgments, and the REC reference number with the basis for secondary use);
+the Supplementary Methods of Luppi et al. 2026 and the Supplementary Materials of Gao et al. 2026.
