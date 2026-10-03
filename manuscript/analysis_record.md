@@ -9647,3 +9647,34 @@ entry and the folder's files, and rehearsed the commit on a copy of the reposito
 computer applied the replacements, put this entry's time into its heading, compared the sha256 of each changed and
 each new file with the planning session's build and the outputs of the checks with those of `checks/`, and committed.
 The typeset PDFs for the co-authors are built from the commit that holds the outputs.
+
+## The reference list in APA style, its working notes moved to S5 Text: text, 3 Oct 2026 16:12 UTC (appended; nothing above edited)
+
+**What changed.** The main text's reference list (48 entries; none added, none removed; no citation in the text
+changed) is brought to the form of the seventh edition of the APA manual, for the draft that goes to C.T. and S.P.S.:
+the journal's title and the volume in italics; "Article" before an article number (21 entries); the four preprints as
+title in italics, repository and link (Down et al., 2026, on bioRxiv; Mediano et al., 2021, Varley, 2024, and Williams
+& Beer, 2010, on arXiv, with their arxiv.org links); the entry of `phyid` in the form for software, with the short
+commit; Luppi et al. (2026) with its first nineteen authors, an ellipsis and the last, for its twenty-five; sentence
+case where a title departed from it (the capital after the colon in Theiler et al., 1992; "integrated information
+decomposition" in lower case, as the text writes it, in five titles); "The Journal of Neuroscience"; "NSPN Consortium"
+in the entry of Váša et al. (2018); "Pt. 2" in that of Arbabshirani et al. (2014); and the entries that share a first
+author ordered by the next author that differs (Luppi: 2024, 2023, 2022, 2026; Timmermann: 2023, 2019; Wu: 2021,
+2013). Apart from these, no author, year, title, volume, issue, page range or DOI is changed.
+
+**The notes.** Seventeen entries carried working notes (when and from which copy a work was read, a bibliographic
+record checked against Crossref, the preprint or the version behind an entry, what the definitions of a cited appendix
+are, the licence and the full commit of the software). They are removed from the list and kept, work by work, in S5
+Text §5, so that nothing they said is lost.
+
+**How this commit was made.** As the entry before this one: not by the writer's session and without a separate audit,
+at V.S.'s request for a clean draft for the co-authors. The planning session built the new list by rule from the
+committed one, compared every entry with its old form token by token and read the result;
+`notes/references_2026-10-03_apa/text_replacements_2026-10-03_references.json` holds the replacements (the list as one
+block), applied all or none by `notes/review_2026-09-25/revision/apply_replacements.py`; a script that V.S. ran on his
+computer applied them, put this entry's time into its heading, compared each changed and new file with the planning
+session's build by sha256 and the outputs of the checks with those of `notes/references_2026-10-03_apa/checks/`, and
+committed. Before that the planning session typeset both PDFs from the built tree: no missing glyph and no overfull
+box. Nothing in Introduction through Methods changes (8,499 words with headings) and
+`manuscript/main_text_numbers.csv` is unchanged; the outputs of the five checks equal those of the commit before. PLOS
+Computational Biology uses numbered references; that conversion is left for the submission.
