@@ -1,0 +1,11 @@
+octave_crosscheck.m; GNU Octave 8.4.0; /home/vilalius/dmt-phiid/external/DMT_NCT/data/DMT_clean_mni_continuous_fullPreprocsch116.mat
+variant ts_gsr: 14 subjects, 115 regions, 6555 pairs, 14 windows of 60 TRs; non-finite TRs dropped: 1
+  subject 3, run 2 (1 = DMT, 2 = placebo): 1
+whole-brain lag-1 autocorrelation r1
+  pre-injection mean, DMT / placebo: 0.84793 / 0.84547
+  pre-injection gap +0.00246; post-injection gap -0.01219; DiD -0.01465 (means over 14 subjects)
+  DiD per subject: -0.016099 -0.002413 -0.026050 -0.020010 +0.000480 -0.018620 -0.008416 -0.064195 -0.031159 -0.020073 -0.014322 -0.008042 -0.000283 +0.024165
+whole-brain mean MMI-sts (nats)
+  pre-injection mean, DMT / placebo: 1.15538 / 1.13779
+  pre-injection gap +0.01759; post-injection gap -0.06328; DiD -0.08087 (means over 14 subjects)
+  DiD per subject: -0.081349 -0.044572 -0.157160 -0.137884 -0.011811 -0.053639 -0.065267 -0.279523 -0.131599 -0.153296 -0.040514 -0.067717 -0.002661 +0.094865
