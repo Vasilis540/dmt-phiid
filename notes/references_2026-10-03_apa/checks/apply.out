@@ -1,0 +1,12 @@
+A1      manuscript/draft_v2.md                     ok
+A2      manuscript/si/S5_Text.md                   ok
+A3      CLAUDE.md                                  ok
+A4      README.md                                  ok
+A5      manuscript/analysis_record.md              ok
+
+all 5 entries applied; files written:
+  baffc9904708d0fa4fe9a2dfffca60a541035c4b7df2230a09a711a70a6f3660  CLAUDE.md
+  c29934194b80def337b02fbf31ac1f44320060cabbfe756a5edfa35b1a32ca71  README.md
+  84f7fcc56897d4bb95d89d3ac29dc4b5d2d098fb78b6f2b36149fe0b1bef6b89  manuscript/analysis_record.md
+  6127ad1895afa4cf3ef974469668c147cb57dc0b4b12b0c1804c89697778266d  manuscript/draft_v2.md
+  d285e57ad85559987e134d7d2181789c9574f425752680e4117909a9d58728a7  manuscript/si/S5_Text.md

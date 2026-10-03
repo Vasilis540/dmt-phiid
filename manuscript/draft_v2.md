@@ -290,101 +290,101 @@ V.S. is preparing an application for a PhD position in the Cognition and Conscio
 
 ## References
 
-Afyouni, S., Smith, S. M., & Nichols, T. E. (2019). Effective degrees of freedom of the Pearson's correlation coefficient under autocorrelation. *NeuroImage*, 199, 609–625. https://doi.org/10.1016/j.neuroimage.2019.05.011
+Afyouni, S., Smith, S. M., & Nichols, T. E. (2019). Effective degrees of freedom of the Pearson's correlation coefficient under autocorrelation. *NeuroImage, 199*, 609–625. https://doi.org/10.1016/j.neuroimage.2019.05.011
 
-Alexander-Bloch, A. F., Shou, H., Liu, S., Satterthwaite, T. D., Glahn, D. C., Shinohara, R. T., Vandekar, S. N., & Raznahan, A. (2018). On testing for spatial correspondence between maps of human brain structure and function. *NeuroImage*, 178, 540–551. https://doi.org/10.1016/j.neuroimage.2018.05.070
+Alexander-Bloch, A. F., Shou, H., Liu, S., Satterthwaite, T. D., Glahn, D. C., Shinohara, R. T., Vandekar, S. N., & Raznahan, A. (2018). On testing for spatial correspondence between maps of human brain structure and function. *NeuroImage, 178*, 540–551. https://doi.org/10.1016/j.neuroimage.2018.05.070
 
-Arbabshirani, M. R., Damaraju, E., Phlypo, R., Plis, S., Allen, E., Ma, S., Mathalon, D., Preda, A., Vaidya, J. G., Adali, T., & Calhoun, V. D. (2014). Impact of autocorrelation on functional connectivity. *NeuroImage*, 102(Pt 2), 294–308. https://doi.org/10.1016/j.neuroimage.2014.07.045
+Arbabshirani, M. R., Damaraju, E., Phlypo, R., Plis, S., Allen, E., Ma, S., Mathalon, D., Preda, A., Vaidya, J. G., Adali, T., & Calhoun, V. D. (2014). Impact of autocorrelation on functional connectivity. *NeuroImage, 102*(Pt. 2), 294–308. https://doi.org/10.1016/j.neuroimage.2014.07.045
 
-Barnett, L., & Seth, A. K. (2011). Behaviour of Granger causality under filtering: Theoretical invariance and practical application. *Journal of Neuroscience Methods*, 201(2), 404–419. https://doi.org/10.1016/j.jneumeth.2011.08.010 (read in full from V.S.'s copy on 1 October 2026)
+Barnett, L., & Seth, A. K. (2011). Behaviour of Granger causality under filtering: Theoretical invariance and practical application. *Journal of Neuroscience Methods, 201*(2), 404–419. https://doi.org/10.1016/j.jneumeth.2011.08.010
 
-Barrett, A. B. (2015). Exploration of synergistic and redundant information sharing in static and dynamical Gaussian systems. *Physical Review E*, 91(5), 052802. https://doi.org/10.1103/PhysRevE.91.052802
+Barrett, A. B. (2015). Exploration of synergistic and redundant information sharing in static and dynamical Gaussian systems. *Physical Review E, 91*(5), Article 052802. https://doi.org/10.1103/PhysRevE.91.052802
 
-Bartlett, M. S. (1935). Some aspects of the time-correlation problem in regard to tests of significance. *Journal of the Royal Statistical Society*, 98(3), 536–543. https://doi.org/10.2307/2342284
+Bartlett, M. S. (1935). Some aspects of the time-correlation problem in regard to tests of significance. *Journal of the Royal Statistical Society, 98*(3), 536–543. https://doi.org/10.2307/2342284
 
-Cliff, O. M., Novelli, L., Fulcher, B. D., Shine, J. M., & Lizier, J. T. (2021). Assessing the significance of directed and multivariate measures of linear dependence between time series. *Physical Review Research*, 3(1), 013145. https://doi.org/10.1103/PhysRevResearch.3.013145
+Cliff, O. M., Novelli, L., Fulcher, B. D., Shine, J. M., & Lizier, J. T. (2021). Assessing the significance of directed and multivariate measures of linear dependence between time series. *Physical Review Research, 3*(1), Article 013145. https://doi.org/10.1103/PhysRevResearch.3.013145
 
-Cousineau, D. (2005). Confidence intervals in within-subject designs: A simpler solution to Loftus and Masson's method. *Tutorials in Quantitative Methods for Psychology*, 1(1), 42–45. https://doi.org/10.20982/tqmp.01.1.p042
+Cousineau, D. (2005). Confidence intervals in within-subject designs: A simpler solution to Loftus and Masson's method. *Tutorials in Quantitative Methods for Psychology, 1*(1), 42–45. https://doi.org/10.20982/tqmp.01.1.p042
 
-Down, K. J. A., Huntley, J., Mediano, P. A. M., & Bor, D. (2026). Synergistic and redundant information dynamics are modulated by Alzheimer's disease and cognitive impairment. *bioRxiv*, 2026.02.18.706630. https://doi.org/10.64898/2026.02.18.706630 (preprint; PubMed 41757079, PMC12934565; no journal version found on 15 September 2026).
+Down, K. J. A., Huntley, J., Mediano, P. A. M., & Bor, D. (2026). *Synergistic and redundant information dynamics are modulated by Alzheimer's disease and cognitive impairment*. bioRxiv. https://doi.org/10.64898/2026.02.18.706630
 
-Faes, L., Marinazzo, D., & Stramaglia, S. (2017). Multiscale information decomposition: Exact computation for multivariate Gaussian processes. *Entropy*, 19(8), 408. https://doi.org/10.3390/e19080408
+Faes, L., Marinazzo, D., & Stramaglia, S. (2017). Multiscale information decomposition: Exact computation for multivariate Gaussian processes. *Entropy, 19*(8), Article 408. https://doi.org/10.3390/e19080408
 
-Faes, L., Sparacino, L., Mijatovic, G., Antonacci, Y., Ricci, L., Marinazzo, D., & Stramaglia, S. (2025). Partial information rate decomposition. *Physical Review Letters*, 135(18), 187401. https://doi.org/10.1103/nrwj-n8lj (arXiv 2502.04550; the quotations in S3 Text are from the arXiv version dated 7 October 2025)
+Faes, L., Sparacino, L., Mijatovic, G., Antonacci, Y., Ricci, L., Marinazzo, D., & Stramaglia, S. (2025). Partial information rate decomposition. *Physical Review Letters, 135*(18), Article 187401. https://doi.org/10.1103/nrwj-n8lj
 
-Gao, Q., Wen, J., Lu, Y., Li, L., Li, J., Hua, B., Mao, Y., Zhao, W., Xu, Y., Xia, P., Xie, K., Zeng, Y., Mo, Y., & Wen, G. (2026). Mapping brain synergy dysfunction in heart failure patients with reduced and mildly reduced ejection fraction using multimodal neuroimaging: Functional and molecular insights. *European Journal of Radiology*, 203, 113018. https://doi.org/10.1016/j.ejrad.2026.113018 (found by the PubMed search of 1 October 2026; read in full from V.S.'s copy on that day; bibliographic record checked against Crossref on that day)
+Gao, Q., Wen, J., Lu, Y., Li, L., Li, J., Hua, B., Mao, Y., Zhao, W., Xu, Y., Xia, P., Xie, K., Zeng, Y., Mo, Y., & Wen, G. (2026). Mapping brain synergy dysfunction in heart failure patients with reduced and mildly reduced ejection fraction using multimodal neuroimaging: Functional and molecular insights. *European Journal of Radiology, 203*, Article 113018. https://doi.org/10.1016/j.ejrad.2026.113018
 
-Gatica, M., Atkinson-Clement, C., Mediano, P. A. M., Alkhawashki, M., Ross, J., Sallet, J., & Kaiser, M. (2024). Transcranial ultrasound stimulation effect in the redundant and synergistic networks consistent across macaques. *Network Neuroscience*, 8(4), 1032–1050. https://doi.org/10.1162/netn_a_00388
+Gatica, M., Atkinson-Clement, C., Mediano, P. A. M., Alkhawashki, M., Ross, J., Sallet, J., & Kaiser, M. (2024). Transcranial ultrasound stimulation effect in the redundant and synergistic networks consistent across macaques. *Network Neuroscience, 8*(4), 1032–1050. https://doi.org/10.1162/netn_a_00388
 
-Honari, H., Choe, A. S., Pekar, J. J., & Lindquist, M. A. (2019). Investigating the impact of autocorrelation on time-varying connectivity. *NeuroImage*, 197, 37–48. https://doi.org/10.1016/j.neuroimage.2019.04.042
+Honari, H., Choe, A. S., Pekar, J. J., & Lindquist, M. A. (2019). Investigating the impact of autocorrelation on time-varying connectivity. *NeuroImage, 197*, 37–48. https://doi.org/10.1016/j.neuroimage.2019.04.042
 
-Huang, Z., Liu, X., Mashour, G. A., & Hudetz, A. G. (2018). Timescales of intrinsic BOLD signal dynamics and functional connectivity in pharmacologic and neuropathologic states of unconsciousness. *Journal of Neuroscience*, 38(9), 2304–2317. https://doi.org/10.1523/JNEUROSCI.2545-17.2018
+Huang, Z., Liu, X., Mashour, G. A., & Hudetz, A. G. (2018). Timescales of intrinsic BOLD signal dynamics and functional connectivity in pharmacologic and neuropathologic states of unconsciousness. *The Journal of Neuroscience, 38*(9), 2304–2317. https://doi.org/10.1523/JNEUROSCI.2545-17.2018
 
-Imperial-MIND-lab (2026). phyid: Python package for Integrated Information Decomposition (ΦID) [computer software, BSD-3-Clause]. GitHub repository, https://github.com/Imperial-MIND-lab/integrated-info-decomp, at commit 6c5f2e9d33c985efbdf875d45cb5a2a6a5cdbf44 (merge of pull request #4, 14 March 2026; the commit of the pinned environment). The repository asks users to cite Mediano et al. (2025) and Luppi et al. (2022).
+Imperial-MIND-lab. (2026). *phyid: Python package for integrated information decomposition (ΦID)* (Commit 6c5f2e9) [Computer software]. GitHub. https://github.com/Imperial-MIND-lab/integrated-info-decomp
 
-Ince, R. A. A. (2017). Measuring multivariate redundant information with pointwise common change in surprisal. *Entropy*, 19(7), 318. https://doi.org/10.3390/e19070318
+Ince, R. A. A. (2017). Measuring multivariate redundant information with pointwise common change in surprisal. *Entropy, 19*(7), Article 318. https://doi.org/10.3390/e19070318
 
-Ito, T., Hearne, L. J., & Cole, M. W. (2020). A cortical hierarchy of localized and distributed processes revealed via dissociation of task activations, connectivity changes, and intrinsic timescales. *NeuroImage*, 221, 117141. https://doi.org/10.1016/j.neuroimage.2020.117141
+Ito, T., Hearne, L. J., & Cole, M. W. (2020). A cortical hierarchy of localized and distributed processes revealed via dissociation of task activations, connectivity changes, and intrinsic timescales. *NeuroImage, 221*, Article 117141. https://doi.org/10.1016/j.neuroimage.2020.117141
 
-Kay, J. W., & Ince, R. A. A. (2018). Exact partial information decompositions for Gaussian systems based on dependency constraints. *Entropy*, 20(4), 240. https://doi.org/10.3390/e20040240
+Kay, J. W., & Ince, R. A. A. (2018). Exact partial information decompositions for Gaussian systems based on dependency constraints. *Entropy, 20*(4), Article 240. https://doi.org/10.3390/e20040240
 
-Liardi, A., Rosas, F. E., Carhart-Harris, R. L., Blackburne, G., Bor, D., & Mediano, P. A. M. (2025). Null models for comparing information decomposition across complex systems. *PLOS Computational Biology*, 21(11), e1013629. https://doi.org/10.1371/journal.pcbi.1013629 (arXiv 2410.11583)
+Liardi, A., Rosas, F. E., Carhart-Harris, R. L., Blackburne, G., Bor, D., & Mediano, P. A. M. (2025). Null models for comparing information decomposition across complex systems. *PLOS Computational Biology, 21*(11), Article e1013629. https://doi.org/10.1371/journal.pcbi.1013629
 
-Luppi, A. I., Mediano, P. A. M., Rosas, F. E., Holland, N., Fryer, T. D., O'Brien, J. T., Rowe, J. B., Menon, D. K., Bor, D., & Stamatakis, E. A. (2022). A synergistic core for human brain evolution and cognition. *Nature Neuroscience*, 25(6), 771–782. https://doi.org/10.1038/s41593-022-01070-0
+Luppi, A. I., Mediano, P. A. M., Rosas, F. E., Allanson, J., Pickard, J. D., Carhart-Harris, R. L., Williams, G. B., Craig, M. M., Finoia, P., Owen, A. M., Naci, L., Menon, D. K., Bor, D., & Stamatakis, E. A. (2024). A synergistic workspace for human consciousness revealed by integrated information decomposition. *eLife, 12*, Article RP88173. https://doi.org/10.7554/eLife.88173.4
 
-Luppi, A. I., Mediano, P. A. M., Rosas, F. E., Allanson, J., Pickard, J. D., Williams, G. B., Craig, M. M., Finoia, P., Peattie, A. R. D., Coppola, P., Menon, D. K., Bor, D., & Stamatakis, E. A. (2023). Reduced emergent character of neural dynamics in patients with a disrupted connectome. *NeuroImage*, 269, 119926. https://doi.org/10.1016/j.neuroimage.2023.119926 (bioRxiv 2022.06.16.496445)
+Luppi, A. I., Mediano, P. A. M., Rosas, F. E., Allanson, J., Pickard, J. D., Williams, G. B., Craig, M. M., Finoia, P., Peattie, A. R. D., Coppola, P., Menon, D. K., Bor, D., & Stamatakis, E. A. (2023). Reduced emergent character of neural dynamics in patients with a disrupted connectome. *NeuroImage, 269*, Article 119926. https://doi.org/10.1016/j.neuroimage.2023.119926
 
-Luppi, A. I., Mediano, P. A. M., Rosas, F. E., Allanson, J., Pickard, J. D., Carhart-Harris, R. L., Williams, G. B., Craig, M. M., Finoia, P., Owen, A. M., Naci, L., Menon, D. K., Bor, D., & Stamatakis, E. A. (2024). A synergistic workspace for human consciousness revealed by Integrated Information Decomposition. *eLife*, 12, RP88173 (version of record, version 4, 18 July 2024). https://doi.org/10.7554/eLife.88173.4
+Luppi, A. I., Mediano, P. A. M., Rosas, F. E., Holland, N., Fryer, T. D., O'Brien, J. T., Rowe, J. B., Menon, D. K., Bor, D., & Stamatakis, E. A. (2022). A synergistic core for human brain evolution and cognition. *Nature Neuroscience, 25*(6), 771–782. https://doi.org/10.1038/s41593-022-01070-0
 
-Luppi, A. I., Uhrig, L., Tasserie, J., Mediano, P. A. M., Rosas, F. E., Singleton, S. P., Gutierrez-Barragan, D., Gini, S., Castro, P., Signorelli, C. M., Golkowski, D., Ranft, A., Ilg, R., Jordan, D., Muta, K., Hata, J., Okano, H., Liu, Z.-Q., Yee, Y., Destexhe, A., Cofre, R., Menon, D. K., Gozzi, A., Jarraya, B., & Stamatakis, E. A. (2026). Convergent transcriptomic and connectomic controllers of information integration and its anaesthetic breakdown across mammalian brains. *Nature Human Behaviour*, 10(4), 777–802. https://doi.org/10.1038/s41562-025-02381-5
+Luppi, A. I., Uhrig, L., Tasserie, J., Mediano, P. A. M., Rosas, F. E., Singleton, S. P., Gutierrez-Barragan, D., Gini, S., Castro, P., Signorelli, C. M., Golkowski, D., Ranft, A., Ilg, R., Jordan, D., Muta, K., Hata, J., Okano, H., Liu, Z.-Q., Yee, Y., … Stamatakis, E. A. (2026). Convergent transcriptomic and connectomic controllers of information integration and its anaesthetic breakdown across mammalian brains. *Nature Human Behaviour, 10*(4), 777–802. https://doi.org/10.1038/s41562-025-02381-5
 
-Mediano, P. A. M., Rosas, F. E., Luppi, A. I., Carhart-Harris, R. L., Bor, D., Seth, A. K., & Barrett, A. B. (2021). Towards an extended taxonomy of information dynamics via Integrated Information Decomposition. *arXiv*, 2109.13186 (v1; Appendix, Definition 1 is the CCS double-redundancy definition used here).
+Mediano, P. A. M., Rosas, F. E., Luppi, A. I., Carhart-Harris, R. L., Bor, D., Seth, A. K., & Barrett, A. B. (2021). *Towards an extended taxonomy of information dynamics via integrated information decomposition*. arXiv. https://arxiv.org/abs/2109.13186
 
-Mediano, P. A. M., Rosas, F. E., Luppi, A. I., Carhart-Harris, R. L., Bor, D., Seth, A. K., & Barrett, A. B. (2025). Toward a unified taxonomy of information dynamics via Integrated Information Decomposition. *Proceedings of the National Academy of Sciences*, 122(39), e2423297122. https://doi.org/10.1073/pnas.2423297122 (SI Appendix: Definition 1 is MMI, Definition 2 the CCS double-redundancy definition used here; Sec. III.A states that MMI ΦID atoms can be negative; checked 15 and 20 September 2026)
+Mediano, P. A. M., Rosas, F. E., Luppi, A. I., Carhart-Harris, R. L., Bor, D., Seth, A. K., & Barrett, A. B. (2025). Toward a unified taxonomy of information dynamics via integrated information decomposition. *Proceedings of the National Academy of Sciences, 122*(39), Article e2423297122. https://doi.org/10.1073/pnas.2423297122
 
-Morey, R. D. (2008). Confidence intervals from normalized data: A correction to Cousineau (2005). *Tutorials in Quantitative Methods for Psychology*, 4(2), 61–64. https://doi.org/10.20982/tqmp.04.2.p061
+Morey, R. D. (2008). Confidence intervals from normalized data: A correction to Cousineau (2005). *Tutorials in Quantitative Methods for Psychology, 4*(2), 61–64. https://doi.org/10.20982/tqmp.04.2.p061
 
-Murray, J. D., Bernacchia, A., Freedman, D. J., Romo, R., Wallis, J. D., Cai, X., Padoa-Schioppa, C., Pasternak, T., Seo, H., Lee, D., & Wang, X.-J. (2014). A hierarchy of intrinsic timescales across primate cortex. *Nature Neuroscience*, 17(12), 1661–1663. https://doi.org/10.1038/nn.3862
+Murray, J. D., Bernacchia, A., Freedman, D. J., Romo, R., Wallis, J. D., Cai, X., Padoa-Schioppa, C., Pasternak, T., Seo, H., Lee, D., & Wang, X.-J. (2014). A hierarchy of intrinsic timescales across primate cortex. *Nature Neuroscience, 17*(12), 1661–1663. https://doi.org/10.1038/nn.3862
 
-Nago, H., Kojima, H., Yamaguchi, H., & Yamashita, Y. (2026). Synergistic and redundant information dynamics exhibit dissociable alterations across schizophrenia and neurodevelopmental conditions. *Brain Informatics*, 13(1), 25. https://doi.org/10.1186/s40708-026-00312-2
+Nago, H., Kojima, H., Yamaguchi, H., & Yamashita, Y. (2026). Synergistic and redundant information dynamics exhibit dissociable alterations across schizophrenia and neurodevelopmental conditions. *Brain Informatics, 13*(1), Article 25. https://doi.org/10.1186/s40708-026-00312-2
 
-Raut, R. V., Snyder, A. Z., & Raichle, M. E. (2020). Hierarchical dynamics as a macroscopic organizing principle of the human brain. *Proceedings of the National Academy of Sciences*, 117(34), 20890–20897. https://doi.org/10.1073/pnas.2003383117
+Raut, R. V., Snyder, A. Z., & Raichle, M. E. (2020). Hierarchical dynamics as a macroscopic organizing principle of the human brain. *Proceedings of the National Academy of Sciences, 117*(34), 20890–20897. https://doi.org/10.1073/pnas.2003383117
 
-Rosas, F. E., Mediano, P. A. M., Jensen, H. J., Seth, A. K., Barrett, A. B., Carhart-Harris, R. L., & Bor, D. (2020). Reconciling emergences: An information-theoretic approach to identify causal emergence in multivariate data. *PLOS Computational Biology*, 16(12), e1008289. https://doi.org/10.1371/journal.pcbi.1008289 (read in full from V.S.'s copy on 1 October 2026)
+Rosas, F. E., Mediano, P. A. M., Jensen, H. J., Seth, A. K., Barrett, A. B., Carhart-Harris, R. L., & Bor, D. (2020). Reconciling emergences: An information-theoretic approach to identify causal emergence in multivariate data. *PLOS Computational Biology, 16*(12), Article e1008289. https://doi.org/10.1371/journal.pcbi.1008289
 
-Schaefer, A., Kong, R., Gordon, E. M., Laumann, T. O., Zuo, X.-N., Holmes, A. J., Eickhoff, S. B., & Yeo, B. T. T. (2018). Local-global parcellation of the human cerebral cortex from intrinsic functional connectivity MRI. *Cerebral Cortex*, 28(9), 3095–3114. https://doi.org/10.1093/cercor/bhx179
+Schaefer, A., Kong, R., Gordon, E. M., Laumann, T. O., Zuo, X.-N., Holmes, A. J., Eickhoff, S. B., & Yeo, B. T. T. (2018). Local-global parcellation of the human cerebral cortex from intrinsic functional connectivity MRI. *Cerebral Cortex, 28*(9), 3095–3114. https://doi.org/10.1093/cercor/bhx179
 
-Schartner, M. M., Carhart-Harris, R. L., Barrett, A. B., Seth, A. K., & Muthukumaraswamy, S. D. (2017). Increased spontaneous MEG signal diversity for psychoactive doses of ketamine, LSD and psilocybin. *Scientific Reports*, 7, 46421. https://doi.org/10.1038/srep46421 (read in full from V.S.'s copy on 1 October 2026)
+Schartner, M. M., Carhart-Harris, R. L., Barrett, A. B., Seth, A. K., & Muthukumaraswamy, S. D. (2017). Increased spontaneous MEG signal diversity for psychoactive doses of ketamine, LSD and psilocybin. *Scientific Reports, 7*, Article 46421. https://doi.org/10.1038/srep46421
 
-Seth, A. K., Chorley, P., & Barnett, L. C. (2013). Granger causality analysis of fMRI BOLD signals is invariant to hemodynamic convolution but not downsampling. *NeuroImage*, 65, 540–555. https://doi.org/10.1016/j.neuroimage.2012.09.049 (read in full from V.S.'s copy on 1 October 2026)
+Seth, A. K., Chorley, P., & Barnett, L. C. (2013). Granger causality analysis of fMRI BOLD signals is invariant to hemodynamic convolution but not downsampling. *NeuroImage, 65*, 540–555. https://doi.org/10.1016/j.neuroimage.2012.09.049
 
-Singleton, S. P., Timmermann, C., Luppi, A. I., Eckernäs, E., Roseman, L., Carhart-Harris, R. L., & Kuceyeski, A. (2025). Network control energy reductions under DMT relate to serotonin receptors, signal diversity, and subjective experience. *Communications Biology*, 8(1), 631. https://doi.org/10.1038/s42003-025-08078-9
+Singleton, S. P., Timmermann, C., Luppi, A. I., Eckernäs, E., Roseman, L., Carhart-Harris, R. L., & Kuceyeski, A. (2025). Network control energy reductions under DMT relate to serotonin receptors, signal diversity, and subjective experience. *Communications Biology, 8*(1), Article 631. https://doi.org/10.1038/s42003-025-08078-9
 
-Strassman, R. J., & Qualls, C. R. (1994). Dose-response study of N,N-dimethyltryptamine in humans. I. Neuroendocrine, autonomic, and cardiovascular effects. *Archives of General Psychiatry*, 51(2), 85–97. https://doi.org/10.1001/archpsyc.1994.03950020009001 (read in full from V.S.'s copy on 1 October 2026; bibliographic record checked against Crossref on that day)
+Strassman, R. J., & Qualls, C. R. (1994). Dose-response study of N,N-dimethyltryptamine in humans. I. Neuroendocrine, autonomic, and cardiovascular effects. *Archives of General Psychiatry, 51*(2), 85–97. https://doi.org/10.1001/archpsyc.1994.03950020009001
 
-Tarchi, L., Lasagni, L., Ubaldi, L., Bottacin, J., Lodovici, E., Di Giacomo, A., Zompa, L., Pisano, T., Bianchi, A., D'Incerti, L., Castellini, G., & Ricca, V. (2026). Disrupted emergent properties of the brain in schizophrenia: Insight from Integrated Information Decomposition of resting state fMRI. *Brain and Behavior*, 16(4), e71352. https://doi.org/10.1002/brb3.71352 (read in full on 20 September 2026; a deconvolving study, see S20 Table)
+Tarchi, L., Lasagni, L., Ubaldi, L., Bottacin, J., Lodovici, E., Di Giacomo, A., Zompa, L., Pisano, T., Bianchi, A., D'Incerti, L., Castellini, G., & Ricca, V. (2026). Disrupted emergent properties of the brain in schizophrenia: Insight from integrated information decomposition of resting state fMRI. *Brain and Behavior, 16*(4), Article e71352. https://doi.org/10.1002/brb3.71352
 
-Theiler, J., Eubank, S., Longtin, A., Galdrikian, B., & Farmer, J. D. (1992). Testing for nonlinearity in time series: the method of surrogate data. *Physica D: Nonlinear Phenomena*, 58(1–4), 77–94. https://doi.org/10.1016/0167-2789(92)90102-S
+Theiler, J., Eubank, S., Longtin, A., Galdrikian, B., & Farmer, J. D. (1992). Testing for nonlinearity in time series: The method of surrogate data. *Physica D: Nonlinear Phenomena, 58*(1–4), 77–94. https://doi.org/10.1016/0167-2789(92)90102-S
 
-Tian, Y., Margulies, D. S., Breakspear, M., & Zalesky, A. (2020). Topographic organization of the human subcortex unveiled with functional connectivity gradients. *Nature Neuroscience*, 23(11), 1421–1432. https://doi.org/10.1038/s41593-020-00711-6
+Tian, Y., Margulies, D. S., Breakspear, M., & Zalesky, A. (2020). Topographic organization of the human subcortex unveiled with functional connectivity gradients. *Nature Neuroscience, 23*(11), 1421–1432. https://doi.org/10.1038/s41593-020-00711-6
 
-Timmermann, C., Roseman, L., Schartner, M., Milliere, R., Williams, L. T. J., Erritzoe, D., Muthukumaraswamy, S., Ashton, M., Bendrioua, A., Kaur, O., Turton, S., Nour, M. M., Day, C. M., Leech, R., Nutt, D. J., & Carhart-Harris, R. L. (2019). Neural correlates of the DMT experience assessed with multivariate EEG. *Scientific Reports*, 9, 16324. https://doi.org/10.1038/s41598-019-51974-4 (read in full from V.S.'s copy on 1 October 2026)
+Timmermann, C., Roseman, L., Haridas, S., Rosas, F. E., Luan, L., Kettner, H., Martell, J., Erritzoe, D., Tagliazucchi, E., Pallavicini, C., Girn, M., Alamia, A., Leech, R., Nutt, D. J., & Carhart-Harris, R. L. (2023). Human brain effects of DMT assessed via EEG-fMRI. *Proceedings of the National Academy of Sciences, 120*(13), Article e2218949120. https://doi.org/10.1073/pnas.2218949120
 
-Timmermann, C., Roseman, L., Haridas, S., Rosas, F. E., Luan, L., Kettner, H., Martell, J., Erritzoe, D., Tagliazucchi, E., Pallavicini, C., Girn, M., Alamia, A., Leech, R., Nutt, D. J., & Carhart-Harris, R. L. (2023). Human brain effects of DMT assessed via EEG-fMRI. *Proceedings of the National Academy of Sciences*, 120(13), e2218949120. https://doi.org/10.1073/pnas.2218949120
+Timmermann, C., Roseman, L., Schartner, M., Milliere, R., Williams, L. T. J., Erritzoe, D., Muthukumaraswamy, S., Ashton, M., Bendrioua, A., Kaur, O., Turton, S., Nour, M. M., Day, C. M., Leech, R., Nutt, D. J., & Carhart-Harris, R. L. (2019). Neural correlates of the DMT experience assessed with multivariate EEG. *Scientific Reports, 9*, Article 16324. https://doi.org/10.1038/s41598-019-51974-4
 
-Varley, T. F. (2024). Considering dynamical synergy and integrated information; the unusual case of minimum mutual information. *arXiv*, 2407.16601. Preprint, not peer reviewed.
+Varley, T. F. (2024). *Considering dynamical synergy and integrated information; the unusual case of minimum mutual information*. arXiv. https://arxiv.org/abs/2407.16601
 
-Váša, F., Seidlitz, J., Romero-Garcia, R., Whitaker, K. J., Rosenthal, G., Vértes, P. E., Shinn, M., Alexander-Bloch, A., Fonagy, P., Dolan, R. J., Jones, P. B., Goodyer, I. M., the NSPN consortium, Sporns, O., & Bullmore, E. T. (2018). Adolescent tuning of association cortex in human structural brain networks. *Cerebral Cortex*, 28(1), 281–294. https://doi.org/10.1093/cercor/bhx249
+Váša, F., Seidlitz, J., Romero-Garcia, R., Whitaker, K. J., Rosenthal, G., Vértes, P. E., Shinn, M., Alexander-Bloch, A., Fonagy, P., Dolan, R. J., Jones, P. B., Goodyer, I. M., NSPN Consortium, Sporns, O., & Bullmore, E. T. (2018). Adolescent tuning of association cortex in human structural brain networks. *Cerebral Cortex, 28*(1), 281–294. https://doi.org/10.1093/cercor/bhx249
 
-Williams, P. L., & Beer, R. D. (2010). Nonnegative decomposition of multivariate information. *arXiv*, 1004.2515.
+Williams, P. L., & Beer, R. D. (2010). *Nonnegative decomposition of multivariate information*. arXiv. https://arxiv.org/abs/1004.2515
 
-Wu, G.-R., Liao, W., Stramaglia, S., Ding, J.-R., Chen, H., & Marinazzo, D. (2013). A blind deconvolution approach to recover effective connectivity brain networks from resting state fMRI data. *Medical Image Analysis*, 17(3), 365–374. https://doi.org/10.1016/j.media.2013.01.003
+Wu, G.-R., Colenbier, N., Van Den Bossche, S., Clauw, K., Johri, A., Tandon, M., & Marinazzo, D. (2021). rsHRF: A toolbox for resting-state HRF estimation and deconvolution. *NeuroImage, 244*, Article 118591. https://doi.org/10.1016/j.neuroimage.2021.118591
 
-Wu, G.-R., Colenbier, N., Van Den Bossche, S., Clauw, K., Johri, A., Tandon, M., & Marinazzo, D. (2021). rsHRF: A toolbox for resting-state HRF estimation and deconvolution. *NeuroImage*, 244, 118591. https://doi.org/10.1016/j.neuroimage.2021.118591
+Wu, G.-R., Liao, W., Stramaglia, S., Ding, J.-R., Chen, H., & Marinazzo, D. (2013). A blind deconvolution approach to recover effective connectivity brain networks from resting state fMRI data. *Medical Image Analysis, 17*(3), 365–374. https://doi.org/10.1016/j.media.2013.01.003
 
-Yeo, B. T. T., Krienen, F. M., Sepulcre, J., Sabuncu, M. R., Lashkari, D., Hollinshead, M., Roffman, J. L., Smoller, J. W., Zöllei, L., Polimeni, J. R., Fischl, B., Liu, H., & Buckner, R. L. (2011). The organization of the human cerebral cortex estimated by intrinsic functional connectivity. *Journal of Neurophysiology*, 106(3), 1125–1165. https://doi.org/10.1152/jn.00338.2011
+Yeo, B. T. T., Krienen, F. M., Sepulcre, J., Sabuncu, M. R., Lashkari, D., Hollinshead, M., Roffman, J. L., Smoller, J. W., Zöllei, L., Polimeni, J. R., Fischl, B., Liu, H., & Buckner, R. L. (2011). The organization of the human cerebral cortex estimated by intrinsic functional connectivity. *Journal of Neurophysiology, 106*(3), 1125–1165. https://doi.org/10.1152/jn.00338.2011
 
-Zhang, X., Han, C., Xia, J., Deng, L., & Dong, J. (2025). Dynamic synergy network analysis reveals stage-specific regional dysfunction in Alzheimer's disease. *Brain Sciences*, 15(6), 636. https://doi.org/10.3390/brainsci15060636
+Zhang, X., Han, C., Xia, J., Deng, L., & Dong, J. (2025). Dynamic synergy network analysis reveals stage-specific regional dysfunction in Alzheimer's disease. *Brain Sciences, 15*(6), Article 636. https://doi.org/10.3390/brainsci15060636
 
 ---
 
