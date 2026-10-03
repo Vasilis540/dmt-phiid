@@ -9588,3 +9588,62 @@ closed-form identities and the regional correlation from the public repository; 
 items that are theirs to fill (affiliations, further co-authors and contributors, their contributions, funding
 statements and competing interests, the acknowledgments, and the REC reference number with the basis for secondary use);
 the Supplementary Methods of Luppi et al. 2026 and the Supplementary Materials of Gao et al. 2026.
+
+## The primary and the r₁ contrasts recomputed in GNU Octave: run, outcome and text, 3 Oct 2026 11:46 UTC (appended; nothing above edited)
+
+**What was run.** On 3 October 2026 V.S. ran `octave_crosscheck.m` in GNU Octave 8.4.0 on his computer, on the
+released series (`external/DMT_NCT/data/DMT_clean_mni_continuous_fullPreprocsch116.mat`, variant ts_gsr), from his
+downloads folder, outside the repository's tree. The script (sha256
+17935c41d0dae9cfcb16fd49bdd1ede2532c708d4bf77cf6347c8a1bacad6a51, committed here unchanged as
+`notes/crosscheck_2026-10-03_octave/octave_crosscheck.m`) was written by the planning session on the same day, after
+V.S. asked for a check of the main results in a second language. It calls none of the Python code. For every run and
+each of its 14 windows of 60 TRs it drops region 21 (20 counting from 0) and the non-finite TRs, standardises each
+region within the window (SD with N − 1) and takes the whole-brain r₁ as the mean, over regions and pairs of
+consecutive TRs, of the product of consecutive standardised values; for each of the 6,555 pairs it forms the
+correlation matrix of [x_t, y_t, x_t+1, y_t+1] from the window's past and future segments (each standardised with N −
+1), the nine Gaussian mutual informations from the determinants of that matrix's blocks (the 4 × 4 determinant by the
+Schur complement of its past block), the minimum-mutual-information redundancies as the smaller of the mutual
+informations concerned, and the sts atom by the last row of the inverse of the lattice's 16 × 16 matrix; a window's
+sts is the mean over pairs. Pre-injection is windows 1–4, post-injection windows 6–14, and the DiD is the
+post-injection gap (DMT − placebo) minus the pre-injection gap, per subject.
+
+**No pre-run entry.** The run had no pre-run entry: it is a check that committed results are reproduced, asked for and
+run within the day. Its criterion was stated before the run, in the planning session's message that gave V.S. the
+script: that the two contrasts equal the paper's, −0.0809 for sts and −0.0146 for r₁. Before the run the planning
+session had tested the script in GNU Octave 8.4.0 on synthetic series (14 subjects × 2 runs of 116 × 840 values, one
+TR non-finite) against the repository's `rev_series.autocorr_series` and `rev_phiid_fast.PairPhiID`: over the 392
+windows the largest difference was 5 × 10⁻¹³ for each quantity, the precision of the twelve significant digits that
+the script writes per window.
+
+**Outcome.** The output, as V.S. sent it from his terminal: one non-finite TR dropped (subject 3, placebo); r₁:
+pre-injection means 0.84793 (DMT) and 0.84547 (placebo), pre-injection gap +0.00246, post-injection gap −0.01219, DiD
+−0.01465; sts: pre-injection means 1.15538 and 1.13779, pre-injection gap +0.01759, post-injection gap −0.06328, DiD
+−0.08087. These are the committed values at their printed precision (Table 2 and Results 2: 1.1554 and 1.1378,
++0.0176, −0.0633, −0.0809; +0.0025, −0.0122, −0.0146; Table 4's raw r₁, 0.848), and the 28 per-subject DiDs that the
+output prints at six decimals equal the column `did` of `notes/review_results/partB/baseline_gap.csv` (sts and r1,
+ts_gsr, W = 60) in every digit. The exact sign-flip p that the planning session computed from the printed per-subject
+values is 0.0038 for sts (62 of the 16,384 assignments) and 0.0106 for r₁ (174), the values of Table 2 and Results 2.
+The criterion is met.
+
+**The outputs.** The run wrote `octave_crosscheck.out` (what it printed) and `octave_crosscheck_windows.csv` (r₁ and
+sts of every subject, run and window, twelve significant digits) into the folder it was run from. They are committed
+as the run wrote them in the commit that follows this one, into `notes/crosscheck_2026-10-03_octave/`, by the script
+that makes both commits, which first checks that the output holds the two lines of gaps and DiDs quoted above and that
+the per-window file reproduces the output's per-subject DiDs.
+
+**The text.** The main text's Use of AI tools names the recomputation among the checks ("the primary and r₁ contrasts
+by recomputation in GNU Octave"), ten words, which bring Introduction through Methods to 8,499 words with headings
+against the limit of 8,500; the main text gains no number, and `manuscript/main_text_numbers.csv` is unchanged. S5
+Text §4 (the run inventory) describes the run and its outcome. `CLAUDE.md`'s state line and `README.md`'s row on
+`notes/` name the folder. The replacements are
+`notes/crosscheck_2026-10-03_octave/text_replacements_2026-10-03_octave.json`, applied all or none by
+`notes/review_2026-09-25/revision/apply_replacements.py`; `notes/crosscheck_2026-10-03_octave/checks/` holds the
+outputs of the checks at this commit (`check_numbers.py`: 1,381 rows, the 10 sign-wording rows flagged as before;
+`check_cells.py`; `tablecheck.py`; `wc.py`; the counter of the Abstract's and the Author summary's words).
+
+**How this commit was made.** Not by the writer's session, and no separate session audited it: V.S. asked for the
+commit within the day and with the least use of the AI system. The planning session prepared the replacements, this
+entry and the folder's files, and rehearsed the commit on a copy of the repository; a script that V.S. ran on his
+computer applied the replacements, put this entry's time into its heading, compared the sha256 of each changed and
+each new file with the planning session's build and the outputs of the checks with those of `checks/`, and committed.
+The typeset PDFs for the co-authors are built from the commit that holds the outputs.
