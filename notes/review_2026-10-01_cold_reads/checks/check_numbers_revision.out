@@ -1,0 +1,11 @@
+rows 1381, data rows 787, flagged 10
+10 | 0.019 | SIGN DIFFERS (check wording) | held=-0.0189 printed=0.019 notes/review_results/partB/exchange_rates_tables.md:9 ctx='moves it by 0.061 nats, 0.1 of the lag-0 correlation |q| by 0.019 (4.7 to 1 per within-win'
+88 | 0.019 | SIGN DIFFERS (check wording) | held=-0.0189 printed=0.019 notes/review_results/partB/exchange_rates_tables.md:9 ctx='r₁ moves sts by 0.061 nats (∂sts/∂r₁ = +6.07), 0.1 of |q| by 0.019 (∂sts/∂q = −0.19; sts i'
+91 | 0.031 | SIGN DIFFERS (check wording) | held=-0.0309 printed=0.031 notes/review_results/partB/exchange_rates_tables.md:12 ctx='even in q), and 0.01 of within-pair asymmetry |a_x − a_y| by 0.031. Per standard deviation'
+534 | 0.0164 | SIGN DIFFERS (check wording) | held=-0.0164 printed=0.0164 notes/review_results/partB/residual_source.log:11 ctx='073, against 0.002 for sts (S3 Text). Mean pair |q| fell by 0.0164 (10 of 14 negative; the'
+725 | 4.3 | SIGN DIFFERS (check wording) | held=-4.3 printed=4.3 notes/review_results/partB/diag_tables.md:6 ctx="' own (a_x, a_y, q) carry. It exceeds the observed level by 4.3 % at W = 60 and by 1.1 % a"
+727 | 1.1 | SIGN DIFFERS (check wording) | held=-1.1 printed=1.1 notes/review_results/partB/diag_tables.md:54 ctx='ry. It exceeds the observed level by 4.3 % at W = 60 and by 1.1 % at the run level (S12 Ta'
+756 | 0.049 | SIGN DIFFERS (check wording) | held=-0.0489 printed=0.049 notes/review_results/partB/residual_source.log:4 ctx='The AR(1)-substituted estimate exceeds the observed level by 0.049 nats on average, and it'
+771 | 0.012 | SIGN DIFFERS (check wording) | held=-0.01243 printed=0.012 notes/review_results/partB/diagnostic_alternatives_tables.md:190 ctx='t grows with pair r₁ and |q|. In simulations with a fall of 0.012–0.015 in pair r₁ applied'
+772 | 0.015 | SIGN DIFFERS (check wording) | held=-0.01540 printed=0.015 notes/review_results/partB/bandpassed_expectations_tables.md:36 ctx='s with pair r₁ and |q|. In simulations with a fall of 0.012–0.015 in pair r₁ applied to th'
+1216 | 0.053 | SIGN DIFFERS (check wording) | held=-0.0530 printed=0.053 notes/review_results/partB/family_atoms_tables.md:25 ctx="table with each pair's measured coefficients only to within 0.053 nats for sts and 0.04 fo"

@@ -1,0 +1,5 @@
+parses: scripts/15_figures_v2.py
+parses: notes/review_2026-10-01_cold_reads/checks/figures_check.py
+parses: notes/review_2026-10-01_cold_reads/checks/derived_r24.py
+parses: notes/review_2026-10-01_cold_reads/checks/abstract_summary.py
+parses: notes/review_2026-10-01_cold_reads/audit/te_filter_check.py
