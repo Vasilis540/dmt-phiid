@@ -703,3 +703,7 @@ At the end of the record ("Open questions"), with the later dated entries
 C. Timmermann (13 September 2026) and S. P. Singleton (14 September 2026);
 the correspondence is held by the corresponding author (README, "Licence");
 author confirmation of the subject order is still requested.
+
+## Commit messages
+
+End every commit message with exactly two trailer lines: `Assisted-by: Claude <model name>` (for example `Assisted-by: Claude Opus 5.5`) and the `Claude-Session:` line. Add no other trailers.
