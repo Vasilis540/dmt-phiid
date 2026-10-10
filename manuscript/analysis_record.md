@@ -9678,3 +9678,61 @@ committed. Before that the planning session typeset both PDFs from the built tre
 box. Nothing in Introduction through Methods changes (8,499 words with headings) and
 `manuscript/main_text_numbers.csv` is unchanged; the outputs of the five checks equal those of the commit before. PLOS
 Computational Biology uses numbered references; that conversion is left for the submission.
+
+## The note to the data authors, S. P. Singleton's answers, and the history rewritten for the AI-attribution line: text, 10 Oct 2026 20:13 UTC (appended; nothing above edited)
+
+**The note.** On 3 October 2026 V.S. sent the note to C.T. and S.P.S. by email, with the two PDFs typeset from 637d303
+(main text, 29 pages; supporting information, 155). It said that the analysis and the writing were done with an AI
+system under V.S.'s direction, as the Methods state, so that they would be the first people other than V.S. to check
+them; that the primary and the r₁ contrasts had been recomputed in GNU Octave, separately from the Python code, and
+match; and that the repository is public, marked for co-author review, and could be made private. It asked five
+things: whether both were happy to be co-authors, with the affiliations V.S. had for them; of C.T., whether the REC
+reference 16/LO/0897 (London – Brent) is right and whether the participants consented to their data being shared; of
+S.P.S., whether the subjects are in the same order in the time series, the ratings, the FD and the LZ files; whether
+the two letters that end the subject codes could identify anyone; and whether they had anything to add (co-authors,
+funding, competing interests, acknowledgments). It asked both to check the two passages that describe their data
+("Dataset" and "Data and code availability"). Of the items this record listed for the note (the entry of the revision
+that answered the cold reads, "The note to C.T. and S.P.S."), the email held the letters of the subject codes, the two
+statements that are the data authors' to confirm (through those two passages) and the [TK] items that are theirs to
+fill, their contributions apart, and it added the subject order ("Open questions to resolve"); it left for after
+C.T.'s reply each subject's session order and whether a testing day held one substance or both, the censoring, the
+Zenodo licence field and the invitation to reproduce, and the supplements of Luppi et al. (2026) and Gao et al. (2026)
+are asked of V.S. The email went first, by mistake, to S.P.S. alone (16:25 UTC); then, forwarded, to C.T.'s former
+institutional address with S.P.S. in copy (16:34 UTC); then to C.T.'s current address alone (16:49 UTC); the text and
+the two PDFs are the same in all three.
+
+**S. P. Singleton's answers.** On 6 October 2026 (17:14 UTC) S.P.S. answered that he does not wish to be a co-author,
+and that the files are "all in the same order e.g. row X = subject X across all files"; asked by V.S., he agreed
+(17:41 UTC) to be thanked in the Acknowledgments. His answer closes the open question on the subject order ("Open
+questions to resolve"), which the alignment check of 13 September 2026 had verified for one subject ("Subject
+alignment across files"). C.T. has not yet answered; the shared authorship he set as the condition for the data's use
+(13 September 2026), which V.S. accepted that day, stands.
+
+**What changed in the text.** S. P. Singleton leaves the author line and its affiliations, the Author contributions,
+the Funding item and the Competing interests, which are the authors'; the Acknowledgments thank him for the release of
+the derivative dataset and for his answers on the mean-filled parcel and on the order of the subjects across its
+files. S4 Text's checklist row on the data-quality checks adds his confirmation. Data and code availability says that
+the commit identifiers the text cites are those of the tag `cited-commits`, and S5 Text §6 how its identifiers resolve
+(below). CLAUDE.md and README.md follow. No number of the main text changes: the numbers the removed clause held are
+citation years, which the numbers table does not cover, and the outputs of the five checks equal those of the commit
+before (Introduction through Methods, 8,499 words with headings).
+
+**The history rewritten.** On 5 October 2026 the main branch's history was rewritten and pushed from V.S.'s account,
+not by the planning session: in each of its 123 commit messages the trailer "Co-Authored-By: Claude …
+<noreply@anthropic.com>" became "Assisted-by: Claude …", with the model's name kept, and the commit that followed
+(13197c3) added to CLAUDE.md the rule that every commit message end with the two trailer lines `Assisted-by:` and
+`Claude-Session:`, which this commit follows. The planning session checked the result on 10 October 2026: the 123
+commits pair one to one, with identical trees, parents, authors, committers and dates, and messages that differ only
+in that line; every identifier changed. The earlier history is kept under the tag `cited-commits`, which points at
+637d303 and which a clone fetches, so every identifier cited in the text, in this record and in the result files'
+headers still resolves; `notes/authorship_and_history_2026-10-10/commit_map.tsv` maps each identifier of the earlier
+history to its new one. Identifiers of commits made after the rewrite (13197c3 and this one) are those of the main
+branch.
+
+**How this commit was made.** As the two entries before this one: not by the writer's session and without a separate
+audit. The planning session built the replacements
+(`notes/authorship_and_history_2026-10-10/text_replacements_2026-10-10.json`, applied all or none by
+`notes/review_2026-09-25/revision/apply_replacements.py`) and the map; a script that V.S. ran on his computer applied
+them, put this entry's time into its heading, compared each changed and new file with the planning session's build by
+sha256 and the outputs of the checks with those of `notes/authorship_and_history_2026-10-10/checks/`, and committed.
+The planning session typeset both PDFs from the built tree before the commit: no missing glyph and no overfull box.

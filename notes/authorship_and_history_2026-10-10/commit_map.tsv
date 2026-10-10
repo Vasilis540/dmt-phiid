@@ -1,0 +1,124 @@
+old	new	subject
+44cec4ff669aa459bb45a161a19dc4b58050cc29	b0bc326c44f24aa2bfdae1d5a641cc2dbc0bf13c	Initial commit: ΦID synergy pipeline, data notes, pre-registration
+e16ebba7d4b4e4f1f86071190bd0600d5d7dcbba	36c4ef3d64a08782193c7e54472356f95908fc39	Pre-register region-20 exclusion, window length, and bias check
+e01c836c998ea5cf6fa5cc0d21eb83ed84f83490	9d484007effedad15c7d0e9c64ea2ef6b18cd1c3	02_bias_check: count rtr min-selection flips only against analytically untied minima
+18ad8b4aa9ceca1d42068059222f30b546977600	fe88f41baa2a3c141b71f92ecd260a1d8ab220ea	Non-stationary bias check: pre-registered criteria, tier-2 controls, analytic S; 2000-run verdict UNDETERMINED at tier 1, tier 2 clear
+33f0b33c1bf2a557af6053c6c2b13d370b58996e	3fb4f471674a37472c7aeffe0d674e23e2410c44	16-atom rerun of 115-region global fit; rtr prediction and directional-failure rule pre-registered
+84ea6575005541c94d58adc5c6a0cc1545d92d4a	8aa2a3612f36d5ba3af3d1b5c50131c224cd1437	ts_demean variant, LZ cross-modal check, rtr and GSR pre-registrations; sts decrease GSR-independent
+8554b3d2948695ce3a4ccd5f8eb98799f4bea582	b59d1529d49c3c27cdaa371d45c532d374603230	window and placebo modes implemented and smoke-tested; onset contamination recorded; sts per-subject counts
+febf5994cead8452f19369990d411deb1053803b	0c168ad4345d5352e1ad563d8ea780be4a4acfca	step 2 executed; decay windows and tier-disagreement rule fixed; W=30 as positive control
+b7e4595ad7b10a37f836d3f2956f7118c6490d15	27a5308fe63b7ada73be28c1196307549d33851f	step-contrast test and motion handling pre-registered
+dbeca3656623c69645509630f9e9dedcee49c764	5f848e0edab556d4261a1238500392b1f272970d	20k bias check: tier 2 assigned by escalation rule; 6-14 check passes
+98149a9e57821ea68b8561df2211913b6b832153	ad6b364ce6cdfacdf6e7d05c3520fa2d896ac478	01: save TR-resolution pair-mean local atoms (needed by the pre-registered temporal null)
+e46df8a6fb90dd4ceafbfeccb75d74ea72678e91	c32b9b1dcab301bba1f9c663703919009926ce4c	06_primary_b_analysis: tier-2 threshold on group-mean series; residualisation domains recorded
+cb1b2cf49aaebd37ff941928a1c5e2549b85f12b	86035a87d47ba643fdcf9607c9b8377a232d7a69	Primary B result recorded: step contrast holds, tier 3 assigned
+ac1fdc0ecbfe6e292a0e2d076181408b74e67725	47b7bd0c9648d65cf2bdfb7af9f19a74266fdb6b	07_windowed_atoms_did: rtr, total TDMI and self-transfer atoms under the windowed estimator, same tests as sts
+5caec62b6cb28dd002cfdc5da466c6d0bfd6bf4b	4c425c8686b0cd6339d52a3bc49fe7befb16675a	W=30 positive control recorded; shrinkage prediction over-attenuates, milder-AR explanation tested and rejected
+f3b435d61ec0170e56435822185713047d2a26c0	648822d97b61a5b0260fb0e26d9dabe51c2022fa	02_bias_check: AR-shift step condition at measured autocorrelation, --only-nonstat flag; prediction recorded before the run
+553e919dfdb52a08c513433c0054e7c798ecbc39	cd573f2f56d15c4c452c7f58b4e8d37d1171043a	AR-shift outcome and diagnostic; queue complete; ts_demean, Robustness C, 07 outputs unread
+2af901c6ec2c5c35287c8b4b685a5c8cd22fa1e1	23ded810d24edb26b53f0c706169fb41af717aa1	Clean-tag rerun of Robustness C atoms and 07 (identical to f3b435d-dirty); ts_demean W=60 and 07 comparison recorded; 08_robustness_c_analysis added
+834457ea792cc76d1e0bf473051f3b183ab84f15	c8091824d44ee802b6938589ed9f254d70026e7b	08_robustness_c_analysis output (ts_gsr); numbers not yet recorded in CLAUDE.md
+66b570e54bb4e9fb73878bb18c3e4a4225cb55f8	be21c471fa089023d8b542c3ae4b5c15f7317cfb	Robustness C recorded; results complete
+cab580b591b10311a98c4aceb6d900938ad45832	a523fe12a96c6fd0df77a0f9d630e6fb3959c791	Subject-alignment check (10) and global FC per bin (09); results recorded in CLAUDE.md
+a4a544d3ce33d29b4fb2333a5842065c02d3c10a	acd88fbfbdb6d01afb654b6ce4e2c93494c49df8	Record FC/synergy reconciliation with Timmermann 2023; open question on subject-order confirmation
+a8f02634303a1ec9093a119b759e9e2c81a73d1d	af2e7d8116652e94743450e59cd3b53db11dffb7	Pre-specify exploratory regional analysis (recorded before any code); add Schaefer-100 parcel names
+4f7437be484a7b146d1d755df661f6eb0a956d16	42fa0bf9635fe152abf46da527d585c8e32377f9	11_regional_analysis: exploratory regional script, reviewed; h5py added
+d76d758ca1d19af5810a8680f1889b318ba849ba	3b6645f1cd87f5ee766362200adadad67ce99033	Regional analysis run on both variants
+d493cc8be1033fdb91de7280685b74e814a730ff	0f4f572a06dd6cb7bbcd15ba0d24aa5be1cedaa4	Record exploratory regional analysis outcome, both variants, from the CSVs
+380bf971e6fe33928266fa35c89ae318abd47a16	9dea44b55d63c7ad8044daf76901de503d6c2560	11_regional_analysis: remove dead `.T if False else` expression
+17feffbc77a52291ad958f231e08330799309560	5d658e2279ea1849f9c0f5ca8ceb2d9c40d03b3b	Manuscript draft and supplementary tables
+5bb19fa06d9df264632b044bde26930eb8ba45a4	60fbb9f8c7d9fa568f2b6e6b2f4b5a75a7b229f8	Pre-specification summary: decisions by commit, changes before results, failed predictions
+5ace835c18c054b1f5368ba592808bffc88ef4fd	8b62a83b7041839a9499a037c2ecdf88456df0a6	Draft: audit-trail paragraph matched to the pre-specification summary
+133f2c2081f0c327bc183f7781e959a03db0a326	6d08c6d5588295dcb5733958ba7bcbe9c46373aa	Split CLAUDE.md: move the pre-specification record to manuscript/analysis_record.md
+17dbfcb5932865e4c5ae564e42b130c8c7f75cfa	286c16de3e93067ef86e6acd039d607232554e6b	13_loo_did: post-hoc leave-one-out check on the primary DiD (script only, run follows)
+50564269157a85737bc369540e2d014a1c793c24	375a0f656d05ec64ef7aaad93badddfcea46bde6	Post-hoc leave-one-out check on the primary DiD: no single subject carries it
+1fb074fd24c2c6f11a23b7847db0d83a249ffc72	0728f5a9a383c67d14ef4b88c22096f6c57dfd71	12_figures: fix legend, title and label overlaps; two-panel regional map
+8d40255976c8738b1691b75602a737e465aec28e	7eb027abd63c321626d45bf98fe6c7f051b53e43	Figures regenerated at 1fb074f after the image check; add fig1-3 and captions
+f62c4acbe562a75b62e051139656f12a58c51d32	bccb034ac26aa1849fc8d0413c73a3288c82c4fb	run_all.sh: regenerate every table and figure from the raw .mat files
+04bbcf1c5000f4c62e2f4e7b31211020cf729e2f	9b9a765b67ade3a03b137b9ebea4586fdb1e099c	README: study summary, headline result, layout, reproduction, data source and licence status
+b222889bd5e662421805bc035720303c8adec9d1	e77a7b685c459ddb8b4b2e6b7eb4576269942174	Corrections: data checkout is a clone, not a submodule; LOO clause; Liardi 2024 title
+dbf2311a05d46d55ea8adf4de962c701cfe9d90d	50aaa50e3c828481b9d35d6e373274e69f072a23	14_proportionality: post-hoc test of selective vs proportional synergy decrease (rule recorded, not yet run)
+c0b1f362d5214b33358071d8e34388b6b31f326c	967927a3ffa8bb20a06a6e853cf14a4882d4ef94	14_proportionality outcome: synergy falls in proportion to TDMI under the primary estimator
+5e27b8fcbdff98b09d5047c9f665c8bbb8ce84b6	faaa1555f982e2a3ecb722c96e4ed8c9b3571ed7	CLAUDE.md: back under 10,000 characters after the post-hoc entries
+a226593b65a00fa83ecf2be6ff354af1b66b7cf0	51a4386f08623dcc24efb476519984c351ab8ef2	Draft: proportionality result in Results and Discussion; supplementary Table S8
+b4f98a80cced3d1859b7f2e9fd1ace92bc2e09ba	e57259e55a0cfe68ea3c67b8e7dd99e3117e43e9	Record: closure entry — the search for a positive DMT finding is closed
+477cccc35fe4fef8d76e3ef67992a4117ad00e42	3817bfea645704630f98e3257312c3299044fdc3	Part B pre-specification: scope map, CCS check, lag dependence, diagnostic, literature table
+6c8c64e0b511c713176ae2e18fdaad20f7c88221	42b2303c40d22fd64ef91c578f762e066c2a266a	B1 scope map: sts(r1, q) of a bivariate AR(1) pair, derivatives, dominance region, real-pair overlay
+709415d517b00b118a1f7f0a4e7e5e89735ffc37	63f1863a860ab70b997b1d6b9960c4b2b7b30b7f	B2 CCS: phyid's CCS verified against Ince's definition (no CCS exists in the MATLAB reference); CCS atoms on the DMT data
+6a5f8c6df0fa362a1741171f1718b49d2232ff92	aeb991eb7595902194f8e7fd6e1639f077714f06	Part B machinery: the inference engine and the raw inference rows the B2–B4 scripts read
+24bde598b9f3ebfdfe35d171417cb7768fc1e967	bedf06760fd6929dde1f5b01b27eef3f070d757b	B3 lag dependence: τ = 2, 3, 5 on ts_gsr, W60 and global fit
+3781e00dc55055c8efd6200c003d14931b7751d5	35b03ede2ec6db759ffc01131fb0375ddeef8ea5	B4 diagnostic: per-pair sts predicted from measured (a_x, a_y, q); residual = observed − predicted
+e2d72d63fbb6d01caac332d67999ce756326a7a6	3f3b11fef8f528e4d5a7453b3855ce9abf6a8d78	B5 literature table: fMRI ΦID synergy studies, preprocessing, autocorrelation, scope-map reading
+96d347f9f1b17c68f7f597998823a69711e620c1	3152aa00100ab34dc118264371d9095edd84a9cc	Part B summary: what B1–B5 showed; the five limitation statements answered or conceded
+81fa0a38e9efe278780fef79fb9dd1d30d367062	5b7e38eb01e83e648db81b1efe8ebc15b7d5d020	Manuscript draft v2: methods frame; supersedes draft.md, which stays as a record
+6700f878fe126674e7ccbc363b4a2a66b2cd5686	ab5b3e710ea15231b61e1039f4c9d0db2f1f3265	Draft v2: Results 1 and 4 prose no longer repeats Tables 1 and 3
+9318997426a811867f7b6634518312c46a2fc6fe	8dfeabbd2338a3865e54d14c0f0bc0a4eaa54eb5	Draft v2 revised after the second adversarial review: CCS under the published definition, split-half test, coupled family, figures v2
+51277d4af89df5489d3c4042538c6f0244208577	fb1356ac8651e9df308a622e7aa8ead0cc137c07	Draft v2 after the third review: split-half verdict undetermined (rule threshold above reliability ceiling); null reported as review computation with its range; proportionality in all four cells; residual not-accounted-for; title matched to the supported claim; draft_v2-1.md removed; README, CLAUDE.md, run_all.sh updated; correction note appended to the record
+2151be03e2c22f68f4fc42bcce41e14ea6dcd9b4	d6057a93c28dc57207371ac3db782e0ae70dfbbe	Third adversarial review file
+2a3f74d6aa9c9702878caaae2aedf053abbab4a1	872e0d021ee4ed3a6d09aceb57e1addd3ea580c4	Draft v2 after the verification of the correction note: 22 fixes; leave-two-out on the sts / autocorrelation collinearity (r = 0.846–0.973 over 91 refits); Fig. 4 within-subject bands; Fig. 5 lag dependence; split-half script prints the reliability ceiling
+cd1d8558e7d94aa4e1baf097483f56dc0113d152	c2892128be1ae6b93ebfc3360a282583c9e26042	Remove sync duplicates
+fa39ef27b81073e4fa04f765de9f9c48430913f7	85e6f2d434f978135383dda6e2c19e2fa0bacc31	Finalisation pass (no scientific content changes), items 1–12
+99ceb6d522482daee1c5ea0a1f4311080bacfc9a	46c61538e32bcb456372abfe0a8b6e1803c76327	OS release confirmed; history-rewrite decision recorded
+42d0d8e29556800994302959c50870c665b7ce33	6c4679f016fb55d360a546c4183a0d427bf172fe	CCS definition confirmed against the journal SI Appendix (no content change)
+0c4619f217af0c1ebbf9b2721b3369e5834b6e0f	4c443a13b186077fd493f447ae74fc1ff5df4b10	Notes: plain-language companion and defence questions for draft_v2
+152cc6de53ebedde42b82c540c4a87d41326de7c	ae2d59ad41affd176a382b0add49e2acca1b92ef	Record: pre-run entry and scripts for the run-level cross-lag deviation (partB10) and the regional sts–r₁ test (partB11)
+7c7809a9202225361172a02eb81e52b5215f3043	b51456a02bf8d550df2bc327b1401dc4a35c29a0	draft_v2: address the 35 items of the plain-language companion; two computations (partB10, partB11); tables renumbered
+015d84907ec681ee494db8e30d81e386a129d44d	8dfdcea273098b0055d210bc37d21abff284e3e9	Figures at 7c7809a; companion brought up to date; run_all.sh not yet finished
+13f1c6d5c5dda4ae3118c2fdb14e1e2c7c0f1bf9	e58fac06704e461eb911d23280b94bf36fa7b739	Record: pre-run entry and script for the sign(q)-weighted cross-lag deviation and the slope on q (partB10, fifth review)
+253d609cfa0553b09bdb25e297c6573f9bdc0847	60c195b281810aeff8f6436fbd761a49f3ee02ec	draft_v2 after the fifth review: sign(q)-weighted cross-lag deviation reverses the pooling reading; thirteen text items
+d145e1c37611df16efa66c299329904675c36419	ea358f4f1619fb426c2e825ba81e3ef3dccea84b	partB2_ccs_verify: reference-toolbox search tolerates a missing or unreadable uv cache
+29eabe306b39db421e02b787658fd492c14ce3d2	a998cab99e84afb5ee1aa785c95b5cb056aa89cb	Merge d145e1c (partB2_ccs_verify: tolerate an unreadable uv cache) into the fifth-review revision
+9a19b109522ce96b7bda6d67e18d78809248158c	fe6bc5cc3b9f6e0677c10270d843f5e4218f4ffa	Record: pre-run entry and script for the sign(q)-weighted deviation at W = 60 and on the finite-sample null (partB10)
+0159fdf6939c4ecde2096dc9d90b9e825d7cf02a	f3454f77dab47655109f90131a413b4e5cf75e5b	draft_v2: sign(q)-weighted deviation at W = 60 and on the finite-sample null; third look-alike (shared slow component)
+6b5181a01a3173f44fe95b9e7aa16fd6f5554a0c	2071158a02a78013c7f6d93ff470425fefb01e07	Record: correction note on the 10:23 computations, the section-6 run log and its reproduction, and the pre-run entry and scripts for the cross-lag budget (partB12/13)
+d51966ecb14442491059e6ff714d4602ea452b7f	a1b503498c9bff99f423a3690b17044f8b4eb1ae	draft_v2: the cross-lag budget replaces the 16 Sep readings; outcome, text-revision and closure entries; Table S9
+fd4302e76e2460d91c8a2c5dff60fc19da6847bb	4dbb0beaafab828f962a251468d41f72f6ba0350	draft_v2: readability pass (text only) — Abstract to 300 words, status line to two sentences, Discussion §1 in four paragraphs, Methods sentences split and symbols defined, Results 4 budget wording, accurate Data and code availability, five reviews
+56df014650717e74ff089367b984f19acb3763c4	678ff8ce65c0314e366933ef6e613bebf3d06da8	draft_v2: wording decisions on the readability pass; three caption splits in 15_figures_v2.py (not run); [TK: SHA] in the Figures paragraph
+cc59a74677f577b91937857385250a87bf1733e2	eca84942f7dfeb71445b4f78a86260e98ac60f1f	draft_v2: response to the fresh adversarial review of 17 Sep (text and caption strings only); the review folder committed unmodified
+48ea93410b2e5d88e3fe216b41622d4a40c5ceb4	636bada29ea15b130da5b928aa02bd7ef4c0459b	Outputs of the single full run of run_all.sh at d51966e
+5906148999e83cebcb8e8eb7449aeb4c2ed47521	f03349fb0e6dfece112f15be45a97b4a62c9bfd9	Figures regenerated at 48ea934, with the caption edits of rounds 8b and 9
+0a25aaa40cdba3899a2e854a685bd2f72a4af202	e5bd5a56e14b24c01fd48bff8142e8a33312555f	Reproduction check after the outputs commit, and a correction to its message
+821dc3b88856296c7ce167eaa873baa2bf019674	92750ad8429b4c415c374ebdf86eb0d3957b65df	draft_v2: the run attempts recorded (16-18 Sep), five wording items; text and record only
+223f8a147639043737c972b1a5b8a2d15aa559f1	e29248e6393136ede2057f2be86942ccf26d22e8	draft_v2: Figures paragraph names 48ea934 (no [TK]); status line for co-author review
+35f1c49e2c87b56ac6a42dd58de64c27d72b35ea	bcda9fc479983f6d7195b9c075f6c395a41c1252	draft_v2 in PLOS Computational Biology form (round 12, commit A): unstructured abstract, Author summary, short title, Materials and methods, Funding, Competing interests, Supporting information; exact ethics sentence; governance facts
+d507728d596499198c3f361221e81e75667d7b8a	be4cde148689c5e8dfac46872e64a138b093d3ff	notes: git SHA in the output headers of the nineteen notes/ scripts through notes/rev_git.py (round 12, commit B; pre-run entry, run pending)
+a75d015af3f6f93a4ea886d5af1679071346da2a	e7e9805f5a0dc782ac8910d3f44b433f325c8fdb	notes/review_results: section-6 outputs regenerated at d507728 — identical to the committed versions apart from the SHA lines; review folder of 20 Sep 2026
+958648fda1459fff211f49d30e7c10dc0096d62d	ddf8552dbd4dc7a7bd6ce5a1be2e6e9abd1a0872	Round 13, commit A: record entries of 20 Sep (section-6 outcome, citation audit, independent review and verification, decisions), the citation audit's F1–F19 and the plan's Q1–Q8 in draft_v2, references, partB5_literature_v2.md
+f1f5fccce96a7ced69044a85a8a136ac6c1a6479	f16f6f6206b970d02a7bbc3d2d9f88ab50b2ad5c	Round 13, commit B: pre-run entries and scripts for B14–B20 (family-predicted atoms, directed cross-lag, prewhitening, calibration, CCS decomposition, exchange rates and BCa, partialled regional map); section 6 of run_all.sh
+96e22427dc8ebb2ed60eb51fa9a822dd2f90b479	5653161ce00bfd583dcf599c0e65b6644f7763a0	notes/review_results: outputs of B14–B20 at f1f5fcc, and the untracked outputs of the 20 Sep section-6 run
+4a749d3bdd55dc43e2608a7c5ef0a9ea32e19324	26b438a56b0d78e8cb8e9c9d09447ada7fdc9d84	Round 14, Stage A: outcome entries B14–B20, pre-run entries and scripts for B16b (whitened spectrum) and B17b (calibration on the band-passed generator), section 6 of run_all.sh; caption string of scripts/15_figures_v2.py
+106bd33a05a2a22493655f2a45af16475ef06457	939187f3e60c723e0877164631a344163915b4c3	Round 14, Stage B: the manuscript restructured for a journal reader (PLOS CB order, 9,994 words), the supporting information as manuscript/si/S1–S5 Text, S10 and S11 Tables, the figure script revised, the companion retired
+ada643857e73f67a1f5846a5e3788a5373c9c8e0	90155907b3f2382f781e320d206d2f899f9bae79	notes/review_results: outputs of B16b and B17b at 106bd33
+66e057a2c9e1af5f99ae3d7df9b4f8755bcca099	2f550824407dc058d93e6ad2131750b2f3054428	Round 14, follow-up commit: the outcome entries of B16b and B17b, the thirty-six TK values filled from their tables, the residual read by direction against its calibrated expectation, and seven corrections
+0b8d1a4497d0577285b3dafee09e5593125e600e	556435196ae329030adc9e67ccfdb2db422af0df	Round 15: the abstract's residual clause narrowed, two restorations, one ordering fix in run_all.sh, and the pre-run entry for the final end-to-end run
+ca2b58b31e337a45188600f128018d80ff5d0ba5	95624eb267dc9f564be3a3a1b9b40717d9a12ca5	notes/review_2026-09-22: the independent review and the citation pass of 22 September 2026, their verification, and the reviewer's check scripts
+4b7cd16e0d448f1ea3d89995f005d53659594343	9d9206c5bce46ba6408b728067ef41f157068b7f	Round 16, Part A: record entries of 23 Sep 2026 — the first attempt of the final run, the review of 22 Sep, the direction argument withdrawn, and the pre-run entries of B21–B24
+9d793dcd7c5206b7b30443ca0311e20baac9d7e1	b9356ed3987d2873448b8bdff51b7a63f0ad5e48	Round 16, Part A: the scripts of B21–B24 under their pre-run entries, and run_all.sh's four new steps
+a9d9ca4f5a0e2b920f1ddf14bc97671e90bad52c	6a4bf01dcc4946feb2441e7a29b48010a4c607f5	Round 16, Part A: the two attempts of the final run corrected and the pre-run entry of 21 Sep closed; a note to B23's pre-run entry
+90690f4090e1d4f5f3e92cae68a0883cfa899493	6e7959122f20d47b81a5713cf3c764d63b0ae421	notes/review_results/partB: the outputs of B21–B24 at a9d9ca4
+6f34e897b4fb6aec08343418f60efe3fb99e4e42	f5a32b46468a0e2138f21d6b16644917c7da6d20	Round 16, Stage B (1 of 3): the outcome entries of B21–B24 and the decision entry for the shortened text
+526090d8fe9a805a22180ec68ee883e9d9143c80	9087aeaca96852dfd599a35c6ce588e9bded2b0d	Round 16, Stage B (2 of 3): the shortened text, its supporting information, the figure script and the numbers CSV
+66c6331e5cdf6e631d0e7d018b7f24578e687bb2	62abf225a47ad970a6b314d03d11e4d576c27505	Round 16, Stage B (3 of 3): the six figures and their captions regenerated at 526090d
+371ccf5ada91739d92e0272147b84831a93fc0e5	e498c79d6881d6214f4df0ce715866733409a71c	Round 17 (1 of 3): the review folder of 24 September 2026 and the two record entries
+7470eae0a0241c12c377fe2cb2c0f98c764c5557	a976ac4639bdec46080ef079d8e06e2354605f8d	Round 17 (2 of 3): the text revised to the review of 24 September 2026, its supporting information, the figure script and the numbers CSV
+ddae6189b154bfdd73a13bc1b3e3b28924bb66ac	656fa7ac2c65eba97e54ecfd9c81f6dcddbddced	Round 17 (3 of 3): the six figures renumbered by order of first citation and regenerated at 7470eae, with their captions
+03c558b1f911c26475d008f854c3723e8b96e1e0	3dcd49f59dff10b2e0a057558d9ca17bbcf33c9f	Round 18 (1 of 3): the error-only check of 25 September 2026, its verification and audits, and the revision's replacements
+b02d5ba27ee0a646a2f821df1cb7a6e9e21bf811	fa00d000e3269b8d4ef2381e86e4ded9894e5dfa	Round 18 (2 of 3): the text, the SI, the figure script, the numbers CSV and the final run's comparison scripts, revised to the error-only check
+c25a3104a0841e936af6a19e68f5e49c50b7d943	92a9ad58810c7dbc769b7c3b452df412c4efd587	Round 18 (3 of 3): the figures regenerated at b02d5ba, and the pre-run entry of the final run of run_all.sh
+13705b972c544662f0ce5dbec37a224aa6e96545	de23e7c09d65656e467b202af46040997fcc24dc	Round 19: the outputs of the final run of run_all.sh at c25a310, its log and heartbeat, the entry on two CCS agreement-share arrays, the outcome entry, and the text that reports the run
+d108d6651f37c3dbc388ed839972909ba7ff8893	17d304c460c7be1c137051c5ec734081bb6f0e78	Round 20: the corrections of the error-only read of 26 September 2026, with its review folder
+820cacd4b57551ab8619f98da4236f0959e64bc9	4a0ecb2c46a9ae12f7786c1d34b090e9362d3634	Round 21 (1 of 2): the citation crosscheck of 28 September 2026 and the revision it led to, with the correction for the matrices that are not positive definite and the pre-run entries of B25 and B26
+b36178d52e12ccc7f652c1ab3992708c5096edd8	6f769c43f731dd97055f4209efa1f17978633ef2	Round 21 (2 of 3): B25's first run, and the correction of the check it failed before its second run
+d5a65bdcb2cc9d073f71829c264894937dbe1dc4	4fd15264098ff6186bfd438f3998a0def6115233	Round 21 (3 of 3): B25's second run, at b36178d, its outputs and the text that reports it
+3ce5707ae76a2677a2e4342b7c6b6a5d9a72e42c	a891071a5ab1f6c694af8ac68c34744f423f83e5	B26: the outputs of its run at d5a65bd, as the run wrote them
+df5c160fe9886df8854d2560843c846074b6824d	88bf1828b6726458624780d01f30671ddf4404a0	Round 22 (1 of 2): B26's outcome and the text that reports it, the claim-by-claim check of 29–30 September 2026 and its corrections, B25's re-run and the review folder
+e9a61285138e90d280aa950af7d20768951f43dc	d9d61bac2f9156bc2ab16da3036adb06d617a78d	Round 22 (2 of 2): the figures and captions regenerated at the text commit
+71cf932bfc1fcf403ebbea3f15d6bd6795de2d06	dd9a88cd4b922ae3c2712f95cf8be53882ec39b1	Round 23 (1 of 2): Table 3's caption, the rates taken over the residual's pairs
+24919ea3c2f7ada00828b44b763b4af1c54fd887	7f3e800330d4c892bd7856ef31dde9cf614a7300	Round 23 (2 of 2): the figures and captions regenerated at the text commit
+13e729908582d3127fb262f013b0427270991f6c	8c386e6bb72bcd5a196950186f9b183abd204516	Round 24 (1 of 4): the cold reads of 1 October 2026; B27, B28, B29 and B16c, scripts and pre-run entries
+8bd189e7f03312c1630764a63e6360440760f4f4	a132632fffb420b2bc5e580e1a420184ea5dbfb7	Round 24 (2 of 4): B27, B28, B29 and B16c, the outputs as the run wrote them
+e9fcbdaa5aed4c43791bd4eb16c78a8630b82f72	68d2f8b05956f3719a4e1e3cb639436df6fd764d	Round 24 (3 of 4): B27, B28, B29 and B16c outcome entries; the revision that answers the cold reads
+035619f39ec298050b814211814e483ca9480684	8a5ab7c5390fa2799b7c2b5a49cfdf1ea336a34d	Round 24 (4 of 4): the figures and captions regenerated at the text commit
+84127e49bbda3065f7ba150924b87a605220bc47	20ae37a8c1ad38f8077030bc8e1263457ed6e84a	Round 25 (1 of 2): the primary and r1 contrasts recomputed in GNU Octave; the text
+7c68eafcf14c0dd1f809838a3a4c01059ad97434	f2bfda24ed50795fea81039bc24d472e57a949a5	Round 25 (2 of 2): the Octave recomputation's outputs as the run wrote them
+637d3036e922a33fd50e8162c24ee22ea7372fb4	8a3939978143d1d7defe8be65df86934a942e051	Round 26: the reference list in APA style; its working notes moved to S5 Text

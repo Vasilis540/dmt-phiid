@@ -1,0 +1,122 @@
+[
+ {
+  "id": "M1",
+  "file": "manuscript/draft_v2.md",
+  "old": "Vasilis Sampalis¹, Christopher Timmermann² [TK], S. P. Singleton³ [TK], [TK further co-authors nominated by C.T.]",
+  "new": "Vasilis Sampalis¹, Christopher Timmermann² [TK], [TK further co-authors nominated by C.T.]",
+  "count": 1,
+  "why": "S. P. Singleton declined co-authorship on 6 October 2026 (record, the entry on his answers)."
+ },
+ {
+  "id": "M2",
+  "file": "manuscript/draft_v2.md",
+  "old": "¹ Independent researcher, Athens, Greece. ² [TK affiliation]. ³ [TK affiliation]",
+  "new": "¹ Independent researcher, Athens, Greece. ² [TK affiliation].",
+  "count": 1,
+  "why": "As M1."
+ },
+ {
+  "id": "M3",
+  "file": "manuscript/draft_v2.md",
+  "old": "The repository's full history is public; the result tables and reports name the producing commit",
+  "new": "The repository's full history is public; the commit identifiers that this text and the result files' headers cite are those of the history kept under the tag `cited-commits`, since the main branch's history was later rewritten to reword, in every commit message, the line that credits the AI system, which changed every identifier and no file (`notes/authorship_and_history_2026-10-10/commit_map.tsv` maps the old identifiers to the new); the result tables and reports name the producing commit",
+  "count": 1,
+  "why": "The rewrite of 5 October 2026 (record, the entry on it): where the cited identifiers resolve."
+ },
+ {
+  "id": "M4",
+  "file": "manuscript/draft_v2.md",
+  "old": " S.P.S.: data curation (the released derivative dataset), resources (data release), validation (confirmation of the mean-filled parcel, Methods, Dataset), writing — review and editing [TK].",
+  "new": "",
+  "count": 1,
+  "why": "As M1."
+ },
+ {
+  "id": "M5",
+  "file": "manuscript/draft_v2.md",
+  "old": "[TK: funding statements of C.T. and S.P.S., if any apply to their contributions.]",
+  "new": "[TK: C.T.'s funding statement, if any applies to his contribution.]",
+  "count": 1,
+  "why": "As M1."
+ },
+ {
+  "id": "M6",
+  "file": "manuscript/draft_v2.md",
+  "old": "a co-author of Singleton et al. (2025); S.P.S. is the first author of Singleton et al. (2025), the source of the released derivatives, and a co-author of Luppi et al. (2026), one of the studies this paper examines. No other",
+  "new": "a co-author of Singleton et al. (2025). No other",
+  "count": 1,
+  "why": "As M1: the competing interests are the authors'."
+ },
+ {
+  "id": "M7",
+  "file": "manuscript/draft_v2.md",
+  "old": "[TK: acknowledgments, once the author list is settled]",
+  "new": "We thank S. Parker Singleton for the release of the derivative dataset and for his answers on it, on the mean-filled parcel and on the order of the subjects across its files. [TK: further acknowledgments, once the author list is settled.]",
+  "count": 1,
+  "why": "S. P. Singleton agreed on 6 October 2026 to be thanked by name."
+ },
+ {
+  "id": "S1",
+  "file": "manuscript/si/S4_Text.md",
+  "old": "subject alignment across files checked (record, \"Subject alignment across files\");",
+  "new": "subject alignment across files checked (record, \"Subject alignment across files\") and confirmed by S. P. Singleton on 6 October 2026;",
+  "count": 1,
+  "why": "His answer of 6 October 2026: the files share one subject order."
+ },
+ {
+  "id": "S2",
+  "file": "manuscript/si/S5_Text.md",
+  "old": "and the MATLAB reference it pins, pmediano/PhiID at a633cc1 (S3 Text §2).",
+  "new": "and the MATLAB reference it pins, pmediano/PhiID at a633cc1 (S3 Text §2). The identifiers above, and those in the headers of the result files, are those of the history as it stood on 3 October 2026, which the tag `cited-commits` keeps (it points at 637d303, so a clone fetches every commit named here). On 5 October 2026 the main branch's history was rewritten to change one line in each of its 123 commit messages, the trailer `Co-Authored-By: Claude … <noreply@anthropic.com>` becoming `Assisted-by: Claude …`; every tree, parent, author, committer and date is unchanged and every identifier changed, and `notes/authorship_and_history_2026-10-10/commit_map.tsv` maps each identifier of the earlier history to its new one. Commits made after the rewrite are on the main branch alone.",
+  "count": 1,
+  "why": "Where the listed identifiers resolve after the rewrite of 5 October 2026."
+ },
+ {
+  "id": "C1",
+  "file": "CLAUDE.md",
+  "old": "## Current state (round 26, bundle 37: the reference list in APA style, its working notes moved to S5 Text §5, on top of rounds 24 and 25, which end at 7c68eaf with the recomputation in GNU Octave; next the typeset PDF and the note to C.T. and S.P.S., then their replies)",
+  "new": "## Current state (round 27, bundle 38: S. P. Singleton declined co-authorship, confirmed the subject order and is thanked in the Acknowledgments; the note of 3 Oct 2026 and the history rewrite of 5 Oct 2026 recorded, with the map of commit identifiers; on top of 13197c3; next C.T.'s reply)",
+  "count": 1,
+  "why": "bookkeeping: the state line."
+ },
+ {
+  "id": "C2",
+  "file": "CLAUDE.md",
+  "old": "files verified at one subject (record, \"Subject alignment across files\");\n  author confirmation still requested.",
+  "new": "files verified at one subject (record, \"Subject alignment across files\");\n  confirmed by S. P. Singleton on 6 October 2026 (record, \"S. P. Singleton's answers\").",
+  "count": 1,
+  "why": "bookkeeping."
+ },
+ {
+  "id": "C3",
+  "file": "CLAUDE.md",
+  "old": "author confirmation of the subject order is still requested.",
+  "new": "S. P. Singleton confirmed the subject order on 6 October 2026, declined co-authorship and agreed to be named in the\nAcknowledgments (record, \"S. P. Singleton's answers\").",
+  "count": 1,
+  "why": "bookkeeping."
+ },
+ {
+  "id": "C4",
+  "file": "CLAUDE.md",
+  "old": "`Claude-Session:` line. Add no other trailers.",
+  "new": "`Claude-Session:` line. Add no other trailers. The history was rewritten on 5 Oct 2026 to apply this rule to every earlier commit; the text and the record cite identifiers of the earlier history, kept under the tag `cited-commits` (S5 Text §6; `notes/authorship_and_history_2026-10-10/commit_map.tsv`).",
+  "count": 1,
+  "why": "bookkeeping: where cited identifiers resolve."
+ },
+ {
+  "id": "R1",
+  "file": "README.md",
+  "old": "`references_2026-10-03_apa/`, the replacements that brought the reference list to APA style, with the outputs of the checks |",
+  "new": "`references_2026-10-03_apa/`, the replacements that brought the reference list to APA style, with the outputs of the checks; `authorship_and_history_2026-10-10/`, the replacements that followed S. P. Singleton's answers and the rewrite of the history, and the map of commit identifiers before and after it (`commit_map.tsv`) |",
+  "count": 1,
+  "why": "bookkeeping: the row on notes/ names the folder."
+ },
+ {
+  "id": "E1",
+  "file": "manuscript/analysis_record.md",
+  "old": "Computational Biology uses numbered references; that conversion is left for the submission.\n",
+  "new": "Computational Biology uses numbered references; that conversion is left for the submission.\n\n## The note to the data authors, S. P. Singleton's answers, and the history rewritten for the AI-attribution line: text, «ENTRY_TIME» UTC (appended; nothing above edited)\n\n**The note.** On 3 October 2026 V.S. sent the note to C.T. and S.P.S. by email, with the two PDFs typeset from 637d303\n(main text, 29 pages; supporting information, 155). It said that the analysis and the writing were done with an AI\nsystem under V.S.'s direction, as the Methods state, so that they would be the first people other than V.S. to check\nthem; that the primary and the r₁ contrasts had been recomputed in GNU Octave, separately from the Python code, and\nmatch; and that the repository is public, marked for co-author review, and could be made private. It asked five\nthings: whether both were happy to be co-authors, with the affiliations V.S. had for them; of C.T., whether the REC\nreference 16/LO/0897 (London – Brent) is right and whether the participants consented to their data being shared; of\nS.P.S., whether the subjects are in the same order in the time series, the ratings, the FD and the LZ files; whether\nthe two letters that end the subject codes could identify anyone; and whether they had anything to add (co-authors,\nfunding, competing interests, acknowledgments). It asked both to check the two passages that describe their data\n(\"Dataset\" and \"Data and code availability\"). Of the items this record listed for the note (the entry of the revision\nthat answered the cold reads, \"The note to C.T. and S.P.S.\"), the email held the letters of the subject codes, the two\nstatements that are the data authors' to confirm (through those two passages) and the [TK] items that are theirs to\nfill, their contributions apart, and it added the subject order (\"Open questions to resolve\"); it left for after\nC.T.'s reply each subject's session order and whether a testing day held one substance or both, the censoring, the\nZenodo licence field and the invitation to reproduce, and the supplements of Luppi et al. (2026) and Gao et al. (2026)\nare asked of V.S. The email went first, by mistake, to S.P.S. alone (16:25 UTC); then, forwarded, to C.T.'s former\ninstitutional address with S.P.S. in copy (16:34 UTC); then to C.T.'s current address alone (16:49 UTC); the text and\nthe two PDFs are the same in all three.\n\n**S. P. Singleton's answers.** On 6 October 2026 (17:14 UTC) S.P.S. answered that he does not wish to be a co-author,\nand that the files are \"all in the same order e.g. row X = subject X across all files\"; asked by V.S., he agreed\n(17:41 UTC) to be thanked in the Acknowledgments. His answer closes the open question on the subject order (\"Open\nquestions to resolve\"), which the alignment check of 13 September 2026 had verified for one subject (\"Subject\nalignment across files\"). C.T. has not yet answered; the shared authorship he set as the condition for the data's use\n(13 September 2026), which V.S. accepted that day, stands.\n\n**What changed in the text.** S. P. Singleton leaves the author line and its affiliations, the Author contributions,\nthe Funding item and the Competing interests, which are the authors'; the Acknowledgments thank him for the release of\nthe derivative dataset and for his answers on the mean-filled parcel and on the order of the subjects across its\nfiles. S4 Text's checklist row on the data-quality checks adds his confirmation. Data and code availability says that\nthe commit identifiers the text cites are those of the tag `cited-commits`, and S5 Text §6 how its identifiers resolve\n(below). CLAUDE.md and README.md follow. No number of the main text changes: the numbers the removed clause held are\ncitation years, which the numbers table does not cover, and the outputs of the five checks equal those of the commit\nbefore (Introduction through Methods, 8,499 words with headings).\n\n**The history rewritten.** On 5 October 2026 the main branch's history was rewritten and pushed from V.S.'s account,\nnot by the planning session: in each of its 123 commit messages the trailer \"Co-Authored-By: Claude …\n<noreply@anthropic.com>\" became \"Assisted-by: Claude …\", with the model's name kept, and the commit that followed\n(13197c3) added to CLAUDE.md the rule that every commit message end with the two trailer lines `Assisted-by:` and\n`Claude-Session:`, which this commit follows. The planning session checked the result on 10 October 2026: the 123\ncommits pair one to one, with identical trees, parents, authors, committers and dates, and messages that differ only\nin that line; every identifier changed. The earlier history is kept under the tag `cited-commits`, which points at\n637d303 and which a clone fetches, so every identifier cited in the text, in this record and in the result files'\nheaders still resolves; `notes/authorship_and_history_2026-10-10/commit_map.tsv` maps each identifier of the earlier\nhistory to its new one. Identifiers of commits made after the rewrite (13197c3 and this one) are those of the main\nbranch.\n\n**How this commit was made.** As the two entries before this one: not by the writer's session and without a separate\naudit. The planning session built the replacements\n(`notes/authorship_and_history_2026-10-10/text_replacements_2026-10-10.json`, applied all or none by\n`notes/review_2026-09-25/revision/apply_replacements.py`) and the map; a script that V.S. ran on his computer applied\nthem, put this entry's time into its heading, compared each changed and new file with the planning session's build by\nsha256 and the outputs of the checks with those of `notes/authorship_and_history_2026-10-10/checks/`, and committed.\nThe planning session typeset both PDFs from the built tree before the commit: no missing glyph and no overfull box.\n",
+  "count": 1,
+  "why": "The record's entry on the note, S. P. Singleton's answers and the rewrite, appended; nothing above it is edited."
+ }
+]
